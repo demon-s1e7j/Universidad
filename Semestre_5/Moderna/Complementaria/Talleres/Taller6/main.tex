@@ -1,0 +1,168 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Complementaria Moderna} % This is the name of the course 
+\newcommand{\examnum}{Taller 6} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} &\textit{Sergio Montoya Ramírez}\\ %Your name here instead, obviously 
+	\textbf{\examnum} && \\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Para este punto utilizaremos las notas sobre osciladores y preguntas realizadas al monitor.
+
+    Para comenzar, se tomaron los operadores escalera con los cuales entonces se define
+    \begin{align*}
+      \hat{x} &=  \sqrt{\frac{\hbar}{2m\omega}}(a^++a)\\
+      \hat{p} &= i\sqrt{\frac{m\omega\hbar}{2}}(a^+-a) \\
+      \hat{p}^2 &= -\frac{m\omega\hbar}{2}(a^+a^+-a^+a-aa^++aa)\\
+      \hat{x}^2 &= \frac{\hbar}{2m\omega}(a^+a^++a^+a+aa^++aa)\\
+    .\end{align*}
+
+    Una vez tenemos estos resultados, podemos aprovecharlos para calcular $\sigma_x$ y  $\sigma_p$ sin embargo para esto se da un caso curioso. Para averiguar de que se trata encontremos $<x>^2$
+     \begin{align*}
+       <x>^2 &= \left( \sqrt{\frac{\hbar}{2m\omega}}(a^+ + a)  \right)^2 \\
+	     &= \frac{\hbar}{2m\omega}(a^++a)(a^++a) \\
+	     &= \frac{\hbar}{2m\omega}(a^+a^+ + a^+a + aa^+ + aa)\\
+       <x^2> &= \frac{\hbar}{2m\omega}(a^+a^+ + a^+a + aa^+ + aa)
+    .\end{align*}
+    Lo mismo ocurre para $<p>$ por lo tanto
+     \begin{align*}
+      \sigma_x &= \sqrt{<x>^2+<x^2>} \\
+	 &= \sqrt{2<x>^2}\\
+	 &= \sqrt{2}<x>\\
+      \sigma_p &= \sqrt{2}<p> 
+    .\end{align*}
+    Ahora, para encontrar si se cumple el principio de incertidumbre solo hace falta multiplicar ambos lo cual nos da
+    \begin{align*}
+      \sigma_x \sigma_p = \sqrt{2}<x>\sqrt{2}<p> = 2\hat{x}\hat{p}  
+    .\end{align*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Para este punto utilizaremos las notas sobre osciladores de la complementaria.
+
+    Para comenzar utilizaremos la definición de $\psi_n$ encontrada en la ultima parte de las notas. Con esta encontramos que  \[
+      \psi_n = \frac{1}{\sqrt{n!}} (\hat{a}^+)^n\psi_0
+    .\] Con esto podemos encontrar que \[
+    \psi_1 = (\hat{a}^2)^n\left( \frac{m\omega}{\pi\hbar} \right)^{\frac{1}{4}}e^{\frac{-m\omega}{\hbar}\frac{x^2}{2}}
+    .\]
+    \begin{enumerate}
+    \item Por lo tanto podemos partir desde \[\psi(x,t=0) = A \left[ 3\left(\left( \frac{m\omega}{\pi\hbar} \right)^{\frac{1}{4}}e^{-\frac{m\omega}{\hbar}\frac{x^2}{2}} \right) + 4\left( (\hat{a}^2)^n\left( \frac{m\omega}{\pi\hbar} \right)^{\frac{1}{4}}e^{\frac{-m\omega}{\hbar}\frac{x^2}{2}} \right)  \right]\] 
+      lo que se puede resumir en \[
+      = A\left[ \left(\left( \frac{m\omega}{\pi\hbar} \right)^{\frac{1}{4}}e^{-\frac{m\omega}{\hbar}\frac{x^2}{2}} \right)\left(3 + 4\left( (\hat{a}^2)^n \right)\right)  \right]\]
+
+    \end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Por facilidad representaremos $|\alpha> = \bigl(\begin{smallmatrix}
+i \\ -2 \\-i
+\end{smallmatrix} \bigr)$ y de manera similar $|\beta> = \bigl(\begin{smallmatrix}
+i\\0\\2
+\end{smallmatrix}\bigr)$
+\begin{enumerate}
+  \item Para encontrar los bras solo debemos convertir los kets en vectores fila y conjugarlos lo que nos da
+    \begin{align*}
+      <\alpha| &= \begin{pmatrix} 
+	-i & -2 & i
+      \end{pmatrix}\\
+	<\beta| &= \begin{pmatrix} 
+	-i & 0 & 2
+      \end{pmatrix} 
+    .\end{align*}
+  \item Para conseguir los resultados que nos piden solo debemos multiplicar las cosas que nos piden.
+    \begin{align*}
+      <\alpha|\beta> &= \begin{pmatrix} -i & -2 & i \end{pmatrix} \begin{pmatrix} i \\ 0 \\ 2 \end{pmatrix} = 1+2i\\
+      <\beta|\alpha> &= \begin{pmatrix} -i & 0 & 2 \end{pmatrix} \begin{pmatrix} i \\ -2 \\ -i \end{pmatrix} = 1-2i
+    .\end{align*}
+    Como se pueden ver son conjugados.
+  \item Definimos el operador \[\hat{A}=|\alpha><\beta| = \begin{pmatrix}
+i \\ -2 \\-i
+\end{pmatrix}\begin{pmatrix} 
+-i & 0 & 2
+\end{pmatrix} \]
+
+    Por lo tanto, lo único que necesitamos es multiplicar ambas cosas. El resultado de esto es \[
+    \begin{pmatrix} 
+      1 & 0 & i2\\
+      2i & 0 & -4\\
+      1 & 0 & i2
+    \end{pmatrix} 
+    .\] 
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Tenemos que $|1>$ y  $|2>$ son una base ortonormal. Por lo tanto, $|1><1|$ es una multiplicación de un vector columna por uno fila con sus coordenadas conjugadas. En el caso de los primeros términos 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item 
+    \begin{enumerate}
+      \item Para conseguir el resultado deseado, partamos desde el Hamiltoniano y diagonal icemos para encontrar su valor propio
+	\begin{align*}
+	  \begin{pmatrix} 
+	    1 & 0 & 0\\
+	    0 & 2 & 0\\
+	    0 & 0 & 2
+	  \end{pmatrix} \\
+	  det(H-\alpha I) &= (1-\alpha)(2-\alpha)(2-\alpha) = 0\\
+	  \alpha &= 1\\
+	  \alpha &= 2\\
+	  \alpha &= 2
+      \end{align*}
+Este $\alpha$ es para el $\hat{H}$ sin constante $\lambda$ pero lo único que esto significa es que los resultados obtenidos los multipliquemos por lambda
+
+     \item Para cada uno de los casos solo debemos aplicar.
+
+      \begin{align*}
+        A|v> = \begin{pmatrix} 
+	  0 & \lambda & 0\\
+	  \lambda & 0 & 0\\
+	  0 & 0 & 2\lambda
+	\end{pmatrix}\begin{pmatrix} 
+	c_1 \\ c_2\\ c_3
+	\end{pmatrix}=\begin{pmatrix} \lambda c_2 \\ \lambda c_1\\ 2\lambda c_3 \end{pmatrix}=\lambda\begin{pmatrix} c_2 \\ c_1 \\ 2c_3  \end{pmatrix}\\
+      .\end{align*}
+
+      Por otro lado para $B$ tenemos
+      \begin{align*}
+        B|v> = \begin{pmatrix} 
+	  2\mu & 0 & 0 \\
+	  0 & 0 & \mu\\
+	  0 & \mu & 0
+	\end{pmatrix}\begin{pmatrix} c_1\\ c_2 \\ c_3 \end{pmatrix} = \begin{pmatrix} 
+	2\mu c_1 \\
+	\mu c_3 \\
+	\mu c_2
+	\end{pmatrix} = \mu \begin{pmatrix} 2c_1 \\ c_3 \\ c_2 \end{pmatrix} 
+      .\end{align*}
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}

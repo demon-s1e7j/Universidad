@@ -1,0 +1,293 @@
+\documentclass[12pt]{article}
+	
+\usepackage[margin=1in]{geometry}		% For setting margins
+\usepackage{amsmath}				% For Math
+\usepackage{fancyhdr}				% For fancy header/footer
+\usepackage{graphicx}				% For including figure/image
+\usepackage{cancel}				% To use the slash to cancel out stuff in work
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{float}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Set up fancy header/footer
+\pagestyle{fancy}
+\fancyhead[LO,L]{Sergio Montoya Ramirez}
+\fancyhead[CO,C]{Electronica para Ciencias - Tarea 2}
+\fancyhead[RO,R]{\today}
+\fancyfoot[LO,L]{}
+\fancyfoot[CO,C]{\thepage}
+\fancyfoot[RO,R]{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{enumerate}
+  \item 
+
+    En este caso, este circuito podemos por equivalencia de fuentes pasar la fuente de corriente a una fuente de voltaje en serie con una resistencia. Lo que nos dejaria con una fuente de $120V$.
+
+    Ahora llamando los nodos  A,B,C,D en el sentido de las manecillas del reloj podemos analizar por nodos:
+     \begin{align*}
+      I_1 &= I_2 \\
+      I_2 &= I_3 + I_4 \\
+      I_4 &= I_5 + I_6 \\
+      I_3 + I_5 + I_6 &= I_1 \\
+      V_D &= 0 \\
+      V_{A} &= 120V \\
+      V_B - V_C &= I_4\cdot (j\omega L) 
+    .\end{align*}
+
+    Con lo que podemos desarrollar:
+    \begin{align*}
+      I_3 &= -\frac{V_B\omega C}{j} \\
+      &= V_B\omega Cj \\
+      I_5 &=V_{c}\omega Cj \\
+      I_6 &= \frac{V_C}{R} \\
+      I_4 &= V_C\omega Cj + \frac{V_C}{R}
+    .\end{align*}
+
+    Con lo cual:
+    \begin{align*}
+      V_B - V_C &= V_C\left( \frac{1}{R}+\omega Cj \right) \left( j\omega L \right)\\
+      &= V_C \left( \frac{j\omega L}{R} - \omega^2 CL \right)  \\
+      V_B &= V_C\left( 1 - \omega^2CL + j \frac{\omega L}{R} \right)  \\
+      I_2 &= I_3 + I_5 + I_6 \\
+      &= V_B\omega Cj + \left( \omega Cj + \frac{1}{R} \right)V_C \\
+      V_B &= V_A - I_2 \\
+      V_B&= V_A-\left( V_B\omega Cj + V_C\left( \omega Cj + \frac{1}{R} \right)  \right) \left( R + j\omega L \right)  \\
+      &= V_A - VC\left( 2\omega cRj - \omega^3 C^2 LRj - \omega^2LC+1 - 2\omega^2CL + \omega^{4}c^2L^2-\frac{\omega^{3}LC}{R}j + \frac{\omega L}{R}j \right)  \\
+      V_B &= V_A - V_C\left( 2\omega CRj - \omega^2C^2L j - \omega^2LC \frac{1}{R} + \omega C j + \frac{1}{R} \right) \left( R+j\omega L \right)  \\
+      V_C &= \frac{V_A}{\left( -4\omega^2LC + \omega^{4}C^2L^2 + 2 \right) + j\left( 2\omega CR - \omega^{3}C^{3}LR - \omega^{3}L^2 C \frac{1}{R}+ 2\omega L \frac{1}{R} \right) }
+    .\end{align*}
+  \item     \begin{enumerate}
+      \item \textbf{Circuito 1} En este caso el circuito que aparece es equivalente al siguiente:
+
+
+	\begin{figure}[H]
+	  \begin{center}
+	    \begin{circuitikz}
+	      \draw(0,0)
+	      to[V,v=$15 $](0,4)
+	      to[R=$10k$ ](2,4)
+	      to[D](2,2)
+	      to[R=$20k$](2,0)
+	      to[short](0,0);
+	      \draw(2,4)
+	      to[short](4,4)
+	      to[R=$20k$ ](4,0)
+	      to[short](2,0);
+	    \end{circuitikz}
+	  \end{center}
+	\end{figure}
+
+	Lo primero que debemos hacer es encontrar el positivo y el negativo del diodo que en este caso es positivo arriba y negativo abajo. Recordemos que por ser un elemento pasivo el voltaje va de mas a menos.
+
+	Ahora bien, para analizar este circuito debemos considerar el caso en el que el circuito esta prendido y apagado. Iniciemos por el apagado
+	\begin{enumerate}
+	  \item \textit{Diodo Apagado}
+	    En este caso queda:
+	    \begin{figure}[H]
+	      \begin{center}
+	        \begin{circuitikz}
+	      \draw(0,0)
+	      to[V,v=$15 $](0,4)
+	      to[R=$10k$ ](2,4)
+	      (2,2)to[R=$20k$](2,0)
+	      to[short](0,0);
+	      \draw(2,4)
+	      to[short](4,4)
+	      to[R=$20k$ ](4,0)
+	      to[short](2,0);
+	        \end{circuitikz}
+	      \end{center}
+	    \end{figure}
+
+	    Por lo tanto no pasa corriente por la resistencia y queda esencialmente un divisor de voltaje. Ahora bien, en este caso dado que el circuito abierto esta con una resistencia por la que no pasa corriente y en consecuencia el voltaje es $0$ (dado que estamos en tierra) solo nos interesa el voltaje de el nodo que esta conectado a este circuito abierto. Por divisor de voltaje sabemos que este es:
+	    \begin{align*}
+	      V_{R_1} &= 15V\frac{10k}{10k+20k} \\
+	      &= 15V \frac{10k}{30k} \\
+	      &= 15V \frac{1}{3} \\
+	      &= 5V \\
+	      V_{R_1} &= 15V - V_2 = 5V \\
+	      V_2 &= 10V 
+	    .\end{align*}
+
+	    Como podemos ver dado que vamos de mas a menos y definimos previamente que el mas era arriba llegamos a que: $10V > 0.7V$. Por lo tanto no se cumplen las condiciones necesarias para que el diodo este apagado.
+	  \item \textit{Diodo Prendido}
+
+	    En este caso el mejor modelo es una fuente de $0.7V$ pero que va de mas a menos (dado que el elemento sigue siendo pasivo). Por lo tanto queda:
+
+	\begin{figure}[H]
+	  \begin{center}
+	    \begin{circuitikz}
+	      \draw(0,0)
+	      to[V,v=$15 $](0,4)
+	      to[R=$10k$ ](2,4)
+	      to[V,v=$0.7$](2,2)
+	      to[R=$20k$](2,0)
+	      to[short](0,0);
+	      \draw(2,4)
+	      to[short](4,4)
+	      to[R=$20k$ ](4,0)
+	      to[short](2,0);
+	    \end{circuitikz}
+	  \end{center}
+	\end{figure}
+
+	Ahora para realizar este ejercicio lo haremos por mallas tomando las dos mallas internas con la primera en el sentido de las manecillas del reloj y en consecuencia teniendo:
+	\begin{align*}
+	  15V + 0.7V &= I_1\left( 10k \right) + I_1\left( 20k \right) \\
+	  15.7V &= I_1\left( 10k + 20k \right)  \\
+	  I_1 &= \frac{15.7V}{30k}= 0.52 mA
+	.\end{align*}
+
+	Por el otro lado
+	\begin{align*}
+	  0.7V &= I_2\left( 20k \right) + I_2\left( 20k \right)  \\
+	  0.7V &= I_2\left( 40k \right)  \\
+	  I_2 &= \frac{0.7}{40k} = 0.0175
+	.\end{align*}
+	
+	Por tanto esta corrientes se restarian para el diodo dando un valor de $0.505$ lo cual es mayor que $0$ y en consecuencia coincide con las condiciones esperadas. Por otro lado para calcular el voltaje quizas lo mas prudente es calcular el voltaje del nodo despues de la resistencia de $10k$ dado que ya conocemos su corriente lo que quedaria:
+	\begin{align*}
+	  V &= I_1R \\
+	  15V - V_2 &= 0.52mA \left( 10k \right)  \\
+	  15V - V_2 &= 5.2V \\
+	  V_2 &= 15V - 5.2V \\
+	  V_2 &= 9.8V 
+	.\end{align*}
+
+	y sabemos que a esto le tenemos que subir $0.7V$ lo que nos da que el voltaje solicitado es:
+	\begin{align*}
+	  V &= 10.5V
+	.\end{align*}
+	\end{enumerate}
+      \item \textbf{Circuito 2}
+
+	En este caso el diagrama que aparece es equivalente a:
+
+	\begin{figure}[H]
+	  \begin{center}
+	    \begin{circuitikz}
+	      \draw(0,0)
+	      to[V,v=$10V$ ](0,6)
+	      to[R=$10k$ ](2,6)
+	      to[D](2,4)
+	      to[R=$5k$ ](2,2)
+	      to[V,v=$10V$ ](2,0)
+	      to[short](0,0);
+	      \draw(2,6)
+	      to[short](4,6)
+	      to[D](4,0)
+	      to[short](2,0);
+	    \end{circuitikz}
+	  \end{center}
+	\end{figure}
+
+	\begin{enumerate}
+	  \item \textit{Los Dos Diodos Apagados}
+
+	    En este caso si inspecciónamos cada diodo nos damos rapidamente cuenta que ninguno de los dos puede estar apagado pues en el caso del diodo que esta con la resistencia si lo estuviera su nodo estaria con $-10$ en la parte negativa lo que lo haria positivo y en el otro diodo en su parte positiva estaria un valor positivo y en su negativa un $0$ lo que tambien haria este voltaje positivo y como tampoco hay corriente quedaria con valor de $10V$ lo que es mayor que $0.7V$
+
+	  \item \textit{Un Diodo Apagado y el Otro Prendido}
+
+	    En este caso hay dos situaciones:
+	    \begin{enumerate}
+	      \item 
+	\begin{figure}[H]
+	  \begin{center}
+	    \begin{circuitikz}
+	      \draw(0,0)
+	      to[V,v=$10V$ ](0,6)
+	      to[R=$10k$ ](2,6)
+	      to[V,v=$0.7V$](2,4)
+	      to[R=$5k$ ](2,2)
+	      to[V,v=$10V$ ](2,0)
+	      to[short](0,0);
+	      \draw(2,6)
+	      to[short](4,6)
+	      (4,0)to[short](2,0);
+	    \end{circuitikz}
+	  \end{center}
+	\end{figure}
+
+	que en este caso se puede tomar una corriente $I_1$ en el sentido de las manecillas del reloj y plantear mallas para que quede:
+	\begin{align*}
+	  10V + 0.7V + 10V &= I_1\left( 10k \right) +  I_1\left( 5k \right) \\
+	  20.7V	&= I_1\left( 15k \right)  \\
+	  I_1 &= \frac{20.7V}{15k} \\
+	  I_1 &= 1.38mA \\
+	.\end{align*}
+
+	lo cual es una corriente valida y por lo tanto esta situación es plausible con una corriente de $0$ y un voltaje de 
+	 \begin{align*}
+	  10V - V_2 &= 1.38\left( 10k \right)  \\
+	  10V - V_2 &= 13.8 \\
+	  10V - 13.8V &= V_2 \\
+	  -3.8V &= V_2 \\
+	.\end{align*}
+
+	Cosa que tendria sentido pues este es el lado positivo de nuestro diodo apagado y como este es un elemento pasivo va de mas a menos y su valor seria $-3.8V$ que es menor que $0.7 V$ por lo que esta configuración tiene sentido
+
+      \item 
+
+	O un caso en el que:
+
+	\begin{figure}[H]
+	  \begin{center}
+	    \begin{circuitikz}
+	      \draw(0,0)
+	      to[V,v=$10V$ ](0,6)
+	      to[R=$10k$ ](2,6)
+	      (2,4)
+	      to[R=$5k$ ](2,2)
+	      to[V,v=$10V$ ](2,0)
+	      to[short](0,0);
+	      \draw(2,6)
+	      to[short](4,6)
+	      to[V,v=$0.7v$](4,0)
+	      to[short](2,0);
+	    \end{circuitikz}
+	  \end{center}
+	\end{figure}
+
+	En este caso el diodo apagado no cumple las condiciones pues sus nodos tiene valores $V_{+}=-0.7$ y $V_{-}=-10V$ lo que nos dejaria con un voltaje de  $9.3V$ lo que es mayor que  $0.7V$
+
+	    \end{enumerate}
+
+	  \item \textit{Los Dos Diodos Encendidos}
+
+	    En este caso el circuito queda
+
+	\begin{figure}[H]
+	  \begin{center}
+	    \begin{circuitikz}
+	      \draw(0,0)
+	      to[V,v=$10V$ ](0,6)
+	      to[R=$10k$ ](2,6)
+	      to[V,v=$0.7V$](2,4)
+	      to[R=$5k$ ](2,2)
+	      to[V,v=$10V$ ](2,0)
+	      to[short](0,0);
+	      \draw(2,6)
+	      to[short](4,6)
+	      to[V,v=$0.7V$](4,0)
+	      to[short](2,0);
+	    \end{circuitikz}
+	  \end{center}
+	\end{figure}
+
+	En este caso el voltaje estaria claro pero nos faltaria definir las corrientes. En particular tomaremos por mallas la segunda malla interna en sentido de las manecillas del reloj y entonces nos quedaria:
+	\begin{align*}
+	  0.7V &= 10V + 0.7V + I_2\left( 5k \right)  \\
+	  -\frac{10V}{5k} &= I_2 \\
+	.\end{align*}
+	por lo tanto $I_2$ es negativa e iria en el otro sentido lo que no tendria sentido para el analisis.
+	\end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}

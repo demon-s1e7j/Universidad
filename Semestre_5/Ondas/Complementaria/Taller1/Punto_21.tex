@@ -1,0 +1,65 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ondas y Fluidos - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 1 - Punto 2.1} % This is the name of the assignment
+\newcommand{\examdate}{03/02/2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Monica Cano}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\textit{Yeferson Camacho}\\
+	\textbf{\examdate} &&\textit{Sergio Montoya}\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section*{2.1}
+
+Consideremos un vector z definifo por la ecuación $z = z_1z_2$ siendo $z_1 = a + ib$ y $z_2 = c + id$.
+\begin{enumerate}
+	\item Demostrar que la longitud de $z$ es igual al producto de las longitudes de $z_1$ y $z_2$
+		\begin{align*}
+			& z = (a+ib)(c+id) = (ac + iad + ibc - bd) = (ac-bd + i(ad+bc))\\
+			& |z| = \sqrt{(ac-bd)^2 + (ad+bc)^2}= \sqrt{a^2c^2 - 2acbd + b^2d^2 + a^2d^2+2acbd+b^2c^2}\\
+			& |z| = \sqrt{a^2(c^2+d^2)+b^2(c^2+d^2)}\\
+			& |z| = \sqrt{(a^2+b^2)(c^2+d^2)} = \sqrt{a^2+b^2}\sqrt{c^2+d^2} = |z_1||z_2|\\
+		\end{align*}
+	\item Demostrar que el angulo comprendido entre los ejes z y x es la suma de los angulos que forman por separado $z_1$ y $z_2$
+		Sabemos que para todo $z \in \mathbb{C}$ puede expresarse como $z = re^{i\theta}$ donde r es la magnitud del vector en el plano complejo y $\theta$ es el angulo que forma z con el eje x. Ahora bien, por esto mismo sabemos que $z_1 = r_1e^{i\theta_1}$ y $z_2 = r_2e^{i\theta_2}$ y como $z = z_1z_2$ entonces nos queda que $z = r_1r_2 e^{i(\theta_1+\theta_2)}$
+	\item Analisis Dimensional: Esto aun no esta atado a una realidad física y por tanto no tiene en si dimensiones que nos permita comprobar su veracidad.
+	\item Interpretación: Dado que aun no tiene una realidad física atada a esta. Los puntos aqui expuestos son realmente lo que nos serviran para modelar en un futuro otros sistemas físicos pero aqui solo responden a equivalencias por defínición.
+	\item Conclusión: Los números complejos son herramientas con propiedades no evidentes que resultan utiles a la hora de realizar pruebas y modelos.
+\end{enumerate}
+
+
+
+
+
+\end{document}

@@ -1,0 +1,74 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ondas - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 12 - Punto 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+  \textbf{\examnum} && \textit{Yeiferson Camacho}\\
+  \textbf{\examdate} && \textit{Monica Cano}
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+  \item \textbf{Enunciado:}
+
+    Una fuente puntual $S$ esta a una distancia perpendicular $R$ del centro de un agujero circular de radio $a$ en una pantalla opaca. Si la distancia hasta la periferia es $R + \ell$, demuestre que la difracción de Fraunhofer ocurrirá en una pantalla muy distante cuando $\lambda R \gg \frac{a^2}{2}$. ¿Cuál es el valor satisfactorio más pequeño de $R$ si el agujero tiene un radio de $1 mm$, con $\ell \le  \frac{\lambda}{10}$ y $\lambda = 500 nm$?
+
+  \item \textbf{Solución:}
+
+    En este caso, partimos desde 
+    \begin{align*}
+    \left( R+\ell \right)^2 = R^2 + a^2
+    .\end{align*}
+
+    Y desarrollamos como sigue
+    \begin{align*}
+      R&= \frac{\left( a^2 + \ell^2 \right)}{2\ell}\approx \frac{a^2}{2\ell} \\
+      \ell R &= \frac{a^2}{2}
+    .\end{align*}
+
+    Por lo tanto, 
+    \begin{align*}
+      \lambda &\ll \ell \\
+      \lambda R &\gg \frac{a^2}{2}
+    .\end{align*}
+
+    Por lo tanto,
+
+    \begin{align*}
+      R&= (1\times 10^{-3})^2 \frac{10}{2\lambda}=10 m
+    .\end{align*}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,120 @@
+\input{preamble}
+
+\begin{document}
+    \input{heading}
+
+    \begin{enumerate}
+      \item 
+	\begin{enumerate}
+	  \item En este caso necesitamos dos $v_1$ y $v_2$ tales que al hacer producto punto entre ellos y $n$ el resultado sea 0 para ello entonces:
+	    \begin{align*}
+	      n\cdot v_{1} &= \left( a,b,c \right) \cdot \left( x,y,z \right)  \\
+	      &= a\cdot x+b\cdot y+c\cdot z \\
+	      x &= b \\
+	      y &= -a\\
+	      z &= 0 \\
+	      &= a\cdot b + b \cdot \left( -a \right) + 0 \\
+	      &= 0 \\
+	    .\end{align*}
+
+	    Y por otro lado
+
+	    \begin{align*}
+	      n\cdot v_2 &= \left( a,b,c \right) \cdot  \left( x,y,z \right)  \\
+	      &= a\cdot x+b\cdot y+c\cdot z \\
+	      x &= 0 \\
+	      y &= c \\
+	      z &= -b \\
+	      &= a\cdot 0 + b\cdot c + c\cdot \left( -b \right)  \\
+	      &= 0 + bc - bc \\
+	      &= 0 \\
+	    .\end{align*}
+	  \item En este caso necesitariamos un vector normal al plano que generan por lo tanto hacemos producto cruz entre ambos vectores
+	    \begin{align*}
+	      v_1\times v_2 &= \left( b,-a,0 \right) \times \left( 0,c,-b \right) \\
+	      &= \left( ba, b^2, bc \right)  \\
+	    .\end{align*}
+
+	    Y ya con esto podemos escribir la ecuación de un plano a partir de su vector normal
+	    \begin{align*}
+	      P_{v_1,v_2} &= ba x + b^2y + bc z + d = 0\\
+	      -d &= ba\cdot b - b^2 a + bc 0 \\
+	      -d &= b^2a - b^2a \\
+	      -d &= 0 \\
+	    .\end{align*}
+	    
+	    Por lo tanto el plano es:
+	    \begin{align*}
+	      0 &= ba x + b^2 y + bc z \\
+	    .\end{align*}
+
+	    Ahora necesitamos dos vectores $u_1$ y $u_2$ que sean perpendiculares entre si y que esten en el plano. Para esto y por simplificarnos tomemos $u_1=v_1$ dado que este vector ya esta en el plano y entonces encontremos un vector perpendicular a este con:
+	    \begin{align*}
+	      v_1\cdot u_2 &= \left( a,-b,0 \right) \cdot \left( x,y,z \right)  \\
+	      &= ax - by \\
+	      ax &= by \\
+	      0 &= ba x + b^2 y + bc z \\
+	      x &= b^2 c \\
+	      y &= bac \\
+	      z &= -2b^2a \\
+	      0 &= b^{3}ac + b^{3}ac - 2b^{3}ac \\
+	      b^2ac &= b^2ac \\
+	    .\end{align*}
+
+	    Tambien lo podiamos conseguir con un producto cruz entre el vector $v_1$ y el normal que encontramos previemente.
+	  \item Dado que sabemos que este plano pasa por el origen. Por lo tanto podemos paramtrizar simplemente con:
+	    \begin{align*}
+	      p\left( t \right) &= R\cos\left( t \right) v_1 + R\sin\left( t \right) u_2\\
+	      &= R\cos\left( t \right) \left( a,-b,0 \right) + R\sin\left( t \right) \left( b^2c,bac,-2b^2a \right)
+	    .\end{align*}
+	\end{enumerate}
+      \item 
+	\begin{enumerate}
+	  \item En este caso, la aproximación de Taylor de segundo orden seria:
+	    \begin{align*}
+	      f\left( x \right) &= f\left( a \right) + \frac{f'\left( a \right) }{1!}\left( x-a \right) + \frac{f''\left( a \right) }{2!}\left( x-a \right)^2\\
+	      a &= 0 \\
+	      &= f\left( 0 \right) + f'\left( 0 \right) x + \frac{1}{2}f''\left( 0 \right) x^2 \\
+	      &= \frac{1}{2}f''\left( 0 \right) x^2 \\
+	      &= \frac{1}{2r}x^2
+	    .\end{align*}
+	  \item En este caso tenemos que primero despejar $y$ 
+	    \begin{align*}
+	      x^2 + \left( y-r \right)^2 &= r^2 \\
+	      x^2 + y^2 -2yr + r^2 &= r^2 \\
+	      x^2 + y^2 - 2yr &= 0 \\
+	      y &= \frac{-b \pm \sqrt{b^2-4ac} }{2a} \\
+	      &= \frac{2r\pm\sqrt{4r^2-4x^2} }{2} \\
+	      &= \frac{2\left( r\pm\sqrt{r^2-x^2}  \right) }{2} \\
+	      &= r\pm\sqrt{r^2-x^2}  \\
+	    .\end{align*}
+
+	    Ahora con esto, podemos sacar el polinomio de segundo orden que en este caso nos requiere saber:
+	    \begin{align*}
+	      y\left( 0 \right) &= r \pm \sqrt{r^2-0}= r \pm r = 0 \\
+	      y' &= \pm \frac{2x}{2\sqrt{r^2 - x^2} }  \\
+	      y'\left( 0 \right) &= \pm \frac{2\left( 0 \right) }{2\sqrt{r^2-0} }=0 \\
+	      y'' &= \pm 2 \frac{r^2}{\left( r^2-x^2 \right)^{\frac{3}{2}}}\\
+	      y''\left( 0 \right) &= \pm 2 \frac{r^2}{\left( r^2 \right)^{\frac{3}{2}}}=2 \frac{r^2}{r^{3}}=\frac{2}{r} \\
+	      y\left( x \right) &= y\left( 0 \right) + y'\left( 0 \right) x + \frac{1}{2}y''\left( 0 \right) x^2\\
+	      &= 0 + 0 +\frac{1}{r}x^2 \\
+	      &= \frac{1}{r}x^2
+	    .\end{align*}
+	\end{enumerate}
+      \item 
+	\begin{enumerate}
+	  \item Recta Tangente. Llamemos a los gradientes de $F=\Vec{n_1}$ y $G=\Vec{n_2}$ entonces si sacamos el producto cruz de ambos obtenemos un vector perpendicular a ambos que podremos reemplazar en la ecuación de la recta y encontrar su valor. En este caso tendremos $\Vec{v} = \Vec{n_1}\times \Vec{n_2}$. Y reemplazamos esto y nos da:
+	 \begin{align*}
+	   r\left( t \right) &= (0,0,0) + \Vec{v}t\\
+			     &= \Vec{v}t
+	 .\end{align*}
+       \item En este caso utilizaremos:
+	 \begin{align*}
+	   \frac{dr}{ds} &= \frac{\frac{dr}{dt}}{\frac{ds}{dt}}\\
+			 &= \frac{\Vec{v}}{ds} \\
+	 .\end{align*}
+       \item 
+
+	\end{enumerate}
+    \end{enumerate}
+\end{document}

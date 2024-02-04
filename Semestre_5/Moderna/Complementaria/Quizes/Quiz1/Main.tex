@@ -1,0 +1,128 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Moderna - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 2} % This is the name of the assignment
+\newcommand{\examdate}{04/02/2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya Ramírez}\\ %Your name here instead, obviously 
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+
+
+
+\begin{enumerate} %You can make lists!
+	\item Recordemos la ecuación de onda para los campos électricos y magnéticos en 1D
+		$$\frac{1}{c^2}\frac{\partial^2\Vec{F}}{\partial t^2}-\frac{\partial^2\Vec{F}}{\partial x^2} = 0;$$
+		En clase vimos que las transformaciones de Galileo no son una simetría del electromagnetismo, pues no dejan la ecuación de onda invariante. Considere una transformación de la forma.
+		$$t\rightarrow t' = t + Axt\beta + B\beta^2t^6+C\cos\theta\beta^8x^4t^3$$
+		Donde $\beta = \frac{v}{c}$ con $v$ la velocidad relativa entre dos MRI de acuerdo a Galileo
+		\begin{enumerate}
+			\item Cuales son las unidades de A, B y C?
+				Para encontrar las unidades de A, B y C debemos ser conscientes de que dado que es una suma entonces cada termino debe coincidir con sus unidades y por tanto todos deben en terminos de tiempo. Por lo tanto podemos:
+				\begin{enumerate}
+					\item \begin{align*}
+							&t = t\\
+							&[t] = [t]
+					\end{align*}
+				\item \begin{align*}
+						& t = Axt\beta\\
+						& [t] = A[l][t]\frac{[v]}{[v]}\\
+						& [t] = A[l][t]\\
+						& \frac{[t]}{[l][t]} = A\\
+						& \frac{1}{[l]}
+				\end{align*}
+			\item \begin{align*}
+					& t = B\beta^2t^6\\
+					& [t] = B\frac{[v]^2}{[v]^2}[t]^6\\
+					& [t] = B[t]^6\\
+					& \frac{[t]}{[t]^6} = B\\
+					& \frac{1}{[t]^5} = B
+			\end{align*}
+			\item \begin{align*}
+					& t = C\cos\theta\beta^8x^4t^3\\
+					& [t] = C\frac{[v]^8}{[v]^8}[l]^4[t]^3\\
+					& [t] = C[l]^4[t]^3\\
+					& \frac{[t]}{[l]^4[t]^3} = C\\
+					& \frac{1}{[l]^4[t]^2} = C
+			\end{align*}
+				\end{enumerate}
+			\item Muestre que la ecuación de onda \textbf{NO} es invariante bajo estas transformaciones.
+				Para esto, lo que vamos a hacer es derivar parcialmente 2 veces para demostrar que estas dos derivadas no son iguales.
+				\begin{align*}
+					& t' = t + Axt\beta + B\beta^2t^6 + C\cos\theta\beta^8x^4t^3\\
+					& \frac{\partial}{\partial t} = \frac{\partial}{\partial t'} = \frac{\partial}{\partial t} + Ax\frac{\partial}{\partial t}\beta + 5B\beta^2t^5\frac{\partial}{\partial t} + 3C\cos(\theta)\beta^8x^4t^2\frac{\partial}{\partial t}\\
+					& \frac{\partial^2}{\partial t'^2} = Ax\frac{\partial^2}{\partial t^2}\beta + 30B\beta^2t^4\frac{\partial^2}{\partial t^2} +  6C\cos(\theta)\beta^8x^4t\frac{\partial^2}{\partial t^2}
+				\end{align*}
+		\end{enumerate}
+	\item En el LHC se colisionan protones en un choque tipo \textit{head to head} a una energia de 14 TeV. En una de estas colisiones. descubren que se produce un bóson de Higgs, el cual posee una masa de $125.25\frac{GeV}{c^2}$ y un tiempo de vida media de $1.56\times 10^{-22}s$
+		\begin{enumerate}
+			\item Encuentre la velocidad con la cuál se produce el Higgs.
+				Para esto vamos a usar la siguiente ecuación $E = \gamma m_0c^2$  dado que ya tenemos los datos nos queda que:
+				\begin{align*}
+					& E = \gamma m_0 c^2\\
+					& 14 TeV = \gamma 125.25 \frac{GeV}{c^2}c^2\\
+					& 14 TeV = \gamma 125.25 GeV\\
+					& 125.25 GeV = 12.525 TeV\\
+					& \frac{14 TeV}{12.525 TeV} = \gamma\\
+				\end{align*}
+				Ahora bien, con la definición de $\gamma = \frac{1}{\sqrt{1-\frac{v^2}{c^2}}}$
+				\begin{align*}
+					& \gamma = \frac{1}{\sqrt{1-\frac{v^2}{c^2}}}\\
+					& \sqrt{1-\frac{v^2}{c^2}} = \frac{1}{\gamma}\\
+					& \sqrt{1-\frac{v^2}{c^2}} = \frac{1}{\frac{14}{12.525}}\\
+					& 1 - \frac{v^2}{c^2} = \frac{156.875625}{196}\\
+					& \frac{v^2}{c^2} = 1 - \frac{156.875625}{196}\\
+					& \frac{v}{c} = \sqrt{1 - \frac{156.875625}{196}}\\
+					& v = c\sqrt{1 - \frac{156.875625}{196}}\\
+					& v = c\sqrt{\left(1-\frac{12.525}{14}\right)\left(1+\frac{12.525}{14}\right)}
+				\end{align*}
+			\item Que distancia viaja dentro del detector donde se produce
+				\begin{align*}
+					& L = V t\\
+					& L = c\sqrt{\left(1-\frac{12.525}{14}\right)\left(1+\frac{12.525}{14}\right)}1.56\times10^{-22}s\\
+					& L = c(0.1996)\cdot(1.56\times10^{-22}s)\\
+				\end{align*}
+			\item Usted quiere medir las propiedades del Higgs desde su marco de laboratorio, encuentre el tiempo de vida en este marco y la distancia de viaje.
+				Para esto vamos a ser conscientes de que lo unico que debemos hacer es multiplicar los resultados anteriores por el gamma encontrado. Es decir:
+				\begin{align*}
+					& L' = \gamma L\\
+					& L' = \frac{14}{12.525}\cdot c(0.1996)\cdot(1.56\times10^{-22}s)\\
+					& t' = \gamma t\\
+					& t' = \frac{14}{12.525}\cdot (1.56\times10^{-22}s)
+				\end{align*}
+		\end{enumerate}
+\end{enumerate}
+\end{document}

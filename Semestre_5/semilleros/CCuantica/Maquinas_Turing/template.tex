@@ -1,0 +1,103 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Maquinas de Turing}}
+\author{\huge{SergiOS}}
+\date{18-04-2023}
+
+\begin{document}
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Introducción}
+
+Este texto fue escrito para el semillero de Computación Cuántica de la universidad de los Andes. Tiene como objetivo ser un texto auxiliar a la presentación realizada por los estudiantes Sergio David López y Sergio Montoya. Fue realizado siguiendo las secciones $3.1$ y $3.2$ del libro \textit{Introduction to the Theory of Computation} de \textit{Michael Sipser}.
+\chapter{Definición}
+\section{Presentación: Un relato a grandes rasgos de lo que es una maquina de Turing}
+Una maquina de Turing es un modelo mas potente pero similar a un autómata. Su diferencia principal es que este cuenta con una memoria ilimitada y no restringida. Este modelo es mas util a la hora de aproximar una computadora convencional y soluciona muchos de los problemas que tienen los autómatas vistos previamente. Sin embargo, aun existen problemas que salen de las capacidades de una maquina de Turing.
+\section{Intuición: Una muestra de que es una maquina de Turing en términos que un humano pueda entender}
+
+Una maquina de Turing se compone de dos cosas
+\begin{enumerate}
+  \item Cinta: Esta cumple el trabajo de la memoria. Es ilimitada y no esta restringida. Inicialmente solo contiene el string de entrada y esta vacía en todos los otros lugares. Si la maquina necesitara guardar información puede escribirla en la cinta.
+  \item Head: es esencialmente el elemento encargado de leer y modificar la cinta. Puede moverse arbitrariamente sobre esta.
+\end{enumerate}
+
+Las maquinas de Turing Tienen un estado inicial y se les determina arbitrariamente un estado final de aceptación o rechazo. En el caso de que estos estados no existan la maquina quedara computando para siempre.
+
+\ex{}{Sea $M_1$ una maquina de Turing que recibirá el lenguaje  $B=\{w\#w|w\in\{0,1\}^*\}$. Queremos que $M_1$ acepte si su imput hace pertenece a B y lo rechace en caso contrario. Para que esto sea mas fácil pongámonos en el lugar de $M_1$. Nos encontramos encima de una lista inmensa de numero y te piden comprobar que esta lista consiste de dos numeros iguales separados por un $\#$. La estrategia mas obvia es ir en zig-zag a ambos lados del  $\#$ buscando que sean iguales o no.
+
+  Si diseñamos a  $M_1$ para que trabaje de esa manera el algoritmo nos quedaria algo asi
+  \begin{algorithm}[H]
+    \KwIn{.. \textvisiblespace w\#w \textvisiblespace ..}
+    \KwOut{.. \textvisiblespace x\#x \textvisiblespace ..}
+    \tcc{Algoritmo que permite que $M_1$ acepte strings que pertenezcan a $B$}
+    Inicie en la primera celda\;
+    Lea la celda\;
+    Marque la celda como $x$\;
+    avance hasta encontrar un  $\#$ \;
+    avance hasta que encuentre una celda diferente de $x$\;
+    Compruebe la celda\;
+    Si la celda es diferente rechace, de lo contrario marque como $x$\;
+    Recorra de regreso hasta encontrar un $\#$\;
+    Avance hasta encontrar una $x$\;
+    Avance 1\;
+    Si encuentra $\#$  lea la primera entrada que no sea $x$\;
+    Si esta entrada  es vació acepte de lo contrario rechace\;
+    En caso contrario repita desde el paso 2\;
+  \end{algorithm}
+}
+\section{Definición Formal: Definición en términos que los matemáticos entiendan}
+
+\dfn{Maquina de Turing}{
+  Una maquina de Turing es una 7-tupla $(Q,\Sigma,\Gamma,\delta,q_0,q_{a},q_{r})$ donde $Q,\Sigma,\Gamma$ son conjuntos finitos y
+  \begin{enumerate}
+    \item $Q$ es el conjunto de estados
+    \item $\Sigma$ es el alfabeto del input no incluyendo \textvisiblespace
+    \item $\Gamma$ es el alfabeto de la cinta donde \textvisiblespace $\in \Gamma$ y $\Sigma \subseteq \Gamma$
+    \item $\delta$ : $Q\times\Gamma \to Q\times\Gamma\times\{L,R\}$ es la función de transición
+    \item $q_0\in Q$ es el estado inicial
+    \item  $q_{accept}\in Q$ es el estado de aceptación
+    \item $q_{reject}\in Q$ es el estado de rechazo donde $q_a\neq q_r$ 
+  \end{enumerate}
+}
+
+El corazón de la definición de una maquina de Turing es $\delta$ o función de transformación. Esta es una función  $Q\times \Gamma \to Q\times\Gamma\times\left\{ L,R \right\} $ que nos indica para cada estado que debemos hacer.
+
+\qs{}{Se deja al lector encontrar la representación en definición formal de la maquina de Turing mostrada en el ejemplo 1.}
+
+\subsection{Configuraciones}
+
+Una configuración de una maquina de Turing se define como una 3-tupla $(w,q,i)$ donde:
+ \begin{itemize}
+  \item $w$ es la cadena que se encuentra en la cinta en un momento dado.
+  \item  $q$ es el estado actual de la maquina de Turing.
+  \item $i$ es la posición actual de la cabeza de lectura/escritura en la cinta.
+\end{itemize}
+
+Se dice que $C_1$ produce $C_2$ si la maquina puede ir de $C_1$ a $C_2$ en un solo paso. 
+
+\subsubsection{Ejemplo}
+\begin{align*}
+  1011q_{7}01111
+.\end{align*}
+\begin{itemize}
+  \item la cinta es $101101111$
+  \item el estado actual es $q_7$ 
+  \item la cabeza se encuentra en el segundo 0
+\end{itemize}
+\section{Definiciones Adicionales}
+\dfn{Turing-Reconocible}{Se llama a un lenguaje Turing-Reconocible si una maquina de Turing lo reconoce.}
+\dfn{Turing-Decidible}{Se le llama a un lenguaje Turing-Decidible o simplemente decidible si una maquina de Turing decide. Es decir que nunca se queda corriendo infinitamente y por tanto siempre llega a un estado final o inicial.}
+\chapter{Variantes de la Maquina de Turing}
+
+
+
+\end{document}

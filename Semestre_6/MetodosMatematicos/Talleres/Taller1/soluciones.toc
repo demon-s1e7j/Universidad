@@ -1,0 +1,9 @@
+\contentsline {chapter}{\numberline {1}Álgebra Básica de Números Complejos}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Los complejos como un grupo}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Sumas Geometricas}{5}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Integrales de Cauchy}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Transformación}{7}{section.2.1}%
+\contentsline {chapter}{\numberline {3}}{9}{chapter.3}%
+\contentsline {chapter}{\numberline {4}}{12}{chapter.4}%
+\contentsline {chapter}{\numberline {5}}{15}{chapter.5}%
+\contentsfinish 

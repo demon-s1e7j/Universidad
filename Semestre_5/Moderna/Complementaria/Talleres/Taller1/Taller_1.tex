@@ -1,0 +1,136 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Complementaria Moderna} % This is the name of the course 
+\newcommand{\examnum}{Taller 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{David Santigo Pachon Ballen} \\ %Your name here instead, obviously 
+	\textbf{\examnum} && \textit{Sergio Montoya Ramirez} \\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+
+
+\begin{enumerate}
+	\item \begin{enumerate}
+			\item Ecuaciones de Maxwell en forma integral:
+				\begin{enumerate}
+					\item Ley de Gauss
+						\begin{align*}
+							\Phi_E = \oint \Vec{E}\cdot d\Vec{A}=0
+						\end{align*}
+					\item Let de Gauss para el campo mágnetico
+						\begin{align*}
+							& \oint \Vec{B}\cdot d\Vec{s} = 0
+						\end{align*}
+					\item Ley de Faraday
+						\begin{align*}
+							&\oint \Vec{E}\cdot d\Vec{l} = -\frac{d\Vec{B}}{dt}\\ 
+						\end{align*}
+					\item Ley de Ampere
+						\begin{align*}
+							&\oint \Vec{B}\cdot d\Vec{l} = \mu_0\varepsilon_0\frac{d\Vec{E}}{dt}
+						\end{align*}
+				\end{enumerate}
+			\item Leyes de Maxwell vectoriales
+				\begin{enumerate}
+					\item Ley de Gauss:
+						\begin{align*}
+							& \oint \Vec{E}\cdot d\Vec{A} = \int (\nabla\cdot \Vec{E})dV  \text{Ley de Gauss}\\
+							& \nabla \cdot \Vec{E} = 0\text{ Hipotesis }\Box\\
+						\end{align*}
+					\item Ley de Gauss para el magnetismo:
+						\begin{align*}
+							&\oint \Vec{B}\cdot d\Vec{s} = \int (\nabla\cdot\Vec{B})dV\text{Ley  de Gauss}\\
+							&\nabla\cdot\Vec{B} = 0 \text{ Hipotesis } \Box\\
+						\end{align*}
+					\item Ley de Faraday:
+						\begin{align*}
+							&\oint \Vec{E}\cdot d\Vec{l} = \int (\nabla\times\Vec{E})d\Vec{a}\\
+							&\nabla\times\Vec{E} = - \frac{d\Vec{B}}{dt}\\
+						\end{align*}
+					\item Ley de Ampere:
+						\begin{align*}
+							&\oint \Vec{B}\cdot d\Vec{l} = \int (\nabla\times\Vec{B})d\Vec{a}\\
+							&\nabla\times\Vec{E} = \mu\varepsilon_0\frac{d\Vec{E}}{dt}\\
+						\end{align*}
+					\item Aclaración Importante:
+						En este punto varias integrales fueron evitadas y retiradas como si nunca hubieran estado esto se da gracias a que la premisa nos da un espacio libre (Es decir Vacio) y por ende seria absurdo intentar Hacer una integral de volumen en el.
+				\end{enumerate}
+	\end{enumerate}
+\item \begin{enumerate}
+		\item Para mostrar esto solo debemos mostrar que la aceleración es la misma en ambos casos (Mas precisamente que difieren
+			unicamente por una matriz de rotación). Para esto partimos de que la aceleración es la doble integral de la posición con
+			respecto al tiempo. Mostremos primero la doble derivada de x
+			\begin{align*}
+				& \frac{d^2x}{d^2t} = \frac{d^2 x}{dt}
+			\end{align*}
+			No podemos poner algo distinto pues no sabemos que función es x, pero si sabemos que x depende de t.
+
+			Ahora bien por otro lado tenemos que $x' = Rx + vt$ y con esto vamos a encontrar su segunda derivada.
+			\begin{align*}
+				&x' = Rx + vt\\
+				&\frac{dx'}{dt} = R\frac{dx}{dt} + v\\
+				&\frac{d^2x}{d^2t} = R\frac{d^2x}{d^2t}\\
+			\end{align*}
+			Como se puede ver la unica diferencia real es solamente la matriz de rotación. Dado que estos son un conjunto de
+			transformaciones que mantiene la norma de los vectores entonces estas leyes son invariantes.
+		\item Para llegar a este resultado debemos conseguir mostrar que
+			\begin{align*}
+				& \frac{1}{c^2}\frac{\partial^2 E}{\partial t^2} - \frac{\partial^2 E}{\partial x^2} \neq  \frac{1}{c^2}\frac{\partial^2 E}{\partial t^2} - \frac{\partial^2 E}{\partial x'^2} 
+			\end{align*}
+		Para hacer esto vamos a tomar x' como $x'=x+vt$ Ya que si tomaramos lo mismo pero con el rotacional solo seria complicarnos y no aportaria realmente nada a la demostracion. Ahora bien para la primera derivada vamos a tomar la ley de la cadena en calculo vectorial y luego utilizaremos el hecho de que $\frac{\partial}{\partial x} \frac{\partial}{\partial x} = \frac{\partial^2}{\partial x^2}$ 
+		\begin{align*}
+			&\frac{\partial}{\partial x'} = \frac{\partial}{\partial x}\frac{\partial x}{\partial x'} + \frac{\partial}{\partial t}\frac{\partial}{\partial x'}\\
+			&\frac{\partial}{\partial x'} = \frac{\partial}{\partial x} - \frac{1}{v} \frac{\partial}{\partial t}\\
+			&\frac{\partial^2}{\partial x'^2} = \frac{\partial^2}{\partial x^2} - \frac{2}{v}\frac{\partial}{\partial x \partial t} + \frac{\partial^2}{\partial t^2}
+		\end{align*}
+		Por lo tanto podemos concluir que $$\frac{\partial^2}{\partial x^2} \neq \frac{\partial^2}{\partial x'^2}$$
+		\item Esto se debe a que las rotaciones son el unico conjunto de transformaciones que mantienen la norma de los vectores
+			constante y por tanto no afecta los resultados de los calculos.
+		\item Para lograr esto debemos tomar las diferencias que nos encontramos en el punto b y debemos hacer que sea igual a 0
+			de la siguiente manera.
+			\begin{align*}
+				&\frac{\partial^2}{\partial t^2} - \frac{2}{v}\frac{\partial}{\partial x\partial t} = 0\\
+				&\int (\frac{\partial^2}{\partial t^2} - \frac{2}{v}\frac{\partial}{\partial x\partial t}) dt = 0\\
+				&\frac{\partial}{\partial t} - \frac{2}{v}\frac{\partial}{\partial x} = 0\\
+				&\text{Note que esto es }\nabla\\
+				&\frac{2}{v} (\nabla\cdot\Vec{E}) = 0\\
+				&\text{y esta es la ley de Gauss que deberia ocurrrir para que se conserve.}
+			\end{align*}
+\end{enumerate}
+\end{enumerate}
+
+
+\end{document}

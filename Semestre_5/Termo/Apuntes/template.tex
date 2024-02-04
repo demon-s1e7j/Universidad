@@ -1,0 +1,486 @@
+\documentclass{report}
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Termodinamica}\\Apuntes}
+\author{\huge{Sergio Montoya}}
+\date{}
+
+\begin{document}
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+%Capitulo 1%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{El Problema y sus Postulados} \section{La Naturaleza Temporal de las Medidas Macroscópicas}\label{1.1}
+\section{La Naturaleza Espacial de las Medidas Macroscópicas}\label{1.2}
+\section{La Composición de Sistemas Termodinámicos}\label{1.3}
+\section{Energía Interna}\label{1.4}
+\section{La Termodinámica del Equilibrio}\label{1.5}
+\section{Paredes y Restricciones}\label{1.6}
+\section{Medir la Energía}\label{1.7}
+\section{Definición Cuantitativa de Calor}\label{1.8}
+\section{El problema Base de Termodinámica}\label{1.9}
+\section{El Postulado de Máxima Entropía}\label{1.10}
+%Capitulo 2%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Las Condiciones de Equilibrio}
+\section{Parámetros Intensivos}\label{2.1}
+\section{Ecuación de Estado}\label{2.2}
+\section{Parámetros Intensivos Entropía}\label{2.3}
+\section{Equilibrio Térmico - Temperatura}\label{2.4}
+\section{Acuerdo Con el Concepto Intuitivo de Temperatura}\label{2.5}
+\section{Unidades de Temperatura}\label{2.6}
+\section{Equilibrio Mecánico}\label{2.7}
+\section{Equilibrio con Respecto al Flujo de Materia}\label{2.8}
+\section{Equilibrio Químico}\label{2.9}
+%Capitulo 3%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Relaciones Formales y Sistemas de Ejemplo}
+\section{La Ecuación de Euler}\label{3.1}
+\section{La Relación de Gibbs-Duhem}\label{3.2}
+\section{Resumen de Estructuras Formales}\label{3.3}
+\section{El Gas Ideal Simple y el Multicomponente Gas Ideal Simple}\label{3.4}
+\begin{equation}
+  \label{eq:3.40}
+  S = \sum_j N_js_{j_0} + \left( \sum_j N_jc_j \right)R\ln\frac{T}{T_0}+NR\ln \frac{V}{Nv_0}- R\sum_j N_j\ln \frac{N_j}{N}
+.\end{equation}
+\section{El Fluido Ideal de Van der Vals}\label{3.5}
+\begin{equation}
+  \label{eq:3.49}
+  \frac{1}{T} = \frac{cR}{u+\frac{a}{v}}
+.\end{equation}
+\begin{equation}
+  \label{eq:3.51}
+  S = NR\ln\left( (v-b)\left( u+\frac{a}{v} \right) ^2 \right) + N_{S_0}
+.\end{equation}
+\section{Radiación Electromagnética}\label{3.6}
+\section{La Banda Elástica}\label{3.7}
+\section{Sistemas incomprensibles; Sistemas Magnéticos}\label{3.8}
+\section{Capacidad Calorífica Molar y Otras Derivadas}\label{3.9}
+%Capitulo 4%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Procesos Reversibles; Motores}
+\section{Procesos Posibles e Imposibles} \label{4.1}
+Un ingeniero puede enfrentarse al problema de diseñar un aparato capas de hacer una tarea especifica - De hecho, tomaremos el ejemplo de un elevador.
+Para esto, el ingeniero hace un sistema o motor que permita transferir energía desde un horno al elevador.
+\textit{Si} el calor fluye al ascensor, por acción de varios pistones interconectados este se eleva.
+Sin embargo, es decisión de la naturaleza el que esto ocurra.
+
+Para saber si esto va a ocurrir se tiene que ver el cambio de entropía se de y que este no sea tan alto como para que sea impredecible.
+
+\ex{}{
+  Un sistema particular es restringido a una cantidad constante de Moles y Volumen, de tal modo que ningún trabajo puede ser realizado por o en el sistema.
+  Mas allá la constante calorífica es una constante $C$. La ecuación fundamental para el sistema a volumen constante es $S = S_0 + C\ln(\frac{U}{U_0}$ por lo que $U=CT$.
+
+
+  Dos sistemas de este estilo, con capacidades caloríficas iguales tienen temperaturas iniciales $T_{10}$ y $T_{20}$, con $T_{10}<T_{20}$. Un motor es diseñado para elevar un ascensor (Es decir, para aplicar trabajo a un sistema puramente mecánico), Tomando energía de los dos sistemas termodinámicos. ¿Cual es el máximo trabajo que puede ser entregado?
+
+  \sol
+
+  Los dos sistemas térmicos van a quedar en una temperatura común $T_f$. El cambio de energía de dos sistemas térmicos de este tipo es \[
+  \Delta U = CT_f-C(T_{10}+T_{20})
+  .\]
+  y el trabajo entregado al sistema mecánico sera $W =  -\Delta U$, o  \[
+  W = C(T_{10}+T_{20}-T_f)
+  .\] El cambio en la entropía total va a ocurrir en los dos sistemas y sera \[
+  \Delta S = C\ln \frac{T_f}{T_{10}}+C\ln \frac{T_f}{T_{20}}=2C\ln \frac{T_f}{\sqrt{T_{10}T_{20}} }
+  .\] Para maximizar $W$esta claro que queremos minimizar  $T_f$ y por la tercera ecuación entonces esto es reducir  $\Delta S$. El $\Delta S$ mínimo y posible es  $0$ que corresponde a un proceso reversible. Por lo tanto, el motor optimo va a ser uno tal que  \[
+  T_f = \sqrt{T_{10}T_{20}}
+  .\] y \[
+  W = C(T_{10}+T_{20}-2\sqrt{T_{10}T_{20}}
+  .\]
+}
+\nt{La suposición de que los dos sistemas terminaran a una misma temperatura no es necesaria; $W$ se puede minimizar con respecto a  $T_{f1}$ y $T_{f2}$ de manera independiente con el mismo resultado. La suposición de una misma temperatura final viene de argumentos auto-consistentes pues si el trabajo final difiere se podría adquirir trabajo por el método expuesto.}
+\ex{}{
+  Una variante interesante del ejemplo 1 es uno en el cual tres cuerpos (Cada uno de la forma descrita en el ejemplo 1, con $U=CT$) tienen unas temperaturas iniciales de  $300 K$,  $250 K$ y  $400 K$, respectivamente. Se desea elevar la temperatura de uno de los cuerpos a lo mas alto que se pueda sin tomar en cuenta la temperatura final de los otros dos. ¿Cual es este valor?.
+
+  \sol
+
+  Para facilitarnos la solución tomemos las temperaturas en unidades de $100 k$ para que los números sean mas sencillos. Ademas, refirámonos a estos con $(T_1=3; T_2=3.5; T_3=4)$. Similarmente designamos la temperatura mas alta para uno de los cuerpos (en las mismas unidades) como $T_h$. Es evidente que los otros dos cuerpos van a terminar a la misma temperatura final  $T_l$ (Puesto que si no se diera esto se podría extraer trabajo como en ejemplo 1 y insertarlo como calor). Por lo tanto, la conservación de la energía requiere \[
+  T_h + 2T_l = T_1 + T_2 + T_3 = 10.5
+  .\]
+  El cambio total de la entropía es \[
+  \Delta S = C\ln \frac{T_l^2T_h}{T_1T_2T_3}
+  .\] Y dado que esto debe ser positivo nos queda que \[
+  T_l^2 T_h \geq T_1T_2T_3 = 42
+  .\] Eliminando $T_l$ por conservación de la energía  nos queda  \[
+  \left(5.25 - \frac{T_h}{2}\right)^2T_h\geq 42
+  .\] por lo tanto, para que esto se de se despeja y nos queda \[
+  T_h = 4.095
+  .\]
+}
+\subsection{Preguntas}
+\qs{}{Una mol de un gas ideal monoatomico y una mol de un fluido ideal de van de Vals \ref{3.5} con $c=\frac{3}{2}$ son contenidos separadamente en volúmenes arreglados de Ves sel $v_1$ y  $v_2$. La temperatura del gas ideal es $T_1$ y la del fluido es  $T_2$. Manteniendo la cantidad de energía total constante se desea llevar el gas ideal a una temperatura  $T_2$. Cual es la temperatura final del fluido de van de Vals? Que restricciones aplican para los parámetros $(T_1,T_2,a,b,v_1,v_2)$ Es posible que esto ocurra?}
+\sol
+
+Para un gas ideal $u=\frac{3}{2}RT$. Para un fluido de van der Waals $u=\frac{3}{2}RT-\frac{a}{v}$ por lo tanto
+\begin{align*}
+  \frac{3}{2}RT_1+\left( \frac{3}{2}RT_2-\frac{a}{v_2} \right) &=\frac{3}{2}RT_2+\left( \frac{3}{2}RT-\frac{a}{v_1} \right) \\
+  T = T_1 + & \frac{2a}{3R}\left[ \frac{1}{v_1}-\frac{1}{v_2} \right]
+.\end{align*}
+\begin{align*}
+  S_i &\le S_f\\
+  \ln[T_1^{\frac{3}{2}}v_1]+\ln[T_2^{\frac{3}{2}}(v_2-b)] &\le \ln[T_2^{\frac{3}{2}}v_2]+\ln[T_2^{\frac{3}{2}}(v_1-b)]\\
+  v_2T^{\frac{3}{2}}(v_1-b)&\ge v_1T_1^{\frac{3}{2}}(v_2-n)\\
+  T&\ge T_1\left[ \frac{v_1(v_2-b)}{v_2(v_{1}-b)} \right]^{\frac{2}{3}} \\
+  T_1+\frac{2_a}{3R}\left[ \frac{1}{v_1}-\frac{1}{v_2} \right] &\ge T_1\left[ \frac{v_1(v_2-b)}{v_2(v_1-b)} \right]^{\frac{2}{3}}
+.\end{align*}
+\section{Procesos Cuasi estáticos y reversibles}\label{4.2}
+
+Siendo los procesos termodinámicos relativamente difíciles de representar una de las mejores manera de hacer
+es por medio de una gráfica cuyos ejes son $S$ por un lado y las variables extensibles de $S$ como los otros ejes.
+En este plano en particular nacen dos conceptos que se representan mejor en este caso.
+Primero, tenemos los procesos cuasi estáticos que son procesos ideales de sucesiones de estados de equilibrio.
+Por lo tanto, realmente no tiene una representación o configuración física. Sin embargo, estos ofrecen muchas
+simplificaciones que utilizamos previamente para explicar procesos. Esto es porque aunque no existen, uno
+puede construir un estado físico que converge en $N$ arbitrarios estados con un estado cuasi estático.
+Segundo, tenemos los procesos reversibles. Estos, son una configuración particular de procesos cuasi estáticos
+los cuales en esencia tiene como característica el que su entropía no aumenta y por tanto desde cualquiera de
+los puntos de este se puede devolver a cualquier punto anterior sin romper ninguna ley física.
+
+\section{Tiempos de Relajación y Reversibilidad}\label{4.3}
+
+Considere un un sistema que se dejara en una configuración cuasi estática. A este sistema se le retiraran sus limitaciones paso por paso. Permitiendo entonces que el sistema llegue al equilibrio con cada paso que se da. Si esto, se hace lo suficientemente lento, lo que se consigue es una aproximación de un sistema real que puede asemejarse a uno cuasi estático.
+
+\ex{}{Un ejemplo bastante claro de esto seria una expansión adiabática. Si el proceso se obliga a hacerse extremadamente lento el proceso sera esencialmente cuasi estático y reversible (Dado que es adiabático también hay que decirlo). Sin embargo, si el pistón se mueve de manera violenta se presentaran remolinos y flujo irregular que aumentara la entropía y hará que no sea reversible.}
+
+Para calcular el tiempo de relajación necesario varia de forma en forma y según el recipiente. Para un cilindro por ejemplo su formula es \[
+  \tau \approx \frac{V^{\frac{1}{3}}}{c}
+.\]
+\section{Flujo de Calor: Sistemas Emparejados y Reversión de los procesos} \label{4.4}
+
+Quizás uno de los procesos termodinámicos mas característicos es la transferencia cuasi estática de calor entre dos cuerpos. Deberíamos revisar bien este caso.
+
+En el caso mas simple consideramos la transferencia de calor entre dos sistemas de la misma temperatura. Este proceso es reversible pues en ambos caso la ganancia y perdida de calor corresponde con $\frac{dQ}{T}$ haciendo que la entropía permanezca igual durante todo el proceso.
+
+En contraste, suponga que dos subsistemas tienen diferentes temperaturas iniciales $T_{10}$ y $T_{20}$ donde $T_{10}<T_{20}$. Mas allá, permita que las capacidades caloríficas a volumen constante sean $C_1(T)$ y $C_2(T)$. Entonces si una cantidad de calor $dQ_1$ es insertado al sistema 1 de manera cuasi estática a volumen constante la entropía aumenta
+\begin{align}
+dS_1 = \frac{dQ_1}{T_1}=C_1T_1 \frac{dT_1}{T_1}
+\end{align}
+
+Esto funciona de manera similar para el sistema 2. Si se da esta transferencia de calor desde un cuerpo caliente hasta otro frió continua hasta que las dos temperaturas se igualen, entonces la conservación de la energía requiere:
+\begin{align}
+  \Delta U = \int_{T_{10}}^{T_f}C_1(T_1)dT_1 + \int_{T_{20}}^{T_f}C_2(T_2)dT_2 = 0
+\end{align}
+
+Lo que nos permite determinar $T_f$. El cambio de entropía resultante es
+ \begin{align}
+   \Delta S = \int_{T_{10}}^{T_f} \frac{C_1(T_1)}{T_1}dT_1+\int_{T_{20}}^{T_f}  \frac{C(T_2)}{T_2}dT_2
+.\end{align}
+En el caso particular en el que $C_1$ y $C_2$ son independientes de $T$ la conservación de la energía nos indica que
+ \begin{align}
+  T_f = \frac{C_1T_{10} + C_2T_{20}}{C_1+C_2}
+.\end{align}
+
+y el incremento de la entropía es
+\begin{align}
+ \Delta S = C_1\ln\left(\frac{T_f}{T_{10}}\right) + C_2\ln\left(\frac{T_f}{T_{20}}\right)
+.\end{align}
+
+\nt{Se puede mostrar que esta expresión es intrínsecamente positiva}
+
+Muchos puntos de este proceso merecen reflexión. Primero, notamos que el proceso, aunque cuasi-estático, es irreversible; Es representado en el espacio de configuración termodinámica como una curva con $S$ creciente.
+
+Segundo, El proceso puede ser asociado con el flujo espontaneo de calor desde un sistema caliente a uno frió apartador por una pared inmóvil e impermeable con una masa despreciable.
+
+Tercero, notamos que la entropía de uno de los sistemas es decreciente mientras que la del otro es creciente. Es posible decrecer la entropía de cualquier sistema particular, siempre y cuando esta reducción este vinculado con un aumento aun mayor. De esta manera, un proceso irreversible puede ser \textit{"reversible"} pagando el costo calorífico en otro lugar.
+
+\subsection{Preguntas}
+\qs{}{Cada uno de los cuerpos tiene una capacidad calorífica dada en el rango de interés \[
+C = A + BT
+.\] donde $A=8 \frac{J}{K}$ y $B=2\times10^{-2}\frac{J}{K^2}$. Si los dos cuerpos tienen temperaturas iniciales $T_{10}=400K$ y $T_{20}=200K$, y si están en contacto térmico
+¿Cual es la temperatura final y el cambio de la entropía?
+
+}
+
+\section{Teorema del máximo trabajo}\label{4.5}
+
+Lo propensos que son los sistemas físicos a aumentar su entropía puede ser aprovechado para dar trabajo útil. Todas estas aplicaciones están gobernadas por el teorema del máximo trabajo.
+
+Considere un sistema que debe ser llevado desde un estado iniciar especifico a otro final también especifico. También tenemos disponibles otros dos sistemas auxiliares, en los cuales para uno se le puede transferir trabajo y para el otro se le puede transferir calor entonces el teorema del máximo trabajo dice que
+
+\thm{Teorema del Máximo Trabajo}{Para todo proceso que va desde un estado inicial especifico a un estado final especifico del subsistema primario, el trabajo entregado máximo (y el calor entregado mínimo) cuando el proceso es reversible. Mas allá, La entrega de trabajo (y de calor) es idéntica para cada proceso reversible}
+
+El sistema repositorio en el que el trabajo es entregado se le llama \textit{"Fuente de trabajo reversible"}. Las fuentes de trabajo reversibles son definidas como sistemas cerrados por paredes adiabáticas impermeables y se caracterizan por tiempos de relajación suficientemente cortos para que todo el proceso sea esencialmente cuasi-estático. Desde el punto de vista termodinámico los sistemas sin fricción mecánicos son fuentes de trabajo reversibles.
+
+El repositorio en el sistema al que se le entrega calor es llamado \textit{"Fuente Reversible de Calor"}. Las fuentes reversibles de calor son definidas como sistemas cerrados por paredes rígidas e impermeables y caracterizados por tiempos de relajación suficientemente cortos para que todos los procesos de interés en ellos sean esencialmente cuasi estáticos. Si la temperatura de la fuente reversible de calor es $T$ la transferencia de calor $dQ$ a la fuente reversible de calor incrementa su entropía de acuerdo con la relación cuasi estática $dQ = TdS$. Las interacciones externas de una fuente reversible de calor correspondiente están completamente descritas por su capacidad calorífica (la definición d las fuentes reversibles de calor implica que su capacidad calorífica es a un volumen constante). El cambio de la energía de una fuente reversible de calor es  $dU=dQ=C(T)dT$ y el cambio de la entropía es  $dS = \left(\frac{C(T)}{T}\right)dT$.
+
+La prueba del teorema de máximo trabajo es casi inmediata. Considere dos procesos. Cada uno lleva al mismo cambio de energía $\Delta U$ y el mismo cambio de entropía  $\Delta S$ en el subsistema primario, para estos están determinados los estados iniciales y finales. Los dos procesos difieren únicamente en el reparto de las diferencias de energía $(-\Delta U)$ entre la fuente reversible de calor y de trabajo  $(-\Delta U = W_{FRT} + Q_{FRC}.$ pero, el proceso que entrega la mayor cantidad de trabajo a la fuente reversible de trabajo entrega la menor cantidad posible de calor a la fuente reversible de calor, por lo tanto, esto nos lleva también al menor aumento posible de la entropía para la fuente reversible de calor y para el sistema completo.
+\nt{El uso de la palabra fuente puede ser confuso puesto que en estos sistemas realmente no se extrae ningún trabajo o calor si no mas bien se inyecta.}
+
+El mínimo absoluto de $\Delta S_{total}$ para todos los procesos es mantenido por los procesos reversibles (en donde para todos es $\Delta S = 0$).
+Para recapitular, la conservación de la energía requiere que  $\Delta U + W_{FRT}+Q_{FRC}=0$ con $\Delta U$ fijo lo único que se puede hacer para maximizar $W_{FRT}$ es minimizar  $Q_{FRC}$. Esto se logra por minimizar  $S^{final}_{FRC}$ (Dado que  $S_{FRC}$ incrementa de manera monótona con un ingreso de calor). El mínimo  $S^{final}_{FRC}$ es conseguido por el mínimo $\Delta S_{total}$ o por  $\Delta S_{total} = 0$.
+
+La demostración descriptiva que aparece arriba puede ser puesta en una demostración formal, esta es particularmente relevante en el caso en que el estado inicial y final del subsistema están tan cerca que todas las diferencias pueden ser expresadas como diferenciales. Entonces, conservación de la energía requiere que
+\begin{equation}
+  dU + dQ_{FRC} + dW_{FRT} = 0
+.\end{equation}
+donde el principio de máxima entropía requiere que
+\begin{equation}
+  dS_{t} = dS + \frac{dQ_{FRC}}{T_{FRC}}\geq 0\label{eq:4.7}
+.\end{equation}
+De esto se sigue que
+\begin{equation}
+  dW_{FRT}\geq T_{FRC}dS-dU\label{eq:4.8}
+.\end{equation}
+
+Las cantidades en el lado derecho están todos especificados. En particular $dS$ y  $dU$ son la diferencia de energía y entropía del subsistema primario en los estados final e inicial. El trabajo máximo transferido  $dW_{FRT}$ corresponde al signo de igualdad en la ecuación \ref{eq:4.8} y por lo tanto en la ecuación \ref{eq:4.7}.
+
+Es útil calcular el trabajo máximo entregado que por la ecuación \ref{eq:4.8} y por la identidad $dU = dQ + dW$, se convierte en
+ \begin{equation}
+   dW_{FRT}(max)=\left( \frac{T_{FRC}}{T}dQ - dU \right) = \left( 1-\left( \frac{T_{FRC}}{T} \right)  \right) (-dQ) + (-dW)
+.\end{equation}
+Eso es un proceso infinitesimal, donde el maximo trabajo que se puede entregar a la fuente reversible de trabajo es la suma de:
+\begin{enumerate}
+  \item El trabajo $\left( -dW \right)$ directamente estriado del subsistema
+  \item una fracción $\left( 1-\left( \frac{T_{FRC}}{T} \right)  \right) $ de calor $\left( -dQ \right) $ directamente extraido del subsistema
+\end{enumerate}
+
+La fracción que extrae calor del sistema que puede ser convertido en trabajo en un proceso infinitesimal es llamada motor eficiencia del motor termodinámico, y deberíamos volver a la discusión de esta en la sección \ref{4.5}. De todos modos, es generalmente preferible el resolver problemas de máximo trabajo en términos de una cuenta de cambios de energía y entropía (antes que integrar sobre la eficiencia del motor termodinámico)
+
+Retomando para el total de los procesos, la conservación de la energía se convierte en
+\begin{equation}
+  \label{eq:4.10}
+  \Delta U + Q + W = 0
+.\end{equation}
+Donde la condición de reversibilidad es
+\begin{equation}
+  \label{eq:4.11}
+  \Delta S_{total} = \Delta S_{subsistema}
+  + \int \frac{dQ}{R}=0
+.\end{equation}
+
+En orden de evaluar la ultima integral es necesario saber la capacidad calorífica $C_{FRC}(T)=\frac{dQ}{dT}$ Dada esta capacidad calorífica la integral puede ser evaluada, y uno puede entonces inferir el trabajo neto transferido. La ecuación \ref{eq:4.10} en caso evalúa $W$. Las ecuaciones \ref{eq:4.10} y \ref{eq:4.11} como están descritas resuelven todos los problemas basados en el teorema de máximo trabajo.
+
+El problema es mas simple si la fuente reversible de calor es un reservorio térmico. Un reservorio termico es definido como una fuente de calor reversible que es tan grande que cualquier calor transferido que sea de interés no altera la temperatura del reservorio térmico. De manera equivalente, un reservorio es una fuente reversible de calor caracterizada por un arreglo y una temperatura definida. Para tal sistema la ecuación \ref{eq:4.11} se simplifica como
+\begin{equation}
+  \label{eq:4.12}
+  \Delta S_{total} = \Delta S_{subsistema} + \frac{Q_{res}}{T_{res}}=0
+.\end{equation}
+y $Q_{res}$ puede ser eliminado entre las ecuaciones \ref{eq:4.10} y \ref{eq:4.12} dando
+\begin{equation}
+  \label{eq:4.13}
+  W_{FRT} = T_{res}\Delta S_{subsistema}-\Delta U_{subsistema}
+.\end{equation}
+
+Finalmente, debería ser reconocido que el estado final especificado debe tener una energía mayor que el estado inicial. En ese caso el teorema permanece formalmente verdadero pero el trabajo entregado debe ser negativo. Este trabajo que se le debe entregar al sistema es el mínimo trabajo entregado.
+
+\ex{}{Una mol de un fluido ideal de van der Waals debe ser llevado en un proceso no especificado desde el estado $T_0,v_0$ al estado $T_f,v_f$. Un segundo sistema es restringido para tener un volumen dijo y su temperatura inicial es $T_{20}$; su capacidad calorífica es lineal en la temperatura \[
+C_2(T)=DT\ (D=constante)
+.\] Cual es el máximo trabajo que puede ser entregado a la fuente de trabajo?
+
+\sol
+
+El segundo sistema es una fuente reversible de calor; de ahí la dependencia de la energía en la temperatura es \[
+  U_2(T) = \int C_2(T)dT=\frac{1}{2}DT^2+c
+.\] y la dependencia de la entropía en la temperatura es \[
+S_2(T) = \int \frac{C_2(T)}{T}dT = DT + c
+.\] Para el subsistema primario la dependencia de la energía y la entropía en $T$ y  $v$ esta dada por las ecuaciones \ref{eq:3.49} y \ref{eq:3.51} lo que nos da
+\begin{align*}
+  \Delta U_1 &= cR(T_f-T_0)-\frac{a}{v_f}+\frac{a}{v_0}\\
+  \Delta S_1 &= R\ln\left( \frac{v_f-b}{v_0-b} \right) + cR\ln\left( \frac{T_f}{T_0} \right)
+.\end{align*}
+
+El segundo sistema cambia de temperatura desde $T_{20}$ hasta una temperatura aun desconocida $T_{2f}$ de tal modo que \[
+  \Delta U_2 = \frac{1}{2}D(T_{2f}^2-T_{20}^2)
+.\] y \[
+\Delta S_2 = D(T_{2f} - T_{20})
+.\]
+
+El valor de $T_{2f}$ es determinado por la condición de reversibilidad  \[
+  \Delta S_1 + \Delta S_2 = R\ln\left( \frac{v_f - b}{v_0-b} \right) + cR\ln\left( \frac{T_f}{T_0} \right) + D(T_{2f} - T_{20})=0
+.\] o \[
+T_{2f} = T_{20} - RD^{-1}\ln\left( \frac{v_f - b}{v_0-b} \right) - cRD^{-1}\ln \frac{T_f}{T_0}
+.\] La conservación de la energía determina el trabajo $W_3$ entregado a la fuente reversible de trabajo \[
+W_3 + \Delta U_2 + \Delta U_1 = 0
+.\] Entonces \[
+W_3 = -\left( \frac{1}{2}D(T^2_{2f} - T_{20}^2) \right)-\left( cR(T_f-T_0)-\frac{a}{v_f}+\frac{a}{v_0} \right)
+.\] Donde aprovechamos que $T_f$ es dado, Entonces  $T_{2f}$ a sido encontrado
+}
+
+\ex{Separación de Isotopos}{
+  En la separación de $U^{235}$ y $U^{238}$ para producir combustible enriquecido para plantas atómicas. Se da que, el uranio natural reacciona con fluorina para formar uranio hexa florida $(TF_6)$. Este, es un gas a temperatura ambiente y prasio atmosférica. La fracción molar normal de $U^{235}$ es $0.0072$ o  $0.71\%$. Se desea procesar 10 moles de  $UF_6$ natural para producir 1 mol de $2\%$ material enriquecido, dejando 9 moles de material embrutecido. El gas  $UF_6$ puede ser representado aproximadamente como poli atómico, Multi componente gas simple con $c=\frac{7}{2}$. Asumiendo que el proceso de separación puede darse a $300 K$ y presión de $1\ atm$ y asumiendo que la temperatura ambiente actúa como un reservo rió térmico ¿Cual es la mínima cantidad de trabajo que se requiere para llevar adelante el proceso de enriquecimiento? ¿En donde reside este trabajo?
+
+  \sol
+
+Este problema es un ejemplo del teorema del máximo trabajo en el cual el mínimo trabajo requerido corresponde con el máximo trabajo entregado. El estado inicial del sistema es 10 moles de  $UF_6$ a $300K$ y $1atm$. El estado final del sistema es 1 mole de gas enriquecido y 9 moles de gas embrutecido a la misma temperatura y presión. El reservorio frio esta también a la misma temperatura.
+
+Encontramos los cambios de energía y entropia del sistema desde la ecuación fundamental \ref{eq:3.40}\[
+U=\frac{7}{2}NRT ; PV=NRT
+.\] esto nos permite escribir la entropía como una función de $T$ y $P$ \[
+S = \sum_{j=1}^2 N_jS_{j0} + \left( \frac{7}{2} \right) NR\ln\left( \frac{T}{T_0} \right) - NR\ln\left( \frac{P}{P_0} \right) - NR\sum_{j=1}^2 x_j\ln x_j
+.\] Primero calculamos la fracción molar de $U^{235}F_6$ en las 9 moles del material embrutecido; Esto resulta ser $0.578\%$. De acuerdo con esto el cambio de la entropía
+}
+\subsection{Preguntas}
+\qs{}{Una mol de un gas monoatomico ideal es contenido en un cilindro de volumen $10^{-3} m^3$ a una temperatura de $400 k$. El gas debe ser llevado a un estado final de volumen $2\times 10^{-3} m^3$ y una temperatura de $400K$. Un reservorio térmico de  $300 K$ esta disponible como una fuente de trabajo reversible. Cual es el máximo trabajo que puede ser entregado a la fuente de trabajo reversible?
+}
+\sol
+
+En este caso partimos desde un gas monoatomico ideal por lo tanto la ecuación fundamental es \[
+  U = \frac{3}{2}RT; S = S_0 + R\ln\left( \left( \frac{T}{T_0} \right)^{\frac{3}{2}}\frac{V}{V_0} \right)
+.\] Ahora bien, note que $T$ no cambia durante el proceso por lo tanto  $\Delta S_{gas}$ se puede resumir a  \[
+\Delta S_{gas} = R\ln\left( \frac{V_f}{V_i} \right)
+.\] Por otro lado, podemos saber que \[
+\Delta S_{gas} + \Delta S_{res} \to \Delta S = -R\ln\left( \frac{V_f}{V_i} \right) = -R\ln(2)
+.\] Por conservación de la energía tenemos que \[
+\Delta U_{gas} + \Delta U_{res} + W_{frt} = 0 + T_{res}\Delta S_{res} + W_{frt} = 0 \to W_{frt} = 300R\ln(2)
+.\]
+
+\qs{}{Considere el siguiente proceso para el sistema del problema 4.5-1. El gas ideal es primero expandido adiabática mente hasta que su temperatura cae a $300K$; El gas hace trebajo en la fuente de trabajo reversible durante esta expansión. El gas es entonces expandido mientras esta en contacto térmico con el reservorio termico. Finalmente, el gas es comprimido adiabática mente hasta que su volumen y temperatura llegan de nuevo a los valores iniciales.
+\begin{enumerate}
+  \item Dibuje los tres pasos dando ecuaciones
+  \item A que volumen se debe expandir el gas para que el tercer paso nos lleve al estado deseado?
+  \item Calcule el trabajo y calor transferidos en cada paso del proceso.
+\end{enumerate}
+}
+
+\sol
+
+\begin{enumerate}
+  \item La verdad, me da pereza % TODO
+  \item Tenemos que para un proceso adiabático $T^{\frac{3}{2}}V = const$ por lo tanto, podemos desarrollar como sigue
+    \begin{align*}
+      T_C^{\frac{3}{2}} V_C &= T_D^{\frac{3}{2}}V_D\\
+      V_C &= V_D \left( \frac{T_D}{T_C} \right) ^{\frac{3}{2}}\\
+      V_C &= 2\times 10^{-3}\left( \frac{4}{3} \right)^{\frac{3}{2}} = 3.08\times 10^{-3}m^3
+    .\end{align*}
+  \item Preguntarle a David
+\end{enumerate}
+\qs{}{Si el reservorio térmico del problema 4.5-1 es reemplazado por una fuente reversible de calor teniendo una capacidad calórica de \[
+C(T)=\left( 2 + \frac{T}{150} \right) R
+.\] Y una temperatura inicial de $T=300 K$, calcule de nuevo el máximo trabajo entregado. Espera que sea mayor igual o menor?
+}
+
+\sol
+
+Para comenzar se espera que el resultado sea menor que en el problema 4.5-1.
+Por otro lado, el procedimiento que vamos a realizar se parece bastante.
+
+Primero, por el desarrollo previo sabemos que \[
+\Delta S = R\ln 2 ; \Delta U = 0
+.\] Que en el caso de una fuente reversible de calor se da que \[
+\Delta S_{FRC} = \int_{300}^{T_f} \frac{C(T)}{T}dT=R\int_{300}^{T_f}\left( \frac{2}{T}+\frac{1}{150} \right) dT=2R\ln\frac{T_f}{300}+R\frac{T_f-300}{150}
+.\] y por la condición de reversibilidad sabemos que \[
+\Delta S + \Delta S_{FRC} = R \left[ \ln 2+2\ln\frac{T_f}{300}+\frac{T_f-300}{150} \right] =0
+.\] La solución numérica de esa ecuación es \[
+T_f \approx 250 K
+.\] Por ultimo, dado el desarrollo de esto sabemos que \[
+\Delta U + \Delta U_{FRC} + W_{FRT} = 0
+.\] o lo que es lo mismo \[
+W_{FRT} = \Delta U_{FRC} = - \int_{300}^{T_f}C(T)dT = \int_{250}^{300}\left( 2+\frac{T}{150} \right) RdT = 192R
+.\]
+
+
+\qs{}{Una mol de un fluido ideal de van der Waals es contenida en un cilindro encajado con un pistón. La temperatura inicial del gas es $T_i$ y el volumen inicial es $v_i$. Una fuente reversible de calor con capacidad calorífica $C$ constante y con una temperatura inicial $T_0$ esta disponible. El gas debe ser comprimido hasta un volumen de $v_f$ y mantenerlo en equilibrio térmico con la fuente reversible de calor. Cual es el máximo trabajo que puede ser entregado a la fuente reversible de calor? Cual es la temperatura final?
+}
+
+\sol
+
+Dado que estamos trabajando con un gas ideal de van der Waals vamos a utilizar las ecuaciones \ref{eq:3.49} y \ref{eq:3.51} que son respectivamente \[
+u = cRT-\frac{a}{v} ; s = s_0 + R\ln((v-b)(cRT)^c)
+.\] por lo tanto, conservación de la energía se convierte en \[
+\Delta U_{gas} + \Delta U_{res} + W = 0
+.\]  lo que si ponemos aquello que conocemos nos queda como \[
+cR(T_f-T_i)-a\left( \frac{1}{v_f}-\frac{1}{v_i} \right) + C(T_f-T_0 + W = 0
+.\] y dada la condición de reversibilidad nos queda \[
+R\ln\left( \frac{(v_f-b)T_f^c}{(v_i-b)T_i^c} \right) + C\ln\left( \frac{T_F}{T_0} \right) = 0
+.\] Para llegar a $T_f$ debemos desarrollar desde esta ultima como sigue
+\begin{align*}
+  R\ln((v_f-b)T_f^c) - R\ln((v_i-b)T_i^c)+&C\ln(Tf)-C\ln(T_0) = 0
+.\end{align*}
+
+\qs{}{Una fuente de poder exotérmico esta lista para dirigir una planta de producción de oxigeno. La fuente geotermica es simplemente $10^3m^3$ de agua contenida inicialmente a  $100^\circ C$; cerca de ahí, hay un lago infinito a  $5^\circ$. El oxigeno debe ser separado del aire, con la separación dándose a $1\ atm$ de presión y a $20^\circ C$. Asuma que el aire es  $\frac{1}{5}$ oxigeno y $\frac{4}{5}$ nitrógeno (en fracciones molares), y asuma que se puede tratar como una mezcla de gases ideales. Cuantas moles de $O_2$ pueden ser producidas en principio (es decir, con perfecta eficiencia termodinámica) antes de terminar el poder de la fuente.
+}
+
+\sol
+
+Para iniciar partimos desde \[
+\Delta S = -NR\sum_ix_i\ln x_i = -NR\left( \frac{1}{5}\ln \frac{1}{5}+\frac{4}{5}\ln \frac{4}{5}\right) \approx  N
+.\] lo que quiere decir que \[
+N_{0_2} = \frac{1}{5}N \approx \frac{1}{5}\Delta S
+.\] Que ahora si tomamos esto y lo trabajamos nos queda
+\begin{align*}
+  dS &= \frac{dQ}{T}=10^9\frac{dT}{T}\\
+  \Delta S &= 10^9\ln\left( \frac{T_F}{T_i} \right) = 10^9\ln\left( \frac{293}{373} \right) = -0.29 \times 10^7  \\
+  \Delta S_{lago} = 10^6 \frac{95}{T_{frio}} = 0.34\times 10^7
+\Delta S + \Delta S_{lago} = 0.05\times 10^7
+.\end{align*} Y utilizando lo descrito previamente nos queda que \[
+N_0 = \frac{1}{5}\Delta S = 10^7
+.\]
+\section{Coeficiente de motor}
+% TODO
+\section{Ciclo de Carnot}
+Durante todo este capitulo se ha hablado de como el máximo trabajo corresponde con los ciclos reversibles. Sin embargo, resulta útil enfocarnos en un solo ciclo reversible llamado ciclo de Carnot.
+
+Se necesita llevar un sistema desde una posición de partida $a$ a una final $f$ mientras intercambia calor y trabajo. Para describir este proceso es necesario no solo describir el como cambia el sistema en el espacio de configuración termodinámico. Los procesos claves le conciernen a la manera en la que se extrae calor y trabajo y se le entrega a las fuentes reversibles de calor y energía. Para este proposito se pueden utilizar sistemas auxiliares. Los sistemas auxiliares son una herramienta o equipo por el cual el sistema puede darse. En otras palabras, son el motor físico afectado por el sistema.
+
+Cualquier sistema termodinámico puede ser un sistema auxiliar. Solo se necesita que el sistema auxiliar se restaure al final del proceso. \textit{Este sistema auxiliar no debería entrar en las cuentas de cambio de energía y entropía del sistema general}. Es esta naturaleza cíclica la que se refleja en el nombre "ciclo" de Carnot
+
+Para este ejemplo asumiremos que el sistema primario y la fuente reversible de calor sean reservorios térmicos donde el sistema primario es el reservorio caliente y la fuente reversible de calor es el frió. El ciclo de carnot se presenta en 4 pasos:
+\begin{enumerate}
+  \item El sistema auxiliar, originalmente a la misma temperatura que el sistema primario, es colocado con el reservorio y con la fuente de trabajo reversible. Entonces, se hace que este sistema auxiliar pase por un proceso termodinámico cambiando un parámetro extensible. En este proceso un flujo de calor ocurre entre el reservorio térmico y el sistema auxiliar y una transferencia de calor ocurre desde el sistema auxiliar a la fuente reversible de calor.
+
+  \item El sistema auxiliar ahora en contacto únicamente con la fuente de trabajo reversible, se expande adiabáticamente que su temperatura cae hasta la del reservorio frió. Una transferencia de trabajo ocurre entre el sistema auxiliar y la fuente de trabajo.
+
+  \item El sistema auxiliar pasa una compresión isotérmica mientras esta en contacto con el reservorio térmico y la fuente de trabajo reversible. Este proceso se continua hasta que la entropía empate su condición inicial.
+
+  \item Por ultimo, se comprime de manera adiabatica y recibe trabajo de la fuente reversible de trabajo. Esta compresión lleva al sistema auxiliar a su estado inicial.
+\end{enumerate}
+
+\subsection{Preguntas}
+\qs{}{Repita los cálculos del ejemplo 5 asumiendo la sustancia de trabajo que sea una mol de un fluido de van der waals en vez de una mol de un gas ideal}
+
+\sol
+
+\begin{align*}
+  S &= N_{s_0} + N R \ln\left[ \left( v-b \right) \left( u+\frac{a}{v} \right) ^c \right] \\
+  u + \frac{a}{v} &= cRT\\
+  S &= NR\ln\left[ (v-b)cRT \right] + N_{s_0}
+.\end{align*}
+\begin{align*}
+  Q_{AB} &= RT_h\ln\frac{v_B-b}{v_a -b}\\
+  \Delta U_{AB} = -\frac{a}{v_B}+\frac{a}{v_A}
+  W_{AB} = \Delta U_{AB}-Q_{AB}=\frac{a}{v_A}-\frac{v}{v_b}-RT_h\ln\frac{v_b-b}{v_a-b}
+.\end{align*}
+De $B$ a $C$
+ \begin{align*}
+   (v-b)T&=const\\
+   (v_B-b)T_h&= (v_C-b)T_c \\
+   W_BC = \Delta u_{BC} = CR(T_c-T_h) - \frac{a}{v_c}+\frac{a}{v_B}&= cR(T_c-T_h)+\frac{a}{v_B}-\frac{a}{(v_B-b)T_h+bT_c} \\
+   Q_{BC}&=0
+.\end{align*}
+De $C$ a $D$
+\begin{align*}
+  Q_{CD} = T_cR\ln\frac{V_D-b}{v_c-b}=T_cR&\ln\frac{(v_A-b)\frac{T_h}{T_c}}{(v_B-b)\frac{T_n}{T_c}}=T_cR\ln\frac{v_A-b}{v_B-b}\\
+  \Delta U_{CD} &= -\frac{a}{v_D}+\frac{a}{v_C}\\
+  W_{CD}=\Delta U_{CD}-Q_{CD} &= -\frac{a}{v_D}+\frac{a}{v_C}-RT_c\ln\frac{v_A-b}{v_B-b}
+.\end{align*}
+De $D$ a $A$
+\begin{align*}
+  Q_{DA} &= 0 \\
+  W_{DA} =\Delta U_{DA} = cR&\left( T_h-T_c \right) -\frac{a}{v_A}+\frac{a}{v_D}
+.\end{align*}
+Entonces tenemos que
+\begin{align*}
+  W=\frac{a}{v_A}-\frac{a}{v_B}-RT_h\ln\frac{v_B-b}{v_A-b}+cR(T_c-T_h)-\frac{a}{v_C}+\frac{a}{v_B}-\frac{a}{v_D}+\frac{a}{v_C}-RT_c\ln\frac{v_A-b}{v_B-b}+cR(T_h-T_c)-\frac{a}{v_A}+\frac{a}{v_D}
+.\end{align*}
+\begin{align*}
+  W = R(T_h-T_c)\ln\frac{v_B-b}{v_A-b}\Rightarrow Q_{AB}=-RT_h\ln\frac{v_A-b}{v_B-b}
+.\end{align*}
+\begin{align*}
+  \frac{W}{|Q_{AB}|}=\frac{T_h-T_c}{T_h}
+.\end{align*}
+\section{Medir la Temperatura y la Entropía}
+\section{Otros criterios de Eficiencia; Motores Endoreversibles}
+\subsection{Preguntas}
+\qs{}{Considere un motor endoreversible para el cual su reservorio de alta temperatura es agua hirviendo $(100^\circ)$ y la reserva fria es la temperatura ambiente  $(20^\circ)$. Asumiendo que el motor esta operado a máximo poder, cual es el ratio de la cantidad de calor pasado entre la reserva fría y caliente (por kilowatt hora de trabajo entregado) contra la misma medida de un ciclo de carnot? ¿ Cual es el valor de este?}
+
+ \begin{align*}
+   \varepsilon_{erp} &= 1-\sqrt{\frac{293}{373}} = 0.114 (=\frac{W}{Q_h})\\
+   \varepsilon_{carnot} &= 1 - \frac{293}{373} = 0.214 (=\frac{W}{Q_h})\\
+   Q_H-Q_{H carnot} = W\left[ \frac{1}{0.114}-\frac{1}{0.214} \right] = [8.77 -4.67]w = 4.1 W
+ .\end{align*}
+ El ciclo de carnot extrae $8.77$ kwh de calor por kwh de trabajo entregado. El motor endoreversible extrae  $4.67$ kwh de calor por kwh de trabajo entregado por tanto $\frac{8.77}{4.67}=1.9$
+\end{document}

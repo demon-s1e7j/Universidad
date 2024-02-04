@@ -1,0 +1,246 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Electrónica para Ciencias} % This is the name of the course 
+\newcommand{\examnum}{Tarea 4} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section*{Primera Pregunta}
+  En este caso tenemos que encontrar en que escenarios están los transistores $1$ y $2$ siendo estos corte, activo y saturación.
+     \begin{table}[H]
+      \centering
+      \caption{Tabla de los escenarios posibles.}
+      \label{tab:escenarios_1}
+      \begin{tabular}{|c|c|c|}
+	\hline
+	Corte & Activa & Saturación \\
+	$I_B = I_C = I_E = 0$ & $V_{BE} = V_{BE_{on}}; I_C = \beta I_B$ & $V_{BE} = V_{BE_{on}}; V_{CE}= V_{CE_{sat}}$ \\
+	$V_{BE}< V_{BE_{on}}$ & $V_{CE}>V_{CE_{sat}}; I_B > 0$ & $I_C < \beta I_B$ \\
+			      & $I_C > 0 ; I_E > 0$ & \\
+			      \hline
+      \end{tabular}
+    \end{table}
+
+    Ahora bien, tenemos una serie de ecuaciones que siempre tendremos. Estas son:
+    \begin{align*}
+      I_{E_1} &= I_{B_1} + I_{C_1}\\
+      I_{E_2} &= I_{B_2} + I_{C_2}\\
+      I_{E_1} + I_{E_2} &= 1\ mA\\
+      I_{B_1} + I_{C_1} + I_{B_2} + I_{C_2} &= 1\ mA
+    .\end{align*}
+
+    \begin{enumerate}
+      \item corte | corte
+
+	$I_{B_1} = I_{C_1} = I_{E_1} = 0$ y $I_{B_2} = I_{C_2} = I_{E_2} = 0$ por lo tanto $I_{E_1} + I_{E_2} = 0 < 1\ mA$ por lo tanto no pueden estar los dos transistores en corte al mismo tiempo.
+      \item corte | activa
+
+	$I_{C_1} = I_{B_1} = I_{E_1} = 0$ al $I_{C_1} = 0$ entonces $V_{C_1} = 5V$ y $V_{BE_2} = V_b - V_E = V_{BE_{on}}= 0.7V$ y $I_{C_2} = \beta I_{B_2}$. Sabemos por ley de Ohm que $I_{C_2} = \frac{5V - V_{c_2}}{3k}$ y al $I_{B_2} =  \frac{I_{C_2}}{\beta} = \frac{5V - V_{C_2}}{3k\beta}$ por lo que
+	\begin{align*}
+	  I_{E_1} + I_{E_2} = I_{B_2} + I_{C_2} = \frac{5V - V_{C_2}}{3k\cdot \beta} + \frac{5V - V_{C_2}}{3K} = 1\ mA\\
+	  \frac{5V - V_{C_2}}{300 k}+ \frac{500 V - 100 V_{C_2}}{300 k} = \frac{505 V - 101 V_{C_2}}{300 k}\leftrightarrow V_{C_2} = \frac{505 V - 300 \frac{V}{mA}\cdot 1mA}{101}\\
+	  V_{C_2} = \frac{505 V - 300 V}{101} = \frac{205 V}{101} = 2.03 V\\
+	  V_{BE_2} = V_b - V_E = 0.7V \leftrightarrow V_E = V_b - 0.7 V\\
+	  V_{BE_1} = V_a - V_E = V_a - V_b + 0.7V < V_{BE_{on}} = 0.7V
+	.\end{align*}
+
+	Para que este en corte $T_1$ con $V_a = V_b = -2V$ y $V_a = 1V; V_b = 0V$ no se cumple. Sin embargo, con $V_a = -1V; V_b = 0$ Si $V_{CE_2} = V_{C_2} - V_E = 2.03V - V_b + 0.7V = 2.73V - V_b > V_{CE_{sat}} = 0.2V$ por que $T_2$ este en activa. Para $V_b = -2V$ y $V_b = 0$ se cumple. Ademas, claramente $I_{B_2}, I_{C_2}, I_{E_2} > 0$
+
+      \item activa | corte
+
+	Muy similar al anterior punto, $I_{B_2} = I_{C_2} = I_{E_2} = 0$ así $V_{C_2} = 5V$ y $V_{BE_1}= V_a - V_E = V_{BE_{on}}=0.7V$ y $I_{C_1}=\beta I_{B_1}$.
+
+	\[
+	\frac{5V - V_{C_1}}{3k} + \frac{5V - V_{C_1}}{\beta 3k}= 1mA
+	.\]  ahora bien, sabemos que $V_{C_1} = 2.03V$ Ahora confirmaremos que el transistor 1 esta en Activa
+	\begin{align*}
+	  V_E = V_a - 0.7V\\
+	  V_{CE} > V_{CE_{sat}}\\
+	  V_{CE_1}=V_{C_1}- V_{E} = V_{C_1} - V_a + 0.7V = 2.73V - V_a > 0.2V = V_{CE_{sat}}
+	.\end{align*}
+
+	Cosa que se cumple.
+
+	Para mostrar que el transistor dos esta en corte 
+	\begin{align*}
+	  V_{BE} = V_b - V_E = V_b - V_a + 0.7V < 0.7V
+	.\end{align*}
+
+	Con esto entonces cuando el transistor esta en activa y el 2 en corte queda
+	\[
+	V_o = 2.97V
+	.\] 
+
+      \item activa | activa
+	Si ambos transistores están en activa asumimos que $V_{BE_1}=V_{BE_2}=V_{BE_{on}}=0.7V=V_a - V_E = V_b - V_E$ por lo tanto $V_a = V_b$
+
+	 \begin{align*}
+	  \frac{5V}{3k \beta} - \frac{V_{C_1}}{3k \beta} + \frac{5V}{3k} - \frac{V_{C_1}}{3k} + \frac{5V}{3k \beta} - \frac{V_{C_1}}{3k \beta} + \frac{5V}{3k} - \frac{V_{C_1}}{3k} = 1mA\\
+	  \frac{1010 V}{300 \frac{V}{mA}} - V_{C_1}\left( \frac{202}{300k} \right) = 1mA\\
+	  V_{C_1} = 3.5V = V_{C_2}
+	.\end{align*}
+
+	Por lo tanto \[
+	V_o = 0
+	.\] 
+
+      \item corte | saturación
+
+	\begin{align*}
+	  I_{B_2} + I_{C_2} = 1mA \leftrightarrow I_{B_2}=1mA - I_{C_2}\\
+	  I_{C_2} < \beta \left( 1mA - I_{C_2} \right) = 100 mA - 100 I_{C_2}\\
+	  101 \frac{5,5V - V_b}{3k} < 100 mA
+	.\end{align*}
+
+	Por lo que ningún caso cumple las necesidades (lo mismo ocurre con saturación | corte)
+
+      \item saturación | saturación
+
+	\begin{align*}
+	  I_C < \beta I_B = \beta \left( 0,5 mA - I_C \right) = 100\left( 0,5mA - I_C \right) \\
+	  I_C + 100 I_C = 101 I_C < 50 mA\\
+	  101 \frac{5V - V_C}{3k} < 50 mA\\
+	  V_C > 5V - \frac{50 mA \cdot 3 \frac{V}{mA}}{101}= 5V - 1.49V
+	.\end{align*}
+
+	Por lo tanto necesitamos $V_b > 4$ y en ningún caso lo tenemos
+
+    \end{enumerate}
+
+    \begin{table}[H]
+      \centering
+      \caption{Resumen del primer punto en donde ponemos todas las respuestas}
+      \label{tab:respuestas_1}
+      \begin{tabular}{|c|c|c|}
+	\hline
+	&corte&no se puede\\
+	corte&activa&$V_o = -2,97V$ para $c$ \\
+	     & saturación & no se puede para los casos\\
+	 \hline 
+	     &corte&$V_o = 2,97V$ para $b$ \\
+	activa&activa& $V_o = 0V$ para $a$\\
+	      &saturación&no se puede\\
+	      \hline
+	      &corte&no se puede\\
+	saturación&activa&no se puede\\
+		  &saturación&no se puede\\
+		  \hline
+      \end{tabular}
+    \end{table}
+
+    \section*{Segunda Pregunta}
+
+    Supongamos el transistor $2$ (derecho) esta en corte.
+
+    Asumimos $I_{D_2} = I_{S_2} = 0$ al $I_{D_2} = \frac{10V - V_{D_2}}{15k}$ por lo que tenemos $V_{D_2} = 10V$ sabemos $V_{D_2}=V_{GS_2}=10V$ y $V_T = 2V$.
+
+    Queremos confirmar que $V_{GS} < V_T$ para estar en corte. Pero $V_{GS_2} = 10V \neq 2V$ por lo que el transistor $2$ no puede estar en corte.
+
+    Supongamos que el transistor derecho esta en triodo.
+
+    Condiciones impuestas $I_{D_2} = k_n \left( 2\left( V_{GS_2} - V_T \right) V_{DS_2} - V_{DS_2}^2 \right) $ y tenemos que verificar que $V_{GS_2} > V_T$ y $V_{DS_2} < V_{GS_2} - V_T$ pero al $V_{GS_2} = V_{DS_2}$ y $V_T = 2V > 0$
+
+    Tenemos que $V_{DS_2} < V_{GS_2} - V_T$ al $V_{GS_2} \neq V_{GS_2} - 2V$ por lo tanto el transistor 2 no puede estar en triodo.
+
+    Supongamos que el transistor derecho esta en pentodo.
+
+    Condiciones impuestas $I_{D_2} = k_n\left( V_{GS_2}-V_T \right)^2 = k_n\left( V_{D_2} - V_T \right)^2$. 
+
+    Condiciones a verificar $V_{GS_2}>V_T$ y $V_{DS_2} > V_{GS_2} - V_T$.
+
+    Encontramos $V_{D_2}$ con $I_{D_2} = \frac{10V - V_{D_2}}{15k}$ y nuestra condición impuesta $I_{D_2} = K_n\left( V_{D_2} - V_T \right)^2$ y así tenemos 
+    \begin{align*}
+      \frac{10V - V_{D_2}}{15k} = k_n \left( V_{D_2} - V_T \right)^2\\
+      \frac{10V - V_{D_2}}{15k \cdot k_n} = V_{D_2}^2 - 2V_{D_2}V_T + V_T^2\\
+      V_{D_2}^2 + V_{D_2}\cdot \frac{1}{15k \cdot k_n} - 2 V_{D_2}V_T - \frac{10V}{15k\cdot k_n} + V_{T}^2 = 0\\
+      V_{D_2}^2 + V_{D_2}\left( \frac{1}{15k \cdot k_n} - 2V_T \right) - \frac{10V}{15k \cdot k_n} + V_T^2 = 0\\
+      k_n = 0.25 \frac{mA}{V^2}\\
+      V_T = 2V\\
+      V_{D_2}^2 + V_{D_{2}}\left( - \frac{56}{15}V \right) + \frac{4}{3}V^2 = 0\\
+      V_{D_2} = \frac{10}{3}V\\
+      V_{D_2} = \frac{2}{5}V
+    .\end{align*}
+
+    Por lo tanto $V_{D_2} = \frac{10}{3}V; I_{D_2} = 0.\hat{4}mA$
+
+    \begin{enumerate}
+      \item corte | pentodo
+
+	Si el transistor 1 esta en corte asumimos que $I_{D_{1}} = 0$ y así $V_{D_1} = 10V$. Pero necesitamos verificar que $V_{GS_1} < V_T$. No obstante, $V_{GS_1} = V_G = I_{D_2} = \frac{10}{3}V \neq 2V = V_T$ por lo que no se puede hacer esto.
+
+      \item triodo | pentodo
+
+	Imponemos $I_{D_1} = k_n \left( 2\left( V_{GS} - V_T \right) V_{DS_1} - V_{DS_1}^2 \right) = k_n \left( 2 \left( V_G - V_T \right) V_{D_1} - V_{D_1}^2 \right)  $ al $I_{D_1} = \frac{10V - V_{D_1}}{10 k}$.
+
+	Por lo que
+	\begin{align*}
+	  V_{D_1}^2 - 2\left( V_G - V_T \right) V_{D_1} + \frac{10V}{10 k \cdot k_n} - \frac{V_{D_1}}{10k\cdot k_n} = 0\\
+	  V_{D_1}^2 - \left( \frac{20}{3}V - 4V + \frac{4}{10}V \right) V_{D_1} + 4V^2 = 0\\
+	  V_{D_1}^2 - \frac{92}{30}V V_{D_1} + 4V^2 = 0
+	.\end{align*}
+
+	Que en este caso da  complejo por lo que esta situación es imposible.
+
+      \item pentodo | pentodo
+
+	Para el transistor $1$ asumimos que  \[
+	I_{D_1} = k_n\left( V_{GS_1} - V_T \right)^2 = k_n\left( V_G  - V_T \right)^2 = 0.\hat{4}mA = I_{D_2}
+	.\] 
+
+	Necesitamos confirmar \[
+	V_{GS_1} > V_T; V_{DS_1}>V_{GS_1} - V_T
+	.\] 
+
+	Ahora con esto \[
+	V_{GS_2} = \frac{10}{3}V > 2V = V_T
+	.\] 
+	con $I_{D_1} = \frac{10V - V_{D_1}}{10k}$ y así $V_{D_1}=10V - I_{D_1}\cdot 10k$ por lo que $V_{D_1} = 10V - 0.\hat{4}mA\cdot 10 \frac{V}{mA} = 5.\hat{5}V = V_{DS_1}$.
+
+	Por lo que ambos transistores están en pentodo. Por lo que obtenemos:
+	\begin{align*}
+	  I_{D_1} = I_{D_2} = 0.\hat{4}mA\\
+	  V_{D_1} = 5.\hat{5}V\\
+	  V_{D_2} = \frac{10}{3}V
+	.\end{align*}
+
+	Que es el único caso que se podría.
+    \end{enumerate}
+
+
+\end{document}

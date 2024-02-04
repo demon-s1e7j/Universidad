@@ -1,0 +1,38 @@
+#+title: Proyecto Final Moderna
+#+AUTHOR: S1e7J
+#+DATE: <2023-05-14 Sun>
+
+* Descripción:
+Para la materia Fisica Moderna de la universidad de los andes nos pidieron un trabajo final que en esencia consistia en describir de manera teorica computacional un fenomeno físico. En particula mi grupo decidio trabajar en Estadistica de Bose-Einstein. Este documento tiene como objetivo centralizar todo lo que necesitemos para este proyecto.
+* Desarrollo del Proyecto:
+- [X] Encontrar suficiente documentación y crear un buen resumen que nos interese. Para este objetivo utilizaremos la sección [[Documentación]].
+- [ ] Realizar un PseudoCodigo con los algoritmos, estructuras de datos y en general todo lo que usaremos para ello. Para conseguir este objetivo utilizaremos la sección [[PseudoCodigo]] .
+- [ ] Desarrollar un codigo Completo en Rust y python con el cual podamos simular correctamente este objetivo. Para esto utilizaremos un repositorio de github TODO hacer el repositorio.
+  - [ ] Montar el repositorio
+  - [ ] Programar
+- [ ] Relizar el documento final y el video que nos piden para la presentación.
+  - [ ] Documento
+  - [ ] Video
+* Documentación
+** Divulgación
+*** Videos:
++ Date un Vlog Recuperado de : https://youtu.be/qU-N783ES9Q
++ Lifeder Educación, Recuperado de : https://youtu.be/pbLNWYbAhJg
+** Formal:
+*** Articulos
++ Re-traducción del articulo Original de Bose : https://gilles.montambaux.com/files/histoire-physique/Bose-1924.pdf
++ Universality and Bose-Einstein  Condensaition: https://bit.ly/3Btigdn
++ Feynman Lectures sobre Particulas iguales: https://www.feynmanlectures.caltech.edu/III_04.html
+  + Para entender el punto anterior viene bien tener el capitulo anterior: https://www.feynmanlectures.caltech.edu/III_03.html
+** Bibliografia Gustavo
++ Serway Moderna Cap
++ Bose-Einstein Statistic Universidad de Charleston o Harvard
+
+** Primera Descripción:
+Podemos tener un conjunto de particulas de Bose
+** Resumen:
+*** Primer Boseto:
+En 1925 el físico Bose publico un articulo cientifico llamado ~Plank's law and the hypotesis of light quanta~ En este esencialmente desarrollaba una nueva visión para la interacción entre particulas. Esto daria nacimiento de las Particulas de Bose (Referencia a Feynman Lectures on Physics). En esencia estas
+*** Nota interesante:
+Hay un apartado en las lecturas de Feynman que parece ser esencialmente el ejercicio que creo le interesa a Gustavo. En esencia es un ejercició muy sencillo para el cual dos particulas de Bose chocan entre si y se muestran las consecuencias de su indistinguibilidad.
+* PseudoCodigo

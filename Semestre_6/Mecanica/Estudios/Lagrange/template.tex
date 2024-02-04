@@ -1,0 +1,47 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Some Class}\\Random Examples}
+\author{\huge{Your Name}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Principio de D'Alembert para una particula}
+
+Suponga que tiene una particula $m$ que se mueve en $R^{3}$ que a su ves tiene una ligadura \textbf{Holonoma}
+
+\nt{Los tipos de Ligaduras son:
+  \begin{enumerate}
+    \item Holonomas: Ligaduras que dependen de la posición y el tiempo.
+    \item No Holonomas: Ligaduras que dependen de la posición, el tiempo y la velocidad.
+  \end{enumerate}
+}
+
+Esta ligadura tiene la forma: \[
+  \ell \left( \Vec{r},t \right) = 0
+.\] ahora con esto podemos aplicar la segunda ley de Newton:
+\begin{align*}
+  m \frac{d^2 \Vec{r}}{d t^2} = \Vec{F}_{ext} + \Vec{R}
+.\end{align*}
+
+donde $R$ es la fuerza de ligadura, es decir las fuerzas reacción de la ligadura.
+
+Con esto obtenemos  $3$ ecuaciones diferenciales distintas (una por cada coordenada) con $6$ incognitas. En particular las incognitas son:
+\begin{enumerate}
+  \item $\Vec{r} \left( t \right) = \left( x,y,z \right) $ 
+  \item $\Vec{R} \implies 3$
+\end{enumerate}
+
+pero ademas tenemos la ecuación de la ligadura. por lo que tenemos $4$ ecuaciónes. Aun asi, el numero de incognitas supera al de ecuaciones y en consecuencia (tal como esta planteado) es irresoluble. Ahora desarrollemos por otro lado.
+\end{document}

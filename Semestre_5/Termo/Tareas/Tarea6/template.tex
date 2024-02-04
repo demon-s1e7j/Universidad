@@ -1,0 +1,457 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Termodinámica}\\Tarea 6}
+\author{\huge{Sergio Montoya}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Resumen Capítulos}
+\section{5.3: Potenciales Termodinámicos}
+
+Las aplicaciones del formalismo precedente a la termodinámica es auto-evidente. La relación fundamental $Y=Y(X_0,X_1,\ldots)$ pueden ser interpretados como la relación fundamental de energía-lenguaje  $U=U(S,X_1,X_2,\ldots,X_t)$ o $U=U(S,V,N_1,N_2,\ldots)$. Las derivadas $P_0,P_1,\ldots$ corresponden a los parámetros intensivos $T,-P,\mu_1,\mu_2,\ldots$. Las funciones transformadas de Legenda son llamados potenciales termodinámicos, y ahora definimos algunos de los mas comunes. En el capitulo 6 vamos a continuar la discusión de estas funciones derivando principios extremos para cada potencial, indicando el significado intuitivo de cada uno y discutiendo su rol particular en la teoría termodinámica. Pero por el momento nos preocuparemos únicamente con el aspecto formal de la definiciones de muchas funciones particulares.
+
+El \textit{Potencial de Helmholtz} o la \textit{Energía Libre de Helmholtz}, es en particular la transformación de Legendre de $U$ que reemplaza la entropía por la temperatura como variables independientes. El símbolo adoptado internacionalmente para el potencial de Helmholtz es $F$. Las variables naturales del potencial de Helmholtz son $T,V,N_1,N_2,\ldots$. Esto es, la relación funcional $F=F(T,V,N_1,N_2,\ldots)$ constituye una relación fundamental. En la notación sistemática introducidos en la sección $5.2$
+\begin{equation}
+  \label{5.38}
+  F\equiv U\left[ T \right]
+\end{equation}
+
+La completa representación entre la representación de la energía y la de Helmholtz, esta resumida en la siguiente tabla
+\begin{table}[h]
+  \centering
+  \caption{Tabla de  las relaciones entre la representación de Helmholtz y la de la energía}
+  \label{table:Helmholtz}
+  \begin{tabular}{c|c}
+    \hline
+    $U=U(S,V,N_1,N_2,\ldots)$ & $F=F(T,V,N_1,N_2,\ldots)$ \\
+    $T=\frac{\partial U}{\partial S}$ & $-S=\frac{\partial F}{\partial T}$ \\
+    $F=U-TS$ & $U=F+TS$ \\
+    Eliminación de los campos $U$ y $S$ & Eliminación de los campos $F$ y $T$ \\
+    $F=F(T,V,N_1,N_2,\ldots)$ & $U=U(S,V,N_1,N_2,\ldots)$ \\
+    \hline
+  \end{tabular}
+\end{table}
+
+La diferencial completo $dF$
+\begin{equation}
+  label{eq:5.42}
+dF = -SdT - PdV + \mu_1 dN_1 + \mu_2 dN_2 + \ldots
+\end{equation}
+
+La entalpía es la transformada parcial de Legendre de $U$ que reemplaza el volumen con la presión como variable independiente. Siguiendo las recomendaciones de la Unión Internacional de Física y Química, y en concordancia con el uso universal, adoptamos el símbolo $H$ para la entalpia. Las variables naturales de este potencial son $S,P,N_1,N_2,\ldots$ y 
+\begin{equation}
+  H\equiv U\left[ P \right]
+\end{equation}
+
+La representación esquemática de la relación entre la energía y la entalpía es como sigue
+\begin{table}[h]
+  \centering
+  \label{table:Entalpia}
+  \caption{Tabla de las relaciones entre la Entalpía y la Energía}
+  \begin{tabular}{c|c}
+    \hline
+    $U=U(S,V,N_1,N_2,\ldots)$ & $H=H(S,P,N_1,N_2,\ldots)$ \\
+    $-P = \frac{\partial U}{\partial V}$ & $V=\frac{\partial H}{\partial P}$ \\
+    $H = U + PV$ & $U=H-PV$ \\
+    Eliminación de los campos $U$ y $V$ & Eliminación de los campos $H$ y $P$ \\
+    $H = H(S,P,N_1,N_2,\ldots)$ & $U=U(S,V,N_1,N_2,\ldots)$\\
+    \hline
+  \end{tabular}
+\end{table}
+
+Es necesario prestar mayor atención a los signos en las lineas 2 y 3 que resultan del hecho que $-P$ es un parámetro intensivo asociado con $V$. El diferencial completo $dH$ es
+\begin{equation}
+  \label{5.47}
+  dH = T dS + V dP + \mu_1 dN_1 + \mu_2 dN_2 + \ldots
+\end{equation}
+
+La tercera transformada común de Legendre es el potencial de Gibbs, o energía libre de Gibas. Esta es una transformación de Legenda que cambia simultáneamente la entropía por la temperatura y el volumen por la presión en las variables independientes. La notación estándar es $G$, y las variables naturales son $T,P,N_1,N_2,\ldots$. Por lo tanto tenemos
+\begin{equation}
+  \label{eq:5.48}
+  G\equiv U\left[ T,P \right] 
+\end{equation}
+
+Y
+
+\begin{table}[h]
+  \centering
+  \label{table:Gibbs}
+  \caption{Tabla de las relaciones entre el potencial del Gibbs y la Energía}
+  \begin{tabular}{c|c}
+    \hline
+    $U=U(S,V,N_1,N_2,\ldots)$ & $G=G(T,P,N_1,N_2,\ldots)$ \\
+    $T=\frac{\partial U}{\partial S}$ & $-S=\frac{\partial G}{\partial T}$ \\
+    $-P=\frac{\partial U}{\partial V}$ & $V=\frac{\partial G}{\partial P}$ \\
+    $G=U-TS+PV$ & $U=G+TS-PV$ \\
+    Eliminación de los campos $U,S$ y $V$ & Eliminación de los campos $G,T$ y $P$ \\
+    $G=G(T,P,N_1,N_2,\ldots)$ & $U=U(S,V,N_1,N_2,\ldots)$\\
+    \hline
+  \end{tabular}
+\end{table}
+
+El diferencial completo $dG$ es
+\begin{equation}
+  \label{eq:5.53}
+  dG=-SdT+VdP+\mu_1dN_1+\mu_2dN_2+\ldots
+\end{equation}
+
+Un potencial termodinámico que se eleva naturalmente en mecánica estadística es el gran potencial canónico, $U\left[ T,\mu \right] $. Para este potencial tenemos
+\begin{table}[h]
+  \centering
+  \label{table:Canonico}
+  \caption{Tabla de las relaciones entre la Entalpía y la Energía}
+  \begin{tabular}{c|c}
+    \hline
+    $U=U(S,V,N)$ & $U\left[ T,\mu \right]= $ Función de $T,V$ y $\mu$ \\
+    $T=\frac{\partial U}{\partial S}$ & $-S=\frac{\partial U\left[ T,\mu \right] }{\partial T}$ \\
+    $\mu=\frac{\partial U}{\partial N}$ & $-N= \frac{\partial U\left[ T,\mu \right] }{\partial \mu}$ \\
+    $U\left[ T,\mu \right]=U-TS-\mu N$ & $U=U\left[ T,\mu \right] +TS+\mu N$\\
+    Eliminación de los campos $U,S$ y $N$ & Eliminación de lo campos $U\left[ T,\mu \right] ,T$ y $\mu$ \\
+    $U\left[ T,\mu \right] $ como una función de $T,V,\mu$ & $U=U(S,V,N)$\\
+    \hline
+  \end{tabular}
+\end{table}
+
+Ademas de
+\begin{equation}
+  dU\left[ T,\mu \right] = -SdT-PdV-Nd\mu
+\end{equation}
+
+Mas allá de esto hay otras transformadas de Legendre pero que son tan infrecuentes que ni siquiera tienen nombre. Por esto, no me tomare el trabajo de resumirlas. Estas se encuentran en el ultimo párrafo de la presente sección del Callen.
+\section{6.2:Potencial de Helmholtz}
+Para un sistema compuesto en contacto térmico con un reservorio térmico el estado de equilibrio minimiza el potencial de Helmholtz de entre todos los estados que comparten la temperatura (la temperatura debe ser igual a la del reservorio). En la practica, muchos procesos son llevados a cabo en Vessels rígidos con paredes diatermicas, de manera que el ambiente actué como reservorio térmico; Por esto, la aproximación del potencial de Helmholtz es extremadamente precisa.
+
+El potencial de Helmholtz es una función natural de variables $T,V,N_1,N_2,\ldots$. La condición de que $T$ es constante reduce el numero de variables en este problema, y $F$ se convierte en esencia en una función con variables $V,N_1,N_2,\ldots$. Esto esta en un contraste marcado a la manera en que la constancia de $T$ debe ser manejado en la representación de energía: En esta, $U$ seria una función de $S,V,N_1,N_2,\ldots$ pero la condición auxiliar $T=T^r$ implicaría una relación entre estas variables. Particularmente en ausencia de conocimiento explicito de la ecuación de estado esta limitación nos llevaría a un desarrollo extraño en esta representación.
+
+\ex{}{
+Como una ilustración del uso del potencial de Helmholtz primero debemos considerar un sistema compuesto. Este sistema esta compuesto por dos subsistemas sencillos separados por una pared movible, adiabática e impermeable. Los subsistemas están cada uno en contacto térmico con un reservorio térmico de temperatura $T^r$. El problema es entonces es predecir los volúmenes $V^{(1)}$ y $V^{(2)}$ de los dos subsistemas. Escribimos \[
+  P^{(1)}(T^r,V^{(1)},N_1^{(1)},N_2^{(1)},\ldots)=P^{(2)}(T^r,V^{(2)},N_1^{(2)},N_2^{(2)},\ldots)
+.\] Esta es una de las ecuaciones que involucra ambas variables; Todos los otros argumentos son constantes (Por las condiciones del enunciado). Ademas, tenemos la condición de cerramiento \[
+V^{(1)}+V^{(2)} = V; \text{ Una constante}
+.\] provee la otra ecuación necesaria que permite soluciones explicitas de $V^{(1)}$ y  $V^{(2)}$ 
+}
+
+
+En el caso de la representación de la energía también habríamos encontrado la igualdad de las presiones pero estas estarian en funcion de 
+\section{Capitulo 6.3}
+
+\chapter{Preguntas Capitulo 5}
+\section{5.3}
+\qs{5.3-1}{
+  Encuentre la ecuación fundamental de un gas ideal monoatomico en la representación de Helmholtz, en la representación de entalpía y en la representación de Gibbs. Asuma la ecuación fundamental computada en la sección $3.4$. En cada caso encuentre las ecuaciones de estado derivando la ecuación fundamental.
+}
+
+\sol
+
+Para este caso partimos de 
+\begin{align*}
+  S &= NS_0 + NR\ln\left[ \left( \frac{U}{V_0} \right)^c\left( \frac{V}{V_0} \right)\left( \frac{N}{N_0} \right)^{-(c+1)} \right] \\
+.\end{align*}
+
+De aquí, queremos sacar $U$ por lo que desarrollamos como sigue
+ \begin{align*}
+   e^{\frac{S-NS_0}{NR}}&=\left[\left( \frac{U}{V_0} \right)\left( \frac{V}{V_0} \right)^{\frac{1}{c}}\left( \frac{N}{N_0} \right)^{-\left( 1+\frac{1}{c} \right)} \right]^c \\
+   U&= \exp\left( \frac{S-N_{S_0}}{cR} \right) \left( \frac{V_0}{V} \right)^{\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\left(1+\frac{1}{c}\right)} \cdot U_0 \\
+.\end{align*}
+
+Ahora teniendo la energía podemos encontrar la derivada y encontrar
+\begin{align*}
+  \frac{dU}{dS}&=\frac{1}{NRC}\cdot \exp\left( \frac{S-N_{S_0}}{cNR} \right) \left( \frac{V_0}{V} \right)^{\frac{1}{c}}\cdot\left( \frac{N}{N_0} \right)^{\left( 1+\frac{1}{c} \right) }\cdot U_0\\
+  &=  \frac{U}{NRC}\\
+.\end{align*}
+Para nuestro caso $c=\frac{3}{2}$ por lo que $\frac{dU}{dS}=T=\frac{2U}{3NR}$
+
+\textbf{Helmholtz}
+\begin{align*}
+  \frac{dU}{dS}&=T=\frac{2U}{3NR}\\
+  U&=\frac{3}{2}NRT\\
+  U_0&=\frac{3}{2}N_0RT_0\\
+  S&= N_{S_0}+NR\ln\left[ \left( \frac{\frac{3}{2}NRT}{\frac{3}{2}N_0RT_0} \right) \left( \frac{V}{V_0} \right)^{\frac{1}{c}}\left( \frac{N_0}{N} \right)^{1+\frac{1}{c}} \right]^c \\
+   &= N_{S_0} + CNR\ln\left[ \frac{T}{T_0}\left( \frac{V}{V_0} \right)^{\frac{1}{c}}\left( \frac{N_0}{N} \right)^{\frac{1}{c}} \right]  \\
+.\end{align*}
+
+Ahora ya teniendo la $S$ y la $U$ en modos que nos sirven podemos
+\begin{align*}
+  F&= U-TS \\
+  F&= \frac{3}{2}NRT-\left( NS_0T+\left( \frac{3}{2} \right) NRT\ln\left[ \frac{T}{T_0}\left( \frac{V}{V_0} \right)^{\frac{2}{3}}\left( \frac{N_0}{N} \right)^{\frac{2}{3}} \right]  \right) 
+.\end{align*}
+
+\textbf{Todas las Derivadas}
+
+\begin{align*}
+  \frac{dU}{dV}&= \exp\left( \frac{S-NS_0}{cNR} \right) \left( -\frac{V_0^{\frac{1}{c}}}{cVV^{\frac{1}{c}}} \right) \left( \frac{N}{N_0} \right)^{\left( 1+\frac{1}{c} \right) }\cdot U_0 \\
+    &= -\frac{1}{CV}U=-\frac{U}{cV} \\
+    P&= -\frac{dU}{dV}=\frac{U}{cV} \\
+.\end{align*}
+\textbf{Entalpía}
+\begin{align*}
+  H&= U + PV \\
+  &= U+\frac{U}{c}=U\left( 1+\frac{1}{c} \right)  \\
+  H&= \frac{5}{3}U\\
+   &= \frac{5}{3}\exp\left( \frac{S-NS_02}{3NR} \right)\left( \frac{V_0}{V} \right)^{\frac{2}{3}} \left( \frac{N^{\frac{2}{3}}N}{N_0^{\frac{5}{3}}} \right) \cdot U_0 \\
+  \left( \frac{n}{V} \right) ^{\frac{2}{3}}&=\left( \frac{P}{RT} \right)^{\frac{2}{3}}=\left( \frac{P}{\frac{U_0}{cn_0}} \right)^{\frac{2}{3}}=\left( \frac{Pcn_0}{U_0} \right)^{\frac{2}{3}}=\left( \frac{3Pn_0}{2U_0} \right)^{\frac{2}{3}}\\
+	    &= \frac{5}{3}\exp\left( \frac{S-NS_0 2}{NR 3} \right) \left( \frac{3PN_0}{2U_0} \right)^{\frac{2}{3}}\left( \frac{V_0^{\frac{2}{3}}}{N_0^{\frac{5}{3}}} \right)
+.\end{align*}
+
+Por ultimo 
+\begin{align*}
+  G &= U-TS+PV\\
+  &= F+PV=F+NRT \\
+  G &= \frac{5}{2}NRT-\left( NS_0T+\frac{3}{2}NRT\ln\left[ \frac{T}{T_0}\left( \frac{\frac{NRT}{P}}{\frac{N_0RT_0}{P_0}} \right)^{\frac{2}{3}}\left( \frac{N_0}{N} \right)^{\frac{2}{3}} \right]  \right)  \\
+    &= \frac{5}{2}NRT-NS_0T-\frac{3}{2}NRT\ln\left[ \frac{T}{T_0}^{\frac{5}{3}}\left( \frac{P_0}{P} \right)^{\frac{2}{3}} \right]  \\
+    &= \frac{5}{2}NRT-NS_0T-NRT\ln\left[ \left( \frac{T}{T_0} \right)^{\frac{5}{2}}\left( \frac{P_0}{P} \right)  \right]  \\
+.\end{align*}
+\qs{5.3-2}{
+  Encuentre la ecuación fundamental de un fluido de Van der Waals (Sección $3.5$ ) en la representación de Helmholtz.
+
+  Realice una transformada inversa de Legendre en el potencial de Helmholtz y muestre que se recupera la ecuación fundamental en la forma de la energía.
+}
+
+\sol
+
+\begin{align*}
+  S&=NR\ln\left[ (v-b)\left( u + \frac{a}{v} \right)^c \right] + NS_0\\
+  \exp\left( \frac{S-NS_0}{NR} \right) &= (v-b)\left( u+\frac{a}{c} \right)^c\\
+  u &= (v-b)^{-\frac{1}{c}}\exp\left( \frac{S-S_0}{Rc} \right) - \frac{a}{v} \\
+  T&= \frac{dU}{dS}=\frac{1}{Rc}(v-b)^{-\frac{1}{c}}\exp\left( \frac{S-S_0}{RC} \right)  \\
+  TRC &= \left( v-b \right)^{-\frac{1}{c}}\exp\left( \frac{S-S_0}{RC} \right)  \\
+  S&= R\ln\left[ (v-b)\left( u+\frac{a}{v} \right)^c \right] + S_0 \\
+.\end{align*}
+
+\textbf{Helmholtz}
+\begin{align*}
+  F&= TRC-\frac{a}{v}-TS \\
+  F &= TRC - \frac{a}{v}-T\left( R\ln\left[ (v-b)\left( u+\frac{a}{v} \right)^c \right] + S_0 \right)  \\
+.\end{align*}
+
+\qs{5.3-3}{
+  Encuentre la ecuación fundamental de una radiación electromagnética en la representación de Helmholtz. Calcule las ecuaciones de estado "Térmico" y "Mecánico" y corrobore que concuerdan con las dadas en la sección $3.6$
+}
+
+\sol
+
+Para este caso, miremos una ecuación del capitulo $3.6$. En particular, vamos a partir desde la ecuación $3.57$ que es la ecuación fundamental. Esta ecuación es  \[
+  S=\frac{4}{3}b^{\frac{1}{4}}U^{\frac{3}{4}}V^{\frac{1}{4}}
+.\] Ahora bien, con esto podemos encontrar la ecuación de $U$ simplemente de manera algebraica como sigue:
+\begin{align*}
+  S&=\frac{4}{3}b^{\frac{1}{4}}U^{\frac{3}{4}}V^{\frac{1}{4}}  \\
+  U^{\frac{3}{4}} &= \frac{3}{4}b^{-\frac{1}{4}}V^{-\frac{1}{4}} \\
+  U &= \left( \frac{3}{4} \right)^{\frac{4}{3}}b^{-\frac{1}{3}}S^{\frac{4}{3}}V^{-\frac{1}{3}} 
+.\end{align*}
+
+Con esto, tenemos también que recordar que $T= \left( \frac{\partial U}{\partial S} \right)_{V,N}$ por lo que entonces $T=\left( \frac{3}{4} \right)^{\frac{1}{3}}b^{-\frac{1}{3}}S^{\frac{1}{3}}V^{-\frac{1}{3}}$
+
+Y aquí encontramos una manera de describir $S$ sin tener $U$ en el camino (Cosa que nos sirve para encontrar la representación de Helmholtz). Por lo tanto, despejando $S$ de este caso nos queda \[
+  S=\frac{4}{3}bT^{\frac{1}{3}}V
+.\] 
+
+Ahora, ya con esto podemos utilizar la tabla \ref{table:Helmholtz} para encontrar en ella une expresión para esta representación con lo que tendríamos 
+\begin{align*}
+  F&=U-TS=\left( \frac{3}{4} \right)^{\frac{4}{3}}b^{-\frac{1}{3}}S^{\frac{4}{3}}V^{-\frac{1}{3}}-\left( \frac{3}{4} \right)^{\frac{1}{3}}b^{-\frac{1}{3}}S^{\frac{1}{3}}V^{-\frac{1}{3}}\cdot\frac{4}{3}bT^{\frac{1}{3}}V\\
+  &= -\frac{1}{3}bT^3V
+.\end{align*}
+
+Ahora bien, una ves teniendo esto solo debemos desarrollar como sigue
+\begin{align*}
+  S &= -\frac{\partial F}{\partial T}=\frac{4}{3}bT^3V \\
+  -P &= \frac{\partial F}{\partial V} =-\frac{1}{3}bT^4
+.\end{align*}
+
+Ahora bien, para comprobar que esto corresponde con lo dado en la sección $3.6$ reemplazamos la ecuación $3.52$ que es $U=bT^4V$ y nos queda algo así
+\begin{align*}
+  U &= bT^4V \\
+  P &= \frac{1}{3}bT^4 \\
+  P &= \frac{U}{3V} 
+.\end{align*}
+
+Tal como se esperaba.
+\qs{5.3-5}{
+  De la primera ecuación fundamental aceptable del problema $1.10-1$ calcule la ecuación fundamental en la representación de Gibbs. Calcule $\alpha(T,P),k_t(T,P)$ y  $c_p(T,P)$ con diferenciales de $G$ 
+}
+
+\sol
+
+En este caso, partimos desde la ecuación \[
+  S=\left( \frac{R^2}{v_0\theta} \right)^{\frac{1}{3}}\left( NVU \right)^{\frac{1}{3}}
+.\] O lo que es lo mismo por álgebra \[
+U=\left( \frac{v_0\theta}{R^2} \right) \frac{S^3}{NV}
+.\] Ahora bien, para este punto también contamos con $T$ y $-P$ por las definiciones de las ecuaciones de estado. Por lo tanto tenemos \[
+T=3\left( \frac{v_0\theta}{R^2} \right) \frac{S^2}{NV} ; -P=\left( \frac{v_0\theta}{R^2} \right) \frac{S^3}{NV^2}
+.\]  Ahora bien, ya teniendo esto podemos recurrir a la tabla \ref{table:Gibbs} para encontrar una definición de la misma. Por lo tanto, tendríamos \[
+G=U+PV-TS=\left( \frac{v_0\theta}{R^2} \right)\frac{S^3}{NV}+\left( \frac{v_0\theta}{R^2} \right)\frac{S^3}{NV}-3\left( \frac{v_0\theta}{R^2} \right)\frac{S^3}{NV}=-\left( \frac{v_0\theta}{R^2} \right)\frac{S^3}{NV}
+.\]Ahora bien, también tenemos \[
+S=\frac{NT^2}{9AP} ; Y=\frac{1}{27}\frac{NT^3}{AP^2}
+.\]  por lo tanto, \[
+G=-\frac{NT^3}{27AP^2}
+.\] y ahora que tenemos esto, solo necesitamos encontrar lo que nos pide el enunciado.
+\begin{align*}
+  c_p&= \frac{T}{N}\left( -\frac{\partial^2 G}{\partial T^2} \right)_p = \frac{2R^2T}{9N_0P} \\
+  \alpha &= \frac{1}{V}\left( \frac{\partial V}{\partial T} \right)_p = \left( \frac{\frac{\partial^2 G}{\partial T \partial P}}{\frac{\partial G}{\partial p}} \right) = \frac{3}{T}
+.\end{align*}
+
+\qs{5.3-7}{
+  La entalpía de un sistema en particular es \[
+    H = AS^2N^{-1}\ln\left( \frac{P}{P_0} \right) 
+  .\] Donde $A$ es una constante positiva. Calcule la capacidad calorífica molar a un volumen constante $c_v$ como una función de $T$ y $P$
+}
+
+\sol
+
+Para este caso sabemos por definición que
+\begin{align*}
+  T&= \frac{\partial H}{\partial S}=2 \frac{AS}{N}\ln\left( \frac{P}{P_0} \right)  \\
+  V&= \frac{\partial H}{\partial P}=\frac{AS^2}{NP} \\
+  P&= \frac{AS^2}{NV} \text{ Combinando las de arriba} \\
+  T&= \frac{2AS}{N}\ln\left( \frac{AS^2}{NVP_0} \right)
+.\end{align*}
+
+Ahora bien, ya teniendo $T$ en función de la entropía solo debemos calcular $\frac{\partial T}{\partial S}$ y utilizarlo en la formula de $c_v$. Esto es como sigue
+\begin{align*}
+\left( \frac{\partial T}{\partial S} \right)_v &= \frac{24}{N}\ln\left( \frac{AS^2}{NVP_0} \right) + \frac{4A}{N}=-\frac{2A}{N}\ln \frac{P}{P_0}+\frac{4A}{N} \\
+c_v &= \frac{T}{N}\left( \frac{\partial S}{\partial T} \right)_V = \frac{T}{2A}\left( 2+\ln \frac{P}{P_0} \right) 
+.\end{align*}
+
+\chapter{Preguntas Capitulo 6}
+
+\section{6.2}
+
+\qs{6.2-2}{
+  Dos fluidos ideales de van der Waals están contenidos en un cilindro, separado por un pistón interno movible. Hay una mol de cada fluido, y los dos fluidos tienen los mismos valores de la constante de van der Waals $b$ y $c$; Los respectivos valores de la constante de van der Waals $a$ son $a_1$ y $a_2$. El sistema entero esta en contacto con un reservorio térmico de temperatura $T$. Calcule el potencial de Helmholtz del sistema compuesto como una función de $T$ y del volumen total $V$. Si se dobla el volumen total (Mientras se permite al pistón interior ajustarse). ¿Cual es el trabajo hecho por el sistema? Recuerde el problema $5.3-2$
+}
+
+\sol
+
+\begin{align*}
+  F &= TRC - \frac{a}{v}-T\left( R\ln\left[ (v-b)\left( u+\frac{a}{v} \right)^c \right] + S_0 \right)  \\
+  V_1+V_2&=V\\
+  P^1 &= P^2 \\
+  P^1 &= \frac{a_1}{v_1^2}+\frac{RT}{v_1-b}=\frac{a_2}{v_2^2}+\frac{RT}{v_2-b}=P^2 \\
+  P&=\frac{RT}{V-b}-\frac{a}{v^2}\\
+  \frac{RT}{V-b}&= P+\frac{a}{v^2} \\
+  2 \frac{a_1}{v_1^2} &= 2 \frac{a_2}{v_2^2} \\
+  v_1&= \frac{V\sqrt{a_1} }{\left( \sqrt{a_1} + \sqrt{a_2}  \right) } \\
+.\end{align*}
+
+Ahora bien
+\begin{align*}
+  F&=-\frac{a_1}{v}-\frac{a_2}{v_2}+2CRT-2TS_0-2CRT\ln(CRT)-RT\left( \ln(v_1-b)+\ln(v_2-b) \right) \\
+  &= -\frac{a_1}{V_1}\frac{\sqrt{a_1} \sqrt{a_2} }{\sqrt{a_1} }-\frac{a_2}{v}\frac{\sqrt{a_1} \sqrt{a_2} }{\sqrt{a_2} }+2CRT-2TS_0-2CRT\ln(CRT)-RT\left( \ln\left[ v \frac{\sqrt{a_1} }{\sqrt{a_2} + \sqrt{a_1}}-b \right] + \ln\left[ v \frac{\sqrt{a_2} }{\sqrt{a_1} +\sqrt{a_2} }-b \right]  \right)  \\
+.\end{align*}
+Ahora esto quedo en función de la temperatura $a$ y el volumen,
+
+\qs{6.2-3}{
+Dos subsistemas están contenidos en un cilindro y están separados por un pistón interno. Cada subsistema es una mixtura de una mol de helio y una mol de neón ambos gaseosos (Ambos son gases ideales mono-atómicos). El piston esta en el centro del cilindro, cada subsistema ocupa un volumen de 10 litros. Las paredes del cilindro son diatermicas, y el sistema esta en contacto con un reservorio térmico a temperatura $100^\circ C$. El pistón es permeable al helio pero impermeable al neón.
+
+Tomando en cuenta (del problema 5.3-10) que el potencial de Helmholtz de una mixtura de un gas simple es la suma de los potenciales de Helmholtz individuales (Cada uno expresado como una función de la temperatura y el volumen), muestre que en el caso presente
+\begin{align*}
+  F&= N \frac{T}{T_0}f_0 - \frac{3}{2}NRT\ln \frac{T}{T_0} - N_1RT\ln\left( \frac{V}{V_0}\frac{N_0}{N_1} \right) \\
+   &-N_2^{(1)}RT\ln \frac{V^{(1)}N_0}{V_0N_2^{(1)}}-N_2^{(2)}RT \ln \frac{V^{(2)}N_0}{V_0N_2^{(2)}}  \\
+.\end{align*}
+
+Donde $T_0,f_0,V_0$ y $N_0$ son atributos de un estado estándar (Recuerde el problema 5.3-1), $N$ es el numero total de moles, $N_2^{(2)}$ es el numero de moles del neón (Componente 2) en el subsistema 1, y $V^{(1)}$ y  $V^{(2)}$ son los volúmenes del subsistema $1$ y $2$ respectivamente.
+
+Cuanto trabajo es requerido para empujar el pistón a una posición tal que los volúmenes del subsistema son 5 litros y 15 litros? Haga los cálculos cambiando $F$ y por integración directa (Como en el problema $6.2-1$ ).
+}
+
+\sol
+
+\begin{align*}
+  W&= -\frac{\left( \sqrt{a_1} +\sqrt{a_2}  \right)^2}{2V}+RT\ln\left[ \frac{4V^2\sqrt{a_1+a_2} }{\left( \sqrt{a_1} +\sqrt{a_2}  \right)^2}-2bv+b^2 \right] - RT\ln\left[ \frac{V^2\sqrt{a_1a_2} }{\left( \sqrt{a_2} +\sqrt{a_1}  \right)^2}-bv+b^2 \right]  \\
+.\end{align*}
+
+\section{6.3}
+
+\qs{6.3-1}{
+  Un agujero es abierto en una pared separando dos subsistemas químicamente idénticos y con un solo componente. Cada uno de los subsistemas esta también en interacción con un reservorio de presión $P^r$. Use el principio de mínima entalpía para mostrar que las condiciones de equilibrio son $T^{(1)}=T^{(2)}$ y $\mu^{(1)}=\mu^{(2)}$. 
+}
+
+\sol
+
+En este caso partimos desde la ecuación $6.28$, es decir, la ecuación \[
+  \delta H = T^1dS^1 + T^2dS^2 + \mu^1dN^1+\mu^2dN^2
+.\] Ahora bien, tambien sabemos por las condiciones del problema que $N^1 + N^2=N$ donde  $N$ es una constante. Ahora bien, dado que la entalpía es una transformación de Legendre respecto a la entropía podemos mostrar que esta es minima sobre un ensamble de entropía constante. Por lo tanto, podemos escribir esto como \[
+\delta H = \left[ T^1+T^2 \right] dS + \left[ \mu^1 + \mu^2 \right] dN^1
+.\] que si se dan $dS$ y $dN$ arbitrarios queda como \[
+T^1=T^2\ ;\ \mu^1=\mu^2
+.\] 
+
+\qs{6.3-2}{
+  Un gas tiene las siguientes ecuaciones de estado \[
+    P=\frac{U}{V}\hspace{1cm}T=3B\left( \frac{U^2}{NV} \right)^{\frac{1}{3}}
+  .\] Donde B es una constante positiva. El sistema obedece los postulados de Nernst ($S\to 0$ como $T\to 0$). El gas, a una temperatura inicial $T_0$ y una temperatura inicial $P_0$, es pasado por medio de un tapón poroso en un proceso Joule-Thomson. La presión final es $P_f$ calcule la temperatura final $T_f$
+}
+
+\sol
+
+Iniciemos tomando las ecuaciones dadas y con álgebra pasemos a ecuaciones que conozcamos mas.
+\begin{align*}
+  \frac{1}{T}&=\frac{1}{3B}\frac{N^{\frac{1}{3}}V^{\frac{1}{3}}}{U^{\frac{2}{3}}}\\
+  \frac{P}{T}&= \frac{1}{3B}\frac{N^{\frac{1}{3}}U^{\frac{1}{3}}}{V^{\frac{2}{3}}}
+.\end{align*}
+
+Ahora con esto utilicemos $dS$ por lo que tendremos \[
+dS = \frac{1}{T}dU+\frac{P}{T}dV=\frac{1}{3B}\left[  \frac{1}{3B}\frac{N^{\frac{1}{3}}V^{\frac{1}{3}}}{U^{\frac{2}{3}}}dU+\frac{1}{3B}\frac{N^{\frac{1}{3}}U^{\frac{1}{3}}}{V^{\frac{2}{3}}}dV\right] 
+.\] con esto por lo tanto queda \[
+S=\frac{1}{3}\left[ NVU \right]^{\frac{1}{3}}
+.\] O lo que es lo mismo \[
+U = \frac{B^3S^3}{NV}
+.\] Ahora bien, con esto, podemos hacer uso de la definición de entalpía y nos quedaria
+\begin{align*}
+  H=U+PV&=\frac{B^3S^3}{NV}+\left( \frac{B^3S^3}{NV^2} \right) V=2 \frac{B^3S^3}{NV}=2U\\
+.\end{align*}
+Con eso entonces \[
+H=2 \frac{NT^3}{3^3B^3P}
+.\] Por lo tanto, una expansión Joule-Thomson haría que \[
+\frac{T^3}{P}=C
+.\] O en un desarrollo similar
+\begin{align*}
+  \frac{T_f^3}{P_f}=\frac{T_i^3}{P_i}\\
+  T_f = \frac{T_iP_f^3}{P_i^3}
+.\end{align*}
+
+\qs{6.3-3}{
+  Muestre que para un fluido ideal de van deer Waals \[
+  h=-\frac{2a}{v}+RT\left( c+\frac{v}{v-b} \right) 
+  .\] Donde $h$ es la entalpía molar. Asumiendo que tal fluido pasa por un tapón poroso y por lo tanto se expanda de $v_i$ a $v_f$ (con $v_f>v_i $), Encuentre la temperatura final $T_f$ en terminos de la temperatura inicial. El ejercicio tiene mas datos pero ya estos son numericos y se encuentran en el libro
+}
+
+Para iniciar, partimos desde la ecuación $3.51$ la cual es la entropia para un fluido de van der Waals. Esta ecuación es \[
+  S=NR\ln\left[ \left( v-b \right) \left( u+\frac{a}{v} \right)^c \right] + N s_0
+.\] en este caso podemos desarrollar como sigue para encontrar $u$ 
+\begin{align*}
+  s &= NR\ln\left[ \left( v-b \right) \left( u+\frac{a}{v} \right)^c \right] + N s_0 \\
+  s - Ns_0&= NR\ln\left[ NR\ln\left[ \left( v-b \right) \left( u+\frac{a}{v} \right)^c \right]  \right]  \\
+  \frac{s-s_0}{R}&= \ln\left[ \left( v-b \right) \left( u+\frac{a}{v} \right)^c \right]  \\
+  \exp\left( \frac{s-s_0}{R} \right) &= \left( v-b \right) \left( u+\frac{a}{v} \right)^c \\
+  (v-b)^{-1}\exp\left( \frac{s-s_0}{R} \right)&= \left( u+\frac{a}{v} \right)^c \\
+  \left( v-b \right)^{-\frac{1}{c}}\exp\left( \frac{s-s_0}{cR} \right)&= u+\frac{a}{v} \\
+  u &= -\frac{a}{v}+\left( v-b \right)^{-\frac{1}{c}}\exp\left( \frac{s-s_0}{cR} \right)
+.\end{align*}
+
+Ahora bien, ya teniendo esto podemos derivar como esta ultima expresión en función del volumen y la entropia para encontrar $P$ y $T$ respectivamente.
+\begin{align*}
+  P&= -\frac{\partial u}{\partial v}=-\frac{a}{v^2}+\frac{1}{c}\left( v-b \right)^{\frac{-1-c}{c}}\exp\left( \frac{s-s_0}{cR} \right)  \\
+  T&= \frac{\partial u}{\partial s}=\frac{1}{cR}\left( v-b \right)^{-\frac{1}{c}}\exp\left( \frac{s-s_0}{cR} \right)
+.\end{align*}
+
+Por lo tanto, ahora podemos desarrollar con la formula. Entonces encontramos que
+\begin{align*}
+  h&= u +Pv \\
+   &=  -\frac{a}{v}+\left( v-b \right)^{-\frac{1}{c}}\exp\left( \frac{s-s_0}{cR} \right)\left(-\frac{a}{v^2}+\frac{1}{c}\left( v-b \right)^{\frac{-1-c}{c}}\exp\left( \frac{s-s_0}{cR} \right)\right)v\\
+   &=  -\frac{a}{v}-\frac{av}{v^2}+\left( v-b \right)^{-\frac{1}{c}}\exp+\frac{1}{c}\left( v-b \right)^{\frac{-1-c}{c}}\exp\left( \frac{s-s_0}{cR} \right)v\\
+   &= -\frac{2a}{v}+\frac{1}{c}\left( v-b \right)^{-\frac{1}{c}}\exp\left( \frac{s-s_0}{cR} \right)\left( c+\frac{v}{v-b} \right)  \\
+   &= -\frac{2a}{v}+RT\left( c+\frac{v}{v-b} \right)
+.\end{align*}
+\end{document}

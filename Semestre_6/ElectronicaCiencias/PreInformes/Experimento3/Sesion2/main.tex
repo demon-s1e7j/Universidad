@@ -1,0 +1,325 @@
+\documentclass[a4paper, amsfonts, amssymb, amsmath, reprint, showkeys, nofootinbib, twoside]{revtex4-1}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage[colorinlistoftodos, color=green!40, prependcaption]{todonotes}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[left=23mm,right=13mm,top=35mm,columnsep=15pt]{geometry}
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{csquotes}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage[pdftex, pdftitle={Article}, pdfauthor={Author}]{hyperref} % For hyperlinks in the PDF
+%\setlength{\marginparwidth}{2.5cm}
+\bibliographystyle{apsrev4-1}
+
+\begin{document}
+
+%El título del experimento realizado es importante.
+\title{Analisis de circuitos resistivos. Manejo de multímetro}
+
+
+\author{Sergio Montoya Ramirez}
+\email[Correo institucional: ]{s.montoyar2@uniandes.edu.co}
+
+%Si necesitan poner un segundo autor, deben eliminar los porcentajes (%) iniciales.
+
+\affiliation{Universidad de los Andes, Bogotá, Colombia.}
+
+\date{\today} % Si lo dejan vacío no les saldrá fecha. La fecha que se muestra es del día en que se compila.
+
+\begin{abstract}
+
+  Este texto es el preinforme de la sesión 2 del experimento 3 del curso Electronica para Ciencias de la Universidad de los Andes durante el semestre 202310. Tiene como objetivo la preparación para el posterior desarrollo de la sesión previamente enunciada.
+
+\end{abstract}
+
+\maketitle
+
+\section{Thévenin y Norton}
+
+En este caso, partimos de el siguiente centimetro
+
+\begin{figure}[h!]
+  \begin{center}
+        \begin{circuitikz}
+      \draw (0,0)
+      to[battery2,v_=$5V$,*-] (0,2) % The voltage source
+      to[R=$2k$] (2,2)
+      to[R=$20k$,*-*] (2,0) % The resistor
+      to[short] node[ground] {} (0,0);
+      \draw (2,2)
+      to[short] (4,2)
+      to[R=$4.7k$,*-*] (4,0)
+      to[short] (2,0);
+      \draw (4,2)
+      to[R=$1k$,-*] (6,2)
+      (4,0) to[short,-*] (6,0);
+   \end{circuitikz}
+    \caption{Circuito inicial}
+  \end{center}
+\end{figure}
+
+Este circuito es equivalente (por equivalencia de fuentes) a este otro:
+\begin{figure}[h!]
+  \begin{center}
+        \begin{circuitikz}
+      \draw (0,0)
+      to[V,v=$2.5mA$,*-] (0,2) % The voltage source
+      to[short] (2,2)
+      to[R=$2k$,*-*] (2,0) % The resistor
+      to[short] node[ground] {} (0,0);
+      \draw (2,2)
+      to[short] (3,2)
+      to[R=$20k$,*-*] (3,0)
+      to[short] (2,0);
+      \draw (3,2)
+      to[short] (4,2)
+      (4,2) to[R=$4.7k$,*-*] (4,0)
+      (3,0) to[short] (4,0);
+      \draw (4,2)
+      to[R=$1k$,-*] (6,2)
+      (4,0) to[short,-*] (6,0);
+   \end{circuitikz}
+    \caption{Circuito en donde reemplazamos las equivalencias de fuentes}
+  \end{center}
+\end{figure}
+
+Ahora con esto podemos calcular la resistencia de Thevenin con lo cual podemos sumar los inversos de cada resistencia en paralelo como sigue:
+
+\begin{figure}[h!]
+  \begin{center}
+        \begin{circuitikz}
+      \draw (0,0)
+      to[R=$2k$] (0,2) % The voltage source
+      to[short] (2,2)
+      to[R=$20k$,*-*] (2,0) % The resistor
+      to[short] node[ground] {} (0,0);
+      \draw (2,2)
+      to[short] (4,2)
+      to[R=$4.7k$,*-*] (4,0)
+      to[short] (2,0);
+      \draw (4,2)
+      to[R=$1k$,-*] (6,2)
+      (4,0) to[short,-*] (6,0);
+   \end{circuitikz}
+    \caption{Circuito inicial}
+  \end{center}
+\end{figure}
+
+\begin{align*}
+  R_{||}= \left( \frac{1}{2k} + \frac{1}{20k} + \frac{1}{4.7k} \right)^{-1} \\
+  = 1.3110
+.\end{align*}
+
+que fue obtenido con calculadora. Entonces en este momento el circuito se ve de este estilo:
+\begin{figure}[h!]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0,0)
+      to[R=$1.311k$ ](0,2)
+      (0,0) to[short] (2,0)
+      (0,2) to[R=$1k$] (2,2);
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+que entonces nos queda con una resistencia de:
+\begin{align*}
+  R_{total} &= 1.311k + 1k \\
+  &= 2.3k
+.\end{align*}
+
+Ahora bien, para calcular el voltaje de circuito abierto nos aprovechamos de este circuito anterior y le ponemos la fuente (recordemos que era de corriente por que habiamos hecho el cambio justo antes) y podemos entonces saber cuanto deberia valer esta fuente de voltaje que seria:
+\begin{align*}
+  V_{f}&= I_{f}R_{||} = 2.5 \cdot 1.311 \approx 3.3 V \\
+.\end{align*}
+con lo cual quedamos con el circuito:
+
+\begin{figure}[h!]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0,0)
+      to[battery2,v_=$3.3V$](0,2)
+      (0,0) to[short] (4,0)
+      (0,2) to[R=$1.311k$] (2,2)
+      to[R=$1k$ ] (4,2);
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+Por lo tanto, se tiene que el circuito de thevenin es 
+\begin{figure}[h!]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0,0)
+      to[battery2,v_=$3.3V$](0,2)
+      (0,0) to[short] (2,0)
+      (0,2) to[R=$2.311k$] (2,2);
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+y la equivalencia de Norton
+\begin{figure}[h!]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0,0)
+      to[V,v=$1.4mA$](0,2)
+      (0,0) to[short] (4,0)
+    (2,2) to[R=$2.311$ ] (2,0)
+      (0,2) to[short] (4,2);
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+\section{Calcular Voltajes}
+El circuito general es:
+\begin{figure}[h!]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0,0)
+      to[battery2,v_=$3.3V$] (0,2)
+      to[R=$10k$ ](2,2)
+      to[R=$1k$] (2,0) node[ground] {} to[short] (0,0);
+      \draw(2,2)
+      to[R=$2.2k$ ](4,2)
+      to[battery2,v_=$5V$ ] (4,0)
+      to[short] (2,0);
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+
+Ahora tenemos que encontrar para cada resistencia y cada rama su corriente en diferentes cirscunstancias
+\subsection{}
+
+Donde llamaremos nodo $A$ al nodo entre la fuente de y la resistencia de $10k$, nodo B al nodo entre las 3 resistencias y nodo C al unico que queda.
+
+Con la fuente de $3.3V$ y la otra apagada. Con lo cual el circuito queda:
+\begin{figure}[h!]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0,0)
+      to[battery2,v_=$3.3V$] (0,2)
+      to[R=$10k$ ](2,2)
+      to[R=$1k$] (2,0)
+      node[ground] {} to[short] (0,0);
+      \draw(2,2)
+      to[R=$2.2k$ ](4,2)
+      to[short ] (4,0)
+      to[short] (2,0);
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+con lo cual tenemos
+\begin{align*}
+  \text{Nodo A: }I_1=I_2\\
+  \text{Nodo B:} I_2=I_3+I_4\\
+  \text{Nodo C:} I_1 =I_3+I_4\\
+  \text{10k: } V_A-V_B = I_2\cdot 10k\\
+  \text{1k:} V_B-V_C = I_4\cdot 1k\\
+  \text{2.2k:} V_A-V_C = I_{3}\cdot 2.2k\\
+  \text{Fuente: }V_{A}-V_{C}&= 3.3V \\
+  \text{Tierra:} V_C=0
+.\end{align*}
+
+Con estas ecuaciones podemos encontrar el voltaje de $V_{B}$ con lo siguiente
+\begin{align*}
+  V_{C}&= 0 \\
+  V_{A}&= 3.3 V \\
+  V_{B}&= V_{A}-I_2\cdot 10k \\
+  &= V_{A}-\left( I_3+I_4 \right) 10k \\
+  &= V_{A}-V_{B}\left( \frac{1}{1k}+\frac{1}{2.2k} \right) 10k \\
+  \left( 1+\left( \frac{3.2}{2.2k}10k \right)  \right) V_{B}&= V_{A} \\
+  V_{B}&= \frac{V_{A}}{1+\frac{3.2}{2.2k}}=0.21V\\
+  I_{4}&= \frac{V_{B}}{2.2k}=0.095 \\
+  I_{3}&= \frac{V_{B}}{1k}=0.21 \\
+  I_{1}&= I_{2}=0.305
+.\end{align*}
+
+Ahora para calcular por ramas tenemos
+\begin{align*}
+  I_{izquierda}=I_{1}&=I_{2}=0.305mA\\
+  I_{derecha}=I_{4}&=0.095mA  \\
+  I_{centro}&= 0.21mA
+.\end{align*}
+
+\subsection{}
+
+Donde llamaremos nodo $A$ al nodo entre la fuente de y la resistencia de $10k$, nodo B al nodo entre las 3 resistencias y nodo C al unico que queda.
+
+Con la fuente de $3.3$ Apagada y la de $5V$ prendida tendriamos
+\begin{figure}[h!]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0,0)
+      to[short] (0,2)
+      to[R=$10k$ ](2,2)
+      to[R=$1k$] (2,0)
+      node[ground] {} to[short] (0,0);
+      \draw(2,2)
+      to[R=$2.2k$ ](4,2)
+      to[battery2,v_=$5V$ ] (4,0)
+      to[short] (2,0);
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+\begin{align*}
+  \text{Nodo A: }I_1=I_2\\
+  \text{Nodo B:} I_2=I_3+I_4\\
+  \text{Nodo C:} I_1 =I_3+I_4\\
+  \text{10k: } V_B-V_C = I_4\cdot 10k\\
+  \text{1k:} V_B-V_C = I_3\cdot 1k\\
+  \text{2.2k:} V_A-V_B = I_{2}\cdot 2.2k\\
+  \text{Fuente: } V_A - V_C = 5V\\
+  \text{Tierra:} V_C=0
+.\end{align*}
+
+Ahora entonces
+\begin{align*}
+  V_{B}&= V_{A}-I_{2}\cdot 2.2k=V_{A}-\left( I_{3}+I_{4} \right) 2.2k \\
+  &= V_{A}-\left( \frac{1}{1k}+\frac{1}{10k} \right)V_{B}2.2k  \\
+  \left( 1+\frac{24.2}{10} \right) V_{B}&= V_{A} \\
+  V_{B}&= \frac{V_{A}}{\frac{34.2}{10}}=1.46V \\
+  I_{4}&= \frac{V_B}{10k}=0.146mA \\
+  I_{3}&= \frac{V_{B}}{1k}=1.46 mA \\
+  I_{2}&= I_1=1.606 mA
+.\end{align*}
+
+Ahora bien:
+\begin{align*}
+  V_{2.2k} &= V_A - V_B = 5V-1.46V=3.54V \\
+  V_{10k} &= V_B - V_C = 1.46V \\
+  V_{1k} &= V_B - V_C = 1.46V
+.\end{align*}
+y por ramas
+
+\begin{align*}
+  I_{izquierda}&= I_{4}=0.146mA \\
+  I_{derecha}&= I_1=1.606mA \\
+  I_{centro}&= 1.46mA
+.\end{align*}
+
+\subsection{}
+Con las dos fuentes encendidas debemos usar el principio de superposición
+\begin{align*}
+  V_{2.2k}&= 3.54V-0.21V=3.33V \\
+  V_{10k}&= 1.46V-3.09V=-1.63V \\
+  V_{1k} &= 1.46V+0.21V=1.67V \\
+  I_{centro} &= 1.67 \\
+  I_{izquierda} &= -0.159 mA \\
+  I_{derecha} &= 1.511 mA
+.\end{align*}
+\section{Nota:}
+Para la realización de este preinforme se utilizaron las diapositivas vistas en la clase del lunes 28 de agosto y se hablo con compañeros para la solución de inquietudes en los ejercicios.
+\end{document}

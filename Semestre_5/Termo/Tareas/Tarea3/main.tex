@@ -1,0 +1,297 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Termodinamica} % This is the name of the course 
+\newcommand{\examnum}{Taller 3} % This is the name of the assignment
+\newcommand{\examdate}{09-03-2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya Ramirez}\\%Your name here instead, obviously 
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+
+
+
+\begin{enumerate} %You can make lists!
+
+	\item \textbf{2.6-4} Para el sistema que tenemos sabemos que sus ecuaciones de estado son:
+		\begin{align*}
+			&\frac{1}{T^{(1)}}=\frac{3}{2}R\frac{N^{(1)}}{U^{(1)}}\\
+			&\frac{1}{T^{(2)}}=\frac{5}{2}R\frac{N^{(2)}}{U^{(2)}}
+		\end{align*}
+		Ahora bien, con esto podemos despejar $U^{(n)}$ para cada caso que nos queda
+		\begin{align*}
+			&U^{(1)}=\frac{3}{2}R N^{(1)}T^(1)_0\\
+			&U^{(2)}=\frac{5}{2}R N^{(2)}T^{(2)}_0
+		\end{align*}
+		Y con eso podemos calcular $U_T$ lo cual nos queda
+		\begin{align*}
+			&U_T = \frac{3}{2}R N^{(1)}T^(1)_0 + \frac{5}{2}R N^{(2)}T^{(2)}_0\\
+			&U_T = R(\frac{3}{2} N^{(1)}T^(1)_0 + \frac{5}{2} N^{(2)}T^{(2)}_0)
+		\end{align*}
+		Y ahora podemos igualar $U_T$ a las ecuaciones de estado cuando ya estan en equilibrio. lo que nos queda
+		\begin{align*}
+			&U_T = RT_f(\frac{3}{2} N^{(1)} + \frac{5}{2} N^{(2)})
+		\end{align*}
+		Que si despejamos $T_f$ nos queda
+		\begin{align*}
+			\frac{U_T}{R(\frac{3}{2} N^{(1)} + \frac{5}{2} N^{(2)})}&=T_f\\
+			\frac{\cancel{R}(\frac{3}{2} N^{(1)}T^{(1)}_0 + \frac{5}{2} N^{(2)}T^{(2)}_0)}{\cancel{R}(\frac{3}{2} N^{(1)} + \frac{5}{2} N^{(2)})}&=T_f\\
+			321 &= T_f
+		\end{align*}
+	\item \textbf{2.7-1} para iniciar podemos saber que 
+		\begin{align}
+			&0 = \delta U^1 + \delta U^2 + \delta U^3 \label{eq:1.7-1.1}\\
+			&\delta V^1 = \frac{\delta V^2}{2} = \frac{\delta V^3}{3} \label{eq:1.7-1.2} 
+		\end{align}
+		y con esto podemos plantear $\Delta S$ lo que nos queda
+		\begin{align*}
+			\Delta S &= \frac{1}{T^1}\delta U^1 + \frac{1}{T^2}\delta U^2 + \frac{1}{T^3}\delta U^3\\
+			&+\frac{P^1}{T^1}\delta V^1 + \frac{P^2}{T^2} \delta V^2 + \frac{P^3}{P^3}\delta V^3
+		\end{align*}
+		Ahora bien, utilizando las ecuaciones \ref{eq:1.7-1.1} y \ref{eq:1.7-1.2} tenemos que
+		\begin{align*}
+			\Delta S &= \frac{1}{T^1}(-\delta U^2 - \delta U^3) + \frac{1}{T^3}\delta U^2 + \delta U^3\\
+			&+\delta v(\frac{P^1}{T^1}+\frac{2P^2}{T^2}+\frac{3P^3}{T^3})\\
+			\Delta S &= \delta U^2(\frac{1}{T^2}-\frac{1}{T^1})+\delta U^3(\frac{1}{T^3}-\frac{1}{T^1})\\
+			&+\delta v(\frac{P^1}{T^1}+\frac{2P^2}{T^2}+\frac{3P^3}{T^3})
+		\end{align*}
+		como $\delta U^1,\delta U^2 > 0$ entonces $T^2 = T^1 = T^3$ y como $\Delta S = 0$ entonces
+		\begin{align*}
+			&0 = \frac{P^1+2P^2+3P^3}{T}\\
+			&0 = P^1 + 2P^2 + 3P^3
+		\end{align*}
+	\item \textbf{2.8-1} Para esto comenzamos con 
+		\begin{align*}
+			\frac{\partial S}{\partial U} = 0 + \frac{NR}{\left(\frac{U^{\frac{3}{2}}V}{N^{\frac{5}{2}}}\right)}U^{\frac{1}{2}}\left(\frac{V}{N^{\frac{5}{2}}}\right)\frac{3}{2}+ 0= \frac{1}{T} = \frac{3NR}{2U}
+		\end{align*}
+	Donde
+		\begin{align*}
+			U &= \frac{3NRT}{2}\\
+			U_T &= U_1 + U_2 = \frac{3}{2}R(N^{1}T^1+N^2T^2)\\
+			T_{final} &= \frac{2U_T}{3NR}= \frac{2(\frac{3}{2}R(N^{1}T^1+N^2T^2))}{3NR}=\frac{N^1T^1+N^2T^2}{N}
+			&= 272.7 K
+		\end{align*}
+		Por otro lado
+		\begin{align*}
+			\frac{\partial S}{\partial V} = 0 + \frac{NR}{\left(\frac{U^{\frac{3}{2}}V}{N^{\frac{5}{2}}}\right)}\frac{U^{\frac{3}{2}}}{N^{\frac{5}{2}}} = \frac{NR}{V} = \frac{P}{T}
+		\end{align*}
+		Ademas
+		\begin{align*}
+			-\frac{\mu_1}{T} &= A + R\ln(\frac{U^{\frac{3}{2}}V}{N^{\frac{5}{2}}})-\frac{5}{2}R-R\ln\left(\frac{N_1}{N_1+N_2}\right)\\
+			&= R\ln\frac{U^{\frac{3}{2}}V}{N_1N^{\frac{3}{2}}}+\left[A-\frac{5}{2}R\right]
+		\end{align*}
+Ahora bien, las condiciones de equilibrio que buscamos son
+\begin{align*}
+	\frac{1}{T_1}=\frac{1}{T_2}\\
+	\frac{\mu_1}{T_1}= \frac{\mu_2}{T_2}
+\end{align*}
+Con lo cual nos queda
+\begin{align*}
+	R\ln\frac{U^{\frac{3}{2}}V}{N_1N^{\frac{3}{2}}}+\left[A-\frac{5}{2}R\right] &= R\ln\frac{U^{\frac{3}{2}}V}{N_1N^{\frac{3}{2}}}+\left[A-\frac{5}{2}R\right]\\
+	e^{\ln\frac{U^{\frac{3}{2}}V}{N_1N^{\frac{3}{2}}}+\left[A-\frac{5}{2}R\right]} &= e^{\ln\frac{U^{\frac{3}{2}}V}{N_1N^{\frac{3}{2}}}+\left[A-\frac{5}{2}R\right]}
+	\frac{U_1^{\frac{3}{2}}}{N_1(N_1+N_2)^{\frac{3}{2}}}&=\frac{U_2^{\frac{3}{2}}}{N_1(N_1+N_2)^{\frac{3}{2}}}\\
+	\frac{1}{N_1}&=\frac{1}{N_2}
+	N_1&=0.75
+\end{align*}
+Y por la ecuación fundamental $PV=NRT$
+$$P_1=678504Pa$$
+$$P_2=565420Pa$$
+	\item \textbf{2.9-1} Tenemos en este caso, una reacción de la forma
+		\begin{align*}
+			C_3H_8 + 2H_2 \rightleftarrows 3CH_4
+		\end{align*}
+		Por otro lado, tenemos para el \textit{Ejemplo 1} de la sección \textit{2.7} tenemos un sistema con una relación de volumenes 1:2:3. Por lo tanto podemos comparar el coeficiente estequiometrico con el volumen. Ahora bien, con esto y como nos indica el libro lo unico que debemos hacer es seguir el razocinio de de este ejemplo y con ello llegar al resultado. 
+		Lo primero que se hace es plantear la ecuación de $\delta S$ como realmente no nos interesa nada por fuera de $\mu$ entonces quedemonos con
+		\begin{align*}
+			\delta S = \frac{N_1}{T}\delta\mu_1 + \frac{N_2}{T}\delta\mu_2 + \frac{N_3}{T}\delta\mu_3
+		\end{align*}
+		Por lo planteado al inicio sabemos que
+		\begin{align*}
+			N_1 = \frac{N_2}{2} = \frac{N_3}{3}
+		\end{align*}
+		por lo tanto si intercambiamos nos queda
+		\begin{align*}
+			\delta S &=  \frac{N_1}{T}\delta\mu_1 + \frac{2N_1}{T}\delta\mu_1 + \frac{3N_1}{T}\delta\mu_1\\
+			\delta S &= ( \frac{N_1}{T} + \frac{N_2}{T} + \frac{N_3}{T})\delta\mu_1
+		\end{align*}
+		Y de ahi sacamos que en equilibrio se tiene que
+		\begin{align*}
+			\mu_{C_3H_8} + 2\mu_{H_2} = 3\mu_{3CH_4}
+		\end{align*}
+		Esto era mas facil sacarlo desde la ecuación \textit{(2.72)}
+	\item \textbf{3.1-1}
+		\begin{align*}
+			&\frac{\partial S}{\partial U}=\frac{1}{2}K(NU+CV^2)^{-\frac{1}{2}}N\\
+			&\frac{\partial S}{\partial V}=\frac{1}{2}K(NU+CV^2)^{-\frac{1}{2}}2cv
+		\end{align*}
+	\item \textbf{\textbf{3.2-1}} Tenemos que la ecuación es
+		\begin{align*}
+			U = \left(\frac{v_0^2\theta}{R^3}\right)\frac{S^4}{NV^2}
+		\end{align*}
+		por lo tanto queda
+		\begin{align*}
+			\frac{\partial U}{\partial s} = T &= 4\left(\frac{v_0^2\theta}{R^3}\right)\frac{S^3}{NV^2}\\
+			-\frac{\partial U}{\partial v} = P &= 2\left(\frac{v_0^2\theta}{R^3}\right)\frac{S^4}{NV^3}\\
+			\frac{\partial U}{\partial N} = \mu &= -\left(\frac{v_0^2\theta}{R^3}\right)\frac{S^4}{N^2V^2}
+		\end{align*}
+		Una vez tenemos estas ecuaciones de estado entonces podemos calcular
+		\begin{align*}
+			\frac{P}{T} &=\frac{2\left(\frac{v_0^2\theta}{R^3}\right)\frac{S^4}{NV^3}}{4\left(\frac{v_0^2\theta}{R^3}\right)\frac{S^3}{NV^2}} = \frac{S}{2V}\\ 
+			\frac{\mu}{T} &=\frac{-\left(\frac{v_0^2\theta}{R^3}\right)\frac{S^4}{N^2V^2}}{4\left(\frac{v_0^2\theta}{R^3}\right)\frac{S^3}{NV^2}}=-\frac{S}{4N}
+		\end{align*}
+		Ahora bien, con esto ya podemos separar parte por parte la primera expresión (Que nos relaciona la temperatura para que esta tenga los otros dos valores de la siguiente manera)
+		\begin{align*}
+			T &= 4\left(\frac{v_0^2\theta}{R^3}\right)\frac{S^3}{NV^2}\\
+			T &= 4\left(\frac{v_0^2\theta}{R^3}\right)\frac{S}{N}\frac{S^2}{V^2}\\
+			T &= 4\left(\frac{v_0^2\theta}{R^3}\right)\frac{S}{N}\left(\frac{S}{V}\right)^2\\
+			T &= 4\left(\frac{v_0^2\theta}{R^3}\right)-4\frac{\mu}{T}\left(2\frac{P}{T}\right)^2\\
+			T^4 &= -32\left(\frac{v_0^2\theta}{R^3}\right)\mu P^2
+		\end{align*}
+	\item \textbf{3.3-1}
+		Para iniciar tenemos que
+		\begin{align*}
+			&T=\frac{3AS^2}{V}\\
+			&P=\frac{AS^3}{V^2}
+		\end{align*}
+		\begin{enumerate}
+			\item \begin{align*}
+					\delta \mu &= -S\delta T + V\delta P\\
+					&= -S\delta \left(\frac{3AS^2}{V}\right)+ V\delta\left(\frac{AS^3}{V^2}\right)
+					&= \left(-\frac{GAS}{V}dS+\frac{3AS^2}{V^2}\right)dS+\left(\frac{3AS^3}{V^2}-\frac{2AS^3}{V^2}\right)dV
+					&\delta(-\frac{AS^3}{V})=\delta \mu
+			\end{align*}
+				Si integramos esto nos queda
+				\begin{align*}
+					\mu = -\frac{AS^3}{V}+ const
+				\end{align*}
+				Ahora por euler sabemos que
+				\begin{align*}
+					&U = TS-PV+\mu N\\
+					&U=\frac{AS^3}{VN}
+				\end{align*}
+			\item
+				\begin{align*}
+					&\delta u = T\delta S - P\delta V\\
+					\left(\frac{3AS^2}{V}\right)dS-\frac{AS^3}{V^2}dV
+				\end{align*}
+				Con esto podemos plantear que
+				\begin{align*}
+					\phi = \frac{AS^3}{V}
+				\end{align*}
+				entonces
+				\begin{align*}
+					\delta u = d\frac{AS^3}{V}
+				\end{align*}
+				Una vez mas si integramos y ademas dividimos en N nos queda
+				\begin{align*}
+					U=\frac{A\frac{S^3}{N^3}}{\frac{V}{N}}=\frac{AS^3}{VN}
+				\end{align*}
+		\end{enumerate}
+	\item \textbf{3.3-2}
+		Iniciemos nombrando las ecuaciones de estado encontradas que son
+		\begin{align*}
+			&U=PV\\
+			&P=BT^2
+		\end{align*}
+		Ahora bien tenemos que
+		\begin{align*}
+			&\sqrt{P}=\sqrt{B}T\\
+			&\frac{1}{T}=\sqrt{\frac{B}{P}}=\sqrt{\frac{BV}{U}}	
+		\end{align*}
+		Por otro lado
+		\begin{align*}
+			U&=PV\\
+			UP &= P^2V\\
+			UBT^2 = P^2V\\
+			P = \sqrt{\frac{UB}{V}}T\\
+			\frac{P}{T} = \sqrt{\frac{UB}{V}}
+		\end{align*}
+		Por otro lado
+		\begin{align*}
+			&dS = \frac{1}{T}dU + \frac{P}{T}dv\\
+			&dS = \sqrt{\frac{B}{P}}=\sqrt{\frac{BV}{U}}dU	+ \sqrt{\frac{UB}{V}}dV\\
+			&dS = d\left(2\sqrt{BVU}\right)
+		\end{align*}
+		Sacando la derivada nos queda
+		\begin{align*}
+			&S =  2\sqrt{BVU}
+		\end{align*}
+		Si ponemos su versión molar queda
+		\begin{align*}
+			\frac{S}{N} = 2\sqrt{B\frac{U}{N}\frac{V}{N}}=2\frac{\sqrt{BVU}}{N}\\
+			S=2\sqrt{BVU}
+		\end{align*}
+	\item \textbf{\textbf{3.4-1}}
+		\begin{enumerate}
+			\item Por hidrostatica sabemos que $P_A = P_B$ y por el problema per se sabemos que $P_A$ es la presión de equilibrio. Por lo tanto, solo debemos encontrar $P_B$. Ahora bien, para hacer esto utilizaremos una ecuación vista en \textit{Ondas y Fluidos}
+				\begin{align*}
+					\rho - \varDelta \Vec{f}	&= \varDelta P\\
+					\rho g &= \frac{\delta P}{\delta h}\\
+					P = \int \rho g \delta h = \rho g h + P_0 &= \frac{mgh}{V_{hg}}+P_0=\frac{Wh}{V} + P_{atm}
+				\end{align*}
+			\item Por la ecuación de un gas ideal $PV = NRT$ aplicada para este caso (Donde V es constante) y por tanto podemos plantear
+				\begin{align*}
+					V &= V\\
+					\frac{N_1RT_1}{P_1} &= \frac{N_2RT_2}{P_2}\\
+					N_1 &= N_2 \text{ Por el sistema }\\
+					\frac{T_1}{P_1} = \frac{T_2}{P_2}
+				\end{align*}
+				Por lo tanto, si se mide $k$ para un caso conocido esto queda
+				\begin{align*}
+					T = KP = K\left(\frac{mgh}{v}+p_0\right)
+				\end{align*}
+			\item Un termometro de presión constante significa que trabajaria bajo $\frac{T}{V} = const$. Es decir $T=kV$ por lo que solo harian falta estos dos para medir temperatura.
+\end{enumerate}
+	\item \textbf{3.4-2} Al ser un gas ideal con compresion adiabática se cumple que $dU = -PdV$. Ademas, $U=\frac{3}{2}NRT=PV$ por la ecuación de un gas ideal. Asi pues:
+		\begin{align*}
+			dU = d\left(\frac{3}{2}PV\right)&=\frac{3}{2}PdV + \frac{3}{2}VdP = -PdV\\
+			&=\frac{5}{z}PdV = \frac{-3}{z}VdP\\
+			&=\frac{5}{V}dV = \frac{-3}{p}dP\\
+			&5\ln(V)=-3\ln(P) + \phi\\
+			&PV^{\frac{5}{3}}=const
+		\end{align*}
+
+		Ademas, se logra ver que:
+		\begin{align*}
+			s &= s_0 + \ln\left(\frac{U}{U_0}\left(\frac{V}{V_0}\right)^{\frac{2}{3}}\right)\\
+			s-s_0 &= \ln\left(\frac{U}{U_0}\left(\frac{V}{V_0}\right)^{\frac{2}{3}}\right)\\
+			e^{s-S_0} &= \frac{U}{U_0}\left(\frac{V}{V_0}\right)^{\frac{2}{3}}\\
+			e^{\frac{2(s-S_0)}{3RN}} &= \frac{\frac{3}{2}PV}{U_0}\left(\frac{V}{V_0}\right)^{\frac{2}{3}}=\frac{3}{2}\frac{PV^{\frac{5}{3}}}{U_0V_0^{\frac{2}{3}}}\\
+			PV^{\frac{5}{3}}&=\frac{2}{3}U_0V_0^{\frac{2}{3}}e^{\frac{2(s-s_0)}{3R}} = const
+		\end{align*}
+	\end{enumerate}
+\section*{Parte Escrita}
+La entropia en un gas puede estudiarse matematicamente. Sin embargo, es quisas mas interesante para este ejercicio dado el contexto (en donde llevamos varios puntos del taller trabajando con su definición matematica) el dar una intuición de ello. Imagine usted a la entropia como el numero de microestados. ¿Que son los microestados? Pues bien su definición formal son la cantidad de posiciones que puede tomar un cuerpo. Es decir, un documento organizado tiene una configuración correcta, la secuencial. Sin embargo, usted puede poner las ojas en un orden arbitrario. Concretamente, tome un documento de 10 paginas. La cantidad de posibilidades para que el documento este ordenado son 1. pero si queremos cambiar solo una hoja entonces las posibilidades serian 10 y si lo que quisieramos es ordenar aleatoriamente las 10 hojas tendriamos $10! = 3628800$ formas de organizarlo de las cuales solo 1 se considera correcta. Hay tres anotaciones muy importantes que dar con este ejemplo. Primero, Este es un ejemplo macroscopico. Imagine las hojas como particulas de un gas y por ende sus caracterizticas cambian ya no hablariamos de 10 particulas si no de moles completos (Mas de 20 ordenes de magnitud por encima). Segundo, este es un ejemplo lineal, es decir, todo lo que puedes hacer con un documento es cambiarle la  secuencia de sus paginas. Sin embargo, un gas puede tomar esencialmente cualquier configuración en un espacio dado, esto imagineselo con el volumen. Por ultimo, esta el tema de la presión. En nuestro ejemplo,  no existe realmente un equivalente de la presión pero esta es en esencia la manera en la que evitamos que la entropia aumente. Por eso mismo la presión aumenta cuando aumentan las particulas y disminuye cuando aumenta el volumen (con las mismas particulas). En esencia esta es una intuición de lo que la entropia representa para un gas.
+\end{document}

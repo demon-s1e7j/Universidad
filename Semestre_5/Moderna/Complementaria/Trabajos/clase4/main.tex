@@ -1,0 +1,123 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Moderna - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Clase 4}% This is the name of the assignment
+\newcommand{\examdate}{17/02/2023} % This is the due date
+\newcommand{\timelimit}{}
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \textit{David Pachon Ballen}\\ %Your name here instead, obviously 
+\textbf{\examnum} &&\textit{Sergio Montoya Ramírez}\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+\begin{enumerate}
+  \item \textbf{Punto 1} : Cual es la distancia que viaja el pión antes de desintegrarse, si su tiempo de vida medio es $\tau = 8,4\times 10^{-17}s$? Asuma que los protones están inicialmente en reposo.
+
+    Para resolver esto tenemos que primero encontrar la velocidad, lo cual haremos aprovechandonos de los siguientes conocimientos.
+    \begin{align}
+      &E_{p^+} = E_{e^+} + E_{\pi} \hspace{1cm}\text{ (La energía se conserva) }\label{eq:1}\\
+      &P_{e^+} = P_{\pi} \hspace{1cm}\text{ (El momentum se conserva) }\label{eq:2}\\
+      &\gamma_\pi = \frac{1}{\sqrt{1-\frac{v_\pi^2}{c^2}}}\hspace{1cm} \text{ (Definición de $\gamma_\pi$) } \label{eq:3}\\
+      & d = \gamma v t' \hspace{1cm} \text{ Distancia recorrida } \label{eq:4}
+    \end{align}
+    Con esto en mente vamos a darle tratamiento a cada una de las ecuaciónes arriba siguiendo estos pasos:
+    \begin{enumerate}
+      \item Primero: acomodamos \ref{eq:1} para que nos resulte mas comodo.
+        \begin{align*}
+          &E_{p^+} = E_{e^+} + E_{\pi}\\
+          &\Rightarrow m_{p^+}\cancel{c^2} = \gamma_{e^+}m_{e^+}\cancel{c^2} + \gamma_{\pi}m_{\pi}\cancel{c^2}\\
+          &\Rightarrow m_{p^+} - \gamma_{\pi}m_{\pi} = \gamma_{e^+}m_{e^+}\\
+          &\Rightarrow (m_{p^+} - \gamma_{\pi}m_{\pi})^2 = \gamma_{e^+}^2m_{e^+}^2\\
+          &\Rightarrow m_{p^+}^2 - 2m_{p^+}\gamma_{\pi}m_{\pi} + \gamma_{pi}^2m_{\pi}^2 = \gamma_{e^+}^2m_{e^+}^2
+        \end{align*}
+      \item Segundo: Conseguimos una expresión de $\gamma_{e^{+}}^2$ con \ref{eq:2} de la siguiente manera:
+        \begin{align*}
+          &P_{e^+} = P_{\pi}\\
+          &\Rightarrow\gamma_{e^+}\beta_{e^+}m_{e^+}\cancel{c} = \gamma_{\pi}\beta_{\pi}m_{\pi}\cancel{c}\\
+          &\Rightarrow\gamma_{e^+}^2\beta_{e^+}^2m_{e^+}^2 = \gamma_{\pi}^2\beta_{\pi}^2m_{\pi}^2\\
+          &\gamma^2\beta^2 = \gamma^2 - 1\\
+          &\Rightarrow (\gamma_{e^+}^2-1)m_{e^+}^2 = (\gamma_{\pi}^2 - 1)m_{\pi}^2\\
+          &\Rightarrow \gamma_{e^+}^2 = \frac{(\gamma_{\pi}^2-1)m_{\pi}^2}{m_{e^+}^2}+1
+        \end{align*}
+      \item Tercero: Para la ecuación que encontramos en el primer paso, reemplazamos con el $\gamma_{e^+}^2$ que encontramos en el segundo paso.
+        \begin{align*}
+          & m_{p^+}^2 - 2\gamma_{\pi}m_{\pi}m_{p^+} + \gamma_{\pi}^2m_{\pi}^2 = \left(\frac{(\gamma_{\pi}^2-1)m_{\pi}^2}{m_{e^+}^2}+1\right)m_{e^+}^2\\
+          & m_{p^+}^2 - 2\gamma_{\pi}m_{\pi}m_{p^+} + \gamma_{\pi}^2m_{\pi}^2 = \frac{(\gamma_{\pi}^2m_{\pi}^2-m_{\pi}^2)\cancel{m_{e^+}^2}}{\cancel{m_{e^+}^2}} + m_{e^+}^2\\
+          & m_{p^+}^2 - 2\gamma_{\pi}m_{\pi}m_{p^+} + \cancel{\gamma_{\pi}^2m_{\pi}^2} = \cancel{\gamma_{\pi}^2m_{\pi}^2} - m_{\pi}^2 + m_{e^+}^2\\
+          & -2\gamma_{\pi}m_{\pi}m_{p^+} = -m_{p^+}^2 - m_{\pi}^2 + m_{e^+}^2\\
+          & 2\gamma_{\pi}m_{\pi}m_{p^+} = m_{p^+}^2 + m_{\pi}^2 - m_{e^+}^2\\
+          & \gamma_{\pi} = \frac{m_{p^+}^2+m_{\pi}^2-m_{e^+}^2}{2m_{\pi}m_{p^+}}
+        \end{align*}
+        Podemos ademas encontrar el valor numerico de esto con la expresión hallada:
+        \begin{align*}
+          &\gamma_{\pi} = \frac{m_{p^+}^2+m_{\pi}^2-m_{e^+}^2}{2m_{\pi}m_{e^+}} = \frac{923^2+134.98^2-0,511^2}{2\cdot134.98\cdot 938} = 3.43
+        \end{align*}
+      \item Teniendo ya el $\gamma_\pi$ nos podemos aprovechar de \ref{eq:3} para encontrar la velocidad
+        \begin{align*}
+          &\gamma_{\pi} = \frac{1}{\sqrt{1-\frac{v^2}{c^2}}}\\
+          &\gamma_{\pi}^2 = \frac{1}{1-\frac{v^2}{c^2}}\\
+          &\frac{1}{3.43^2} = 1-\frac{v^2}{c^2}\\
+          & 1-\frac{1}{3.43^2} = \frac{v^2}{c^2}\\
+          & 0,70c^2 = v^2\\
+          & 0,836c = v
+        \end{align*}
+      \item Por ultimo, solamente hace falta utilizar \ref{eq:4} para calcular la distancia
+        \begin{align*}
+          & d = \gamma_\pi v_\pi t_\pi\\
+          & d = 3.43\cdot 0,836c \cdot 8,4\times10^{-17}s\\
+          & d = 2,408\times^{-1-166}
+        \end{align*}
+    \end{enumerate}
+  \item Para comenzar vamos a aprovechar la Ayuda dada y plantearemos las ecuaciones que conocemos, estas son.
+    \begin{align*}
+      &E = 4m_pc^2\\
+      &E_t = E + m_pc^2
+    \end{align*}
+    Ahora, por las condiciones dadas sabemos que para que esto sea minimo se cumple la siguiente inecuación
+    \begin{align*}
+      & 16 m_p^2c^4 < E_t^2 - P^2_Tc^2\\
+      & E_t = E + m_pc^2\\
+      & P_t = P\\
+      & 16 m_p^2c^4 < (E + m_pc^2)^2 - p^2c^2\\
+      & 16 m_p^2c^4 < E^2 + 2Em_pc^2 + m_p^2c^4 - p^2c^2\\
+      & 16 m_p^2c^4 < m_p^2c^4 + 2Em_pc^2 + m_p^2c^4\\
+      & 16 m_p^2c^4 < 2m_p^2c^4 + 2Em_pc^2\\
+      & 14 m_p^2c^4 < 2Em_pc^2\\
+      & \frac{14 m_p^2c^4}{2m_pc^2} < E\\
+      & 7m_pc^2 < E\\
+    \end{align*}
+\end{enumerate}
+
+\end{document}

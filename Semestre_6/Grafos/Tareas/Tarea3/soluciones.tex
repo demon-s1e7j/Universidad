@@ -1,0 +1,76 @@
+\input{preamble}
+
+\begin{document}
+    \input{heading}
+
+    \section*{Primera Pregunta}
+
+    Suponga por contradicción que $G$ es disconexo. Dado que $d_x, d_y > 0$ entonces estas componentes deben estar repartidas entre $X$ y $Y$. Ahora bien, sabemos por la clase que el numero de arcos de una componente conexa de $m$ elementos es al menos $m-1$. Sin embargo, en este caso dado que tenemos que el mínimo valor que puede tomar la suma del grado de dos vértices es $\frac{n}{2}$ estas componentes superarían lo que esperábamos y en consecuencia debería ser conexo.
+
+    \section*{Segunda Pregunta}
+
+    \subsection*{General}
+
+    Dado que $L\left( G \right) = K_n$ sabemos que $G$ tiene $n$ arcos.
+    
+    \subsection*{Primera Parte}
+
+    Dado que $n\neq 3$ entonces estos vértices tienen asociados mas de dos arcos. Ahora bien, con esto podemos organizar los arcos de cada vértice en $L\left( G \right) $ de tal forma que todo salga de un mismo punto por lo que es isomorfo a $S_n$
+
+    \subsection*{Segunda Parte}
+
+    En el caso de $n=3$ existen 2 posibilidades.
+     \begin{enumerate}
+      \item Cada vértice tiene exactamente dos arcos conectados directamente a un vértice. En donde este seria isomorfo a $S_3$ 
+      \item Uno de los vértices tiene 3 arcos y los otros dos tienen 2. En cuyo caso esto equivale a $K_3$
+    \end{enumerate}
+
+
+    
+    \section*{Tercera Pregunta}
+
+    El árbol recubridor mínimo seria:
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.4\textwidth]{Imagenes/grafo1.png}
+      \caption{Árbol recubridor mínimo del grafo puesto en el punto 3 de la tercera tarea}
+      \label{fig:grafo1}
+    \end{figure}
+
+    Y el orden en el que entraron los vértices fue:
+    \begin{enumerate}
+      \item $\left\{ C, F \right\} $ 
+      \item $\left\{ A,D \right\} $ 
+      \item $\left\{ A,C \right\} $ 
+      \item $\left\{ A,B \right\} $ 
+      \item $\left\{ F,G \right\} $ 
+      \item $\left\{ B,E \right\} $
+    \end{enumerate}
+
+    \section*{Cuarta Pregunta}
+    \subsection*{Primera Parte}
+
+    Asuma por contradicción que existe un árbol recubridor tal que este no comparta ningún vértice con $E$. Por lo tanto todos sus vértices se encuentran en $G-S$. Sin embargo, dado que $E$ es un \textit{Edge-cut} sabemos que  $G-S$ es disconexo y por lo tanto contradictorio.
+
+    \subsection*{Segunda Parte}
+
+    En este caso aprovecharemos la segunda característica. En particular tomo como contraejemplo:
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.4\textwidth]{Imagenes/grafo2}
+      \caption{Grafo contra ejemplo}
+      \label{fig:grafo2}
+    \end{figure}
+
+    En este caso si bien es cierto que el conjunto $G-E$ es disco nexo también se da que no puede existir un $S$ tal que $E = [S,\overline{S}]$
+
+    \section*{Nota}
+
+    Para la realización de este taller se converso con 3 compañeros en la solución de Dudas:
+    \begin{enumerate}
+      \item Ángel
+      \item Germán López
+      \item Gabriela
+    \end{enumerate}
+\end{document}

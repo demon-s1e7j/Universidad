@@ -1,0 +1,72 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ondas - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 12 - Punto 6} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} && \textit{Yeiferson Camacho}\\
+	\textbf{\examdate} && \textit{Monica Cano}
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+ \begin{itemize}
+   \item \textbf{Enunciado:}
+
+     Una red de difracción produce un espectro de segundo orden de luz amarilla $\left(\lambda_0 =550 nm  \right) $ a $25^{\circ}$. Calcule el espacio entre las lineas de la red. 
+
+   \item \textbf{Solución:}
+
+     En este caso, utilizaremos \[
+     \alpha\sin\theta_m = m\lambda
+     .\] Por lo tanto, podemos desarrollar como sigue
+     \begin{align*}
+       \alpha\sin\theta_m &= m\lambda\\
+       \alpha &= \frac{m\lambda}{\sin\theta_m}
+     .\end{align*}
+     
+     Ahora bien, en este caso sabemos que $m=2$, $\lambda = 550 nm$ y $\theta_m = 25^{\circ}$. Sin embargo, para presentar este resultado debemos convertir $\lambda$ a metros. Por lo tanto esto no queda como \[
+     \lambda = 550 nm = 5.5\times 10^{-7} m
+     .\] 
+
+     Con esto entonces solamente debemos reemplazar estos valores en la ecuación que despejamos previamente y nos encontramos con:
+     \begin{align*}
+       \alpha &= \frac{2\left( 5.5\times 10^{-7} \right) }{\sin\left( 25^{\circ} \right) } \\
+       \alpha &= 2.6\times 10^{-6}
+     .\end{align*}
+   \item \textbf{Analisis Unidades:}
+
+     En este caso solo contamos con un componente con unidades (Claramente la longitud de Onda). En este caso, es un componente de longitud y dado que este se encuentra en el numerador y ademas es justo la misma unidad de $\alpha$ entonces las unidades son correctas.
+ \end{itemize}
+
+\end{document}

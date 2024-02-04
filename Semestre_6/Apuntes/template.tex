@@ -1,0 +1,733 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Apuntes Provicionales}\\Universidad de los Andes}
+\author{\huge{Sergio Montoya Ramirez}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Martes: 15/08/2023}
+
+\section{Curvas y Superficies}
+Demostrar que: \[
+  \Vec{a}\times \left( \Vec{b}\times \Vec{c}\right) =\left( \Vec{a}\cdot \Vec{c} \right) \Vec{b} - \left( \Vec{a}\cdot \Vec{b} \right) \Vec{c}
+.\]
+
+La verdad es que no le preste mucha atención. Deberia comenzar a estudiar desde el libro\ldots
+
+\chapter{Miercoles: 16/08/23}
+
+\section{Grafos}
+\dfn{Listas Graficas}{Sea $G=\left( V,E \right)$ un grafo simple de orden $n$, entonces la lista de grados de $G$ es \[
+DEG\left( G \right) = \left( d_1,\ldots,d_2 \right)
+.\] dond $d_i = DEG\left( v_i \right) $ y $v_1,\ldots,v_n$ es un ordenamiento de $V$ tal que $d_1\ge d_2 \ge \ldots d_n$}
+\dfn{}{Sea $D=\left( d_1,\ldots,d_n \right) $ una lista decrecientes de numeros naturales. Se dice que $D$ es grafica si existe $G$, un grafo simple de orden $n$ tal que  \[
+D=DEG\left( G \right)
+.\] }
+\dfn{}{Sea $G=\left( V,E \right) $ un grafo simple y $S \ subset V$ Diremos que $G\upharpoonright S$ es el grafo \[
+G\upharpoonright S = \left( S, E_s \right)
+.\] donde $E_s = E \cap \begin{pmatrix} S \\ 2 \end{pmatrix} $ }
+
+\thm{Erd\"{o}s - Gallai}{Sea $D=\left( d_1,\ldots,d_n \right) $ una lista decreciente de numeros naturales. Entonces $D$ es grafica $\leftrightarrow$ se cumple
+\begin{align*}
+  \sum_{i=1}^{n} d_i \text{ Es par}\\
+  \text{Para cada }k= 1,\ldots,n \\
+  \sum_{i=1}^{k} d_i \le k\left( k-1 \right) + \sum_{i=k+1}^{n} Min(di,k)
+.\end{align*}}
+\begin{myproof}
+  Suponga que $D$ es grafica. Entonces exite un grafo simple $G=\left( V,E \right) $ de orde $n$ tal que $D=DEG\left( G \right) $. Entonces los elementos de $V$ se pueden ordenar \[
+  V_1,V_2,\ldots,V_k,V_{k+1},\ldots,V_{n}
+  .\] de manera que $d_i=DEG\left( V_i \right) $ para $i = 1,\ldots,n$
+
+  como
+  \begin{align*}
+    \sum_{v\in V} DEG\left( V \right) = 2\epsilon\left( G \right)
+  .\end{align*} por lo tanto $(i)$ vale
+
+  Sea $S=\left\{ v_{1},\ldots,v_k \right\} $ entonces \[
+  \epsilon\left( G\upharpoonright S \right) = \begin{pmatrix} k \\ 2 \end{pmatrix} = \frac{k\left( k-1 \right) }{2} \le  k\left( k - 1 \right)
+  .\] Ademas,, para cada $i \in \left\{ k+1,\ldots, n \right\} $ \[
+  |\left\{ v \in S | v_i \to v \right\} | \le min(k,d_i)
+  .\] Entonces \[
+  \sum_{i=1}^{k} d_i \le k\left( k-1 \right) + \sum_{i=k+1}^{n} min\left( k,di \right)
+  .\]
+
+\end{myproof}
+
+El algoritmo para crear estos grafos es:
+
+\begin{algorithm}[H]
+  \KwIn{Una Lista Decreciente de naturales $D$}
+  \KwOut{Un Grafo con $DEG\left( G \right) = D$ o que no es una lista grafica}
+  \SetAlgoLined
+  $n \leftarrow longitud\left( D \right) $ \;
+  Crear nodos $u_1,\ldots,u_n$ \;
+  $i \leftarrow 1$ \;
+  \While{$D\left( i \right) > 0$}{
+    $k \leftarrow D\left( i \right) $ \;
+    \uIf{$i+k \le n$ and $D\left( i+k \right) > 0$}{
+      Conectar $u_i$ con cada uno de los nodos asociados con las primearas $k$ posiciones (según el orden por bloques) de la sublista  $\left( D\left( i+1 \right) ,\ldots,D\left( n \right)  \right) $ \;
+      Restar 1 al contenido de cada una de las primeras $k$ posciones (según el orden por boques) de la sublista $\left( D\left( i+1 \right) , \ldots, D\left( n \right)  \right) $\;
+      $D\left( i \right) \leftarrow 0$
+    }
+    \Else {
+      $grafica \leftarrow false$ \;
+      exit
+    }
+    $i \leftarrow i+1$ \;
+  }
+  $grafica \leftarrow true$\;
+  \Return El grafo dibujado
+  \caption{Algoritmo para crear Grafos desde una lista decreciente}
+\end{algorithm}
+\dfn{Matriz de Adyacencia}{Sea $G=\left( V,E \right) $ un grafo (simple o dirigido) con vértices $u_1,\ldots,u_n$. La matriz de adyacencias de $G$ es la matriz $Adj$ de dimención $n\times n$ tal que: \[
+    Adj\left[ i,j \right] = Adj\left[ i \right] \left[ j \right] = \left\{ \begin{matrix} 1 & \text{ si } u_i \to u_j \\ 0 & \text{ si } u_i \not\to u_j \end{matrix}  \right.
+.\] }
+\dfn{Lista de Adyacencia}{Un grafo con nodos $u_1,\ldots,u_n$ también se puede representar por medio de un arreglo $AdjList$ de $n$ casillas tal que en la posición $i$ esta la lista de arcos que tiene ese nodo}
+
+\chapter{Viernes: 18/08/2023}
+\section{Grafos}
+\thm{Teorema Havel-Hakimi}{Sea $D= \left( d_1,d_2,\ldots,d_n \right) $ una lista decreciente de naturales tal que $n>d_1$. Sea $D'$ la lista de longitud $n-1$ obtenida al restar 1 de las posiciones $2$ a $d_1+1$ en D, reordenar decrecientemente y eliminar el primer elemento. Entonces
+
+  D es grafica su y solo si D' es grafica
+}
+
+\begin{myproof}{H}
+  Sea $D=\left( d_1,d_2,\ldots,d_n \right) $ Como en el enunciado.
+  \begin{enumerate}
+    \item Suponga que $D'$ es grafica y $G'=\left( V',E' \right) $ es un grafo testigo. Para ver que D es grafica construya $G= \left( V,E \right) $ tal que $V=V'\cup \left\{ v \right\} $ donde $v \not\in V'$ y $E=E'\cup\left\{ \left\{ v_1,v_i \right\} : 2\le i\le d_i+1 \right\} $
+    \item Suponga que $D$ es grafica y sea $G=\left( V,E \right) $ un grafo testigo on $V=\left\{ v_1,\ldots,v_n \right\} $ tal que $DEG\left( V_i \right) =d_i$ para $i = 1,\ldots,n$
+      \begin{enumerate}
+      	\item Si $v_1 \to \left\{ v_2,v_3,\ldots,v_{d_1+1} \right\} $ entonces el grafo $G\upharpoonright\left\{ v_2,\ldots,v_n \right\} $ es testigo de que $D'$ es grafica.
+      	\item Existe un minimo $1<i\le d_1+1$ tal que en  $G$, $v_i \not\to v_i$
+	   \begin{enumerate}
+	    \item $d_i = d_j$ En este caso podemos cambiar el orden de $d_i$ y $d_j$ y entonces caeriamos en el caso (a)
+	    \item $d_i > d_j$ Entonces existe  $v\in V$ tal que $v_i\to v_j \land v_j\to v_i$ entonces $\hat{G} = \left( V, \hat{E} \right) $ donde $\hat{E} = E \cup \left\{ \left\{ v_1,v_i \right\},\left\{ v_j,v \right\}   \right\} \backslash \left\{ \left\{ v_i,v \right\} ,\left\{ v_1,v_j \right\}  \right\} $
+	  \end{enumerate}
+
+	  Si repetimos ambos casos tantas veces como sea necesario quedamos en el caso 1 y por lo tanto concluimos que $D'$ es grafica
+      \end{enumerate}
+  \end{enumerate}
+
+\end{myproof}
+
+\thm{}{Para todo $n\in N^{+}$, se tiene $1+2+3+\ldots+n = \frac{n\left( n+1 \right) }{2}$}
+
+\chapter{Martes: 22/08/2023}
+\section{Electronica para Ciencias}
+\dfn{Ley de Mallas}{La suma de incrementos de voltaje en una malla es igual a la suma de caidas de voltaje.}
+\dfn{Ley de nodos}{En un nodo, la suma de corrientes que ingresan es igual a la suma de corrientes que salen.}
+\subsection{Receta ley de nodos}
+\begin{enumerate}
+  \item Bautizar los nodos
+  \item Asignar una tierra (si no lo hay)
+  \item Dibujar las corrientes a travez de cada elemento
+  \item Plantear ecuaciones
+    \begin{enumerate}
+      \item Ley de nodos
+      \item Ley de Ohm
+      \item Fuente de voltaje
+    \end{enumerate}
+  \item Resolver
+\end{enumerate}
+
+Seria prudente revisar el ejemplo que esta en la diapositiva.
+\subsection{Receta ley de Mallas}
+\begin{enumerate}
+  \item Bautilzar los nodos
+  \item Asignar una tierra
+  \item Escoger mallas. Reglas:
+    \begin{enumerate}
+      \item Todo elemento (inclusive los cables) debe pertenecer a al menos una malla
+      \item Minimizar el numero de mallas escogidas. Esto se logra escogiendo el mismo número de mallas internas que tenga el circuito.
+      \item Las fuentes de corriente solo pueden pertenecer a una malla
+    \end{enumerate}
+  \item Plantear ecuaciones
+    \begin{enumerate}
+      \item Ley de mallas (una por malla)
+      \item Ley de Ohm
+      \item Fuentes de Corriente
+    \end{enumerate}
+  \item Resolver
+\end{enumerate}
+
+\subsection{Divisor de Voltaje}
+Se tiene una fuente de voltaje $V_s$ en serie con dos resistencias $R_1$ y $R_2$. ¿Cual es el voltaje que cae en cada una de las resistencias?
+
+El desarrollo esta en las diapositivas entonces queda:
+\begin{align*}
+  V_{R_1}&= V_s \frac{R_1}{R_1+R_2}\\
+  V_{R_2}&= V_s \frac{R_2}{R_1+R_2}
+.\end{align*}
+\section{Divisor de Corriente}
+Se tiene una fuente de corriente $I_s$ en paralelo con dos resistencias $R_1$ y $R_2$. ¿Cual es la corriente que fluye por cada resistencia?
+
+\chapter{Miercoles: 23/08/2023}
+\section{Biofisica}
+
+Dadas la diferencia de tamaño y los distintos retos que enfrentan los eucariotas con las bacterias las primeras tienen que ser mas organizada y tener estructuras mas organizadas que permitan hacer difusión activa y solución de los recursos. La complejidad de las proteinas aumenta en los eucariotas y esto es la glicolidacion y lipidación.
+
+\section{Grafos}
+
+\textbf{Importante:} Esta noche pone la tarea y es para la otra semana.
+
+\subsection{Notación $O\left( f\left( n \right)  \right) $ }
+
+Eh aqui un par de algoritmos:
+
+  \begin{algorithm}
+    $Edges\leftarrow 0$ \;
+    \For{$u\leftarrow 1$ to  $n-1$} {
+      \For{$v\leftarrow u + 1$ to $n$} {
+	\If{$Adj\left[ u,v \right] = 1$}{
+	  $Edges \leftarrow Edges+1$ \;
+	}
+      }
+    }
+    \Return Edges
+    \caption{Contar Arcos en Matriz de Adyacencia}
+  \end{algorithm}
+
+  \begin{algorithm}
+    $Edges\leftarrow 0$\;
+    \For{$i\leftarrow 1$ to $n$ } {
+      \ForEach{$j$ in $AdjList[i]$} {
+	\If{$i<j$} {
+	  $Edges \leftarrow Edges+1$\;
+	}
+      }
+    }
+    \caption{Contar Arcos en Lista de Adyacencia}
+  \end{algorithm}
+
+  \subsection{Recursividad}
+
+  La idea de que para todo $n>0$ el valor de la función factorial es: \[
+  n! = 1\cdot 2\cdot 3\cdot \ldots\cdot n
+  .\] Se formaliza tambien en la siguiente definición recursiva: \[
+  n! = \left\{ \begin{matrix} 1 & n=1 \\ (n-1)! & n\neq 1 \end{matrix}  \right.
+  .\]
+
+  \chapter{Jueves: 24/08/2023}
+  \section{Mecanica}
+  \textbf{Tema: } Fuerzas de Marea (Capitulo 9 Taylor)
+
+  \textit{Intuición: } Movimiento de fluidos, aumenta o disminuye el nivel del mar.
+
+  \textit{Ecuación Relevante: }
+  \begin{equation}
+    m\ddot{\Vec{r}} = \Vec{F} - \Vec{A} \label{eq:Ac}
+  \end{equation}
+
+  Algunos datos:
+  \begin{enumerate}
+    \item Distancia entre el centro de la luna y el centro de la tierra: $d_0$
+    \item Suposición: La tierra es una esfera y su superficie es completamente oceano.
+    \item Una masa $m$ de agua tiene una ditancia con la luna de : $d$
+    \item La aceleración de la masa (en caso de que en el universo no haya nada mas) seria: $\Vec{A}=-Gm_l \frac{\hat{d_0}}{d_0^2}$
+  \end{enumerate}
+
+  En este caso tendriamo:
+  \begin{align*}
+    m\ddot{\Vec{r}} &= \left( m\Vec{g} - GM_lm \frac{\hat{d}}{d^2} + F\right) + GM_lm \frac{\hat{d_0}}{d_0^2}\\
+    m\ddot{\Vec{r}} &= m\Vec{g} + \Vec{F}_{MD} + \Vec{F} \\
+  .\end{align*}
+
+  En este caso tenemos que:
+  \begin{align*}
+    \Vec{F}_{MD} = -GM_l m\left( \frac{\hat{d}}{d^2} - \frac{\hat{d_0}}{d_0^2} \right)
+  .\end{align*}
+
+  En tal caso si nos encontramos en el mismo eje tenemos dos condiciones:
+  \begin{enumerate}
+    \item $d<d_0$ en cuyo caso el primer termino es negativo y el segundo positivo por lo que queda orientado en $-\hat{i}$
+    \item $d>d_0$ en cuyo caso el primer termino es negativo y el segundo tambien por lo que queda orientado en $\hat{i}$
+  \end{enumerate}
+
+  Ahora bien, si estamos en los polos de este planeta imaginario respecto al eje con la luna tendriamos que el angulo que se formaria es: \[
+  \delta = 0^\circ 37' 13''8
+  .\]
+
+  Diferencia entre el punto $A$ y el punto $B$
+  (Oh fuck Vectorial UnU)
+
+  Partimos de:
+  \begin{align*}
+    m\Vec{g} &= -\nabla u \\
+    \Vec{F}_{TID} &= -\nabla u_{TID} = -GM_l m\left( \frac{\hat{d}}{d^2}-\frac{\hat{d_0}}{d_0^2} \right)  \\
+		  &= -\left[ \frac{d}{d_{d}}U_{TID} \right]\hat{d}  \\
+  .\end{align*}
+
+  Lleguemos a que:
+  \begin{align*}
+    U_{TID}&=GM_l m \int\left( \frac{\hat{d}}{d^2}-\frac{\hat{d_0}}{d_0^2} \right) d\hat{d}\\
+  .\end{align*}
+
+  \section{Metodos Matematicos}
+
+  En esta clase vamos a trabajar ejemplos con teorema del residuo:
+  \begin{align*}
+    f\left( x \right) = \frac{P_1\left( x \right) }{P_2\left( x \right) } = 2\pi i \sum_{i=1}^{N} a_{-1}^{\left( z_i \right) }
+  .\end{align*}
+
+  Tenemos
+  \begin{align*}
+    \int_{-\infty}^{\infty}\frac{dx}{ax^2+bx+c}; b^2<4ac\\
+    \frac{1}{a}\int_{-\infty}^{\infty}\frac{dx}{x^2+\frac{b}{a}x+\frac{c}{a}}\\
+    x = -\frac{b}{a}\pm\sqrt{\frac{b^2}{4a^2} - \frac{c}{a}}\\
+    x_{\pm} = -\frac{b}{2a}\pm i\sqrt{\frac{b^2}{4a^2}-\frac{c}{a}} \\
+    a_{-1}^{z_0} = \left.\frac{1}{a}\frac{\left( z-z_{+} \right) }{\left( z-z_{+} \right) \left( z-z_{-} \right) }\right|_{z=z_{+}}
+      &= \frac{2\pi i}{a}\frac{1}{z_{+}-z_{-}} = \frac{\pi}{a}\frac{1}{\sqrt{\frac{c}{a}-\frac{b^2}{4a^2}} } \\
+  .\end{align*}
+
+  Segunda Integral:
+  \begin{align*}
+    \int_{-\infty}^{\infty}e^{ikx}g\left( x \right) dx &; g\left( x \right)_{x\to \pm\infty}=0\\
+  .\end{align*}
+  \chapter{Viernes: 25/08/2023}
+  \section{Biofisica}
+
+  Tenemos una escala de distintas magnitudes donde lo minimo es la vibración de los enlaces covalentes del agua con $10^{-12}s$. Luego el tiempo de vida media de un puente de hidrogeno $10^{-9}$ o $10 ps$. Luego la rotación de un aminoacido en una proteina $500 ps$. El ratio de creación de \textit{carbonic anhydrase} con $600.000 s^{-1}$ y esta limitada por difusión. ratio de creación de $lysozyme$ con aproximadamente $0.5 s^{-1}$. Una proteina se demora mas o menos un segundo en plegarse. Luego de esto ya estamos en terreno macroscopico en donde tomamos la vida de los animales, de las plantas. Luego de esto ya nos queda ver escalas biologicas: Edad de la vida en la tierra etc. En general mas o menos sigue la logica de que mientras mas grande un sistema mas lento sera.
+
+  Otro ejemplo interesante es el desarrollo de la \textit{Drosophila} que dura aproximadamente $9$ dias. Por ejemplo la pupa de esta mosca se comienza a diferenciar incluso a los dos dias. En media hora ya el huevo se comienza a diferenciar y crea el intestino grueso.  Otro proceso es la división de \textit{E. Coli} y recorre 10 veces su tamaño en mas o menos 20 segundos.
+
+  La transcripción dura aproximadamente $1$ segundo en sintetizar una proteina de 20 aminoacidos y tarda $0.5$ segundos en sintetizar RNA.
+
+  La apertura de un canal se demora aproximadamente $2 ms$ y su tasa de flujo es mas o menos  $10^{8}K^{+}$ por segundo en dos milisegundos
+
+  \section{Grafos}
+
+  El problema de K\"{o}nigsberg. ¿Se pueden pasar los 7 puentes de K\"{o}nigsberg sin repetir? Eh aqui el inicio de los grafos.
+  \dfn{Camino y Vertices Conectados}{Sea $G$ un grafo simple y sean $u,v$ vertices de $G$.
+    \begin{enumerate}
+      \item Un camino de $u$ a $v$ es una sucesión de vértices $u_0,u_1,\ldots,u_ok$ tal que
+	\begin{enumerate}
+	  \item $u=u_0 \land u_k=v$
+	\item $u_i \to u_{i+1 }$ para $i<k$, y ademas todos los $ui$ son diferentes
+      \end{enumerate}
+      \end{enumerate}
+    }
+      \dfn{Ciclo}{Un ciclo es una sucesión de vertices C tal que
+	\begin{enumerate}
+	  \item C es un camino de $u_0 $ a $u_k$ y ademas
+	  \item $u_k$ es adyacente a $u_0$ es decir $u_k \to u_0$
+	\end{enumerate}
+      La longitud del ciclo es $C$ es $\ell(C)=K+1$ }
+      \dfn{Caminata}{Una caminata es una sucesión de vertices tal que $u_i\to u_{i+1}$ la longitud es $\ell \left( W \right) = k$ }
+      \dfn{Componente Conexa}{Sea $G$ un grafo simple u sean $v$ un vertice. La componente conexa de $v$ en $G$ es el subgrafo de $G$ inducido por el conjunto de vértices que están conectados con $v$ en $G$}
+      \dfn{Grafo Conexo}{ $G$ es un grafo conexo si tiene unicamente una componente conexa. En caso contrario se dice disconexo}
+
+      \subsection{Recorridos por profundidad y anchura}
+
+      En general hay dos maneras de verificar por que vertices puede pasarse.
+      \subsubsection{Recorrido por anchura}
+
+      Primero revisa los nodos a distancia $1$ luego nodos a distancia $2$ y asi recursivamente
+
+      \subsubsection{Recorrido por profundidad}
+
+      Revisa cada uno de los nodos hasta que ya no le queden caminos posibles.
+
+      \begin{algorithm}
+	\For{$i\leftarrow 1$ to $|G|$} {
+	  $componente\left[ i \right] \leftarrow 0$ \;
+	} \For {$i\leftarrow 1$ to $|G|$ } {
+	  \If{$componente\left[ i \right] = 0$} {
+	    BFSCcomponente
+	  }
+	}
+	\caption{ComponentesIter}
+      \end{algorithm}
+
+      \begin{algorithm}
+	$componente\left[ v \right] \leftarrow v$ \;
+	inicie la cola $ScanQ$ con solo el elemento $v$ \;
+	\While{$ScanQ$ no vacia} {
+	  $u\leftarrow$ primer elemento de $ScanQ$ \;
+	  elimine el primer elemento de $ScanQ$ \;
+	  \ForEach{$w$ adyacente a $u$} {
+	    \If{$componente\left[ w \right] =0$ }{
+	      Añada $w$ al final de $ScanQ$ \;
+	      $componente\left[ w \right] \leftarrow v$
+	    }
+	  }
+	}
+	\caption{BFSCcomponente}
+      \end{algorithm}
+
+      \dfn{Distancia}{Sea $G$ ung grafo simple y $u,v$ vertices de $G$. Entonces la distancia entre $u$ y $v$ es \[
+      DIST\left( u,v \right) = min\left\{ \ell \left( P \right) : P \text{ es un camino entre } u \text{ y } v \right\}
+  .\] }
+
+      \begin{algorithm}
+	\For{$i\leftarrow 1$ to $|G|$} {
+	$dist\left[ i \right] \leftarrow \infty$ \;}
+	    BFSCcomponente
+	\caption{DistanciasIter}
+      \end{algorithm}
+
+      \begin{algorithm}
+	$dist\left[ v \right] \leftarrow 0$ \;
+	inicie la cola $ScanQ$ con solo el elemento $v$ \;
+	\While{$ScanQ$ no vacia} {
+	  $u\leftarrow$ primer elemento de $ScanQ$ \;
+	  elimine el primer elemento de $ScanQ$ \;
+	  \ForEach{$w$ adyacente a $u$} {
+	    \If{$dist\left[ w \right] =\infty$ }{
+	      Añada $w$ al final de $ScanQ$ \;
+	      $dist\left[ w \right] \leftarrow dist\left[ u \right] + 1$
+	    }
+	  }
+	}
+	\caption{BFSDistancias}
+      \end{algorithm}
+    \chapter{Martes: 29/08/2023}
+    \section{Electronica para Ciencias}
+
+    Siempre se debe utilizar el numero de mallas internas que haya.
+    \subsection{Equivalencia de Fuentes}
+
+    Si yo tengo una fuente de voltaje $V_{f}$ en serie con una resistencia $R$ equivale a una fuente de corriente $I_{f}$ en paralelo con la misma resistencia $R$. La relación entre $V_{f}$ e $I_{f}$ se da por la ley de Ohm: \[
+    V_{f}=I_{f}R
+    .\]
+
+    \subsection{Teoremas}
+    \dfn{Voltaje de Circuito Abierto}{Es el voltaje que se encuentra entre las terminales de un circuito de un puerto, cuando estas terminales estan desconectadas (en circuito abierto).}
+
+    \dfn{Corriente de Corto Circuito}{Es aquella que fluye a traves de un corto circuito (cable) conectado entre las terminales de un circuito de un puerto.}
+
+    \dfn{Resistencia Equivalente}{Es aquella que se encuentra entre las terminales de un circuito de un puerto cuando todas las fuentes independientes internas se han apagado.
+      \begin{enumerate}
+        \item Medirlo con las fuentes apagadas.
+	\item $R_{eq}=\frac{V_{OC}}{I_{SC}}$
+	\item Con una fuente de prueba: $R_{eq}=\frac{V_{P}}{I_{P}}$
+      \end{enumerate}}
+
+      \thm{Teorema de Thévenin}{Todo circuito de un puerto, lineal y resistivo puede simplificarse a una sola fuente de voltaje $V_{Th}$ en serie con una sola resistencia. Donde
+      \begin{align*}
+        V_{Th}=V_{OC}\\
+	R_{Th}=R_{eq}
+      .\end{align*}}
+
+      \thm{Teorema de Norton}{Todo circuito de un puerto lineal resistivo se puede simplificar a una fuente de corriente en paralelo con una resistencia. Donde:
+      \begin{align*}
+        I_{Nt} = I_{SC}\\
+	R_{Nt} = R_{eq}
+      .\end{align*}}
+
+      \subsection{Linealidad y Superposición} Una función es lineal si cumple las siguientes propiedades:
+      \begin{enumerate}
+        \item Homogeneidad \[
+	    f\left( \alpha x \right) = \alpha f\left( x \right) \forall \alpha \in \mathbb{R}
+        .\]
+      \item Aditividad \[
+      f\left( x+y \right) = f\left( x \right) + f\left( y \right)
+      .\]
+      \end{enumerate}
+
+      En circuitos, las variables $x,y$ son los componentes de los circuitos.
+
+      \thm{Principio de Superposición}{El voltaje (o corriente) que pasan a través de un elemento se puede encontrar como la suma de aportes de cada fuente presente en el circuito a la variable de interes}
+
+      \chapter{Miercoles: 30/08/2023}
+      \section{Grafos}
+      \subsection{Ejercicios Capitulo 2}
+      \begin{enumerate}
+        \item Para un grafo completo de $n$ nodos $K_n$
+	  \begin{enumerate}
+	    \item ¿Cuantos Subgrafos inducidos tiene $K_n$?: $2^{n}-1$
+	    \item ¿Cuantos Subgrafos tiene $K_{n}$?: $\displaystyle \sum_{m=1}^{n} 2^{\begin{pmatrix} m\\2 \end{pmatrix} }\begin{pmatrix} n\\m \end{pmatrix} $
+	  \end{enumerate}
+      \end{enumerate}
+
+      Partiendo de la definición de distancias
+      \chapter{Jueves: 31/08/2023}
+      \section{Mecanica}
+      \nt{En astronomia se mide con parse que son $3.6$ años luz}
+      \chapter{Viernes: 01/09/2023}
+      \section{Grafos}
+      En esta clase vamos a mirar los recorridos por profundidad. En este caso tendriamos el algoritmo:
+      \begin{algorithm}
+	\SetAlgoLined
+	\For{$i\leftarrow 1$ to  $|G|$ }{
+	  $componentes\left[ i \right] \leftarrow 0$\;
+	}
+	\For{ $i\leftarrow 1$ to $|G|$ }{
+	  \If{ $componente\left[ i \right] = 0$ }{
+	    $representante = i$ \;
+	    $Visitar\left( i \right) $
+	  }
+	}
+	\caption{ComponentesRec(G)}
+      \end{algorithm}
+
+      \begin{algorithm}
+	\SetAlgoLined
+        $componente\left[ v \right] \leftarrow representante$ \;
+	\ForEach{$u$ adyacente a $v$}{
+	  \If{$componente\left[ u \right] = 0$ }{
+	    $Visitar\left( u \right) $ \;
+	  }
+	}
+	\caption{Visitar(v)}
+      \end{algorithm}
+
+      \chapter{Martes: 12/09/2023}
+      \section{Metodos Matematicos}
+      \section{Electronica para Ciencias}
+
+      Es importante asumir que $\omega$ es el mismo para ambos.
+
+      \chapter{Miercoles: 13/09/2023}
+      \section{Biofisica}
+
+      Debo estudiar el capitulo $5$ y $6$.
+
+      La energia libre de Gibbs: \[
+      \Delta G = \Delta H - T \Delta S
+      .\] tenemos que recordar que el potencial quimico es el como cambia la entropia en relación al numero de moleculas. Recordemos tambien que la energia libre de Gibbs molar es el potencial quimico $\frac{\mu}{T}$
+
+      \subsection{Flujo}
+
+      Un flujo es un proceso para tratar de llegar a equilibrio. Hay una diferencia
+
+      \section{Grafos}
+
+      Comenzamos describiendo el problema de los puentes de K\"{o}nigsberg.
+
+      \dfn{Caminata Euleriana}{Sea $G$ un grafo simple. Una caminata  Euleriana es una caminata $u_0,u_1,u_2,\ldots,u_k$ donde todos los arcos aparecen exactamente una vez como pares consecutivos de la lista.}
+
+      \dfn{Circuito Euleriano}{Es una caminata euleriana tal que inicia y termina en el mismo lugar es decir $u_0=u_k$}
+
+      \thm{}{Sea $G$ un grafo simple conexo. Entonces
+      \begin{enumerate}
+        \item $G$ tiene una caminata euclidiana si y solo si solo 0 o 2 nodos tienen grado impar.
+	\item $G$ tiene un circuito euleriano si y solo si todos los nodos tienen grado par.
+      \end{enumerate}}
+
+      \chapter{Jueves: 14/09/2023}
+
+      \section{Mecanica}
+      Menu del dia:
+      \begin{enumerate}
+        \item Excentricidad y Orbitas (Fe de Erratas)
+	\item Lagrange
+      \end{enumerate}
+
+      \subsection{Mecanica de Orbitas}
+      En este caso definimos la excentricidad como:
+      \begin{align*}
+        \epsilon = \frac{P_{f}}{P_{d}}
+      .\end{align*}
+
+      Con lo cual podemos encontrar:
+      \begin{enumerate}
+        \item $\epsilon = 1$ Parabola con $E=0$
+	\item  $\epsilon > 1$ Hiperbola $E>0$
+	\item $0<\epsilon<1$ elipse $E<0$
+      \end{enumerate}
+
+      \subsection{Principio de los trabajos Virtuales}
+
+      Vinculos, Grados de Libertad y Coordenadas Generalizadas
+
+      \dfn{Vinculos o Ligaduras}{Cuando una particula esta obligada a moverse sobre una superficie o hay algo que restringe su movimiento esto se le llama un vinculo}
+
+      \ex{}{Un pendulo simple es un ejemplo de un vinculo. En este caso tiene dos condiciones: 1 esta restringido por la cuerda pero ademas esta restringido a un plano :0}
+
+      \ex{}{En un sistema de muchas particulas restringidas a un volumen entonces este volumen seria el vinculo}
+
+      \ex{}{Una bola sobre una semiesfera tiene un vinculo durante un momento hasta que se separa de la semiesfera}
+
+      La clasificación de los vinculos es:
+      \begin{enumerate}
+        \item Si el vinculo depende del tiempo se le llama Reonomo
+	\item Si el tiempo no aparece explicitamente se llama Escleronomo
+	\item Si las condiciones de la ligadura se puede expresar como una función en donde aparece explicitamente el tiempo es holonomo
+	\item Si las condiciones de la ligadura no se puede escribir como una ecuación que no tiene explicitamente el tiempo es anholonomo
+      \end{enumerate}
+
+      \dfn{Grados de Libertad}{Imagine que tiene un sistema de $N$ particulas con $n$ vinculos. El sistema tiene $3N-n$ grados de libertad}
+
+      \ex{Grados de Libertad}{Tengo una particula y un sistema de coordenadas orientada positivamente. En este caso se necesitan $3$ coordenadas para definir la posición de la particula. Ahora obliguemos a que esta particula viva en un plano paralelo al plano $xy$ por lo tanto ahora solo necesitamos dos coordenadas. Ahora sigamos restringiendo el movimiento de la particula obligando a que viva en un segundo plano}
+
+      \dfn{Coordenadas Generalizadas}{Debemos poder buscar coordenadas que sean iguales al numero de grados de libertad y que se puedan convertir a $x$ y $y$}
+
+      \dfn{Desplazamiento Virtual}{Es un desplazamiento geometrico pero que no tiene que coincidir con la realidad}
+
+      En este caso podemos entonces definir un trabajo con este desplazamiento $\delta x$ tal que $\delta w = \Vec{F}\cdot \delta x$
+
+    \thm{Principio de los trabajos virtuales}{El trabajo virtual de las fuerzas activas aplicadas sobre una particula vinculada en equilibrio es igual a  $0$ para desplazamientos virtuales compatibles con los vinculos}
+
+    Para preguntar por fractales y cosas raras: Viviana Gomez y Gabriel Tellez
+
+    \section{Metodos Matematicos}
+
+    La ecuación de Difusión es una función del tiempo y la distancia que nos dice como evoluciona cierta medida despues de unas condiciones iniciales. Un ejemplo es
+    \begin{align}
+      \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} = \frac{1}{D}\frac{\partial T}{\partial t}
+    \end{align}
+
+    Aun asi se puede plantear un sistema estacionario y quedaria
+    \begin{align*}
+      \frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} = 0
+    .\end{align*}
+
+    Se describe un sistema. Un vaso infinito con temperatura externa 0 e interna 1
+
+    Para solucionar trabajaremos con Separación de Variables.
+
+    \begin{enumerate}
+      \item \textbf{Asumimos:} $T = T_{x}\left( x \right) T_{y}\left( y \right) $
+
+      \item \textbf{Reemplazamos:} $T_{y} \frac{\partial^2 T_{x}}{\partial x^2} + T_{x} \frac{\partial^2 T_{y}}{\partial y^2}$
+
+      \item \textbf{Dividomos por $TxTy$} $\frac{1}{T\left( x \right) } \frac{\partial^2 T_{x}}{\partial x^2} + \frac{1}{T\left( y \right) } \frac{\partial^2 T_{y}}{\partial y^2}$
+
+    \end{enumerate}
+
+    \chapter{Martes: 19/09/2023}
+    \section{Mecanica}
+
+    \dfn{Principio de D'Alenvert}{El trabajo virtual de las fuerzas activas es igual a las fuerzas inerciales. Esto se representa como: \[
+	dW = \left[ F_{i} + \varphi_{i} \right] d\Vec{x_{i}} = 0
+    .\] }
+
+    \subsection{Ecuaciones de Lagrange de Segunda Especie}
+
+    Tengo un sistema de  $N$ particulas con $n$ vinculos y por tanto tiene $3N-n$ grados de libertad. En este caso, podemos hacer un sistema de referencia con coordenadas generalizadas con $f$ de estas. En este caso usemos el principio de D'Alenvert:
+    \begin{align*}
+      \sum_{i=1}^{N} \left[ F_{i} - m\ddot{x_{i}} \right] dx_{i}=0
+    .\end{align*}
+
+    Ahora calculemos cada uno de estos.
+    \begin{align*}
+      \delta  x_{i} &= \delta x_{i}\left( q_{k},t \right) \\
+      \delta x_{i} &= \frac{\partial x_{i}}{\partial q_{k}} \delta q_{k} \\
+      \dot{x_{i}} &= \frac{\partial x_{i}}{\partial q_k} \dot{q_{k}} + \frac{\partial x_{i}}{\partial t}  \\
+    .\end{align*}
+
+    Ahora sigue:
+    \begin{align*}
+      F_{i}\delta x_{i} &= F_{i} \frac{\partial x_{i}}{\partial q_{k}} \delta q_{k}\\
+      Q_{k}  &= F_{i}\frac{\partial x_{i}}{\partial q_{k}}  \\
+      &= Q_{k}\delta q_k
+    .\end{align*}
+
+    dado que las unidades de $q_{k}$ pueden variar las unidades de $Q_{k}$ tambien lo hacen para que si se multiplican de Energia.
+
+    Ahora si tomamos esto para las fuerzas inerciales nos queda:
+    \begin{align*}
+      m^{s}\ddot{x_{i}^{s}}\delta x_{i}^{s} &= m^{s}\ddot{x_{i}}\frac{\partial x_{i}}{\partial q_{k}} \delta q_{k} \\
+      \ddot{x_{i}} \frac{\partial x_{i}}{\partial q_{k}} &= \frac{d\dot{x}}{dt}\frac{\partial x_{i}}{\partial q_{k}}  \\
+							 &= \frac{d}{d t}\left( \dot{x_{i}}\frac{\partial x_{i}}{\partial q_{k}}  \right) - \dot{x_{i}} \frac{d}{dt}\left( \frac{\partial x_{i}}{\partial q_{k}}  \right) 
+    .\end{align*}
+
+    y ahora
+    \begin{align*}
+      \frac{\partial \dot{x_{i}}}{\partial \dot{q_{k}}} = \frac{\partial x_{i}}{\partial q_{k}} \\
+    .\end{align*}
+
+    Por lo tanto:
+    \begin{align*}
+      \ddot{x_{i}}\frac{\partial x_{i}}{\partial q_{k}} &= \frac{d}{d t}\left( \dot{x_{i}} \frac{\partial \dot{x_{i}}}{\partial q_k}  \right) - \dot{x_{i}} \frac{d}{dt}\left( \frac{\partial x_{i}}{\partial q_{k}}  \right) \\
+      \psi\left( q_{k}, t \right) &= \frac{\partial x_{i}}{\partial q_{k}}  \\
+      \frac{\partial \psi}{\partial t} &= \frac{\partial \psi}{\partial q_{k}} \dot{q_{k}}  +  \frac{\partial \psi}{\partial t} \\
+				       &= \frac{\partial^2 x_{i}}{\partial q_{k}\partial q_{j}} \dot{q_{k}} + \frac{\partial^2 x_{i}}{\partial t \partial q_{j}}
+    .\end{align*}
+
+    Con esto entonces:
+    \begin{align*}
+      \ddot{x_{i}}\frac{\partial x_{i}}{\partial q_{j}} &= \frac{d}{dt}\left( \dot{x_{i}}\frac{\partial \dot{x_{i}}}{\partial q_{j}}  \right) - \dot{x_{i}}\frac{\partial \dot{x_{i}}}{\partial q_{j}}
+    .\end{align*}
+
+    Por lo tanto:
+    \begin{align*}
+      \frac{1}{2} \frac{\partial}{\partial \dot{q_{j}}} \left( \dot{x_{i}}\dot{x_{i}} \right) &= \dot{x_{i}} \frac{\partial \dot{x_{i}}}{\partial \dot{q_{j}}}
+    .\end{align*}
+
+    Ahora
+    \begin{align*}
+      \ddot{x_{i}}\frac{\partial x_{i}}{\partial q_j} &= \frac{d}{dt}\left[ \frac{1}{2}\frac{\partial}{\partial \dot{q_{j}}} \left( \dot{x_{i}^2} \right)  \right] - \frac{1}{2}\frac{\partial}{\partial q_{j}}\left( \dot{x_{i}^2} \right) \\
+      m\ddot{x_{i}}\frac{\partial x_{i}}{\partial q_j} &= \frac{d}{dt}\left[ \frac{m}{2}\frac{\partial}{\partial \dot{q_{j}}} \left( \dot{x_{i}^2} \right)  \right] - \frac{m}{2}\frac{\partial}{\partial q_{j}}\left( \dot{x_{i}^2} \right) \\
+      T &= \frac{1}{2}m\dot{x_{i}^2} \\
+      m\ddot{x_{i}}\frac{\partial x_{i}}{\partial q_{j}} &= \left(\frac{d}{dt}\frac{\partial}{\partial q_{j}} T - \frac{\partial T}{\partial q_{j}} \right) dq_{j}
+    .\end{align*}
+    \section{Electronica para Ciencias}
+
+    \dfn{Rectificadores de Onda}{Es un circuito que para señales $AC$ permite el paso de señales electricas en una sola dirección. Para hacerlos se hara uso de Diodos y transformadores}
+
+    \dfn{Transformador}{Par de embobinados de cable con núcleo de hierro compartido que permiten la conversión de amplitud de señales eléctricas $AC$ dada la relación de vueltas entre los embobinados}
+
+    \chapter{Jueves: 21/09/2023}
+    
+    \section{Semillero QC}
+
+    \chapter{Jueves: 28/09/2023}
+
+    \section{Mecanica}
+
+    Bibliografia: Feynman Lectures
+
+    \dfn{Acción}{La acción se define como:
+      \begin{align*}
+        \int_{t_1}^{t_2} \left( T-V \right) dt = S
+      .\end{align*}
+    }
+
+    \thm{Principio de Minima Acción}{Los Movimientos Físicos son los que minimizan la acción}
+
+    \textbf{Tarea No Calificable:} Como el principio de minima acción conduce a la Inercia
+
+    \section{Grafos}
+
+    Si $G$ es un grafo el grafo de linea de $G$ $L\left( G \right) $ esta dado por:
+    \begin{enumerate}
+      \item $V\left( L\left( G \right)  \right) = E\left( G \right) $ 
+      \item $E\left( L\left( G \right)  \right) = \left\{ \left\{ \left\{ a,b \right\} , \left\{ c,d \right\} | \left\{ a,b \right\} ,\left\{ c,d \right\} \in G \land |\left\{ a,b \right\} \cap \left\{ c,d \right\}| = 1 \right\}  \right\} $
+    \end{enumerate}
+
+    
+    \thm{}{Si $S_{m}$ es el grafo estrella de $m$ rayos, entonces \[
+	L\left( S_m \right) \cong  K_{m}
+.\] }
+\begin{myproof}
+  Sea $V_S=\left\{ u_0,u_1,\ldots,u_m \right\} $ el conjunto de vertices de $S_m$ tal que $E\left( S_m \right) = \left\{ \left\{ u_0,u_i \right\} : i=1,\ldots,m \right\} $ entonces $V\left( L\left( S_m \right)  \right) = E\left( S_m \right) $ Note $|V\left( L\left( S_m \right)  \right) | = m$.
+
+  Ademas, si $i\neq j$,\[
+  \left\{ u_0,u_i \right\} \cap \left\{ u_0,u_j \right\} = u_0
+  .\] luego $\left\{ u_0,u_i \right\} \to \left\{ u_0,u_j \right\} $ en $L\left( G \right) $ es decir, \[
+  L\left( G \right) \cong  K_m
+  .\] 
+ 
+\end{myproof}
+
+  \dfn{}{Sean $G,H_1,\ldots,H_l$ grafos, decimos que $\left\{ H_1,\ldots,H_l \right\} $ es una descomposición de $G$ si vale todo lo siguiente:
+    \begin{enumerate}
+      \item $V = \bigcup_{i = 1}^{l}V\left( H_1 \right) $ 
+      \item $E = \bigcup_{i=1}^{l} E\left( H_i \right) $ 
+      \item $E\left( H_i \right)\cap E\left( H_j \right) = \emptyset$ si $i\neq j$
+  \end{enumerate}}
+
+  \thm{}{Sea $G=\left< V,E \right> $ un grafo para cada $a\in V$ sea $G_a$ el subgrafo de $L\left( G \right) $ inducido por los vertices de la forma $\left\{ a,b \right\} $ entonce:
+    \begin{itemize}
+      \item para todo $a\in V$, $G_a \cong K_{deg\left( a \right) }$ 
+      \item $\left\{ G_a | a\in V \right\} $ es una descomposición de $L\left( H \right) $.
+    \end{itemize}
+  }
+
+     
+
+
+\end{document}

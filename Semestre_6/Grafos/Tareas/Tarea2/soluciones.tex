@@ -1,0 +1,87 @@
+\input{preamble}
+
+\begin{document}
+    \input{heading}
+
+    \begin{enumerate}
+      \item 
+	\begin{enumerate}
+	  \item 
+	    
+	    Una lista grafica con estas caracterizticas es una lista que va de $n-2$ a $1$ puesto que no se puede repetir ninguno de estos valores y luego le adicionamos los dos elementos repetidos (sean dos elementos de $n-1$ o $0$ ) entonces. Para el caso de los dos elementos de $0$ es imposible pues existe un elemento con grado $n-2$ lo que significa que esta conectado con todos los vertices excepto 1 y a cambio hay dos elementos que dicen no estar conectados a ningun vertice. Para el caso de $n-1$ por el teorema de Havell-Hakimi sabemos que la sublista en la que restamos 2 a todos los elementos deberia tambien ser grafica pero esto es imposible dado que el elemento mas pequeño quedaria con un grado $-1$ lo que descarta de inmediato esta lista.
+	  \item Dado que nos dicen que hagamos inducción sobre $|G|$ inicemos por mostrarlo para $|G|=2$ lo que es evidente dado que las unicas listas graficas que cumplen esta condiciones son: $\left( 0,0 \right) $ y $\left( 1,1 \right) $ 
+	    
+	    \textbf{Hipotesis de Inducción:} Esto se cumple para $|G| = n$
+	\end{enumerate}
+      \item Sea $G$ un grafo simple disconexo con vertices $(v_1,v_2,\ldots,v_n)$ y disconexo. Entonces este tiene al menos dos componentes conexas. Ahora bien, sean $v_{c_1}$ y $v_{c_2}$ dos vertices que pertenecen a componentes conexas distintas. Por lo tanto no existe una conexión entre estos dos vertices y en consecuencia el complemento tendria esta conexion. Por otro lado para dos vertices que estan en la misma componente estos tendrian que estar conectados (como minimo) por un camino con un vertice que pertenecia a otro componente conexo pues cada uno de estos debe tener un arco con cada uno de los vertices de la otra componente conexa que entonces los conectaria. Por lo tanto, el complemento de un grafo disconexo es conexo pues para cualesquiera 2 vertices existe al menos un camino que los una.
+      \item Sea $G$ un grafo simple con $\delta\left( G \right) $. En verdad solo nos interesa mostrar que existe un camino mayor o igual que $\delta\left( G \right) $ para este grafo sin preocuparnos por si es el \textit{Camino mas largo} puesto que el camino mas largo debe ser mayor o igual a este. Sea $v_1$ el vertice tal que $DEG\left( V_1 \right) = \delta\left( G \right) $. Hagamos esto entonces por casos
+	\begin{itemize}
+	  \item $\delta\left( G \right) = 0$ 
+
+	    Este caso es obvio pues la longitud del \textit{El camino mas largo} no puede ser negativa y en consecuencia este debe ser $\ell\left( P \right) \ge 0$
+
+	  \item $\delta\left( G \right)=1 $
+
+	    Sea $v_2$ un vertice que cumple que $v_1\to v_2$. Por lo tanto ya existe un camino de longitud $1$ y en consecuencia el \textit{Camino mas largo} tiene como minimo valor $1$.
+
+	  \item $\delta\left( G \right) > 1$
+
+	    Inicie en $v_1$ y sea $v_2$ uno de los vertices tales que $v_1\to v_2$ entonces haga un camino hacia $v_2$ que sabemos que $DEG\left( v_2 \right) \ge \delta\left( G \right) $ que como sabemos que es mayor que uno entonces existe otro vertice $v_3$ tal que $v_2\to v_3$ y $v_3\neq v_1$. Ahora bien,  $DEG(v_3) \ge \delta\left( G \right) $ por lo tanto, debe estar conectado como minimo a $\delta\left( G \right) $ nodos distintos y en consecuencia el camino puede continuar como minimo hasta que tenga una longitud de $\delta\left( G \right) $ (pues para cada nodo al que llegue debe tener como minimo $\delta\left( G \right) $ arcos y si $\ell \left( C \right) < \delta\left( G \right) $ debe existir al menos un vertice con el que esta conectado que aun no esta en el camino) por lo tanto existe minimo un camino de longitud $\delta\left( G \right) $ y en consecuencia $\ell \left( P \right) > \delta\left( G \right) $
+	\end{itemize}
+      \item 
+	\begin{enumerate}
+	  \item \textit{Profundidad}
+
+	    \begin{itemize}
+	      \item \textbf{Grafo G} \[
+	      3,2,5,1,4
+	      .\] 
+	    \item \textbf{Grafo H} \[
+	    3,2,6
+	    .\] 
+	    \end{itemize}
+	    
+	  \item \textit{Anchura}
+	    \begin{itemize}
+	      \item \textbf{Grafo G} \[
+	      3,2,4,5,1
+	      .\] 
+	    \item \textbf{Grafo H} \[
+	    3,2,6
+	    .\] 
+	    \end{itemize}
+	  \item 
+	    \begin{itemize}
+	      \item Grafo G
+		\begin{table}[H]
+		  \centering
+		  \caption{Lista respuesta del algoritmo $ComponentesIter$ para el grafo G justo despues de meter el vertice $2$ a la cola $ScanQ$}
+		  \label{tab:label}
+		  \begin{tabular}{|c|c|c|c|c|}
+		  \hline
+		  1 & 0 & 0 & 1 & 1 \\
+		  \hline
+		  \end{tabular}
+		\end{table}
+
+		Y por otro lado $ScanQ$ tiene \[
+		  ScanQ = \left[ 3,2 \right] 
+		.\] 
+	      \item Grafo H
+		\begin{table}[H]
+		  \centering
+		  \caption{Lista respuesta del algoritmo $ComponentesIter$ para el grafo H justo despues de meter el vertice $2$ a la cola $ScanQ$}
+		  \label{tab:l1}
+		  \begin{tabular}{|c|c|c|c|c|c|}
+		    \hline
+		    1 & 2 & 0 & 1 & 1 & 0\\
+		    \hline
+		  \end{tabular}
+		\end{table}
+		Y por otro lado $ScanQ$ tiene \[
+		  ScanQ = \left[ 2 \right] 
+		.\] 
+	    \end{itemize}
+	\end{enumerate}
+    \end{enumerate}
+\end{document}

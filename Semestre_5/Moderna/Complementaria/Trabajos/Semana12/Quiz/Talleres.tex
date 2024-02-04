@@ -1,0 +1,108 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Moderna - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Quiz 3} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+\begin{enumerate}
+  \item 
+    \begin{enumerate}
+      \item En este caso tenemos \[
+	  L_z \left|\ell,m_{\ell}\right> = m_\ell \hbar \left|\ell,m_\ell\right>
+      .\] por lo tanto, nos interesa saber $\left|\ell,m_\ell\right>$ sin embargo, el enunciado nos presenta una suma, sin embargo, dado que este es un operador lo podemos distribuir y ademas asumiendo que  $A$ es una  constante nos queda que \[
+      L_z A\left[ \left|1,0\right> + \left|1,-1\right> \right] = A\left[ L_z\left|1,0\right> + L_z\left|1,-1\right> \right] 
+    .\] Ahora bien, con esto solo nos falta computar \[
+    L_z A\left[ \left|1,0\right> + \left|1,-1\right> \right] = A\left[ 0\hbar\left|1,0\right> + -1\hbar\left|1,-1\right> \right] 
+    .\] lo que queda como \[
+    L_z A\left[ \left|1,0\right> + \left|1,-1\right> \right] = A\left[ -\hbar\left|1,-1\right> \right] 
+    .\] 
+  \item En este caso tenemos \[
+      L^2\left|\ell,m_\ell\right> = \hbar^2\ell(\ell+1)\left|\ell,m_\ell\right>
+  .\] Utilizando el mismo argumento que la vez pasada podemos distribuir sobre la suma y por tanto nos queda \[
+      L^2 A\left[ \left|1,0\right> + \left|1,-1\right> \right] = A\left[ L^2\left|1,0\right> + L^2\left|1,-1\right> \right] 
+  .\] lo que nos deja con \[
+  L_z A\left[ \left|1,0\right> + \left|1,-1\right> \right] = A\left[ \hbar^2 1(2)\left|1,0\right> + \hbar^2 1(2)\left|1,-1\right>\right]
+  .\] 
+  \item Para este podemos partir de que \[
+      L_{\pm} = L_x\pm iL_y
+  .\] por lo que nos interesa encontrar su parte real, Con los mismos argumentos que arriba desarrollemos como sigue:
+  \begin{align*}
+    L_\pm A\left[ \left|1,0\right> + \left|1,-1\right> \right] &= A\left[ L_\pm\left|1,0\right> + L_\pm\left|1,-1\right> \right] \\
+			  &= A\left[ \hbar\sqrt{(\ell\pm m_\ell)(\ell\pm m_\ell + 1)}\left|\ell,m_\ell\right>  \hbar\sqrt{(\ell\pm m_\ell)(\ell\pm m_\ell + 1)}\left|\ell,m_\ell\right> \right]  \\
+			  &= A\left[ \hbar\sqrt{(1\pm 0)(1\pm 0 + 1)}\left|1,0\right>  \hbar\sqrt{(1\pm -1)(1\pm -1 + 1)}\left|1,-1\right> \right]
+  .\end{align*}
+\item \textbf{Nota:} Es importante que para este trabajo utilizamos el valor de $A$ sin embargo no hemos desarrollado cuanto es este valor. En este caso partimos de \[
+    \left|\psi\right> = A\left[ \left|1,0\right> + 2\left|1,-1\right> \right] 
+.\] Por otro lado, con esto podemos conseguir que \[
+\left<\psi\right|= A\left[ \left<1,0\right|+2\left< 1, -1\right| \right] 
+.\] Ahora con esto podríamos conseguir \[
+\left< \psi | \psi \right> = A^2 \left[ \left< 1,0 | 1,0 \right> + 2\left< 1, -1 | 1, 0 \right> + 2 \left< 1,0 | 1,/1 \right>  + 4\left< 1, -1 | 1, -1 \right>  \right] 
+.\] Ahora con esto tenemos que ser conscientes de que
+\begin{align*}
+  \left< \psi | \psi \right> &= 1 \\
+  \left< x | x \right> &= 1 \\
+  \left< x | y \right> &=  0 
+.\end{align*}
+Con lo que nos queda \[
+  1 = A^2\left[ 1 + 0 + 0 + 4 \right] 
+.\] y por tanto \[
+A = \sqrt{\frac{1}{5}}
+.\] 
+    \end{enumerate}
+  \item 
+    \begin{enumerate}
+      \item Recordemos entonces que $n$ es el nivel de energía, $\ell$ es el orbital y $m_\ell$ ahora bien, recordemos que los valores posibles de los ultimos dos son
+	\begin{align*}
+	  \ell &= 0, 1, \ldots n \\
+	  m_\ell &= -\ell,-\ell+1,\ldots,\ell \\
+	.\end{align*}
+	por lo tanto, los posibles valores de $m_\ell$ se encuentran en el conjunto  $\{x | x\in\mathbb{N}\land -3<x<3\}$ 
+      \item Para este caso partimos desde un átomo de hidrógeno que con lo que nos dice el enunciado podemos describir como \[    
+      .\] 
+    \end{enumerate}
+  \item 
+    \begin{enumerate}
+      \item Cuando un átomo es sometido a un campo magnético se observo experimentalmente que su espectro de emisión se dividía en lineas que parecían no estar presentes antes de eso. Existen dos casos de Efecto Zeeman, el normal y el anormal. Esta división se dio puesto que Zeeman (Que fue el encargado de explicar este efecto teóricamente) no pudo explicar el caso anómalo puesto que contaba únicamente con física clásica para solucionarlo. 
+	La explicación que Zeeman dio de este fenómeno en su momento es una deducción con momentos angulares clásicos que realmente no nos interesa pues en verdad en este cumple un rol muy importante el spin. En particular lo que ocurre es que cuando un dipolo interactúa con un campo magnético este sufre un torque y se alinea (a favor o en contra) del campo magnético. Para esto requeriría una energía pero esta se bifurca.
+      \item Si, de hecho el efecto zeeman ocurre cuando una partícula con Spin (todas lo tienen) interactúa con un campo magnetico se presenta efecto zeeman. Ademas, observando el espectro de emisión se pueden \textit{ver} correcciones del efecto Zeeman
+      \item El átomo de hidrógeno es quizás el mas simple de los átomos estables. Un protón con un electrón. Este de hecho define un grupo de átomos que cumplen características similares y que su estudio es esencialmente el mismo que el del hidrógeno (Los Hidrogenoides). El átomo de hidrógeno es entonces una buena mezcla entre simplificación y realidad. Ademas es el átomo mas común del universo, no creo que esto aporte mucho pero es un detalle bastante interesante. 
+    \end{enumerate}
+\end{enumerate}
+
+
+\end{document}

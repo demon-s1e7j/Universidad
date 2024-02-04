@@ -1,0 +1,266 @@
+\input{preamble}
+
+\begin{document}
+    \input{heading}
+
+    \begin{enumerate}
+%%%%%% PRIMER PUNTO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \item Encuentre la solución general de cada una de las siguientes ecuaciones:
+	\begin{enumerate}
+	  \item $xy' + \frac{y}{\sqrt{2x + 1} } = 1 + \sqrt{2x + 1} $ 
+
+	    Lo primero que hacemos es escribir esto como estamos acostumbrados por el metodo del factor integrante
+	    \begin{align*}
+	      y' + \frac{y}{x\sqrt{2x+1} }&= \frac{1+\sqrt{2x+1} }{x} \\
+	      \int P(x) dx &= \int \frac{dx}{x\sqrt{2x+1} } \\
+	      &= \int \frac{2}{u^2-1}du \\
+	      &= -2 \int \frac{1}{1-u^2}du \\
+	      &= \ln\left( \frac{u-1}{u+1} \right)  \\
+	      \mu\left( x \right) &= e^{\int P(x) dx} \\
+	      &= e^{\ln\left( \frac{u-1}{u + 1} \right) } \\
+	      &= \frac{u-1}{u+1}
+	    .\end{align*}
+
+	    Ahora bien, por el libro sabemos que la solucion de esto es
+	    \begin{align*}
+	      \mu\left( x \right) y = \int \mu\left( x \right) f\left( x \right) dx = \int \frac{u-1}{x}dx
+	    .\end{align*}
+
+	    Por lo tanto, una solución aceptable seria
+	    \begin{align*}
+	      y = \mu \left( x \right)^{-1}\int \frac{u-1}{x}dx
+	    .\end{align*}
+	  \item $y' = \frac{y^2\sin^2\left( x \right) - y\cos^2\left( x \right) }{\sin\left( x \right) \cos\left( x \right) }$
+
+	  \item $\left( x + ye^{\frac{y}{x}} \right) dx - xe^{\frac{y}{x}}dy = 0$
+
+	    Esta tercera ecuación es una ecuación que parece ser exacta. Por lo tanto, valdria la pena que verifiquemos si lo es
+	    \begin{align*}
+	      \frac{\partial P\left( x \right) }{\partial y} = \frac{\partial Q\left( X \right) }{\partial x}  \\
+	      \frac{y}{x}e^{\frac{y}{x}} = \frac{xy}{-2x^2} = \frac{y}{x}
+	    .\end{align*}
+
+	    Como se puede ver esta es una ecuación exacta y por lo tanto para solucionarlo integremos uno de sus terminos, en particular integremos el segundo que esta en función de $y$ por lo que queda
+	    \begin{align*}
+	      \int xe^{\frac{y}{x}}dy &= x^2e^{u} \\
+	      u &= \frac{y}{x} \\
+	      &= x^2e^{\frac{y}{x}} + g\left( x \right) \\
+	    .\end{align*}
+
+	    Ahora derivamos con respecto a $x$ este resultado y nos queda
+	    \begin{align*}
+	      &= 2xe^{\frac{y}{x}} - ye^{\frac{y}{x}} + g'(x)\\
+	      &= \left( 2x - y \right)e^{\frac{y}{x}} + g'(x) \\
+	      \left( x + ye^{\frac{y}{x}} \right) &=  \left( 2x - y \right)e^{\frac{y}{x}} + g'(x)\\
+	      x &= (x-y)2e^{\frac{y}{x}} + g'(x)\\
+	      g'(x) &=  x - 2xe^{\frac{y}{x}} + 2ye^{\frac{y}{x}}\\
+	      g\left( x \right)  &= 1 - \left( 2e^{\frac{y}{x}} - \frac{2e^{\frac{y}{x}}}{x}\right) - \frac{2ye^{\frac{y}{x}}}{x} \\
+	      &= 1 - 2e^{\frac{y}{x}}
+	    .\end{align*}
+
+	    Y ya con esto tendriamos un resultado.
+	  \item $\frac{dy}{dx} = \frac{2xy+y^2}{x^2+2xy}$
+	    Para este caso lo primero es desarrollar:
+	    \begin{align*}
+	      \frac{dy}{dx}&=\frac{2xy+y^2}{x^2+2xy}\\
+	      \left( x^2+2xy \right) dy &= \left( y^2 + 2xy \right) dx\\
+	      \left( x^2+2xy \right) dy - \left( y^2  + 2xy\right) dx = 0
+	      y &= ux \\
+	      dy &= xdu+udx \\
+	      \left( x^2 + 2x^2u \right) \left( xdu + udx \right) - \left( u^2x^2+2x^2u \right) dx &= 0
+	      u^2x^2dx - u x^2 dx &= x^{3} du + 2uxA\\
+	      ux^2\left( u -1 \right) dx &= x^{3}\left( 2u + 1 \right) du\\
+	      \int \frac{dx}{x} &= \int \frac{2u + 1}{u^2-u}du\\
+	      \ln x &= \int \frac{3}{u - 1} - \frac{1}{u}du\\
+	      &= 3 \ln\left( u - 1 \right) - \ln u + x \\
+	    .\end{align*}
+
+	    Ahora bien, dado que ambos estan con logaritmo natural el valor al ponerlo en el exponente del numero de euler y reemplazando u nos queda:
+	    \begin{align*}
+	      x &= \left(\frac{\left( y-x \right)^{3}}{x^2y}  \right)  \\
+	    .\end{align*}
+	\end{enumerate}
+%%%%%% SEGUNDO PUNTO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \item Resuelva el problema de valor inicial. Encuentre el valor de $y_0$ que separa las soluciones que crecen positiva y negativamente
+	\begin{align*}
+	  y' - \frac{3}{2}y &= 3t + 2e^{t}\\
+	  y\left( 0 \right) &= 0
+	.\end{align*}
+
+	En este caso, esta ecuación es una de primer orden "normal" por lo que la podemos solucionar por facor integrante con lo cual
+	\begin{align*}
+	  \mu = e^{\int -\frac{3}{2}} = e^{-\frac{3t}{2}}
+	.\end{align*}
+
+	Ahora multiplicamos y nos queda
+	\begin{align*}
+	  e^{-\frac{3t}{2}}y &= \int \left( 3te^{-\frac{3t}{2}}+2e^{-\frac{t}{2}} \right)dt + C \\
+	  &= 3 \int te^{-\frac{3t}{2}}dt +2\int e^{-\frac{2}{2}}ds + C \\
+	  &= 3\int te^{-\frac{3t}{2}}ds + 2\left( -2 \right) e^{-\frac{t}{2}} + C
+	.\end{align*}
+	La integral que nos falta la hacemos por partes y nos queda
+	\begin{align*}
+	  \int te^{-\frac{3t}{2}}dt = \int s \frac{d}{dt}\left( -\frac{2}{3}e^{-\frac{3t}{2}} \right) 
+	&= -\frac{2}{3}te^{-\frac{3t}{2}} + \frac{2}{3}\int e^{-\frac{3t}{2}}dt \\
+	&= -\frac{2}{9}e^{-\frac{3t}{2}}\left( 3t+2 \right)  \\
+	.\end{align*}					
+
+	Que si lo ponemos donde nos habiamos quedado nos resulta
+	\begin{align*}
+	  &= -\frac{2}{3}e^{-\frac{3t}{2}}\left( 3t+2 \right) -4e^{-\frac{t}{2}} + C \\
+	.\end{align*}
+
+	Ahora con esto multiplicamos por $e^{\frac{3t}{2}}$ lo que nos deja con \[
+	  f(x) = -\frac{2}{3}\left( 3t+2 \right) -4e^{t} + Ce^{\frac{3t}{2}} \\
+	.\] 
+
+
+	Ahora con esto podemos ahora solucionar el problema de los valores iniciales lo que nos da
+	\begin{align*}
+	  y\left( 0 \right) = -\frac{2}{3}\left( 2 \right) - 4 + C = y_0
+	.\end{align*}
+
+	Por lo tanto \[
+	  C = \left( y_0 + \frac{16}{3} \right) 
+	.\] 
+
+	De hecho este es el valor que marca la diferencia de divergencia cuando $t\to \infty$
+%%%%%% TERCER PUNTO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \item Muestre que todas las soluciones de $2y' + ty = 2$ se aproximan a un valor cuando $t\to \infty$
+
+	\textit{Solución:}
+
+	Para esto es importante y valioso encontrar primero las soluciones de la ecuación pedida por lo tanto, desarrollemos por factor integrante dado que este resulta mas simple en las condiciones en las que nos encontramos. En particular primero debemos hacer este desarrollo para que coincida mas con la estructura básica de una ecuación lineal de primer orden.
+	\begin{align*}
+	  2y' + ty &= 2 \\
+	  2y' &= 2-ty \\
+	  y' &= \frac{2-ty}{2} \\
+	  y' &= \frac{2}{2}-\frac{ty}{2} \\
+	  y' &= 1 - \frac{t}{2}y \\
+	  y' + \frac{t}{2}y &= 1 \\
+	.\end{align*}
+	Por lo tanto, si recordamos la estructura general podemos decir que es una ecuación diferencial lineal de primer orden con $p\left( t \right) = \frac{t}{2}$ y $q\left( t \right) = 1$. Por lo tanto, podemos desarrollar. 
+	\begin{align*}
+	  \mu\left( t \right) &= \exp\left( \int p\left( t \right) dt \right) \\
+	  &= e^{\int \frac{t}{2} dt} \\
+	  &= e^{\frac{t^2}{4}}
+	.\end{align*}
+	
+	Ahora bien, por el otro lado en el mismo desarrollo del libro tenemos que la solución de este caso es 
+	\begin{align*}
+	  y &= \frac{1}{\mu\left( t \right) }\left[ \int\mu\left( t \right) g\left( t \right) dt \right] \\
+	  &= e^{-\frac{t^2}{4}}\left[ \int e^{\frac{t^2}{4}} dt + C \right]  \\
+	.\end{align*}
+
+	Ahora bien, este sera un gran avance en la solución de esta ecuación diferencial y de hecho solamente cambiaremos muy poco como desarrollaremos adelante pero la integral no sera resuelta pues no puede ser resulta de manera simple por ningun metodo. Ademas, esta ecuación diferencial de hecho aparece en el libro en el ejemplo 4 del capitulo $2.1$ y se llego a la misma conclusión. Por lo tanto tomando en cuenta esto y desarrollando esta ecuación nos queda con una solución general  \[
+	y = e^{-\frac{t^2}{4}}\int_0^{t}e^{\frac{s^2}{4}}dS+Ce^{-\frac{t^2}{2}}
+	.\] 
+	Ahora, si con esta solucion general le sacamos el limite cuando $t$ tiende a $\infty$ nos podemos entonces quitar el segundo termino que rapidamente converge a 0 y por lo tanto podemos desarrollar como sigue:
+	\begin{align*}
+	  \lim_{t\to \infty} y = \lim_{t\to \infty} e^{-\frac{t^2}{4}}\int_0^{t}e^{\frac{s^2}{4}}dS
+	.\end{align*}
+	Podemos derivar arriba y abajo para simplificar esto y por tanto nos queda
+	\begin{align*}
+	  &= \lim_{t\to \infty} \frac{e^{\frac{t^2}{4}}}{\left( \frac{2t}{4}e^{\frac{t^2}{4}} \right) } \\
+	  &= \lim_{t\to \infty}\frac{2}{t}=0
+	.\end{align*}
+	Por lo tanto, todos los resultados tienden a un mismo valor (Que se nota desde que la constante que ees lo unico que los diferencia se va a 0) y este valor es 0.
+
+%%%%%% CUARTO PUNTO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \item Un estudiante olvido la regla del producto para derivar y cometió el error de pensar que $\left( fg \right)' = f'g'$. Sin embargo, tuvo suerte y obtuvo la respuesta correcta. La función $f$ que utilizo fue $f\left( x \right) = e^{x^{2}}$ y el dominio del problema era $\left( \frac{1}{2},\infty \right) $. ¿Cual era la función $g$?
+
+	\textit{Solución:}
+
+	En este caso por el enunciado, sabemos que la ecuación que nos interesa tiene la forma \[
+	\left( fg \right)' = f'g'
+	.\] Sin embargo, dado que nosotros si conocemos la regla del producto podemos reemplazar este para que nos quede una ecuación de la forma \[
+	f'g + g'f = f'g'
+	.\] Ahora bien, nos interesa entonces saber la derivada de $f$ lo que en particular es:
+	\begin{align*}
+	  f\left( x \right) &= e^{x^{2}}\\
+	  f'\left( x \right) &= 2e^{x^{2}}x \\
+	.\end{align*}
+	Con esto, entonces nos queda reemplazar por lo que esta ecuación nos quedaría \[
+	2e^{x^{2}}x g + g'e^{x^{2}} = 2e^{x^{2}}xg'
+	.\] Ahora bien, en este caso podemos despejar como sigue:
+	\begin{align*}
+	  g'2e^{x^{2}}x - g'e^{x^{2}} &= 2e^{x^{2}}xg\\
+	  g'e^{x^{2}}\left( 2x - 1 \right) &= 2e^{x^{2}}xg \\
+	  g'&= \frac{2e^{x^{2}}xg}{e^{x^{2}}\left( 2x - 1 \right) } \\
+	  g'&= \frac{2x}{\left( 2x - 1 \right) } g \\
+	.\end{align*}
+
+	Ahora bien, nos resulta mas útil expresar $g' = \frac{dg}{dx}$ y desarrollar como sigue:
+	\begin{align*}
+	  \frac{dg}{dx}&= \frac{2x}{2x-1}g \\
+	  \frac{1}{g}dg &= \frac{2x}{2x - 1}dx \\
+	  \int \frac{1}{g}dg &= \int \frac{2x}{2x - 1}dx \\
+	.\end{align*}
+	En este caso, la integral del lado izquierdo es bastante fácil y directa $\int \frac{1}{g}dg = \ln\left( g \right) $ y en este caso podemos considerar la constante de integración como $0$ pues nos interesa únicamente  $g$ pero para el lado derecho necesitamos desarrollar como sigue:
+	\begin{align*}
+	  \int \frac{2x}{2x-1}dx &=  \\
+	  u &= 2x-1 \\
+	  du &= 2 dx \\
+	  dx &= \frac{du}{2} \\
+	  &= \frac{1}{2}\int \frac{u + 1}{u}du \\
+	  &= \frac{1}{2}\int\left( \frac{1}{u} + 1 \right) du \\
+	  &= \frac{1}{2}\left(\int \frac{1}{u}du + \int 1 du\right)\\
+	  &= \frac{1}{2}\left( \ln\left( u \right) + u + C \right)  \\
+	  &= \frac{\ln\left( 2x - 1 \right) }{2} + \frac{\left( 2x - 1 \right) }{2} + C
+	.\end{align*}
+
+	Ahora, ya con esta integral resuelta podemos volver a $g$ entonces nos quedaria
+	\begin{align*}
+	  \ln\left( g \right) &=  \frac{\ln\left( 2x - 1 \right) }{2} + \frac{\left( 2x - 1 \right) }{2} + C\\
+	  g &= e^{\frac{\ln\left( 2x - 1 \right) }{2} + \frac{\left( 2x - 1 \right) }{2} + C} \\
+	g &= e^{\frac{\ln\left( 2x - 1 \right) }{2}} e^{\frac{\left( 2x - 1 \right) }{2}}e^{C} \\
+	g &= \sqrt{2x-1} e^{\frac{2x-1}{2}}C \\
+	.\end{align*}
+
+%%%%%% QUINTO PUNTO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \item Considere la ecuación $\left( 2y^2-6xy \right) dx + \left( 3xy -4x^2\right)dy = 0 $. Esta ecuación no es exacta, pero existen números enteros $m$ y $n$ tales que al multiplicar tal ecuación por un factor integrante de la forma $x^{n}y^{m}$ se obtiene una ecuación exacta. ¿Cuales deben ser los números $m$ y $n$?
+
+	\textit{Solución:}
+	
+	En este caso debemos ser conscientes de lo que significa que una ecuación sea exacta. Para este caso el que una ecuación sea exacta significa que $\exists \phi ; \phi_x = \frac{\partial \phi}{\partial x} = M(x,y) \land \phi_y = \frac{\partial \phi}{\partial y} = N(x,y)$ en general esto significa que $\frac{\partial M(x,y)}{\partial y} = \frac{\partial N(x,y)}{\partial x} $. La demostración de esto pasa por calculo vectorial y no resulta importante ni necesario para este ejercicio por lo que no se va a tomar en cuenta. Ahora bien, es importante considerar que esto nos define lo que necesitamos pues buscamos un $m$ y $n$ tal que funcionen como esperábamos según la ecuación anterior. Por lo tanto desarrollamos:
+	\begin{align*}
+	  \frac{\partial}{\partial y} \left( 2y^2 - 6xy \right) x^{n}y^{m} &= \frac{\partial }{\partial x}\left( 3xy - 4x^2 \right)x^{n}y^{m}   \\
+	.\end{align*}
+
+	Una buena manera de comenzar es por las derivadas como si conocieramos estos valores
+	\begin{align*}
+	  \frac{\partial}{\partial y} \left( 2y^2 - 6xy \right) x^{n}y^{m} &= \frac{\partial  }{\partial y} \left( 2x^{n}y^{2+m}-6x^{n+1}y^{m+1} \right)\\
+	&= (2+m) 2x^{n}y^{m+1} - (m+1)x^{n+1}y^{m} \\
+	  \frac{\partial }{\partial x}\left( 3xy - 4x^2 \right)x^{n}y^{m} &= \frac{\partial  }{\partial x} \left( 3x^{n+1}y^{m+1} - 4x^{n+2}y^{m} \right)  \\
+	  &= (n+1)3x^{n}y^{m+1}-\left( n+2 \right) 4x^{n+1}y^{m} \\
+	.\end{align*}
+
+	Como podemos ver ya con esto quedamos con un sistema de ecuaciones bastante claro
+	\begin{align*}
+	  2\left( m+2 \right) &= \left( n+1 \right) 3 \\
+	  \left( m+1 \right) &= \left( n+2 \right) 4 \\
+	  m &= 4n + 7 \\
+	  2m + 4 &= 3n + 3 \\
+	  8n + 14 + 1 &= 3n \\
+	  5n &= -15 \\
+	  n &= -3 \\
+	  m &= -5 \\
+	  2(-3) &= (-2)3 \\
+	  -4 &= -4 \\
+	.\end{align*}
+	Como se ve en las ultimas dos ecuaciones al reemplazar nos corresponde y por lo tanto es la respuesta correcta.
+%%%%%% SEXTO PUNTO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \item Encuentre la curva $y = f\left( x \right) $ tal que $f\left( x \right) \ge 0$, $f\left( 0 \right) = 0$, $f\left( 1 \right) = 1$ y el área bajo la curva de $f$ desde $0$ a $x$ es proporcional a la potencia $\left( n+1 \right) $ de $f\left( x \right) $
+
+	\textit{Solución}
+
+	En este caso tenemos distintas características de la curva. Sin embargo, quizás la mas importante es la ultima la cual nos indica una ecuación que definirá la curva \[
+	\int_0^x y = y^{\left( n+1 \right) }
+	.\] por lo cual si sacamos una derivada con respecto a la variable nos queda \[
+	y = \left( n+1 \right) y^{n} y'
+	.\] Ahora, con esto quedamos con una ecuación separable pero con un resultado bastante facil. Si desarrollamos un poco nos queda
+	\begin{align*}
+	  ydx = \left( n+1 \right) y^{n}dy\\
+	.\end{align*}
+    \end{enumerate}
+\end{document}

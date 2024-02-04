@@ -1,0 +1,108 @@
+\documentclass[a4paper, amsfonts, amssymb, amsmath, reprint, showkeys, nofootinbib, twoside]{revtex4-1}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage[colorinlistoftodos, color=green!40, prependcaption]{todonotes}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[left=23mm,right=13mm,top=35mm,columnsep=15pt]{geometry} 
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{csquotes}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage[pdftex, pdftitle={Article}, pdfauthor={Author}]{hyperref} % For hyperlinks in the PDF
+%\setlength{\marginparwidth}{2.5cm}
+\bibliographystyle{apsrev4-1}
+
+\begin{document}
+
+%El título del experimento realizado es importante.
+\title{Título del experimento}
+
+
+\author{Nicolás Berrío-Herrera}
+\email[Correo institucional: ]{n.barbosa648@uniandes.edu.co}
+
+%Si necesitan poner un segundo autor, deben eliminar los porcentajes (%) iniciales.
+  
+%\author{Second Author}
+%\email{Second.Author@institution.edu}
+
+\affiliation{Universidad de los Andes, Bogotá, Colombia.}
+
+\date{\today} % Si lo dejan vacío no les saldrá fecha. La fecha que se muestra es del día en que se compila.
+
+\maketitle
+
+\section{Resultados y análisis}
+
+Dado que nos interesa debelar la relación entre la estadística de Bose-Einstein y la termodinámica quizás uno de los mejores inicios es $<E>$. Esto debido a que tenemos una manera de describirlo. 
+
+En consecuencia si iniciamos de la definición para $<E>$ en física estadística tenemos
+\begin{equation}
+  \label{eq:EBE}
+  <E> = \int_0^\infty g(E)f_{BE}(E)EdE
+.\end{equation}
+
+Ahora bien, para este caso, reemplacemos entonces con los valores que tenemos. En particular centrémonos en el caso de un solido para el cual
+\begin{align*}
+  g(E) &= \frac{1}{\hbar \omega}\\
+  f_{BE}(E) &= \frac{1}{e^{\frac{E}{k_BT}}-1}\\
+.\end{align*}
+
+Lo que nos deja entonces con
+\begin{equation}
+  \label{eq:EINT}
+  <E> = \int_0^{\infty}\frac{E}{\hbar\omega \left( e^{\frac{E}{k_BT}}-1 \right) } dE
+.\end{equation}
+
+Esta integral requiere un cambio de variable para ser solucionado de mejor manera. En particular tomaremos
+\begin{align*}
+  U &= \frac{E}{K_BT} \\
+  dU &= \frac{dE}{K_BT}
+.\end{align*}
+
+Ahora bien, reemplazando en nuestra integral nos queda
+\begin{equation}
+  \label{eq:ERINT}
+  <E> = \frac{\left( k_B  T\right)^{2} }{\hbar\omega}\int_0^{\infty}\frac{U}{e^{u}-1}dU
+.\end{equation}
+
+En este caso, la integral resultante al hacer el cambio de variable resulta ser $\frac{\pi^2}{6}$ lo que nos deja con
+\begin{equation}
+  \label{eq:IS}
+  <E> = \frac{\pi^2\left( k_B  T\right)^{2} }{\hbar\omega 6}
+.\end{equation}
+
+Ahora teniendo esto, podemos considerar la expresion de $<E>$ para termodinamica con lo que conseguimos
+ \begin{align*}
+  <E> = TS + PV
+.\end{align*}
+
+Ahora bien, una vez tenemos esto podemos ver que tenemos varias relaciones que nos pueden interesar. Para comenzar podemos hallar la entropia del sistema
+\begin{align*}
+  \left( \frac{d<E>}{dT} \right)_{P,V} = S
+.\end{align*}
+
+Ahora que tenemos $<E>$ podemos encontrar esta derivada lo que nos deja con
+\begin{align*}
+  \left( \frac{d<E>}{dT} \right)_{P,V} = S = \frac{2\pi^2k_B^2T}{\hbar\omega 6}
+.\end{align*}
+
+Ahora bien, dado que estamos en termodinámica podemos saber que
+\begin{align*}
+  C = T\left( \frac{dS}{dT} \right)_{P,V} = \frac{2\pi^2k_B^2 T}{\hbar\omega 6}
+.\end{align*}
+
+Cosa que coincide con lo esperado 
+\section{Conclusiones}
+
+Para este experimento se deseaba encontrar una relación entre la física estadística y la termodinámica. En particular, nos interesaba encontrar el calor especifico en términos estadísticos para un solido. Para conseguir esto partimos desde la energía esperada en física estadística para lo cual en particular utilizamos la distribución de Bose-Einstein. Con esto encontramos su valor despejando la integral por medio de un cambio de variable. Luego de esto, derivamos con respecto a la temperatura manteniendo un volumen y una presión constante con lo que obtuvimos una entropía. Luego de esto utilizamos la definición de $c_p$ y $c_v$ que en verdad solo varían pues se mantiene la presión o el volumen constante respectivamente. Ahora bien, dado que tenemos mantenemos la presión y el volumen constante ambas condiciones se cumplen y asignamos a esto el calor especifico. Este valor especifico coincidía con el valor esperado para termodinámica y tenia un comportamiento como el que aparece en la gráfica \ref{fig:Cesp}.
+
+\end{document}

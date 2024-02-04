@@ -1,0 +1,58 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ondas - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 12 - Punto 4} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+  \textbf{\examnum} && \textit{Yeiferson Camacho} \\
+  \textbf{\examdate} && \textit{Monica Cano}
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+  \item \textbf{Enunciado:}
+
+    El diámetro del objetivo del telescopio del Monte Palomar es de 508 cm. Calcule su límite angular de resolución a una longitud de onda de 550 nm, en radianes, grados y segundos de arco. ¿A qué distancia deberían estar entre sí dos objetos en la superficie de la Luna para que el telescopio Palomar los pueda resolver? La distancia Tierra-Luna es de $3.844\times 10^{8} m$; suponga que $\lambda_0 = 550 nm$. ¿A qué distancia entre ellos deberían colocarse dos objetos en la superficie de la Luna para que el ojo humano los pueda distinguir? Suponga que el diámetro de la pupila sea de $4.00 mm$.
+
+  \item \textbf{Solución:}
+
+    \begin{align*}
+      \Delta \varphi_{min}&= \frac{1.22\lambda}{D}=\frac{1.22\left( 5.50\times 10^{-7}m \right) }{5.08 m}\\
+      &=  1.32\times 10^{-7}\\
+      s&= r\Delta \varphi \\
+      &= \left( 3.844 \times 10^{8} m \right) \left( 1.32\times 10^{-7} \right) =50.7 m
+    .\end{align*}
+\end{enumerate}
+
+\end{document}

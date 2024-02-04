@@ -1,0 +1,505 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{circuitikz} \usepackage{float}
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Electronica Para Ciencias} % This is the name of the course 
+\newcommand{\examnum}{Tarea 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{:0}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+  \item Circuito Inicial:
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,0)
+	  to[V,v=$3mA$ ](0,2)
+	  to[short](2,2)
+	  to[R=$2k$ ](2,0)
+	  to[short](0,0);
+	  \draw(2,2)
+	  to[battery,v_=$2V$ ](5,2)
+	  to[R=$1k$](5,0)
+	  to[short](2,0);
+	  \draw(5,2)
+	  to[R=$3k$ ](8,2)
+	  to[battery,v_=$10V$ ](8,0)
+	  to[short](5,0);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+    Lo primeo que hacemos es por equivalencia de fuentes volver $2k$ en serie con una fuente de voltaje de $5V$
+
+    En este caso debemos trabajar con cada una de las fuentes por aparte apagando las otras cuando no estemos trabajando con ellas:
+
+    Iniciamos con:
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,0)
+	  to[battery,v_=$5V$ ](0,2)
+	  to[R=$2k$](2,2)
+	  to[R= $1k$](2,0)
+	  to[short](0,0);
+	  \draw(2,2)
+	  to[R= $3k$ ](4,2)
+	  to[short](4,0)
+	  to[short](2,0);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+    \begin{itemize}
+      \item Nodo A: $I_1=I_2$
+      \item Nodo B: $I_2=I_3+I_4$ 
+      \item Nodo C: $I_3+I_4=I_1$ 
+      \item $R_2$ : $V_A-V_B=I_2\cdot 2k$
+      \item $R_1$ : $V_B-V_C=I_3\cdot 1k$ 
+      \item $R_3$ : $V_B - V_C=I_4\cdot 3k$
+      \item Fuente : $V_A - V_C = 5V$ 
+      \item Tierra : $V_C = 0$ 
+    \end{itemize}
+
+    \begin{align*}
+      V_B = V_AI_2\left( 2k \right) &= V_A - \left( I_3 + I_4 \right) 2k \\
+      &= V_A - \left( \frac{V_B}{1k} + \frac{V_B}{3k} \right) 2k \\
+      V_B + 2V_B + \frac{2}{3}V_B &= V_A \\
+      V_B &= \frac{18}{11}V \\
+      I_3 &= \frac{18}{11}mA\\
+      I_4 &= \frac{18}{33}mA
+    .\end{align*}
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,0)
+	  to[R=$2k$ ](0,2)
+	  to[battery, v_ = $2V$ ](2,2)
+	  to[R=$1k$ ](2,0)
+	  to[short] node[ground] {} (0,0);
+	  \draw(2,2)
+	  to[R=$3k$ ](4,2)
+	  to[short](4,0)
+	  to[short](2,0);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+    \begin{itemize}
+      \item Nodo A: $I_4=I_1$
+      \item Nodo B: $I_1=I_2+I_3$ 
+      \item Nodo C: $I_2+I_3=I_4$ 
+      \item $R_2$ : $V_C-V_A=I_4\cdot 2k$
+      \item $R_1$ : $V_B-V_C=I_3\cdot 1k$ 
+      \item $R_3$ : $V_B - V_C=I_2\cdot 3k$
+      \item Fuente : $V_B - V_A = 2V$ 
+      \item Tierra : $V_C = 0$ 
+    \end{itemize}
+
+    \begin{align*}
+      V_C - V_A &= -V_A\\
+      -V_A &= \left( I_2+I_3 \right) 2k \\
+      &= \frac{4}{3}V_B \\
+     \frac{4}{3}V_B &= 2V-V_B \\
+     \frac{11}{3}V_B &= 2V \\
+     V_B &= \frac{6}{11}V \\
+     V_A &= V_B - 2V \\
+     &= -\frac{16}{11}V \\
+     I_2 &= \frac{6}{33}mA =  \frac{2}{11}\\
+     I_3 &= \frac{6}{11}\\
+     I_1 &= I_4 =  \frac{8}{11}mA
+    .\end{align*}
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,0)
+	  to[R=$2k$ ](0,2)
+	  to[short](2,2)
+	  to[R=$1k$ ] node[ground] {} (2,0)
+	  to[short](0,0);
+	  \draw(2,0)
+	  to[short](4,0)
+	  to[battery, v_=$10V$ ](4,2)
+	  to[R=$3k$ ](2,2);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+    \begin{itemize}
+      \item Nodo A: $I_1=I_2$
+      \item Nodo B: $I_2=I_4+I_3$ 
+      \item Nodo C: $I_4+I_3=I_2$ 
+      \item $R_2$ : $V_B-V_C=I_4\cdot 2k$
+      \item $R_1$ : $V_B-V_C=I_3\cdot 1k$ 
+      \item $R_3$ : $V_A - V_B=I_2\cdot 3k$
+      \item Fuente : $V_A - V_C = 10V$ 
+      \item Tierra : $V_C = 0$ 
+    \end{itemize}
+
+    \begin{align*}
+      V_B &= V_A - I_2 3k = V_A - \left( I_4 + I_3 \right) 3k \\
+      &= V_A - \left( \frac{V_B}{2k} + \frac{V_B}{1k} \right) 3k \\
+      V_B + \frac{3}{2}V_B + 3V_B &= V_A\\
+      \frac{11}{2}V_B &= 10V \\
+      V_B &= \frac{20}{11}V \\
+      I_3 &= \frac{V_B}{1k}=\frac{20}{11}mA \\
+      I_4 &= \frac{V_B}{2k} = \frac{10}{11}mA \\
+      I_2 &= I_1 = \frac{30}{11}mA \\
+    .\end{align*}
+
+    Ahora con esto sumamos todos los aportes y queda:
+    \begin{itemize}
+      \item Fuente $2V$ : $\frac{24}{11}mA + \frac{8}{11}mA - \frac{10}{11}mA=\frac{22}{11}mA=2mA$
+      \item Fuente $10V$ : $-\frac{6}{11}mA - \frac{2}{11}mA + \frac{30}{11}mA=\frac{22}{11}mA=2mA$ 
+      \item Fuente $3mA$ : $6V - \frac{16}{11}V + \frac{20}{11}V = \frac{70}{11}V$
+    \end{itemize}
+
+  \item 
+
+    El circuito con el que vamos a trabajar es:
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,2)
+	  to[short,o-*](1,2)
+	  to[R=$30$,*-*](1,0)
+	  to[short,*-o](0,0);
+	  \draw(1,0)
+	  to[R=$40$,*-*](4,0)
+	  to[V,v=$2A$,*-*](4,2)
+	  to[R=$20$,*-*](1,2);
+	  \draw(4,0)
+	  to[short](7,0)
+	  to[R=$10$ ](7,2)
+	  to[battery,v_=$10V$ ](4,2);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+    Ahora bien, para el voltaje de Thevenin aplicamos equivalencia de fuentes en el circuito original desarrollando como sigue:
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,2)
+	  to[short,o-*](1,2)
+	  to[R=$30$,*-*](1,0)
+	  to[short,*-o](0,0);
+	  \draw(1,0)
+	  to[R=$40$,*-*](4,0)
+	  to[V,v=$2A$,*-*](4,2)
+	  to[R=$20$,*-*](1,2);
+	  \draw(4,0)
+	  to[short](7,0)
+	  to[R=$10$ ](7,2)
+	  to[battery,v_=$10V$ ](4,2);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+   
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,2)
+	  to[short,o-*](1,2)
+	  to[R=$30$,*-*](1,0)
+	  to[short,*-o](0,0);
+	  \draw(1,0)
+	  to[R=$40$,*-*](4,0)
+	  to[V,v=$2A$,*-*](4,2)
+	  to[R=$20$,*-*](1,2);
+	  \draw(4,0)
+	  to[short](6,0)
+	  to[R=$10$ ](6,2)
+	  to[short](4,2);
+	  \draw(6,0)
+	  to[short](8,0)
+	  to[V,v=$1A$ ](8,2)
+	  to[short](6,2);
+        \end{circuitikz}
+      \end{center}
+      \caption{Para esta se utilizo equivalencia de una fuente de voltaje de $10V$ con una resistencia de $10$ por lo que queda una fuente de $I = \frac{V}{R} = 1A$ }
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,2)
+	  to[short,o-*](1,2)
+	  to[R=$30$,*-*](1,0)
+	  to[short,*-o](0,0);
+	  \draw(1,0)
+	  to[R=$40$](4,0)
+	  (4,2)to[R=$20$](1,2);
+	  \draw(4,0)
+	  to[short](6,0)
+	  (6,2)to[R=$10$](4,2);
+	  \draw(6,0)
+	  to[short](8,0)
+	  to[V,v=$1A$ ](8,2)
+	  to[battery,v_=$20V$](6,2);
+        \end{circuitikz}
+      \end{center}
+      \caption{Para esto se utilizo equivalencia de una fuente de corriente $2A$ con la resistencia de $10$ por lo que queda una fuente $V = IR = 20V$ }
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,2)
+	  to[short,o-*](1,2)
+	  to[R=$30$,*-*](1,0)
+	  to[short,*-o](0,0);
+	  \draw(1,0)
+	  to[R=$40$](4,0)
+	  (4,2)to[R=$30$](1,2);
+	  \draw(4,0)
+	  to[short](6,0)
+	  to[V,v=$1A$ ](6,2)
+	  to[battery,v_=$20V$ ](4,2);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,2)
+	  to[short,o-*](1,2)
+	  to[R=$30$,*-*](1,0)
+	  to[short,*-o](0,0);
+	  \draw(1,0)
+	  to[R=$40$](4,0)
+	  to[R=$30$ ](4,2)
+	  to[short](1,2);
+	  \draw(4,0)
+	  to[short](6,0)
+	  to[V,v=$1A$ ](6,2)
+	  to[short](4,2);
+	  \draw(6,0)
+	  to[short](8,0)
+	  to[V,v=$0.6A$ ](8,2)
+	  to[short](6,2);
+        \end{circuitikz}
+      \end{center}
+      \caption{Para esto se utilizo equivalencia de una fuente de Voltaje $20V$ con una resistencia de $30$ por lo que queda $I=\frac{V}{R}=0.6A$ }
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,2)
+	  to[short,o-*](1,2)
+	  to[R=$30$,*-*](1,0)
+	  to[short,*-o](0,0);
+	  \draw(1,0)
+	  to[R=$40$](4,0)
+	  (4,2)to[short](1,2);
+	  \draw(4,0)
+	  to[R=$30$](6,0)
+	  (6,2)to[short](4,2);
+	  \draw(6,2)
+	  to[short](10,2)
+	  (10,0)to[V,v=$0.6A$ ](10,2)
+	  (10,0)to[battery,v_=$30V$](6,0);
+        \end{circuitikz}
+      \end{center}
+      \caption{Para esto se utilizo equivalencia de una fuente de corriente $1A$ y una resistencia $30$ por lo que queda $V=IR=30V$ }
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,2)
+	  to[short,o-*](1,2)
+	  to[R=$30$,*-*](1,0)
+	  to[short,*-o](0,0);
+	  \draw(1,0)
+	  to[R=$70$ ](4,0)
+	  (6,0)to[battery,v_=$30V$ ](4,0)
+	  (6,0)to[V,v_=$0.6A$ ](6,2)
+	  to[short](1,2);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,2)
+	  to[short,o-*](1,2)
+	  to[R=$30$,*-*](1,0)
+	  to[short,*-o](0,0);
+	  \draw(1,0)
+	  to[short](4,0)
+	  to[V,v=$0.6A$ ](4,2)
+	  to[short](1,2);
+	  \draw(4,0)
+	  to[short](6,0)
+	  to[R=$70$ ](6,2)
+	  to[short](4,2);
+	  \draw(6,0)
+	  to[short](8,0)
+	  to[V,v=$0.4A$ ](8,2)
+	  to[short](6,2);
+        \end{circuitikz}
+      \end{center}
+      \caption{Para esto se utilizo equivalencia de una fuente de Voltaje $30V$ con una resistencia de $70$ por lo que queda  $I = \frac{V}{R}=0.4A$ }
+    \end{figure}
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+	  \draw(0,2)
+	  to[R=$30$,o-](2,2)
+	  to[battery,v_=$18V$ ](4,2)
+	  to[R=$70$ ](4,0)
+	  (0,0)to[battery,v_=$28V$,o-](4,0);
+        \end{circuitikz}
+      \end{center}
+      \caption{Para esto se utilizo equivalencia entre dos fuentes una de $0.6A$ y una de $0.4A$ que estaban relacionadas en paralelo con resistencias de $30$ y $70$ respectivamente por lo que queda $V=I_1R_1=18$ y $V=I_2R_2=28$}
+    \end{figure}
+
+    Ahora con esto resulta mucho mas facil encontrar el voltaje de Thevenin dado que es un circuito abierto sabemos que $I=0$ y por lo tanto, el voltaje de las resistencias es $0$ y en consecuencia podemos sumarlo y nos da: \[
+      10V
+    .\] 
+
+    Ahora bien, para calcular la corriente de corto circuito cerramos el circuito anterior y analisamos 
+      
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+	  \draw(0,0)
+	  to[short,*-*](0,2)
+	  to[R=$30$](2,2)
+	  to[battery,v_=$18V$ ](4,2)
+	  to[R=$70$ ](4,0)
+	  (0,0)to[battery,v_=$28V$](4,0);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+    Ahora bien, si analizamos este circuito por mallas sabemos que:
+    \begin{align*}
+      28V = 18V + I\cdot 70 + I\cdot 30	\\
+      10V = I\left( 100 \right) \\
+      I = \frac{1}{10}A
+    .\end{align*}
+
+    Con estos dos valores ya encontrados podemos calcular la resistencia equivalente con el ultimo circuito que es simplemente apagar las dos fuentes y nos quedamos con:
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+	  \draw(0,2)
+	  to[R=$30$,o-](2,2)
+	  to[short](4,2)
+	  to[R=$70$ ](4,0)
+	  to[short,-o](0,0);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+    Con lo que queda que $R_{eq}=100$ y tambien lo podemos mostrar con: \[
+      R_{eq}=\frac{V_{th}}{I_{th}}=\frac{10}{\frac{1}{10}} = 100
+    .\] 
+
+    Ahora para el circuito de Thevenin simplemente tenemos que:
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+	  \draw(0,0)
+	  to[short](2,0)
+	  to[battery,v_=$10V$ ](2,2)
+	  to[R=$100$ ](0,2);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+    Ahora para el circuito de Norton simplemente tenemos que:
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+          \draw(0,0)
+	  to[short](2,0)
+	  to[R=$100$ ](2,2)
+	  to[short](0,2);
+	  \draw(2,0)
+	  to[short](4,0)
+	  to[V,v=$\frac{1}{10}$](4,2)
+	  to[short](2,2);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+  \item Trabajaremos con el circuito:
+
+    \begin{figure}[H]
+      \begin{center}
+        \begin{circuitikz}
+         \draw(0,0)
+	 to[R=$3k$ ](0,4)
+	 to[short](2,4)
+	 to[battery,v_=$3V$ ](2,2)
+	 to[C=$1u$](2,0)
+	 to[short](0,0);
+	 \draw(2,2)
+	 to[switch](4,2)
+	 to[short](4,4)
+	 to[R=$4k$ ](2,4);
+	 \draw(2,0)
+	 to[R=$2k$ ](4,0)
+	 to[short](4,2);
+        \end{circuitikz}
+      \end{center}
+    \end{figure}
+
+    En este caso para $t=0$ podemos entender el capacitor como un circuito abierto por lo que $I_4 = 0$ y con esto:
+    \begin{align*}
+      I_3 &= \frac{V_B}{2k}\\
+      I_5 &= \frac{V_A}{3k} \\
+      I_3 + I_5 &= \frac{V_B}{2k} + \frac{V_A}{3k}= 0 = I_4 \\
+      V_A - V_B &= V_A - \frac{2V_A}{3} = \frac{V_A}{3} = 3V \\
+      V_A &= 9V \\
+      I_3 &= I_2 = \frac{V_A - V_B}{4k\Omega}=\frac{3}{4}mA \\
+    .\end{align*}
+
+\end{enumerate}
+
+\end{document}

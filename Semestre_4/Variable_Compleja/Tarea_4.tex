@@ -1,0 +1,212 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Variable Compleja} % This is the name of the course 
+\newcommand{\examnum}{Tarea 4} % This is the name of the assignment
+\newcommand{\examdate}{04/12/2022} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya Ramírez}\\ %Your name here instead, obviously 
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+
+
+
+\begin{enumerate} %You can make lists!
+
+\item \begin{itemize}
+\item Demostrar que si $f(z)$ y $g(z)$ son funciones enteras y $|f(z)| \leq |g(z)|$ entonces $f = \lambda g$ para algun
+$\lambda \in \mathbb{C}$.
+
+Sabemos que f(z) es entero y es acotado pues $|f(z)|\leq |g(z)|$ eso quiere decir que $f(z)$ es constante. Por otro lado, dado que,
+$|f(z)|\leq |g(z)|$ tambien podemos saber que $-|g(z)|\leq f(z)$ y como esta es una función entera entonces $g(z)$ tambien debe
+ser constante. Por lo tanto, lo unico quiere decir esto es que para cualquier numero complejo se puede llegar a otro multiplicandolo.
+
+\item Demostrar que si f(z) es una función entera entonces su imagen es densa en $\mathbb{C}$
+
+Suponga por contradicción que $f(z)$ no es densa. Por tanto, $$\exists B(a,r): |f(z) - a| \geq r; \forall z \in \mathbb{C}$$
+sin embargo podemos definir $$g(z)=\frac{r}{f(z)-a}$$ Sabemos que $f(z)-a$ no es 0 pues debe ser mayor a $r$ y si fuese 0 tendria
+imagen densa. Por otro lado, $g(z)\leq 1$ y por tanto $g(z)$ es constante lo que hace a $f(z)$ constante y por tanto densa.
+En todos los casos se llega a contradicción y en consecuencia $f(z)$ tiene imagen densa.
+
+\item Demostrar que una función eliptica entera es constante.
+
+Considere $R=\{z\in\mathbb{C}: w_1 \leq Re(Z), w_2 \leq Im(z)\}$ entonces para cada $z \in \mathbb{C}$ existe un $w\in R$ tal que
+$f(z)=f(w)$ puesto que $f(z)=f(z+w_1)$ y por tanto para cualquier valor de $z$ podriamos encontrar un valor en $R$ que al sumarle
+n o m veces $w_1$ o $w_2$ nos da como resultado el mismo z y por tanto, existe una cota que es en concreto $\sqrt{w_1^2+w_2^2}$ 
+y por teorema de Leouville como estamos con una función acotada y entera nos da que esta debe ser constante.
+\end{itemize} 
+\item Calcular las siguientes integrales.
+\begin{itemize}
+    \item $\int_C \frac{dz}{(z^2+4)^2}$ donde C es el contorno $|z - i|=2$ orientado positivamente.
+    
+    \textbf{Solución: } Como el contorno en el que trabajamos es $|z-i|=2$ entonces tenemos una circunferencia con 
+    centro en $i$ y radio 2. Ademas sabemos que esta orientada positivamente (es decir en el sentido opuesto a las manecillas
+    del reloj). Ahora bien para encontrar sus polos podemos:
+
+    \begin{align*}
+        &\frac{dz}{(z^2+4)^2}=\frac{dz}{((z+2)(z-2))^2}\\
+        &=\frac{dz}{(z+2)^2(z-2)^2}\\
+    \end{align*}
+    Lo cual hace como se ve que las singularidades sean $\{-2,2\}$ Por tanto podemos plantear esta integral con la formula
+    de Cauchy como sigue:
+    \begin{align*}
+        &\int_{C_1} \frac{\frac{1}{(z-2)^2}}{(z+2)^2} + \int_{C_2}\frac{\frac{1}{(z+2)^2}}{(z-2)}
+    \end{align*}
+    
+    Y por tanto con el teorema de Cauchy nos queda.
+    \begin{align*}
+        &\int_{C_1} \frac{\frac{1}{(z-2)^2}}{(z+2)^2} + \int_{C_2}\frac{\frac{1}{(z+2)^2}}{(z-2)} = 2\pi i \frac{1}{16} + 2\pi i \frac{1}{16}
+    \end{align*}
+    \item $\int_C \frac{zdz}{2z+1} d$ donde C es el controno compuesto por el cuadrado con lados dados 
+    por las lineas $x=\pm 3$, $y=\pm 3$
+
+    \textbf{Solución: }Tenemos el siguiente contorno
+    y por tanto para ese mismo contorno entonces debemos hallar sus polos los cuales son para este caso
+    \begin{align*}
+        &\frac{z dz}{2z+1}
+    \end{align*}
+    Por ende sus polos son $z=\frac{1}{2}$ y por lo tanto si acomodamos esto para que concuerde nos queda que.
+    \begin{align*}
+        &\frac{z dz}{2(z+\frac{1}{2})}=\frac{\frac{2}{z}}{z+\frac{1}{2}}dz
+    \end{align*}
+    lo cual nos deja por la formula de cauchy con el siguiente resultado:
+    \begin{align*}
+        &\int_C \frac{zdz}{2z+1}=\int_C \frac{\frac{2}{z}}{z+\frac{1}{2}}dz = 2 \pi i \frac{2}{\frac{1}{2}} = 8 \pi i
+    \end{align*}
+    \item $\int_C \frac{dz}{z^2+2z+2}$ donde C es el controno $|z-1|=1$ orientado positivamente.
+    
+    \textbf{Solución: }Una vez mas, encontremos cuales son los polos en este contorno con esta función, que en este caso es:
+    \begin{align*}
+        &\frac{dz}{z^2+2z+2}=\frac{dz}{(z+1+i)(z+1-i)}
+    \end{align*}
+    Por lo cual los polos son $\{-1-i,-1+i\}$Lo cual al separar en lo que nos interesa nos queda.
+    \begin{align*}
+        &\int_C \frac{dz}{z^2+2z+2} = \int_{C_1} \frac{\frac{1}{(z+1+i)}}{z+1-i} + \int_{C_2} \frac{\frac{1}{z+1-i}}{z+1+i}\\
+        &=2 \pi i \frac{1}{z+1+i} + 2 \pi i \frac{1}{z+1-i}=2 \pi i \left(\frac{1}{-1+i+1+i} + \frac{1}{-1-i+1-i}\right)\\
+        &=2 \pi i \left(\frac{1}{2i}+\frac{1}{-2i}\right)
+    \end{align*}
+\end{itemize}
+\item \begin{itemize}
+    \item Encontrar la serie de Laurent en las regiones $0<|z|<2$ y $2<|z|>\infty$ y usar eso para calcular el valor de
+    la integral $$\displaystyle \int_C \frac{z+1}{z^2-2z}$$ para el contorno $|z|=4$ orientado positivamente.
+    \item Encontrar el valor de la integral usando el teorema de los residuos: $$\displaystyle \int_C \frac{dz}{z^3(z+4)}$$
+    para el contorno $|z+2|=3$ orientado positivamente.
+
+    Como es claro los polos son $z=0$ y $z=-4$ con orden 3 y 1 respectivamente. Dado que ambos estan en el contorno (Una esfera
+    de Radio 3 centrada en 2) debemos sacar los residuos de ambos.
+
+    Sea $f(z)=\frac{1}{z^3(z+4)}$,
+    \begin{align*}
+        &Res_{z\to0} f(z) = \lim_{z\to0}\left(\frac{1}{2!}\right)\frac{d^2}{dz^2}\left[\frac{\cancel{z^3}}{\cancel{z^3}(z+4)}\right]\\
+        &=\lim_{z\to0}\frac{1}{2}\frac{d}{dz}\left(\frac{-1}{(z+4)^2}\right)\\
+        &=\lim_{z\to0}\frac{1}{2}(2(z+4)^{-3})= \frac{1}{4^3}=\frac{1}{64}
+    \end{align*}
+    Sea $f(z)=\frac{1}{z^3(z+4)}$
+    \begin{align*}
+        &Res_{z\to-4}f(z)=\lim_{z\to-4}\frac{\cancel{(z+4)}}{z^3\cancel{(z+4)}}=\frac{1}{z^3}=\frac{1}{-4^3}=-\frac{1}{64}
+    \end{align*}
+    y por tanto el resultado seria:
+    $$\int_C \frac{dz}{z^3(z+4)}=2\pi i \sum Res\ f(z) = 2 \pi i \left(\frac{1}{64} - \frac{1}{64}\right) = 0$$
+\end{itemize}
+\item \begin{itemize}
+    \item Calcular $$\int_0^{\infty} \frac{dx}{x^4+1}$$
+    Sea $$\int_C \frac{dz}{1+z^4}$$ donde C es un contorno en el primer cuadrante tal que $$C = (0,R)\cup Re^{i(0,\frac{\pi}{2})}\cup(Re^{i\frac{\pi}{2}},0)$$
+    En ese contorno hay solamente un polo $$z=e^{i\frac{\pi}{4}}$$ por lo tanto. $$\int_C \frac{dz}{1+z^4}=2\pi i \frac{1}{4z^3} = \frac{1}{2}\pi i \frac{z}{z^4}$$
+    Sin embargo, como el lector pudo advertir esta no es una integral en $x$ si no en $z$ y por tanto podemos. 
+    \begin{align*}
+        &\int_0^\infty \frac{dx}{x^4+1} + \int_0^\frac{\pi}{2} \frac{Re^{i\theta}d\theta}{1+R^4e^4i\theta} + \int_R^0 \frac{e^{i\frac{\pi}{2}}}{1+(re^{i\frac{\pi}{2}})^4}
+    \end{align*}
+    y por tanto $$\int_0^\infty \frac{dx}{x^4+1} = -\frac{1}{2}\pi i \frac{e^{i\frac{\pi}{4}}}{1-i}=\frac{\sqrt{2}}{4}\pi$$
+    \item Calcular $$\int_0^{\infty} \frac{\cos(ax)}{x^2+1}dx=\frac{\pi}{2}e^{-a}$$
+    
+    La función tiene un polo $z = i$. Tomemos un semicirculo como contorno tal que cubre el eje complejo positivo.
+
+    \begin{align*}
+        &Res_{z=i}(f(z)) = \lim_{z\to u}e^{iaz}\frac{\cancel{(z-i)}}{\cancel{(z-i)}(z+i)}=\lim_{z\to i}\frac{e^{iaz}}{z+i}=\frac{e^{-a}}{2i}
+    \end{align*}
+
+    Por lo tanto la integral seria
+    $$\int_{-R}^{R}=\pi\cancel{2i}(\frac{e^{-a}}{\cancel{2i}}) = \pi e^i$$
+    Y si sacamos la parte real nos queda $\pi e^i$ pero como solo nos interesa la mitad del plano nos quedamos con
+    $$\frac{\pi e^-a}{2 }$$
+    \item Calcular $$\int_{-\infty}^{\infty}\frac{\cos(3x)}{(x^2+1)^2}dx$$
+
+    Puesto que el integrando es par basta con encontrar el valor principal de Cauchy. Introduzcamos la función $f(z)=\frac{1}{(z^2+1)^2}$
+    note que esto es analitica con un polo en $z= i$. Esta singularidad se encuentra en la region interior del contorno del 
+    segmento $-R<x<R$ del eje real y la mitad superior del circulo $|z| = R(R>1)$ si integramos en ese caso nos da
+    $$\int_{-R}^{R}\frac{e^{i3x}}{(x^2+1)}dx = 2\pi B_1 - \int_C f(z)e^{i3z}dz$$ donde $B_1 = Res(f(z)e^{i3z})$
+    
+    dado $f(z)e^{i3z}$ el punto $z=i$ es obviamente un polo de orden 2 y por tanto $$B_1 = \frac{1}{e^{i3z}}$$
+
+    Igualando las partes reales de todo lo descrito hasta ahora nos da que $$\int_-R^R \frac{cos(3x)}{(x^2+1)^2}=\frac{2\pi}{e^3}-Re\int_C f(z)e^{i3z}$$
+
+    Por ultimo observe que si $z$ es un punto en $C$ $$f(z)\leq M_R$$ donde $M_R=\frac{1}{(R^2-1)^2}$ Y por tanto
+
+    $$Re\int f(z)e^{i3z}\leq M_R\pi R$$ y por tanto cuando hacemos el limite nos queda que $\int_{-\infty}^{\infty} \frac{\cos(3x)}{(x^2+1)^2}dx = \frac{2\pi}{e^3}$
+    \item Demostrar la igualdad $$\int_0^{2\pi}\frac{d\theta}{1+a\sin(\theta)}=\frac{2\pi}{\sqrt{1-a^2}}$$ $-1<a<1$
+    
+    Para el circulo unitario esto puede ser igual a 
+    $$\int_0^{2\pi}\frac{d\theta}{1+a\sin\theta}=\int_c \frac{2i d\theta}{2i+a(e^{i\theta}-e^{-i\theta})}$$
+    Ahora bien, si hacemos que $z=e^{i\theta}$, $dz = ie^{i\theta}d\theta = izd\theta$ entonces podemos convertirlo en
+    $$=2\int_C \frac{dz}{az^2+2iz-a}$$
+    que por cuadratica sabemos que sus residuos son $\frac{-i\pm\sqrt{a^2-1}}{a}$ Y como estamos en el circulo unitario solo
+    tomamos el valor positivo. lo que nos deja con
+    $$Res_{z=zr} f(z) = \lim_{z\to zr}\frac{(z-zr)}{az^2+2iz-a}=\frac{1}{2\sqrt{a^2-1}}$$
+    y por lo tanto 
+    $$\int_0^{2\pi}\frac{d\theta}{1+a\sin(\theta)} = 2[2\pi i(\frac{1}{2\sqrt{a^-1}})] = \frac{2\pi}{\sqrt{1-a^2}}$$
+\end{itemize}
+\item Sea $z \in \mathbb{C}$ un numero complejo no nulo $(z=re^{i\theta})$.
+\begin{enumerate}
+    \item Demostrar que todos los valores de $\log(z^n)$ estan dados por $$\log(z^n)=n\ln(r)+i(n\theta + 2\pi p)$$ donde $p \in \mathbb{Z}$
+   
+    tenemos que $$\log(z^n) = \log((re^{i\theta})^n) = \log(e^{n\ln(r)+in\theta}) = n\ln(r) + (\theta n + 2\pi p)$$
+    Con p dando los valores cuando se multievalua.
+    \item Demostrar que todos los valores de $\log(z^{\frac{1}{n}})$ estan dados por $$\log(z^{\frac{1}{n}})=\frac{1}{n}ln(r) + i \frac{\theta + 2(pn + k)\pi}{n}$$ donde $p \in \mathbb{Z},k \in \{0,...,n-1\}$
+    
+    De manera similar al punto anterior tenemos que $$\log(z^{\frac{1}{n}})=\log(e^{\frac{1}{n}(\ln(r)+i\theta)})=\log(e^{\frac{\ln(r)}{n}+ i\frac{\theta + 2 \pi k}{n}})$$
+    lo cual nos deja con un resultado de $$\log(z^{\frac{1}{n}})= \frac{\ln(r)}{n}+i\frac{\theta + 2(pn + k)\pi}{n}$$
+    en donde pn y k se ponen para ajustar los valores multivaluados y la n que aparece al lado de la p es por suma de fracciones.
+    \item Demostrar o refutar que $$\log(z^n) = n\log(z)$$
+    
+    En la tarea 3 se vieron varios contraejemplos. En este caso tome $i^2$ cuyo conjunto de valores es diferente a $2\log(i)$
+    (Revisar la tarea 3 punto 3.4 para revisar la demostración de esto.)
+    \item Demostrar o refutar que $$\log(z^{\frac{1}{n}})=\frac{1}{n}\log(z)$$
+    \item Es cierto que $\log(z) + \log(z) = 2\log(z)$
+    
+    Como ya sabemos por identidades en los logaritmos (Revisar el cap 31 del libro en su septima edición) $\log(z_1)+\log(z_2) = \log(z_1z_2)$
+    en nuestro caso entonces nos quedaria que $\log(z)+\log(z)=\log(z^2)$ lo cual como ya dijimos es falso y por tanto esto es falso.
+\end{enumerate}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,55 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Some Class}\\Random Examples}
+\author{\huge{Your Name}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+\section{Recuento de lo ocurrido}
+Lo que hemos visto es mecánica cuántica que nos sirve para  mostrar una realidad física. Para esto, tomamos en cuenta la ecuación de Schr\"{o}dinger que encontramos como solución en 
+\begin{enumerate}
+  \item Pozo Infinito
+  \item Pozo finito
+  \item Oscilador armónico simple
+\end{enumerate}
+La primera solución que se dio fue la del átomo mas simple, el átomo de hidrógeno.
+\subsection{Átomo de hidrógeno}
+Un atomo de hidrogeno es esencialemente una particula oscilando a otra. Segun la teoria clasica este no deberia existir pero si lo hacen. Desarrollemos.
+
+En un atomo la energía potencial que funciona es el potencial de coulomb que funciona para los hidrógenoides.
+\begin{equation}
+  V = \frac{-ze^2}{4\pi\epsilon_0|\Vec{r}_2-\Vec{r}_1}
+.\end{equation}
+Ahora bien, respecto al origen tenemos que 
+\begin{equation}
+  -\frac{h^2}{2m_1}\nabla^2_1 \psi - \frac{h^2}{2m_2}\nabla^2_2\psi+V(\Vec{r}_2-\Vec{r}_1)\psi=E\psi
+.\end{equation}
+Pero esto no tendria sentido pues no se puede conseguir dado que dependemos de la distancia entre $\Vec{r}_2-\Vec{r}_1$
+
+Ahora bien con esto la distancia al centro de masa nos queda
+ \begin{equation}
+   R=\frac{Mr_1+m_2r}{M}=r_1+\frac{m_2}{M}r\sim r_1=R-\frac{m_2}{M}r
+.\end{equation}
+Masa reducida es $\mu = \frac{m_1m_2}{Mo}$ Con esto la ecuación de Schr\"{o}dinger nos queda \[
+  \frac{h^2}{2M}\nabla_R^2 \psi_{cM}= E_{cM}\psi_cN \to \psi_{cM}=Ae^{i(k\cdotx-\omega t}
+.\] 
+
+Ahora bien para solucionar esto mas fácilmente combine utilizar coordenadas esféricas. Para este necesitamos $\nabla^2 \psi$ el cual es
+\begin{equation}
+  \nabla ^2 \psi = \frac{1}{r^2}\frac{\partial}{\partial r}\left( r^2\frac{ \partial\psi}{\partial r}  \right) + \frac{1}{r^2\sin^2\theta}\frac{\partial^2\psi}{\partiall\phi}+ \frac{1}{r^2\sin\theta}\frac{\partial}{\partial \theta} 
+.\end{equation}
+
+\end{document}

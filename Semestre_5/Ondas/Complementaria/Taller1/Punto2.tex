@@ -1,0 +1,84 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ondas y Fluidos - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 1 - Punto 1.2} % This is the name of the assignment
+\newcommand{\examdate}{03/02/2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya Ramírez}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\textit{Yeferson Camacho}\\
+	\textbf{\examdate} &&\textit{Monica Cano}\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+
+\section*{2}
+
+Utilizando las representaciones vectoriales de $\sin(\theta)$ y $\cos(\theta)$.Comprobar las siguientes identidades trigonometricas.
+		\begin{enumerate}
+			\item $\sin^2(\theta)+\cos^2(\theta) = 1$
+				\begin{align*}
+					&\sin^2(\theta) + \cos^2(\theta) = \left(\frac{e^{i\theta}-e^{-i\theta}}{2i}\right)^2 + \left(\frac{e^{i\theta}+e^{-i\theta}}{2}\right)^2\\
+					& =\frac{(e^{i\theta}-e^{-i\theta})^2}{-4} + \frac{(e^{i\theta}+e^{-i\theta})^2}{4}\\
+					& =\frac{(e^{i\theta}+e^{-i\theta})^2-(e^{i\theta}-e^{-i\theta})^2}{4}\\
+					& =\frac{(e^{2i\theta}+2e^{i\theta}e^{-i\theta}+e^{-2i\theta})-(e^{2i\theta}-2e^{i\theta}e^{-i\theta}+e^{-2i\theta})}{4}\\
+					& \text{Note que: }e^{i\theta}e^{-i\theta} = e^{i\theta - i\theta}= e^{0} = 1\\
+					& = \frac{e^{2i\theta}-e^{2i\theta}+2+2+e^{-2i\theta}-e^{-2i\theta}}{4}\\
+					& = \frac{4}{4}\\
+					& = 1 
+				\end{align*}
+			\item $\cos^2(\theta)-\sin^2(\theta)=\cos(2\theta)$
+				\begin{align*}
+					&\cos^2(\theta)-\sin^2(\theta) = \left(\left(\frac{e^{i\theta}+e^{-i\theta}}{2}\right)^2 - \left(\frac{e^{i\theta}-e^{i\theta}}{2i}\right)^2\right)\\
+					&= \frac{e^{2i\theta}+2+e^{-2i\theta}}{4}+\frac{e^{2i\theta+}-2+e^{-2i\theta}}{4}\\
+					&= \frac{e^{2i\theta}+e^{2i\theta}+e^{-2i\theta}+e^{-2i\theta}}{4}\\
+					&= \frac{2e^{2i\theta}+2e^{-2i\theta}}{4}\\
+					&= \frac{e^{i2\theta}+e^{-i2\theta}}{2}\\
+					&= \cos(2\theta)
+				\end{align*}
+			\item $2\sin(\theta)\cos(\theta)=\sin(2\theta)$
+				\begin{align*}
+					&2\frac{e^{i\theta}-e^{-i\theta}}{2i}\frac{e^{i\theta}+e^{-i\theta}}{2} = 2\frac{(e^{i\theta}-e^{-i\theta})(e^{i\theta}+e^{-i\theta})}{4i}\\
+					&= \frac{e^{i2\theta}-e^{-i2\theta}}{2i}\\
+					&= \sin(2\theta)
+				\end{align*}
+			\item Analisis Dimencional: Lo trabajado aqui son equivalencias y por tanto no tiene ninguna relación real con dimenciones física.
+			\item  Relación con la situación presentada: En todos los casos se demostraron las identidades trigonometricas solicitadas por los ejercicios.
+			\item Conclusión: Esto fueron ejemplos de la relación que hay entre los numeros complejos y la trignometria permitiendo mostrar lo profundamente relacionados que estan estos dos temas y el por que fue una revolución en la faron las identidades trigonometricas solicitadas por los ejercicios.
+			\item Conclusión: Esto fueron ejemplos de la relación que hay entre los numeros complejos y la trignometria permitiendo mostrar lo profundamente relacionados que estan estos dos temas y el por que fue una revolución en la física..
+		\end{enumerate}
+
+
+
+
+
+\end{document}

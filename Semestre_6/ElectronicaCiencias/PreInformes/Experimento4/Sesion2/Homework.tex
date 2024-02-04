@@ -1,0 +1,164 @@
+\documentclass[12pt]{article}
+	
+\usepackage[margin=1in]{geometry}		% For setting margins
+\usepackage{amsmath}				% For Math
+\usepackage{fancyhdr}				% For fancy header/footer
+\usepackage{graphicx}				% For including figure/image
+\usepackage{cancel}					% To use the slash to cancel out stuff in work
+\usepackage{circuitikz}
+\usepackage{float}
+\usepackage{steinmetz}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Set up fancy header/footer
+\pagestyle{fancy}
+\fancyhead[LO,L]{Sergio Montoya Ramirez}
+\fancyhead[CO,C]{Materia - Tarea}
+\fancyhead[RO,R]{\today}
+\fancyfoot[LO,L]{}
+\fancyfoot[CO,C]{\thepage}
+\fancyfoot[RO,R]{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\section*{Circuitos}
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0,0)
+      to[vsourcesin](0,2)
+      to[R=$10k$](2,2)
+      to[C= $100nF$](2,0)
+      to[short](0,0);
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0,0)
+      to[vsourcesin](0,2)
+      to[R=$10k$](2,2)
+      to[L= $100nF$](2,0)
+      to[short](0,0);
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+\begin{figure}[H]
+  \begin{center}
+    \begin{circuitikz}
+      \draw(0,0)
+      to[vsourcesin](0,2)
+      to[R=$10k$ ](2,2)
+      to[C=$100nF$ ](2,0)
+      to[short](0,0);
+      \draw(2,2)
+      to[C=$100 nF$](4,2)
+      to[R= $10k$ ](4,0)
+      to[short](2,0);
+    \end{circuitikz}
+  \end{center}
+\end{figure}
+
+\section*{Metodo de Fasores}
+
+\subsection*{Primer Circuito}
+
+En este caso, podemos utilizar divisor de voltaje para impedancias que en este caso seria:
+\begin{align*}
+  V_{B} &= V_{C} = V_1 \frac{Z_C}{Z_R + Z_C} \\
+  &= \left( V_1 \right) \frac{\frac{1}{j \omega c}}{R + \left( - \frac{j}{\omega c} \right) } \\
+  &= \left( V_1 \phase{\varphi} \right) \frac{\frac{1}{j\omega c}}{\frac{R\omega C - j}{\omega c}}  \\
+  &= \left( V_1 \phase{\varphi} \right) \frac{\omega c}{\left( j \omega c \right) \left( R\omega c - j \right) }\\
+  &= \left( V_1 \phase{\varphi} \right) \frac{\omega c}{\omega^2c^2R j + \omega c} \\
+  &= \left( V_1 \phase{\varphi} \right) \frac{\omega c \left\{ 0^{\circ} \right\} }{\sqrt{\left( \omega^2c^2R \right) ^2 + \left( \omega c \right)^2 }\left\{ \arctan\left( \frac{\omega^2 c^2 R}{\omega c} \right)  \right\} } \\
+  &= \frac{\frac{V_{1}\omega c}{\sqrt{\left( \omega^2 c^2 R \right)^2 + \left( \omega c \right)^2} }\phase{ \varphi - \arctan\left( \omega c R \right)}}{V_1\phase{\varphi} }  \\
+  &= \frac{V_1 \omega C}{V_1 \left( \omega C \right) \sqrt{\left( \omega c R \right)^2 + 1} }\phase{ -\arctan\left( \omega c R \right)  }  \\
+  &= \frac{1}{\sqrt{\left( \omega c R \right)^2 + 1} } \phase{ -\arctan\left( \omega C R \right)} \\
+  \omega c R &= 200 \cdot 100 \cdot 10k = 0.2\\
+	     &= \frac{1}{\sqrt{0.2^2 + 1} }\phase{-0.2}
+.\end{align*}
+
+\subsection*{Segundo Circuito}
+
+Una vez mas utilizando divisor de voltaje (pero esta vez con una impedancia) tenemos que:
+\begin{align*}
+  V_B &= V_L = V_2 \frac{Z_L}{Z_R + Z_L} \\
+  &= \left( V_2 \right) \frac{j\omega L}{R + j\omega L} \\
+  &= \left( V_2 \phase{\varphi} \right) \frac{\omega L \phase{90}}{\sqrt{R^2 + \left( \omega L \right)^2} \phase{\arctan\left( \frac{\omega L}{R} \right) }} \\
+  &= \frac{V_2 \omega L}{\sqrt{R^2 + \left( \omega L \right)^2} }\phase{\varphi + 90 - \arctan\left( \frac{\omega L}{R} \right) } \\
+  &=  \frac{\frac{V_2 \omega L}{\sqrt{R^2 + \left( \omega L \right)^2}} \phase{\varphi + 90 - \arctan\left( \frac{\omega L}{R} \right) }}{V_{2}\phase{\varphi}}\\
+  &= \frac{\omega L}{\sqrt{R^2 + \left( \omega L \right)^2} }\phase{90 - \arctan\left( \frac{\omega L}{R} \right) } \\
+  \frac{\omega L}{R} &= \frac{200\cdot 940}{100} = 0.00188\\
+		     &= \frac{0.188}{\sqrt{100^2 + 0.188^2} } \phase{90 - 0.1}
+.\end{align*}
+
+\section*{Frecuencia de Corte}
+
+En este caso
+\begin{align*}
+  V_{out} &= \frac{\max\left| V_{out}\left( f \right)  \right| }{\sqrt{2} }
+.\end{align*}
+
+\subsection*{Primer Circuito}
+
+\begin{align*}
+  \frac{V_s}{\sqrt{1 + \omega_c^2R^2C^2} } &= \frac{V_s}{\sqrt{2} } \\
+  \omega_c &= \pm \frac{1}{RC} \\
+  &= \pm \frac{1}{10k\cdot 100} \\
+  &= \pm 10^{3} Hz
+.\end{align*}
+
+\subsection*{Segundo Circuito}
+
+\begin{align*}
+  \frac{V_s \omega L}{\sqrt{R^2 + \left( \omega L \right)^2} }&= \frac{Vs}{\sqrt{2} } \\
+  \frac{\left( \omega L \right)^2}{R^2 + \left( \omega L \right)^2}&= \frac{1}{2} \\
+  \left( \omega L \right)^2 &= R^2 \\
+  \omega &= \pm \frac{R}{L} \\
+  \omega &= 106 kHz 
+.\end{align*}
+
+\section*{Frecuencias}
+
+En este caso trabajaremos para el \textbf{Tercer Circuito}. En particular lo dividiremos en dos partes. Un pasabajas y un pasaaltas que estan en orden de izquierda a derecha.
+
+\textbf{Pasabajas}
+
+\begin{align*}
+  \omega_c &= \pm\frac{1}{RC} \\
+  &= \pm 10^{3}Hz
+.\end{align*}
+
+\textbf{Pasaaltas}
+
+\begin{align*}
+  \omega_c &= \pm \frac{1}{RC} \\
+  &= \pm 10^{3}Hz 
+.\end{align*}
+
+\textbf{Ancho de Banda}
+
+\begin{align*}
+  10^{3} - 10^{3} = 0
+.\end{align*}
+
+\textbf{resonancia}
+
+En este caso la resonancia seria $10^{3}$ 
+
+\textbf{Factor de Calidad}
+
+\begin{align*}
+  Q &= \frac{f_r}{B_a} \\
+  Q &= \frac{10^{3}}{0}
+.\end{align*}
+
+Por lo tanto el factor de calidad tenderia a infinito.
+\end{document}

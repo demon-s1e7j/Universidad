@@ -1,0 +1,139 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ecuaciones Diferenciales} % This is the name of the course 
+\newcommand{\examnum}{Taller 3} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+\newcommand{\La}{\mathscr{L}}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+  \item La carga de un circuito RLC en serie está descrita por la ecuación diferencial $q''+\frac{R}{L}q'+\frac{1}{LC}q=V(t)$. Halle $q\left( t \right) $ cuando $V\left( t \right) = \delta\left( t \right) $ y $V\left( t \right) = V\left( constante \right) $
+
+	\begin{align*}
+	  q'' + \frac{R}{L}q'+\frac{1}{LC}q=V\left( t \right) \\
+	  \La\left\{ q''+\frac{R}{L}q'+\frac{1}{LC}q \right\} = \La\left\{ V\left( t \right) \right\} \\
+	  \La\left\{ q'' \right\} + \frac{R}{L}\La\left\{ q' \right\} + \frac{1}{LC}\La\left\{ q \right\} = \La\left\{ V\left( t \right)  \right\} \\
+	  s^2F\left( s \right) - s q(0) - q'(0) + \frac{R}{L}\left( sF\left( s \right) - q\left( 0 \right)  \right) + \frac{1}{LC}F\left( s \right)  = \La\left\{ V\left( t \right)  \right\} \\
+	  F\left( s \right) \left( s^2 + \frac{R}{L}s + \frac{1}{LC}\right) = \La\left\{ V\left( t \right)  \right\}  + s q\left( 0 \right) + q'\left( 0 \right) + \frac{R}{L}q\left( 0 \right)  \\
+	  F\left( s \right) = \frac{\La\left\{ V\left( t \right)  \right\}  + s q\left( 0 \right) + q'\left( 0 \right) + \frac{R}{L}q\left( 0 \right)}{\left( s^2+\frac{R}{L}s + \frac{1}{LC} \right) }
+	.\end{align*}
+
+	Ahora bien, vale mucho la pena que primero reduzcamos el denominador lo que nos deja con:
+	\begin{align*}
+	  s^2 + \frac{R}{L}s + \frac{1}{LC} = \left( s + \frac{R}{2L} \right)^2 + \frac{1}{LC} - \frac{R^2}{4L^2}\\
+	  \gamma = \frac{R}{2L}\\
+	  \omega^2=\frac{1}{LC}-\gamma^2\\
+	  = \left( s + \gamma \right) + \omega^2
+	.\end{align*}
+
+	Pero entonces, si reemplazamos en la ecuación previa nos queda:
+	\begin{align*}
+	  F\left( s \right) = \frac{\La\left\{ V\left( t \right)  \right\} }{\left( s + \gamma \right) + \omega^2} + q\left( 0 \right) \frac{s+2\gamma}{\left( s + \gamma \right) + \omega^2} + \frac{q'\left( 0 \right) }{\left( s + \gamma \right) + \omega^2}
+	.\end{align*}
+
+	Ahora con esto podemos calcular la transformada inversa lo que nos dejaria con
+	\begin{align*}
+	  q\left( t \right) = \La^{-1}\left\{ \La\left\{V\left( t \right)\right\} \cdot \frac{1}{\left( s + \gamma \right) + \omega^2} \right\} + \La^{-1}\left\{ q\left( 0 \right) \frac{s+2\gamma}{\left( s+\gamma \right)^2+\omega^2} \right\} + \La^{-1}\left\{ \frac{q'\left( 0 \right) }{\left( s+\gamma \right)^2+\omega^2} \right\} \\
+	  = V\left( t \right) * \frac{1}{\omega}e^{-\gamma t}\sin\left( \omega t \right) + q\left( 0 \right) \left( e^{-\gamma t}\cos\left( \omega t \right) + \frac{\gamma}{\omega}e^{-\gamma t}\sin\left( \omega t \right)  \right) + \frac{q'\left( 0 \right) }{\omega} e^{-\gamma t}\sin\left( \omega t \right) \\
+	  = V\left( t \right) * \frac{1}{\omega}e^{-\gamma t}\sin\left( \omega t \right) + q\left( 0 \right) e^{-\gamma t}\cos\left( \omega t \right) + \frac{\gamma q\left( 0 \right) + q'\left( 0 \right) }{\omega}e^{-\gamma t}\sin\left( \omega t \right) 
+	.\end{align*}
+
+	En un correo posterior se aclaro que realmente al lado derecho de la ecuación es $\frac{v\left( t \right) }{L}$ sin embargo esto no cambia mucho y lo único es que en el primer termino hay un $\frac{1}{L}$ mas lo que nos deja con:
+	\begin{align*}
+	  = V\left( t \right) * \frac{1}{\omega L}e^{-\gamma t}\sin\left( \omega t \right) + q\left( 0 \right) e^{-\gamma t}\cos\left( \omega t \right) + \frac{\gamma q\left( 0 \right) + q'\left( 0 \right) }{\omega}e^{-\gamma t}\sin\left( \omega t \right) 
+	.\end{align*}
+  \item Calcule la transformada inversa de Laplace de $\frac{s e^{-3s}}{29+4s+s^2}$
+    
+    \textbf{Solución:}
+
+    En este caso lo primero que debemos notar es que podemos simplificar esta expresión. Esto lo hacemos notando que por medio de la función de Heaviside podemos retirar $e^{-3s}$ esto por medio de la relación
+    \begin{align*}
+      \La\left\{ u_c\left( t \right) f\left( t-c \right)  \right\} = e^{-cs}F\left( s \right) 
+    .\end{align*}
+    por lo tanto, podemos quedarnos con
+    \begin{align*}
+      F\left( s \right) = \frac{s}{29+4s+s^2}
+    .\end{align*}
+    y luego ponerla de la forma previamente dicha.
+
+    Por otro lado, podemos factorizar el denominador con
+    \begin{align*}
+      F\left( s \right) = \frac{s}{\left( s+2 \right)^2 + 5^2}
+    .\end{align*}
+
+    Ahora, vamos utilizar dos relaciones de transformadas de Laplace. Estas son:
+    \begin{align*}
+      \La\left\{ e^{at}\sin\left( bt \right)  \right\} = \frac{b}{\left( s-a \right)^2 + b^2}\\
+      \La\left\{ e^{at}\cos\left( bt \right)  \right\} = \frac{s-a}{\left( s-a \right)^2 + b^2}
+    .\end{align*}
+
+    Ahora bien, con esto entonces podemos definir
+    \begin{align*}
+      \La\left\{ e^{-2t}\sin\left( 5t \right)  \right\} = \frac{5}{\left( s+2 \right)^2 + 5^2}\\
+      \La\left\{ e^{-2t}\cos\left( 5t \right)  \right\} = \frac{s+2}{\left( s+2 \right)^2+5^2}
+    .\end{align*}
+
+  Ahora bien, si nos aprovechamos de que la definición de la transformada de Laplace nos permite multiplicar por una constante al resultado (dado que es una integral). Con esto entonces podemos multiplicar la primera de estas dos ecuaciones por $\frac{2}{5}$ y restarlas. Con esto nos quedaría.
+    \begin{align*}
+      \La\left\{ \frac{2}{5}e^{-2t}\sin\left( 5t \right)  \right\} = \frac{2}{\left( s+2 \right)^2 + 5^2}\\
+      \La\left\{ e^{-2t}\cos\left( 5t \right)  \right\} = \frac{s+2}{\left( s+2 \right)^2+5^2}\\
+      \La\left\{e^{-2t}\cos\left( 5t \right)- \frac{2}{5}e^{-2t}\sin\left( 5t \right)\right\} = \frac{s+2}{\left( s+2 \right)^2+5^2} - \frac{2}{\left( s+2 \right)^2 + 5^2}\\
+      \frac{s+2-2}{\left( s+2 \right)^2 + 5^2} = \frac{s}{\left( s+2 \right)^2 + 5^2}
+    .\end{align*}
+
+    Ahora, entonces encontramos ambas soluciones de lo que queríamos. Por lo tanto debemos juntarlas ambas y nos queda: 
+    \begin{align*}
+      \La^{-1}\left\{ \frac{se^{-3t}}{29 + 4s + s^2} \right\} = u_c\left( t \right) e^{-2\left( t-3 \right) }\cos\left( 5\left( t-3 \right)  \right)- \frac{2}{5}e^{-2\left( t-3 \right) }\sin\left( 5\left( t-3 \right)  \right)
+    .\end{align*}
+  \item Solucione el problema utilizando la transformada de Laplace: $f\left( t \right) + \int_0^{t}f\left( a \right) da = 1$
+
+    Para solucionar este problema debemos trabajar como sigue:
+    \begin{align*}
+      f\left( t \right) + \int_0^{t}f\left( a \right) da = 1\\
+      \La\left\{ f\left( t \right) + \int_0^{t} f\left( a \right) da \right\} = \La\left\{ 1 \right\} \\
+      F\left( s \right) + \frac{F\left( s \right) }{s} = \frac{1}{s}\\
+      F\left( s \right) \left( 1+\frac{1}{s} \right) = \frac{1}{s}\\
+      F\left( s \right) = \frac{1}{s\left( 1+\frac{1}{s} \right) }\\
+      F\left( s \right) =\frac{1}{s+1}\\
+      \La^{-1}\left\{ F\left( s \right)  \right\} = \La^{-1}\left\{ \frac{1}{s+1} \right\} \\
+      = e^{-t}
+    .\end{align*}
+\end{enumerate}
+
+\end{document}

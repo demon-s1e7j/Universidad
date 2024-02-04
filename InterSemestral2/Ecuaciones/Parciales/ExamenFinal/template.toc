@@ -1,0 +1,6 @@
+\contentsline {chapter}{\numberline {1}Importancia de las hipótesis iniciales en el modelado con ecuaciones diferenciales}{2}{chapter.1}%
+\contentsline {chapter}{\numberline {2}La educación matemática como componente esencial de la formación profesional.}{4}{chapter.2}%
+\contentsline {chapter}{\numberline {3}La continuidad y la derivabilidad como premisas, al abordar el problema de condiciones iniciales}{5}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Las funciones $e^{rt}$, $U\left ( t-t_0 \right ) $, $\delta \left ( t-t_0 \right ) $ y $\Gamma \left ( s \right ) $. Frecuencia de los números irracionales y números complejos en los cálculos, ejemplos.}{7}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Apreciación personal sobre el desarrollo del curso}{9}{chapter.5}%
+\contentsfinish 

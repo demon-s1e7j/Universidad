@@ -1,0 +1,158 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Termodinamica}\\Tarea 7}
+\author{\huge{Sergio Montoya}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Tarea 7}
+\qs{7.2-1}{En la vecindad inmediata del estado $T_0$,$v_0$ el volumen de un sistema particular se observa que corresponde con \[
+v=v_0+a(T-T_0)+b(P-P_0)
+.\] Calcule la transferencia de calor si el volumen del sistema es cambiado por un pequeño incremento \[
+dv=v-v_0
+.\] a una temperatura constante. }
+
+\sol
+
+Para este caso partimos de que 
+\begin{align*}
+  dQ = T\left( \frac{\partial S}{\partial V} \right)_T dV 
+.\end{align*}
+
+Lo cual, si hacemos uso del diagrama nemotécnico nos damos cuento que es equivalente a decir \[
+  dQ = T\left( \frac{\partial P}{\partial T} \right)_V 
+.\] que en este caso podemos despejar desde la ecuación del enunciado como sigue \[
+(P-P_0)=\frac{v_0+a(T-T)}{b} \Rightarrow P=\frac{V_0}{b}+\frac{aT}{b}-\frac{aT_0}{b}+P_0
+.\] Note que al sacar la derivada todos estos términos se van a $0$ excepto el segundo que simplemente queda como  $\frac{a}{b}$ Ahora bien, reemplazando esto en la ecuación que encontramos antes nos queda
+\begin{align*}
+  dQ = T\left( \frac{a}{b} \right) = \frac{T}{b}
+.\end{align*}
+
+\qs{7.3-1}{Los termodinámicos a veces se refieren a \textit{"La primera ecuación $TdS$"} y \textit{"La segunda ecuación $TdS$"}
+\begin{align*}
+  TdS &= Nc_vdT+\left( \frac{T\alpha}{k_T} \right)dV  \\
+  TdS &= Nc_pdT-TV\alpha dP \\
+.\end{align*}
+Derive estas ecuaciones
+}
+
+\sol
+
+En este caso podemos dividir este punto en referencia a las variables de las que depende la entropia. Por lo tanto nos queda
+\begin{enumerate}
+  \item $S=S(T,V)$
+    Por lo tanto nos queda que
+    \begin{equation*}
+      dS = \left( \frac{\partial {S}}{\partial {T}} \right)_V dT + \left( \frac{\partial {S}}{\partial {V}}\right)_V dV
+    \end{equation*}
+    
+    En este caso necesitamos entonces considerar la situación en la que nos encontramos debemos poner $TdS$ por lo que tomando en cuenta las definiciones de $c_v=\frac{T}{N} \left( \frac{\partial {S}}{\partial {V}} \right)_T {dV}$ nos queda como
+    \begin{align*}
+      TdS &= T \left( \frac{\partial {S}}{\partial {T}} \right)_V dT + T\left( \frac{\partial {S}}{\partial {V}}\right)_T dV \\
+          &= Nc_vdT + T \left( \frac{\partial {P}}{\partial {T}} \right)_V dV
+    \end{align*}
+    Ahora bien, en este caso vemos que aun tenemos un volumen. Cosa que queremos desacernos para ello aplicamos el  paso $4$. 
+    \begin{align*}
+      &= Nc_vdT - T \left( \frac{\left( \frac{\partial {V}}{\partial {T}} \right)_P}{\left( \frac{\partial {V}}{\partial {P}} \right)_T}  \right)dV
+    \end{align*}
+
+    Ahora con esto podemos aplicar las definiciones de $k_T=-\frac{1}{V} \left( \frac{\partial {V}}{\partial {P}} \right)_T$ y $\alpha=\frac{1}{V} \left( \frac{\partial {V}}{\partial {T}} \right)_P$ lo que nos deja con 
+    \begin{align}
+       &= Nc_pdT - T \left( \frac{V\alpha}{-Vk_t}  \right)dV\\
+       &= Nc_vdT + \frac{T\alpha}{k_T} dV
+    \end{align}
+
+  \item $S=S(T,P)$
+
+    En este caso nos queda que
+    \begin{equation*}
+      dS = \left( \frac{\partial {S}}{\partial {T}} \right)_P dT + \left( \frac{\partial {S}}{\partial {P}} \right)_T dP
+    \end{equation*}
+    
+    Ahora bien, entonces teniendo esto ponemos $TdS$ lo que nos queda
+    \begin{align*}
+      TdS &= T\left( \frac{\partial {S}}{\partial {T}} \right)_P dT - T\left( \frac{\partial {V}}{\partial {T}} \right)_P dP\\
+      c_p &= \frac{T}{N} \left( \frac{\partial {S}}{\partial {T}} \right)_P\\
+      \alpha &= \frac{1}{V} \left( \frac{\partial {V}}{\partial {T}} \right)_p\\
+      Tds &= Nc_pdT - TV\alpha dP
+    \end{align*}
+    Con esto entonces llegamos al resultado esperado.
+\end{enumerate}
+
+\qs{7.3-2}{Muestre que la segunda ecuación del problema $7.3-1$ te lleva directamente a \[
+T\left( \frac{\partial s}{\partial T}  \right)_v = cp - Tv\alpha\left( \frac{\partial P}{\partial T}  \right)_v
+.\] Comprobando entonces la ecuación $7.36$
+}
+
+\sol
+
+Este punto es relativamente sencillo y consiste (en esencia) en pura algebra. En consecuencia no hablare demasiado y solo pondre el algebra (\textit{Calla y Calcula})
+\begin{align*}
+  TdS &= Nc_pdT - TV\alpha dP \\
+  T \left( \frac{\partial {S}}{\partial {T}} \right)_V &= Nc_p - TV\alpha \left( \frac{\partial {P}}{\partial {T}} \right)_V \\
+                                                       &= Nc_p + TV\alpha \left( \frac{\left( \frac{\partial {V}}{\partial {T}} \right)_P}{\left( \frac{\partial {V}}{\partial {P}} \right)_T}  \right)\\
+                                                       &= Nc_p - TNv\alpha \frac{\alpha}{k_T} \\
+  \frac{T}{N} \left( \frac{\partial {S}}{\partial {T}}\right)_V &= c_v = T \left( \frac{\partial {s}}{\partial {T}} \right)_v = c_p - T \frac{\alpha^2}{k_T} 
+ \end{align*}
+
+ Lo ultimo que nos faltaria para completar lo pedido seria despejar $c_p$\[
+  c_p = c_v - T \frac{\alpha^2}{k_T} 
+ \]
+\qs{7.3-3}{Calcula $\left( \frac{\partial H}{\partial V}  \right)_{T,N} $ en términos de las cantidades estándar $c_p,\alpha,k_T,T$ y  $P$}
+
+\sol
+
+Este es otro ejercicio bastante calculista. El unico punto de verdadera interpretación física es que vamos a ignorar todos los terminos que tengan que ver con $N$ dado que en la expresión de $dH$ aparece $dN$ que como $N$ es constante todo lo que tenga que ver con el se va a 0.
+\begin{align*}
+  \left( \frac{\partial {H}}{\partial {V}} \right)_T &= T \left( \frac{\partial {S}}{\partial {V}} \right)_T + V \left( \frac{\partial {P}}{\partial {V}} \right)_T \\
+                                                     &= T \left( \frac{\partial {P}}{\partial {T}}\right)_V + V \left( \frac{\partial {P}}{\partial {V}} \right)_T\\
+                                                     &= -T \left( \frac{\left( \frac{\partial {V}}{\partial {T}} \right)_P}{\left( \frac{\partial {V}}{\partial {P}} \right)_T}  \right) + V \left[ \left( \frac{\partial {V}}{\partial {P}} \right)_T \right]^{-1}\\
+                                                     &= T \frac{\alpha}{k_T} + V \left[ -V k_T \right]^{-1} \\
+                                                     &= \frac{(T\alpha - 1)}{k_T} 
+\end{align*}
+\qs{7.3-4}{Reduzca la derivada $\left( \frac{\partial v}{\partial s}  \right)_P$}
+
+\sol
+
+Segun las instrucciones debemos hacernos cargo primero de la entropia llevandola al numerador. Sin embargo, si nos esperamos un poquito y vemos el cuadro termodinamico primero notamos rapidamente que $\left( \frac{\partial {s}}{\partial {v}} \right)_P = -\left( \frac{\partial {T}}{\partial {P}} \right)_s$ por lo tanto, desarrollamos desde ahi lo que nos deja unicamente algebra
+\begin{align*}
+  -\left( \frac{\partial {T}}{\partial {P}} \right)_s &= \frac{\left( \frac{\partial {s}}{\partial {P}} \right)_T}{\left( \frac{\partial {s}}{\partial {T}} \right)_P} \\
+                                                     &=  \frac{T \left( \frac{\partial {v}}{\partial {T}} \right)_P}{cp} \\
+                                                     &= \frac{Tv\alpha}{c_P} 
+\end{align*}
+
+\qs{7.3-6}{Reduzca la derivada $\left( \frac{\partial s}{\partial f}  \right)_P$}
+
+\sol
+
+\qs{7.4-1}{En el analisis del experimento de Joule-Thomson nos pueden dar el volumen molar inicial y final del gas, en vez de la presión inicial y final. Exprese la derivada $\left( \frac{\partial {T}}{\partial {v}} \right)_h$ en terminos de $c_P$, $\alpha$ y $k_T$ }
+Este es un punto curioso pero una vez mas, solo es rigurosamente algbraico por lo que se puede resolver poco a poco y en un solo desarrollo que es el siguiente:
+\begin{align*}
+  \left( \frac{\partial {T}}{\partial {v}} \right)_h &= - \frac{\left( \frac{\partial {h}}{\partial {v}} \right)_T}{\left( \frac{\partial {h}}{\partial {T}} \right)_V} \\
+                                                     &= - \frac{T \left( \frac{\partial {s}}{\partial {v}} \right)_T + v \left( \frac{\partial {P}}{\partial {v}} \right)_T}{T \left( \frac{\partial {s}}{\partial {T}} \right)_v + v \left( \frac{\partial {P}}{\partial {T}}\right)_v} \\
+                                                     &= - \frac{T \left( \frac{\partial {P}}{\partial {T}} \right)_v + v \left[ \left( \frac{\partial {v}}{\partial {P}} \right)_T \right]^{-1}}{c_v + v \left( \frac{\partial {P}}{\partial {T}} \right)_v} \\
+                                                     &= - \frac{-T \frac{\left( \frac{\partial {v}}{\partial {T}} \right)_p}{\left( \frac{\partial {v}}{\partial {P}} \right)_T} - \frac{1}{k_T}  }{c_v - v \frac{\left( \frac{\partial {v}}{\partial {T}} \right)_p}{\left( \frac{\partial {v}}{\partial {P}} \right)_T}} \\
+  \frac{\left( \frac{\partial {v}}{\partial {T}} \right)_p}{\left( \frac{\partial {v}}{\partial {P}} \right)_T} &= \frac{v\alpha}{-vk_T} = - \frac{\alpha}{k_T} \\
+                                                     &= - \frac{T \frac{\alpha}{k_T} - \frac{1}{k_T} }{c_v+ v \frac{\alpha}{k_T} } \\
+                                                     &= - \frac{\frac{T\alpha - 1}{k_T} }{c_v + v \frac{\alpha}{k_T} } \\
+                                                     &= - \frac{T\alpha - 1}{c_vk_T + v\alpha} 
+\end{align*}
+
+\qs{7.4-8}{Muestre que \[
+    \left( \frac{\partial {c_P}}{\partial {P}} \right)_T = - Tv \left[ \alpha^2 + \left( \frac{\partial {\alpha}}{\partial {T}} \right)_P\right]
+\] y evalue esta cantidad en un sistema con ecuación de estado \[
+  P \left( v + \frac{A}{T^2}  \right) = RT
+\]}
+\end{document}

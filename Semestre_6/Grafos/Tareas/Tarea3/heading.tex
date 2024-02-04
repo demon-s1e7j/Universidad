@@ -1,0 +1,137 @@
+%//////////////////////////////////////////////////////
+% Heading Configuration
+%//////////////////////////////////////////////////////
+\pagestyle{fancy}
+\thispagestyle{plain}
+\fancyhead[RO,L]{\textbf{Teoria de Grafos}}
+\fancyhead[LO,L]{\textbf{Tarea 3}}
+\setlength{\headheight}{16.0pt}
+
+%//////////////////////////////////////////////////////
+% Subsections Configuration
+%//////////////////////////////////////////////////////
+\renewcommand*\thesubsection{\arabic{subsection}}
+\newcounter{counter}
+\newlength{\palabra}
+\settowidth{\palabra}{counter 999.}
+\newcommand{\makeboxlabel}[1]{\fbox{#1.}\hfill}
+
+%//////////////////////////////////////////////////////
+% Personalized commands configuration
+%//////////////////////////////////////////////////////
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\GCD}{\operatorname{GCD}}
+\newcommand{\LCD}{\operatorname{LCD}}
+\linespread{1} %Line spacing
+
+%//////////////////////////////////////////////////////
+% Inline code configuration
+%//////////////////////////////////////////////////////
+\lstset{
+gobble=5,
+numbers=left,
+frame=single,
+framerule=1pt,
+showtabs=False,
+showspaces=False,
+showstringspaces=False,
+backgroundcolor=\color{gray}}
+
+%//////////////////////////////////////////////////////
+% Problem list configuration
+%//////////////////////////////////////////////////////
+\newenvironment{problems}
+  {\begin{list}
+     {{\fbseries Problem \arabic{counter}.}}
+    {\usecounter{counter}
+     \setlength{\labelsep}{1em}
+     \setlength{\itemsep}{2pt}
+     \setlength{\leftmargin}{2em}
+     \setlength{\rightmargin}{0cm}
+     \setlength{\itemindent}{1em} }}
+{\end{list}}
+
+%//////////////////////////////////////////////////////
+% Appendix configuration
+%//////////////////////////////////////////////////////
+\newenvironment{Appendix}
+  {\begin{list}
+     {{\fbseries Lemma \arabic{counter}.}}
+    {\usecounter{counter}
+     \setlength{\labelsep}{1em}
+     \setlength{\itemsep}{2pt}
+     \setlength{\leftmargin}{2em}
+     \setlength{\rightmargin}{0cm}
+     \setlength{\itemindent}{1em} }}
+{\end{list}}
+
+%//////////////////////////////////////////////////////
+% Notes configuration
+%//////////////////////////////////////////////////////
+\newenvironment{notes}
+  {\begin{list}
+     {{\fbseries Note \arabic{counter}.}}
+    {\usecounter{counter}
+     \setlength{\labelsep}{1em}
+     \setlength{\itemsep}{2pt}
+     \setlength{\leftmargin}{2em}
+     \setlength{\rightmargin}{0cm}
+     \setlength{\itemindent}{1em} }}
+{\end{list}}
+
+%//////////////////////////////////////////////////////
+% Activity Information
+%//////////////////////////////////////////////////////
+\vspace*{-1cm}
+\hrule width \hsize \kern 1mm \hrule width \hsize height 2pt
+\begin{center}
+   \parbox[c]{.32\textwidth}{
+   \hspace{1cm}\\
+   Sergio Montoya Ramirez\\
+   202112171}
+%   Luis Ernesto Tejón Rojas\\
+%   202113150}
+   \hspace*{\fill}
+   \parbox[c]{.35\textwidth}{\centering
+   Universidad de Los Andes\\
+   Tarea 3\\
+   Teoria de Grafos\\
+   }
+   \hspace*{\fill}
+   \parbox[c]{.3\textwidth}{
+   \begin{flushleft}
+      Bogotá D.C., Colombia\\
+      \today
+   \end{flushleft}}
+\end{center}
+\hrule width \hsize height 2pt \kern 1mm \hrule width \hsize
+
+\bigskip
+
+%//////////////////////////////////////////////////////
+% Marks
+%//////////////////////////////////////////////////////
+%\begin{center}
+%   \begin{tabular}{|*{5}{p{1.20cm}|}} %Modify cell length and number of cells.
+%      \hline %You should add ass many "\hspace*{\fill}1\hspace*{\fill} &" as cells you want.
+%      \hspace*{\fill}1\hspace*{\fill} &
+%      \hspace*{\fill}2\hspace*{\fill} &
+%      \hspace*{\fill}3\hspace*{\fill} &
+%      \hspace*{\fill}4\hspace*{\fill} &
+%      \hspace*{\fill}$\Sigma$\hspace*{\fill}
+%      \\\hline
+%      \rule{0ex}{10ex} %Modify cell heigth.
+%      &&&&\hspace*{.75cm}\\ %The number of "&"" should equal one less than the number of cells.
+%      \hline
+%   \end{tabular}
+%\end{center}
+
+\bigskip
+

@@ -1,0 +1,4 @@
+\contentsline {chapter}{\numberline {1}Apuntes}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}12-04-23}{2}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Transformaciones de Legendre}{2}{subsection.1.1.1}%
+\contentsfinish 

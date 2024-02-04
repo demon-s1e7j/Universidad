@@ -1,0 +1,164 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Termodinámica}\\Examen Final}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Pregunta 1}
+
+Para comenzar debemos tomar en cuenta que como la presión es constante el flujo de calor es igual al cambio de la entalpia \[
+Q_{i\to f}\equiv \int dQ = H_f-H_i
+.\] Ahora bien, para resolver esto tenemos que tomar en cuenta que
+\begin{align*}
+  H &= U + PV \\
+  Q &= \Delta H = \Delta(U + PV) \\
+.\end{align*}
+
+Ahora bien, dado que estamos en un gas ideal tenemos que
+\begin{align*}
+  U &= cNRT \\
+  PV &= NRT \\
+  U &= cPV 
+.\end{align*}
+Ahora bien dado que estamos en un monoatomico $c = \frac{3}{2}$ por lo tanto
+\begin{align*}
+  Q &= \Delta \left( \frac{3}{2}PV + PV \right) = \Delta\left( \frac{5}{2}PV \right) \\
+  Q &= \left( \frac{5}{2}P_fV_f \right) - \left( \frac{5}{2}P_0V_0 \right)  \\
+.\end{align*}
+Por las condiciones del enunciado la presión es constante y en consecuencia
+\begin{align*}
+  Q &= \frac{5}{2}P\left( V_f - V_0 \right)  \\
+  Q &= \frac{5}{2}\left( 1\times 10^{5}Pa \right) \left( 50 m^{3}-20 m^{3}\right) \\
+  &= \frac{5}{2}\left( 1\times 10^5 \right) 30m^{3} \\
+  Pa &= \frac{J}{m^{3}} \\
+  Q &= 7.5\times 10^{6} J \\
+.\end{align*}
+\chapter{Pregunta 2}
+
+Para este caso lo primero que tenemos que aclarar es los valores de $x$ que vamos a tomar para ambos puntos. Observando la imagen podemos notar que no tienen exactamente el mismo $x$ por los que tomamos como valores $x_{1A}=0.68$ y $x_{1B}=0.7$ con lo cual ya podemos hacer el análisis individual de cada punto.
+
+\begin{enumerate}
+  \item \textbf{Punto A:}
+
+    En este caso, es inmediato que las fases presentes en este punto son "Liquido $+$ a". Ahora con esto observamos de nuevo la gráfica y vemos que
+
+    \begin{eqnarray*}
+      Liquido & = & 0.6 \\
+      \text{a} & = & 0.84
+    \end{eqnarray*}
+
+    Ahora para encontrar las proporciones, denominemos cada una como $P$ y utilicemos la regla de la palanca.
+     \begin{align*}
+%       P_{\text{a}} &= \frac{X_A - X_{\text{a}}}{X_{liq}-X_{\text{a}}}=\frac{0.68 - 0.84}{0.6-0.84}=\frac{2}{3}=0.67\\
+%       P_{liq} &= \frac{X_A - X_{liq}}{X_{\text{a}}-X_{liq}}=\frac{0.68-0.60}{0.84-0.60}=\frac{1}{3}=0.33\\
+%       P_{\text{a}} &+ P_{liq} = 1
+P_{\text{a}} &= \frac{X_A - X_{liq}}{X_{\text{a}}-X_{liq}}=\frac{0.68 - 0.60}{0.84-0.6}=\frac{1}{3}=0.\hat{3}\\
+P_{liq} &= \frac{X_{\text{a}} - X_{A}}{X_{\text{a}}-X_{liq}}=\frac{0.84-0.68}{0.84-0.60}=\frac{2}{3}=0.\hat{6}\\
+       P_{\text{a}} &+ P_{liq} = 1
+    .\end{align*}
+    Con lo que podemos ver que el resultado es coherente.
+
+  \item \textbf{Punto B:}
+
+    En este caso, es inmediato que las fases presentes en este punto son "a $+\ \beta$". Ahora con esto observamos de nuevo la gráfica y vemos que 
+
+    \begin{eqnarray*}
+      \text{a} & = & 0.8 \\
+      \beta & = & 0.13
+    \end{eqnarray*}
+
+    Ahora para encontrar las proporciones, denominemos cada una como $P$ y utilicemos la regla de la palanca.
+
+     \begin{align*}
+%       P_{\text{a}} &= \frac{X_A - X_{\text{a}}}{X_{\beta}-X_{\text{a}}}=\frac{0.7 - 0.8}{0.13-0.8}=\frac{10}{67}=0.15\\
+%       P_{\beta} &= \frac{X_A - X_{\beta}}{X_{\text{a}}-X_{\beta}}=\frac{0.7-0.13}{0.8-0.13}=\frac{57}{67}=0.85\\
+%       P_{\text{a}} &+ P_{\beta} = 1
+       P_{\text{a}} &= \frac{X_B - X_{\beta}}{X_{\text{a}}-X_{\beta}}=\frac{0.7 - 0.13}{0.8-0.13}=\frac{57}{67}=0.85\\
+       P_{\beta} &= \frac{X_{\text{a}}-X_B}{X_{\text{a}}-X_{\beta}}=\frac{0.8-0.7}{0.8-0.13}=\frac{10}{67}=0.15\\
+       P_{\text{a}} &+ P_{\beta} = 1
+    .\end{align*}
+\end{enumerate}
+
+\chapter{Pregunta 3}
+
+Vale la pena que iniciemos este punto nombrando todo lo que vamos a utilizar, para su desarrollo. En particular todo lo que aquí aparece tiene que ver con relaciones de maxwell y todo se puede encontrar en el cuadro nemotécnico de maxwell.
+\begin{align*}
+  dH &= TdS + VdP \\
+  \left( \frac{\partial X}{\partial Y}  \right)_Z &= -\frac{\left( \frac{\partial Z}{\partial Y}  \right)_X}{\left( \frac{\partial Z}{\partial X}  \right)_Y} \\
+  c_p &= \frac{T}{N}\left( \frac{\partial S}{\partial T}  \right)_{P,N}\\
+  \alpha &= \frac{1}{V}\left( \frac{\partial V}{\partial T}  \right)_{P,N} \\
+  - \left( \frac{\partial S}{\partial P}  \right)_{T,N} &= \left( \frac{\partial V}{\partial T}  \right)_{P,N}
+.\end{align*}
+
+Ahora con esto, tenemos que desarrollar como sigue:
+\begin{align*}
+  dT &= \left( \frac{\partial T}{\partial P}  \right)_{H,N}dP \\
+  dT &= -\frac{\left( \frac{\partial H}{\partial P}  \right)_{T,N}}{\left( \frac{\partial H}{\partial T}  \right)_{P,N}} dP \\
+  dT &= -\frac{T\left( \frac{\partial S}{\partial P}  \right)_{T,N}+V\left( \frac{\partial P}{\partial P}  \right)_{T,N}}{T\left( \frac{\partial S}{\partial T}  \right)_{P,N}+V\left( \frac{\partial P}{\partial T}  \right)_{P,N}} \\
+  dT &= - \frac{T\left( \frac{\partial S}{\partial P}  \right)_{T,N}+V}{T\left( \frac{\partial S}{\partial T}  \right)_{P,N}} \\
+  dT &= \frac{-T\left( \frac{\partial S}{\partial P}  \right)_{T,N}-V}{c_p N} dP \\
+  dT &= \frac{T\left( \frac{\partial V}{\partial T}  \right)_{P,N}-V}{c_pN} dP \\
+  dT &= \frac{T\alpha V -V}{c_p N}dP \\
+  dT &= \frac{v\left( T\alpha - 1 \right) }{c_p}dP \\
+  \frac{dT}{dP} &= \frac{v\left( T\alpha - 1 \right) }{c_p}
+.\end{align*}
+
+\chapter{Pregunta 4}
+
+En este caso podemos aprovecharnos del desarrollo del capitulo $9.4$ que es de hecho el capitulo en el que aparece la imagen. Este desarrollo surge de hecho desde una relación de  $\mu$ y  $v$. En este caso la relación esta en la ecuación  $9.16$ la cual es \[
+\mu = \int v dP + \phi (T)
+.\] en este caso lo que podemos hacer es derivar con respecto a $P$ puesto que por la variable de $\phi$ esta se convierte en 0. Nos queda únicamente $V$ esto se hace de la siguiente manera
+ \begin{align*}
+  \frac{d\mu}{dP} = v
+.\end{align*}
+
+Otra manera de encontrar este resultado es tomando la definición que nos encontramos en la ecuación $9.15$ la cual es (Gibbs-Duhem esencialmente) \[
+d\mu = -sdT + vdP
+.\] en este caso tenemos que tomar en consideración que esta es una relación isotérmica lo que hace en consecuencia que la derivada de la temperatura sea 0 y ese termino se cancele lo que nos dejaría solamente con la necesidad de derivar con respecto a la presión en ambos lados de la igualdad lo que nos dejaría con \[
+\frac{d\mu}{dP} = v
+.\] como estábamos esperando.
+
+Por lo tanto, de hecho, lo que estamos viendo en esta gráfica es que el cambio con respecto a la presión es  el volumen molar.
+\chapter{Pregunta 5}
+
+En este caso, sabemos que tenemos
+\begin{align*}
+  n_a &= 2 \\
+  n_b &= 1 \\
+  A+A &\rightleftarrows  B \\
+  2A &\rightleftarrows B\\
+  \Delta \mu = 2000 &\frac{J}{M} = \Delta \left( \frac{G}{M} \right) 
+.\end{align*}
+Ahora bien, por ley de acción de masas podemos saber $\frac{X_B}{X_A^2}=\exp\left( -\frac{\Delta\mu}{RT} \right) $ y  como tenemos la temperatura necesitamos reemplazar y encontrar esta relación
+\begin{align*}
+  \frac{X_B}{X_A^2}&=\exp\left( -\frac{2000}{300R} \right) \\
+  &= 0.45 \\
+.\end{align*}
+
+Por otro lado, sabemos que $X_A + X_B = 1$ por lo que  $X_B = 1 - X_A$ por lo que podemos despejar como
+ \begin{align*}
+   \frac{1-X_A}{X_A^2}&= 0.45 \\
+   0.45X_A^2 + X_A - 1 &= 0 \\
+   X_A &\approx 0.75 \\
+   X_B &\approx 0.25
+.\end{align*}
+\chapter{Pregunta 6}
+
+Quizás uno de los puntos que a mi parecer son mas relevantes y transversales para el curso pero al mismo tiempo resultan realmente desconocidos para el publico general (O al menos yo no conocía nada a la hora de entrar a estudiar este curso) son los procesos cuasi-estáticos. Estos son importantes para todos los procesos que requieren que un sistema varié alguna de sus características. Ahora bien, para explicar los  procesos cuasi-estáticos me parece a mi hay dos maneras. La primera es desarrollar el espacio de configuraciones en el cual están todas las maneras en las que se puede acomodar un sistema. Luego de esto, definir una superficie que son los estados de equilibrio. Por ultimo decir que un proceso cuasi estático es una curva en esta superficie. Sin embargo, para mi es quizás mas efectiva la segunda ruta. Teniendo en cuenta que los estados en equilibrio existen y pueden ser definidos por sus características. Un proceso cuasi-estático es aquel que consiste en una sucesión de estados en equilibrio. Ambas definiciones son esencialmente la misma. Sin embargo, es importante reconocer que la primera resulta mucho mas formal e importante.
+
+Por otro lado, es importante también hablar de la imposibilidad de un proceso cuasi estático. Esto dado que para cualquier transición entre dos estados de equilibrio es necesario que ocurra un tiempo para que el sistema se pueda, justamente, equilibrar. Por lo tanto, una buena manera de aproximarlo es por medio procesos tan lentos que permitan que el sistema se vaya equilibrando a cada paso y así los resultados cada vez mas concordarían con lo esperado. Esto por lo tanto, hace que los procesos cuasi estáticos no solo sean mucho mas fáciles de modelar si no que concuerden con los experimentos y nos permitan comprobarlos de manera practica.
+
+\end{document}

@@ -1,0 +1,208 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Variable Compleja} % This is the name of the course 
+\newcommand{\examnum}{Tarea 4.2} % This is the name of the assignment
+\newcommand{\examdate}{12/12/2022} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya Ramírez}\\ %Your name here instead, obviously 
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+    \item Sea $F(z)$ una función analítica en un dominio anular que contiene a $S^1$, el circulo de radio 1 centrado en
+    el origen. Sea $f(\theta)$ la función periodica obtenida al restringir $F$ al circulo. i.e. $f(\theta) = F(ei\theta )$. Demostrar
+    que para todo $\theta \in [0, 2\pi]$ se tiene $$f(\theta)=\displaystyle\sum_{n=-\infty}^\infty c_ne^{in\theta}$$ donde los
+    coeficientes estan dados por $$c_n=\frac{1}{2}\int_0^{2\pi}f(\theta)e^{-in\theta}$$
+    
+    \textbf{Solución: } Para cualquier función ya tenemos que se puede expresar como $$f(t)=\frac{a_{0}}{2}+\sum_{n=1}^\infty \left[a_n\cos\left(\frac{nt\pi}{L} \right)+ b_{n} \sin\left(\frac{n\pi t}{L}\right)\right]$$
+    Y si definimos $\omega = \frac{\pi}{L}$ nos queda $$f(t) = \frac{a_0}{2}+\sum_{n=1}^{\infty}[a_n\cos(n\omega t)+b_n \sin(n\omega t)]$$ Ademas, utilizando la definición
+    de $\sin(x)$ y $\cos(x)$ nos queda $$f(t)=\frac{a_0}{2}+\sum_{n=1}^\infty\left[a_n \frac{1}{2}(e^{in\omega t}+e^{-in\omega t})+b_n\frac{1}{2i}(e^{in\omega t}-e^{-in\omega t})\right]$$
+    $$f(t) = \frac{a_0}{2} + \sum_{n=1}^{\infty}\left[\frac{a_n}{2}e^{in\omega t}+\frac{a_n}{2}e^{-in\omega t}-\frac{ib_n}{2}e^{in\omega t} + \frac{b_n}{2}e^{-in\omega t}\right]$$
+    ahora podemos factorizar $$f(t) = \frac{a_0}{2}+\sum_{n=1}^\infty \left[\left(\frac{a_n}{2}-\frac{ib_n}{2}\right)e^{in\omega t}+\left(\frac{a_n}{2}+\frac{ib_n}{2}\right)e^{-in\omega t}\right]$$
+    y si definimos $c_0 = \frac{a_0}{2}$ y $c_n = \frac{a_n}{2}-\frac{ib_n}{2}$. Note que $\bar{c_n} = \frac{a_n}{2}+\frac{ib_n}{2}$
+    entonces nos queda $$f(t) = c_0 + \sum_{n=1}^\infty[c_ne^{in\omega t}+\bar{c_n}e^{-in\omega t}]=c_0 + \sum_{n=1}^{\infty}c_n e^{in\omega t}+\sum_{n=1}^{\infty}\bar{c_n}e^{-in\omega t}$$
+    y usando las definiciones de $a_0, a_n, b_n$ que son
+    \begin{eqnarray*}
+        a_0 &=& \frac{1}{L}\int_{-L}^{L}f(t)dt\\
+        a_n &=& \frac{1}{L}\int_{-L}^{L}f(t)\cos\left(\frac{n\pi t}{L}\right)dt\\
+        b_n &=& \frac{1}{L}\int_{-L}^{L}f(t)\sin\left(\frac{n\pi t}{L}\right)dt
+    \end{eqnarray*}
+    Entonces queda, 
+    \begin{eqnarray*}
+        c_0 &=& \frac{1}{2L}\int_{-L}^{L}f(t)dt\\
+        c_n &=& \frac{1}{2L}\int_{-L}^{L}f(t)\cos\left(\frac{n\pi t}{L}\right)dt-\frac{1}{2L}\int_{-L}^{L}if(t)\sin\left(\frac{n\pi t}{L}\right)dt\\
+        c_n &=& \frac{1}{2L}\int_{-L}^{L}f(t)\cos\left(n\omega t\right)dt-\frac{1}{2L}\int_{-L}^{L}if(t)\sin\left(n\omega t\right)dt\\
+        c_n &=& \frac{1}{2L}\int_{_L}^{L}f(t)[\cos(n\omega t)-i\sin(n\omega t)]dt\\
+        e^{-ix} &=& \cos(x)-i\sin(x)\\
+        c_n &=& \frac{1}{2L}\int_{-L}^{L}f(t)e^{in\omega t}dt
+    \end{eqnarray*}
+    y para el conjugado se hace un procedimiento muy similar hasta este punto
+    \begin{eqnarray*}
+        \bar{c_n} &=& \frac{1}{2L}\int_{_L}^{L}f(t)[\cos(n\omega t)+i\sin(n\omega t)]dt\\
+        e^{ix} &=& \cos(x)+i\sin(x)\\
+        \bar{c_n} &=& \frac{1}{2L}\int_{-L}^{L}f(t)e^{in\omega t}dt = c_{-n}
+    \end{eqnarray*}
+    por todo eso nos queda que
+    $$f(t) = c_0 + \sum_{n=1}^{\infty}c_ne^{in\omega t}+\sum_{n=1}^{\infty}c_{-n}e^{-in\omega t}$$
+    en consecuencia
+    $$f(t)=c_0 + \sum_{n=1}^{\infty}c_ne^{in\omega t}+\sum_{n=-\infty}^{-1}c_{n}e^{in\omega t}$$
+    $$f(t)=\sum_{n=-\infty}^{\infty}c_ne^{in\omega t}$$
+
+    \textbf{Segunda parte: }
+    \begin{itemize}
+        \item Serie de Fourier de $f(x)=1$
+        
+        tenemos que $$1 = \sum_{n=-\infty}^{\infty}c_ne^{in\omega x}$$
+        y $$c_n = \frac{1}{2\pi}\int_0^{2\pi}1e^{inx}dx =-\frac{i(-1+e^{2i\pi n})}{4\pi n}$$ por lo tanto nos queda
+        $$1 = \sum_{n=-\infty}^{\infty}-\frac{i(-1+e^{2i\pi n})}{4\pi n}e^{in\omega x}$$
+    \end{itemize}
+    \item Sea m,n enteros con $0\leq m < n$. Derivar la formula $$\int_0^\infty \frac{x^{2m}}{x^{2n}+1}dx = \frac{\pi}{2n}\csc\left(\frac{2m+1}{2n}\pi\right)$$
+    
+    \textbf{Solución: } El denominador tiene ceros en $\exp(\pi i\frac{2k + 1}{2n})$ y lo mismo funciona para las ramas con una separación de
+    $\frac{\pi}{n}$. El numerador difiere por un factor constante de $\exp(\pi i \frac{2m}{n})$ en dichas ramas.Obtenemos otro factor de 
+    $e^{\frac{\pi i}{n}}$ integrando por el diferencial $dz$. Por ende si integramos sobre el borde del sector $\{z:|z|<R,0<arg(z)<\frac{\pi}{n}\}$
+    nos queda. $$2\pi i Res \left(\frac{z^{2m}}{z^{2n}+1};e^{\frac{\pi i}{2n}}\right)=\left(1-e^{\pi i \frac{2m+1}{n}}\right)\int_0^R \frac{x^{2m}}{x^{2n}+1}dx + \int_{C_R}\frac{z^{2m}}{z^{2n}+1}dz$$
+    Donde $C_R$ es el arco que cierra el contorno. Dado que $m<n$ esta integral tiende a 0 cuando $R\to\infty$. Lo que nos deja con 
+    $$\int_0^{\infty}\frac{x^{2m}}{x^{2n}+1}dx = \frac{2 \pi i}{1-e^{\pi i \frac{2m+1}{n}}}Res \left(\frac{z^{2m}}{z^{2n}+1};e^{\frac{\pi i}{2n}}\right) \hspace*{2cm} (7.1)$$
+    Como el denominador tiene solo ceros simples entonces el residuo en 0 es 
+    $$Res\left(\frac{z^{2m}}{z^{2n}+1};\zeta\right)=\frac{\zeta^{2m}}{2n\zeta^{2n-1}}=\frac{\zeta^{1+2m-2n}}{2n}$$
+    y para $\zeta = e^{\frac{\pi i}{2n}}$ nos queda entonces $$\frac{e^{\pi i \frac{1+2m-2n}{2n}}}{2n}=-\frac{1}{2n}e^{\pi i \frac{2m+1}{2n}}$$
+    Y si eso lo ponemos en $(7.1)$ nos queda: $$\int_0^{\infty}\frac{x^{2m}}{x^{2n}+1}dx = \frac{\pi}{2n\sin\left(\pi\frac{2m+1}{2n}\right)}$$
+    \item Justifique los pasos para demostrar la siguiente integral $$\int_0^\infty cos(x^2)dx = \int_0^\infty \sin(x^2)dx = \frac{1}{2}\sqrt{\frac{\pi}{2}}$$
+    
+    \textbf{Solución: }Primero queremos remplazar $f(z)=e^{-x}$ por $\sin(x^2)$ y esto lo queremos integrar en un arco de angulo $\frac{\pi}{4}$ y de lado $R$
+    y por tanto quedamos $$\int_{cR} f(z) dz= \int_A f(z) dz + \int_B f(z) dz + \int_C f(z)dz$$
+    en donde $A$ es una linea de $0$ a $R$, $B$ es el arco de $R$ a $Re^{i\frac{\pi}{4}}$ y $C$ es la linea de $Re^{i\frac{\pi}{4}}$ a $0$ en ese orden y por tanto
+    en el sentido contrario a las manecillas del reloj. Ahora podemos dividir el trabajo en tres pasos.
+    \begin{enumerate}
+        \item \textbf{Estudio de A} Para paremitrizar esto dado que es una linea recta podemos poner $\gamma(t) = t, 0\leq t \leq R$ y por tanto la integral queda
+        $$\int_A f(z) dz = \int_0^R f(t) \gamma'(t) dt = \int_{0}^{R}e^{-it^2}dt$$
+        Y ahora hacemos tender $R\to\infty$ para que nos quede $\int_0^\infty e^{-it^2}dt = \frac{\sqrt{\pi}}{2}$
+        \item \textbf{Estudio de B} Primero parametrizamos con $\gamma(t)=Re^{i\frac{\pi}{4}t},0\leq t \leq 1$  lo que nos deja con
+        $$|\int_B f(z)dz| = |\int_0^1 e^{-\gamma(t)}\gamma'(t)dt| = |\int_0^1 e^{-(Re^{i\frac{\pi}{4}t})}R(i\frac{\pi}{4})Re^{i\frac{\pi}{4}t}dt|$$
+        entonces
+        $$\leq \int_0^1 |e^{-R^2e^{i\frac{\pi}{2}t}}||Ri\frac{\pi}{4}||e^{i\frac{\pi}{4}t}|dt$$
+        Dado que algunos elementos son imaginarios nos queda
+        $$\leq \int_0^1 |e^{-R^2 \cos(\frac{\pi}{2}t)}||e^{-iR^2\sin(\frac{\pi}{2}t)}|(\frac{\pi}{4}R) (1) dt$$
+        Y los otros son puramente reales y por tanto el resultado seria
+        $$\leq \int_0^1 e^{-R^2\cos(\frac{\pi}{2}t)}(\frac{\pi}{4})dt = \frac{\pi}{4}R\int_0^1e^{-R^2cos(\frac{\pi}{2}t)}dt$$
+        Note que $(\cos(\frac{\pi}{2}t))'' = -\frac{\pi^2}{4}\cos(\frac{\pi}{2}t)<0, t \in [0,1]$ Lo que significa que esta función es concava hacia abajo. lo que significa
+        que siempre esta estrictamente debajo de la linea tangente en $t=1$ que si la calculamos es 
+        $$y - \cos(\frac{\pi}{2})=-\frac{\pi}{2}sin(\frac{\pi}{2})$$
+        $$y =-\frac{\pi}{2}t+\frac{\pi}{2}$$
+        y como consecuencia de lo anterior $\cos(\frac{\pi}{2}t)\leq -\frac{\pi}{2}t+\frac{\pi}{2}$ con esta inecuacion retomemos
+        $$\leq \frac{\pi}{4}R\int_0^1e^{-R^2(-\frac{\pi}{2}t+\frac{\pi}{2})}dt$$
+        y si  definimos $u=-\frac{\pi}{2}t+\frac{\pi}{2}$ y $du = -\frac{\pi}{2}dt$ nos queda
+        $$=\frac{\pi}{4}R\int_{\frac{\pi}{2}}^0 e^{-R^2U}(-\frac{2}{\pi}dt)$$
+        $$= \frac{\pi}{4}R(\frac{2}{\pi})\int_0^\frac{\pi}{2} e^{-R^2U}dU$$
+        $$=\frac{1}{2}R\left[\frac{e^{-R^2U}}{-R^2}\right]_0^\frac{\pi}{2}$$
+        $$=-\frac{1}{2R}(e^{-R^2\frac{\pi}{2}}-1)$$
+        y ahora si $R\to\infty$
+        $$=0$$
+        \item \textbf{Estudio de C} Primero parametrizamos $C$ con $\gamma(t)=e^{i\frac{\pi}{4}}(R-t)$
+        Entonces esto nos deja con 
+        $$=\int_0^R e^{-e^{i\frac{\pi}{2}(R-t)^2}}(-e^{i\frac{\pi}{4}})dt$$
+        y si definimos $t' = R-t$ y $dt' = -dt$ entonces la integral se vuelve
+        $$=-e^{i\frac{\pi}{4}}\int_R^0 e^{-e^{i\frac{\pi}{2}t^2}}(-dt)=-e^{i\frac{\pi}{4}}\int_0^R e^{-it^2}dt$$
+        y si hacemos $R\to\infty$ nos queda
+        $$-e^{i\frac{\pi}{4}}\int_0^\infty e^{-it^2}$$
+    \end{enumerate}
+    Ahora bien con esto reanudemos la primera ecuación
+    $$\int_{cR} f(z) dz= \int_A f(z) dz + \int_B f(z) dz + \int_C f(z)dz$$
+    que ahora nos queda
+    $$0=\frac{\sqrt{\pi}}{2}+0+-e^{i\frac{\pi}{4}}\int_0^\infty e^{-it^2}$$
+    que ahora podemos despejar con
+    $$\int_0^\infty e^{-it^2}=\frac{\sqrt{\pi}}{2}e^{-i\frac{\pi}{4}}=\frac{\sqrt{2}}{2}(\frac{1}{\sqrt{2}}-i\frac{1}{\sqrt{2}})$$
+    y sabiendo que $e^{-i\theta^2}=cos(\theta)-i\sin(\theta)$ nos queda
+    $$\int_0^\infty \cos(t^2)dt - i\int_0^\infty sin(t^2)dt = \frac{\sqrt{\pi}}{2\sqrt{2}}-i\frac{\sqrt{\pi}}{2\sqrt{2}}=\sqrt{\frac{\pi}{8}}-\sqrt{\frac{\pi}{8}}$$
+    lo que nos deja con
+    $$\int_0^\infty \cos(t^2)dt = \sqrt{\frac{\pi}{8}}$$
+    $$\int_0^\infty \sin(t^2)dt = \sqrt{\frac{\pi}{8}}$$
+    \item Muestre que: $$\int_0^{\infty}\frac{sin(x)}{x}dx = \frac{\pi}{2}$$
+    primero tomamos la transformada de laplace a $\frac{\sin(t)}{t}$lo cual nos da
+    $$\int_0^\infty \frac{\sin(t)}{t}e^{-st}dt$$ y entonces nos queda
+    $$\int_0^\infty \mathbb{L}\{\sin(t)\}(y)dy$$
+    $$=\int_s^\infty \frac{1}{y^2+1^2}dy$$
+    ahora bien si hacemos que $s\to\infty$
+    $$=\int_0^\infty \frac{dy}{y^2+1^2}=\tan^{-1}(y)|_0^\infty = \frac{\pi}{2}$$
+    \item Justifique los pasos para demostrar la siguiente integral: $$\int_0^{\infty} \frac{x^{-a}}{x+1}dx=\frac{\pi}{\sin(a\pi)}$$ $(0<a<1)$
+    
+    Sea $I$ el valor de la integral impropia y hagamos la sustitución $t=e^x$ lo que nos deja con
+    $$I = \int_0^\infty \frac{t^a}{1+t}\cdot\frac{dt}{t} = \int_0^\infty \frac{t^{a-1}}{1+t} dt$$
+    Entonces esta integral la podemos transformar a $\int_{C_R}\frac{z^{a-1}}{z+1}dz$ donde $C_R$ es el contorno cerrado con orientación encontra de las manecillas del reloj
+    Consistente del arco cirucular $\Gamma_R$ centrado en el origen con radio $R>1$ en la mitad superior del plano, el eje real desde $R$ hasta $\epsilon$, el arco circular
+    $\gamma_\epsilon$ centrado en el origen con radio $0<\epsilon<R$ en la mitad superior del plano y teniendo una orientación a favor de las manecillas del reloj y el eje real
+    en $[\epsilon,R]$.
+
+    Ahora descomponiendo en nuestro contorno nos queda
+    $$\int_{C_R}\frac{z^{a-1}}{z+1}dz = -\int_\epsilon^R \frac{(xe^{2\pi i})^{a-1}}{x+1}dx  + \int_{\gamma_\epsilon} \frac{z^{a-1}}{z+1}dz+\int_\epsilon^R\frac{x^{a-1}}{x+1}dx+\int_{\Gamma_R}\frac{z^{a-1}}{z+1}dz$$
+    
+    Si hacemos $R\to\infty$ y $\epsilon\to0$ entonces la integral sobre $\Gamma_R$ tiende a 0 y $\gamma_\epsilon$ tiende a 0 tambien lo que nos deja con
+
+    $$\lim_{R\to\infty}\int_{C_R}\frac{z^{a-1}}{z+1}dz = -\int_0^\infty \frac{(ze^{2\pi i})^{a-1}}{x+1}dx+\int_0^\infty \frac{x^{a-1}}{x+1}dx$$
+
+    resolviendo la integral nos queda
+    $$\lim_{R\to\infty}\int_{C_R}\frac{z^{a-1}}{z+1}dz = (1-e^{2a\pi i})\int_0^8 \frac{x^{a-1}}{x+1}dx$$
+
+    Ahora podemos computar con el teorema del residuo.
+
+    Las singularidades de esta integral ocurren en $z=-1$ y este es un polo simple. Por tanto el residuo equivale a
+    $$\lim_{z\to-1}(z+1)\cdot\frac{z^{a-1}}{z+1} = (-1)^{a-1} = e^{\pi i(a-1)}=-e^{a\pi i}=-e^{a\pi i}$$
+    por tanto el teorema del residuo nos da
+    $$\int_{C_R}\frac{z^{a-1}}{z+1}dz=-2\pi i e^{a\pi i}$$
+    y dado que $R\to\infty$ no afecta este resultado sustituyendo en nuestro contorno de integral descompuesto arriba nos queda
+    $$-2\pi i e^{a\pi i}=(1-e^{2a\pi i})\int_0^{\infty}\frac{x^{a-1}}{x+1}dx$$ que resolviendo la integral deseada nos da
+    \begin{eqnarray*}
+        \int_0^{\infty} \frac{x^{a-1}}{x+1}dx &=& -\frac{2\pi i e^{a\pi i}}{1-e^{2a\pi i}}\\
+        &=& \frac{2\pi ie^{a\pi i}}{e^{a\pi i}(e^{a\pi i}-e^{-a\pi i})}\\
+        &=& \frac{\pi}{sin(a\pi)}
+    \end{eqnarray*}
+    Que ahora concluyendo nos da
+    $$\int_0^{\infty} \frac{e^{ax}}{1+e^x}dx = \frac{\pi}{sin(a\pi)}$$
+    \item Punto 11
+    \item Usando residuos establecer la siguiente igualdad $$\int_{0}^{\pi}sin^{2n}(\theta)d\theta = \frac{(2n)!}{2^{2n}(n!)^{2}}\pi$$
+    Sea C el circulo unitario orientado positivamente $|z|=1$. En vista de la formula binomial
+
+    $$\int_0^{\pi}\sin^{2n}\theta d\theta = \frac{1}{2}\int_{-\pi}^{\pi}\sin^{2n}(\theta)d\theta $$
+    $$= \frac{1}{2}\int_C \left(\frac{z-z^{-1}}{2i}\right)^{2n}\frac{dz}{iz}=\frac{1}{2^{2n+1}(-1)^ni}\int_C \frac{(z-z^{-1})^{2n}}{z}dz$$
+    $$=\frac{1}{2^{2n+1}(-1)^ni}\int_c\sum_{k=0}^{n}\binom{2n}{k}z^{2n-k}(-z^{-1})^kz^{-1}$$
+    $$=\frac{1}{2^{2n+1(-1)^n i}}\sum_{k=0}^{n}\binom{2n}{k}(-1)^k \int_c z^{2n-2k-1}z$$
+    Ahora, cada una de esas integrales tiene valor $0$ excepto cuando $k=n$ por tanto
+    $$\int_c z^{-1}dz = 2\pi i$$
+    y en consecuencia
+    $$\int_0^{\pi}\sin^{2n}\theta d\theta = \frac{1}{2^{2n+1}(-1)^n}i\cdot\frac{(2n)!(-1)^n2\pi i}{(n!)^2}=\frac{(2n)!}{2^{2n}(n!)^2}\pi$$
+\end{enumerate}
+
+\end{document}

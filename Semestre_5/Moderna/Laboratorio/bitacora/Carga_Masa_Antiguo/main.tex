@@ -1,0 +1,119 @@
+\documentclass[a4paper, amsfonts, amssymb, amsmath, reprint, showkeys, nofootinbib, twoside]{revtex4-1}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage[colorinlistoftodos, color=green!40, prependcaption]{todonotes}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[left=23mm,right=13mm,top=35mm,columnsep=15pt]{geometry} 
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{csquotes}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage[pdftex, pdftitle={Article}, pdfauthor={Author}]{hyperref} % For hyperlinks in the PDF
+%\setlength{\marginparwidth}{2.5cm}
+\bibliographystyle{apsrev4-1}
+
+\begin{document}
+
+%El título del experimento realizado es importante.
+\title{Carga-Masa (Antiguo)}
+
+
+\author{Sergio Montoya Ramirez}
+\email[Correo institucional: ]{s.montoyar2@uniandes.edu.co}
+
+%Si necesitan poner un segundo autor, deben eliminar los porcentajes (%) iniciales.
+  
+%\author{Second Author}
+%\email{Second.Author@institution.edu}
+
+\affiliation{Universidad de los Andes, Bogotá, Colombia.}
+
+\date{\today} % Si lo dejan vacío no les saldrá fecha. La fecha que se muestra es del día en que se compila.
+
+\begin{abstract}
+
+En este se describen brevemente los objetivos y los resultados del trabajo, por lo tanto se debe dar información completa pero corta del contenido del trabajo. Se debe indicar qué fue lo que se hizo, cómo se hizo y cuáles fueron los resultados obtenidos.
+
+\end{abstract}
+
+\maketitle
+
+\section{Introducción}
+
+\subsection{Preguntas de Preparación}
+\begin{enumerate}
+  \item \textit{Relación entre la velocidad del electrón y el voltaje con que fue disparado}
+
+    \textbf{Solución:}
+    
+
+  \item \textit{Campo magnético Producido por un Solenoide}
+    
+    \textbf{Solución:}
+    Un cable enrollado en forma de bobina helicoidal es denominado un Solenoide. En esta caso asumiendo que por un solenoide de $N$ vueltas en una distancia $L$ circula una corriente $I$. Por lo tanto con esto podemos generar una corriente en la forma: 
+\begin{equation}
+  \label{eq:dCorriente}
+  dI = \frac{NI}{L}dy
+\end{equation}    
+Ahora bien, para empezar podemos calcular el campo magnético en un punto $P$ que se encuentra en el eje central del solenoide. Para hacer esto, debemos esencialmente cortar el solenoide en pequeñas revenadas de grosor $dy$ y tratamos cada una de esas rebanadas como un ciclo por lo que la corriente que pasa por este es \ref{eq:dCorriente}. Ahora con esta ecuación encontramos $d\Vec{B}$ para que nos quede
+ \begin{equation}
+  \label{eq:dB}
+  \begin{split}
+    d\Vec{B}&=\frac{\mu_0R^2dI}{2\left( y^2+R^2 \right)^{\frac{3}{2}}}\hat{j} \\ &= \left( \frac{\mu_0IR^2N}{2L}\hat{j} \right) \frac{dy}{\left( y^2+R^2 \right)^{\frac{3}{2}}}
+  \end{split}
+\end{equation}
+
+Ahora bien, teniendo ya esto podemos encontrar el campo magnético integrando. Esta no es una integral tan simple y quizás el modo mas fácil es por un cambio de variable.Con esto se desarrolla como sigue
+\begin{align*}
+  \sin\theta&=\frac{y}{\sqrt{y^2+R^2} }\\
+  \cos\theta d\theta&= \left[ -\frac{y^2}{\left( y^2+R^2 \right)^{\frac{3}{2}}}+\frac{1}{\sqrt{y^2+R^2} } \right] dy \\
+	    &= \frac{R^2dy}{\left( y^2+R^2 \right)^{\frac{3}{2}}} \\
+	    \Vec{B}&= \frac{\mu_0 IN}{2L}\hat{j}\int_{\theta_1}^{\theta_2}\cos\theta d\theta\\
+	    &= \frac{\mu_0 IN}{2L}\left( \sin\theta_2 - \sin\theta_1 \right) \hat{j} \\
+.\end{align*}
+Este es el campo magnético en el eje central del Solenoide. Ahora bien, para aproximarnos a un campo magnético y con el objetivo de simplificar tomaremos el solenoide infinito (Que en verdad puede aproximarse a un solenoide con $L\gg R$) Puesto que en ese caso haremos $\theta_1=\frac{\pi}{2}$ y $\theta_2=-\frac{\pi}{2}$ Lo que significa que nos queda: \[
+  \Vec{B}=\frac{\mu_0 IN\hat{j}}{L}
+.\] que si hacemos $n=\frac{N}{L}$ Entonces nos queda \[
+\Vec{B} = \mu_0 In\hat{j}
+.\]\cite{OpenStaxSolenoides}
+  \item \textit{Fuerza Magnética sobre una carga puntual}
+
+    \textbf{Solución:}
+    Para una carga puntual sumergida en un campo magnético tenemos que la fuerza que experimenta es \[
+      F=Q(\Vec{v}\times \Vec{B})
+    .\]
+    \cite{KhanFuerza}
+  \item \textit{Frecuencia de un Sincrotrón}
+
+    \textbf{Solución:} 
+    Un sincrotrón es un acelerador de partículas utilizado para medir interacciones cuánticas y como tal han habido varios en el transcurso de la historia con diferentes frecuencias. Ahora bien, estos en esencia comparten un funcionamiento similar. Primero, un cañon de electrones se calienta para lanzar un haz de electrones que sera acelerado de manera lineal primero. Luego de esto, los electrones son acelerados en un anillo propulsor por medio de campos magnéticos. Posteriormente, los electrones se ubican en un anillo de almacenamiento usando campos magnéticos. Luego de esto se hace que los electrones produzcan luz de Sincrotrón para ser analizada posteriormente. Por todo esto realmente no es posible dar un valor exacto para la frecuencia de un sincrotrón. \cite{Sincrotron}
+  \item \textit{Demostrar que, para el montaje utilizado, el valor de $\frac{e}{m}$ en términos de las cantidades observables es \[
+  \frac{e}{m}=\frac{8\pi^2}{\mu_0^2}\frac{n^2}{N^2}\frac{L^2}{l^2}\frac{V^2}{I^2}
+  .\] 
+Donde los observables son: Voltaje ($V$), corriente ($I$), longitud del Tubo ($l$ desde el ánodo hasta la pantalla), longitud de la bobina ($L$; no es igual a la del tubo), numero de vueltas de la bobina ($N=570$ verificar este valor), y el numero de vueltas descritas por los electrones ($n$). Se deben mostrar todos los detalles del calculo.
+}
+
+\textbf{Solución:}
+
+\end{enumerate}
+
+\section{Montaje experimental}
+
+\section{Resultados y análisis}
+
+\section{Conclusiones}
+
+\bibliographystyle{unsrt}
+\bibliography{Referencias}
+
+\section*{Apéndice de cálculo de errores}
+
+\end{document}

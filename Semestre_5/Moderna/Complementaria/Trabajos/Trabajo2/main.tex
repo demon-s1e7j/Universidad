@@ -1,0 +1,100 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Moderna - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 2} % This is the name of the assignment
+\newcommand{\examdate}{03/02/2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya Ramirez}\\ %Your name here instead, obviously 
+	\textbf{\examnum} && \textit{David Pachon Ballen}\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+
+
+
+\begin{enumerate} %You can make lists!
+	\item Halle la velocidad que a la que debe ir el cohete para que los astronautas percivan 40 años de ida y vuelta.
+
+		Primero, tenemos que saber que $L = \gamma L'$ donde $L$ es la distancia medida desde el planeta ($40$ años$\cdot c$), $\gamma$ es el factor de cambio y $L'$ la distancia de los astronautas. Ademas, sabemos que $L' = v\cdot t'$ donde V es la velocidad y $t'$ es el tiempo percivido por los astronautas ($40$ añs)
+		\begin{align*}
+			& 40\text{ años}\cdot c = \gamma v \cdot 40\text{ años}\\
+			& c = \gamma \cdot v\\
+			& \gamma = \frac{1}{\sqrt{1-\frac{v^2}{c^2}}}\\
+			& c = \frac{v}{\sqrt{1-\frac{v^2}{c^2}}}\\
+			& c(\sqrt{1-\frac{v^2}{c^2}}) = v\\
+			& c^2(1-\frac{v^2}{c^2}) = v^2\\
+			& c^2 - v^2 = v^2\\
+			& c^2 = 2v^2\\
+			& v^2 = \frac{c^2}{2}\\
+			& v = \frac{c}{\sqrt{2}} = \frac{c\sqrt{2}}{2}
+		\end{align*}
+
+		Halle el tiempo que vivieron los cientificos en tierra.
+
+		Para esto vamos a hallar $\gamma$ (que ya podemos dado que ya tenemos la velocidad) y utilizaremos el hecho de que $t = \gamma\cdot t'$ 
+		\begin{align*}
+			& \gamma = \frac{1}{\sqrt{1-\frac{v^2}{c^2}}}\\
+			& \gamma = \frac{1}{\sqrt{1-\frac{\left(\frac{c}{\sqrt{2}}\right)^2}{c^2}}}\\
+			& \gamma = \frac{1}{\sqrt{1 - \frac{\frac{c^2}{2}}{c^2}}}\\
+			& \gamma = \frac{1}{\sqrt{1 - \frac{1}{2}}}\\
+			& \gamma = \frac{1}{\sqrt{\frac{1}{2}}}\\
+			& \gamma = \sqrt{2}\\
+			& t = \gamma t'\\
+			& t = \sqrt{2}\cdot40 \text{ años}
+		\end{align*}
+	\item Hallar la velocidad relativa de B y C vistos desde A.
+		Primero asumimos que la velocidad de A es $0.6c$ y la de B $-0.6c$ esto dado que tienen direcciónes opuestas y con esta configuración se nos facilitan los calculos.
+		\begin{enumerate}
+			\item $V_{ab}$
+				\begin{align*}
+					& V_{ab} = \frac{V - U}{1-\frac{V\cdot U}{c^2}}\\
+					& = \frac{0.6c - 0}{1 - \frac{0.6c\cdot 0}{c^2}}\\
+					& = \frac{0.6c}{1}\\
+					& V_{ab} = 0.6c
+				\end{align*}
+			\item $V_{ac}$
+				\begin{align*}
+					& V_{ac} = \frac{V - U}{1 - \frac{v\cdot U}{c^2}}\\
+					& V_{ac} = \frac{0.6c - (-0.6c)}{1-\frac{(0.6c)(-0.6c)}{c^2}}\\
+					& V_{ac} = \frac{1.2c}{1-(-0.36)}\\
+					& V_{ac} = \frac{1.2c}{1.36}\\
+					& V_{ac} = 0.882c
+				\end{align*}
+		\end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}

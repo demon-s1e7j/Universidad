@@ -1,0 +1,91 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Topicos en Biofisica}\\Tarea 1}
+\author{\huge{Sergio Montoya Ramirez}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Pregunta 1}
+\section{Geometria de E.Coli}
+
+En este caso, nos piden utilizar la figura 2.1 del libro. En particular usaremos la $C$. Basados en esa imagen dividiremos a \textit{E.Coli} en dos figuras geometricas que nos permitan aproximarnos. Diremos que es un cilindro de radio $\frac{1}{2}\mu m$ y altura $1 \mu m$ junto con una esfera (partida en dos y que estara en cada lado) de radio  $\frac{1}{2} \mu m$ en este caso debemos calcular la superficie y volumen de ambas figuras.
+
+\subsection{Volumen}
+
+\begin{enumerate}
+  \item \textbf{Cilindro}
+    \begin{align*}
+      V_{c} &= r^2\pi h \\
+      &= \pi \frac{1}{4}\left( 1 \right) \mu m^{3}\\
+      &= \frac{\pi}{4} \mu m^{3}
+    .\end{align*}
+  \item \textbf{Esfera}
+    \begin{align*}
+      V_{e} &= \frac{4}{3}\pi r^{3} \\
+      &= \frac{4}{3}\pi \left( \frac{1}{2} \right)^{3} \\
+      &= \frac{4}{3}\frac{\pi}{8} \\
+      &= \frac{4\pi}{24}\mu m^{3}
+    .\end{align*}
+  \item \textbf{Total}
+    \begin{align*}
+      V_{t} &= V_{c} + V_{e} \\
+     &= \frac{\pi}{4} + \frac{4\pi}{24} \\
+     &= \frac{6\pi+4\pi}{24} \\
+     &= \frac{10\pi}{24} \\
+     &\approx 1 \mu m^{3}
+    .\end{align*}
+  \item \textbf{Conversión}
+    \begin{align*}
+      1 \mu m^{3} = 1 \mu m^{3} \frac{1 fl}{1 \mu m^{3}} = 1 fl
+    .\end{align*}
+\end{enumerate}
+
+\subsection{Superficie}
+
+\begin{enumerate}
+  \item \textbf{Cilindro}
+    \begin{align*}
+      S_{c} &= 2\pi rh \\
+      &= 2\pi \frac{1}{2} \mu m^2 \\
+      &= \pi \mu m^2
+    .\end{align*}
+  \item \textbf{Esfera}
+    \begin{align*}
+      S_{e} &=  4 \pi r^2\\
+      &= 4 \pi \frac{1}{4} \\
+      &= \pi \mu m^2
+    .\end{align*}
+  \item \textbf{Total}
+    \begin{align*}
+      S_{t} &= S_{c} + S_{e} \\
+      &= \pi + \pi \mu m^2 \\
+      &= 2\pi \mu m^2 \\
+      &\approx 6 \mu m^2
+    .\end{align*}
+\end{enumerate}
+
+\subsection{Masa}
+si asumimos que \textit{E.Coli} tiene una densidad similar a la del agua tendriamos:
+\begin{align*}
+  V_{t} &= 1 fl \\
+  \rho &= 1 \frac{kg}{l} \frac{10^{-15}l}{1 fl} \\
+  m &= v_{t}\rho = 10^{-15}kg \\ \\
+  &= 1 pg
+.\end{align*}
+
+\section{Bacterias en el Cuerpo}
+
+Desde el punto anterior sabemos cual es la masa aproximada de j=
+\end{document}

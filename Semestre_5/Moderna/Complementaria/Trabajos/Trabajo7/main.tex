@@ -1,0 +1,150 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Moderna - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Trabajo 7} % This is the name of the assignment
+\newcommand{\examdate}{10/03/2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \textit{David Santiago Pachon Ballen}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\textit{Sergio Montoya Ramírez}\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+
+
+
+\begin{enumerate} %You can make lists!
+	\item \begin{enumerate}
+			\item Explique con sus propias palabras qué fue la catastrofe del ultravioleta
+
+				Imagine usted que tiene un solido negro, por ejemplo un cubo. Ahora bien, Calentando ese cuerpo la física clasica nos indic a que los electrones de este comenzarian a oscilar al rededor de su posición de equilibrio y dado que tienen una carga emitirian radiación electromagnetica de igual frecuencia que la frecuencia de oscilación\cite{Unal_Moderna}. Ahora bien, esto es una descripción puramente cualitativa y si hay algo esencial en física es el poder hacer predicciónes. Por esta razon Rayleight y Jeans estudiaron rigurosamente la emisión de manera matematica para lo que tomaron en cuenta la distribución de la energia que tenian clasicamente. El resultado que encontraron fue
+				\begin{align*}
+					\rho(\upsilon) = \frac{8\pi}{c^3}k_BT\upsilon^2
+				\end{align*}
+				
+				Esta ley se conoce como la ley de Rayleight Jeans y es bastante precisa a la hora de calcular las energias cuando la frecuencia es baja. Sin embargo, no es dificil notar que hay una gran inconsistencia y es que a medida que crece $\upsilon$ su valor crece de igual manera haciendo una formula monotona mente creciente y ademas no esta acotada por lo que $$\lim_{\upsilon\to\infty} \frac{8\pi}{c^3}k_BT\upsilon^2 = \infty$$
+
+				Cosa que no solo no coincide con la recta experimental si no que ademas es un absurdo. Esto es a lo que se le conoce com \textit{Catastrofe Ultravioleta}
+			\item De acuerdo a lo visto en clase explique el modelo de B\"{o}hr y diga por que fracaso
+				
+				En la física del siglo XX habia una situación muy interesante. Los electrones orbitan alrededor del nucleo pero ademas tienen carga y por tanto deberian irradiar energia electromagnetica (Todo esto se da por electromagnetismo clasico). Esta radiación se describiria como $$P=\frac{q^2a^2}{\sigma\pi E_0c^2}$$ 
+
+				Sin embargo hay un gran problema, dado que la energia del electron es $E = \gamma m_e c$ esta seria irradiada muy rapidamente y el atomo seria inestable.
+
+				Para solucionar esto Niels B\"{o}hr aprovecho lo explicado previamente por Einstein para el efecto fotoelectrico con las siguiente tesis: Dado que la energia de una transcición electronica esta cuantizada podemos obligar a que el electron oscile unicamente en orbitas determinadas (y discretas). Esto logro solucionar el problema nombrado previamente y ademas soluciona otro problema del que ni siquiera habiamos hablado y son las lineas espectrales del hidrogeno. Sin embargo, este modelo no es perfecto, para iniciar las lineas espectrales no es un fenomeno unicamente del hidrogeno si no que todos los elementos tienen su propio espectro de emisión que cuando se intentaba explicar con el modelo de B\"{o}hr se fallaba por completo. Ademas, era un modelo completamente clasico y su cuantización se mostro posteriormente no era correcta.\cite{Notas1}
+			\item Explique el principio de De Broglie y como se originó
+
+        Para entender el  postulado de De Broglie es necesario revisitar la física de hace aproximadamente 100 años atras. 
+        En ese momento habian dos teorias que se consideraban contradictorias e irreconciliables entre si. La teoria de que la luz es 
+        una onda o un corpusculo. 
+
+        Inicialmente se tuvo, la teoria corpuscular que se basaba en dos hechos experimentales. Estos hechos son, la propagación de la luz
+        en linea recta y la reflexión. Sin embargo, durante el siglo XVII se descubrio la difracción e interferencia de la luz que son comportamientos
+        imposibles de explicar con un corpusculo. 
+				
+        Con esto puesto en la mesa, uno de los problemas mas cruciales para los físicos de la epoca se convirtio en determinar si 
+        la luz es un fenomeno ondulatorio o corpuscular y dado que habia evidencia en ambos casos se decidió por aceptar que la luz
+        es ambas cosas. 
+
+        Por esta misma epoca De Broglie volvio a estudiar física y le llamo la atención el que en la física se calculara la energia del 
+        foton con frecuencia que es un termino propio de las ondas. Ademas, tambien le llamo la atención la presencia de números enteros 
+        en el movimiento de los electrones en el atomo. Con estos dos conocimientos razono de la siguiente manera:
+
+        Primero, determino que deben existir ondas asociadas a los fotones que son particulas. Segundo, considero el hecho de que en fenomenos
+        ondulatorios aparecen numeros enteros y con ello planteo que los electrones tambien tuvieran una onda  asociada. 
+
+        Con estos razonamientos De Broglie planteo su principio que en esencia dice que toda particula esta asociada a una onda
+        y por lo tanto todo tiene ambas naturalezas \cite{Unal_Moderna}
+
+      \item Explique que es un espacio de Hilbert y su importancia en la mecánica cuántica. 
+      \item ¿Es la ecuación de Schr\"{o}dinger invariante de Galileo? 
+
+        Tomemos en cuenta que para tener la ecuación de Schr\"{o}dinger
+        debimos utilizar C en varias de sus definiciones (Por ejemplo, en la de longitud de onda) y por lo tanto, ya tendriamos efectos
+        relativistas en la mezcla y en conclución no podriamos tener invarianza bajo transformaciones Galileanas.
+	\end{enumerate}
+\item \begin{enumerate}
+		\item Encuentre la constante de normalización
+
+			\begin{align*}
+				\psi (x) &= A(\psi_1 + \psi_2 + \psi_3)\\
+				\int |\psi (x)|^2dx &= 1\\
+				\int A^2(|\psi_1+\psi_2+\psi_3|)^2dx &= A^2 \int_{-\infty}^\infty (\psi_1 + \psi_2 +\psi_3)^2 dx=1\\
+				A &= \frac{1}{\sqrt{\int_{-\infty}^\infty (\psi_1 + \psi_2 + \psi_3)^2 dx}}\\
+				A &= \frac{1}{\sqrt{\int_0^L \psi_1^2 + 2\psi_1\psi_2 + 2\psi_1\psi_3 + \psi_2^2 + 2\psi_2\psi_3 + \psi_3^2}}\\
+				A &= \frac{1}{\sqrt{3}}
+			\end{align*}
+		\item Si se hace una medición en la energía, qué valores se espera encontrar y con que probabilidades?
+
+			\begin{align*}
+				\psi &= a_1\phi + a_2\phi + a_3\phi\\
+				P_1 &= a_1^2 = A^2 = \frac{1}{3}\\
+				P_2 &= a_2^2 = \frac{1}{3}\\
+				P_3 &= a_3^2 = \frac{1}{3}
+			\end{align*}
+		\item Encuentre $<E>$,$<p>$,$<x>$,$\sigma_x$,$\sigma_p$
+			\begin{enumerate}
+				\item $<E>$
+					\begin{align*}
+						<E> &= <H> = \int_0^L \psi^*H(A(\psi_1 + \psi_2 + \psi_3))\\
+						&= \int_0^L \psi^*[E_1A\psi_1 + E_2A\psi_2 + E_3A\psi_3]\\
+						&= |A|^2 \int_0^L E_1\psi_1^2 + E_2\psi_2^2 + E_3\psi_3^2\\
+						&= |A|^2 [E_1\int_0^L\cancel{\psi_1^2}+E_2\int_0^L\cancel{\psi_2^2}+E_3\int_0^L\cancel{\psi_3^2}]\\
+						<E> &= |A|^2(E_1+E_2+E_3)
+					\end{align*}
+				\item $<p>$
+					\begin{align*}
+						\psi_n &= \sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right)\\
+						\frac{\partial \psi_n}{\partial x} &= \sqrt{\frac{2}{L}}\cos\left(\frac{n\pi x}{L}\right)\frac{n\pi}{L}\\
+						<p> &= A^2 \int_0^L(\psi_1+\psi_2+\psi_3)\frac{\hbar}{i}\frac{\partial}{\partial x}(\psi_1+\psi_2+\psi_3)\\
+						<p> &= A^2 \int_0^L\left(\sqrt{\frac{2}{L}}\sin\left(\frac{\pi x}{L}\right)+\sqrt{\frac{2}{L}}\sin\left(\frac{2\pi x}{L}\right)+\sqrt{\frac{2}{L}}\sin\left(\frac{3\pi x}{L}\right)\right)\\
+						&\frac{\hbar}{i}\left(\sqrt{\frac{2}{L}}\cos\left(\frac{\pi x}{L}\right)\frac{\pi}{L}+ \sqrt{\frac{2}{L}}\cos\left(\frac{2\pi x}{L}\right)\frac{2\pi}{L}+ \sqrt{\frac{2}{L}}\cos\left(\frac{3\pi x}{L}\right)\frac{3\pi}{L}\right)\\
+						<p> &= 0
+					\end{align*}
+				\item $<x>$
+					\begin{align*}
+            <x> &= \int x|\psi(x)|^2 dx\\
+            &= A^2 \int x(\psi_1 + \psi_2 + \psi_3)^2 dx\\
+            \psi_n &= \sqrt{\frac{2}{L}}\sin\left(\frac{n\pi x}{L}\right)\\
+            &= A^2 \int x\left(\sqrt{\frac{2}{L}}\sin\left(\frac{\pi x}{L}\right) + \sqrt{\frac{2}{L}}\sin\left(\frac{2\pi x}{L}\right) + \sqrt{\frac{2}{L}}\sin\left(\frac{3\pi x}{L}\right)\right)
+					\end{align*}
+			\end{enumerate}
+\end{enumerate}
+
+
+\end{enumerate}
+
+\bibliographystyle{abbrv}
+\bibliography{referencias}
+
+\end{document}

@@ -1,0 +1,311 @@
+\documentclass[12pt]{article}
+	
+\usepackage[margin=1in]{geometry}		% For setting margins
+\usepackage{amsmath}				% For Math
+\usepackage{fancyhdr}				% For fancy header/footer
+\usepackage{graphicx}				% For including figure/image
+\usepackage{cancel}					% To use the slash to cancel out stuff in work
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Set up fancy header/footer
+\pagestyle{fancy}
+\fancyhead[LO,L]{Sergio Montoya Ramirez}
+\fancyhead[CO,C]{Física Mecanica - Tarea 3}
+\fancyhead[RO,R]{\today}
+\fancyfoot[LO,L]{}
+\fancyfoot[CO,C]{\thepage}
+\fancyfoot[RO,R]{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Pregunta 1
+
+\section*{Pregunta 1}
+
+\subsection*{Enunciado}
+
+Demuestre que $\epsilon^2=1+\frac{2EL^2}{mk^2}$
+
+\subsection*{Solución}
+
+En este caso, tenemos que saber que $\varphi = 0$ y que la ecuación es $\frac{1}{r}=\frac{1+\varepsilon\cos\left( \varphi \right) }{P}$. Sin embargo tenemos que desarrollar primero la energia con
+\begin{align*}
+  E = \frac{L^2}{2mr^2}- \frac{k}{r}\\
+  =\frac{1}{2r}\left( \frac{L^2}{mr}- 2k \right) 
+.\end{align*}
+
+Ahora con esto queda:
+\begin{align*}
+  E &= \frac{1 + \varepsilon}{2P}\left( \frac{L^2\left( 1+\varepsilon \right) }{mp}-2k \right) \\
+  &= \frac{\left( 1+\varepsilon \right)  mk}{2L^2}\left( k\left( 1 + \varepsilon \right)  - 2k \right)  \\
+  &= \frac{mk}{2L^2}\left( k\left( \left( 1+\varepsilon \right)^2 - 2\left( 1 + \varepsilon \right)   \right)  \right)   \\
+  &= \frac{mk^2}{2L^2}\left( 1 + 2\varepsilon + \varepsilon^2 - 2 - 2\varepsilon \right)  \\
+  &= \frac{ mk^2}{2L^2}\left( \varepsilon^2-1 \right)  \\
+  \frac{2L^2 E}{mk^2} &= \varepsilon^2 - 1 \\
+  \varepsilon^2 &= 1 + \frac{2L^2 E}{mk^2}
+.\end{align*}
+
+% Pregunta 2
+
+\section*{Pregunta 2}
+
+\subsection*{Enunciado}
+
+Demostrar que la tercera ley de kepler se puede escribir como: \[
+P^2 = \frac{4\pi^2}{G\left( m_1 + m_2 \right) }a^{3}
+.\] 
+
+\subsection*{Solución}
+
+En este caso se tiene para las condiciones de una orbita cerrada que: \[
+\frac{dr}{d\varphi}=\frac{c\varepsilon\sin\left( \varphi \right) }{(1 + \varepsilon\cos\left( \varphi \right))^2 }=0
+.\] y dado que que $r\left( \varphi \right) $ es periodico entonces la solución de este problema es $\varphi = 0, \pi$ para $r_{min}$ y $r_{max}$ y que corresponden a
+\begin{align*}
+  r_{min}&= \frac{c}{1+\varepsilon} \\
+  r_{max}&= \frac{c}{1-\varepsilon} \\
+.\end{align*}
+
+Ahora como sabemos que esto es una elipse pasamor $r\left( \varphi \right) $ a la forma cartesiana para encontrar la longitud $a$ del semieje mayor, la distancia $d$ del centro a los focos y la excentricidad $\varepsilon$
+\begin{align*}
+  r = \frac{c}{1+\varepsilon\cos\left( \varphi \right) } \implies r + r\varepsilon\cos\left( \varphi \right)= c \implies r + \epsilon x = c \implies r = c - \varepsilon x \\
+  x^2 + y^2 + 2C\varepsilon x + \varepsilon^2 x^2 = c^2\\
+  \frac{c^2}{1-\varepsilon^2}=x^2 + \frac{2C\varepsilon x}{1 - \varepsilon^2} + \frac{y^2}{1-\varepsilon^2}
+.\end{align*}
+
+Ahora bien, si definimos:
+\begin{enumerate}
+  \item $d:= \frac{c\varepsilon}{1-\varepsilon^2}$ 
+    \begin{align*}
+      \frac{C^2}{1-\varepsilon^2} = x^2 + 2xd + \frac{y^2}{1-\varepsilon^2} \implies \frac{c^2}{1-\varepsilon^2}+d^2 = x^2 + 2xd + d^2 + \frac{y^2}{1-\varepsilon^2}\\
+      \frac{c^2}{1-\varepsilon^2}\left( 1 + \frac{\varepsilon^2}{1-\varepsilon^2} \right) = \left( x+d \right)^2 + \frac{y^2}{1-\varepsilon^2}\\
+      \frac{c^2}{\left( 1-\varepsilon^2 \right)^2}=\left( x+d \right)^2 + \frac{y^2}{1-\varepsilon^2}
+    .\end{align*}
+
+  \item $a := \frac{c}{1-\varepsilon^2}$ 
+   \begin{align*}
+     a^2 = \left( x + d \right) ^2 + \frac{y^2}{1-\varepsilon^2} \implies 1 = \frac{\left( x+d \right) ^2}{a^2}+\frac{y^2}{a^2\left( 1-\varepsilon^2 \right) }
+   .\end{align*} 
+
+ \item $b := a \left( 1-\varepsilon^2 \right)^{\frac{1}{2}}$ 
+   \begin{align*}
+     \frac{\left( x+d \right)^2}{a^2} + \frac{y^2}{b^2} = 1
+   .\end{align*}
+
+   Ahora por la primera ley de Kepler queda:
+   
+   \begin{align*}
+     \frac{dA}{dt} = \frac{L}{2\mu}
+   .\end{align*} donde $\mu$ es la masa reducida y L su momentum angular.
+   \begin{align*}
+     \int_{0}^{T}\frac{dA}{dt}dt = \int_{0}^{T}\frac{L}{2\mu}dt\\
+     A = \frac{TL}{2\mu}\\
+     T = \frac{2\pi a b \mu}{L}\\
+     T^2 = \frac{4\pi^2 a^2\left( a^2\left( 1 - \varepsilon^2 \right)  \right) \mu^2}{L^2}\\
+     T^2 = \frac{4\pi^2a^3c\mu^2}{L^2}\\
+     T^2 = \frac{4\pi^2a^{3}\mu}{k}\\
+     T^2 = \frac{4\pi^2\mu}{G\left( m_1+m_2 \right) }a^{3}
+   .\end{align*} 
+
+   Ahora entonces las constantes son:
+   \begin{enumerate}
+     \item Sol - Jupiter : $0.9990459112$ 
+     \item Sol - Saturno : $0.9999485027$ 
+     \item Sol - Urano : $0.9999563019$ 
+     \item Sol - Tierra : $0.999997$ 
+     \item Sol - Venus : $0.999997552$ 
+     \item Sol - Marte : $0.9999996775$ 
+     \item Sol - Mercurio : $0.999999834$ 
+     \item Sol - Luna : $0.9999999631$ 
+     \item Jupiter - Io : $1047.071179$ 
+     \item Jupiter - Europa : $1047.093962$ 
+     \item Jupiter - Gaminedez : $1047.038739$ 
+     \item Jupiter - Calisto : $1047.061104$
+   \end{enumerate}
+\end{enumerate}
+% Pregunta 3
+
+\section*{Pregunta 3}
+
+\subsection*{Enunciado}
+
+Un satélite en órbita geoestacionaria tiene una orbita tal que el sátelite permanece siempre sobre un mismo punto del ecuador terrestre. Determine cual es la velocidad angular orbital del satelite. Encuentre el semiejede la orbita. Determine el intervalo de latitud geográfica de las zonas que no son visibles desde un satelite geoestacionario. ¿Cual fracción del área de la superficie terrestre no es detectable por estos satelites? Puede responder dando una cota.
+
+\subsection*{Solución}
+
+En este caso el satelite esta geoestacionario y por tanto su velocidad angular es la misma que la de la tierra (puesto que da una vuelta completa en el mismo tiempo que lo da el punto sobre el que esta). El semieje de su orbita es el mismo que el del planeta. Por ultimo, para determinar el area que puede ver el satelite dependemos de la distancia que tenga frente al suelo. En particular en nuestro modelo, el satelite podra observar todo aquello que no sea tapado por la propia tierra. Es decir que lo que nos interesa es encontrar la distancia que tiene al ecuador un punto cuya recta tangente pase por el punto en el que se encuentra el satelite. Esto tiene como consecuencia que tenemos la condición: \[
+-\frac{y}{h-x}=-\frac{x}{\sqrt{r^2-x^2} }
+.\] Con lo que podemos desarrollar: 
+\begin{align*}
+-\frac{y}{h-x}=-\frac{x}{\sqrt{r^2-x^2} }\\
+y^2 = x\left( h-x \right) \\
+r^2 - x^2 = xh - x^2\\
+r^2 = xh \\
+x = \frac{r^2}{h}
+.\end{align*}
+
+Por lo tanto esta distancia depende del radio del circulo y de la altura del satelite. Con esto podemos definir entonces el casco que va a ser observable desde el satelite con $y=R$ y $r-x = H$ y el área de este tipo de objetos es: \[
+  \pi \left( R^2 + H^2 \right) = \pi\left( y^2 + H^2 \right) = \pi\left( r^2 - x^2 + r^2 - 2xr + x^2 \right) 
+.\] y esto equivale a:
+\begin{align*}
+  \pi\left( 2r^2 - 2xr \right) &= 2\pi r \left( r - x \right)  \\
+  &= 2\pi r \left( r - \frac{r^2}{h} \right)  \\
+  &= 2\pi r^2 \left( 1 - \frac{r}{h} \right)
+.\end{align*}
+
+y entonces el porcentaje de lo que se puede ver es:
+\begin{align*}
+  &= \frac{2\pi r^2\left( 1 - \frac{r}{h} \right) }{4\pi r^2} \\
+  &= \frac{1-\frac{r}{h}}{2}
+.\end{align*}
+
+
+% Pregunta 4
+
+\section*{Pregunta 4}
+
+\subsection*{Enunciado}
+
+A partir del diámetro angular del Sol y la duración del periodo de orbital de la tierra (un año), determine la densidad media del Sol.
+
+\subsection*{Solución}
+
+\begin{align*}
+  r = a\tan\left( \beta \right) \\
+  \frac{T^2}{a^{3}} = \frac{4\pi^2}{GM}\\
+  \frac{T^2}{\frac{r^{3}}{u^{3}}} = \frac{4\pi^2}{gM}\\
+  \frac{T^2}{4r^{3}}= \frac{\pi^2}{4^{3}GM}\\
+  \frac{T^2}{\frac{4}{3}\pi r^{3}} = \frac{3\pi}{u^{3}GM}\\
+  \frac{M}{\frac{4}{3}\pi r^{3}}=\frac{3\pi}{u^{3}G T^2}\\
+  \rho = 1434 \frac{kg}{m^3}
+.\end{align*}
+
+% Pregunta 5
+
+\section*{Pregunta 5}
+
+\subsection*{Enunciado}
+
+En un Universo hipotético solo existen dos rocas de $5$ kg de masa cada una. Cada una orbita a la otra a una distancia de $1$ metro.¿Cual es el periodo orbital de este sistema binario de rocas?
+
+\subsection*{Solución}
+
+En este caso utilizaremos un desarrollo muy similar al usado en el libro \textit{Mecánica Clásica} que esta en bloqueneon. Suponga que llamaremos a estas dos rocas cuerpo $1$ y cuerpo $2$. En este universo unicamente existirian 2 fuerzas  $F_{12}$ y $F_{21}$ que son la fuerza que hace un cuerpo sobre el otro y al reves. Note que por $3$ ley de Newton sabemos que $F_{12}=-F_{21}$. Ademas, tenemos que \[
+\mu = \frac{m_1m_2}{m_1+m_2} = \frac{25}{10} = 2.5
+.\] donde $M=m_1+m_2$ y con esto reducimos (como en el capitulo previamente citado) el movimiento de estos dos cuerpos al movimiento de un cuerpo de masa $\mu$ que orbita otro de masa infinita. Con esto entonces queda \[
+F = \mu a
+.\] ahora bien,  $F$ en este caso es la fuerza que hace el cuerpo dos sobre el cuerpo 1 que como sabemos en este caso esa interacción se da por gravedad y en consecuencia consiste en 
+\begin{align*}
+  F = G \frac{m_1m_2}{r^2}\\
+  = G \frac{25 kg^2}{1 m^2}\\
+  = G*25
+.\end{align*}
+
+y por tanto $a$ es $a = \frac{F}{\mu}$ lo cual entonces significa que:
+
+\begin{align*}
+  a = \frac{25G}{2.5}\\
+  = \frac{25G}{\frac{25}{10}}\\
+  = 10G
+.\end{align*}
+
+Por lo tanto, tenemos una aceleración constante. Sabemos ademas que ambas aceleraciónes son iguales pues las fuerzas son iguales y las masas tambien por lo tanto solo debemos resolver para una de las aceleraciones que es:
+\begin{align*}
+  a_1 = \frac{5}{10}10G = 5G
+.\end{align*}
+
+Dado que $G$ es una constante sabemos que la integral de esta aceleración para el movimiento seria la velocidad y dado que solo nos interesa la magnitud (y sabemos que es una aceleración centripeta) podemos usar: \[
+a_1 = \frac{v^2}{r}
+.\] en donde en este caso $r$ es $0.5 m$ dado que es el centro de masa (que esta en el centro por que trabajamos con masas iguales. Esto entonces queda:
+\begin{align*}
+  v_1 = \sqrt{a_1r} \\
+  = \sqrt{5G*\frac{5}{10}} \\
+  = \sqrt{\frac{25}{10}G} 
+.\end{align*}
+
+ahora bien, dado que tenemos esta velocidad (que es tangencial) podemos encontrar una velocidad angular simplemente dividiendo por $r$ 
+\begin{align*}
+  v_1 = \frac{\sqrt{\frac{25}{10}G} }{0.5}\\
+  = \frac{5 \sqrt{\frac{G}{10}} }{\frac{5}{10}}\\
+  = \sqrt{10G}
+.\end{align*}
+
+Por lo tanto lo unico que necesitamos es encontrar lo que se demora en dar una vuelta completa lo cual es:
+\begin{align*}
+  T = \frac{2\pi}{\sqrt{10G}}
+.\end{align*}
+% Pregunta 6
+
+\section*{Pregunta 6}
+
+\subsection*{Enunciado}
+
+Resolver el problema $99$ del texto de \textit{Física General de Halliday \& Resnik}
+
+\subsection*{Solución}
+
+\subsubsection*{Parte A}
+
+\begin{align*}
+  U\left( x \right) &= -Gm \int \frac{1}{\sqrt{x^2+R^2} }dM\\
+  &= - \frac{GmM}{\sqrt{x^2 + R^2} } \\
+  &\implies ||F||= -\frac{dU}{dx}=+\frac{GmMx}{\left( x^2+R^2 \right)^{\frac{3}{2}}}
+.\end{align*}
+
+\subsubsection*{Parte B}
+
+\begin{align*}
+  \Delta U &= U\left( 0 \right) - U\left( x \right)  \\
+  &= -GmM \left( \frac{1}{R}-\frac{1}{\sqrt{x_4R^2} } \right)  \\
+  \Delta E &\implies \Delta K = - \Delta U \\
+  -\Delta U &= \frac{1}{2}mv^2 \\
+  v &= \sqrt{\frac{-2\Delta U}{m}}  \\
+  v &= \sqrt{2GM\left( \frac{1}{R} - \frac{1}{x^2+R^2} \right) }
+.\end{align*}
+
+% Pregunta 7
+
+\section*{Pregunta 7}
+
+\subsection*{Enunciado}
+
+Resolver el problema $11$ del texto de \textit{Física General de Halliday \& Resnik}
+
+\subsection*{Solución}
+
+Para esto utilizaremos lo visto en el capitulo $9$ del Taylor en particular la ecuación $g=g_{0} + \Omega^2R\sin\left( \theta \right) $ ahora bien, dado que son iguales en masa y tamaño entonces $g_{0}$ es igual para todos los casos y solo nos queda  la segunda expresión donde recordemos que $\theta$ es el angulo entre el eje rotacional y el punto que nos interesa. En este caso los puntos $b,d,f$ estan en un polo y por tanto $\theta = 0$ y en consecuencia $\sin\theta = 0$ y en consecuencia $g$ es el mismo para todos $g_{0}$ por lo que todos ocupan el mismo puesto. Por otro lado en el caso de los punto $a,c,e$ estan con un $\theta = pi$ y en consecuencia $\sin\theta = 1$ y en consecuencia solo lo definimos por la velocidad angular que tienen y que es mayor cuando el tiempo que se demora en dar la vuelta es mayor por lo que solo nos queda organizarlo en orden descendente:
+
+\begin{align*}
+  a,c,e,b,d,f
+.\end{align*}
+
+% Pregunta 8
+
+\section*{Pregunta 8}
+
+\subsection*{Enunciado}
+
+Resolver el problema $6$ del texto de \textit{Física General de Halliday \& Resnik}
+
+\subsection*{Solución}
+
+\subsubsection*{Parte A}
+
+Note que $a_{g}=\frac{GM}{r^2}$ 
+
+Por lo tanto 
+\begin{align*}
+  \frac{M_1}{R_4^2}=\frac{M_2}{R_4^2}>\frac{M_3}{R_4^2}=\frac{M_4}{R_4^2}\\
+  M_1=M_2>M_3=M_4
+.\end{align*}
+
+\subsubsection*{Parte B}
+
+Note que $R_1<R_2$ y $R_3<R_4$, entonces $\frac{1}{R_1}>\frac{1}{R_2}$ y $\frac{1}{R_3}>\frac{1}{R_4}$ Ademas note que $R_2=R_3$ y dado que $M_2>M_3$ entonces $\rho_2>\rho_3$ por lo que:
+\begin{align*}
+  \rho_1>\rho_2>\rho_3>\rho_4
+.\end{align*}
+
+\end{document}

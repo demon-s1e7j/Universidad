@@ -1,0 +1,292 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings} \usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ecuaciones Diferenciales} % This is the name of the course 
+\newcommand{\examnum}{Taller 4} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+  \item Halle la solución general de los siguientes sistemas de ecuaciones diferenciales:
+    \begin{enumerate}
+      \item $X'=\begin{pmatrix}
+	  1 & 1 & 2 \\
+	  1 & 2 & 1 \\
+	  2 & 1 & 1 
+	\end{pmatrix} X$
+
+    Ahora bien, para comenzar tenemos que encontrar el polinomio caracteristico.
+    En particular, esto significa que debemos hallar $det\left( A - \lambda I \right) $ y en consecuencia nos interesa
+    \begin{align*}
+        det\left( \begin{pmatrix} 
+                1 - \lambda & 1 & 2 \\
+                1 & 2 - \lambda & 1 \\
+                2 & 1 & 1 - \lambda
+        \end{pmatrix}  \right) &= - \left( \left( 1-\lambda \right) - 2 \right) + (2-\lambda)\left( \left( 1-\lambda \right)^{2} - 4 \right)   \\
+         & - \left( \left( 1-\lambda \right) - 2 \right)  \\
+         &= - \left( -1-\lambda \right) + \left( 2 - \lambda \right) \left( 1 - 2\lambda + \lambda^2 - 4 \right) - \left( -1-\lambda \right)  \\
+         &= 2 + 2\lambda + \left( 2 - 4\lambda + 2\lambda^2-8-\lambda + 2\lambda^2 - \lambda^3 + 4\lambda \right) \\
+         &= -\lambda^3 + 4\lambda^2 + \lambda - 4 \\
+    .\end{align*}
+    Ahora con esto debemos encontrar los valores propios lo cual significa que debemos encontrar los puntos en donde
+    este polinomio vale 0. Esto lo podemos encontrar por medio de la regla de Ruffini y encontramos que sus 
+    raice son: $1, -1, 4$. Que como se podra notar son  $3$ tal cual como esperabamos y por consecuencia no hay repetición.
+
+    Por lo tanto, podemos ahora encontrar los vectores propios de esta matriz:
+    \begin{align*}
+        \begin{pmatrix} 
+            1 - \lambda & 1 & 2 \\
+            1 & 2 - \lambda & 1 \\
+            2 & 1 & 1 - \lambda \\
+        \end{pmatrix} \alpha_n = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \\
+        \begin{pmatrix} 
+            1 - 1 & 1 & 2 \\
+            1 & 2 - 1 & 1 \\
+            2 & 1 & 1 - 1\\
+        \end{pmatrix} =  \begin{pmatrix} 
+            0 & 1 & 2 \\
+            1 & 1 & 1 \\
+            2 & 1 & 0 \\
+        \end{pmatrix} \Rightarrow \lambda_1 = \begin{pmatrix} 1 \\ -2 \\ 1 \end{pmatrix} \\
+        \begin{pmatrix} 
+            1 + 1 & 1 & 2 \\
+            1 & 2 + 1 & 1 \\
+            2 & 1 & 1 + 1\\
+        \end{pmatrix} =  \begin{pmatrix} 
+            2 & 1 & 2 \\
+            1 & 3 & 1 \\
+            2 & 1 & 2 \\
+            \end{pmatrix} \Rightarrow \lambda_{-1} = \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} \\
+        \begin{pmatrix} 
+            1 - 4 & 1 & 2 \\
+            1 & 2 - 4 & 1 \\
+            2 & 1 & 1 - 4\\
+        \end{pmatrix} =  \begin{pmatrix} 
+            -3 & 1 & 2 \\
+            1 & -2 & 1 \\
+            2 & 1 & -3 \\
+        \end{pmatrix} \Rightarrow \lambda_4 = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \\
+    .\end{align*}
+
+    Con esto entonces la solución es:
+    \begin{align*}
+        X = c_1 \begin{pmatrix} 1 \\ -2 \\1 \end{pmatrix} e^t + c_2 \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} e^{-t} +  c_3 \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} e^{4t}
+    .\end{align*}
+      \item $X' = \begin{pmatrix} 
+	  4 & 1 & 0 \\
+	  0 & 4 & 1 \\
+	  0 & 0 & 3
+	\end{pmatrix} X$
+
+    Lo primero que debemos calcular es el polinomio caracteriztico. Por lo tanto nos interesa
+    $det\left( A - \lambda I \right) $:
+    \begin{align*}
+        det\left( \begin{pmatrix} 
+                4 - \lambda & 1 & 0 \\
+                0 & 4 - \lambda & 1 \\
+                0 & 0 & 3 - \lambda 
+        \end{pmatrix}  \right) = - \left( 3-\lambda \right) \left( 4-\lambda \right)^2
+    .\end{align*}
+
+    Con esto podemos entonces saber que los valores propios de esta matriz son: $3, 4, 4$
+    
+    Por lo tanto, ahora podemos entonces encontrar los vectores propios para cada uno de estos casos. Lo que nos
+    da:
+    \begin{align*}
+        \begin{pmatrix} 
+            4 - \lambda & 1 & 0 \\
+            0 & 4 - \lambda & 1 \\
+            0 & 0 & 3 - \lambda 
+        \end{pmatrix} \alpha_\lambda = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \\
+        \begin{pmatrix} 
+            4 - 3 & 1 & 0 \\
+            0 & 4 - 3 & 1 \\
+            0 & 0 & 3 - 3 
+            \end{pmatrix} = \begin{pmatrix}
+            1 & 1 & 0 \\
+            0 & 1 & 1 \\
+            0 & 0 & 0 \\
+        \end{pmatrix} \Rightarrow \alpha_3 = \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} \\
+        \begin{pmatrix} 
+            4 - 4 & 1 & 0 \\
+            0 & 4 - 4 & 1 \\
+            0 & 0 & 3 - 4 
+            \end{pmatrix} = \begin{pmatrix}
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & -1 \\
+        \end{pmatrix} \Rightarrow \alpha_4 = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \\
+    .\end{align*}
+
+
+    Ahora bien, si bien estos son los vectores propios. Necesitamos otro vector mas. En particular usaremos que
+    \begin{align*}
+        \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & -1 \end{pmatrix} \alpha_{4_2} = \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \Rightarrow \alpha_{4_2} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}  
+    .\end{align*}
+
+    Ahora si, con esto si podemos plantear una solución
+    \begin{align*}
+        X = c_1 \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} e^{3t} + c_2 \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} e^{4t} + c_3 \left(\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}  e^{4t} + \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} t e^{4t}\right)
+    .\end{align*}
+      \item $X' = \begin{pmatrix} 
+	  1 & -12 & -14 \\
+	  1 & 2 & -3 \\
+	  1 & 1 & -2
+	\end{pmatrix} X$ donde $X\left( 0 \right) =\begin{pmatrix} 4 \\ 6 \\ -7 \end{pmatrix} X $
+
+    lo primero que debemos hacer es calcular el polinomio caracteristico. Por lo tanto, nos interes
+    $det\left( A - \lambda I \right) $ 
+    \begin{align*}
+        det \left( \begin{pmatrix} 
+                1 - \lambda & -12 & -14 \\
+                1 & 2 - \lambda & -3 \\
+                1 & 1 & - 2 - \lambda
+        \end{pmatrix}  \right) &= -\left( 36 + 28 - 14\lambda \right) + \left( -3 + 3\lambda + 14 \right) \\
+        &+ \left( 2 + \lambda \right) \left( \left( 1-\lambda \right) \left( 2 - \lambda \right) + 12 \right) \\
+        &= \left( -53 + 17\lambda \right) + \left( 2 + \lambda \right) \left( 2-\lambda - 2\lambda + \lambda^2 + 12 \right) \\
+        &= \left( -53 + 17\lambda \right) + \\
+        & \left( 4 - 2\lambda - 4\lambda + 2\lambda^2 + 24 + 2\lambda - \lambda^2 - 2\lambda^2 + \lambda^3 + 12\lambda \right) \\
+        &= \left( -53 + 17\lambda \right) + \left( 4 + 8\lambda - \lambda^2 + 24 \right)  \\
+        &= \lambda^3 - \lambda^2 + 25\lambda - 25
+    .\end{align*}
+
+    Con esto entonces ahora si podemos encontrar los valores propios que en este caso son $1,5i,-5i$
+
+    Por lo tanto, ahora podemos entonces encontrar los vectores propios para cada uno de estos casos. Lo que nos
+    da:
+    \begin{align*}
+        \begin{pmatrix} 
+            1 - \lambda & -12 & -14 \\
+            1 & 2 - \lambda & -3 \\
+            1 & 1 & - 2 - \lambda\\
+        \end{pmatrix} \alpha_\lambda = \begin{pmatrix} 0\\0\\0 \end{pmatrix} \\
+        \begin{pmatrix} 
+            0 & -12 & -14 \\
+            1 & 1 & -3 \\
+            1 & 1 & -3
+        \end{pmatrix} \Rightarrow \lambda_1 = \begin{pmatrix} 25 \\ -7 \\ 6 \end{pmatrix} \\
+        \begin{pmatrix} 
+            1 - 5i & -12 & -14 \\
+            1 & 2 - 5i & -3 \\
+            1 & 1 & -2 - 5i
+        \end{pmatrix} \Rightarrow \lambda_{5i} = \begin{pmatrix} 1 + 5i \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix}  1 \\ 1 \\ 1 \end{pmatrix} + i\begin{pmatrix} 5 \\ 0 \\ 0 \end{pmatrix}  \\
+        \begin{pmatrix} 
+            1 + 5i & -12 & -14 \\
+            1 & 2 + 5i & -3 \\
+            1 & 1 & -2 + 5i
+        \end{pmatrix} \Rightarrow \lambda_{-5i} = \begin{pmatrix} 1-5i \\ 1 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} +i \begin{pmatrix} -5 \\ 0 \\ 0 \end{pmatrix} 
+    .\end{align*}
+
+    con esto entonces podemos encontrar la solución la cual es:
+    \begin{align*}
+        X = c_1 \begin{pmatrix} 25 \\ -7 \\6 \end{pmatrix} + c_2 \left[ \begin{pmatrix} 1\\1\\1 \end{pmatrix} \cos\left( 5t \right) + \begin{pmatrix} 5\\0\\0 \end{pmatrix} \sin\left( 5t \right)  \right] e^{t} \\
+        +c_3 \left[ \begin{pmatrix} 1\\1\\1 \end{pmatrix} \cos\left( -5t \right) + \begin{pmatrix} -5\\0\\0 \end{pmatrix} \sin\left( -5t \right)  \right] e^{t}
+    .\end{align*}
+    \end{enumerate}
+
+  \item Calcule los coeficientes de Fourier $a_0,a_n,b_n$ de $f\left( x \right) = \left\{  
+      \begin{array}{lcc}
+	\pi^2 & -\pi\le x\le 0\\
+	\left( x-\pi \right)^2 & 0 < x <\pi
+      \end{array}
+    \right. $, con $f\left( x + 2\pi \right) = f\left( x \right) $. Empleando los coeficientes, exprese la serie de Fourier de $f$ y muestre con ella que  \[
+      \sum_{n=1}^{\infty} \frac{1}{n^2}=\frac{\pi^2}{6}
+    .\] 
+
+    Lo primero que nos piden son los coeficientes de fourier. Para esto, vamos a utilizar las definiciones:
+    \begin{align*}
+      a_0 &= \frac{1}{L}\int_{-L}^{L}f\left( x \right) dx \\
+      a_n &= \frac{1}{L}\int_{-L}^{L}f\left( x \right) \cos\left( \frac{n\pi x}{L} \right) dx \\
+      b_n &= \frac{1}{L}\int_{-L}^{L}f\left( x \right) \sin\left( \frac{n\pi x}{L} \right) dx \\
+    .\end{align*}
+
+    Ahora si, teniendo estas definiciones apliquemoslas
+    \begin{align*}
+      a_0 &= \frac{1}{\pi}\left[ \int_{-\pi}^{0}\pi^{2}dx + \int_{0}^{\pi}\left( x-\pi \right)^2 dx \right] \\
+      &= \frac{1}{\pi}\left[ \pi^{3} + \frac{\pi^{3}}{3} \right] = \frac{4\pi^2}{3}\\
+      a_n &= \frac{1}{\pi} \left[ \int_{-\pi}^{0}\pi^2\cos\left( nx \right) dx + \int_{0}^{\pi}\left( x-\pi \right)^2 \cos\left( nx \right) dx  \right]  \\
+      &= \frac{1}{\pi}\left[ \frac{2\pi\left( -1 \right)^{n}-2\pi\left( \left( -1 \right)^{n}-1 \right) }{n^{2}} \right]=\frac{2}{n^2}  \\
+      b_n &= \frac{1}{\pi}\left[ \int_{-\pi}^{0}\pi^2\sin\left( nx \right) dx + \int_{0}^{\pi}\left( x-\pi \right)^2\sin\left( nx \right)  \right] \\
+      &= \frac{1}{\pi}\left[ \frac{\pi^2\left( -1 \right)^{n}n^2+2\left( \left( -1 \right)^{n}-2 \right) }{n^{3}} \right] 
+    .\end{align*}
+
+    Por lo tanto: 
+    \begin{align*}
+      f\left( x \right) &= \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n\cos\left( \frac{n\pi x}{L} \right) + \sum_{n=1}^{\infty} b_n\sin\left( \frac{n\pi x}{L} \right)  \\
+      f\left( x \right) &= \frac{2\pi^2}{3} + \sum_{n=1}^{\infty} \frac{2 \cos\left( nx \right) }{n^2} + \sum_{n=1}^{\infty} \frac{1}{\pi}\left[ \frac{\pi^2\left( -1 \right)^{n}n^2+2\left( \left( -1 \right)^{n}-2 \right) }{n^{3}} \right]\sin\left( nx \right) 
+    .\end{align*}
+
+    Ahora bien, si $x=0$ entonces:
+     \begin{align*}
+      f\left( 0 \right) &= \frac{2\pi^2}{3} + \sum_{n=1}^{\infty} \frac{2 \cos\left( n0 \right) }{n^2} + \sum_{n=1}^{\infty} \frac{1}{\pi}\left[ \frac{\pi^2\left( -1 \right)^{n}n^2+2\left( \left( -1 \right)^{n}-2 \right) }{n^{3}} \right]\sin\left( n0 \right) \\
+      f\left( 0 \right) &= \frac{2\pi^2}{3}+\sum_{n=1}^{\infty} \frac{2}{n^2} + 0 = \pi^2 \\
+      2 \sum_{n=1}^{\infty} \frac{1}{n^2} &= \pi^2 - \frac{2\pi^2}{3} \\
+      \sum_{n=1}^{\infty} \frac{1}{n^2} &= \frac{\pi^2}{6}
+    .\end{align*}
+  \item Halle la solución del problema: \[
+  \left\{ 
+    \begin{array}{lcc}
+      u_{xx}=4u_{tt}, & 0<x<L,&t>0\\
+      u\left( 0,t \right) = 0,& u\left( L,t \right) = 0,& t>0\\
+      u\left( x,0 \right) = 3\sin\left( 2x \right) , & 0<x\le L
+    \end{array}
+    \right.
+  .\] 
+
+  En este caso para comenzar debemos saber que tras la conversión nos queda
+  \begin{align*}
+    a = \frac{1}{2}\\
+    L = L
+  .\end{align*}
+
+  Ahora bien, por otro lado, tenemos que
+  \begin{align*}
+    u\left( x,0 \right) = \sum_{n=1}^{\infty} a_n\sin\left( \frac{n\pi x}{L} \right) 
+  .\end{align*}
+  Que en este caso no podemos saber con cual $n$ contamos puesto que la longitud no esta definida. Pero asumiendo que es $L=\pi$ tendriamos que:
+  $a_2 = 3$
+
+  Ahora bien, por otro lado tambien necesitamos $u_t\left( x,0 \right) $ que en particular seria:
+  \begin{align*}
+    u_t\left( x,0 \right) = \sum_{n=1}^{\infty} n\cdot a\cdot b_n \sin\left( \frac{n\pi x}{L} \right) 
+  .\end{align*}
+
+  Por ultimo en esas circunstancias nos quedaría que
+  \begin{align*}
+  u\left( x,t \right) = \sum_{n=1}^{\infty} \left[ a_n \cos\left( \frac{n\pi a}{L}t \right) + b_n\sin\left( \frac{n\pi a }{L}t \right)  \right] \sin\left( \frac{n\pi x}{L} \right) 
+  .\end{align*}
+\end{enumerate}
+\end{document}

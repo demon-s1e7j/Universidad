@@ -1,0 +1,85 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ondas y Fluidos - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 1 - Punto 1.3} % This is the name of the assignment
+\newcommand{\examdate}{03/02/2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya Ramírez}\\ %Your name here instead, obviously 
+	\textbf{\examnum} && \textit{Yeferson Camacho}\\
+	\textbf{\examdate} && \textit{Monica Cano}\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+
+\section*{3}
+
+Comporbar que la ecuación diferencial $\frac{d^2y}{dx^2} = -ky$ tiene por solución $y=A\cos(kx)+B\sin(kx)$. Siendo A y B constantes arbitrarias. Demostrar también que esta solución puede escribirse en la forma.
+$$y = C\cos(kx+\alpha)=CRe(e^{i(kx+\alpha)})=Re(Ce^{i\alpha}e^{ikx})$$
+
+\begin{enumerate}
+	\item Para comprobar esta ecuación diferencial derivemos $y$ dos veces.
+		\begin{align*}
+			&y = A\cos(kx)+B\sin(kx)\\
+			&\frac{dy}{dx} = -Ak\sin(kx)+Bk\cos(kx)\\
+			&\frac{d^2y}{dx^2} = -Ak^2\cos(kx) - Bk^2\sin(kx)\\
+			&-ky = -k(A\cos(kx)+B\sin(xk)) = -Ak\cos(kx)-Bk\sin(kx)\\
+		\end{align*}
+		Nota: Como se puede ver el resultado propuesto difiere con lo esperado a excepción de cuando $k^2=k$ . Para solucionar esto lo que podemos hacer es cambiar la ecuación original y hacer que esta sea $\frac{d^2y}{dx^2} = -k^2y$ y en ese caso todo estaria solucionado.
+	\item Mostrar equivalencias
+		\begin{align*}
+			&C\cos(kx + \alpha) = C(\cos(kx)\cos(\alpha)-\sin(kx)\sin(\alpha))\\
+			&= C\cos(\alpha)\cos(kx)-C\sin(\alpha)\sin(kx)\\
+			& A = C\cos(\alpha)\\
+			& B = -C\sin(\alpha)\\
+			&= A\cos(kx) + B\sin(kx)
+		\end{align*}
+		Ahora bien, todos los otros se pueden pasar a este, de la siguiente manera
+		\begin{align*}
+			&CRe(e^{i(kx+\alpha)})= CRe(cos(kx+\alpha)+ i\sin(kx+\alpha))\\
+			& = C\cos(kx+\alpha); QED\\
+		\end{align*}
+		Y por ultimo
+		\begin{align*}
+			&Re(Ce^{i\alpha}e^{ikx}) = Re(Ce^{i(kx+\alpha)})\\
+			& = Re(C(\cos(kx + \alpha)+i\sin(kx + \alpha)))\\
+			& = Re(C\cos(kx+\alpha)+iC\sin(kx + \alpha))\\
+			& = C\cos(kx+\alpha); QED
+		\end{align*}
+	\item Analisis Dimencional: No es necesario pues estos eran ejercicios puramente matematicos y de equivalencias y por tanto no hay realidades físicas aun involucradas.
+	\item Interpretación y Relación: Estas eran identidades trigonometricas y ecuaciones diferenciales en si no tienen una realidad atada a ellas pero nos serviran para modelar mas adelante.
+	\item Conclusión: Los números complejos nos permiten despejar y relacionar formulas y variables que en principio no parecen obviamente atados.
+\end{enumerate}
+
+
+
+\end{document}

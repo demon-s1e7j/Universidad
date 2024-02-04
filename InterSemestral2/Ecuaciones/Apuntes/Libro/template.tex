@@ -1,0 +1,191 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Ecuaciones Diferenciales}\\Apuntes}
+\author{\huge{SergiOS}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Apuntes Clase 05/06/2023}
+\section{Apuntes Importantes}
+\begin{enumerate}
+  \item El profe es cubano, no se de que sirve pero el lo dijo xD
+  \item Los exámenes ahora serán los jueves.
+  \item Vale la pena leer el libro antes.
+\end{enumerate}
+\section{Clase Como tal}
+Vamos a hablar de funciones pares e impares y sus desarrollos en funciones trigonométricas. En particular se puede notar que si una función es par su desarrollo seria únicamente con cosenos y con senos para los impares.
+\section{Preliminares}
+\begin{enumerate}
+  \item Casi todos los reales son \textbf{IRRACIONALES}
+  \item El producto de dos irracionales no ha de ser irracional.
+  \item Sistema de Medidas y Equivalencias (Nos van a pedir Sistema Imperial)
+  \item Técnicas Algebraicas (Productos Notables)
+  \item Exponentes y Radicales
+\end{enumerate}
+\subsection{Teoría y Operaciones con funciones}
+Esta cosa es extraña literalmente el colegio. \textbf{CHIDO}
+\chapter{Previa Clase 05/06/2023}
+El objetivo de estos capitulos es resolver la ecuación diferencial lineal. Esta ecuación es de la forma 
+\begin{equation}
+  \label{eq:Primer_Orden}
+  \frac{dy}{dt}=f(y,t)
+.\end{equation}
+Esta ecuación no tiene un metodo de solución general si no que depende de los casos y en consecuencia hace que los distintos metodos deban ser considerados
+\section{Metodo de la integración de Factores}
+En el caso de que la función $f$ en la ecuación \ref{eq:Primer_Orden} dependa de manera lineal de y a esta ecuación se le llamaria una ecuación lineal de primer orden. Esta puede ser expresada como
+\begin{equation}
+  \label{eq:Primer_Orden_Lineal}
+  \frac{dy}{dt}=-ay+b
+.\end{equation}
+
+Donde $a$ y $b$ son funciones de t. Sin embargo cuando estos no son constantes es mas comun enunciar estas ecuaciones con la forma:
+\begin{equation}
+  \label{eq:Primer_Orden_Lineal_General}
+  \frac{dy}{dt}+p(t)y=g(t)
+.\end{equation}
+
+Ahora bien, estas dos ecuaciones aunque \ref{eq:Primer_Orden_Lineal} es un caso particular de \ref{eq:Primer_Orden_Lineal_General} este tiene una solución muy distinta. En particular su solución es:
+\begin{align*}
+  \frac{\frac{dy}{dt}}{y-\left( \frac{b}{a} \right) }&= -a \\
+  \ln\left| y -\left( \frac{b}{a} \right)  \right| &= -at + C \\
+  y &=  \left( \frac{b}{a} \right) + Ce^{-at}
+.\end{align*}
+
+Sin embargo, esta solución no funciona para el caso general. En particular, el metodo general que se utiliza es heredado de Leibniz; Este requiere multiplicar la ecuación diferencial por una función llamada $\mu\left( t \right) $ la cual se le denomina como \textit{Factor de Integración}. El problema principal de este metodo es justamente encontrar este factor.
+
+
+\ex{}{
+  \label{ex:Ejemplo1}
+  Resuelva la ecuación diferencial \[
+\frac{dy}{dt}+\frac{1}{2}y = \frac{1}{2}e^{\frac{t}{3}}
+.\] 
+
+Para lograr esta solución lo primero que debemos hacer es multiplicar ambos lados de la ecución por un  $\mu\left( t \right) $ que aun permanece indeterminado \[
+\mu\left( t \right) \frac{dy}{dt}+\mu\left( t \right) \frac{1}{2}y = \frac{1}{2}\mu\left( t \right) e^{\frac{t}{3}}
+.\] 
+
+Ahora, lo que nos interesa es encontrar una $\mu\left( t \right) $ tal que el lado izquierdo de la ecuación tenga la forma de una derivada reconocible. En este caso, quizás sea claro que tiene una forma parecida a la multiplicación de funciones. Esto seria algo del estilo \[
+\frac{d\left[ \mu\left( t \right) y \right] }{dt} = \mu\left( t \right) \frac{dy}{dt} + \frac{d\mu\left( t \right) }{dt}y
+.\] Observamos entonces que en ese caso, coincidiría si \[
+\frac{d\mu\left( t \right) }{dt} = \frac{1}{2}\mu\left( t \right) 
+.\] 
+Pero esta ecuación es igual a la ecuación \ref{eq:Primer_Orden_Lineal} cuando $a=-\frac{1}{2}$ y $b=0$ por lo que podemos desarrollar como habíamos hecho antes y  en consecuencia ya tendríamos una solución como habíamos desarrollado antes. Esta solución es: \[
+\mu\left( t \right) = Ce^{\frac{t}{2}}
+.\] En este caso, dado que no nos interesa el factor de integración mas general asumiremos $C=1$.
+
+Ahora bien, en nuestra ecuación original esto entonces haría que se convirtiera en  \[
+\frac{d}{dt}\left( e^{\frac{t}{2}}y \right) = \frac{1}{2}e^{\frac{5t}{6}}
+.\] 
+
+Ahora con esto si integramos a ambos lados obtenemos \[
+e^{\frac{t}{2}}y = \frac{3}{5}e^{\frac{5t}{6}}+C
+.\] 
+Con lo cual solo necesitaríamos despejar y para lo que obtenemos
+\begin{align*}
+  y = \frac{3}{5}e^{\frac{t}{3}} + Ce^{-\frac{t}{2}}
+.\end{align*}
+el cual es el resultado general. En particular si queremos que sea la solución que pasa por un punto especifico $\left( 0,1 \right) $ debemos sustituir y los valores y encontrar la y que satisfaga la ecuación.
+}
+Con el ejemplo anterior en mente podemos ahora generalizar para las ecuaciones de la forma
+\begin{equation}
+  \label{eq:Primer_Orden_Lineal_Particular1}
+  \frac{dy}{dt}+at = g\left( t \right) 
+.\end{equation}
+
+Para este caso debemos proceder de manera muy similar a lo que hicimos en el ejemplo \ref{ex:Ejemplo1}. Sin embargo se separa del ejemplo en la medida que $\mu\left( t \right) $ cambia y debe satisfacer \[
+\frac{d\mu}{dt}=a\mu
+.\] mas allá de esto el factor de integración queda entonces como $\mu\left( t \right) = e^{at}$. Por lo tanto, si multiplicamos para la ecuación \ref{eq:Primer_Orden_Lineal_Particular1} nos queda
+\begin{align*}
+  e^{at}\frac{dy}{dt}+ae^{at}y &= e^{at}g\left( t \right) \\
+  \frac{d}{dt}\left( e^{at}y \right) &= e^{at}g\left( t \right)  \\
+  e^{at}y = \int e^{at}g\left( t \right) dt + c
+.\end{align*}
+
+Por lo tanto, la familia de soluciones para las ecuaciones del tipo \ref{eq:Primer_Orden_Lineal_Particular1} son de la forma
+\begin{equation}
+  \label{eq:Solucion_Primer_Orden_Lineal_Particular1}
+  y = e^{-at}\int_{t_0}^{t}  e^{as}g\left( s \right) ds + ce^{-at}
+.\end{equation}
+
+Donde para la ecuación \ref{eq:Solucion_Primer_Orden_Lineal_Particular1} utilizamos la $s$ para denotar la variable de integración para distinguirla de la variable independiente $t$ y se escogió un $t_0$ como el limite de integración mínimo.
+
+\ex{}{
+  \label{ex:Ejemplo2}
+  Resuelva la ecuación diferencial \[
+  \frac{dy}{dt}-2y=4-t
+.\] Discuta el comportamiento de las soluciones a medida que $t\to \infty$. En este caso, este ejemplo tiene la forma de la ecuación \ref{eq:Primer_Orden_Lineal_Particular1} con $a=-2$ ; por lo tanto, el factor de integración es $\mu\left( t \right) =e^{-2t}$. Multiplicando entonces nos queda 
+\begin{align*}
+  e^{-2t}\frac{dy}{dt}-2e^{-2t}y &= 4e^{-2t}-te^{-2t} \\
+  \frac{d}{dy}\left( e^{-2t}y \right) &= 4e^{-2t}-te^{-2t}
+.\end{align*}
+Ahora, si integramos a ambos lados de la ecuación tenemos que \[
+e^{-2t}y = -2e^{-2t}+\frac{1}{2}te^{-2t}+\frac{1}{4}e^{-2t}+c
+.\] 
+Por lo tanto podemos entonces despejar $y$ con lo que nos queda \[
+y = -\frac{7}{4} + \frac{1}{2}t + Ce^{-2t}
+.\] 
+}
+
+Ahora, si retornamos a la ecuación general de primer orden, es decir la ecuación \ref{eq:Primer_Orden_Lineal_General} para encontrar el factor de integración debemos multiplicar por este aun indeterminado $\mu\left( t \right) $ y por lo tanto nos queda \[
+\mu\left( t \right) \frac{dy}{dt} + p\left( t \right) \mu\left( t \right) y = \mu\left( t \right) g\left( t \right) 
+.\] Ahora bien, si seguimos una linea de pensamiento similar a la del ejemplo \ref{ex:Ejemplo1} vemos que el lado izquierdo es la derivada del producto  $\mu\left( t \right) y$ siempre y cuando \[
+\frac{d\mu\left( t \right) }{dt} = p\left( t \right) \mu\left( t \right) 
+.\] Si temporalmente asumimos que $\mu\left( t \right) $ es positiva entonces tenemos \[
+\frac{\frac{d\mu\left( t \right) }{dt}}{\mu\left( t \right) } = p\left( t \right) 
+.\]  y en consecuencia podemos desarrollar 
+\begin{align*}
+  \ln\mu\left( t \right) &= \int p\left( t \right) dt + k \\
+  \mu\left( t \right) &= \exp\left( \int p\left( t \right) dt \right)
+.\end{align*}
+
+Note que $\mu\left( t \right) $ es positivo para todo $t$, como asumimos. Ahora bien, si nos devolvemos a cuando recién habíamos multiplicado $\mu\left( t \right) $ ahora nos quedaría \[
+\frac{d}{dt}\left[ \mu\left( t \right) y \right] = \mu\left( t \right) g\left( t \right)
+.\] Por lo tanto podemos desarrollar
+\begin{align*}
+  \mu\left( t \right) y &= \int \mu\left( t \right) g\left( t \right) dt + C \\
+  y &= \frac{1}{\mu\left( t \right) } \left[ \int_{t_0}^{t}\mu\left( s \right) g\left( s \right) ds + C \right] 
+.\end{align*}
+\ex{}{
+  \label{ex:Ejemplo 3}
+  Resuelva el problema del valor inicial
+  \begin{align*}
+    ty' + 2y &= 4t^2 \\
+    y\left( 1 \right) &= 2
+  .\end{align*}
+
+  Para determinar $p\left( t \right) $ y $g\left( t \right) $ de manera correctamente, debemos primero re escribir la primera ecuación. En la forma de la ecuación \ref{eq:Primer_Orden_Lineal_General} por lo que tendríamos \[
+  y' + \left( \frac{2}{t} \right) y = 4t
+  .\] Por lo tanto, $p\left( t \right) = \frac{2}{t}$ y $g\left( t \right) = 4t$. Para resolver  esta ecuación primero tenemos que computar el factor de integración
+  \begin{align*}
+    \mu\left( t \right) &= \exp\left( \int \frac{2}{t}dt \right) = e^{2\ln\left| t \right| }= t^2 \\
+    t^2y' + 2ty &= \left( t^2y \right)' = 4t^{3} \\
+    t^2y &= t^{4} + C \\
+    y &= t^2 + \frac{c}{t^2} \\
+  .\end{align*}
+}
+\chapter{Apuntes Clase 06/06/2023}
+
+\section{Clasificación}
+
+Las educaciones diferenciales son de 2 tipos principalmente. Ecuaciones de ordinarias y derivadas parciales. Ahora vamos a desarrollar algunos puntos de cada una:
+\subsection{Ecuaciones Ordinarias}
+En este caso la ecuación diferencial tiene una función que depende de una variable independiente. Estas pueden ser de primer orden o de orden $n$ y tienen muchas formas. Ejemplos de ello fueron discutidos ampliamente en el capitulo anterior.
+\section{Ejercicios}
+\begin{align*}
+  y' + \frac{2}{t}y &= 4t \\
+.\end{align*}
+\chapter{Estudio}
+
+\end{document}

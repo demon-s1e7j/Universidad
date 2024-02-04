@@ -1,0 +1,65 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ondas y Fluidos - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 9 - Punto 3} % This is the name of the assignment
+\newcommand{\examdate}{14/04/2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Monica Cano}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\textit{Yeferson Camacho}\\
+	\textbf{\examdate} &&\textit{Sergio Montoya}\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+Si a es el numero de ondas por unidad de distancia. Entonces, por el muro tenemos 
+\begin{equation}
+  \label{eq:1}
+  \lambda_in_i=\sin(\theta_i) ; \lambda_t n_t=\sin(\theta_t)
+.\end{equation}
+
+Ahora bien, en esta interfaz se debe cumplir que para una misma distancia haya la misma cantidad de ondas por lo tanto \[
+n_i = n_t
+.\] 
+
+Por otro lado, si tomamos de \ref{eq:1} y dividimos ambas ecuaciones nos queda
+\begin{align*}
+  \frac{\lambda_i}{\lambda_t}=\frac{\sin(\theta_i)}{\sin(\theta_t)}
+.\end{align*}
+
+Ahora bien, dado que $\lambda\sim \frac{1}{k}\sim \frac{c}{w}\sim \frac{1}{n}$ entonces esto nos queda como
+\begin{align*}
+  \frac{n_t}{n_i} = \frac{\sin(\theta_i)}{\sin(\theta_t)}
+.\end{align*}
+
+
+
+\end{document}

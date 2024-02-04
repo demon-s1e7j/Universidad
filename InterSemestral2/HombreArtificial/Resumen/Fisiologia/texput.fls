@@ -1,0 +1,4 @@
+PWD /home/checho/Universidad/InterSemestral2/HombreArtificial/Resumen/Fisiologia
+INPUT /usr/share/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+OUTPUT texput.log

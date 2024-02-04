@@ -1,0 +1,80 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Moderna - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Quiz 3} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{Relaciones de Maxwell}
+\section{Ecuaciones Derivadas}
+\begin{align}
+  \left( \frac{\partial X}{\partial Y} \right)_Z &= \frac{1}{\left( \frac{\partial Y}{\partial X} \right)_Z} \\
+  \left( \frac{\partial X}{\partial Y} \right)_Z &= \frac{\left( \frac{\partial X}{\partial W} \right)_Z }{\left( \frac{\partial Y}{\partial W} \right)_Z} \label{eq:7.34}\\
+  \left( \frac{\partial X}{\partial Y}  \right)_Z &= - \frac{\left( \frac{\partial Z}{\partial Y}  \right)_X}{\left( \frac{\partial Z}{\partial X}  \right)_Y}
+.\end{align}
+\section{Pasos para Reducir Derivadas}
+\begin{enumerate}
+  \item \textbf{Si la derivada contiene algún potencial, Tráigalos uno a uno al numerador y elimínelo por el cuadrado termodinámico}
+    \begin{align}
+      dU &= TdS - PdV + \sum_k \mu_k dN_k \\
+      dF &= -SdT - PdV + \sum_k \mu_k dN_k \\
+      dG &= -SdT + VdP + \sum_k \mu_k dN_k \\
+      dH &= TdS + VdP + \sum_k \mu_k dN_k
+    .\end{align}
+  \item \textbf{Si la derivada contiene el potencial químico tráigalo al numerador y elimínelo por la relación de Gibbs-Duden} 
+    \begin{equation}
+      \label{eq:GibbsDuhem}
+      d\mu = -sdT + vdP
+    \end{equation}
+  \item \textbf{Si la derivada contiene la entropía, Tráigalo al numerador. Si una de las cuatro relaciones de Maxwell del cuadrado Termodinámico elimina la entropía, úselo. Si las relaciones de Maxwell no eliminan la entropía ponga un $\partial T$ bajo  $\partial S$ (Es decir, emplee la ecuación \ref{eq:7.34} con $W = T$). El numerador entonces se puede expresar como uno de los calores específicos ($c_v$ o  $c_p$) }
+    \begin{align}
+     c_p &= T\left( \frac{\partial s}{\partial T}  \right)_P = \frac{T}{N}\left( \frac{\partial S}{\partial T}  \right)_P = \frac{1}{N}\left( \frac{\partial Q}{\partial T}  \right)_P \\ 
+     c_v &= T\left( \frac{\partial s}{\partial T}  \right)_v = \frac{T}{N}\left( \frac{\partial S}{\partial T}  \right)_V = \frac{1}{N}\left( \frac{\partial Q}{\partial T}  \right)_V 
+    .\end{align}
+  \item \textbf{Traiga el Volumen al numerador. Las derivadas que queden se podrán expresar en términos de $\alpha$ y  $k_T$}
+    \begin{align}
+      \alpha &= \frac{1}{v}\left( \frac{\partial v}{\partial T}  \right)_P = \frac{1}{V}\left( \frac{\partial V}{\partial T}  \right)_P \\
+      k_T &= -\frac{1}{v}\left( \frac{\partial v}{\partial P}  \right)_T = -\frac{1}{V}\left( \frac{\partial V}{\partial P}  \right)_T
+    .\end{align}
+   \item \textbf{Las derivadas originalmente dadas ahora están expresadas en términos de las cuatro cantidades $c_v,c_p,\alpha$ y  $k_t$. El calor especifico a volumen constante es eliminado por la ecuación}
+     \begin{equation}
+       \label{eq:cvcp}
+       c_v = c_p -  \frac{Tv\alpha^2}{k_T}
+     \end{equation}
+\end{enumerate}
+\end{document}

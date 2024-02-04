@@ -1,0 +1,4 @@
+\contentsline {chapter}{\numberline {1}Preguntas}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Átomo de Hidrógeno}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Spin y Efectos Magnéticos}{6}{section.1.2}%
+\contentsfinish 

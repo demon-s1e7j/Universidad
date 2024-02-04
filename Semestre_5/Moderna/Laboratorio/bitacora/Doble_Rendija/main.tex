@@ -1,0 +1,111 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Termodinamica} % This is the name of the course 
+\newcommand{\examnum}{Taller 1} % This is the name of the assignment
+\newcommand{\examdate}{12/02/2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya Ramirez}\\ %Your name here instead, obviously 
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+
+\usetikzlibrary{datavisualization}
+% ---
+\section{RESULTADOS Y ANÁLISIS}
+Para este laboratorio lo primero que deseamos es hacer una gráfica del patrón observado cuando el haz de luz pasa por dos rendijas. 
+Para esto, la rendija bloqueadora no debe cubrir ninguna de las rendijas previas y su función sera simplemente limitar el área de acción de la interferencia. Luego de esto, se toman los datos y se gráfica para esto, utilizamos la librería Tikz. Con lo cual se obtiene la gráfica \ref{fig:Rendija}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \datavisualization [scientific axes,x axis = {label = Distancia ($\mu m$)},y axis = {label=Voltaje (V)},visualize as smooth line]
+    data {
+      x, y
+      0,0
+      1500,2
+      1700,1
+      2000,5
+      2300,1
+      2600,10
+      3000,1
+      3300,15
+      3600,1
+      4200,19
+      4600,1
+      5000,20
+      5300,1
+      5600,19
+      6000,1
+      6300,14
+      6600,1
+      7200,8
+      7600,1
+      7700,5
+      8200,1
+      10000,0
+    };
+    \end{tikzpicture}
+    \caption{Gráfica del Voltaje contra la Distancia para una doble rendija. Estos datos se obtuvieron haciendo que la rendija bloqueadora no tapara ninguna de las rendijas y se gráfico con Tikz}
+    \label{fig:Rendija}
+\end{figure}
+
+Luego de esto, deseamos describir el patrón cuando el fotón pasa únicamente por rendijas simples. Para esto, se acomoda la rendija bloqueadora de modo tal que una de las rendijas de la doble sean cubiertos por esta. Repitiendo el procedimiento ya explicado se toman los datos y se gráfica. El resultado se encuentra en la gráfica \ref{fig:Laser}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    \datavisualization [scientific axes,x axis = {label = Distancia ($\mu m$)},y axis = {label=Voltaje (V)},visualize as smooth line]
+    data {
+      x, y
+      0,0.1
+      1200,1
+      2000,2
+      2500,3
+      3000,4
+      3500,5
+      4200,5.4
+      5000,5
+      5500,4
+      6000,3
+      6300,2
+      7000,1
+      8000,0.2
+    };
+    \end{tikzpicture}
+    \caption{Gráfica de voltaje en función de la distancia para
+una rendija simple. Estos datos fueron obtenidos utilizando
+la rejilla bloqueadora y se graficaron con la librería Tikz}
+    \label{fig:Laser}
+\end{figure}
+
+Es importante notar que la diferencia entre los máximos de voltaje es 4 veces aproximadamente siendo 5 el máximo voltaje para la rendija simple y 20 para la rendija doble. 
+
+Por ultimo, se desea comparar los resultados obtenidos con la teoría de fraunhoffer
+\end{document}

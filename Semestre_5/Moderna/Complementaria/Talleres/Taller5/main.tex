@@ -1,0 +1,216 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize\newcommand{\class}{Física Moderna-Complementaria} % This is the name of the course
+\newcommand{\examnum}{Taller 5} % This is the name of the assignment
+\newcommand{\examdate}{31/03/2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya Ramirez}\\ %Your name here instead, obviously 
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+  \item \begin{enumerate}
+		  \item \textit{Cual es la función de onda para $t>0$?}
+				Para esto vamos a utilizar la propiedad
+				\begin{align*}
+				  \sin(x)=2\sin\left(\frac{x}{2}\right)\cos\left(\frac{x}{2}\right)
+				\end{align*}
+				Con la cual si jugamos un poco con ella tambien obtenemos
+				\begin{align*}
+				  \sin\left(2\frac{\pi x}{a}\right) = 2\sin\left(\frac{\pi x}{a}\right)\cos\left(\frac{\pi x}{a}\right)
+				  \frac{\sin\left(2\frac{\pi x}{a}\right)}{2} = \sin\left(\frac{\pi x}{a}\right)\cos\left(\frac{\pi x}{a}\right)
+				\end{align*}
+				Ahora bien, partiendo de la expresión del eneunciado podemos obtener con facilidad
+				\[\psi(x,t=0)=\sqrt{\frac{8}{5a}}[\sin(\frac{pi x}{a})+\sin(\frac{\pi x}{a})\cos(\frac{\pi x}{a})]\]
+				Por lo cual podemos desarrollar como sigue:
+				\begin{align*}
+				  \psi(x,t)&=\sqrt{\frac{8}{5}}[\sin(\frac{\pi x}{a})+\frac{\sin(\frac{2\pi x}{a})}{2}]\\
+						   &= \sqrt{\frac{8}{5}}\sin(\frac{\pi x}{a})+\sqrt{\frac{8}{5}}\sqrt{\frac{\sin(\frac{2\pi x}{a})}{2}}\\
+						   &=\frac{2}{\sqrt{5}}\sqrt{\frac{2}{a}}\sin(\frac{\pi x}{a})+\frac{2}{2\sqrt{5}}\sqrt{\frac{2}{a}}\sin(\frac{2\pi x}{a})\\
+						   &= \frac{2}{\sqrt{5}}\phi_{1}+\frac{1}{\sqrt{5}}\phi_{2}\\
+				  \phi(x,t) &= \frac{2}{\sqrt{5}}\phi_{1}e^{\frac{-E_{1}t}{\hbar}}+\frac{1}{\sqrt{5}}\phi_{2}e^{\frac{-iE_{2}t}{\hbar}}
+				\end{align*}
+		  \item \textit{Cuál es el valor esperado de energía en $t=0$ y en $t=t_0$}
+
+				Para iniciar partimos de que
+				\[<E>=\int_{-\infty}^{\infty}\psi^{*}\hat{E}\psi dx = \int_{0}^{a}\psi^{*}i\hbar\frac{\partial}{\partial t}\psi\]
+				y entonces realizamos el siguiente analisis
+				\begin{align*}
+				  \psi^{*}&=\frac{2}{\sqrt{5}}\psi_{1}e^{\frac{iE_{1}t}{\hbar}}+\frac{1}{\sqrt{5}}\psi_{2}e^{\frac{iE_{2}t}{\hbar}}\\
+				  i\hbar\frac{\partial \psi}{\partial t} &= (-\frac{iE_{1}}{\hbar}\cdot\frac{2}{\sqrt{5}}\cdot\psi_{1}\cdot e^{\frac{-iE_{1}t}{\hbar}}+\frac{1}{\sqrt{5}}(-\frac{iE}{\hbar})\psi_{2}e^{\frac{-iE_{2}t}{\hbar}})i\hbar\\
+				  &=(E_{1}\frac{2}{\sqrt{5}}\psi_{1}e^{\frac{-iE_{1}t}{\hbar}}+\frac{1}{\sqrt{5}}E_{2}\psi_{2}e^{\frac{-iE_{2}t}{\hbar}})
+				\end{align*}
+				Ahora bien, con esto entonces realizando la integral planteada prebviamente nos queda que
+				\begin{align*}
+				  &= \int_{0}^{a}E_{1}\frac{4}{5}\psi_{1}^{2}+\frac{2}{5}E_{2}\cancel{\psi_{1}\psi_{2}}e^{\frac{it}{\hbar}(E_{1}-E_{2})}+\frac{2}{5}E_{1}\cancel{\psi_{1}\psi_{2}}e^{\frac{it}{\hbar}(E_{2}-E_{1})}+\frac{1}{5}E_{2}\psi_{2}^{2}dx\\
+				  &= \int_{0}^{a}\frac{4}{5}E_{1}\psi_{1}^{2}dx + 0 + 0 +\int_{0}^{a}\frac{1}{5}E_{2}\psi_{2}^{2}dx=\frac{4}{5}E_{1}+\frac{1}{5}E_{2}\\
+				  E_{n} &= \frac{n^{2}\pi^{2}\hbar^{2}}{2ma^{2}}\\
+				  &= \frac{4}{5}\frac{\pi^{2}\hbar^{2}}{2ma^{2}}+\frac{1}{2}\frac{2^{2}\pi^{2}\hbar^{2}}{2ma^{2}}=\frac{8}{5}\frac{\pi^{2}\hbar^{2}}{2ma^{2}}
+				\end{align*}
+				Dado que las T se cancelan el resultado es independiente del tiempo.
+		  \item \textit{Cual es la probabilidad de que la partícula esté a la izquierda del pozo, es decir en $x\in[0,\frac{a}{2}]$ para $t=t_0$}
+
+				Para obtener el resultado que esperamos lo que debemos conseguir es la integral de $0$ a $\frac{a}{2}$ por lo tanto partimos de
+				\begin{align*}
+				  \psi^{*}&= \frac{2}{\sqrt{5}}\psi_{1}e^{\frac{iE_{1}t}{\hbar}}+\frac{1}{\sqrt{5}}\psi_{2}e^{\frac{iE_{2}t}{\hbar}}\\
+				  \psi &= \frac{1}{\sqrt{5}}\psi_{1}e^{\frac{-iE_{1}t}{\hbar}}+\frac{1}{\sqrt{5}}\psi_{2}e^{\frac{iE_{2}t}{\hbar}}\\
+				  \int_{0}^{\frac{a}{2}}\psi^{*}\psi dx &= \int_{0}^{\frac{a}{2}}\frac{4}{5}\psi_{1}^{2}e^{\frac{2it}{\hbar}(E_{1}-E_{2})}+\frac{2}{5}\cancel{\psi_{1}\psi_{2}}e^{\frac{it}{\hbar}}+\frac{2}{5}\cancel{\psi_{1}\psi_{2}}e^{\frac{it}{\hbar}(E_{1}-E_{2})}+\frac{1}{5}\psi_{2}^{2}e^{\frac{it}{\hbar}(E_{1}-E_{2})}dx\\
+				  \int_{0}^{\frac{a}{2}}\frac{4}{5}\psi_{1}^{2}+\frac{1}{5}\psi^{2}_{2}dx &= \int_{0}^{\frac{a}{2}}\frac{4}{5}\cdot\frac{2}{a}\sin^{2}(\frac{\pi x}{a})+\frac{1}{5}\frac{2}{a}\int\sin(\frac{2\pi x}{a})dx\\
+				  &= \frac{8}{5a}\frac{a}{4}+\frac{2}{5a}\frac{a}{4}=\frac{8}{20}+\frac{2}{20}=\frac{10}{20}=\frac{1}{2}
+ 				\end{align*}
+		\end{enumerate}
+  \item \begin{enumerate}
+		  \item \textit{Encuentra las energías y funciones propias. Para este caso, $\phi$, no puede ser multivariada}
+
+				Para iniciar partimos desde
+				\begin{align*}
+				  \hat{H}\psi=E\psi
+				\end{align*}
+				Esta ecuación tambien la podemos plantear en terminos diferenciales como
+				\begin{align*}
+				  -\frac{\hbar}{2I_{z}}\frac{\partial^{2}\psi}{\partial \phi^{2}} = E\psi
+				\end{align*}
+				La solución de esta ecuación es
+				\[\frac{\partial^{2}\psi}{\partial \phi^{2}}=-\frac{2EI_{z}}{\hbar^{2}}\psi=k^{2}\]
+				\[\psi = Ae^{ik\phi}+Be^{-ik\phi}\]
+				Como tomamos el giro de manera antihoraria entonces $B=0$ por lo cual
+				\[\psi = Ae^{ik\phi}\]
+				Ahora bien, tenemos que tomar en cuenta que estamos en un circulo y como tal se debe cumplir la condición
+				\[\phi(0)=\phi(2\pi)\rightarrow Ae^{ik(0)}=Ae^{ik(2\pi)}\rightarrow 1=e^{2\pi ik}\]
+				de ahi entonces podemos concluir que k es un entero distinto de 0
+
+				Ahora bien, dado que tenemos $\phi$ podemos tomar
+				\[\int_{0}^{2\pi}\psi^{*}\psi dx=1\]
+				Ahora bien, los valores de estos son
+				\begin{align*}
+				  \psi = Ae^{ik\phi}\\
+				  \psi^{*} = Ae^{ik\phi}
+				\end{align*}
+				Por lo tanto se desarrolla de la siguiente manera
+				\begin{align*}
+				  \int_{0}^{2\pi}Ae^{-ik\phi}Ae^{ik\phi}&=A^{2}\int_{0}^{2\pi}e^{ik\phi-ik\phi}=A^{2}\int_{0}^{2\pi}dx=1\\
+				  A^{2}2\pi = 1 \rightarrow A =\sqrt{\frac{1}{2\pi}}
+				\end{align*}
+
+				Por otro lado, como tenemos $K^{2}$ podemos obtener los resultados de energia sabiendo que k es un entero distinto de 0
+				\begin{align*}
+				  K^{2}&=-\frac{2EI_{z}}{\hbar^{2}}\\
+				  E &=-\frac{k^{2}\hbar^{2}}{2I_{z}}
+				\end{align*}
+		  \item \textit{Se ha medido que $\psi(x,t=0)=A\sin^{2}\phi$. Encuentre $\psi(x,t)$}
+				Para esto entonces debemos realizar el siguiente desarrollo
+				\begin{align*}
+				  \psi(x)&=A\sin^{2}\phi\\
+						 &=\frac{A}{2}(1-\cos(2\phi))\\
+						 &= \frac{A}{2}(1-\frac{e^{2i\phi}+e^{-2i\phi}}{2})\\
+						 &= \frac{A}{2}(1-\frac{1}{2}\psi_{2}-\frac{1}{2}\psi_{2})=\frac{1}{2}\sqrt{\frac{1}{2\pi}}(1-\frac{1}{2}\psi_{2}-\frac{1}{2}\psi_{-2})\\
+				  \psi(x,t) &= \frac{1}{2}\sqrt{\frac{1}{2\pi}}(1-\frac{1}{2}\psi_{2}-\frac{1}{2}\psi_{-2})e^{\frac{-iEt}{\hbar}}
+				\end{align*}
+		\end{enumerate}
+  \item \begin{enumerate}
+		  \item \textit{Encuentre la constante de normalización:}
+				Para solucionar este punto vamos a hacer provecho de lo visto en la clase del dia 31/03/2023. Iniciaremos escribiendo esto de la forma
+				\begin{equation*}
+				  | \psi > = A\sum_{n=0}^{\infty}{\left(\frac{1}{\sqrt{2}}\right)}^{n} |\phi_{n}>
+				\end{equation*}
+				Con esto ya presente vamos a utilizar que
+				\begin{equation*}
+				  < \psi | \psi > = 1
+				\end{equation*}
+				Por lo tanto vamos a calcular esta norma lo que se representa como
+				\begin{equation*}
+				  < \psi | \psi > = |A|^{2}\sum_{m}\sum_{n}{\left(\frac{1}{\sqrt{2}}\right)}^{n+m}<\phi_{m}|\phi_{n}>
+				\end{equation*}
+				Este ultimo termino cumple una propiedad interesante, lo que ocurre es que dado que estos vectores representan una base y esta esta ortonormalizada su producto punto es 0 en todos los casos exceptuando cuando son iguales (en los cuales es 1) Por lo tanto, los unicos valores que nos interesan son los n y ese termino puede desaparecer para dejarnos solo con:
+				\begin{equation*}
+				  < \psi | \psi > = |A|^{2}\sum_{n}{\left(\frac{1}{\sqrt{2}}\right)}^{2n}=|A|^{2}\sum_{n}{\left(\frac{1}{2}\right)}^{n}
+				\end{equation*}
+				Esta es una serie geometrica de la cual es demostrable que
+				\begin{equation*}
+				  \sum_{n=0}^{\infty} x^{n} = \frac{1}{1-x}
+				\end{equation*}
+				En nuestro caso $x=\frac{1}{2}$ y por lo tanto nos queda reemplazando que
+				\begin{align*}
+				  < \psi | \psi > &= |A|^{2}\sum_{n=0}^{\infty}{\left(\frac{1}{2}\right)}^{n}\\
+				  1 &= |A|^{2}\frac{1}{1-\frac{1}{2}}\\
+				  1(1-\frac{1}{2}) &= |A|^{2}\\
+				  \frac{1}{2} &= |A|^{2}\\
+				  \frac{1}{\sqrt{2}} &= A
+				\end{align*}
+		  \item \textit{Encuentre una expresión general para }$\psi(x,t)$
+				Para esto vamos a utilizar la expresión
+				\begin{align*}
+				  \psi (t)  &= A \sum_{n=0}^{\infty}{\left(\frac{1}{\sqrt{2}}\right)}^{n}e^{\frac{-iE_{n}t}{\hbar}}\phi_{n}\\
+				  &= \sum_{n=0}^{\infty}{\left(\frac{1}{\sqrt{2}}\right)}^{n+1}e^{-i\omega(n+\frac{1}{2})t}\phi_{n}
+				\end{align*}
+		  \item \textit{Muestre que $|\psi(x,t)|^{2}$ es periodica en t y encuentre el periodo máximo}
+				Utilizando la expresión encontrada en el punto anterior tenemos que
+				\begin{align*}
+				  \psi &= \sum_{n}{\left(\frac{1}{\sqrt{2}}\right)}^{n+1}e^{-i\omega t(n+\frac{1}{2})}\phi_{n}\\
+				  \psi^{*} &= \sum_{m}{\left(\frac{1}{\sqrt{2}}\right)}^{m+1}e^{i\omega t(m+\frac{1}{2})}\phi_{m}
+				\end{align*}
+				Por lo tanto,
+				\begin{align*}
+				  |\psi^{*}\psi| &= \sum_{n,m} {\left(\frac{1}{\sqrt{2}}\right)}^{n+1}{\left(\frac{1}{\sqrt{2}}\right)}^{m+1}e^{i\omega t(m+\frac{1}{2})}e^{-i\omega t(n+\frac{1}{2})}\phi_{n}\phi_{m}\\
+				  &= \sum_{n,m}{\left(\frac{1}{\sqrt{2}}\right)}^{n+m+2}e^{i\omega(m-n)t}\phi_{n}\phi_{m}
+				\end{align*}
+				Note que $e^{i\omega(m-n)t}$ es una ecuación periodica que en particular corresponde con:
+				\begin{equation*}
+				  e^{i\omega(m-n)t}=\cos(\omega(m-n)t)+i\sin(\omega(m-n)t)
+				\end{equation*}
+				Por lo tanto, su periodo concuerda con
+				\[T=\frac{2\pi}{\omega(m-n)}\]
+		  \item \textit{Encuentre el valor esperado de la energia para $t=0$}
+				Para esto vamos a partir de
+				\begin{equation*}
+				  <E> = \int_{-\infty}^{\infty}dx\psi^{*}\hat{E}\psi
+				\end{equation*}
+				Sin embargo, para este caso dado que nos piden $t=0$ vamos a utilizar la ecuación del enunciado para $\psi$.
+
+				Volviendo entonces a lo que nos interesa vamos a notar 2 cosas
+				\begin{align*}
+				  \psi &= \sum_{n=0}^{\infty}C_{n}\phi_{n}\\
+				  \hat{E}\psi &= \hat{E}\sum_{n=0}^{\infty} C_{n}\phi_{n} = \sum_{n=0}^{\infty}C_{n}\hat{E}\phi_{n}\\
+				\end{align*}
+				Por lo tanto con esto nos queda que:
+				\begin{align*}
+				  <E> &= \int_{-\infty}^{\infty}dx\sum_{n}^{\infty}C_{n}^{*}\phi_{n}^{*}C_{n}E\phi_{n}\\
+					  &= \sum_{n}^{\infty}|C_{n}|^{2}E_{n}\cancel{\int_{-\infty}^{\infty}\phi_{n}\phi_{n}^{*}}dx\\
+				  &= \sum_{n}^{\infty}{\left(\frac{1}{2}\right)}^{n}\left(n+\frac{1}{2}\right)\omega\hbar
+				\end{align*}
+		\end{enumerate}
+		\item \textbf{Nota:} Este trabajo fue desarrollado en conjunto con mi compañero David Pachon
+\end{enumerate}
+
+
+\end{document}

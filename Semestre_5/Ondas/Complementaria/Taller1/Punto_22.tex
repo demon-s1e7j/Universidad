@@ -1,0 +1,82 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ondas y Fluidos - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 1 - Punto 2.2} % This is the name of the assignment
+\newcommand{\examdate}{01/02/2023} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \textit{Monica Cano}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\textit{Yeferson Camacho}\\
+	\textbf{\examdate} &&\textit{Sergio Montoya}\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section*{2.2}
+
+Consideremos un vector $z$ definido por la ecuación $z=\frac{z_1}{z_2}$ con $z_2\neq 0$, siendo $z_1 = a + ib$ y $z_2 = c + jd$
+\begin{enumerate}
+	\item Demuestre que la longitud de $z$ es el cociente de las longitudes de $z_1$ y $z_2$
+
+		\begin{align*}
+			& z = \frac{a+ib}{c+id} = \frac{a+ib}{c+id} \cdot \frac{c-id}{c-id} = \frac{ac+ ibc - iad + bd}{c^2 + d^2}\\
+			& z = \frac{ac+bd+i(bc-ad)}{c^2 + d^2}\\
+			& |z| = \sqrt{\left(\frac{ac+bd}{c^2+d^2}\right)^2 + \left(\frac{bc-ad}{c^2+d^2}\right)}\\
+			& |z| = \sqrt{\frac{(ac)^2 + 2abcd + (bd)^2 + (bc)^2 - 2abcd + (ad)^2}{(c^2+d^2)^2}}\\
+			& |z| = \sqrt{\frac{a^2(c^2+d^2)+b^2(c^2+d^2)}{(c^2+d^2)^2}}\\
+			& |z| = \sqrt{\frac{(a^2+b^2)(c^2+d^2)}{(c^2+d^2)^2}}\\
+			& |z| = \sqrt{\frac{(a^2+b^2)}{c^2+d^2}}
+		\end{align*}
+	\item Demostrar que el ángulo comprendido entre los ejes $z$ y $x$ es la diferencia de los ángulos que forman separadamente $z_1$ y $z_2$
+		Anteriormente se obtuvo que
+		$$z = \frac{ac+bd}{c^2+d^2} + i\frac{bc-ad}{c^2+d^2}$$
+		Poe lo tanto, si $\theta$ es el ángulo entre $z$ y $x$
+		\begin{align*}
+			&\tan(\theta) = \frac{\frac{bc-ad}{c^2+d^2}}{\frac{ac+bd}{c^2+d^2}} = \frac{bc-ad}{ac+bd}
+		\end{align*}
+		Sea $\theta_1$ el ángulo entre $z_1$ y $x$ y $\theta_2$ el ángulo entre $z_2$ y $x$
+		\begin{align*}
+			&\tan(\theta_1) = \frac{b}{a} ; \tan(\theta_2)=\frac{d}{c}
+		\end{align*}
+		Por trigonometría:
+		\begin{align*}
+			&\tan(\theta_1 + \theta_2) = \frac{\tan(\theta_1)-\tan(\theta_2)}{1+\tan(\theta_1)\tan(\theta_2)}\\
+			& = \frac{\frac{b}{a}-\frac{d}{c}}{1+\frac{bd}{ac}}\\
+			& = \frac{bc-ad}{ac+bd}\\
+			& \tan(\theta) = \tan(\theta_1 + \theta_2) \Rightarrow \theta = \theta_1 - \theta_2
+		\end{align*}
+	\item Analisis Dimencional: Aun no hay realidades físicas que den dimenciones a lo aqui expuesto por tanto este paso no puede ser realizado.
+	\item Interpretación: Dado que aun no contamos con una realidad física lo aqui expuesto son identidades que nos serviran posteriormente para realizar física.
+	\item Conclusión: Los números complejos son un grupo con propiedades internas interesantes que nos sirven como herramienta para modelar el mundo.
+\end{enumerate}
+
+
+\end{document}

@@ -1,0 +1,5 @@
+Color1,Color2,Color3,Color4,Esperado,Medido
+red,black,orange,gold,20k,19.42k
+red,red,yellow,gold,220k,219k
+brown,black,red,gold,1k,1.012k
+brown,green,brown,gold,150,148.2

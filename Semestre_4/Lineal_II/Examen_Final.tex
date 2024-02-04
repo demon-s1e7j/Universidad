@@ -1,0 +1,128 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Lineal II} % This is the name of the course 
+\newcommand{\examnum}{Examen Final} % This is the name of the assignment
+\newcommand{\examdate}{01/12/2022} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya Ramírez}\\ %Your name here instead, obviously 
+\textbf{\examnum} &&\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+
+
+
+\begin{enumerate} 
+    \item Para la función dada nos queda que su matriz representacíon en la base canonica es:
+    \begin{align*}
+    \begin{pmatrix}
+        2 & 0 & 3 & 1 \\
+        0 & 2 & -1 & -3 \\
+        -3 & 1 & 2 & 0 \\
+        -1 & 3 & 0 & 2 \\
+    \end{pmatrix}
+\end{align*}
+Para la cual si le hacemos su polinomio caracteriztico y lo factorizamos nos queda.
+$$(t^2-4t+8)(t^2 - 4*t + 20)$$
+Sin embargo, esto hace que sus valores propios caigan en el campo complejo. Por tanto, podemos saber que esta es una rotación y en consecuencia
+no tiene subespacios propios que serian los que definirian los bloques en la matriz diagonal por bloques.
+\item Información general:
+La matriz representacíon en la base canonica es:
+$$\begin{pmatrix}
+    -1 & 3 & 7 & -5 & -1 \\
+6 & -2 & 6 & -6 & -2 \\
+2 & 6 & 2 & -6 & -2 \\
+1 & 1 & 5 & -3 & -3 \\
+0 & 0 & 4 & -4 & \ 0 \\
+\end{pmatrix}$$
+
+Y por lo tanto su polinomio caracteriztico es:
+$$(t - 4)^2 * (t + 4)^3$$
+\begin{enumerate}
+    \item Para encontrar $P_N(t)$ y $P_D(t)$ lo primero que debemos hacer es encontrar el polinomio caracteriztico de la transformación y su lista de $R_i$
+    Luego para cada uno de estos factores le buscamos los $Q_i$ que cumplen la relación de Bezout (Es decir aquellos que cumplen que $Q_1P_1 + Q_2+P_2 +...+ Q_nP_n = (P_1,...,P_n)$)
+    y con esto llegamos a los resultados de $Q_1$ y $Q_2$ que son respectivamente:
+    $$Q1 =  -3/4096*t + 5/1024$$
+    $$Q2 =  3/4096*t^2 + 5/512*t + 11/256$$
+    
+    \textit{Nota:} Si suma $Q_1R_1+Q_2R_2$ el resultado sera 1. Lo cual indica que los calculos son correctos.
+
+    Luego de eso hayamos los polinomios Pi que  son simplemente $Q_iR_i$ lo cual en este caso nos da:
+    $$Pi1 = -3/4096*t^4 - 1/256*t^3 + 3/128*t^2 + 3/16*t + 5/16$$
+    $$Pi2 = 3/4096*t^4 + 1/256*t^3 - 3/128*t^2 - 3/16*t + 11/16$$
+    Y por ultimo sabiendo que:
+    $$P_D = P_1$$
+    $$P_N = t - PD$$
+    su calculo se nos facilita bastente con lo que nos da:
+    $$P_D = -3/4096*t^4 - 1/256*t^3 + 3/128*t^2 + 3/16*t + 5/16$$
+    $$P_N = 3/4096*t^4 + 1/256*t^3 - 3/128*t^2 + 13/16*t - 5/16$$
+    Y al valorar ambos con t la matriz representacíon y sumarlos nos da la matriz 0 y por tanto el resultado es correcto.
+    \item Para hacer esto simplemente consideramos $t = Id_5$ resultado que nos da:
+    $$[P_D]_\beta = \begin{pmatrix}
+        \frac{2125}{4096} & 0 & 0 & 0 & 0 \\
+0 & \frac{2125}{4096} & 0 & 0 & 0 \\
+0 & 0 & \frac{2125}{4096} & 0 & 0 \\
+0 & 0 & 0 & \frac{2125}{4096} & 0 \\
+0 & 0 & 0 & 0 & \frac{2125}{4096} \\
+    \end{pmatrix}$$
+    $$[P_N]_\beta = \begin{pmatrix}
+        \frac{1971}{4096} & 0 & 0 & 0 & 0 \\
+0 & \frac{1971}{4096} & 0 & 0 & 0 \\
+0 & 0 & \frac{1971}{4096} & 0 & 0 \\
+0 & 0 & 0 & \frac{1971}{4096} & 0 \\
+0 & 0 & 0 & 0 & \frac{1971}{4096} \\
+    \end{pmatrix}$$
+    \item Como se puede ver en el polinomio representativo este solo tiene dos valores propios, en particular estos son $4$ y $-4$ y si sacamos la dimencion del
+    kernel para cada uno de estos casos nos queda con:
+    \begin{eqnarray}
+        dim((repMatrix+4Id_5)^2) & = & 2\\
+        dim((repMatrix-4Id_4)^3) & = & 3\\
+    \end{eqnarray}
+    Lo cual nos lleva a saber que solo va a haber dos bloque en la diagonal uno de $2\times 2$ y otro de $3 \times 3$ y por tanto la matriz queda de la forma
+    $$
+    \begin{pmatrix}
+        4 & 1 & 0 & 0 & 0 \\
+0 & 4 & 0 & 0 & 0 \\
+0 & 0 & -4 & 1 & 0 \\
+0 & 0 & 0 & -4 & 1 \\
+0 & 0 & 0 & 0 & -4 \\
+    \end{pmatrix}
+    $$
+\end{enumerate}
+% for row in A.jordan_form():
+% print( ' & '.join([latex(_) for _ in row]) + ' \\\\')
+%for row in matriz:
+%print( ' & '.join([latex(_) for _ in row]) + ' \\\\')
+\end{enumerate}
+\end{document}

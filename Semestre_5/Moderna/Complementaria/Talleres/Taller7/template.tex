@@ -1,0 +1,277 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Complementaria Moderna}\\Taller 7}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+
+\chapter{Preguntas}
+\section{Átomo de Hidrógeno}
+\qs{}{
+  Considere un átomo muónico, el cual corresponde a un núcleo con un protón y un muón girando a su alrededor. Si la carga del muón es $q_{\mu} = -e$ y es  $207$ veces más pesado que un electrón. Calcule:
+   \begin{itemize}
+     \item El radio de B\"{o}hr
+     \item La energía para el n-ésimo estado
+     \item Para $n=1$, cómo se compara esta energía con la obtenida para un átomo de Hidŕogeno?
+  \end{itemize}
+}
+
+\sol
+
+\begin{enumerate}
+	\item El radio de B\"{o}hr
+	En este caso tenemos que $a_0=\frac{\hbar^2}{\mu(q_\mu)^2}$ Donde $\mu$ es la lama reducida y que equivale a $\mu=\frac{m_1m_2}{m_1+m_2}$ y por tanto solo deberíamos calcular esto y desarrollar como sigue
+	\begin{align*}
+		\mu &= \frac{m_p\cdot 207m_e}{m_p+207m_e}\\
+		a_0  &= \frac{\hbar^2}{\frac{m_p\cdot 207m_e}{m_p+207m_e}e^2} 
+	.\end{align*}
+\item La energía para el n-esimo estado tenemos \[
+E_n = -\frac{z^2e^4\mu}{2\hbar n^2}
+.\] En donde $z=1$ es el numero de protones $-e$ no cambia realmente nada y podemos utilizar $\mu$ encontrado en el ítem anterior con lo que tenemos \[
+E_n = -\frac{e^4(m_p\cdot 207m_e)}{2\hbar^2n^2(m_p+207 m_e}
+.\] 
+\item Ahora bien, si comparamos la energía para el 1 estado del hidrógeno y del muon nos queda \[
+		E_{1H} = -\frac{e^4(m_p\cdot m_e}{2\hbar(m_p + m_e)} < E_{1\mu} = -\frac{e^4(m_p\cdot 207m_e)}{2\hbar(m_p+207m_e)}
+.\] 
+\end{enumerate}
+
+\qs{}{
+Un átomo de Hidrógeno se encuentra en el estado \[
+  \psi_{2,1,-1} = Nre^{-\frac{r}{a_0}}Y_{1,-1}\left( \theta, \phi \right) 
+.\] 
+\begin{itemize}
+  \item Encuentre la constante de normalización
+  \item Cuál es la probabilidad de encontrar el átomo en $r=a_0$,  $\theta=\frac{\pi}{4}$ y $\phi=\frac{\pi}{3}$?
+\end{itemize}
+}
+
+\sol
+
+\begin{enumerate}
+	\item Para este caso
+		\begin{align*}
+			\int |\psi^*| |\psi| dv &= \int |\psi|^2dv = 1 \\
+						&= \int_0^\infty \int_0^\pi\int_0^{2\pi}(Nre^{-\frac{r}{2a_0}})^2(\overline{Y}_{r,-r}(\theta,\phi)\cdot Y_{1,-1}(\theta,\phi)r^2\sin\theta d\phi d\theta dr\\
+						&= \int_0^\infty \left( Nre^{-\frac{r}{2a_0}} \right)^2r^2 \int_0^\pi\int_0^{2\pi}(\overline{Y}_{r,-r}(\theta,\phi)\cdot Y_{1,-1}(\theta,\phi)\sin\theta d\phi d\theta\\
+						&= N^2\int_0^\infty r^4e^{\frac{r}{a_0}}dr = N^2 24a_0^5=1\\
+					N &= \sqrt{\frac{1}{24a_0^5}} 
+		.\end{align*}
+	\item Para este caso debemos desarrollar como sigue
+		\begin{align*}
+			\int_0^{a_0}\int_0^{\frac{\pi}{4}}\int_0^{\frac{\pi}{3}}\left( \sqrt{\frac{1}{24a_0^5}}re^{-\frac{r}{2a_0}}  \right)^2Y_1^{-1*}Y_1^{-1}r^2\sin\theta d\phi d\theta dr
+		.\end{align*}
+		\begin{align*}
+			Y_1^{-1} &= \sqrt{\frac{3}{8\pi}\sin\theta} e^{-i\phi} \\
+			Y_1^{-1*} &= \sqrt{\frac{3}{8\pi}} \sin\theta e^{i\phi} \\
+		.\end{align*}
+		\begin{align*}
+			\frac{1}{24a_0^5}\int_0^\infty r^4 e^{-\frac{2r}{2a_0}}dr\cdot\int_0^{\frac{\pi}{3}}d\phi\cdot\frac{3}{8\pi}\int_0^{\frac{\pi}{4}}\sin^3\theta d\theta\\
+			\frac{24e-65}{24e}\cdot\frac{\pi}{3}\cdot\frac{1}{12}(8-5\sqrt{2} )
+		.\end{align*}
+\end{enumerate}
+
+\qs{}{En $t=0$ se encuentra que la función de onda para cierto átomo de Hidrógeno es: \[
+    \psi(t=0) = \frac{1}{\sqrt{10} }\left[ 2\psi_{100} + \psi_{210} + \sqrt{2} \psi_{211} + \sqrt{3}\psi_{21-1}  \right] 
+.\]
+\begin{itemize}
+  \item Cual es el valor esperado del Hamiltoniano?
+  \item Cual es la probabilidad de encontrar el atomo con $\ell = 1$,$m_\ell = 1$?
+  \item Cuál es la probabilidad de encontrar el átomo a $10^{-10}$ cm del protón?
+  \item Calcule $\psi(t)$
+\end{itemize}
+}
+
+\sol
+
+\begin{enumerate}
+	\item 
+		\begin{align*}
+			\left< \phi |\hat{h}|\phi  \right> &= \frac{1}{\sqrt{10} }\left[2\left< \psi_{100} |\hat{h} | \psi_{100}  \right> + \left<\psi_{210}|\hat{H}|\psi_{210}\right> + \sqrt{2} \left<\psi_{211}|\hat{H}|\psi_{211}\right> + \sqrt{3}\left<\psi_{21-1}|\hat{H}|\psi_{21-1}\right>  \right]  \\
+			\left< \phi |\hat{h}|\phi  \right> &= \frac{1}{\sqrt{10} }\left[2\left< \psi_{100} |E_1 \psi_{100}  \right> + \left<\psi_{210}|E_2\psi_{210}\right> + \sqrt{2} \left<\psi_{211}|E_2\psi_{211}\right> + \sqrt{3}\left<\psi_{21-1}|E_2\psi_{21-1}\right>  \right]  
+							   &= \frac{4}{10}E_1 +\frac{1}{10}E_2+\frac{2}{10}E_2+\frac{3}{10}E_2\\
+							   E_n &= \frac{-13.6eV}{n^2} \\
+							       &= -7.48 eV
+		.\end{align*}
+	\item 
+		\begin{align*}
+			|<211|\phi>|^2 = \left( \frac{\sqrt{2} }{\sqrt{10} } \right) ^2=\frac{2}{10}=\frac{1}{5}
+		.\end{align*}
+	\item En este caso partimos desde el $\psi$ dado en el enunciado \[
+			\psi= \frac{1}{\sqrt{10} }\left[ 2\psi_{100}+\psi_{210} +\sqrt{2} \psi_{211} + \sqrt{3} \psi_{21-1} \right] 
+	.\] Sin embargo, lo que nos interesa es su probabilidad a una cierta distancia. Para esto tenemos que plantear la siguiente integral \[
+	P(r\le 10^{-10} cm) = \frac{1}{10}\int_0^{10^{-10}}\left[ \int_0^{2\pi}\int_0^{\pi}\left[ 4\psi_{100}^2+\psi_{210}^2+2\psi_{211}^2+3\psi_{21-1}^2 + \ldots \right]  \right] 
+.\] Donde los puntos suspensivos representan las multiplicaciones entre si y que ignoramos dado que dan $0$ por ser ortogonales. Otra nota adicional es que en este caso trabajamos con cuadrados puesto que el complejo conjugado es el mismo. Por otro lado tenemos que tomar en cuenta que los armónicos circulares junto con su Jacobino es igual a 1. Ademas, tomando en cuenta que solo nos interesa $R_{n,\ell}$ por lo que podemos agrupar los últimos tres términos dado que comparten $n,\ell$ esta integral nos queda como  \[
+= \frac{1}{10}\int_0^{10^{-10}}\left[ 4|R_{10}|^2+6|R_{21}|^2 \right]r^2dr 
+.\] Con esto ya podemos reemplazar con los $R$ que hay en el Griffith y calcular la integral
+\begin{align*}
+	P(10^{-10}) &= \frac{1}{10}\int_0^{10^{-10}}\left[ 4\left( 2a^{-\frac{3}{2}}\exp\left(-\frac{r}{a}\right) \right)^2 + 6\left( \frac{1}{\sqrt{24} }a^{-\frac{3}{2}}\frac{r}{a}\exp\left( -\frac{r}{2a} \right)  \right)^2  \right]r^2 dr\\
+		    &= \frac{1}{10}\int_0^{10^{-10}}\left[ 4a^{-3}\left( 2\exp\left(-\frac{r}{a}\right) \right)^2 + 6a^{-3}\left( \frac{1}{\sqrt{24} }\frac{r}{a}\exp\left( -\frac{r}{2a} \right)  \right)^2  \right]r^2 dr\\
+		    &= \frac{a^{-3}}{10}\int_0^{10^{-10}}\left[ 4\left( 2\exp\left(-\frac{r}{a}\right) \right)^2 + 6\left( \frac{1}{\sqrt{24} }\frac{r}{a}\exp\left( -\frac{r}{2a} \right)  \right)^2  \right]r^2 dr\\
+.\end{align*}
+\end{enumerate}
+
+\qs{}{
+  Un atomo de hidrogeno se encuentra en el estado \[
+    \psi(t=0)=\frac{1}{\sqrt{2} }\left( \psi_{211} + \psi_{21-1} \right) 
+  .\] 
+  \begin{itemize}
+    \item Encuentre una expresión para $\psi(t)$
+    \item Encuentre el valor esperado de la energia potencial. De el resultado analitico y tambien el numerico en electronvoltios.
+  \end{itemize}
+}
+
+\sol
+
+\begin{enumerate}
+	\item 
+		\begin{align*}
+			\psi(t=0)=\frac{1}{\sqrt{2} }\left( \left|\psi_{211}\right>e^{-\frac{iE_2t}{\hbar}} + \left|\psi_{21-1}\right> e^{-\frac{iE_2t}{\hbar}}\right) 
+		.\end{align*}
+	\item Para comenzar necesitamos saber que
+		\begin{align*}
+			\psi_{211} &= \frac{1}{\sqrt{24} }a_0^{-\frac{3}{2}}\frac{r}{a_0}e^{-\frac{r}{2a_0}}\cdot-\left( \frac{3}{8\pi} \right)^{\frac{1}{2}}\sin\theta e^{i\phi} \\
+			\psi_{21-1} &= \frac{1}{\sqrt{24} }a_0^{-\frac{3}{2}}\frac{r}{a_0}e^{-\frac{r}{2a_0}}\cdot \left( \frac{3}{8\pi} \right)^{\frac{1}{2}}\sin\theta e^{i\phi} \\ 
+		.\end{align*}
+\end{enumerate}
+
+\qs{}{Desde las expresiones vistas en la complementaria para las soluciones radial y angular a la ecuación de Schr\"{o}dinger:
+  \begin{itemize}
+    \item Construya la función de onda $\psi_{433}$
+    \item Encuentre el valor esperado de $r$ para este estado
+  \end{itemize}
+}
+
+
+\sol
+
+\begin{enumerate}
+	\item Para este caso tenemos que \[
+		\psi_{n,\ell}^{m_\ell}(r,\theta,\phi) = R_{n,\ell}(r)Y_\ell^{m_\ell}(\theta,\phi)
+	.\]En donde cada componente esta descrito por aparte, Iniciemos por $Y_\ell^{m_\ell}(\theta,\phi)$ 
+	\begin{align*}
+		Y_\ell^{m_\ell}(\theta,\phi) &= (-1)^m\sqrt{\frac{(2\ell+1)(\ell-m)!}{4\pi(\ell+m)!}}e^{im\phi}P_\ell^m(\cos\theta)  \\
+		P_\ell^m(x) &= (-1)^m \sqrt{(1-x^2)^m}\frac{d^mP_\ell(x)}{dx^m}  \\
+		P_\ell(x) &= \frac{(-1)^{\ell}}{2^\ell\ell!}\frac{d^\ell(1-x^2)\ell}{dx^\ell}
+	.\end{align*}
+	Esto esencialmente funciona como una matrioshka en la cual deberemos resolver a cada paso las derivadas que nos pide. Por lo tanto a la hora de desarrollar es mas prudente iniciar desde $P_\ell(x)$ para el cual  $x=\cos\theta$ ahora, iniciemos
+	\begin{align*}
+		P_3(\cos\theta)&=\frac{(-1)^3}{2^33!}\frac{d^3(1-\left( \cos\theta \right) ^2)^\ell}{d\theta^3}\\
+		&= \frac{-1}{8\cdot 6} 6(5(4\sin^3\theta\cos^3\theta-\sin^4\theta\sin(2\theta))-6\sin^5\theta\cos\theta)\\%TODO Revisar la derivada
+		&= \frac{-1}{8} (5(4\sin^3\theta\cos^3\theta-\sin^4\theta\sin(2\theta))-6\sin^5\theta\cos\theta)\\%TODO Revisar la derivada
+		P_3^3 &= (-1)^3 \sqrt{(1-\cos^2\theta)^3}\frac{d^3P_\ell(x)}{dx^m}  \\
+		&= (-1)\sqrt{(1-\cos^2\theta)^3} derivada \\
+		Y_\ell^{m_\ell}(\theta,\phi) &= (-1)^m\sqrt{\frac{(2\ell+1)(\ell-m)!}{4\pi(\ell+m)!}}e^{im\phi}P_\ell^m(\cos\theta)  \\
+		Y_3^{3}(\theta,\phi) &= (-1)^3\sqrt{\frac{(6+1)(3-3)!}{4\pi(3+3)!}}e^{i 3\phi}P_3^3(\cos\theta)  \\
+		Y_3^{3}(\theta,\phi) &= (-1)\sqrt{\frac{7}{4\pi 720}}e^{i 3\phi}P_3^3(\cos\theta)
+	.\end{align*}
+
+	Por otro lado, tenemos $R_{n,\ell}$ el cual es desarrollado como sigue
+	 \begin{align*}
+		 R_{n,\ell}(r) &= \sqrt{\left( \frac{2}{na_0} \right)^3 \frac{(n-\ell-1)!}{2^n\left[ (n+\ell)! \right]^3 }}e^{-\frac{r}{na_0}}\left( \frac{2}{na_0} \right)^\ell L_{n-\ell-1}^{2\ell+1}\left( \frac{2r}{na_0} \right)   \\
+		 R_{n,\ell}(r) &= \sqrt{\left( \frac{2}{4a_0} \right)^3 \frac{(4-3-1)!}{2^4\left[ (4+3)! \right]^3 }}e^{-\frac{r}{4a_0}}\left( \frac{2}{4a_0} \right)^4 L_{4-3-1}^{2\cdot3+1}\left( \frac{2r}{4a_0} \right)   \\
+		 R_{n,\ell}(r) &= \sqrt{\left( \frac{1}{2a_0} \right)^3 \frac{1}{16\left[ 5040 \right]^3 }}e^{-\frac{r}{4a_0}}\left( \frac{1}{2a_0} \right)^4 L_{0}^{8}\left( \frac{r}{2a_0} \right)   \\
+	.\end{align*}
+\item Para este caso y con un desarrollo bastante similar al del punto 3. Lo que haremos ser utilizar la integral \[
+		r = \int_0^{\infty}\left[ \int_0^{2\pi}\int_0^{\pi}\left[ \psi_{4,3}^3 \right]  \right] r dr
+.\] lo cual dado que los armónicos circulares son 1 entonces esta integral nos queda como \[
+\int_0^\infty |R_{4,3}|^2 r^3 dr
+.\] Dadas las limitaciones a la hora de hacer las derivadas en el punto anterior utilizaremos $R_{4,3}$ que da el Griffith con lo cual nos queda \[
+\int_0^\infty \left( \frac{1}{768\sqrt{35} }a^{-\frac{3}{2}}\left( \frac{r}{a} \right) ^3 e^{-\frac{r}{4a}} \right) ^2r^3 dr
+.\] Con lo cual podemos obtener un resultado de \[
+\int_0^\infty \left( \frac{1}{768\sqrt{35} }a^{-\frac{3}{2}}\left( \frac{r}{a} \right) ^3 e^{-\frac{r}{4a}} \right) ^2r^3 dr = 18a\text{ Cuando $a$ tenga parte Real mayor a 0}
+.\] El resultado fue obtenido con Wolfram Alpha
+\end{enumerate}
+
+\section{Spin y Efectos Magnéticos}
+
+\qs{}{Los estados de spin para un electron libre, en una base donde $\hat{S}_z$ es diagonal, son 
+  $\begin{pmatrix} 1 \\ 0 \end{pmatrix}$ y $\begin{pmatrix} 0 \\ 1 \end{pmatrix}$ con valores propios $\pm \frac{\hbar}{2}$ respectivamente. Usando esta base, encuentre una función propia de $\hat{S}_y$ que posea valor propio $-\frac{\hbar}{2}$. Recuerde que $\hat{S}_y=\frac{\hbar}{2}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} $
+}
+
+\sol
+
+\begin{align*}
+	det(S_y - \lambda I)&=\begin{pmatrix} -\lambda & -i\frac{\hbar}{2}\\ i\frac{\hbar}{2} & -\lambda \end{pmatrix} = \lambda^2-\frac{\hbar^2}{4}=0\\
+	\lambda_1 &= \frac{\hbar}{2} \\
+	\lambda_2 &= \frac{\hbar}{2} \\
+	\begin{pmatrix} -\frac{\hbar}{2} & -i\frac{\hbar}{2}\\ i\frac{\hbar}{2} & -\frac{\hbar}{2} \end{pmatrix}\begin{pmatrix} x \\ y \end{pmatrix} &= \begin{pmatrix} 0 \\ 0 \end{pmatrix}  \\
+	\frac{\hbar^2}{2}x-i\frac{\hbar}{2}y = 0 &; iy = x\\
+	x &= 1 \\
+	y &= -1 \\
+.\end{align*}
+Si ahora con esto normalizamos nos queda
+\begin{align*}
+	\frac{1}{\sqrt{2} }\left| \uparrow \right> - \frac{i}{\sqrt{2} }\left| \downarrow \right> = \frac{1}{\sqrt{2} }\begin{pmatrix} 1\\-i \end{pmatrix} 
+.\end{align*}
+
+\qs{}{Construya las matrices de spin para $s=1$.}
+
+\sol
+
+Para este caso Si $S=1$ entonces $m_s=1,-1$ y dado que  $\left| S, m_s \right>$ tenemos solo dos estados de spin posibles \[
+\left| \uparrow \right> = \left| 1,1 \right> ; \left| \downarrow \right> = \left| 1,-1 \right>
+.\] Con esto se construirán las matrices
+\begin{align*}
+	\hat{S}^2\left| \uparrow \right> &= \hbar^21(1+1)\left| \uparrow \right> = \hbar^22\left| \uparrow \right>\\
+	<\uparrow|\hat{S}^2|\uparrow> &= 2\hbar^2\\
+	<\downarrow|\hat{S}^2|\uparrow> &= 0
+.\end{align*}
+\begin{align*}
+	\hat{S}^2\left| \downarrow \right> &= \hbar^21(1+1)\left| \downarrow \right> = \hbar^22\left| \downarrow \right>\\
+	<\downarrow|\hat{S}^2|\downarrow> &= 2\hbar^2\\
+	<\uparrow|\hat{S}^2|\downarrow> &= 0\\
+	\hat{S}^2&=\begin{pmatrix} 2\hbar^2 & 0 & 0\\
+	0 & 2\hbar^2 & 0\\
+	0 & 0 & 2\hbar^2
+\end{pmatrix} 
+.\end{align*}
+
+
+\qs{}{Un dia que usted ésta en un ascensor, una persona misteriosa le entrega el siguiente spinor: \[
+|\chi> = A\begin{pmatrix} 3\\4i \end{pmatrix} 
+.\] 
+\begin{itemize}
+  \item Normalice el Ket.
+  \item Calcule los valores esperados de las tres matrices de Pauli sobre este estado.
+  \item Si usted hace una medición de $S_x$ que valores espera encontrar y con que probabilidades?
+\end{itemize}
+}
+
+\sol
+
+\begin{enumerate}
+	\item 
+		\begin{align*}
+		\left< x \right| &= A^*(3, -4i)\\
+		\left< x | x \right> &= A^* (3, -4i)A\begin{pmatrix} 3\\ 4i \end{pmatrix}  \\
+		&= A^2(9-16i^2)=A^2(25)=1 \\
+		A = \frac{1}{\sqrt{25} }=\frac{1}{5}
+		.\end{align*}
+		Ahora bien, para normalizar debemos dividir entre la norma por lo que calculamos
+		\begin{align*}
+			\sqrt{\left( \frac{3}{2} \right)^2 + \left( \frac{4i}{5} \right)^2 } &= \sqrt{\frac{9}{25}-\frac{16}{25}}\\  
+			&= i \frac{\sqrt{7} }{5} \\
+		.\end{align*}
+		Y solo nos faltaría dividir para que el resultado sea 
+		\begin{align*}
+			\left| x \right> = \begin{pmatrix} -\frac{3}{\sqrt{7} }i & \frac{4}{\sqrt{7} } \end{pmatrix} 
+		.\end{align*}
+	\item 
+\end{enumerate}
+
+
+\end{document}

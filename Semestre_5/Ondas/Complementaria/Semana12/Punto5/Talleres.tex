@@ -1,0 +1,81 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ondas - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Taller 12 - Punto 5} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\textit{Yeiferson Camacho}\\
+	\textbf{\examdate} && \textit{Monica Cano}
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{itemize}
+  \item \textbf{Enunciado: }
+
+    Una red de difracción con unas rendijas separadas por $0.60\times 10^{-3}\ cm$ esta iluminada por luz con una longitud de onda de $500\ nm$.¿A que ángulo aparecerá el máximo de tercer orden?
+
+  \item \textbf{Solución: }
+
+    Para este caso, lo que debemos hacer es utilizar \[
+    \alpha\sin\theta_m=m\lambda
+    .\] En este caso, lo que nos interesa es $\theta_m$ por lo tanto desarrollamos como sigue.
+    \begin{align*}
+      \alpha\sin\theta_m &= m\lambda \\
+      \sin\theta_m&= \frac{m\lambda}{\alpha} \\
+    .\end{align*}
+    Ahora bien, en este caso tenemos $m=3$, $\lambda=500nm$ y $\alpha=0.60\times 10^{-3}cm$. Sin embargo, en este caso necesitamos convertir las unidades. Por lo tanto nos queda
+    \begin{align*}
+      \lambda &= 500nm = 5\times 10^{-7}\\
+      \alpha &= 0.60\times 10^{-3}cm = 6.0 \times 10^{-6}m
+    .\end{align*}
+
+    Con esto ya acomodado podemos reemitirnos a la ecuación que despejamos previamente. Por lo tanto, esto nos queda como
+    \begin{align*}
+      \sin\theta_m &= \frac{m\lambda}{\alpha} \\
+      &= \frac{3\left( 5\times 10^{-7} \right) }{6\times 10^{-6}} \\
+      \sin^{-1}\left( \sin\theta_m \right) &=\sin^{-1}\left(\frac{3\left( 5\times 10^{-7} \right) }{6\times 10^{-6}}  \right)   \\
+      \theta &= \sin^{-1}\left( 0.25 \right)  \\
+      \theta &\approx 14^\circ
+    .\end{align*}
+
+  \item \textbf{Revisión Unidades: }
+
+    En este caso, unicamente dos de los valores tenian unidades y ambos eran unidades de longitud. Ademas dado que estaban en denominador y numerador esto se cancelaba. Si se desea el desarrollo este es como sigue:
+    \begin{align*}
+      \sin\theta_m&= \frac{\left[ L \right] }{\left[ L \right] }
+    .\end{align*}
+    Es obvio entonces que $\sin\theta_m$ es adimencional como era de esperarse
+\end{itemize}
+
+\end{document}

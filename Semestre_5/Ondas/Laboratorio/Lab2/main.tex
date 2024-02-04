@@ -1,0 +1,68 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{caption}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Laboratorio Física II} % This is the name of the course 
+\newcommand{\examnum}{Laboratorio $Cambiar$} % This is the name of the assignment
+\newcommand{\examdate}{dd/mm/aa} % This is the due date
+\newcommand{\timelimit}{}
+\newenvironment{Figura}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+  \textbf{\class} & \textbf{Name:} & \textit{Carlos Devia}\\%Your name here instead, obviously 
+\textbf{\examnum} &&\textit{Sergio Montoya}\\
+\textbf{\examdate} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+
+\begin{multicols}{2}
+\section{Analisis Cualitativo}
+\begin{enumerate}
+\item Pregunta 1
+\item Pregunta 2
+\item Pregunta 3
+\item Pregunta 4
+\item Pregunta 5
+\item Pregunta 6
+\end{enumerate}
+\section{Analisis Cuantitativo}
+\begin{Figura}
+    \centering
+    \includegraphics[width=0.9\textwidth]{Al_toque_perro.png}
+    \captionof{figure}{Al toque perro}
+    \label{fig}
+\end{Figura}
+\section{Conclusión}
+Copiar lo que envie David
+\end{multicols}
+
+\end{document}

@@ -1,0 +1,73 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Moderna - Complementaria} % This is the name of the course 
+\newcommand{\examnum}{Quiz 3} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+  \item \textbf{Volumen y Areas}
+    \begin{enumerate}
+      \item \textit{Esfera}
+	\begin{itemize}
+	  \item Volumen: $\frac{4}{3}\pi r^{3}$
+	  \item Superficie: $4\pi r^2$
+	\end{itemize}
+      \item Cilindro
+	\begin{itemize}
+	  \item Volumen: $\pi r^2\cdot h$
+	  \item Superficie: $2\pi rh + 2\pi r^2$
+	\end{itemize}
+    \end{enumerate}
+  \item \textbf{Equivalencias: }
+    \begin{enumerate}
+      \item S.cereviciae: esfera de radio $2.6\mu m$
+      \item Nucleo: Esfera de radio $20\mu m$
+      \item Histona: Cilindro de $6nm$ de alto y radio $3.5nm$
+      \item Bases: 150 bases por histona | $1.2\times 10^{7}$ en 16 cromosomas | $\frac{1nm^{3}}{bp}$
+      \item Nucleosomas: $\frac{200 bases}{nucleosoma}$
+      \item Densidad Empaque:  $\frac{bases \times medida}{v_{nucleo}}$
+      \item Proteinas: $60\times E.coli$
+      \item Lipidos: Tienen un Area de  $0.5nm^2$ |  $\frac{2\times 0.5\times A_{levadura}}{A_{lipido}}$
+      \item Mitocondria: Hay 40 mitocondrias por celula | $V_{total}=40\times 10 \frac{4\pi}{3}\left( \frac{3}{8} \right)^{3}\mu m^3=9\mu m^{3}$
+      \item Membrana Interna: Area superficial de $70\mu m^2$
+      \item Reticulo Endoplasmatico: $V_{ER}=\frac{4\pi}{3}R_{afuera}^{3}-\frac{4\pi}{3}R_{adentro}^{3}$ | $A_{ER}= \frac{8\pi}{3}\left( R_{afuera}^{3}-R_{nucleo}^{3} \right)=15\times 10^{4}\mu m^2 $
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}

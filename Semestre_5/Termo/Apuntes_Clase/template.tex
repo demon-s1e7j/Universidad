@@ -1,0 +1,52 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Some Class}\\Random Examples}
+\author{\huge{Your Name}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Apuntes}
+\section{12-04-23}
+Para este segundo caso tenemos que
+\ex{}{Para dos fluidos con $u_1$ y  $u_2$ deseamos minimizar la energía por lo tanto escriba el diferencial total y encuentre la condición de equilibrio 
+
+\sol
+
+Para este caso lo primero que nos interesa es la derivada por lo que debemos tomar $U_1$ y $U_2$ y derivarlos con respecto a cada una de sus variables. El resultado es  \[
+  dU = \frac{\partial U_1}{\partial S_1}dS_1 + \frac{\partial U_1}{V_1}dV_1 + \frac{\partial U_1}{N_1} + \frac{\partial U_2}{\partial S_2}dS_2 + \frac{\partial U_2}{V_2}dV_2 + \frac{\partial U_2}{N_2}
+.\] Sin embargo, dadas las condiciones del problema nos queda
+\begin{align*}
+  dU &= \frac{\partial U_1}{\partial U_2}dS_1 - \frac{\partial U_2}{\partial S_2}\\
+     &= \frac{\partial U_1}{\partial S_{1}}-\frac{\partial U_2}{\partial S_2} dS_1 = 0\\
+  T_1&=T_2
+.\end{align*}
+}
+
+Ahora bien en el ejemplo uno se trabaja con $S$ sin embargo, esto es una cosa suprema mente incomoda para el laboratorio. Por lo tanto queremos traducirlo a  $U(T,V,N)$ y  $U(T,P,N)$.
+Para esto utilizaremos las transformaciones de Legendre
+
+\subsection{Transformaciones de Legendre}
+Partamos desde una función \[
+y=y(x)=x^2+2;
+.\] 
+pero entonces podemos desarrollar de la siguiente manera
+\begin{align*}
+  \p&=\frac{dy}{dx}=2x \to x = \frac{p}{2}
+.\end{align*}
+Sin embargo, con esto no podemos distinguir entre funciones con distinto intercepto. Por lo tanto, vamos a tomar la pendiente y su intersección por lo tanto nos queda \[
+  \psi(p) = y(p) + px(p)
+.\] 
+
+\end{document}
