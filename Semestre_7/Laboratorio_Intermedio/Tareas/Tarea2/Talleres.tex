@@ -1,0 +1,171 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Laboratorio Intermedio} % This is the name of the course 
+\newcommand{\examnum}{Tarea Estimación} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+  \item \textbf{Problema 1:} Tomando que nos dicen que una célula tiene de lado $10$ micras. Asumiremos que esta célula es un hexágono regular y que tendrá una altura de las mismas $10$ micras. Ademas, para no complicarnos asumiremos que un humano es un cilindro de $1.75$ metros de altura y $1$ metro de diámetro.
+
+    Ahora, comencemos calculando el volumen de una célula. Eso seria básicamente el área de un hexágono por la altura. Antes de eso también tenemos que saber cual es el apotema de un hexágono regular de lado $10$ micras.
+    \begin{align*}
+      a = \sqrt{\left( 10 \mu \right)^2 - \left( 5 \mu \right)^2} \\
+      a = \sqrt{\left( 100 - 25\right) \mu^2} \\
+      a = 8.7 \mu
+    .\end{align*}
+
+    Ahora ya con el apotema (y sabiendo que el perímetro de este es $60$ micras) podemos utilizar:
+    \begin{align*}
+      A_{hex} &= \frac{p * a}{2}\\
+      &= \frac{8.7 * 60}{2} \mu^2 \\
+      &= 261 \mu^2
+    .\end{align*}
+    por ultimo pasamos al volumen del prisma (que es simplemente tomar esta area y multiplicarlo por la altura que ya asumimos que es $10$ micras)
+    \begin{align*}
+      V_{cel} &= A_{hex}\cdot 10 \mu \\
+      &= 261\mu^2 \cdot 10 \mu \\
+      &= 2610 \mu^{3}
+    .\end{align*}
+
+    Ahora con esto estaría bien saber cuantos metros cúbicos seria este mismo valor. Lo cual equivale a:
+    \begin{align*}
+      2610 \mu^3 &= 2.61\times 10^{-15}
+    .\end{align*}
+
+    Ahora, calculamos el volumen del cilindro que planteamos
+    \begin{align*}
+      A_{cir} &= \pi R^{2}\\
+      &= \pi \left( 0.5 m \right)^2 \\
+      &= \pi 0.25 m^2
+    .\end{align*}
+
+    Con el área:
+    \begin{align*}
+      V_{hum} &= \left( \pi 0.25 m^2 \right) * \left( 1.75 m \right)  \\
+      &= 1.37 m^{3}
+    .\end{align*}
+
+    Ahora lo único que nos queda es dividir estos valores:
+    \begin{align*}
+      N_{cel} &= \frac{1.37}{2.61\times 10^{-15}} \\
+      &= 5.2 \times 10^{14}
+    .\end{align*}
+    
+    Por otro lado podemos asumir que la cabeza es mas o menos el $10\%$ de este valor.
+  \item \textbf{Problema 2:} ahora, para las bacterias asumiremos que estas son un cuadrado de $10$ micras de lado y seguiremos con nuestro humano cilíndrico planteado previamente. En este caso es bastante claro saber que el área de una bacteria serian $100 \mu^2 = 1\times 10^{-9}$ y el área de un humano seria:
+    \begin{align*}
+      A_{h} &= 2\pi r = \pi d\\
+	    &=  \pi m^{2}
+    .\end{align*}
+
+    Por lo tanto, el numero de bacterias en la piel humana seria:
+    \begin{align*}
+      N &= \frac{\pi}{1\times 10^{-9}} \\
+     &= \pi\times 10^{9}
+    .\end{align*}
+
+    Ahora bien, para el interior simplemente vamos a tener una altura de $1$ micra para la bacteria lo que la deja con $100 \mu^3 = 1\times 10^{-16}$. Tomando ademas el volumen de un humano (que lo calculamos en el punto anterior) nos queda entonces:
+    \begin{align*}
+      N &= \frac{1.37}{1\times 10^{-16}} \\
+      &= 1.37 \times 10^{16} \\
+    .\end{align*}
+
+  \item \textbf{Problema 3:} Asumamos para el edificio $B$ que este fue diseñado como un prisma rectangular. Dado que tiene 4 pisos y cada piso es de mas o menos $2$ metros asumiremos que su altura es de $10$ metros (los dos metros que aparecen es de asumir que hay $50$ centímetros de piso por cada uno de estas subidas). Ahora, con esto tomemos que tiene $20$ metros de largo y $5$ de largo (esta no es una aproximación muy exacta pero es mas o menos lo que medí con pasos). Por lo tanto hablamos de un cubo con un volumen de:
+    \begin{align*}
+      V_{edif} &= 5 \cdot 10 \cdot 20 m^{3} \\
+      &= 1000 m^{3}
+    .\end{align*}
+
+    Pero esto no es un edificio, esto es un gran bloque de concreto. Por lo tanto asumamos que tenemos un cubo vació reduciendo $50$ centímetros de cada esta medida para tener el grosor de las paredes. Este tendria un valor de:
+    \begin{align*}
+      V_{empty} &= 4.5 \cdot 9.5 \cdot 19.5 m^{3}\\
+      &= 833.6 m^{3}
+    .\end{align*}
+
+    Por lo tanto el volumen total aproximado seria la resta de estos dos valores:
+    \begin{align*}
+      V_{B} &= 1000 - 833.6 m^{3} \\
+      &= 166.4 m^{3}\\
+    .\end{align*}
+
+  \item \textbf{Problema 4:} Dado que vamos a trabajar con acres asumiremos que la cucharadita de la que hablamos esta en el sistema imperial. Por lo tanto, una cucharadita son $4.93$ centímetros cúbicos. Ahora bien, un acre son $40468544.81$ centímetros cuadrados. Ahora entonces necesitamos:
+    \begin{align*}
+      40468544.81 cm^{2}\cdot x cm &= 4.93 cm^{3}\\
+      x &= 1.2 \times 10^{-7} cm
+    .\end{align*}
+
+  \item \textbf{Problema 5:} Usando la constante solar $1.366 \frac{W}{m^2}$ y teniendo que el sol es una esfera con un área superficial de $6.09\times 10^{15}m^{2}$ entonces solo lo tenemos que multiplicar y nos da:
+    \begin{align*}
+      8.3 \times 10^{15}
+    .\end{align*}
+  \item \textbf{Problema 6:} Ahora en este caso podemos utilizar dos aproximaciones. Por un lado tendríamos una esfera de $6371$ kilómetros y una esfera mas grande (en la que tenemos la atmósfera como tal) que tendría $6381$ kilómetros. Con el volumen de ambas esferas podríamos conseguir el volumen de atmósfera y utilizando la suposición de que la atmósfera es un gas ideal sacar el numero de moles (que para este momento es básicamente lo mismo o equivalente).
+    \begin{align*}
+      V_{t} &= \frac{4}{3}\pi\left( 6371 \right)^{3}\\
+      &= 1.083 \times 10^{12} \\
+      V_a &= \frac{4}{3}\pi\left( 6381 \right)^{3}  \\
+      &= 1.088 \times 10^{12} \\
+      V &= V_t - V_a \\
+      &= 5\times 10^{9} km^{3} \\
+      &= 5\times 10^{21} l \\
+      PV &= RnT\\
+      P &= 1 \\
+      V &= 5\times 10^{21} \\
+      R &= 0.0821 \\
+      T &= 288.15 \\
+      n &= \frac{PV}{RT} \\
+      &= \frac{5\times 10^{21}}{0.0821 \cdot 288.15} \\
+      &= 2.1 \times 10^{20}
+    .\end{align*}
+
+    Este es el valor en moles que ahora lo pasamos a partículas simplemente multiplicando por el numero de abogador:
+    \begin{align*}
+      N &= 2.1\times 10^{20}\cdot 6.02\times 10^{23} \\
+      &= 1.27\times 10^{44} \\
+    .\end{align*}
+  \item \textbf{Problema 7:}
+    En este caso partimos de una manzana. Una manzana "estándar" tiene $100$ metros de lado y es un cuadrado. Ademas podemos adicionarle dos vías (para que entre todas las manzanas se consuman en general) así que tenemos básicamente rectángulos compuestos por una manzana y dos calles que asumiremos tienen 5 metros de largo, por lo que queda un área de $10000 m^{2}$ por parte de la manzana y $500 m^2$ por cada una de las calles que entonces da en total un rectángulo de $11000 m^2$. Ahora, teniendo el área de bogota de $1.6\times 10^{6} m^2$ podemos simplemente dividir esta área en secciones y sabiendo que $\frac{1000}{11000}=9\%$ entonces el $9\%$ de esta dimensión son vías.
+    \begin{align*}
+      N &= 1.6\times 10^{6}\cdot 9\% \\
+      &= 144000 m^2 \\
+    .\end{align*}
+  \item \textbf{Problema 8:} Este es un problema meramente especulativo. Para iniciar no todos los momentos son iguales pues las distribuciones de población son radicalmente distintas respecto a zonas horarias. Sin embargo imaginando un mundo homogéneo en población podrían tomarse franjas horarias (por ejemplo, día y noche) y considerar que cada una de estas tiene una representación. Por ejemplo que en el día el $10\%$ de la población esta en una llamada telefónica y en la noche el $5\%$. Y asumiendo que esta distribución es homogénea entonces seria básicamente que el  $15\%$ de la población esta en llamada en cada instante. 
+\end{enumerate}
+
+\end{document}
