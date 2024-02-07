@@ -1,0 +1,58 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Welcome to the MAT320 Homework template on Overleaf -- just edit your
+% LaTeX on the left, and we'll compile it for you on the right.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------------
+% Based on a homework template by Dana Ernst.
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+
+\usepackage[spanish]{babel}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{ex}[2][Ejercicio]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{sol}[1][Solución]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1:}]}{\end{trivlist}}
+
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\noindent Sergio Montoya \hfill {\Large MATE2201: Tarea 1} \hfill \today
+
+\begin{ex}{1.6} 
+	Sea $b > 1$
+	\begin{enumerate}
+		\item Si $m,n,p,q$ son enteros con $n > 0$, $p > 0$, y $r = \frac{m}{n} = \frac{p}{q}$ pruebe que $$(b^m)^{\frac{1}{n}} = (b^p)^{\frac{1}{q}}$$
+
+			Quizas tenga sentido definir $b^r = (b^m)^{\frac{1}{n}}$
+		\item Pruebe que $b^{r+s}=b^rb^s$ si $r$ y $s$ son racionales
+		\item Si $x$ es real, defina $B(x)$ el conjunto de todos los numeros $b^t$, donde $t$ es racional y $y=t\le x$. Demuestre que $$b^r=sup\ B(r)$$ cuando $r$ es racional. Por lo tanto hace sentido definir $$b^x = sup\ B(x)$$ para cada real $x$.
+		\item Pruebe que $b^{x+y} = b^xb^y $ para todos los reales $x$ y $y$
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	\begin{enumerate}
+		\item Para comenzar vamos a aprovechar el hecho de que $\frac{m}{n} = \frac{p}{q}$. Esto tiene como consecuencia que $mq = pn$
+	\end{enumerate}
+\end{sol}
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+
+\end{document}
