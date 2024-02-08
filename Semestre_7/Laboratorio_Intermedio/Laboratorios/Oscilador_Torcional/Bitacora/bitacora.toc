@@ -1,0 +1,15 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {chapter}{\numberline {1}Actividad 1: Aplicación de Torque Magnetico}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Grafica}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Analisis}{2}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Actividad 2: Momento Inercial}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Grafica}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Analisis}{3}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Actividad 3: Aplicación Torque Magnetico}{4}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Grafica}{4}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Analisis}{4}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Actividad 4: Amortiguamiento}{5}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Explicacion}{5}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Graficas}{5}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Analisis}{6}{section.4.3}%
+\contentsfinish 

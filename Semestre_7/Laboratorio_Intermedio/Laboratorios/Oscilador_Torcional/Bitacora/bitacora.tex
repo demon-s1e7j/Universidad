@@ -1,0 +1,100 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+\usepackage{float}
+
+\title{\Huge{Laboratorio Intermedio}\\Bitacora Oscilador Torcional}
+\author{\huge{Sergio Montoya Ramirez}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Actividad 1: Aplicación de Torque Magnetico}
+
+\section{Grafica}
+\begin{figure}[H]
+	\caption{Grafica de la tensión respecto a la fuerza determinada por el peso puesto en la polea}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Analisis/Graficas/actividad1.png}
+	\label{graphics/actividad1}
+\end{figure}
+
+\section{Analisis}
+
+Como se ve en la imagen \ref{graphics/actividad1} ademas de la simple grafica se hizo una regresión lineal con la que se puede encontrar la relación entre el angulo y el torque. Ademas, dado que sabemos que esta relación es:
+\begin{align*}
+	\tau = k\cdot \Delta\theta
+\end{align*}
+
+entonces solo necesitariamos la pendiente de esta grafica para poder encontrar el valor. Esto lo hacemos con python y nos da un resultado de $0.059$ que es bastante cerca al esperado $0.058$ que era el valor teorico.
+
+\chapter{Actividad 2: Momento Inercial}
+
+\section{Grafica}
+\begin{figure}[H]
+	\caption{Grafica de el periodo de oscilacion respecto al Numero de masas}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Analisis/Graficas/actividad2.png}
+	\label{graphics/actividad2}
+\end{figure}
+
+\section{Analisis}
+
+Una vez mas lo que necesitamos en este caso es una relación del angulo respecto a la masa y como en este caso la masa tambien esta representada por el numero de pedazos que coloquemos volvemos a necesitar la pendiente que podemos volver a sacar con $np.polyfit$ de la regresion lineal que se ve en la grafica \ref{graphics/actividad2} y que nos vuelve a dar 0.059 por lo que concuerda con lo que esperabamos.
+
+Ademas, en este caso, nos piden el momento de inercia inicial. Este lo podemos calcular con $I = \frac{\theta_0*k}{4\pi^2}$ que al final nos da: $0.0045$
+
+\chapter{Actividad 3: Aplicación Torque Magnetico}
+
+\section{Grafica}
+\begin{figure}[H]
+	\caption{Grafica de $\Delta \theta$ respecto a la corriente aplicada en el sistema}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Analisis/Graficas/actividad3.png}
+	\label{graphics/actividad3}
+\end{figure}
+
+\section{Analisis}
+
+En este caso una vez mas necesitamos saber la pendiente y el intercepto de la grafica \ref{graphics/actividad3} que en este caso son: $-0.43$ y $2.93$ respectivamente. En este caso vemos una linealidad bastante decente. No estoy seguro de como mejorar esto por ahora.
+
+\chapter{Actividad 4: Amortiguamiento}
+\section{Explicacion}
+
+Esta fue la unica parte del experimento que requirio por mi parte una habilidad relativamente cualitativa y confiar en mis ojos mas de lo que habria deseado. Esto tiene como consecuencia que las imagenes aqui mostradas son sacadas directamente como fotos en vez de ser graficas hechas por mi propiamente dicho. Una vez tenemos esto en consideración pasemos a mostrar las graficas y los resultados
+
+\section{Graficas}
+
+\begin{figure}[H]
+	\caption{Grafica Sobre Amortiguada}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Analisis/Graficas/actividad41.png}
+	\label{graphics/actividad41}
+\end{figure}
+\begin{figure}[H]
+	\caption{Grafica Amortiguada}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Analisis/Graficas/actividad42.png}
+	\label{graphics/actividad42}
+\end{figure}
+\begin{figure}[H]
+	\caption{Grafica Amortiguada}
+	\centering
+	\includegraphics[width=0.5\textwidth]{../Analisis/Graficas/actividad43.png}
+	\label{graphics/actividad43}
+\end{figure}
+
+\section{Analisis}
+
+En el caso de \ref{graphics/actividad41} y \ref{graphics/actividad43} solo necesitamos mostrarlo. Por otro lado, para la grafica \ref{graphics/actividad42} en este caso tenemos que contar la cantidad de ciclos que pasaron hasta que la amplitud se reduzca a la mitad. Que en este caso fueron $4.5$ ciclos los que se necesitaron para que esto se cumpliera.
+
+\end{document}
