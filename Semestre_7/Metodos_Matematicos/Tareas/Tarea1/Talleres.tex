@@ -2,8 +2,7 @@
 \usepackage{amsthm}
 \usepackage{libertine}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry} \usepackage{amsmath,amssymb}
 \usepackage{multicol}
 \usepackage[shortlabels]{enumitem}
 \usepackage{siunitx}
@@ -41,6 +40,62 @@
 \rule[2ex]{\textwidth}{2pt}
 % ---
 
-\section*{Primera Pregunta}
+\section*{Pregunta 1}
+
+\section*{Pregunta 2}
+
+\section*{Pregunta 3}
+
+\section*{Pregunta 4}
+
+\section*{Pregunta 5}
+
+\section*{Pregunta 6}
+
+\section*{Pregunta 7}
+
+\section*{Pregunta 8}
+
+\section*{Pregunta 9}
+
+\section*{Pregunta 10}
+
+\subsection*{Parte A}
+
+En este caso, partimos de que tenemos la integral de una multiplicación. Por lo tanto, podemos aplicar integración por partes. De modo que nos queda:
+\begin{align*}
+	\oint u dv &= uv - \oint vdu\\
+	u &= \ln(z)\\
+	du &= \frac{1}{z} dz\\
+	dv &= f'(z) dz\\
+	v &= f(z) \\
+	\oint \left(\ln(z)\right)f'(z)dz &= \ln(z)f(z) - \oint \frac{f(z)}{z}dz\\
+	&= \ln(z)f(z) - 2\pi i f(0)\\
+	&= 2\pi i f(z_0) - 2 \pi i f(0)\\
+	&= 2\pi i (f(z_0) - f(0))
+\end{align*}
+
+En este caso, el logaritmo natural equivale a $2\pi i$ pues al poner todo el circulo en la integral (que es C) este seria el resultado. Por otro lado la integral tiene un $f(0)$ por la formula de cauchy para integrales.
+
+\subsection*{Parte B}
+
+Sea $b$ cualquier punto distinto a $a$ en el vecindario definido. Sea $p$ la distancia entre $a$ y $b$. Si $C_p$ denota el circulo orientado positivamente $|b - a| = p$, centrado en $a$ y que pasa por $b$ la formula integral de Cauchy nos dice que:
+\begin{align*}
+	f(a) = \frac{1}{2\pi i}\int_{C_p}\frac{f(z)dz}{z - a}
+\end{align*}
+
+y la representación parametrica nos permitiria expresar esto como:
+\begin{align*}
+	f(a) = \frac{1}{2\pi}\int_0^{2\pi}f(a + pe^{i\theta})d\theta
+\end{align*}
+
+Ahora, notamos de esta ultima expresión
+\begin{align*}
+	|f(a)|\le \frac{1}{2\pi}\int_{0}^{2\pi}|f(a+pe^{i\theta})| d\theta
+\end{align*}
+
+Ahora, dado que $$|f(a+pe^{i\theta})|\le|f(a)|$$ encontramos que $$\int_0^{2\pi}|f(a + pe^{i\theta})|d\theta \le \int_0^{2\pi}|f(a)|d\theta=2\pi |f(a)|$$ por lo tanto $$|f(a)|\ge\frac{1}{2\pi}\int_0^{2\pi}|f(a+pe^{i\theta})|d\theta$$ ademas, por estas dos inecuaciónes queda $$|f(a)| = \frac{1}{2\pi}\int_0^{2\pi} |f(a + pe^{i\theta})|d\theta$$ lo cual nos lleva a concluir que $$|f(a+pe^{i\theta})|=|f(a)|$$ por lo tanto todos los puntos del circulo $|a - b| = p$ tiene el mismo valor. Ademas dado que $b$ puede ser cualquier punto entonces todos los puntos de este contorno valen exactamente lo mismo $f(a)$. Esta demostración fue adaptada del libro \textit{Complex Variables and Applications} de \textit{Churchill}.
+
+
 
 \end{document}
