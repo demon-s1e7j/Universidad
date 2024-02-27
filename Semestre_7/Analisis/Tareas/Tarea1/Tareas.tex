@@ -33,6 +33,18 @@
 
 \noindent Sergio Montoya \hfill {\Large MATE2201: Tarea 1} \hfill \today
 
+\textbf{Teoremas utilizados:}
+\begin{itemize}
+	\item \textbf{Teorema 1.21:} Para cada real $x > 0$ y cada entero $n > 0$ existe un unico real positivo $y$ tal que $y^n = x$
+	\item \textbf{Proposición 1.18:} Lo siguiente es verdadero en un conjunto ordenado:
+		\begin{itemize}
+			\item Si $x > 0$ entonces $-x < 0$ y viceversa.
+			\item Si $x > 0$ y $y < z$ entonces $xy < xz$.
+			\item Si $x < 0$ y $y < z$ entonces $xy > xz$.
+			\item Si $x \neq 0$ entonces $x^2 > 0$. En particular, $1 > 0$.
+			\item Si $0 < x < y$ entonces $0 < \frac{1}{y} < \frac{1}{x}$
+		\end{itemize}
+\end{itemize}
 \begin{ex}{1.6} 
 	Sea $b > 1$
 	\begin{enumerate}
@@ -43,14 +55,139 @@
 		\item Si $x$ es real, defina $B(x)$ el conjunto de todos los numeros $b^t$, donde $t$ es racional y $y=t\le x$. Demuestre que $$b^r=sup\ B(r)$$ cuando $r$ es racional. Por lo tanto hace sentido definir $$b^x = sup\ B(x)$$ para cada real $x$.
 		\item Pruebe que $b^{x+y} = b^xb^y $ para todos los reales $x$ y $y$
 	\end{enumerate}
+
 \end{ex}
 
 \begin{sol}
+
 	\begin{enumerate}
-		\item Para comenzar vamos a aprovechar el hecho de que $\frac{m}{n} = \frac{p}{q}$. Esto tiene como consecuencia que $mq = pn$
+
+		\item Para comenzar vamos a aprovechar el hecho de que $\frac{m}{n} = \frac{p}{q}$. Esto tiene como consecuencia que $mq = pn = k$ por lo cual
+			\begin{align*}
+				((b^p)^{\frac{1}{q}})^{np} &= ((b^{p})^{\frac{1}{q}})^{qm} = b^{mp}\\
+				((b^p)^{\frac{1}{q}})^n &= b^m
+			\end{align*}
+
+			Por lo tanto por el teorema 1.21 queda $$(b^p)^{\frac{1}{q}} = (b^m)^{\frac{1}{n}}$$
+		\item Sea $r = \frac{m}{n}$ y $s = \frac{v}{w}$. Por lo tanto, $r + s = \frac{mw + vn}{nw}$, y 
+			$$b^{r+s}=\left(b^{mw+vn}\right)^{\frac{1}{nw}} = \left(\left(b^{mw}b^{nw}\right)\right)^{\frac{1}{nw}}$$
+
+			Ahora, por el corolario del teorema $1.21$ del libro tenemos que
+			$$b^{r+s}=\left(b^{mw}\right)^{\frac{1}{nw}}\left(b^{nv}\right)^{\frac{1}{nw}}=b^rb^s$$
+
+			Con la ultima parte saliendo de la parte $(a)$
+		\item En este caso, notemos que dado que $b > 1$ entonces $t < r \implies b^t < b^r$. Por lo tanto, dado que para $B(x)$ todos los $t$ deben ser menores o iguales a $r$ entonces sabemos que $b^x$ debe ser un limite superior. Ahora para mostrar que $x$ es el minimo limite superior podemos aprovechar que entre cualesquiera dos numeros reales existe un numero real. Por lo tanto,si escogemos cualquier $r<x$ este pertenecera a $B(x)$ y hara que $b^r < b^x$.
+		\item Por definición sabemos que $b^{x+y}=\sup\left(B(x + y)\right)$. Ahora cualquier numero racional menor $x + y$ puede escribirse como $r + s$ donde $r < x$ y $s < y$. Para hacer esto hagamos: 
+			\begin{align*}
+				t - y < r < x\\
+				s = t - r.
+			\end{align*}
+
+			Ahora dado que estos pueden ser cualquier numero entonces $B(x+y)$ queda definido como el conjunto de todos los numero $uv$ donde $u\in B(x)$ y $v\in B(y)$. Ahora, dado que cualquiera de esos productos es menor a $M = \sup(B(x))\sup(B(y))$ vemos que $M$ es un limite superior de $B(x+y)$. Por otro lado, suponga que $0<c<\sup(B(x))\sup(B(y))$. Entonces, $\frac{c}{\sup(B(x))} < \sup(B(y))$. Sea $m=\left(\frac{1}{2}\right)\left(\frac{c}{\sup(B(x))+\sup(B(y))}\right)$.
+
+			Por lo tanto $\frac{c}{\sup(B(x))} < m < \sup(B(y))$ y existe $u\in B(x)$ y $v\in B(y)$ tal que $\frac{c}{m} < u$ y $m < v$. Entonces tenemo $c = \left(\frac{c}{m}\right)m < uv \in B(x+y)$. Por lo tanto, $c$ no es un limite superior y en consecuencia $\sup(B(x+y)) = \sup(B(x))\sup(B(y))$. lo que demuestra lo solicitado.
 	\end{enumerate}
 \end{sol}
 
+\begin{ex}{1.8}
+	Pruebe que no se puede definir un orden en el campo complejo que lo convierta en un conjunto ordenado \textbf{Hint:} $-1$ es un cuadrado.
+\end{ex}
+
+\begin{sol}
+	Asuma por contradicción que existe un orden definido sobre $\mathbb{C}$ que lo haga un conjunto ordenado. Por la parte $(a)$ de la proposición 1.18 o $i > 0$  o $-i > 0$. Por lo tanto, $-1 = i^2 = (-1)^2$ debe ser positivo. Pero entonces $1 = (-1)^2$ debe tambien ser positivo. Por lo que esto entra en contradicción con la proposición 1.18 y en consecuencia lo demostramos por contradicción.
+\end{sol}
+
+\begin{ex}{2.1}
+	Demuestre que $2xy\le x^2 + y^2$
+\end{ex}
+\begin{sol}
+	\begin{align*}
+		2xy \le x^2 + y^2\\
+		0 \le x^2 + y^2 - 2xy\\
+		0 \le (x + y)^2
+	\end{align*}
+\end{sol}
+\begin{ex}{2.2}
+	Use la desigualdad del punto anterior con $$x = \frac{x_i}{\sqrt{x_1^2 + x_2^2}},\ y = \frac{y_i}{\sqrt{y_1^2 + y_2^2}}$$ primero con $i=1$ y luego con $i=2$ 
+\end{ex}
+\begin{sol}
+	\begin{align*}
+		\frac{2x_1y_1}{\sqrt{x_1^2+x_2^2}\sqrt{y_1^2+y_2^2}} \le \frac{x_1^2}{x_1^2+x_2^2} + \frac{y_1^2}{y_1^2+y_2^2}\\
+		\frac{2x_2y_2}{\sqrt{x_1^2+x_2^2}\sqrt{y_1^2+y_2^2}} \le \frac{x_2^2}{x_1^2+x_2^2} + \frac{y_2^2}{y_1^2+y_2^2}
+	\end{align*}
+	\begin{align*}
+		\frac{2x_1y_1}{\sqrt{x_1^2+x_2^2}\sqrt{y_1^2+y_2^2}} + \frac{2x_2y_2}{\sqrt{x_1^2+x_2^2}\sqrt{y_1^2+y_2^2}} \le \frac{x_1^2}{x_1^2+x_2^2} + \frac{y_1^2}{y_1^2+y_2^2} + \frac{x_2^2}{x_1^2+x_2^2} + \frac{y_2^2}{y_1^2+y_2^2}\\
+		\frac{2x_1y_1}{\sqrt{x_1^2+x_2^2}\sqrt{y_1^2+y_2^2}} + \frac{2x_2y_2}{\sqrt{x_1^2+x_2^2}\sqrt{y_1^2+y_2^2}} \le \frac{x_1^2 + x_2^2}{x_1^2+x_2^2} + \frac{y_1^2 + y_2^2}{y_1^2+y_2^2}\\
+		\frac{2x_1y_1}{\sqrt{x_1^2+x_2^2}\sqrt{y_1^2+y_2^2}} + \frac{2x_2y_2}{\sqrt{x_1^2+x_2^2}\sqrt{y_1^2+y_2^2}} \le 1 \\
+		2x_1y_1 + 2x_2y_2 \le \sqrt{x_1^2+x_2^2}\sqrt{y_1^2+y_2^2}\\
+		2(x_1y_1 + x_2y_2) \le \sqrt{x_1^2+x_2^2}\sqrt{y_1^2+y_2^2}\\
+	\end{align*}
+\end{sol}
+\begin{ex}{2.22}
+	Un espacio metrico es llamado separable si contiene un subconjunto contable denso. Muestre que $\mathbb{R}^k$ es separable. \textbf{Hint:} Considere el conjunto de puntos que solo tiene coordenadas racionales.
+\end{ex}
+\begin{sol}
+	Para comenzar tomemos $\mathbb{Q}^k$. Este es un conjunto contable y subconjunto de $\mathbb{R}^k$. Ademas, como se ha demostrado en clase y en el libro este conjunto es denso. Por lo tanto, solo hace falta mostrar que $\forall x \in \mathbb{R}$ se cumple que $x$ es un punto limite de $\mathbb{Q}^k$ o $x \in \mathbb{Q}^k$.
+
+	Siendo asi, sea $a$ un punto en $\mathbb{R}^k$ y sea $r > 0$, entonces tenemos la vecindad $N_r(a)$. Ahora definamos un $b$ tal que $a_i<b_i<a_i + \frac{r}{\sqrt{k}}$. De esa manera
+	\begin{align*}
+		d(a,b) = \sqrt{(a_1 - b_1)^2 + \ldots + (a_k - b_k)^2} <\\
+		\sqrt{(a_1 - a_1 - \frac{r}{k})^2 + \ldots + (a_k - a_k - \frac{r}{k})^2} = \\
+		\sqrt{\frac{r^2}{k} + \ldots + \frac{r^2}{k}} = \sqrt{k\frac{r^2}{k}} = r
+	\end{align*}
+
+	Por lo tanto, todos los puntos de $\mathbb{R}^k$ son puntos limites de $\mathbb{Q}^k$ por lo tanto es separable.
+\end{sol}
+\begin{ex}{2.23}
+	Una collección $\left\{V_\alpha\right\}$ de subconjuntos abiertos de $X$ se dice que es una base de $X$ si lo siguiente es verdad: Para cada $x\in X$ y cada conjunto abierto $G \subset X$ tal que $x\in G$, tenemos que $x \in V_\alpha \subset G$ para algun $\alpha$. En otras palabras, cada conjunto abierto en $X$ es la union de una subcolección de $\left\{V_\alpha\right\}$
+
+	Pruebe que cada espacio metrico separable tiene una base contable. \textbf{Hint:} Tome todas las vecindades con un radio racional y centro en algun subconjunto contable denso de $X$
+\end{ex}
+\begin{sol}
+	Sea $x_1, x_2, \ldots, x_n, \ldots$ un subconjunto denso contable de $X$. Para cada entero positivo $m$ y cada numero racional positivo $r$ sea $V_{(m,r)}=y:d(y,x_m) < r$. La colección $V_{(m,r)}$ es contable.
+
+	Sea $x\in X$ y sea $G$ cualquier subconjunto abierto de $X$ con $x\in G$. Entonces, existe $\delta > 0$ tal que $B_{\delta}(X) \subset G $. La bola abierta $B_{\frac{\delta}{2}}(x)$ contiene un punto $x_k$ para algun $k$. Sea $r$ un numero racional tal que $d(x_k, x)<r<\frac{\delta}{2}$. Luego, $x_\delta(x_k)\subset B_{\delta}(x)\subset G$
+\end{sol}
+\begin{ex}{4.1}
+	Muestre que la familia de abiertos definida satisface los siguientes axiomas
+	\begin{enumerate}
+		\item[(a)] $\emptyset, \mathbb{R} \in \tau$
+		\item[(b)] Union arbitraria de elementos de $\tau$ pertenece a $\tau$ ($\tau$ es cerrado bajo uniones arbitrarias)
+		\item[(c)] Intersección finita de elementos de $\tau$ pertenece a $\tau$ ($\tau$ es finita bajo intersecciones finitas)
+	\end{enumerate}
+\end{ex}
+\begin{sol}
+	\begin{enumerate}
+		\item[(a)] $\emptyset$ es evidente pues es la union arbitraria de ningun elemento. Por otro lado, notese que $$\lim_{n\rightarrow\infty} \bigcup_{i=1}^{n}[-i,i)=\mathbb{R}$$ Luego, $\mathbb{R}\in\tau$.
+		\item[(b)] Sea $\left\{U_i\right\}$ una colección arbitraria de elementos de $\tau$. Luego, por definición $$\bigcup U_i = \bigcup \left(\bigcup_{j} B_{ij}\right) = \bigcup_{i,j} B_{ij}.$$ donde $B_{ij}$ son elementos de $\mathbb{B}\therefore\tau$ es cerrado bajo uniones arbitrarias.
+		\item[(c)] Sea $\left\{U_i\right\}$ una colección arbitraria de elementos de $\tau$. Por el punto la intersección la podemos expresar como una union arbitraria de la siguiente manera:
+\begin{equation*}
+   \bigcap U_i = \bigcap \left(\bigcup_{j} B_{ij}\right) = \bigcup_{j} \left(\bigcap U_{ij}\right).
+\end{equation*}
+	\end{enumerate}
+\end{sol}
+\begin{ex}{4.2}
+	Suponga que existe una métrica para la cual $\tau$ sea la familia de abiertos definidos por la métrica. Muestre entonces que existe un subconjunto enumerable $A$ de $B$ tal que todo elemento de $\tau$ podría ser escrito como una unión de elementos de $A$.
+\end{ex}
+\begin{sol}
+	Tomemos el subconjunto enumerable $A$ tal que $$
+    A = \{[a,b) : a,b \in \mathbb{Q}\}  
+	$$
+
+	Como $\mathbb{Q}$ es enumerable, $A$ es un subconjunto enumerable de $\mathbb{B}$. Ahora, dado que cualquier abierto en $\tau$ es una union de intervalos abiertos en $\mathbb{R}$ y cada intervalo es la union de elementos de $A$. Por lo tanto se llega al resultado esperado
+\end{sol}
+\begin{ex}
+	Con la misma notación del punto anterior, muestre que existe un elemento de $\tau$ que no puede ser escrito como unión de elementos de A. Conclusión: la topología $\tau$ \textbf{NO} es metrizable.
+\end{ex}
+\begin{sol}
+	Para mostrar que existe un elemento en $\tau$ que no puede expresarse como una union de elementos de $A$ tomemos $[\sqrt{2},2)$. Sabemos por las definiciones tomadas que este es un conjunto abierto y por tanto esta en $\tau$.
+
+	Supongamos ahora, por contradicción, que $[\sqrt{2},2)$ puede expresarse como la union de elementos de $A$. Es decir que existe:
+\[[\sqrt{2}, 2) = \bigcup_{n=1}^\infty I_n\]
+	Cada $I_n$ es de la forma $[a_n, b_n)$ con $a_n, b_n \in \mathbb{Q}$. Por la densidad de los numeros racionales en los numeros reales podemos encontrar un irracional $x_n$ tal que $a_n < x_n < b_n$.  Luego tomemos el conjunto $X = \{x_1, x_2, \ldots \}$. Dado que $\forall x_n; x_n \in [\sqrt{2}, 2)$ entonces $X \subset [\sqrt{2},2)$.
+
+	Sin embargo, $X$ no puede ser expresado como la union de elementos de A. Lo anterior, debido a que cualquier elemento de $A$ es un intervalo cerrado por el lado izquierdo con un racional y $X$ esta hecho unicamente de numeros irracionales. Por lo tanto llegamos a una contradicción y en consecuencia $\tau$ no es metrizable.
+\end{sol}
 % --------------------------------------------------------------
 %     You don't have to mess with anything below this line.
 % --------------------------------------------------------------
