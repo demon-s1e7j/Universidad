@@ -1,0 +1,184 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} \usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Metodos Matematicos} % This is the name of the course 
+\newcommand{\examnum}{Tarea 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Nombre:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section*{Pregunta 1}
+
+\section*{Pregunta 2}
+
+\section*{Pregunta 3}
+
+\subsection*{$\ln(z + 1)$}
+
+En este caso, necesitamos:
+\begin{align*}
+  f(0) &= \ln(1 + 0) = 0\\
+  f'(0) &= (1 + 0)^{-1} = 1\\
+  f''(0) &= -(1 + 0)^{-2} = -1\\
+  f'''(0) &= 2(1 + 0)^{-3} = 2\\
+  f^{(n)}(0) &= (-1)^{n+1}(n-1)!
+\end{align*}
+
+Por lo tanto en la formula queda como:
+
+\begin{align*}
+  \ln(1 + x) = \sum_{n=1}^{\infty} (-1)^{n + 1}\frac{x^n}{n}
+\end{align*}
+
+\section*{Pregunta 4}
+
+\section*{Pregunta 5}
+
+\section*{Pregunta 6}
+
+\section*{Pregunta 7}
+
+\section*{Pregunta 8}
+
+\section*{Pregunta 9}
+
+\section*{Pregunta 10}
+\subsection*{1.6.2.1}
+\subsubsection*{a)}
+
+En este caso nos interesa ver que $\Gamma(z + 1) = z\Gamma(z)$ por lo tanto integremos por partes
+\begin{align*}
+  \Gamma(z + 1) &= \int_{0}^{\infty} e^{-t} t^{z + 1 - 1} dt\\
+  &= \int_0^\infty e^{-t} t^{z} dt\\
+  u(t) &= t^{z}\\
+  du &= zt^{z - 1}\\
+  dv &= e^{-t}\\
+  v(t) &= -e^{-t}\\
+  \int udv &= uv - \int vdu\\
+  \int_0^\infty e^{-t} t^{z} dt &= t^{z}\cdot(-e^{-t}) - \int_0^\infty -e^{-t}zt^{z - 1}dt\\
+  &= -t^{z}e^{-t} + z\int_0^\infty e^{-t}t^{z-1}dt\\
+  &= -t^{z}e^{-t} + z\Gamma(z)
+\end{align*}
+
+Ahora ya vamos en buena parte de la demostración. Solo nos falta mostrar que $-t^ze^{-t}$ tiende a 0.
+\begin{align*}
+  -t^{z}e^{-t} &= \frac{-t^z}{e^{-t}}\\
+\end{align*}
+
+Aqui en este caso podemos aplicar L'Hopital $z$ veces y con eso nos quedaria una constante (Sabemos que llegaremos a una constante pues $-t^{z}$ es un polinomio) y por tanto esta serie al intentar llegar a infinito se hara $0$. Ademas, cuando t = 0 este tambien se hara 0 por el primer termino.
+
+\subsubsection*{b)}
+\begin{align*}
+  \Gamma(1) &= \int_0^\infty e^{-t}t^{1 - 1}dt\\
+  &= \int_0^\infty e^{-t}t^{0}dt\\
+  &= \int_0^\infty e^{-t}dt\\
+  &= -e^{-t}|_0^\infty\\
+  &= -e^{-\infty} - (-e^{0})\\
+  &= 1
+\end{align*}
+\subsubsection*{c)}
+
+En este caso para un $n$ entero vamos a hacer una pequeña inducción. El caso base lo demostramos en el punto anterior pues $1 = 1!$. Ahora suponga que funciona para $n - 1$ y entonces $\Gamma(n) = (n - 1)!$. Ahora deduzcamos utilizando el apartado \textbf{a}:
+\begin{align*}
+  \Gamma(n + 1) &= n\Gamma(n)\\
+  \Gamma(n + 1) &= n\cdot (n - 1)!\\
+  \Gamma(n + 1) &= n!
+\end{align*}
+
+Por lo tanto, esto queda demostrado.
+
+\subsubsection*{d)}
+
+En este caso nos interesa mostrar lo que nos piden para los naturales. Por lo tanto lo mas prudente es hacer una demostración por inducción. Mostremos que para $n = 1$ esto se cumple.
+\begin{align*}
+  \Gamma(z) &= \frac{\Gamma(z + 1)}{(z)}\\
+  &= \frac{z\Gamma(z)}{z}\\
+  &= \Gamma(z)
+\end{align*}
+
+Ahora supongamos que esto funciona para $n - 1$ por lo tanto
+$$
+\Gamma(z) = \frac{\Gamma(z + (n - 1))}{(z + n - 2)(z + n - 3)}
+$$
+
+Ahora lo debemos intentar demostrar para $n$
+\begin{align*}
+  \Gamma(z) &= \frac{\Gamma(z + n)}{(z + n - 1)(z + n - 2)\ldots z}\\
+  &= \frac{(z + n - 1)\Gamma(z + n - 1)}{(z + n - 1)(z + n - 2)\ldots z}\\
+  &= \frac{\Gamma(z + n - 1)}{(z + n - 2)(z + n - 3)\ldots  z}
+\end{align*}
+
+Que asumimos en el paso inductivo que era verdad por lo que sabemos que es cierto y esto se demuestra.
+
+Ahora para la otra parte es bastante mas sencillo. Simplemente tenemos que saber que para cualquier numero real (Como $\mathbb{Re}(z)$) existe un numero natural que sea mayor que este numero. Cosa que es bastante clara por la propia definición de natural.
+
+Por ultimo, esta prolongación no se puede hacer para $z = 0$ pues en ese caso estariamos dividiendo por $0$ cosa que da indefinido
+
+\subsubsection*{e)}
+
+Ahora en este caso utilizaremos la definición de residuo que es:
+\begin{align*}
+  Res(f(z_0)) &= \lim_{z \to z_0} (z - z_0) f(z)\\
+  &= \lim_{z \to -m} (z + m) \frac{\Gamma(z + n)}{(z + n - 1)(z + n - 2)\ldots(z + m)\ldots(z + 1)z}\\
+  &= (z + m)\Gamma(z)\\
+  z + m &= 0\\
+  &= 0
+\end{align*}
+
+\subsection*{1.6.3.1}
+
+En este caso vamos a asumir que 
+\begin{align*}
+  \Gamma(x) = 2\int_0^\infty u^{2x - 1} e^{-u^2} du
+  \Gamma(y) = 2\int_0^\infty v^{2y - 1} e^{-v^2} dv
+\end{align*}
+
+Esta representación es una de las muchas definiciones que puede tomar $\Gamma$. Ahora para mostrar esto note que 
+\begin{align*}
+  \int \alpha f(x)dx = \alpha \int f(x) dx
+  \alpha = \int g(y) dy \\
+  \int g(y) dy \int f(x) dx = \int \int g(y) f(x) dy dx
+\end{align*}
+
+Por lo tanto solo tendriamos que reemplazar
+\begin{align*}
+  2\int_0^\infty u^{2x - 1} e^{-u^2} du 2\int_0^\infty v^{2y - 1} e^{-v^2} dv &= 4 \int_0^\infty \int_0^\infty u^{2x - 1}e^{-v^2}v^{2y - 1} e^{-v^2} du dv\\
+  &= 4 \int_0^\infty \int_0^\infty u^{2x - 1}v^{2y - 1} e^{-v^2 - u^2} du dv
+\end{align*}
+
+
+
+\end{document}

@@ -1,0 +1,93 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry} \usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Metodos Matematicos} % This is the name of the course 
+\newcommand{\examnum}{PreParcial 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Nombre:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section*{Primera Punto}
+\subsection*{Parte A}
+
+\textbf{Definición:} Una función es armonica si satisface la ecuación de Laplace. Esta ecuación dice basicamente $\nabla^2 u = 0$ donde esto es equivalente a $u_{xx} + u_{yy} = 0$.
+
+Por la definición anterior sabemos que lo que no interesa es saber las derivadas de esta función. Lo que nos da:
+\begin{align*}
+  U(x, y) &= xy + 2x + 2y\\
+  U_x(x, y) &= y + 2 \\
+  U_{xx} (x, y) &= 0 \\
+  U_y(x, y) &= x + 2 \\
+  U_{yy}(x, y) &= 0\\
+  U_{xx} + U_{yy} &= 0\\
+  0 + 0 &= 0.
+\end{align*}
+
+\subsection*{Parte B}
+
+\textbf{Definición:} Para encontrar la armonica conjugada debemos encontrar un $V$ tal que cumpla las ecuaciones de Cauchy - Riemman junto con $U$.
+
+\begin{align*}
+  U_x &= V_y\\
+  U_y &= -V_x\\
+  V_y &= x + 2\\
+  V_x &= -(y + 2)\\
+  v &= \int x + 2 dy\\
+  v &= yx + 2y + g(x)\\
+  v_x &= y + g'(x)\\
+  -y - 2 &= y + g'(x)\\
+  -2y - 2 &= g'(x)\\
+  g(x) &= \int -2y - 2 dx\\
+  g(x) &= -2yx - 2x + c
+\end{align*}
+
+Por otro lado
+
+\begin{align*}
+  v &= yx + 2y -2yx - 2x + c\\
+  v &= -yx + 2(y - x) + c\\
+  v &= \int -y - 2 dx \\
+  v &= -yx - 2x + g(y)\\
+  v_y &= -x + g'(y)\\
+  x + 2 &= -x + g'(y)\\
+  2x + 2 &= g'(y)\\
+  2xy + 2y + c &= g(y)\\
+  v &= -yx - 2x + 2xy + 2y + c\\
+  v &= xy - 2x + 2y + c
+\end{align*}
+
+
+\end{document}
