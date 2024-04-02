@@ -1,0 +1,187 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Welcome to the MAT320 Homework template on Overleaf -- just edit your
+% LaTeX on the left, and we'll compile it for you on the right.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------------
+% Based on a homework template by Dana Ernst.
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+
+\usepackage[spanish]{babel}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{ex}[2][Ejercicio]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{sol}[1][Solución]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1:}]}{\end{trivlist}}
+
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\noindent Sergio Montoya \hfill {\Large MATE2201: Tarea 2} \hfill \today
+
+\begin{ex}{1}
+  Problema \textbf{4} del Capitulo \textbf{3} del Rudin
+\end{ex}
+\begin{sol}
+  En este caso queremos mostrar por inducción que:
+  \begin{align*}
+    s_{2m} &= \frac{1}{2} - \frac{1}{2^m}\\
+    s_{2m + 1} &= 1 - \frac{1}{2^m}
+  \end{align*}
+
+  Ahora bien, la segunda ecuación es consecuencia directa de la primera dadas las definiciones iniciales. Desarrollemos rapidamente esto:
+  \begin{align*}
+    s_{2m + 1} &= \frac{1}{2} + s_{2m}\\
+    &= \frac{1}{2} + \left(\frac{1}{2} - \frac{1}{2^m}\right)\\
+    &= 1 - \frac{1}{2^m}
+  \end{align*}
+
+  Ahora bien, desarrollando esto solo nos queda demostrar la primera ecuación.
+
+  Con esto entonces podemos iniciar por los casos base. Que son :
+  \begin{align*}
+    s_{2} &= \frac{s_1}{2} = \frac{0}{2} \\
+    &= 0\\
+    s_3 &= \frac{1}{2} + s_2 = \frac{1}{2} + 0 \\
+    &= \frac{1}{2}
+  \end{align*}
+
+  Ahora, por inducción fuerte asuma que estas ecuaciones funcionan para $m\le r$. Entonces,
+  \begin{align*}
+    s_{2(r + 1)} &= \frac{s_{2r + 1}}{2} = \frac{1}{2} \left(1 - \frac{1}{2^r}\right)\\
+    &= \frac{1}{2} - \displaystyle\frac{1}{2^{r + 1}}
+  \end{align*}
+
+  Lo que demuestra esto por inducción.
+
+  Ahora bien, con esto ya encontrado podemos notar que cuando $n$ tiende a infinito los valores supremo e infimo son $1$ y $\frac{1}{2}$ respectivamente.
+\end{sol}
+
+\begin{ex}{1}
+  Problema \textbf{5} del Capitulo \textbf{3} del Rudin
+\end{ex}
+\begin{sol}
+  En este caso, tomaremos $\{a_n\}$ acotado pues es evidente que esto es verdad en este caso dado que en el enunciado se quita $\infty - \infty $
+
+  Ahora, sea $\left\{n_k\right\}$ una subserie de enteros positivos tales que \[
+    \displaystyle\lim_{k \to \infty} \left(a_{n_k} + b_{b_k}\right) = \displaystyle\lim\sup_{n \to \infty} (a_n + b_n)
+  \] Entonces, escoja una subserie de enteros positivos $\left\{k_m\right\}$ tal que \[
+    \displaystyle\lim_{m \to \infty} a_{n_{k_m}} = \displaystyle\lim\sup_{k\to\infty} a_{n_k}
+  \]
+
+  Ahora, la subserie $a_{n_{k_m}} + b_{n_{k_m}}$ aun converge al mismo limite que $a_{n_k} + b_{n_k}$. Ahora bien dado que $a_{n_k}$ esta acotado por arriba se sigue que $b_{n_{k_m}}$ converge a la diferencia:
+  \[
+    \displaystyle\lim_{m\to\infty} b_{n_{k_m}} = \displaystyle\lim_{m\to\infty} (a_{n_{k_m}} + b_{n_{k_m}}) - \displaystyle\lim_{m\to\infty} a_{n_{k_m}}
+  \]
+
+  Con esto mostramos que existen subsucesiones tales que convergen a $a$ y $b$ y dado que cada uno es el limite de una subsecuencia de cada sucesión entonces queda que $a \le \displaystyle\lim\sup_{n\to\infty} a_n$ y $b \le \displaystyle\lim\sup_{n\to\infty} b_n$ lo que nos lleva a la desigualdad que desebamos originalmente.
+\end{sol}
+
+\begin{ex}{2}
+  Problema \textbf{7} del Capitulo \textbf{3} del Rudin
+\end{ex}
+\begin{sol}
+  Dado que $\left(\sqrt{a_n} - \frac{1}{n}\right)^2 \ge 0$, se sigue que \[
+    \frac{\sqrt{a_n}}{n} \le \frac{1}{2}\left(a_n^2 + \frac{1}{n^2}\right)
+  \]
+
+  Ahora bien, $\displaystyle\sum a_n^2$ converge por comparación a $\displaystyle\sum a_n$. Dado que $\displaystyle\sum a_n$ converge tenemos que $a_n < 1$ para un $n$ grande, y por lo tanto $a_n^2 < a_n$. Ahora, dado que $\displaystyle\sum \displaystyle\frac{1}{n^2}$ tambien converge se sigue que $\displaystyle\sum \displaystyle\frac{\sqrt{a_n}}{n}$ converge.
+\end{sol}
+
+\begin{ex}{2}
+  Problema \textbf{8} del Capitulo \textbf{3} del Rudin
+\end{ex}
+\begin{sol}
+  Debemos mostrar que la suma parcial de esta serie por una secuencia de Cauchy. Para hacer esto, sea $S_n = \displaystyle\sum_{k=1}^{n} a_k (S_0 = 0)$, tal que $a_k = S_k - S_{k-1}$ para $k=1,2,\dots$. Sea $M$ un limite superior para $\left|b_n\right|$ y $\left|S_n\right|$ y sea $S = \displaystyle\sum a_n$ y $b = \displaystyle\lim b_n$. Escoja entonces $N$ tan largo que las siguientes tres inecuaciones se cumplan para todo $m > N$ y $n > N$
+  \begin{align*}
+    \left|b_nS_n - bS\right| < \displaystyle\frac{\epsilon}{3}\\
+    \left|b_mS_m - bS\right| < \displaystyle\frac{\epsilon}{3}\\
+    \left|b_m - b_n\right| < \displaystyle\frac{\epsilon}{3M}\\
+  \end{align*}
+
+  Entonces si $n > m > N$, tenemos que por la formula de suma por partes nos queda:
+  \begin{align*}
+    \displaystyle\sum_{k = m + 1}^{n} a_nb_n &= b_nS_n - b_mS_m + \displaystyle\sum_{k=m}^{n -1}(b_k - b_{k+1})S_k
+  \end{align*}
+
+  Estas suposiciones hacen que caiga inmediatamente que $\left|b_nS_n - b_mS_m\right| < \displaystyle\frac{2\epsilon}{3}$ y \[
+    \left|\displaystyle\sum_{k=m}^{n - 1}\left(b_k - b_{k + 1}\right)S_k\right| \le M \displaystyle\sum_{k = m}^{n - 1} \left| b_k - b_{k + 1}\right|
+  \]
+
+  Dado que la secuencia $\left\{b_n\right\}$ es monotonico tenemos:\[
+    \displaystyle\sum_{k=m}^{n - 1}|b_k - b_{k + 1}| = \left|\displaystyle\sum_{k = m}^{n - 1}(b_k - b_{k +1})\right| = \left|b_m - b_n\right| < \frac{\epsilon}{3M}
+  \]
+
+  De donde se sigue la inecuación deseada.
+\end{sol}
+
+\begin{ex}{3}
+  Problema \textbf{24} del Capitulo \textbf{3} del Rudin
+\end{ex}
+
+\begin{sol}
+  \section*{A)}
+
+  Necesitamos mostrar que 
+  \begin{enumerate}
+    \item $\{p_n\}$ es equivalente a si mismo. Que viene de $d(p_n, p_n) = 0$ para todo $n$.
+    \item Si $\{p_n\}$ es equivalente a $\{q_n\}$ entonces el inverso tambien es cierto. Esto se pude ver tambien por $d(p_n, q_n) = d(q_n, p_n)$.
+    \item Si $\{p_n\}$ es equivalente a $\{q_n\}$  y este a su vez es equivalente a $\{r_n\}$ entonces $\{p_n\}$ es equivalente a este. Esto se puede conseguir por la desigualdad triangular pues $d(p_n, r_n) \le d(p_n, q_n) + d(q_n, r_n)$ en donde como ambos son 0 lo unico que puede ser es $0$.
+  \end{enumerate}
+  
+  \section*{B)}
+
+  Sea $\{p_n\}$ equivalente a $\{p_n'\}$ y $\{q_n\}$ equivalente a $\{q_n'\}$. Entonces, desde que sabemos que todos los limites existen. Entonces tenemos:
+  \begin{align*}
+    \displaystyle\lim_{n\to\infty} d(p_n',q_n') \le \displaystyle\lim_{n\to\infty} (d(p_n',p_n) + d(p_n, q_n) + d(q_n, q_n')) = \displaystyle\lim_{n\to\infty}d(p_n, q_n)
+  \end{align*}
+
+  Ahora bien, por simetria sabemos que la inecuación inversa tambien existe y por tanto ambos limites son iguales.
+
+  Ahora, $X^*$  es un espacio metrico para el cual $\Delta(P,Q) \ge 0$ y por definición $\Delta(P, Q) = 0$. y por lo tanto la simetria y la desigualdad triangular en $X^*$ siguen de las mismas propiedades de $X$.
+
+  \section*{C)}
+
+  Suponga que $\{P_k\}$ es una sucesión de Cauchy en $X^*$. Escoja una subsucesion $\{p_{kn}\}$ in $X$ tal que $\{p_{kn}\}\in P_k$, $k=1,2,\ldots$ . Por cada $k$, sea $N_k$ sea el primer entero positivo tal que $d(p_{kn}, p_{km}) < 2^{-k}$ si $m \ge N_k$ y $n \ge N_k$. Sea $p_k = p_kN_k$. Observe que por esto $\displaystyle\lim_{n\to\infty} d(p_k, p_{kn}) \le 2^{-k}$. Ahora \[
+    d(p_k, p_l) \le d(p_k, p_{kn}) + d(p_{kn}, p_{ln}) + d(p_{ln}, p_l)
+  \]
+
+  Con esto entonces conseguimos \[
+    d(p_k, p_l) \le 2^{-k} + \Delta(p_k, p_l) + 2^{-k} + 2^{-l} < 3\cdot 2^{-k} + \Delta(p_k, p_l)
+  \]
+
+  Entonces se sigue que $\{p_k\}$ es una sucesión de Cauchy. Sea $P$
+
+  Definamos una nueva clase de equivalencia $P_\infty$ que contiene a $\{p^{k}\}$. Afirmamos que $\displaystyle\lim_{n \to \infty} P_n = P_\infty$. Para cualquier $\varepsilon > 0$, podemos encontrar $N \geq N_0$ tal que para todo $n \geq N$, $\Delta(P_n, P_{N_0}) < \varepsilon$, lo que implica $\Delta(P_n, P_\infty) < \varepsilon$. Por lo tanto, cada sucesión de Cauchy en $X^*$ converge a un elemento en $X^*$, lo que prueba que $X^*$ es completo.
+
+  \subsection*{D)}
+
+  Sabemos que \[
+    \Delta(P_q, P_q) = \displaystyle\lim_{n\to\infty} d(p,p)
+  \]
+
+  dado que $\{p\}$ y $\{q\}$ son constantes su distancia $d(p,q)$ no cambia conforme $n$ se hace infinito. y por tanto se llega a la conclusión solicitada.
+
+  \subsection*{E)}
+  Para demostrar que \( \varphi(X) \) esso en \( X* \), debemos probar que para cada elemento \( P \in X^* \) y para cualquier \( \epsilon > 0 \), existe un \( p \in X \) tal que la distancia entre \( \varphi(p) \) y \( P \) es menor que \( \epsilon \).
+  Tomamos un \( P \in X^* \) y consideramos una secuencia \( \{p_n\} \) en \( X \). Elegimos un \( p \in X \) de manera que la distancia entre \( p \) y \( p_n \) sea menor que \( \epsilon \) para algún \( n \). Entonces, tenemos:
+  \[ \Delta(\varphi(p), P) = \Delta(P_{p}, P) \leq \Delta(P_{p}, P_{p_n}) + \Delta(P_{p_n}, P) \]
+  donde \( P_{p_n} \) es el elemento de \( X^* \) que contiene la secuencia \( \{p_n\} \). Dado que \( \{p_n\} \in P \) y \( \Delta(P_{p}, P_{p_n}) = d(p, p_n) \), obtenemos:
+  \[ \Delta(\varphi(p), P) \leq d(p, p_n \]
+\end{sol}
+
+\end{document}

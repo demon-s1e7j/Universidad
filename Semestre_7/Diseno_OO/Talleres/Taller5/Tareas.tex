@@ -1,0 +1,69 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Welcome to the MAT320 Homework template on Overleaf -- just edit your
+% LaTeX on the left, and we'll compile it for you on the right.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------------
+% Based on a homework template by Dana Ernst.
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+
+\usepackage[spanish]{babel}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{ex}[2][]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{sol}[1][Solución]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1:}]}{\end{trivlist}}
+
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\noindent Sergio Montoya \hfill {\Large ISIS-1226: Taller 5} \hfill \today
+
+\section*{Requerimientos Funcionales}
+\subsection*{Enumeración}
+  \begin{enumerate}
+    \item Vender $N$ tickets tomando en cuenta la capacidad del vuelo, Que ese vuelo exista segun la ruta y la fecha.
+    \item Calcular el precio de $N$ tickets dependiendo del cliente que lo este comprando, la distancia del vuelo y la temporada en la que se este comprando el ticket.
+    \item Tener la información de clientes tomando en consideración si son empresariales o 
+  \end{enumerate}
+
+\subsection*{Historias de Uso}
+\subsubsection*{Descripción de los Usuarios}
+\begin{enumerate}
+  \item \textbf{Juan:}
+  \begin{itemize}
+    \item Trabaja para una empresa grande
+    \item Viaja frecuentemente
+    \item Su aerolinea favorita es $A$ aunque tambien utiliza $B$ y $C$ en algunos casos
+    \item Debe viajar preferiblemente el dia $31/12/2024$
+    \item Es el encargado por la empresa de comprar los tickets para el y sus dos compañeros
+  \end{itemize}
+\end{enumerate}
+\subsubsection*{Narración}
+  Juan desea comprar $3$ tickets para el vuelo del $31/12/2024$ de Bogota a Madrid. Entonces Juan abre la aplicación y se dirije a comprar estos tickets en la aerolinea $A$. Ingresa su identificador y todas las condiciones enunciadas previamente y las mete en el programa para comprar estos tickets. El programa entonces verifica que existan estos vuelos para el dia y la ruta que solicito en la aerolinea deseada. En caso de que exista el vuelo, verifica que tambien haya suficientes puestos sin vender para cumplir el numero de vuelos que necesita Juan. Si todas estas condiciones se cumplen entonces el programa pasa a calcular el costo de estos tiquetes. Para esto debe verificar que tipo de cliente es Juan por medio de su identificador y con respecto a eso calcular el precio que tendra cada uno de estos tickets pues un cliente corporativo tiene un descuento dependiendo de la empresa en la que trabaje. Luego de verificar la existencia del cliente y de si tiene descuento tomara en consideración la epoca del vuelo para saber cual es el costo por km recorrido. Por ultimo, encontrara la distancia que recorrera esta ruta. Con toda esta información el programa determinara el costo de los tres tiquetes. Una vez todas estas condiciones se cumplan se venderan y por tanto se registraran para este vuelo. Esta narración se centra en el camino en donde no ocurre ningun error. En los siguientes parrafos exploraremos cada uno de los posibles errores que se pudieron generar.
+
+  \begin{enumerate}
+    \item \textbf{No existen los vuelos:} En este caso el programa falla indicandole a Juan que el vuelo que necesita no existe para la aerolinea que desea no existe. Por lo tanto Juan vuelve a intentarlo con otra aerolinea en donde el proceso se vuelve a repetir o bien con otra fecha y el programa vuelve a intentar todo esto.
+    \item \textbf{No hay suficientes puestos sin vender en el vuelo:} Una vez mas genera un error el cual le informara a Juan y este de nuevo intentara con otras aerolineas para ese mismo dia o para otra fecha con la misma aerolinea o una combinación de ambas.
+    \item \textbf{El cliente no existe:} El programa vuelve a fallar y comienza el proceso en donde le solicita su información a Juan. El cual debe ingresar que es un cliente corporativo e ingresar el nombre de la empresa asi como el tamaño de la misma. Con esto ya el proceso puede reiniciar.
+  \end{enumerate}
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+
+\end{document}
