@@ -1,0 +1,62 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage[spanish]{babel}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Metodos Matematicos} % This is the name of the course 
+\newcommand{\examnum}{Tarea 4} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{}
+\subsection{}
+
+Saliendo de la función:\[   
+f(x) = 
+     \begin{cases}
+       -k&\quad -\pi< x < 0 \\
+       k &\quad 0 < x < \pi\\
+     \end{cases}
+\]
+
+entonces nos queda que la transformada de Fourier de esta señal queda unicamente entre $-\pi$ y $\pi$
+\begin{align*}
+  b_n &= \frac{1}{2\pi}\int_{-\pi}^{\pi}f(x)\sin\left(\frac{n\pi x}{2}\right)dx\\
+  &= \frac{k}{2\pi} \left[-\int_{-\pi}^0\frac{\sin(u)du}{n\pi} + \int_0^\pi \frac{\sin(u)du}{n\pi}\right]
+\end{align*}
+
+
+\end{document}
