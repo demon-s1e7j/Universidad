@@ -19,7 +19,7 @@
 \tikzexternalize
 
 \newcommand{\class}{Metodos Matematicos} % This is the name of the course 
-\newcommand{\examnum}{Tarea 1} % This is the name of the assignment
+\newcommand{\examnum}{Tarea 2} % This is the name of the assignment
 \newcommand{\examdate}{\today} % This is the due date
 \newcommand{\timelimit}{}
 
@@ -42,9 +42,46 @@
 
 \section*{Pregunta 1}
 
+\subsection*{a)}
+
+$$
+z^2(z-1-i) \implies z = \left\{ 0, 1 + i \right\} 
+$$
+
+Con esto
+\begin{align*}
+  2\pi i f'(0) = \int \frac{f(0) dz}{(z - 0)^2} = \frac{3 + i}{2}\\
+  \implies \pi \left( 3 + i \right) = -\pi + 3\pi i = \pi\left( -1 + 3i \right) 
+.\end{align*}
+
+\subsection*{b)}
+\begin{align*}
+  2\pi if\left( 1 + i \right) = \int \frac{f\left( 1 + i \right) }{z - 1 - i}\\
+  \frac{f\left( z + 2 \right) }{z^2}\\
+  \implies \frac{1 - 3i}{2}\\
+  \pi i\left( 1 - 3i \right) = 3\pi + \pi i = \pi\left( 3 + i \right) 
+.\end{align*}
+
 \section*{Pregunta 2}
 
 \section*{Pregunta 3}
+
+\subsection*{$\sin(z)$}
+
+En este caso
+\begin{align*}
+  \sin\left( z \right)  = z \frac{-1}{3!}x^3 + \frac{1}{5!}x^5 - \ldots + \frac{(-1)^n}{(2n + 1)!}x^{2n+1}\\
+.\end{align*}
+
+Dado que es analítica en todo el plano entonces el radio de convergencia es $\mathbb{R}$
+
+\subsection*{$\sin^3(z)$}
+
+\begin{align*}
+  \sin^3\left( z \right) = \frac{3}{4}\sin\left( z \right) - \frac{1}{4}\sin\left( 3z \right) = 1 - \sum_{n=1}^{\infty} 3^{2n + 1}
+.\end{align*}
+
+Dado que es analítica en todo el plano entonces el radio de convergencia es $\mathbb{R}$
 
 \subsection*{$\ln(z + 1)$}
 
@@ -71,7 +108,13 @@ Por lo tanto en la formula queda como:
 
 \section*{Pregunta 7}
 
+\subsection*{a)}
+
+Tomemos el semicirculo superior orientado positivamente. Ademas, note que $\displaystyle \lim_{\theta \to \infty} \frac{1}{a + \cos\left( \theta \right) } = 0$
+
 \section*{Pregunta 8}
+
+
 
 \section*{Pregunta 9}
 

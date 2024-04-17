@@ -42,21 +42,253 @@
 
 \section*{Pregunta 1}
 
+\subsection*{Parte A}
+
+\begin{align*}
+  z &= 3 + 4i \\
+  z &= 5e^{\alpha} \\
+  \alpha &= \arctan\left( \frac{4}{3} \right)  \approx 53^{\circ}\\
+  k &= 0,1 \\
+  n &= 2 \\
+  \left( 3 + 4i \right)^2 &= 5e^{\frac{\alpha}{2}}\\
+  &= -5e^{\frac{\alpha}{2}} \\
+.\end{align*}
+
+\subsection*{Parte B}
+
+En este caso tenemos $f\left( z \right) = z^{3}$ por lo tanto:
+\begin{align*}
+  z\cdot z\cdot z &= \left( \left( x^2 - y^2 \right) + i\left( 2xy \right)  \right) \cdot \left( x + iy \right) \\
+  &= x\left( x^2 - y^2 \right)  - 2xy^2 + i 2x^2y + iy\left( x^2 - y^2 \right)  \\
+  &= x^{3} - xy^2 - 2xy^2 + i 2x^2y + ix^2y - iy^3 \\
+  &= \left( x^3 - 3xy^2 \right)  + i\left( 3xy^2 - y^{3} \right) 
+.\end{align*}
+
+\subsection*{Parte C}
+
 \section*{Pregunta 2}
+
+\subsection*{Parte A}
+
+En este caso dado que debemos utilizar las ecuaciones de Cauchy Rieman solo debemos comprobar que:
+\begin{align*}
+  \frac{du}{dx} = \frac{dv}{dy}\\
+  \frac{du}{dy} = - \frac{dv}{dx}
+.\end{align*}
+
+Para esto primero debemos ver que $2z^2 - 1 = 2\left( x + iy \right)^2 - 1 = 2 \left( x^2 - y^2 - 1 \right) + i\left( 4xy \right) $ por lo tanto
+\begin{align*}
+  \frac{du}{dx} = 4x\\
+  \frac{du}{dy} =- 4y\\
+  \frac{dv}{dx} = 4y\\
+  \frac{dv}{dy} = 4x
+.\end{align*}
+
+Lo cual muestra que las ecuaciones de Cauchy-Riemmann se cumplen.
+
+\subsection*{Parte B}
+
+En este caso pasemos de una vez a saber que $|z|^2 = x^2 - y^2$ por lo tanto, $v = 0$ esto quiere decir que en el único punto en donde las ecuaciones de Cauchy-Riemmann se cumplen es en 0 pero para ser analíticas debe ser en una vecindad. Por lo tanto, dado que no es una función analítica no puede ser una función holomorfa.
 
 \section*{Pregunta 3}
 
+\subsection*{Parte A}
+
+Esto se da pues lo que se describe ahí es literalmente una función analítica. Por lo tanto, como se mostró en clase por ser analítica es holomorfa.
+
+\subsection*{Parte B}
+
+\begin{align*}
+  z &= re^{i\theta}\\
+  &= r\left( \cos\left( \theta \right) + i \sin\left( \theta \right)  \right)  \\
+  u &= r\cos\left( \theta \right)  \\
+  v &= r\sin\left( \theta \right)  \\A
+  \frac{du}{dr} &= \cos\left( \theta \right)  \\
+  \frac{du}{d\theta} &= -r\sin\left( \theta \right)  \\
+  \frac{dv}{dr} &= \sin\left( \theta \right)  \\
+  \frac{dv}{d\theta} &= r\cos\left( \theta \right)  \\
+  \frac{du}{dr} &= \frac{1}{r}\frac{dv}{d\theta} \\
+  \cos\left( \theta \right)  &= \cos\left( \theta \right)  \\
+  \frac{du}{d\theta} &= -\frac{1}{r}\frac{dv}{d\theta} \\
+  \sin\left( \theta \right)  &= \sin\left( \theta \right) 
+.\end{align*}
+
+\subsection*{Parte C}
+
+\begin{align*}
+  u &= \frac{\cos\left( \theta \right) }{r}\\
+  \frac{du}{dr} &= -\frac{\cos\left( \theta \right) }{r^2}\\
+  \frac{du}{d\theta} &= -\frac{\sin\left( \theta \right) }{r} \\
+  v &= -\frac{\sin\left( \theta \right) }{r} \\
+  \frac{dv}{dr} &= \frac{\sin\left( \theta \right) }{r^2} \\
+  \frac{dv}{d\theta} &= -\frac{\cos\left( \theta \right) }{r} \\
+.\end{align*}
+
+Por lo tanto se cumple en todos los puntos. A excepción de en el $0$ pues en ese caso $r=0$ y se hace indeterminado.
+
 \section*{Pregunta 4}
+
+\subsection*{Parte A}
+
+\begin{align*}
+  f(z) &= z^2 \\
+  z^2 &= \left( x^2 - y^2 \right) + i 2xy\\
+  \frac{\partial u}{\partial x} &= 2x \\
+  \frac{\partial v}{\partial x}  &= 2y \\
+  f'(z) &= 2x + i_2y \\
+.\end{align*}
+
+\subsection*{Parte B}
+
+\begin{align*}
+  f(z) &= \left( x^3 - 3xy^2 \right)  + i\left( 3x^2y - y^{3} \right) \\
+  \frac{\partial u}{\partial x}  &= 3x^2 - 3y^2 \\
+  \frac{\partial v}{\partial x}  &= 3xy\\
+  f'(z) &= 3x^2 - 3y^2 + i 3xy \\
+.\end{align*}
+
+\subsection*{Parte C}
+
+Como ya mostramos en los pasos anteriores $f'(z) = nz^{n-1}$ asumiremos el paso base como ya mostrado y pasaremos al paso inductivo. En el cual partiremos suponiendo que esto se cumple para $n$ deberemos conseguir  $n+1$
+\begin{align*}
+  f(z) &= z^{n+1} \\
+  &= z^{n}\cdot z \\
+  f'(z) &= nz^{n-1}z + z^{n} \\
+  &= nz^{n} + z^{n} \\
+  &= \left( n+1 \right)z^{n}  \\
+.\end{align*}
+
+\subsection*{Parte D}
+
+Siendo esta una sumatoria (y habiendo mostrado en el punto anterior que $\left( z^{n} \right)' = nz^{n-1}$ esta derivada queda:
+\begin{align*}
+  f'\left( z \right)  &= \displaystyle\sum_{i=0}^{n} a_i \cdot i\cdot z^{i-1} \\
+.\end{align*}
+
+\subsection*{Parte E}
+
+\begin{align*}
+  f(z) &= \frac{1}{z} = \frac{1}{x + iy} = \frac{x}{x^2 + y^2} - i \frac{y}{x^2 + y^2}\\
+  u &= \frac{x}{x^2 + y^2} \\
+  \frac{\partial u}{\partial x} &= \frac{\left( x^2+y^2 \right) - x\left( 2x \right) }{\left( x^2 + y^2 \right)^{2}} \\
+  \frac{\partial v}{\partial x}  &= \frac{2xy}{\left( x^2 + y^2 \right)^{2}} \\
+  f'(z) &=  \frac{\left( x^2+y^2 \right) - x\left( 2x \right) }{\left( x^2 + y^2 \right)^{2}} +\frac{2xy}{\left( x^2 + y^2 \right)^{2}} 
+.\end{align*}
 
 \section*{Pregunta 5}
 
+\subsection*{Parte A}
+
+Lo primero es verificar que sea armónica. Para esto nos interesa saber si cumple con la ecuación de Laplace $\nabla ^2 u = 0 $ 
+\begin{align*}
+  \frac{\partial u}{\partial x}  &= 2y + 3y^2 \\
+  \frac{\partial^2 u}{\partial x^2}  &= 0 \\
+  \frac{\partial u}{\partial y}  &= 2x + 6xy - 6y^2 \\
+  \frac{\partial^2 u}{\partial y^2} &= 6x - 12y \\
+.\end{align*}
+
+Por lo tanto, esta función no es armónica.
+
+\subsection*{Parte B}
+
+\begin{align*}
+  \frac{\partial u}{\partial x} &= e^{x}\left( x\cos\left( y \right) - y\sin\left( y \right)  \right) + e^{x}\cos\left( y \right)  \\
+  \frac{\partial^2 u}{\partial x^2} &= e^{x}\left( x\cos\left( y \right) - y\sin\left( y \right)  \right) + 2e^{x}\cos\left( y \right)  \\
+  \frac{\partial u}{\partial y}  &= -e^{x}x\sin\left( y \right) - e^{x}\left( \sin\left( y \right) + y\cos\left( y \right)  \right)  \\
+  \frac{\partial^2 u}{\partial y^2} &= -e^{x}x\cos\left( y \right) -e^{x}\left( 2\cos\left( y \right) - y\sin\left( y \right)  \right)  \\
+  \frac{\partial^2 y}{\partial x^2} + \frac{\partial^2 u}{\partial y^2}  &= 0 \\
+.\end{align*}
+
+Dado que ahora sabemos que es armónica encontremos su armónica conjugada
+
+\begin{align*}
+  \frac{\partial v}{\partial x} &= e^{x}x\cos\left( y \right) -e^{x}y\sin\left( y \right) + e^{x}\cos\left( y \right)  \\
+  \int \frac{\partial v}{\partial x} dy &= e^{x}x\sin\left( y \right) - e^{x}\left( -y\cos\left( y \right) + \sin\left( y \right)  \right) + g\left( x \right) + e^{x}\sin\left( y \right) \\
+  &=  e^{x}x\sin\left( y \right) + e^{x}y\cos\left( y \right) + g\left( x \right) \\
+  - \frac{\partial u}{\partial y} &= + e^{x}x\sin\left( y \right) + e^{x}\sin\left( y \right) + e^{x}y\cos\left( y \right) \\
+  g(x) &= C \\
+  f(u,v) &= e^{x}x\cos\left( y \right) - y\sin\left( y \right) + i\left( e^{x}\sin\left( y \right) + e^{x}y\cos\left( y \right) + C \right)  \\
+.\end{align*}
+
 \section*{Pregunta 6}
+
+Dado que $f$ es holomorfa
+\begin{align*}
+  \frac{\partial f}{\partial \overline{z}} &= \frac{\partial u}{\partial \overline{z}} +i \frac{\partial v}{\partial \overline{z}}  \\
+  &= \frac{\partial u}{\partial x} \frac{\partial x}{\partial \overline{z}} +i \frac{\partial v}{\partial x} \frac{\partial x}{\partial \overline{z}}  \\
+  &= \frac{\partial u}{\partial y} \frac{\partial y}{\partial \overline{z}} + \frac{\partial v}{\partial y} \frac{\partial v}{\partial \overline{z}}  \\
+  \frac{\partial u}{\partial x} + \frac{\partial u}{\partial y} &= 0 \\
+  \frac{\partial v}{\partial x} + \frac{\partial v}{\partial y} &= 0 \\
+  \frac{\partial f}{\partial \overline{z}} &= 0 
+.\end{align*}
+
+Ahora suponga $\frac{\partial f}{\partial z} = 0$. Luego $\frac{\partial u}{\partial \overline{z}} = 0 \land \frac{\partial v}{\partial \overline{z}} =0$.
+\begin{align*}
+  \frac{\partial u}{\partial x} \frac{\partial x}{\partial \overline{z}} + \frac{\partial u}{\partial y} \frac{\partial y}{\partial \overline{z}} &= 0\\
+  \frac{\partial v}{\partial x} \frac{\partial x}{\partial \overline{z}} + \frac{\partial v}{\partial y} \frac{\partial y}{\partial \overline{z}} &= 0 \\
+  \frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y}  \\
+  \frac{\partial u}{\partial y} &= - \frac{\partial v}{\partial x} 
+.\end{align*}
 
 \section*{Pregunta 7}
 
+\subsection*{Parte A}
+
+\begin{align*}
+  \sin\left( z \right) &= \frac{e^{iz}-e^{-iz}}{2i}\\
+  &= \frac{-ie^{iz}+ie^{-iz}}{2} \\
+  &= -i \sinh\left( iz \right)  \\
+.\end{align*}
+
+\subsection*{Parte B}
+esto se da literalmente por definición:
+\begin{align*}
+  \cos\left( z \right) &= \frac{e^{iz}+e^{-iz}}{2} = \cosh\left( iz \right)  \\
+.\end{align*}
+\subsection*{Parte C}
+\begin{align*}
+  -i\sin\left( iz \right) &= -i\left( \frac{e^{i\left( iz \right) -e^{-i\left( iz \right) }}}{2i} \right) = \frac{e^{z}-e^{-z}}{2}=\sinh\left( z \right)  \\
+.\end{align*}
+
+\subsection*{Parte D}
+
+\begin{align*}
+  \cos\left( iz \right) &= \frac{e^{i\left( iz \right) }+e^{-i\left( iz \right) }}{2}=\frac{e^{-z}+e^{z}}{2}=\cosh\left( z \right)  \\
+.\end{align*}
+
 \section*{Pregunta 8}
 
+\subsection*{Parte A}
+
+Note que $\frac{2z+1}{z^2+z}$ tiene polos en $z=0$ y $z=-1$, pero $-1\not\in |z| = \frac{1}{2}$.
+\begin{align*}
+  \oint_{c} \frac{2z + 1}{z^{2}+z}dz &= \oint \frac{A}{z}+\frac{B}{z+1}dz\\
+ 2z + 1 &= A\left( z+1 \right) + Bz \\
+ A &= 1 \\
+ B &= -1 \\
+ \oint \frac{1}{z}dz &=  2\pi i \\
+.\end{align*}
+
+\subsection*{Parte B}
+
+Nótese que $C$ es un circulo centrado en $3i$ y de radio 1. Ademas, como dijimos en el punto anterior la función tiene polos en $0$ y en $-1$ y dado que no están en ese circulo esta integral es $0$
+
 \section*{Pregunta 9}
+
+Vamos a utilizar la formula de Integral de Cauchy.
+\begin{align*}
+  f(z) =e^{iz}\\
+.\end{align*}
+
+Esta función sabemos que es holomorfa. Para notarlo solo necesitamos de las ecuaciones de Cauchy-Riemmann pero dado que ya se ha hecho previamente se asume como evidente.
+
+\begin{align*}
+  \int_c \frac{f(z)}{\left( z - z_0 \right)^{n+1}}dz &= \frac{f^{\left( n \right) }2i\pi}{n!}\\
+  z_0 = 0\\
+  f^{(2)}\left( z \right) = -e^{iz}\\
+  \int_c \frac{f(z)}{\left( z - z_0 \right)^{n+1}}dz &= \frac{-e^{i\cdot 0}2i\pi}{2} \\
+  &= -i\pi \\
+.\end{align*}
 
 \section*{Pregunta 10}
 
