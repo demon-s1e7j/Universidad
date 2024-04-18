@@ -1,0 +1,5 @@
+\contentsline {chapter}{\numberline {1}Problema 1}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Enunciado}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Solución}{2}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}$\DOTSB \tmspace +\thickmuskip {.2777em}\DOTSB \Relbar \joinrel \Rightarrow \tmspace +\thickmuskip {.2777em}$}{2}{subsection.1.2.1}%
+\contentsfinish 
