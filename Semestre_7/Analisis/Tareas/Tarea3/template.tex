@@ -31,5 +31,78 @@ Demuestre el siguiente teorema:
 }
 \subsection{$\implies$}
 
+Sea $\left\{ a_n \right\} $ una sucesión tal que la serie \[
+\displaystyle \sum_{n=1}^{\infty} a_n = L \neq \infty
+.\] 
+
+\chapter{Problema 2}
+\section{Enunciado}
+Sea \[
+x_{n+1} = \frac{1}{2}x_n + \frac{1}{x_n};\ x_0 = 2
+.\] 
+\begin{enumerate}
+  \item[\textbf{a.}] Demuestre que $x_n^2\ge 2$. \textit{Ayuda:} considere la ecuación: \[
+  x_n^2 - 2x_{n+1}x_n + 2 = 0
+.\] donde la incógnita es $x_n$. ¿Que puede decir del discriminante de dicha ecuación.
+  \item[\textbf{b.}] Demuestre que $x_{n+1}\le x_n$, el punto anterior puede ser de ayuda.
+  \item[\textbf{c.}] Demuestre que la sucesión $\left( x_n \right)_n$ es convergente y que su limite es $\sqrt{2} $
+\end{enumerate}
+\section{Solución}
+
+
+\chapter{Problema 3}
+\section{Enunciado}
+Cada racional $x$ puede ser escrito en la forma $x = \frac{m}{n}$, donde $n > 0$, con $m$ y $n$ enteros sin divisores en común. Cuando $x = 0$, tomamos $n = 1$. Considere la función $f$ definida en $R^{1}$ por \[
+f(x) =
+\begin{cases}
+  0&\quad x\in \mathbb{Q}'\\
+  \frac{1}{n}&\quad \left( x = \frac{m}{n} \right) 
+\end{cases}
+.\] Pruebe que $f$ es continuo en cada punto irracional, y que $f$ tiene una discontinuidad simple en cada punto racional.
+\section{Solución}
+
+
+
+\chapter{Problema 4}
+\section{Enunciado}
+
+\dfn{Propiedad del valor Intermedio}{Si $f(a)<c<f(b)$, entonces $f(x) = c$ para algún $x$ entre $a$ y $b$}
+
+Sea $f$ una función real con dominio en $R^{1}$ que tiene la propiedad del valor intermedio. Suponga también, para cada racional $r$, que el conjunto de todos los $x$ con $f(x)=r$ es cerrado. Pruebe que $f$ es continuo.
+
+\subsection{Ayuda}
+Si $x_n \to x_0$ pero $f\left( x_n \right) > r > f\left( x_0 \right) $ para algún $r$ y todo $n$, entonces  $f\left( t_n \right) = r$ para algún $t_n$ entre $x_0$ y $x_n$ ; por lo tanto $t_n \to  x_0$. Encuentre una contradicción.
+
+\section{Solución}
+
+\chapter{Problema 5}
+\section{Enunciado}
+
+Asuma que $f$ es una función real continua definida en $\left( a, b \right) $ tal que \[
+f\left( \frac{x + y}{2} \right) \le \frac{f(x) + f(y)}{2}
+.\] para todo $x, y \in \left( a,b \right) $. Pruebe que $f$ es convexo.
+\section{Solución}
+
+
+\chapter{Problema 6}
+\section{Enunciado}
+
+Sea \[
+X = \left\{ f:\left[ 0, 2\pi \right] \to R: \text{$f$ continua} \right\} 
+.\] Naturalmente $X$ tiene una estructura de espacio vectorial.
+\begin{enumerate}
+  \item[\textbf{a.}] Defina \[
+      \left<f, g \right> = \int_0^{2\pi}f\left( x \right) g\left( x \right) dx	
+    .\] Muestre que $\left< \cdot, \cdot\right>$ define un producto interno sobre $X$.
+  \item[\textbf{b.}] A partir del producto interno definido en el punto anterior, se puede definir una norma como sigue: \[
+      \left| \left| u \right|  \right|  = \sqrt{\left<u, u \right>} 
+      .\] y a partir de dicha norma una métrica: \[
+      d(u, v) =  \left| \left| u - v \right|  \right| 
+      .\] Calcule para $m \neq n$ \[
+      \left| \left| \sin\left( mx \right) - \sin\left( nx \right)  \right|  \right| 
+    .\] 
+  \item[\textbf{c.}] Concluya que ninguna bola cerrada centrada en el origen de $X$ es compacta. ¿Tiene $X$ dimensión finita?
+\end{enumerate}
+
 
 \end{document}
