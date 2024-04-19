@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.3.31)  18 APR 2024 10:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.3.31)  19 APR 2024 09:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1445,10 +1445,6 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 (./template.toc
 Missing character: There is no ; in font nullfont!
-
-LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 4.
-
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -1466,57 +1462,15 @@ been already used, duplicate ignored
 l.19 
       [1
 
-{/usr/share/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}]
+]
 Chapter 1.
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 2.77695pt
-(hyperref)                removed on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathrel' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\std@equal' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathrel' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mkern' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\Rightarrow' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 2.77695pt
-(hyperref)                removed on input line 32.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 32.
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 25.
 
 [2
 
-]
+{/usr/share/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}]
 Chapter 2.
 [3
 
@@ -1551,13 +1505,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 37454 strings out of 476014
- 745013 string characters out of 5792005
- 1938187 words of memory out of 5000000
- 58863 multiletter control sequences out of 15000+600000
- 605598 words of font info for 168 fonts, out of 8000000 for 9000
+ 37300 strings out of 476014
+ 741728 string characters out of 5792005
+ 1943187 words of memory out of 5000000
+ 58711 multiletter control sequences out of 15000+600000
+ 601832 words of font info for 158 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 99i,8n,102p,545b,1719s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,8n,102p,545b,1421s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb></usr/share/texmf
 -dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
@@ -1569,10 +1523,10 @@ msfonts/cm/cmssbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mti10.pfb></usr/share/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/shar
 e/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/share/texmf-dist/fonts/ty
 pe1/public/newtx/txexs.pfb>
-Output written on template.pdf (8 pages, 156450 bytes).
+Output written on template.pdf (8 pages, 156981 bytes).
 PDF statistics:
- 283 PDF objects out of 1000 (max. 8388607)
- 199 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
- 335 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 273 PDF objects out of 1000 (max. 8388607)
+ 192 compressed objects within 2 object streams
+ 31 named destinations out of 1000 (max. 500000)
+ 315 words of extra memory for PDF output out of 10000 (max. 10000000)
 

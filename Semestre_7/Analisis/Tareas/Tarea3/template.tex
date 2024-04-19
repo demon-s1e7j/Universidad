@@ -24,16 +24,22 @@ Demuestre el siguiente teorema:
 \displaystyle\lim_{n\to \infty}\frac{a_n}{b_n}= L \neq 0
 .\] entonce $\sum_n a_n$ converge si y solo si $\sum_n b_n$ converge}
 \section{Solución}
-\nt{Nótese que:
-  \begin{enumerate}
-    \item Dado que $a_n > 0$ y $a_n > 0$ el caso en el que $\sum_{n=1}^{\infty} a_n = -\infty$ es imposible al igual que este caso para $b_n$.
-  \end{enumerate}
-}
-\subsection{$\implies$}
 
-Sea $\left\{ a_n \right\} $ una sucesión tal que la serie \[
-\displaystyle \sum_{n=1}^{\infty} a_n = L \neq \infty
-.\] 
+\dfn{Test de Comparación}{Suponga que existe un entero $N$ tal que $0 \le a_n \le b_n$ para todo $n \ge N$. Si $\displaystyle \sum_{n=1}^{\infty} b_n$ converge entonces $\displaystyle \sum_{n=1}^{\infty} a_n$ converge.}
+
+En este caso vamos a tomar la sucesión $\frac{a_n}{b_n}$ como una sucesión que converge a $L$. Ademas, dado que $a_n > 0$ y $b_n > 0$ sabemos que $L > 0$. Ahora bien, dado que esta serie converge a $L$ sabemos que existe un $N$ tal que para todo $n \ge N$ se cumple: \[
+\frac{1}{2}L \le  \frac{a_n}{b_n} \le 2L
+.\] y con esto sabiendo que $b_n > 0$ entonces podemos encontrar rápidamente 
+\begin{align*}
+  \frac{1}{2}Lb_n \le \frac{a_n}{b_n}b_n \le 2Lb_n\\
+  \frac{1}{2}Lb_n \le a_n \le 2Lb_n
+.\end{align*}
+
+Ahora con esto, podemos dividir la demostración para cada caso.
+\begin{enumerate}
+  \item[$\implies$] Sea $\left\{ a_n \right\} $ una sucesión que converge. Ahora bien, sabemos que para un $N$ se cumple que $\frac{1}{2}Lb_n \le a_n$ y dado que $\frac{1}{2}L$ es una constante entonces podemos saber por el test de comparación que $b_n$ converge.
+  \item[$\impliedby$] Sea $\left\{ b_n \right\} $ una sucesión que converge. Ahora bien, sabemos que para un $N$ se cumple que $a_n \le 2L b_n$ y dado que $2L$ es una constante entonces podemos saber por el test de comparación que $a_n$ converge.
+\end{enumerate}
 
 \chapter{Problema 2}
 \section{Enunciado}
@@ -48,6 +54,12 @@ x_{n+1} = \frac{1}{2}x_n + \frac{1}{x_n};\ x_0 = 2
   \item[\textbf{c.}] Demuestre que la sucesión $\left( x_n \right)_n$ es convergente y que su limite es $\sqrt{2} $
 \end{enumerate}
 \section{Solución}
+
+\begin{enumerate}
+  \item[\textbf{a.}] %TODO
+  \item[\textbf{b.}] %TODO
+  \item[\textbf{c.}] %TODO
+\end{enumerate}
 
 
 \chapter{Problema 3}
