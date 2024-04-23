@@ -73,7 +73,11 @@ f(x) =
 .\] Pruebe que $f$ es continuo en cada punto irracional, y que $f$ tiene una discontinuidad simple en cada punto racional.
 \section{Solución}
 
-En este caso, lo que nos pide el enunciado es esencialmente lo mismo que mostrar que $\displaystyle \lim_{n \to x} f\left( n \right) = 0 $ para todo $x$.
+En este caso, lo que nos pide el enunciado es esencialmente lo mismo que mostrar que $\displaystyle \lim_{t \to x} f\left( t \right) = 0 $ para todo $x$. Para esto sea $\varepsilon > 0$ y sea $x$ cualquier numero  real. Sea $N$ el único entero positivo tal que $N < \frac{1}{\varepsilon} < N + 1$ y para cada entero positivo $n = 1, 2, 3, \ldots, N$ sea $k_n$ un entero tal que \[
+\frac{k_n}{n} \le x \le  \frac{k_n + 1}{n}
+.\] Entonces, por cada $n$ sea $\delta_n = \frac{1}{n}$ si $x = \frac{k_n}{n}$, en cualquier otro caso sea $\delta_n = \min\left( x - \frac{k_n}{n}, \frac{k_n + 1}{n} - x \right) $. Finalmente, sea $\delta = \min\left( \delta_1, \ldots, \delta_N \right) $. Ahora con todo esto definido, podemos decir que $\left| f\left( t \right)  \right| < \varepsilon$ si $0 < \left| x - t \right| < \delta$. Esto es bastante claro para un numero irracional, sin embargo, si $t$ es racional y $t = \frac{m}{n}$, tenemos necesariamente  que $n > N$ por la manera en la que escogimos $\delta_n$ para  $n \le  N$. Por lo tanto, si $t$ es racional, entonces $f(t) \le \frac{1}{N + 1} < \epsilon$. Con lo que completamos la prueba.
+
+Una vez tenemos que $\displaystyle \lim_{t \to x} f(t) = 0$. Entonces nos siguen ambas cosas pues para cualquier irracional se cumple que $\displaystyle \lim_{t \to x} f\left( t \right) = f\left( t \right) = 0$ y lo contrario ocurre para cualquier racional.
 
 \chapter{Problema 4}
 \section{Enunciado}
@@ -86,6 +90,8 @@ Sea $f$ una función real con dominio en $R^{1}$ que tiene la propiedad del valo
 Si $x_n \to x_0$ pero $f\left( x_n \right) > r > f\left( x_0 \right) $ para algún $r$ y todo $n$, entonces  $f\left( t_n \right) = r$ para algún $t_n$ entre $x_0$ y $x_n$ ; por lo tanto $t_n \to  x_0$. Encuentre una contradicción.
 
 \section{Solución}
+
+La contradicción que se nos pide encontrar en la ayuda esta en que $x_0$ es un punto limite del conjunto de $t$ tal que $f\left( t \right) = r$, sin embargo, $x_0$ no pertenece al conjunto. Lo anterior, es una contradicción directa con que este conjunto es cerrado.
 
 \chapter{Problema 5}
 \section{Enunciado}
