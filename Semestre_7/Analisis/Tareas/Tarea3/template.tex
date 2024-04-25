@@ -99,8 +99,49 @@ La contradicción que se nos pide encontrar en la ayuda esta en que $x_0$ es un 
 Asuma que $f$ es una función real continua definida en $\left( a, b \right) $ tal que \[
 f\left( \frac{x + y}{2} \right) \le \frac{f(x) + f(y)}{2}
 .\] para todo $x, y \in \left( a,b \right) $. Pruebe que $f$ es convexo.
+
 \section{Solución}
 
+Debemos mostrar que  \[
+f\left( \lambda x + \left( 1 - \lambda \right) y \right) \le \lambda f\left( x \right) + \left( 1 - \lambda \right) f\left( y \right) 
+.\] Para todos los números de la forma $\lambda = \frac{k}{2^{n}}$, donde $k$ es un entero no negativo menor o igual a $2^{n}$. Esto lo haremos por inducción en $n$.
+
+\begin{enumerate}
+  \item[\textbf{Caso $n = 0$ :}] Para esto por la definición de $\lambda$ nos queda que los únicos valores que puede tomar son  $0$ y $1$.
+    \begin{enumerate}
+      \item[$\lambda = 0$] En este caso:
+	\begin{align*}
+	  f\left( 0\cdot x + \left( 1 - 0 \right) y \right) \le 0 f\left( x \right) + \left( 1 - 0 \right) f\left( y \right) \\
+	  f\left( y \right) \le \left( 1 \right) f\left( y \right) 
+	.\end{align*}
+	Por lo tanto se cumple la desigualdad.
+      \item[$\lambda = 1$ ] En este caso:
+	\begin{align*}
+	  f\left( 1 x + \left( 1 - 1 \right) y \right) \le 1 f\left( x \right) + \left( 1 - 1 \right) f\left( y \right) \\
+	  f\left( x \right) \le f\left( x \right) 
+	.\end{align*}
+
+	Por lo tanto también se cumple la desigualdad.
+    \end{enumerate}
+
+  \item[\textbf{Suposición :}] Suponga que el resultado se cumple para todo $n \le r$, y considere $\lambda = \frac{k}{2^{r + 1}}$.
+  \item[\textbf{Demostración :}] Si $k$ es par, digamos $k = 2l$, entonces $\frac{k}{2^{r+1}} = \frac{l}{2r}$ y podemos apelar a la hipótesis de inducción. Ahora suponga que $k$ es impar. Entonces $1 \le k \le 2^{r + 1} - 1$, y entonces podemos tener los números $l = \frac{k-1}{2}$ y $m = \frac{k + 1}{2}$ son enteros con $0 \le l \le m \le 2^{r}$. Con esto podemos entonces re escribir \[
+  \lambda = \frac{s + t}{2}
+  .\] donde $s = \frac{k - 1}{2^{r + 1}} = \frac{l}{2^{r}}$ y $t = \frac{k + 1}{2^{r + 1}} = \frac{m}{2^{r}}$. Tenemos entonces \[
+  \lambda x + \left( 1 - \lambda \right) y = \frac{\left[ sx + \left( 1 - s \right) y \right] + \left[ tx + \left( 1 - t \right) y \right] }{2}
+  .\]  Por lo tanto por hipótesis de inducción 
+  \begin{align*}
+    f\left( \lambda x + \left( 1 - \lambda \right) y \right) &\le \frac{f\left( sx + \left( 1 - s \right) y \right) + f\left( tx + \left( 1 - t \right) y \right) }{2} \\
+							     &\le \frac{sf\left( x \right) + \left( 1 - s \right) f\left( y \right) + tf\left( x \right) + \left( 1 - t \right) f\left( y \right) }{2}\\
+							     &= \left( \frac{s + t}{2} \right) f\left( x \right)  + \left( 1 - \frac{s + t}{2} \right) f\left( y \right) \\
+							     &= \lambda f\left( x \right) + \left( 1 - \lambda \right) f\left( y \right) 
+  .\end{align*}
+
+  Esto completa la inducción.
+  Ahora por cada $x$ y $y$ fijadas  y cada lado de la inecuación: \[
+  f\left( \lambda x + \left( 1 - \lambda \right) y \right) \le \lambda f\left( x \right) + \left( 1 - \lambda \right) f\left( y \right) 
+  .\] son funciones continuas de $\lambda$. Por lo tanto,  el conjunto en el cual la inecuación se sostiene (la imagen inversa cerrada del conjunto $\left[ 0, \infty \right) $ bajo el mapa $\lambda \to \lambda f\left( x \right) + \left( 1 - \lambda \right) f\left( y \right) - f\left( \lambda x + \left( 1 - \lambda \right) y\right) $) es un conjunto cerrado. Dado que contiene todos los puntos $\frac{k}{2^{n}}$, $0 \le k \le n,\ n = 1,2,\ldots$ debe contener una cerradura de este conjunto de puntos. Por lo tanto $f$ es convexo.
+\end{enumerate}
 
 \chapter{Problema 6}
 \section{Enunciado}
@@ -121,6 +162,7 @@ X = \left\{ f:\left[ 0, 2\pi \right] \to R: \text{$f$ continua} \right\}
     .\] 
   \item[\textbf{c.}] Concluya que ninguna bola cerrada centrada en el origen de $X$ es compacta. ¿Tiene $X$ dimensión finita?
 \end{enumerate}
+\section{Solución}
 
 
 \end{document}
