@@ -56,16 +56,50 @@ x_{n+1} = \frac{1}{2}x_n + \frac{1}{x_n};\ x_0 = 2
 \section{Solución}
 
 \begin{enumerate}
-  \item[\textbf{a.}] %TODO
-  \item[\textbf{b.}] %TODO
-  \item[\textbf{c.}] %TODO
+  \item[\textbf{a.}] Para iniciar tomemos la ecuación \[
+  x_n^2 - 2x_{n+1}x_n + 2 = 0
+  .\] ahora dada la definición de $x_{n + 1}$ podemos: \[
+  x_n^2 - 2\left(\frac{1}{2}x_n + \frac{1}{x_n}\right)x_n + 2 = 0
+  .\] Con esto entonces \[
+  x_n^2 - x_n^2 - 2 + 2 = 0
+  .\] Con lo que demostramos que esta ecuación se sostiene.
+
+  Ahora bien, dado que esta ecuación se cumple entonces podemos ahora si asegurar que el discriminante existe y es mayor o igual a 0. Por lo tanto nos queda
+  \begin{align*}
+    \left( 2 x_{n+1} \right)^2 - 4 \cdot 1 \cdot 2 &= 4x_{n+1}^2 - 8 \\
+    4x_{n+1}^2 - 8 &\ge 0\\
+    4x_{n+1}^2 &\ge 8\\
+    x_{n + 1}^2 &\ge \frac{8}{4}\\
+    x_{n+1}^2 &\ge 2
+  .\end{align*}
+
+  Ahora bien, dado que conocemos $x_0 = 2 \implies x_0^2 = 4 \ge 2$ entonces podemos aplicar por inducción este resultado y llegar a que $x_n^2 \ge 2$
+  \item[\textbf{b.}] Para iniciar tenemos \[
+  x_{n+1} = \frac{1}{2}x_n + \frac{1}{x_n} = \frac{x_n^2 + 2}{2x_n}
+  .\] Por otro lado sabemos que $x_{n}^2 \ge 2$ por lo tanto es cierto decir que: \[
+  x_{n+1} = \frac{x_n^2 + 2}{2x_{n}} \le \frac{x_{n}^2 + x_{n}^2}{2x_{n}}
+  .\] Que esto ultimo se puede reducir hasta que encontramos por tanto: \[
+  x_{n+1} = \frac{x_{n}^2 + 2}{2x_n} \le \frac{x_n^2 + x_n^2}{2x_n} = x_n \implies x_{n+1} \le x_n
+  .\] 
+  \item[\textbf{c.}] Por los puntos anteriores sabemos que $\left\{ x_n \right\} $ es una sucesión descendiente. Por lo tanto solo nos falta mostrar que esta acotada por abajo para mostrar que converge a esa cota. Esto lo podemos hacer de la siguiente manera:
+    \begin{align*}
+      L &= \frac{1}{2}L + \frac{1}{L} \\
+      L\cdot L &= \left( \frac{1}{2}L + \frac{1}{L} \right)L \\
+      L^2 &= \frac{L^2}{2} + 1 \\
+      L^2 - \frac{L^2}{2} &= \frac{L^2}{2} - \frac{L^2}{2} + 1 \\
+      \frac{L^2}{2} &= 1 \\
+      \frac{L^2}{2}\cdot 2 &= 1\cdot 2 \\
+      L^2 &= 2 \\
+      L &= \sqrt{2}
+    .\end{align*}
+
+    Ahora bien, dado el punto \textbf{a.} podemos saber que $x_n \ge \sqrt{2}$ por lo que escogemos la raíz positiva. Es decir que esta sucesión esta acotada por $\sqrt{2} $ y dado que ademas es decreciente entonces llegamos a que la sucesión $\left\{ x_n \right\} $ converge a $\sqrt{2} $
 \end{enumerate}
 
 
 \chapter{Problema 3}
 \section{Enunciado}
-Cada racional $x$ puede ser escrito en la forma $x = \frac{m}{n}$, donde $n > 0$, con $m$ y $n$ enteros sin divisores en común. Cuando $x = 0$, tomamos $n = 1$. Considere la función $f$ definida en $R^{1}$ por \[
-f(x) =
+Cada racional $x$ puede ser escrito en la forma $x = \frac{m}{n}$, donde $n > 0$, con $m$ y $n$ enteros sin divisores en común. Cuando $x = 0$, tomamos $n = 1$. Considere la función $f$ definida en $R^{1}$ por \[ f(x) =
 \begin{cases}
   0&\quad x\in \mathbb{Q}'\\
   \frac{1}{n}&\quad \left( x = \frac{m}{n} \right) 
@@ -163,6 +197,56 @@ X = \left\{ f:\left[ 0, 2\pi \right] \to R: \text{$f$ continua} \right\}
   \item[\textbf{c.}] Concluya que ninguna bola cerrada centrada en el origen de $X$ es compacta. ¿Tiene $X$ dimensión finita?
 \end{enumerate}
 \section{Solución}
+
+\begin{enumerate}
+  \item[\textbf{a.}] Para comenzar recordemos las definiciones de producto interno.
+    \dfn{Producto Interno}{Sea $V$ un espacio vectorial sobre $\mathbb{R}$. Un \textit{Producto Interno sobre $V$} es una función  $\phi: V\times V \to \mathbb{R}$ que cumple
+      \begin{enumerate}
+	\item Para cada $\alpha \in \mathbb{R}$ y $v, w ,z \in V$ 
+	  \begin{itemize}
+	    \item $\Phi\left( v + w, z \right) = \Phi\left( v,z \right) + \Phi\left( w, z \right) $ 
+	    \item $\Phi\left( \alpha\cdot v, z \right) = \alpha \cdot \Phi\left( v, z \right)  $
+	  \end{itemize}
+	\item $\Phi\left( v, w \right) = \Phi\left( w, v \right)  $ 
+	\item $\Phi\left( v, v \right) > 0$ si $v \neq 0$
+      \end{enumerate}
+    }
+
+    Ahora con esto ya definido podemos verificar todas las propiedades para saber que es efectivamente un producto interno.
+    \begin{enumerate}
+      \item Sea $\alpha \in \mathbb{R}$ y $f, g, h \in X$ entonces
+	\begin{itemize}
+	  \item 
+	    \begin{align*}
+	      \left<f + g, h \right> &= \int_0^{2\pi} \left( f\left( x \right) + g\left( x \right)  \right) h\left( x \right) dx \\
+	      &= \int_0^{2\pi} f\left( x \right) h\left( x \right) + g\left( x \right) h\left( x \right)   \\
+	      &= \int_0^{2\pi} f\left( x \right) h\left( x \right) + \int_0^{2\pi} g\left( x \right) h\left( x \right)  \\
+	      &= \left<f, h \right> + \left<g, h \right> \\
+	    .\end{align*}
+	  \item 
+	    \begin{align*}
+	      \left<\alpha f, g \right> &= \int_0^{2\pi} \alpha f\left( x \right) g\left( x \right) dx\\
+	      &= \alpha \int_0^{2\pi} f\left( x \right) g\left( x \right) dx \\
+	      &= \alpha \left<f, g \right> \\
+	    .\end{align*}
+	\end{itemize}
+      \item Dado que $f\left( x \right) g\left( x \right)  = g\left( x \right) f\left( x \right) $ entonces \[
+	  \left<f, g \right> = \left<g, f \right>
+      .\] 
+    \item En este caso siempre y cuando $\int_0^{2\pi} f\left( x \right) dx \neq 0$ entonces el doble de eso es diferente de 0.
+    \end{enumerate}
+  \item[\textbf{b.}] Solo por facilidad definamos \[
+      \sin\left( mx \right) - \sin\left( nx \right) = f\left( x \right)
+  .\] Con esto
+    \begin{align*}
+      \left| \left| f \right|  \right| &= \sqrt{\left< f, f\right>}  \\
+      &= \sqrt{\int_0^{2\pi} f\left( x \right) f\left( x \right) dx}  \\
+      &= \sqrt{\int_0^{2\pi} \left( \sin\left( mx \right) - \sin\left( nx \right) \right) \left( \sin\left( mx \right) - \sin\left( nx \right)  \right) dx}  \\
+      &= \sqrt{\int_0^{2\pi} \sin^2\left( mx \right) - 2\sin\left( mx \right) \sin\left( nx \right) + \sin^2\left( nx \right) dx}  \\
+      &= \sqrt{\int_0^{2\pi} \sin^2\left( mx \right)dx - 2\int_0^{2\pi} \sin\left( mx \right) \sin\left( nx \right)dx + \int_0^{2\pi} \sin^2\left( nx \right)dx }  \\
+    .\end{align*}
+  \item Considere una bola cerrada Arbitraria 
+\end{enumerate}
 
 
 \end{document}
