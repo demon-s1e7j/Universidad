@@ -1,0 +1,257 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Análisis}\\Tarea 4}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Problema 1}\label{ch:1}
+\section{Enunciado}
+
+\thm{Teorema del valor fijo de Banach}{
+Sea $\left( X, d \right) $ un espacio métrico completo. Decimos que $f: X \to X$ es una contracción si existe $0 < \eta < 1$ tal que \[
+d\left( f\left( x \right) , f\left( y \right)  \right) \le \left( 1 - \eta \right) d\left( x,y \right) 
+.\] }
+
+Muestre que la sucesión definida por $x_{n + 1} = f\left( x_n \right) ,\ x_0 \in X$ un punto arbitrario, converge a un punto $x^{*}$ y ademas que \[
+x^{*} = f\left( x^{*} \right) 
+.\] esto es, que $x^{*}$ es un punto fijo de $f$. \textit{El Teorema del Punto Fijo de Banach} es una herramienta básica para encontrar soluciones de ecuaciones.
+
+\textbf{Ayuda:} Demuestre que \[
+d\left( x_{n+1}, x_{n} \right) \le \left( 1 - \eta \right)^{n}d\left( x_1, x_0 \right) 
+.\] use lo anterior y la desigualdad triangular para estimar \[
+d\left( x_{n + k}, x_n \right) 
+.\] 
+
+\section{Solución}
+
+Siguiendo la Ayuda planteada lo primero que debemos mostrar es \[
+d\left( x_{n+1}, x_{n} \right) \le \left( 1 - \eta \right)^{n}d\left( x_1, x_0 \right) 
+.\] para lo cual utilizaremos una inducción. 
+\begin{enumerate}
+  \item[\textbf{Caso Base:}] En este caso necesitamos mostrar que $d\left( x_{2}, x_{1} \right) \le \left( 1 - n \right)^{n}d\left( x_1, x_0 \right) $. Sin embargo por la definición de $x_{n+1}$ tenemos $x_2 = f\left( x_1 \right) $ y por lo tanto \[
+  d\left( x_2, x_1 \right) = d\left( f\left( x_1 \right) , f\left( x_0 \right)  \right) 
+  .\]  Ademas, dado que $f$ es una contracción entonces tenemos que
+  \begin{align*}
+  d\left( x_2, x_1 \right) = d\left( f\left( x_1 \right) , f\left( x_0 \right)  \right) \le \left( 1 - \eta \right) d\left( x_1, x_0 \right) \\
+  d\left( x_2, x_1 \right) \le  \left( 1 - \eta \right) d\left( x_1, x_0 \right) 
+  .\end{align*}
+\item[\textbf{Hipótesis:}] Asuma \[
+d\left( x_{n+1}, x_{n} \right) \le \left( 1 - \eta \right)^{n}d\left( x_1, x_0 \right) 
+.\] 
+\item[\textbf{Demostración:}] Para mostrar esto tomemos:
+  \begin{align*}
+    d\left( x_{n + 2}, x_{n + 1} \right) &= d\left( f\left( x_{n + 1} \right), f\left( x_{n} \right)  \right) \\
+					 &\le \left( 1 - \eta \right) d\left( x_{n +1}, x_n \right) \\
+  .\end{align*}
+
+  Ahora bien, por la hipótesis de inducción $d\left( x_{n + 1}, x_n \right) \le \left( 1 - n \right)^{n} d\left( x_1, x_0 \right) $ lo que quiere decir:
+  \begin{align*}
+    d\left( x_{n + 2}, x_{n + 1} \right)  &\le \left( 1 - \eta \right) \left( 1 - \eta \right)^{n} d\left( x_1, x_0 \right) \\
+					  &\le \left( 1 - \eta \right)^{n + 1} d\left( x_1, x_0 \right) 
+  .\end{align*}
+\end{enumerate}
+
+Ahora, con esta desigualdad vamos a demostrar que la sucesión $\left\{ x_{n + 1} \right\} $ es de Cauchy. Para esto lo primero es mostrar que la distancia disminuye. En este caso solo hace falta darnos cuenta que $\left( 1 - \eta \right)^{n + 1} < \left( 1 - \eta \right)^{n}$ dado que $0 < \eta < 1$. Por lo tanto
+ \begin{align*}
+   d\left( x_{n + 1}, x_{n} \right) &\le \left( 1 - \eta \right)^{n} d\left( x_1, x_0 \right) \\
+				    &\le \left( 1 - n \right)^{n - 1} d\left( x_1, x_0 \right) \\
+				    &\le  \ldots\\
+				    &\le \left( 1 - n \right) d\left( x_1, x_0 \right) 
+.\end{align*}
+
+Ahora tomemos en consideración la desigualdad triangular para definir $d\left( x_{n + k}, x_n \right) $ con esto seria:
+\begin{align*}
+  d\left( x_{n + k}, x_n \right) &\le  d\left( x_{n + 1}, x_{n} \right) + d\left( x_{n + 2}, x_{n + 1} \right) + \ldots + d\left( x_{n + k}, x_{n + k - 1} \right)  \\
+  &= \left( 1 - \eta \right)^{n}d\left( x_1, x_0 \right) + \left( 1 - \eta \right)^{n + 1}d\left( x_1, x_0 \right) + \ldots + \left( 1 - \eta \right)^{n + k - 1}d\left( x_1, x_0 \right)   \\
+  &= \left( 1 - \eta \right)^{n} d\left( x_0, x_1 \right)\left( 1 + \left( 1 - \eta \right) + \ldots + \left( 1 - \eta \right)^{k - 1} \right)   \\
+  \text{Tome en consideración que : }& \left( 1 - \eta \right)^{m} \le 1\ \forall m > 0\\
+				     &\le \left( 1 - \eta \right)^{n}d\left( x_0, x_1 \right)k
+.\end{align*}
+
+Ahora sea $\epsilon > 0$. Sabemos por el teorema Arquimediano que existe un $N$ tal que para cualquier $\epsilon > 0$ se cumple que $\left( 1 - \eta \right)^{n} < \frac{\epsilon}{d\left( x_0, x_1 \right) k}$ con lo cual mostramos que la distancia tiende a 0 cuando $n$ tiende a infinito. Por lo tanto la sucesión $\left\{ x_n \right\} $ es una sucesión de Cauchy.
+
+Ahora bien, sabemos que esta sucesión vive en $X$ que es un espacio métrico completo y por lo tanto converge a un limite. Sea $x^{*}$ el limite de esta sucesión. 
+
+Ademas, dado que $f$ es continua por la propia definición de contracción sabemos que
+ \begin{align*}
+   \lim_{n \to \infty} x_n &= \lim_{n \to \infty} x_{n + 1}\\
+   f\left( x^{*} \right) = f\left( \lim_{n \to \infty} x_{n + 1} \right) &= \lim_{n \to \infty} f\left( x_{n + 1} \right) = \lim_{n \to \infty} x_n = x^{*}\\
+   f\left( x^{*} \right) &= x^{*}
+.\end{align*}
+
+
+\chapter{Problema 2}
+\section{Enunciado}
+
+En este ejercicio vamos a demostrar que \[
+\displaystyle\lim_{n \to \infty}\frac{F_{n+1}}{F_n} = \Phi = \frac{1 + \sqrt{5} }{2}
+.\] donde $F_n$ es la sucesión de fibonacci definida por \[
+F_0 = F_1 = 1,\ F_{n + 1} = F_n + F_{n - 1}\ \text{para } n \ge 2
+.\] 
+\subsection{I} Considere la función \[
+f\left( x \right) = 1 + \frac{1}{x}
+.\] Demuestre que $f: \left[ \frac{3}{2}, 2 \right] \to \left[ \frac{3}{2}, 2 \right] $ es una biyección.
+
+\subsection{II} Demuestre que $f$ es una contracción. Idea: use \textit{El Teorema del Valor Medio}.
+
+\subsection{III} Sea $x_1 = 2$ y defina la sucesión $x_n$ mediante la recurrencia \[
+x_{n + 1} = f\left( x_n \right)  = 1 + \frac{1}{x_n}
+.\] Muestre que $\left\{ x_n \right\} $ converge.
+
+\subsection{IV} Calcule \[
+  \displaystyle\lim_{n \to \infty} x_n
+.\] 
+
+\section{Solución}
+\subsection{I}
+
+\nt{Solo vamos a demostrar que la función $f\left( x \right) $ es inyectiva en ese intervalo por instrucciones del profesor.}
+
+Suponga por contradicción que $f$ no es inyectiva. Por lo tanto, existen $x_1, x_2 \in \left[ \frac{3}{2}, 2 \right]$ tal que $x_1 \neq x_2$ y $f\left( x_1 \right) = f\left( x_2 \right) $. Por lo tanto:
+\begin{align*}
+  f\left( x_1 \right) &= f\left( x_2 \right) \\
+  1 + \frac{1}{x_1} &= 1 + \frac{1}{x_2} \\
+  1 + \frac{1}{x_1} - 1 &=  1 + \frac{1}{x_2} - 1 \\
+  \frac{1}{x_{1}} &= \frac{1}{x_2} \\
+  \frac{1}{x_1}\cdot \left( x_1\cdot x_2 \right) &= \frac{1}{x_2}\cdot \left( x_1\cdot x_2 \right)  \\
+  x_2 &= x_1 \\
+      &\Rightarrow\!\Leftarrow
+.\end{align*}
+\subsection{II}
+\thm{Teorema del Valor Medio}{Sea $f$ una función continua en el intervalo $\left[ a, b \right] $y diferenciable en $\left( a, b \right) $. Entonces, existe al menos un punto $c \in \left( a, b \right) $ de manera que
+  \begin{align*}
+    f'\left( c \right) = \frac{f\left( b \right) - f\left( a \right)  }{b - a} 
+  .\end{align*}
+}
+
+Ahora bien, considerando que por un lado sabemos que esta función es continua en el intervalo planteado y ademas que es diferenciable (dado que es la suma de funciones diferenciable) entonces podemos sacar la derivada de esta función que en este caso es: \[
+f'\left( x \right) = - \frac{1}{x^2}
+.\] ahora bien, dado que esto es una igualdad podemos poner todo en valor absoluto y nos queda
+
+\begin{align*}
+  \left| f'\left( c \right)  \right| &= \frac{\left| f\left( b \right) - f\left( a \right)  \right| }{\left| b - a \right| }\\
+  \left| f\left( b \right) - f\left( a \right)  \right| &= \left| f'\left( c \right)  \right| \left| b - a \right|
+.\end{align*}
+
+Ahora podemos definir en cada caso esto pero podemos tomar que el valor máximo es $\frac{1}{c^2} < \frac{4}{9}$ con lo cual esto queda como \[
+  \left| f\left( b \right) - f\left( a \right)  \right| \le \frac{4}{9}\left| b - a \right| 
+.\] ademas podemos definir $a, b \in \left[ a, b \right] $ 
+
+\subsection{III}
+
+Para demostrar esto podemos hacer uso del capitulo \ref{ch:1}. Esto pues $f$ es una contracción y tenemos definido un $x_1 = 2$ y ademas de eso sigue la misma forma de este capitulo. Entonces podemos utilizar el teorema del punto fijo de Banach y saber que esta sucesión converge a un punto $x^{*} \in \left[ \frac{3}{2} \right] $
+
+\subsection{IV}
+
+Partiendo del punto anterior donde ya demostramos que esta sucesión converge y continuando con lo que sabemos por el capitulo \ref{ch:1}. Sabemos que, este limite tiene que cumplir  $x^{*} = f\left( x^{*} \right) $ por lo tanto
+\begin{align*}
+  x^{*} &= 1 + \frac{1}{x^{*}}\\
+  x^{*} - 1 &= \frac{1}{x^{*}} \\
+  x^{2*} - x^{*} &= 1 \\
+  x^{2*} - x^{*} - 1 &= 0\\
+ \frac{-b \pm \sqrt{b^2 - 4ac} }{2a} &= \frac{1 \pm \sqrt{1 + 4} }{2} \\
+ x^{*} &= \frac{1 + \sqrt{5} }{2}\text{ Dado que es lo que pertenece al intervalo}
+.\end{align*}
+
+\chapter{Problema 3}
+\section{Enunciado}
+Suponga 
+\begin{enumerate}
+  \item $f$ es continua para $x \ge 0 $
+  \item $f'\left( x \right) $ existe para $x > 0$
+  \item $f\left( 0 \right)  = 0$ 
+  \item $f'$ es monotonicamente incrementando
+\end{enumerate}
+
+Ponga \[
+g\left( x \right) = \frac{f\left( x \right) }{x}\ \left( x > 0 \right) 
+.\] y pruebe que $g$ es monotonicamente incrementando
+
+\section{Solución}
+
+Lo primero es que tenemos que mostrar que $g'$ aumenta por lo tanto nos interesa saber que \[
+  g'\left( x \right) = \frac{xf\left( x \right) - f\left( x \right) }{x^2}
+.\] aumenta monotónicamente.  Por lo tanto nos interesa mostrar que $xf\left( x \right) > f\left( x \right)$.
+
+Para esto utilizaremos que la función $f$ cumple con todos los requerimientos para aplicarle el teorema del valor medio y por tanto \[
+f\left( x \right) = f\left( x \right) - f\left( 0 \right) = f'\left( c \right) x
+.\] para cualquier intervalo de $\left[ 0, x \right] $. Ademas, sabemos por el propio teorema del valor medio que $0 < c < x$ y por $f$ ser monotonicamente creciente $f'\left( c \right) < f'\left( x \right) $ y por lo tanto $f\left( x \right) = f\left( x \right) - f\left( 0 \right) = f'\left( c \right) x < f'\left( x \right) x$. Con lo cual completamos ya la demostración.
+
+
+
+\chapter{Problema 4}
+\section{Enunciado}
+Suponga $f$ y $g$ son funciones complejas diferenciables en $\left( 0, 1 \right), f\left( x \right) \to 0, g\left( x \right) \to 0, f'\left( x \right) \to A, g'\left( x \right) \to B $ con $x \to 0$, donde $A$ y $B$ son números complejos, $B \neq 0$. Pruebe que \[
+\displaystyle \lim_{x \to 0} \frac{f\left( x \right) }{g\left( x \right) } = \frac{A}{B}
+.\]
+
+\section{Solución}
+
+Sean $f$ y $g$ funciones complejas diferenciables en $\left( 0, 1 \right) $ con todo lo enunciado previamente. Por lo tanto de ahí podemos deducir que ambas funciones son continuas en $\left[ 0,  \right) $ pues $f\left( x \right) = 0 = g\left( x \right) $ con lo cual podemos utilizar el teorema de L'Hopital para llegar al resultado:
+\begin{align*}
+  \lim_{x \to 0} \frac{f\left( x \right) }{g\left( x \right) } &= \lim_{x \to 0}  \frac{f'\left( x \right) }{g'\left( x \right) }\\
+  &= \frac{A}{B} \\
+  B&\neq  0 \\
+.\end{align*}
+
+\chapter{Problema 5}
+\section{Enunciado}
+Suponga $f$ es una función real en $\left[ a, b \right] $, $n$ es un entero positivo y $f^{\left( n - 1 \right) }$ existe para todo $t \in \left[ a, b \right] $. Sea $\alpha, \beta$ y $P$ que sean como en el teorema de Taylor. Defina \[
+Q\left( t \right) = \frac{f\left( t \right) - f\left( \beta \right) }{t - \beta}
+.\]  para $t \in \left[ a, b \right] , t \neq \beta$, diferenciados \[
+f\left( t \right) - f\left( \beta \right) = \left( t - \beta \right) Q\left( t \right) 
+.\] $n - 1$ veces en $t = \alpha$, y derive la siguiente versión del teorema de Valor: \[
+f\left( \beta \right) = P\left( \beta \right) + \frac{Q^{\left( n - 1 \right)  }\left( \alpha \right)}{\left( n - 1 \right)! }\left( \beta - \alpha \right)^{n}
+.\] 
+
+\section{Solución}
+Dada la definición de $Q\left( t \right) $ esta es una función derivable hasta $\left( n - 1 \right) $ (pues $f$ es derivable esa cantidad de veces) con la posible excepción del punto $t = \beta$ por lo cual podemos hacer inducción fuerte en $t = \alpha$.
+
+\begin{itemize}
+  \item[\textbf{Caso Base:}] En este caso tenemos
+    \begin{align*}
+      P\left( \beta \right) &= \sum_{k=0}^{0} \frac{f^{\left( k \right) }\left( \alpha \right) }{k!}\left( \beta - \alpha \right)^{k} = f\left( \alpha \right) \\
+      Q^{0}\left( \alpha \right) &=  Q\left( \alpha \right) = \frac{f\left( \alpha \right) - f\left( \beta \right) }{\alpha - \beta}
+    .\end{align*}
+
+    Con lo cual:
+    \begin{align*}
+	P\left( \beta \right) + \frac{Q^{0}\left( \alpha \right) }{0!}\left( \beta - \alpha \right) &=  f\left( \alpha \right) + \frac{f\left( \alpha \right) - f\left( \beta \right) }{(\alpha - \beta)}\left( -1 \right) \left( \alpha - \beta \right)  \\
+       &= f\left( \alpha \right) + \left( -1 \right) \left( f\left( \alpha \right) - f\left( \beta \right)  \right)   \\
+      &= f\left( \beta \right) 
+    .\end{align*}
+  \item[\textbf{Hipotesis:}] Suponga para todo $m < n$:  \[
+  f\left( \beta \right) = P\left( \beta \right) + \frac{Q^{m - 1}\left( \alpha \right) }{\left( m - 1 \right) !}\left( \beta - \alpha \right)^{m}
+  .\] 
+\item[\textbf{Demostración:}] Con esto entonces tenemos: 
+  \begin{align*}
+    f^{\left( n - 1 \right) } &= \left( n - 1  \right) Q^{\left( n - 2 \right) }\left( t \right) + \left( t - \beta \right) Q^{\left( n - 1 \right) }\left( t \right)  \\
+    P\left( \beta \right) &= \sum_{k = 0}^{n - 1} \frac{f^{\left( k \right) }\left( \alpha \right) }{k!}\left( \beta - \alpha \right)^{k} \\
+    Q^{\left( n - 1 \right) }\left( \alpha \right)  &= \frac{f^{\left( n - 1 \right) }\left( \alpha \right) - \left( n - 1 \right) Q^{\left( n - 2 \right) }\left( \alpha \right) }{\alpha - \beta}
+  .\end{align*}
+
+  Con esto entonces se sigue:
+  \begin{align*}
+    P\left( \beta \right) + \frac{Q^{n - 1}\left( \alpha \right) }{\left( n - 1 \right)!}\left( \beta - \alpha \right)^{n} = \sum_{k = 0}^{n - 1} \frac{f^{\left( k \right) }\left( \alpha \right) }{k!}\left( \beta - \alpha \right)^{k} +\frac{f^{\left( n - 1 \right) }\left( \alpha \right) - \left( n - 1 \right) Q^{\left( n - 2 \right) }\left( \alpha \right) }{(\alpha - \beta) \left( n - 1 \right)!}\left( \beta - \alpha \right)^{n}   \\
+    = \sum_{k = 0}^{n - 2} \frac{f^{\left( k \right) }\left( \alpha \right) }{k!}\left( \beta - \alpha \right)^{k} + \frac{f^{n - 1}\left( \alpha \right) }{\left(\left( n - 1 \right) ! \right) }\left( \beta - \alpha \right)^{n - 1} + \frac{f^{\left( n - 1 \right) }\left( \alpha \right) - \left( n - 1 \right) Q^{\left( n - 2 \right) }\left( \alpha \right) }{\left( n - 1 \right)!}\left( - 1 \right) \left( \beta - \alpha \right)^{n - 1}   \\
+    = \sum_{k = 0}^{n - 2} \frac{f^{\left( k \right) }\left( \alpha \right) }{k!}\left( \beta - \alpha \right)^{k} + \frac{f^{n - 1}\left( \alpha \right) }{\left(\left( n - 1 \right) ! \right) }\left( \beta - \alpha \right)^{n - 1} + \frac{\left( - 1 \right) \left( \beta - \alpha \right)^{n - 1} }{\left( n - 1 \right)!}\left(f^{\left( n - 1 \right) }\left( \alpha \right) - \left( n - 1 \right) Q^{\left( n - 2 \right) }\left( \alpha \right)\right)   \\
+    = \sum_{k = 0}^{n - 2} \frac{f^{\left( k \right) }\left( \alpha \right) }{k!}\left( \beta - \alpha \right)^{k} + \frac{Q^{n - 2}\left( \alpha \right) }{\left( n - 1 \right) !}\left( \beta - \alpha \right)^{n - 1} + \frac{f^{n - 1}\left( \alpha \right) }{\left(\left( n - 1 \right) ! \right) }\left( \beta - \alpha \right)^{n - 1} - \frac{f^{n - 1}\left( \alpha \right) }{\left(\left( n - 1 \right) ! \right) }\left( \beta - \alpha \right)^{n - 1}\\
+    = \sum_{k = 0}^{n - 2} \frac{f^{\left( k \right) }\left( \alpha \right) }{k!}\left( \beta - \alpha \right)^{k} + \frac{Q^{n - 2}\left( \alpha \right) }{\left( n - 1 \right) !}\left( \beta - \alpha \right)^{n - 1}
+  .\end{align*}
+  Con esto podemos utilizar la hipótesis inductiva y llegamos al resultado buscado.
+\end{itemize}
+
+\end{document}
