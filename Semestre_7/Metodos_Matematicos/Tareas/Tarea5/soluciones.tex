@@ -1,0 +1,73 @@
+\input{preamble}
+
+\begin{document}
+    \input{heading}
+
+    \begin{enumerate}
+      \item tenemos la función: \[
+	  f\left( x \right) =
+      \begin{cases}
+	V_0 &\ 0 < x \le 1\\
+	-V_0 & -1 \le x < 0
+      \end{cases}
+      .\] 
+    \item Para comenzar en este caso seria prudente darnos una idea de las ubicaciones con las que estamos trabajando. Si hacemos un gráfico con la descripción dada en el enunciado nos queda:
+      \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.3\textwidth]{Imagenes/punto_2.png}
+        \caption{Imagen que gráfica el caso descrito por el enunciado del punto.}
+        \label{fig:punto_2}
+      \end{figure}
+
+      Como podemos ver en la imagen \label{fig:punto_2} la distancia que hay desde el punto que se nos solicita a ambos otros puntos es básicamente la misma. Esta distancia, la podemos encontrar por medio del teorema de pitagoras:
+      \begin{align*}
+        h^2 &= c_1^2 + c_2^2 \\
+	h^2 &= a^2 + r^2 \\
+	h &= \sqrt{a^2 + r^2}  \\
+      .\end{align*}
+
+      Donde $h$ es la distancia que hay en ambos casos. Ahora bien recordemos que el potencial eléctrico para un punto $p$ con varias fuentes puntuales es: \[
+	V_p = \displaystyle\sum_{n = 1}^{N} V_n
+      .\] 
+
+      Donde $V_n$ es el potencial de cada una de las fuentes puntuales. Ahora bien, con esto entonces calculemos $V$ con:  \[
+      V = \frac{kq}{r}
+      .\] con lo cual esto nos queda:
+      \begin{align*}
+        V = \frac{k q}{\sqrt{a^2 + r^2} } - \frac{k q}{\sqrt{a^2 + r^2} }
+      .\end{align*}
+
+      Pero este es un resultado que es solo valido para cuando la distancia que mantiene es la misma. Sin embargo intentemos describirlo para cuando las distancias son distintas. Podemos mostrar que es:
+      \begin{align*}
+        V_p &= V_{+} + V_{-} = kq\left( \frac{1}{r_+} - \frac{1}{r_-} \right)  \\
+	r_{\pm} &= \sqrt{x^2 + \left( y \mp \frac{d}{2} \right)^2 } 
+      .\end{align*}
+
+      Ya con esto describimos el potencial para cualquier punto. Sin embargo ahora desarrollemos el hecho de que $r \gg a$.
+
+      Podemos reescribir los radios en términos polares. Es decir, $x = r \sin\left( \theta \right) $ y $y = r \cos\left( \theta \right) $ con lo cual nos queda:
+      \begin{align*}
+        r_{\pm} &= \sqrt{r^2\sin^2\left( \theta \right) + \left( r \cos\left( \theta \right) \mp \frac{a}{2} \right)^2}  \\
+	r_{\pm} &= r \sqrt{\sin^2\left( \theta \right)  + \left( \cos\left( \theta \right) \mp \frac{a}{2r} \right)^2 }  \\
+	r_{\pm} &= r \sqrt{\sin^2\left( \theta \right) + \cos^2\left( \theta \right) \mp \cos\left( \theta \right) \frac{a}{r} + \left( \frac{a}{2r} \right)^2 }  \\
+	&= r \sqrt{1 \mp \cos\left( \theta \right) \frac{a}{r} + \left( \frac{a}{2r} \right)^2}  \\
+      .\end{align*}
+
+      Ahora bien, dado que $r \gg a$ entonces el termino $\frac{a}{2r}$ es extremadamente pequeño y al hacer $\left( \frac{a}{2r} \right)^2$ es esencialmente 0. Con lo cual queda:
+      \begin{align*}
+        r_{\pm} &= r \sqrt{1 \mp \cos\left( \theta \right) \frac{d}{r}}  \\
+	\frac{1}{\sqrt{1 \pm \alpha} } &\approx 1 \pm \frac{\alpha}{2}\\
+        V_p &= V_{+} + V_{-} = kq\left( \frac{1}{r_+} - \frac{1}{r_-} \right)  \\
+        V_p &= kq\left( \frac{1}{r \sqrt{1 + \cos\left( \theta \right) \frac{d}{r}}} - \frac{1}{r \sqrt{1 - \cos\left( \theta \right) \frac{d}{r}}} \right)  \\
+	V_p &= \frac{kq}{r} \left(\left( 1 + \frac{d\cos\left( \theta \right) }{2r} \right) - \left( 1 - \frac{d\cos\left( \theta \right) }{2r} \right)  \right)  \\
+	&= k \frac{qd\cos\left( \theta \right) }{r^2} \\
+      .\end{align*}
+
+    \item Suponemos que 
+    \item Para este caso
+    \item 
+      \begin{enumerate}
+        \item En este caso partimos de que 
+      \end{enumerate}
+    \end{enumerate}
+\end{document}
