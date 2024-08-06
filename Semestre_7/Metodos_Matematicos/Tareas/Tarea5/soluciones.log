@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.21)  22 MAY 2024 15:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.21)  23 MAY 2024 09:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1098,32 +1098,32 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 <Imagenes/punto_2.png, id=7, 461.93196pt x 431.38484pt>
 File: Imagenes/punto_2.png Graphic file (type png)
 <use Imagenes/punto_2.png>
-Package pdftex.def Info: Imagenes/punto_2.png  used on input line 17.
+Package pdftex.def Info: Imagenes/punto_2.png  used on input line 43.
 (pdftex.def)             Requested size: 158.68263pt x 148.18942pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Imagenes/punto_2.png>]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 64.
-LaTeX Font Info:    Trying to load font information for OT1+tt on input line 64
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 70.
+LaTeX Font Info:    Trying to load font information for OT1+tt on input line 70
 .
-LaTeX Font Info:    No file OT1tt.fd. on input line 64.
+LaTeX Font Info:    No file OT1tt.fd. on input line 70.
 
 
 LaTeX Font Warning: Font shape `OT1/tt/m/n' undefined
-(Font)              using `OT1/cmr/m/n' instead on input line 64.
+(Font)              using `OT1/cmr/m/n' instead on input line 70.
 
 (/usr/share/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
-) [2]
+) [2 <./Imagenes/punto_2.png>]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `tt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
 pdfTeX warning (font expansion): font should be expanded before its first use
-[3] (./soluciones.aux
+[3] [4] (./soluciones.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
 )
@@ -1142,27 +1142,28 @@ Package rerunfilecheck Info: File `soluciones.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28018 strings out of 476014
- 508743 string characters out of 5792005
- 1942187 words of memory out of 5000000
- 49603 multiletter control sequences out of 15000+600000
+ 28021 strings out of 476014
+ 508807 string characters out of 5792005
+ 1952187 words of memory out of 5000000
+ 49605 multiletter control sequences out of 15000+600000
  564215 words of font info for 62 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 114i,12n,134p,1007b,604s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath-fonts/xccsy
-8.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath-fonts
+ 114i,12n,134p,1007b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath-fonts/xccmi
+6.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath-fonts
 /xccmi8.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath
--fonts/xccsy10.720pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/c
-oncrete/ccr8.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/con
-cmath-fonts/xccex10.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/pub
-lic/concrete/ccr10.720pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/publ
-ic/concmath-fonts/xccmi10.720pk></usr/share/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmitt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
-pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on soluciones.pdf (3 pages, 65941 bytes).
+-fonts/xccsy8.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/co
+ncmath-fonts/xccsy10.720pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/pu
+blic/concrete/ccr8.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/publ
+ic/concmath-fonts/xccex10.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfo
+ur/public/concrete/ccr10.720pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfou
+r/public/concmath-fonts/xccmi10.720pk></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmitt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on soluciones.pdf (4 pages, 82030 bytes).
 PDF statistics:
- 146 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 500000)
+ 193 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
  4626 words of extra memory for PDF output out of 10000 (max. 10000000)
 

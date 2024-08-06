@@ -1,0 +1,211 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage[spanish]{babel}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Métodos Matemáticos} % Chis is che ñame uf che curse 
+\newcommand{\examnum}{Tarea Laplace} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+\newcommand{\Laplace}{\mathscr{L}}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+  \item 
+  \begin{enumerate}
+    \item Sea $f\left( x \right) = 1$ Luego, \[
+	F\left( p \right) = \int_{0}^{\infty} e^{-px}f\left( x \right) dx = \int_{0}^{\infty}e^{-px}dx = -\frac{1}{p}e^{-px} |_0^{\infty}
+      .\] Nótese que:
+      Si $x \to \infty$ entonces $e^{-px}\to 0$ (para $p>0$ y si $x = 0, e^{-px} = 1$
+
+      $\implies F\left( p \right) = - \frac{1}{p}\left( 0 - 1 \right) = \frac{1}{p}$
+    \item Sea $f\left( x \right) = x$ Luego
+      \begin{align*}
+	F\left( p \right) &= \int_{0}^{\infty} e^{-px}f\left( x \right) dx\\
+	&= \int_{0}^{\infty}e^{-px}x dx \\
+	u &= x \\
+	du &= dx \\
+	F\left( p \right) &= \left[ x\left( -\frac{1}{p}e^{-px} \right)  \right]_{0}^{\infty} - \int_{0}^{\infty}\left( -\frac{1}{p}e^{-px} \right) dx \\
+	&= \int_{0}^{\infty}\frac{1}{p}e^{-px}dx \\
+	&= \frac{1}{p^2} \\
+      .\end{align*}
+
+    \item Sea $f\left( x \right) = x^{n}$. Luego,
+      \begin{align*}
+        F\left( p \right) &= \int_{0}^{\infty} x^{n}e^{-px}dx = In\left( p \right)  \\
+	I\left( p \right) &= \int_{0}^{\infty}e^{-px}dx = \frac{1}{p} \\
+      .\end{align*}
+
+      Ahora bien, tomemos $u = x^{n} \implies du = nx^{(n - 1)}dx \land dv = e^{-px}dx \implies v = - \frac{1}{p}e^{-px}$.
+      \begin{align*}
+	I_{n}\left( p \right) &= \int_{0}^{\infty}x^{n}e^{-px}dx = \left[ - \frac{x^{n}}{p} e^{-px} \right]_{0}^{\infty} + \frac{n}{p}\int_{0}^{\infty}x^{(n - 1)}e^{-px}dx\\
+	&= \frac{n}{p}\int_{0}^{\infty}x^{(n - 1)}e^{-px}dx \\
+	I_n\left( p \right) &= \frac{n}{p}I_{n - 1}\left( p \right)  \\
+	I_n\left( p \right) &= \frac{n}{p}\cdot \frac{\left( n - 1 \right) }{p}\cdot I_{n - 2}\left( p \right) = \ldots = \frac{n!}{p^{n}}I_{0}\left( p \right) = \frac{n!}{p^{n + 1}}
+      .\end{align*}
+    \item Sea $f\left( x \right) = e^{ax}$. Luego,\[
+    F\left( p \right) = \int_{0}^{\infty}e^{ax}e^{-px}dx = \left[ \frac{1}{a - p}e^{(a - p)x} \right]_{0}^{\infty} = \frac{1}{p - a}
+    .\] 
+
+  \item Sea $f\left( x \right) = \sin\left( ax \right) $. Luego,
+    \begin{align*}
+      F\left( p \right) = \int_{0}^{\infty} \sin\left( ax \right) e^{-px}dx
+    .\end{align*}
+    Tomemos $u = \sin\left( ax \right) $ y $dv = e^{-px}dx$. Entonces,
+    \begin{align*}
+      I &= \int_{0}^{\infty}\sin\left( ax \right) e^{-px}dx \\
+      &= \left[ - \frac{1}{p}\sin\left( ax \right) e^{-px} \right]_{0}^{\infty} + \frac{1}{p}\int_{0}^{\infty}a\cos\left( ax \right) e^{-px}dx \\
+      I &= \frac{a}{p}\left[ \left[ - \frac{1}{p}\cos\left( ax \right) e^{-px} \right]_{0}^{\infty} + \frac{1}{p}\int_{0}^{\infty}\left( -a \sin\left( ax \right)  \right) e^{-px}dx \right]  \\
+      &= - \frac{a^2}{p^2}I \implies I + \frac{a^2}{p^2}I = 0 \\
+      I &= \frac{a}{\left( p^2 + a^2 \right) } \\
+    .\end{align*}
+
+  \item Sea $f\left( x \right) = \cos\left( ax \right) $. Luego,
+    \begin{align*}
+      F\left( p \right) &= \int_{0}^{\infty}\cos\left( ax \right) e^{-px}dx = \int_{0}^{\infty}e^{-px}\left( \frac{e^{iax} + e^{-iax}}{2} \right) dx\\
+      &= \frac{1}{2}\int_{0}^{\infty}\left( e^{(ia - p)x}+ e^{(-ia - p)x} \right) dx\\
+      &= \int_{0}^{\infty} e^{(ia - p)x}dx + \int_{0}^{\infty} e^{(-ia - p)x}dx\\
+      \int_{0}^{\infty}e^{\left( ia - p \right) x}dx &= \left[ \frac{1}{ia - p}e^{(ia - p)x} \right]_{0}^{\infty} = \frac{1}{ia - p}\\
+      \int_{0}^{\infty} e^{(-ia - p)x}dx &= \left[ \frac{1}{-ia-p}e^{(-ia - p)x} \right]_{0}^{\infty} = \frac{1}{-ia - p}  \\
+      2F\left( p \right) &= \frac{1}{ia - p} + \frac{1}{-ia - p} = \frac{-p -p}{\left( ia \right)^2 - p^2}\\
+      &= \frac{-2 p}{\left( p^2 + a^2 \right)\cdot \left( -1 \right) } \\
+      F\left( p \right) &= \frac{1}{2}\frac{2p}{p^2 + a^2} = \frac{p}{p^2 + a^2} \\
+    .\end{align*}
+  \item $\sinh\left( ax \right) $:
+    Nótese que: 
+    \begin{align*}
+      \sinh\left( ax \right)  &= \frac{e^{ax} - e^{-ax}}{2} \implies L\left\{ \sinh\left( ax \right)  \right\} = L\left\{ \frac{e^{ax}- e^{-ax}}{2} \right\}  = \frac{1}{2}\left[ L\left\{ e^{ax} \right\} - L\left\{ e^{-ax} \right\}  \right] \\
+      &= \frac{1}{2}\left( \frac{1}{p - a} - \frac{1}{p + a} \right) = \frac{1}{2}\left( \frac{p + a - p + a}{p^2 - a^2} \right) \\ 
+      &= \frac{1}{2}\left( \frac{2a}{p^2 - a^2} \right) = \frac{1}{2}\left( \frac{2a}{p^2 - a^2} \right) = \frac{a}{p^2 - a^2}  \\
+    .\end{align*}
+
+  \item Transformada de $\cosh\left( ax \right) $ : Nótese que
+    \begin{align*}
+      \cosh\left( ax \right) &= \frac{e^{ax} + e^{-ax}}{2}\implies L\left\{ \cosh\left( ax \right)  \right\} = L\left\{ \frac{e^{ax} + e^{-ax}}{2} \right\} = \frac{1}{2}\left[ L\left\{ e^{ax} \right\} + L\left\{ e^{-ax} \right\}  \right] \\
+      &= \frac{1}{2}\left( \frac{1}{p - a} + \frac{1}{p + a} \right) = \frac{1}{2}\left( \frac{\left( p + a \right) + \left( p - a \right) }{\left( p - a \right) \left( p + a \right) } \right)  \\
+      &= \frac{1}{2}\left( \frac{p + a + p - a}{p^2 - a^2} \right) = \frac{p}{p^2 - a^2} \\
+    .\end{align*}
+  \end{enumerate}
+	\item 
+	\item 
+	  \begin{enumerate}
+	    \item Sea $f\left( x \right) = x^{5} + \cos\left( 2x \right) $ entonces
+	      \begin{align*}
+	        L\left\{ x^{5} = \cos\left( 2x \right)  \right\} &= L\left\{ x^{5} \right\} + L\left\{ \cos\left( 2x \right)  \right\}  \\
+		&= \frac{5!}{p^{6}} + \frac{p}{p^2 + 2^2} \\
+		&= \frac{5!}{p^{6}} + \frac{p}{p^2 + 4}
+	      .\end{align*}
+	    \item Sea $f\left( x \right) = 2e^{3x} - \sin\left( 5x \right) $ entonces
+	      \begin{align*}
+	        L\left\{ f\left( x \right)  \right\}  &= L\left\{ 2e^{3x} \right\} - L\left\{ \sin\left( 5x \right)  \right\}  \\
+		&= 2L\left\{ e^{3x} \right\} - L\left\{ \sin\left( 5x \right)  \right\}  \\
+		&= 2 \frac{1}{p - 3} - \frac{5}{p^2 + 25} \\
+	      .\end{align*}
+	    \item Sea $x^{5}e^{-2x}$ entonces, \[
+	    L\left\{ f\left( x \right)  \right\} = \frac{d^{5}}{ds^{5}}\left( \frac{1}{s - 2} \right) = \frac{120}{\left( s - 2 \right)^{6}}
+	    .\] 
+	  \end{enumerate}
+	\item 
+	  \begin{enumerate}
+	    \item Sea $\frac{1}{p^2 + p}$. Luego, \[
+	    \frac{1}{p^2 + p} = \frac{1}{p\left( p + 1 \right) } = \frac{A}{p} + \frac{B}{p + 1};\ 1 = A\left( p + 1 \right) + Bp
+	    .\] para $p = 0$ : \[
+	    1 = A\left( 0 + 1 \right) \implies A = 1
+	    .\] para $p = -1$ : \[
+	    1 = B\left( -1 \right) \implies B = -1
+	    .\] por lo tanto
+	    \begin{align*}
+	      \implies \frac{1}{p \left( p + 1 \right) }= \frac{1}{p} - \frac{1}{p + 1}\\
+	      \implies L^{-1}\left\{ \frac{1}{p} \right\} = 1\\
+	      \implies L^{-1}\left\{ \frac{1}{p + 1} \right\} = e^{-x}\\
+	      \implies f\left( x \right) = 1 - e^{-x}
+	    .\end{align*}
+	  \item Sea $\frac{4}{p^{3}} + \frac{6}{p^2 + 9}$. Luego,
+	    \begin{align*}
+	      \frac{4}{p^{3}} &= 4 \frac{1}{p^{3}} \implies 4L^{-1}\left\{ \frac{1}{p^{3}} \right\} = 4 \frac{x^2}{2} = 2x^2 \\
+	      \frac{6}{p^2 + 4} &= 6\cdot \frac{1}{p^2 + 2^2} \implies 6L^{-1}\left\{ \frac{1}{p^2 + 2^2} \right\} = 6 \frac{\sin\left( 2x \right) }{2} = 3 \sin\left( 2x \right)  \\
+	      f\left( x \right) &= 2x^2 + 3\sin\left( 2x \right) 
+	    .\end{align*}
+	  \item Sea $\frac{p + 3}{p^2 + 2p + 5}$. Luego,
+	    \begin{align*}
+	      \frac{p + 3}{p^2 + 2p + 5} &= \frac{p + 1 + 2}{\left( p + 1 \right)^2 + 4}\\
+	      &= \frac{p + 1}{\left( p + 1 \right)^2 + 4} + \frac{2}{\left( p + 1 \right)^2 + 4} \\
+	      L^{-1}\left\{ \frac{p + 1}{\left( p + 1 \right)^2 + 4} \right\} + L^{-1}\left\{ \frac{2}{\left( p + 1 \right)^2 + 4} \right\} &= e^{-x}\cos\left( 2x \right) + 2 e^{-x}\sin\left( 2x \right)  \\
+	      &= e^{-x} \left( \cos\left( 2x \right) + 2\sin\left( 2x \right)  \right) 
+	    .\end{align*}
+	  \end{enumerate}
+	\item 
+	  \begin{enumerate}
+	    \item 
+	      \begin{align*}
+		\mathscr{L}\left\{ y'' \right\}  - 4\mathscr{L}\left\{ y' \right\} + 4\mathscr{L}\left\{ y \right\} &= 0\\
+		\mathscr{L}\left\{ y'' \right\} &= p^2y\left( p \right) - py\left( 0 \right) - y'\left( 0 \right) = p^2Y\left( p \right) - 3 \\
+		\mathscr{L}\left\{ y' \right\} &= py\left( p \right) - y\left( 0 \right) = pY\left( p \right) \\
+		\mathscr{L}\left\{ y \right\} &= Y\left( p \right) \\
+		p^2Y\left( p \right) - 3 - 4\left( PY\left( p \right)  \right) + 4\left( Y\left( p \right)  \right) &= 0 \\
+		\left( p^2 - 4p + 4 \right) Y\left( p \right) &= 3\\
+		Y\left( p \right) \left( p - 2 \right)^2 &= 3\\
+		\implies Y\left( p \right) &= 3\left( p - 2 \right)^{-2}\\
+		\implies 3\mathscr{L}^{-1}\left\{ \frac{1}{\left( p - 2 \right)^2} \right\} &= 3t e^{2t}\\
+		\implies y\left( t \right)  &= 3te^{2t}
+	      .\end{align*}
+	    \item Sea $y'' + 2y' + 5y = 3e^{-x}\sin\left( x \right) $ con $y\left( 0 \right) = 0, y'\left( 0 \right) = 3$. Luego,
+	      \begin{align*}
+		\Laplace\left\{ y'' \right\} + 2\Laplace\left\{ y' \right\} + 5 \Laplace\left\{ y \right\} &= 3\Laplace\left\{ e^{-x}\sin\left( x \right)  \right\} \\
+		\mathscr{L}\left\{ y'' \right\} &= p^2y\left( p \right) - py\left( 0 \right) - y'\left( 0 \right) = p^2Y\left( p \right) - 3 \\
+		\mathscr{L}\left\{ y' \right\} &= py\left( p \right) - y\left( 0 \right) = pY\left( p \right) \\
+		\mathscr{L}\left\{ y \right\} &= Y\left( p \right) \\
+		p^2Y\left( p \right) - 3 + 2\left( pY\left( p \right)  \right) + 5Y\left( p \right) &= 3\Laplace\left\{ e^{-x}\sin\left( x \right)  \right\}  \\
+		\left( p^2 + 2p + 5 \right) Y\left( p \right) - 3 &= 3\Laplace\left\{ e^{-x}\sin\left( x \right)  \right\} \\
+		\Laplace\left\{ f\left( t \right)  \right\} = F\left( 0 \right) &\implies \Laplace\left\{ e^{at}f\left( t \right)  \right\} = F\left( s - a \right) \\
+		\Laplace\left\{ \sin\left( x \right)  \right\} &= \frac{1}{p^2 + 1}\\
+		\implies \Laplace\left\{ e^{-x}\sin\left( x \right)  \right\} &= \frac{1}{\left( p + 1 \right)^2 + 1} \\
+		\implies Y\left( p \right) &= \frac{3}{p^2 + 2p + 5} + \frac{3}{\left[ \left( p + 1 \right)^2 + 1 \right] \left( p^2 + 2p + 5 \right) } \\
+		&= \frac{3}{\left( p + 1 \right)^2 + 4} + \frac{3}{\left( \left( p + 1 \right)^2 + 1 \right) \left( \left( p + 1 \right)^2 + 4 \right) } \\
+		\implies y &= \frac{3e^{-t}}{2}\sin\left( 2t \right) + 3\Laplace^{-1}\left\{ \frac{1}{\left( \left( p + 1 \right)^2 + 1 \right) \left( \left( p + 1 \right)^2 + 4 \right) } \right\} \\
+		\implies y\left( t \right) &= 3e^{-t}\left[ \frac{\sin\left( 2t \right) }{2} + \Laplace^{-1}\left\{ \frac{1}{\left( p^2 + 1 \right) \left( p^2 + 4 \right) } \right\} \right] \\
+		\implies y\left( t \right) &= \frac{3e^{-t}\sin\left( 2t \right) }{2} + 3e^{-t}\left( \frac{1}{3}\sin\left( t \right) - \frac{1}{6}\sin\left( 2t \right)  \right)  \\
+		&= e^{-t}\sin\left( 2t \right) + e^{-t}\sin\left( t \right) \\
+		y\left( t \right) &= e^{-t}\left( \sin\left( 2t \right) + \sin\left( t \right)  \right) 
+	      .\end{align*}
+	  \end{enumerate}
+	\item 
+	\item 
+\end{enumerate}
+
+\textbf{Nota:} Para la realización de este trabajo se hablo y trabajo con la estudiante Seru Lopez Becerra. Muchas gracias por su atención.
+
+\end{document}

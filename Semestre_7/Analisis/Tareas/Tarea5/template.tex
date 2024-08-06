@@ -1,0 +1,128 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Análisis}\\Tarea 5}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Problema 1}
+\section{Enunciado}
+
+Pruebe que la serie \[
+\displaystyle \sum_{n=1}^{\infty} \left( -1 \right)^{n}\frac{x^2 + n}{n^2}
+.\] converge uniformemente en cada intervalo acotado, pero no converge de manera absoluta para cualquier valor de $x$.
+
+\section{Solución}
+
+En este caso iniciemos por mostrar que esta serie no converge absolutamente.
+\begin{align*}
+  \sum_{n=1}^{\infty} \left| \left( -1 \right)^{n} \frac{x^2 + n}{n^2} \right| &= \sum_{n=1}^{\infty} \left| \frac{x^2 + n}{n} \right|  \\
+  &= \sum_{n=1}^{\infty} \left| \frac{x^2}{n} + \frac{1}{n} \right|  \\
+  &> \sum_{n=1}^{\infty} \left| \frac{1}{n} \right|
+.\end{align*}
+
+Esta función sabemos que diverge. Por lo tanto, esta función también debe divergir.
+
+Ahora, note que esta serie puede ser acomodada de la siguiente manera:
+\begin{align*}
+  \sum_{n=1}^{\infty} \left( -1 \right) \frac{x^2 + n}{n^2} &= x^2 \sum_{n=1}^{\infty} \frac{\left( -1 \right) }{n^2} + \sum_{n=1}^{\infty} \frac{\left( -1 \right) }{n} \\
+  \sum_{n=1}^{\infty} \frac{\left( -1 \right)^{n}}{n^2} \to A\\
+  \sum_{n=1}^{\infty} \frac{\left( -1 \right)^{n}}{n} \to B\\
+  \sum_{n=1}^{\infty} \left( -1 \right) \frac{x^2 + n}{n^2} &\to x^2A + B
+.\end{align*}
+
+Ahora, sea $\varepsilon > 0$ y tome $N$ lo suficientemente grande para que  $\left| A - A_n \right| < \varepsilon$ y $\left| B - B_n \right| < \varepsilon$ para todo $n \ge N$. Ahora, sea  $\left[ a, b \right] $ un intervalo cerrado. Ahora, nos interesa encontrar el mayor $x^2$ por lo que nos interesa tener $c$ el mayor entre $|a|$ y $|b|$ (Tome en cuenta que $\left( |x| \right)^2 = \left( x \right)^2 $. Por lo tanto, sabemos que para un $n > N$ se cumple: \[
+\left| f\left( x \right) - f_n \left( x \right)  \right|  < c^2\epsilon + \epsilon
+.\] por lo tanto esta función converge uniformemente.
+
+\chapter{Problema 2}
+\section{Enunciado}
+
+Sea $\left\{ f_n \right\} $ una secuencia de funciones acotada uniformemente las cuales son \textit{Riemann Integrable} en $\left[ a, b \right] $, y sea \[
+F_n\left( x \right) = \int_a^{x}f_n\left( t \right) dt \left( a \le x \le b \right) 
+.\] pruebe que existe una subsecuencia $\left\{ F_{n_k} \right\} $ que converge uniformemente en $\left[ a, b \right] $.
+
+\section{Solución}
+
+\thm{Teorema 7.25}{Si $k$ es compacto, si $f_n \in \mathscr{e}\left( K \right) $ para $n = 1, 2, 3, \ldots$ y si $\left\{ f_n \right\} $ es acotado puntualmente y equicontinuo en $K$, entonces
+  \begin{enumerate}
+    \item $\left\{ f_n \right\} $ es acotado uniformemente en $K$ 
+    \item $\left\{ f_n \right\} $ contiene una subserie uniformemente convergente.
+  \end{enumerate}
+}
+
+Sea $\left| f_n \right| \le K$ en $\left[ a, b \right] $. Entonces, para todo $n$ \[
+\left| F_n\left( x \right)  \right| \le \int_{a}^{x}\left| f_n\left( t \right)  \right| dt \le K\left( x - a \right) 
+.\] Por lo tanto $\left\{ F_n \right\} $ esta acotado puntualmente en $\left[ a, b \right] $. Ahora tome $\varepsilon > 0$ y dos puntos $x < y$ en $\left[ a, b \right] $ tal que se cumpla que $y - x < \frac{\varepsilon}{K}$. Con lo cual podemos saber:
+\begin{align*}
+  \left| F_{n}\left( x \right)  - F_n\left( y \right)  \right| \le \int_{x}^{y}\left| f_n\left( t \right)  \right| dt \le K\left( y - x \right) \le \varepsilon
+.\end{align*} con lo cual mostramos que esta familia de funciones es equicontinua y por el teorema $7.25$ se tiene el resultado solicitado.
+
+\chapter{Problema 3}
+\section{Enunciado}
+
+Sea $X$ un espacio métrico, con métrica $d$. Fije un punto $a \in X$. Asigne a cada $p \in X$ la función $f_p$ definida por \[
+f_p\left( x \right) = d\left( x, p \right) - d\left( x, a \right)\ \left( x \in X \right) 
+.\] Pruebe que $\left| f_p\left( x \right)  \right| \le d\left( a, p \right) $ para todo $x \in X$, y por lo tanto $f_p \in C\left( X \right) $ pruebe que \[
+\left| \left| f_p - f_q \right|  \right| = d\left( p, q \right) 
+.\] para todo $p, q \in X$
+
+Si $\Phi\left( p \right) = f_p$, se sigue que $\Phi$ es una isometria (un mapa que preserva la distancia) de $X$ en $\Phi\left( X \right) \subset C\left( X \right) $.
+
+Sea $Y$ la cerradura de $\Phi\left( X \right) $ en $C\left( X \right)$. Muestre que $Y$ es completo.
+
+\textit{Conclusión:} $X$ es isometrico a un subconjunto denso de un espacio métrico completo $Y$. 
+
+\section{Solución}
+
+Note que la desigualdad triangular nos da:
+\begin{align*}
+  d\left( x, z \right) - d\left( x, y \right) &\le d\left( y, z \right) \\
+  d\left( x, y \right) - d\left( x, z \right) &\le d\left( z, y \right) = d\left( y, z \right) \\
+  \implies \left| d\left( x, z \right)  - d\left( x, y \right)  \right| &\le d\left( y, z \right) 
+.\end{align*}
+
+Para todo $x, y, z \in X$.
+
+Por lo tanto, para todo $x \in X$ \[
+\left| f_p\left( x \right)  \right|  = \left| d\left( x, p \right) - d\left( x, a \right)  \right| \le d\left( a, p \right) 
+.\]
+
+Ahora, para mostrar que es continua tome $\varepsilon > 0$ y escoja $x, y \in X$ tal que $d\left( x, y \right) < \delta = \frac{\varepsilon}{2}$ con esto entonces:
+\begin{align*}
+  \left| f_p\left( x \right) - f_p\left( y \right)  \right| &= \left| d\left( x, p \right) - d\left( x, a \right) - d\left( y, p \right) + d\left( y, a \right)  \right|  \\
+							    &\le \left| d\left( x, p \right) - d\left( y, p \right)  \right| + \left| d\left( y, a \right) - d\left( x, a \right)  \right| \\
+							    &\le d\left( x,y \right) + d\left( x, y \right) \\
+							    &\le \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+.\end{align*}
+
+Ahora, sean $p, q \in X$ entonces para todo $x \in X$ \[
+  f_p\left( x \right) - f_q\left( x \right) = d\left( x, p \right) \cancel{- d\left( x,a \right)} - d\left( x, q \right)  \cancel{ + d\left( x, a \right) } = d\left( x, p \right) - d\left( x, q \right) \le d\left( p, q \right) 
+.\] por lo tanto 
+\begin{align*}
+  \left| \left| f_p - f_q \right|  \right|  &= \sup_{x\in X}\left| f_p\left( x \right) - f_q\left( x \right)  \right| \le d\left( p, q \right)  \\
+.\end{align*}
+
+Ahora, ademas note
+\begin{align*}
+  f_p\left( q \right) - f_q\left( q \right) &= d\left( q, p \right) \cancel{- d\left( q, q \right) }\\
+  &=  d\left( q, p \right) = d\left( p, q \right)
+.\end{align*}
+
+Entonces sabemos que si existe al menos un elemento con el valor máximo por lo que \[
+\left| \left| f_p - f_q \right|  \right| = d\left( p, q \right) 
+.\] 
+
+\end{document}

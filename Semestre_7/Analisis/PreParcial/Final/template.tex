@@ -1,0 +1,151 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+\newcommand{\Q}{\mathbb{Q}}
+
+\title{\Huge{Some Class}\\Random Examples}
+\author{\huge{Your Name}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Parcial 1}
+\section{Punto 1}
+\subsection{Parte a}
+
+Tenemos la función \[
+f = 
+\begin{cases}
+  1 & x \in \mathbb{Q}\cap\left[ 0, 1 \right] \\
+  0 & x \in \left[ 0, 1 \right] \backslash \Q,
+\end{cases}
+.\] 
+
+En este caso utilizaremos el criterio de Lebesgue para la integrabilidad de Riemman
+\dfn{Criterio de Lebesgue para la integrabilidad de Riemman}{
+  Un $f$ acotado es Riemman-Integrable en $\left[ a, b \right] $ si y solo si el conjunto de discontinuidades de $f$ tiene una medida de Lebesgue igual a $0$
+}
+
+Sea $x \in \Q\cap\left[ 0, 1 \right] $ .Tome, $\left( x_n \right)_{n}$ una su sucesión de números irracionales entre $\left[ 0, 1 \right] $ tal que $x_n \to x$. Por lo tanto $f\left( x_n \right) = 1$ lo que se hace distinto de $0$ por lo que $f$ no es continuo en $x$.
+
+De manera similar, para $x \in \left[ 0, 1 \right] \backslash \mathbb{Q}$ tome una sucesión con las mismas características pero esta vez de números racionales por lo que $f\left( x_n \right) = 0$ lo que significa que $f$ no es continuo en $x$.
+
+Con esto entonces sabemos que $f$ es discontinuo en todo el conjunto $\left[ 0, 1 \right] $ por lo que el conjunto de discontinuidades tiene una medida de $ 1 - 0 = 1$ lo cual es mayor a $0$ y en consecuencia no puede ser integrable.
+\subsection{Parte b}
+
+En este caso tenemos ya de por si definido el conjunto de discontinuidades. Es decir $D = \left\{ x_n ; x_n \in \left( x_n \right)_{n \in \mathbb{N}} \right\} $. Este conjunto es claramente contable. Dado que es contable podemos definirlo como la suma de múltiples conjuntos singleton y por las propiedades de la medida de Lebesgue todos estos se suman y la suma contable de 0 es igual 0. Por lo tanto, este conjunto tiene una medida de $0$ y esta función es integrable por el criterio de Lebesgue
+
+\section{Punto 2}
+\dfn{Serie de Taylor}{La serie de Taylor de una función $f$ centrada en $a$ es \[
+f\left( x \right) = \sum_{n=0}^{\infty} \frac{f^{(n)}\left( a \right) }{n!}x^{n}
+.\] }
+\dfn{Test de Ratio}{Sea \[
+L = \lim_{n \to \infty} \left| \frac{a_{n + 1}}{a_n} \right| 
+.\] 
+Entonces
+\begin{enumerate}
+  \item $L < 1$ la serie converge de manera absoluta
+  \item $L > 1$ la serie diverge de manera absoluta
+  \item $L = 1$ el test no da conclusiones interesantes
+\end{enumerate}
+}
+
+Con esto entonces iniciemos por aventurarnos en $f^{(n)}$
+\begin{align*}
+  f\left( x \right) &= \ln\left( 1 + x \right) \\
+  f^{(1)}\left( x \right) &= \frac{1}{1 + x} \\
+  f^{(2)}\left( x \right) &= -1 \left( 1 + x \right)^{-2} \\
+  f^{(3)}\left( x \right) &= 2\left( 1 + x \right)^{-3} \\
+  f^{(4)}\left( x \right) &= - 2\cdot 3\left( 1 + x \right)^{-4} 
+.\end{align*}
+
+Con esto entonces vemos el patrón que $\left( -1 \right)^{n + 1}\left( n - 1 \right)! \left( 1 + x \right) $. Ademas notemos que si $x = 0$ (como se nos pide por centrar la función en $0$ ) entonces todos estos valores queda $\left( -1 \right)^{n + 1}\left( n - 1 \right)!$. Ahora si ponemos esto en la definición de serie de Taylor conseguimos:
+\begin{align*}
+  f\left( x \right) &= \sum_{n=1}^{\infty} \frac{\left( -1 \right)^{n + 1}\left( n - 1 \right)!}{n!}x^{n} \\
+  f\left( x \right) &= \sum_{n=1}^{\infty} \frac{\left( -1 \right)^{n + 1}}{n}x^{n} \\
+.\end{align*}
+
+Ahora, para encontrar el radio de convergencia utilizaremos el test de ratio
+\begin{align*}
+  \lim_{n \to \infty} \left| \frac{\left( -1 \right)^{(n + 2)}x^{n + 1}}{n + 1}\cdot \frac{n}{\left( -1 \right)^{n}x^{n}} \right| &= \lim_{n \to \infty} \left| \frac{n}{n + 1}\cdot x \right|  \\
+  &= |x| \\
+.\end{align*}
+
+Como queremos que $L < 1$ entonces $\left| x \right| < 1$ y eso nos dice que el radio de convergencia es $\left( -1, 1 \right) $
+
+\section{Punto 3}
+Como nos piden tomemos el polinomio de Taylor de grado 2. De nuevo recordemos entonces que lo que buscamos es
+\begin{align*}
+  e^{-x} &= f\left( 0 \right) + \frac{f'\left( 0 \right) }{1!}x^{1} + \frac{f''\left( 0 \right) }{2!}x^{2} + R_n\left( x \right) \\
+  e^{-0} &= 1 \\
+  f'\left( x \right) &= -e^{-x} \implies -e^{-0} = -1 \\
+  f''\left( x \right) &= e^{-x} \implies e^{-0} = 1 \\
+  e^{-x} &= 1 - x + \frac{1}{2}x^2 + R_n\left( x \right) \\
+  \int_{0}^{1} e^{-x} dx &= \int_{0}^{1} 1 - x + \frac{1}{2}x^2 + R_n\left( x \right)  \\
+  &= \int_{0}^{1} 1 dx - \int_{0}^{1} x dx + \frac{1}{2}\int_{0}^{1} x^2 dx + \int_{0}^{1} R_n\left( x \right) dx\\
+  &= \left[ x \right]_{0}^{1} - \left[ \frac{x^2}{2} \right]_{0}^{1} + \frac{1}{2}\left[ \frac{x^3}{3} \right]_{0}^{1} + \int_{0}^{1} R_n\left( x \right)  \\
+  &= 1 - \frac{1}{2} + \frac{1}{2}\cdot \frac{1}{3} + \int_{0}^{1}R_n\left( x \right)  \\
+  &= 1 - \frac{1}{2} + \frac{1}{6} + \int_{0}^{1} R_{n}\left( x \right)  \\
+  &= \frac{1}{2} + \frac{1}{6} + \int_{0}^{1}R_n\left( x \right)  \\
+  &= \frac{6 + 2}{12} + \int_{0}^{1}R_n\left( x \right)  \\
+  &= \frac{8}{12} + \int_{0}^{1}R_n\left( x \right)  \\
+.\end{align*}
+
+Ahora bien $R_n$ es un termino genérico que llevamos escondiendo. En verdad es $R_2$ y su definición es
+\dfn{$R_n$ }{
+$R_n = \frac{f^{(n + 1)}\left( c \right) }{\left( n + 1 \right)!}\left( x - a \right)^{n + 1}$
+}
+
+Por lo tanto:
+\begin{align*}
+  R_2 &= \frac{f^{(3)}\left( c \right) }{\left( 3 \right)!}\left( x - 0 \right)^{3}\\
+  &= \frac{-e^{-c}}{6}x^{3} \\
+.\end{align*}
+
+Con lo cual
+\begin{align*}
+  \int_{0}^{1}R_2\left( x \right) &= \int_{0}^{1} \frac{-e^{-c}}{6}x^{3} \\
+  &= \frac{-e^{-c}}{6}\int_{0}^{1} x^{3} \\
+  &= \frac{-e^{-c}}{6} \left[ \frac{x^{4}}{4} \right]_{0}^{1} \\
+  &= \frac{-e^{-c}}{6}\cdot \frac{1}{4} \\
+  &= \frac{-e^{-c}}{24} \\
+  &= -\frac{1}{24\cdot e^{c}} \\
+.\end{align*}
+
+Sabiendo que $e^{c}$ es una serie creciente entonces el valor mas grande lo toma cuando $e$ es mas grande (por que estamos en negativos) por lo tanto el error aproximado es: \[
+- \frac{1}{24\cdot e}
+.\] con lo cual llegamos a que el resultado debe diferenciarse por esto.
+\section{Punto 4}
+\subsection{Parte a}
+
+Sea \[
+R = \limsup_{n \to \infty}\left| \frac{a_{n + 1}}{a_n} \right| < 1
+.\] Sea $R^{*}$ tal que $R < R^{*} < 1$. Por la propia definición de $\limsup$ sabemos que existe un $N \in \mathbb{N}$ tal que si $n \ge N$ entonces: \[
+\sup_{k \ge n}\left\{ \left| \frac{a_{k + 1}}{a_k} \right|  \right\} \le R^{*}
+.\] ahora por la definición de supremo sabemos que para todo $n \ge  N$ se da que: \[
+\left| \frac{a_{n + 1}}{a_n} \right| \le R^{*} \implies \left| a_{n + 1} \right| \le R^{*}\left| a_n \right| 
+.\] y ahora con esto podemos desarrollar para $R^{*n}$ de la misma forma y con esto tener  \[
+R^{*n}\left| a_N \right| \ge \left| a_{N} \right| 
+.\] pero la serie \[
+\sum_{n=1}^{\infty} R^{*n}\left| a_N \right| 
+.\] converge como serie geométrica dado que $R^{*} < 1$ por lo tanto, por test de comparación la otra serie también converge.
+
+\subsection{Parte b}
+Mostremos que 
+\begin{align*}
+  \frac{n!}{n^{n}} &= \frac{n}{n}\cdot \frac{n - 1}{n} \cdot \frac{n - 2}{n} \cdot \ldots \cdot \frac{1}{n} \\
+		   &< 1 \cdot 1 \cdot 1 \cdot \ldots \cdot \frac{1}{n} = \frac{1}{n}
+.\end{align*}
+
+Mostramos que esta serie siempre es menor a $\frac{1}{n}$ por lo que por test de comparación esta debe converger a $0$
+
+\end{document}
