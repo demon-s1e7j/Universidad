@@ -1,0 +1,30 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python ProblemaP0",
+            "type": "python",
+            "request": "launch",
+            "program": "ProblemaP0.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "<",
+                "${workspaceFolder}/P0.in"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "java ProblemaP0",
+            "request": "launch",
+            "mainClass": "ProblemaP0",
+            "args": [
+                "<",
+                "P0.in"
+            ]
+        }
+    ]
+}
