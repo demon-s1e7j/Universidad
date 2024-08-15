@@ -1,0 +1,34 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Mecánica}\\Problemas Clases}
+\author{\huge{S1e7J}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Clase 1}
+
+\section{Primera Pregunta}
+\begin{align*}
+  t &= t_s + t_c\\
+  t &= \frac{h}{v_s} + \sqrt{\frac{2h}{g}} \\
+  t - \frac{h}{v_s} &= \sqrt{\frac{2h}{g}}  \\
+  \left( t - \frac{h}{v_s} \right)^2 &= \frac{2h}{g} \\
+  t^2 - \frac{2th}{v_s} + \frac{h^2}{v_s^2} &= \frac{2h}{g} \\
+  t^2 - h\left( \frac{2t}{v_s} + \frac{2}{g} \right) + \frac{h^2}{v_s^2} &= 0 \\
+  h &= \frac{-b \pm \sqrt{b^2 - 4ac} }{2a}\\
+  h &= \frac{2\left( \frac{t}{v_s} + \frac{1}{g} \right) \pm \sqrt{2\left( \frac{t}{v_s} + \frac{1}{g} \right)^2 - 4\left( \frac{1}{v_s^2} \right) \left( t^2 \right)  } }{\frac{2}{v_s^2}}  \\
+.\end{align*}
+
+\end{document}

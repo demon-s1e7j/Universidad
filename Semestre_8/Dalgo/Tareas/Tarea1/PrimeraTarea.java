@@ -7,22 +7,22 @@ import java.io.InputStreamReader;
 
 public class PrimeraTarea {
   public static void main(String[] args) {
-    try {
+    try (
       InputStreamReader is= new InputStreamReader(System.in);
       BufferedReader br = new BufferedReader(is); 
+      ) {
       String line = br.readLine();
       int casos = Integer.parseInt(line);
       line = br.readLine();
       for (int i = 0; i<casos && line != null && line.length() > 0; i++) {
-        final int[] valores = Arrays.stream(line.split(" ")).mapToInt(f -> Integer.parseInt(f)).toArray();
+        int[] valores = Arrays.stream(line.split(" ")).mapToInt(f -> Integer.parseInt(f)).toArray();
         PrimeraTarea.desarrollo(valores);
-        br.readLine();
+        line = br.readLine();
       }
     } catch (IOError | IOException e) {
       System.err.println("Ocurrio un error" + e.toString());
     }
   }
-
 
   public static void desarrollo(int[] valores) {
     double promedio = PrimeraTarea.calcularMedia(valores);

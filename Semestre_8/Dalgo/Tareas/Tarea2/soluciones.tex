@@ -1,0 +1,51 @@
+\input{preamble}
+
+\begin{document}
+    \input{heading}
+
+    \section*{Primera Pregunta}
+    \subsection*{Enunciado}
+    \begin{align*}
+      F\left( n \right) &= 12\cdot F\left( n - 1 \right) - 35 \cdot F\left( n - 2 \right)\\
+      F\left( 0 \right) &= 3\\
+      F\left( 1 \right) &= 19
+    .\end{align*}
+    \subsection*{Solución}
+
+    \subsubsection*{Poner en forma estándar}
+    \[
+    F\left( n \right) - 12\cdot F\left( n - 1 \right) + 35\cdot F\left( n - 2 \right)  = 0\\
+    .\] 
+
+    \subsubsection*{Calcular Raíces del Polinomio Característico}
+    \begin{align*}
+      \lambda^2 - 12 \lambda + 35 &= 0\\
+      \lambda &= \frac{-b \pm \sqrt{b^2 - 4ac} }{2a} \\
+      &= \frac{12 \pm \sqrt{144 - 140 } }{2} \\
+      &= \frac{12 \pm 2}{2} \\
+      &= 6 \pm 1 \\
+      &= \begin{cases}
+        5 \\
+	7
+      \end{cases}  \\
+    .\end{align*}
+
+
+    \section*{Segunda Pregunta}
+    \subsection*{Enunciado}
+    \begin{align*}
+      F\left( n \right) &= 7\cdot F\left( n -1 \right) + 7^n\\
+      F\left( 0 \right) &= 14
+    .\end{align*}
+    \subsection*{Solución}
+
+
+
+    \section*{Tercera Pregunta}
+    \subsection*{Enunciado}
+    \begin{align*}
+      F\left( n \right) &= 5*F\left( \frac{n}{5} \right) + 4\cdot \log_5\left( n \right)  \\
+      F\left( 1 \right) &= \frac{7}{4}
+    .\end{align*}
+    \subsection*{Solución}
+\end{document}

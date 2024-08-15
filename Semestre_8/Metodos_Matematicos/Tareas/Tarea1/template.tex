@@ -1,0 +1,230 @@
+\documentclass{report}
+\usepackage{float}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Métodos Matemático}\\Primera Tarea}
+\author{\huge{Sergio Montoya}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Primera Pregunta 11.2.3}
+\label{chap:1}
+\qs{11.2.3}{Encuentre la función analítica: \[
+w\left( z \right) = u\left( x, y \right) + i v\left( x, y \right) 
+.\] para 
+\begin{itemize}
+  \item $u\left( x, y \right) = x^{3} - 3xy^2$
+  \item $v\left( x, y \right) = e^{-y}\sin\left( x \right) $
+\end{itemize}}
+
+\textbf{Solución: }
+\begin{itemize}
+  \item $u\left( x, y \right) = x^3 - 3xy^2$
+
+    Recordemos las condiciones de Cauchy-Riemann \[
+    \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} ; \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x} 
+    .\] Con esto entonces partimos de $u\left( x, y \right) $ y debemos llegar a un $v\left( x, y \right) $ que permita cumplir las ecuaciones de Cauchy-Riemann.
+    \begin{align*}
+      \frac{\partial u}{\partial x} &= 3x^2 - 3y^2 = \frac{\partial v}{\partial y} \\
+      v &= \int	3x^2 - 3y^2 dy\\
+      &= 3x^2y - y^{3} + f\left( x \right) \\
+      \frac{\partial u}{\partial y} &= -6xy\\
+      \frac{\partial v}{\partial x} &= -\frac{\partial u}{\partial y} = 6xy \\
+      \frac{\partial v}{\partial x} &= 6xy \\
+      \implies c &= 0
+    .\end{align*}
+    
+    Por lo tanto la función es:
+    \begin{align*}
+      u\left( x, y \right) &= x^3 - 3xy^2\\
+      v\left( x, y \right) &= 3x^2y - y^{3} \\
+      w\left( z \right) &= u\left( x, y \right) + v\left( x, y \right)  \\
+      &= \left( x^3 - 3xy^2 \right) + i\left( 3x^2y - y^{3} \right)
+    .\end{align*}
+
+  \item $v\left( x, y \right) = e^{-y}\sin\left( x \right) $
+
+
+    Recordemos las condiciones de Cauchy-Riemann \[
+    \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} ; \frac{\partial u}{\partial y} = - \frac{\partial v}{\partial x} 
+    .\] Con esto entonces partimos de $u\left( x, y \right) $ y debemos llegar a un $v\left( x, y \right) $ que permita cumplir las ecuaciones de Cauchy-Riemann.
+
+    \begin{align*}
+      \frac{\partial v}{\partial x} &= e^{-y}\cos\left( x \right) \\
+      \frac{\partial u}{\partial y} &= - \frac{\partial v}{\partial x} = -e^{-y}\cos\left( x \right)  \\
+      u &= \int -e^{-y}\cos\left( x \right) dy \\
+      &= e^{-y}\cos\left( x \right) + f\left( x \right)  \\
+      \frac{\partial v}{\partial y} &= -e^{-y}\sin\left( x \right)  \\
+      \frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y} = -e^{-y}\sin\left( x \right) \\
+      \frac{\partial u}{\partial x} &= - e^{-y}\sin\left( x \right) + \dot{f\left( x \right) }\\
+      f\left( x \right) &= 0 \\
+    .\end{align*}
+
+    Por lo tanto esto queda como
+    \begin{align*}
+      u\left( x, y \right) &= e^{-y}\cos\left( x \right) \\
+      v\left( x, y \right) &= e^{-y}\sin\left( x \right) \\
+      w\left( z \right) &= e^{-y}\cos\left( x \right) + e^{-y}\sin\left( x \right)
+    .\end{align*}
+\end{itemize}
+
+\chapter{Segunda Pregunta 11.2.11}
+\label{chap:2}
+
+\qs{11.2.11}{
+Un flujo en un fluido dos dimensional es descrito por potencial complejo $f\left( z \right) = u\left( x, v \right) + iv\left( x, y \right) $. La velocidad del fluido $V$ esta dada por $V = \nabla u$. Si $f\left( z \right) $es analítica entonces: 
+\begin{itemize}
+  \item Muestre que $ \frac{df}{dz} = V_x - i V_y$
+  \item Muestre que $\nabla \cdot V = 0$ 
+  \item Muestre que $\nabla \times V = 0$
+\end{itemize}
+}
+\begin{itemize}
+  \item Para comenzar tenemos por el capitulo previo que: \[
+  \frac{df}{dz} = \frac{\partial u}{\partial x} + i \frac{\partial v}{\partial x} 
+  .\] Sin embargo, por las ecuaciones de Cauchy-Riemann tenemos que \[
+  \frac{\partial v}{\partial x} = - \frac{\partial u}{\partial y} 
+  .\] Por lo cual esta ecuación queda como: \[
+  \frac{df}{dz} = \frac{\partial u}{\partial x} - i \frac{\partial u}{\partial y} 
+  .\] Recordemos ahora que $V = \nabla u = \left< \frac{\partial u}{\partial x} , \frac{\partial u}{\partial y} , \frac{\partial u}{\partial z} \right>$ por lo tanto se puede resumir como \[
+  \frac{df}{dz} = V_x - i V_y
+  .\] 
+  \nt{Se que en este caso $\frac{\partial u}{\partial z} $ no tiene sentido. Por lo tanto este sera igual a $0$ sin embargo esta sera la notación que voy a mantener dado que en el ultimo punto tenemos que hacer producto cruz que existe en solamente en $3$ dimensiones. Mientras tanto esto es simplemente una proyección de tres dimensiones a dos. Específicamente al plano $z = 0$
+  }
+  \item Tomemos \[
+      V = \nabla u = \left< \frac{\partial u}{\partial x} , \frac{\partial u}{\partial y} , \frac{\partial u}{\partial z} \right>
+  .\] Sin embargo, aprovechémonos de las ecuaciones de Cauchy-Riemann  por lo que \[
+  V = \nabla u = \left<\frac{\partial v}{\partial y} , - \frac{\partial v}{\partial x} , \frac{\partial u}{\partial z}  \right>
+  .\] Por lo tanto ahora podemos desarrollar y quedaría:
+  \begin{align*}
+    \nabla \cdot \nabla u &= \frac{\partial^2 v}{\partial x\partial y} - \frac{\partial^2 v}{\partial y \partial x} + \frac{\partial^2 u}{\partial z^2}   \\
+			  &= \cancel{\frac{\partial^2 v}{\partial x\partial y}} - \cancel{\frac{\partial^2 v}{\partial y \partial x}} + 0\\
+			  &= 0
+.\end{align*} Recordemos que las segundas derivadas son simétricas en este caso por el \textit{Teorema de Shwarz}
+  \item Para esto no tenemos que hacer realmente ningún ajuste. Recordemos entonces que 
+    \begin{align*}
+      \nabla \times \nabla u &= det \left(\begin{pmatrix} 
+    \hat{i}& \hat{j} & \hat{k}\\
+    \frac{\partial }{\partial x} & \frac{\partial }{\partial y} & \frac{\partial }{\partial z} \\
+    \frac{\partial u}{\partial x} & \frac{\partial u}{\partial y} & \frac{\partial u}{\partial z} 
+  \end{pmatrix} \right)\\
+			     &= \hat{i}\left( \frac{\partial^2 u}{\partial y\partial z} - \frac{\partial^2 u}{\partial y\partial z}  \right) \\ 
+			     &\ - \hat{j}\left( \frac{\partial^2 u}{\partial x\partial z} - \frac{\partial^2 u}{\partial x\partial z}  \right) \\ 
+			     &\ + \hat{k}\left( \frac{\partial^2 u}{\partial x \partial y} - \frac{\partial u}{\partial x \partial y}  \right)   \\
+  &= 0 \hat{i} + 0 \hat{j} + 0 \hat{k} \\
+  &= 0 \\
+\end{align*}
+\end{itemize}
+
+\chapter{Tercera Pregunta 11.4.3}
+\label{chap:3}
+
+\qs{11.4.3}{
+Asumiendo que $f\left( z \right) $ es analítica en un contorno cerrado $C$ y que el punto $z_0$ esta dentro de $C$, muestre que: \[
+  \oint_C \frac{f'\left( z \right) }{z - z_0}dz = \oint_C \frac{f\left( z \right) }{\left( z - z_0 \right)^2}dz
+.\] 
+}
+
+Partamos de la formula de Cauchy: \[
+\frac{1}{2\pi i}\oint_C \frac{f\left( z \right) }{z - z_0} dz = f\left( z_0 \right) 
+.\] Note que podemos definir una función: \[
+F\left( z_0 \right) = \frac{1}{2\pi i}\oint_C \frac{f\left( z \right) }{z - z_0} = f\left( z_0 \right) 
+.\] por lo tanto podemos derivar con respecto a $z_0$ lo que entonces nos permite desarrollar:
+\begin{align*}
+  \frac{d}{dz_0}\left( \frac{1}{2\pi i}\oint_C \frac{f\left( z \right) }{z - z_0}dz\right) &= f'\left( z_0 \right)\\
+  \frac{1}{2\pi i}\oint_C \frac{d}{dz_0}\left( \frac{f\left( z \right) }{z - z_0} \right) dz &= f'\left( z_0 \right)  \\
+  \frac{1}{2\pi i}\oint_C \frac{f\left( z \right) }{\left( z - z_0 \right)^{2} }dz &= f'\left( z_0 \right)
+.\end{align*}
+
+Ahora partiendo desde el otro lado, notemos que 
+\begin{align*}
+  \oint_C \frac{f'\left( z \right) }{z - z_0}dz &= 2\pi i f'\left( z_0 \right) \\
+  f'\left( z_0 \right) &= \frac{1}{2\pi i}\oint_C \frac{f\left( z \right) }{\left( z - z_0 \right)^{2} }dz  \\
+  \oint_C \frac{f'\left( z \right) }{z - z_0}dz &= 2\pi i\frac{1}{2\pi i}\oint_C \frac{f\left( z \right) }{\left( z - z_0 \right)^{2} }dz  \\
+  \oint_C \frac{f'\left( z \right) }{z - z_0}dz &= \oint_C \frac{f\left( z \right) }{\left( z - z_0 \right)^2}dz
+.\end{align*}
+
+\chapter{Cuarta Pregunta 11.4.9}
+\label{chap:4}
+
+\qs{11.4.9}{
+  Evalué \[
+    \oint_{C} \frac{f\left( z \right) }{z\left( 2z + 1 \right)^2} 
+  \] Para el contorno del circulo unitario
+
+  \textit{Pista:} Haga expansión de fracciones parciales.
+}
+
+Para comenzar sigamos la pista de hacer una expansión de fracciones parciales. Esto nos indica que 
+\begin{align*}
+  \frac{1}{z\left( 2z + 1 \right)^2} &= \frac{A}{z} + \frac{B}{2z + 1} + \frac{C}{ \left( 2z + 1 \right)^2} \\
+  \frac{\cancel{z}}{\cancel{z}\left( 2z + 1 \right)^2} &= A + \frac{zB}{2z + 1} + \frac{zC}{\left( 2z + 1 \right)^2};\ z = 0 \\
+  1 &= A \\
+\frac{\cancel{\left( 2z + 1 \right)^2}}{z \cancel{\left( 2z + 1 \right)^2}} &= \frac{\left( 2z + 1 \right)^2}{z} + \left( 2z + 1 \right) B + C;\ z = -\frac{1}{2}\\
+-2 &= C \\
+\frac{1}{z\left( 2z + 1 \right)^2} &= \frac{1}{z} + \frac{B}{2z + 1} - \frac{2}{\left( 2z + 1 \right)^2};\ z = -1 \\
+-1 &= -1 - B - 2\\
+B &= -2 \\
+\frac{1}{z\left( 2z + 1 \right) } &= \frac{1}{z} - \frac{2}{2z + 1} - \frac{2}{\left( 2z + 1 \right)^2} \\
+.\end{align*}
+
+Por lo tanto esta misma integral nos queda como: \[
+    \oint_{C} \frac{f\left( z \right) }{z\left( 2z + 1 \right)^2} =
+\oint_{C} \frac{f\left( z \right) }{z} dz - 2\oint_{C} \frac{f\left( z \right) }{2\left( 1 + \frac{1}{2} \right) }dz - 2 \oint_{C} \frac{f\left( z \right) }{4\left( 1 + \frac{1}{2} \right)^2} dz
+.\] Que reduciendo y apoyándonos en el capitulo \ref{chap:3} queda: \[
+    \oint_{C} \frac{f\left( z \right) }{z\left( 2z + 1 \right)^2} =
+\oint_{C} \frac{f\left( z \right) }{z} dz - \oint_{C} \frac{f\left( z \right) }{\left( 1 + \frac{1}{2} \right) }dz - \pi i f'\left( \frac{1}{2} \right) 
+.\] Ahora podemos simplemente aplicar la formula de Cauchy y nos queda:
+\begin{align*}
+  \oint_{C} \frac{f\left( z \right) }{z\left( 2z + 1 \right)^2} &= 2\pi i f\left( 0 \right) - 2\pi i f\left( \frac{1}{2} \right) - \pi i f'\left( \frac{1}{2} \right)  \\ 
+  &= 2\pi i\left( f\left( 0 \right) - f\left( \frac{1}{2} \right) - \frac{1}{2}f'\left( \frac{1}{2} \right)  \right) 
+.\end{align*}
+
+\chapter{Quinta Pregunta 11.6.6}
+\label{chap:6}
+
+\qs{11.6.6}{
+  La función $F\left( z \right) = \ln\left( z^2 + 1 \right) $ esta hecho de un solo valor por una linea recta en cortes de rama de $\left( x, y \right) = \left( 0, -1 \right) $ a $\left( -\infty, -1 \right) $ y desde $\left( 0, +1 \right) $ a $\left( 0, +\infty \right) $. Vea la figura \ref{img:ayuda1}. Si $F\left( 0 \right) = -2\pi i$, encuentre el valor de $F\left( i - 2 \right) $ 
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{img/ayuda.png}
+    \caption{Cortes para el ejercicio del capitulo \ref{chap:6}}
+    \label{img:ayuda1}
+  \end{figure}
+}
+
+Iniciemos esta pregunta por ver en que rama de la función logaritmo estamos. Sabemos que $f\left( 0 \right) = -2\pi i $ Por lo tanto podemos desarrollar como:
+\begin{align*}
+  f\left( 0 \right) &= \ln\left( 0^2 + 1 \right)  \\
+  &= \ln\left( 1 \right)  \\
+  &= 0 + i \left( 0 + 2\pi n \right)  \\
+  &= i 2\pi n  \\
+  -i 2 \pi &= i 2\pi n \\
+  n &= -1
+.\end{align*}
+
+Ahora con esto sabemos que la rama en la que nos encontramos es la rama $n = -1$. Ahora bien, por otro lado veamos el resultado de la función interna para el punto solicitado.
+ \begin{align*}
+  \left( i - 2 \right)^2 + 1 &= 3 - 4i + 1 \\
+  &= 4 - 4i
+.\end{align*}
+
+Por lo tanto, estamos simplemente buscando el $\ln\left( 4 - 4i \right) $. Por un lado note que podemos sacar \[\left| 4 - 4i \right| = \sqrt{4^2 + 4^2} = \sqrt{4^2\left( 2 \right) } = 4\sqrt{2} \]. Por lo tanto ya tenemos la primera parte como $\ln\left( 4\sqrt{2}  \right) $. 
+
+Ahora bien, para el angulo notemos que podemos evitar pasar por cualquier corte si tomamos valores de angulo negativo. En este caso podemos notar que el punto deseado esta justo en la mitad del cuadril 4. Por lo tanto tiene un angulo de $-\frac{\pi}{4}$ y como estamos en la rama $n = -1$ el resultado total es: \[
+f\left( i - 2 \right) = \ln\left( 4 - 4i \right) = \ln\left( 4\sqrt{2}  \right) + i \left( -\frac{\pi}{4} - 2\pi \right) = \ln\left( 4\sqrt{2}  \right) - i \left( \frac{9\pi}{4} \right) 
+.\] 
+
+\end{document}

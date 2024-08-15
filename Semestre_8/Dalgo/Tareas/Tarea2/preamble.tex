@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage{array}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{eufrak}
+\usepackage{lipsum}
+\usepackage{pifont}
+\usepackage{yfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{ccfonts}
+\usepackage{comment}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{textcomp}
+\usepackage{blindtext}
+\usepackage{enumerate}
+\usepackage{microtype}
+\usepackage{xfakebold}
+\usepackage{kantlipsum}
+%\usepackage{draftwatermark}
+\usepackage[spanish]{babel}
+\usepackage[margin=1.5cm, top=2cm, bottom=2cm]{geometry}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=red,urlcolor=magenta]{hyperref}
+
+%//////////////////////////////////////////////////////
+% Watermark configuration
+%//////////////////////////////////////////////////////
+%\SetWatermarkScale{4}
+%\SetWatermarkColor{black}
+%\SetWatermarkLightness{0.95}
+%\SetWatermarkText{\texttt{Watermark}}
+
+%//////////////////////////////////////////////////////
+% Frame configuration
+%//////////////////////////////////////////////////////
+\newmdenv[tikzsetting={draw=gray,fill=white,fill opacity=0},backgroundcolor=none]{Frame}
+
+%//////////////////////////////////////////////////////
+% Font style configuration
+%//////////////////////////////////////////////////////
+\renewcommand{\familydefault}{\ttdefault}
+\renewcommand{\rmdefault}{tt}
+
+%//////////////////////////////////////////////////////
+% Bold configuration
+%//////////////////////////////////////////////////////
+\newcommand{\fbseries}{\unskip\setBold\aftergroup\unsetBold\aftergroup\ignorespaces}
+\makeatletter
+\newcommand{\setBoldness}[1]{\def\fake@bold{#1}}
+\makeatother
+
+%//////////////////////////////////////////////////////
+% Default font configuration
+%//////////////////////////////////////////////////////
+\DeclareFontFamily{\encodingdefault}{\ttdefault}{%
+  \hyphenchar\font=\defaulthyphenchar
+  \fontdimen2\font=0.33333em
+  \fontdimen3\font=0.16667em
+  \fontdimen4\font=0.11111em
+  \fontdimen7\font=0.11111em}
+
