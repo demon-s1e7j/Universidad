@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.29)  14 AUG 2024 21:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.5.29)  17 AUG 2024 14:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1100,18 +1100,25 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for OT1+tt on input line 51
+LaTeX Font Info:    Trying to load font information for OT1+tt on input line 77
 .
-LaTeX Font Info:    No file OT1tt.fd. on input line 51.
+LaTeX Font Info:    No file OT1tt.fd. on input line 77.
 
 
 LaTeX Font Warning: Font shape `OT1/tt/m/n' undefined
-(Font)              using `OT1/cmr/m/n' instead on input line 51.
+(Font)              using `OT1/cmr/m/n' instead on input line 77.
 
 (/usr/share/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
-) [2] (./soluciones.aux
+) [2]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `tt' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+pdfTeX warning (font expansion): font should be expanded before its first use
+[3] [4] [5] [6] (./soluciones.aux
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
 )
@@ -1124,28 +1131,31 @@ L3 programming layer <2024-02-20>
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `soluciones.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: 701C0C2CB54F580F16B7D12266E6EF76;279.
  ) 
 Here is how much of TeX's memory you used:
- 27998 strings out of 476014
- 508419 string characters out of 5792005
- 1942187 words of memory out of 5000000
- 49585 multiletter control sequences out of 15000+600000
- 564287 words of font info for 61 fonts, out of 8000000 for 9000
+ 28045 strings out of 476014
+ 508943 string characters out of 5792005
+ 1943187 words of memory out of 5000000
+ 49599 multiletter control sequences out of 15000+600000
+ 564385 words of font info for 63 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 114i,13n,134p,1007b,485s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath-fonts/xccmi
-8.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath-fonts
-/xccex10.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concret
-e/ccr8.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath-
-fonts/xccsy10.720pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/co
-ncrete/ccr10.720pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/con
-cmath-fonts/xccmi10.720pk></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on soluciones.pdf (2 pages, 32529 bytes).
+ 114i,13n,134p,1007b,572s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concrete/ccr6.600pk>
+ </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath-fonts/xccsy8.
+600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath-fonts/x
+ccmi8.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concmath-f
+onts/xccex10.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/con
+crete/ccr8.600pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public/concm
+ath-fonts/xccsy10.720pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/publi
+c/concrete/ccr10.720pk> </home/checho/.texlive/texmf-var/fonts/pk/ljfour/public
+/concmath-fonts/xccmi10.720pk></usr/share/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb
+>
+Output written on soluciones.pdf (6 pages, 46156 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 59 compressed objects within 1 object stream
- 14 named destinations out of 1000 (max. 500000)
- 3597 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 121 compressed objects within 2 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 5157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

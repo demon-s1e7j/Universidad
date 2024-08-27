@@ -8,7 +8,7 @@ def binary_search(arr: list[int], x: int) -> int:
         if (val < x): low = mid + 1; # C7 // log2(n)
         elif (val > x): high = mid - 1; # C8 // log2(n)
         else: pos = mid; # C9 // log2(n)
-    return pos
+    return pos # C10 // 1
 
 if __name__ == "__main__":
     val = binary_search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 11);

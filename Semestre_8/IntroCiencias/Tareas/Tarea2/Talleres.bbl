@@ -1,0 +1,367 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global}
+    \entry{constitucion}{legislation}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6219cdd3d85e644ad40e36d0101be3ff}{%
+           family={Constituyente},
+           familyi={C\bibinitperiod},
+           given={Asamblea\bibnamedelima Nacional},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \strng{fullhash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \strng{bibnamehash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \strng{authorbibnamehash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \strng{authornamehash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \strng{authorfullhash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{howpublished}{\url{http://secretariasenado.gov.co/senado/basedoc/constitucion_politica_1991.html}}
+      \field{month}{7}
+      \field{note}{[Accessed 21-08-2024]}
+      \field{title}{Constitución Política de la República de Colombia}
+      \field{year}{1991}
+      \field{dateera}{ce}
+    \endentry
+    \entry{tomo1}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=882f7e8fe2d7b132cb919ac37f06775e}{%
+           family={Verdad},
+           familyi={V\bibinitperiod},
+           given={Colombia\bibnamedelima Comisión},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0,
+           prefix={de\bibnamedelima la},
+           prefixi={d\bibinitperiod\bibinitdelim l\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {es}%
+      }
+      \strng{namehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{fullhash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{bibnamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authorbibnamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authornamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authorfullhash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \field{extraname}{1}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{``El Informe Final Hay futuro si hay verdad es una obra de dominio público, que constituye una medida de reparación del derecho a la verdad individual y colectiva de las víctimas del conflicto armado en Colombia, y por tanto debe ser objeto de la máxima divulgación. En ese sentido, se autoriza a cualquier persona natural o jurídica, pública o privada, a reproducir, comunicar y distribuir la Declaración y los tomos del Informe Final, siempre y cuando se haga un uso parcial o total de los mismos de manera contextualizada, y se reconozcan a la Comisión de la Verdad como autor corporativo y a quienes aparecen en los créditos correspondientes de cada tomo y documento en sus diferentes roles y actividades''. Editor.}
+      \field{month}{8}
+      \field{title}{Convocatoria a la paz grande: declaración de la Comisión para el Esclarecimiento de la Verdad, la Convivencia y la No Repetición}
+      \field{year}{2022}
+      \field{dateera}{ce}
+    \endentry
+    \entry{tomos}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=882f7e8fe2d7b132cb919ac37f06775e}{%
+           family={Verdad},
+           familyi={V\bibinitperiod},
+           given={Colombia\bibnamedelima Comisión},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0,
+           prefix={de\bibnamedelima la},
+           prefixi={d\bibinitperiod\bibinitdelim l\bibinitperiod}}}%
+      }
+      \strng{namehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{fullhash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{bibnamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authorbibnamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authornamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authorfullhash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \field{extraname}{2}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.comisiondelaverdad.co/hay-futuro-si-hay-verdad}}
+      \field{month}{8}
+      \field{note}{[Accessed 22-08-2024]}
+      \field{title}{{H}ay futuro si hay verdad | {I}nforme {F}inal {C}omisión de la {V}erdad --- comisiondelaverdad.co}
+      \field{year}{2022}
+      \field{dateera}{ce}
+    \endentry
+    \entry{senadoMisionVision}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b3a625b31d3f4118dc149fe03a77eae0}{%
+           family={Senado},
+           familyi={S\bibinitperiod},
+           given={Colombia},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \strng{fullhash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \strng{bibnamehash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \strng{authorbibnamehash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \strng{authornamehash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \strng{authorfullhash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.senado.gov.co/index.php/el-senado/mision-y-vision}}
+      \field{note}{[Accessed 22-08-2024]}
+      \field{title}{{M}isión y {V}isión --- senado.gov.co}
+      \field{year}{2021}
+    \endentry
+    \entry{centro}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a91fce6d12cac0ea2342029a730e0f56}{%
+           family={Valencia-Tello},
+           familyi={V\bibinithyphendelim T\bibinitperiod},
+           given={Diana\bibnamedelima Carolina},
+           giveni={D\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2292d40e6d959c891a09413804392066}{%
+           family={Chueiri},
+           familyi={C\bibinitperiod},
+           given={Vera\bibnamedelima Karam},
+           giveni={V\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{publisher}{1}{%
+        {Universidad de La Sabana}%
+      }
+      \strng{namehash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \strng{fullhash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \strng{bibnamehash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \strng{authorbibnamehash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \strng{authornamehash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \strng{authorfullhash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0120-8942}
+      \field{journaltitle}{Díkaion}
+      \field{number}{1}
+      \field{title}{Descentralización y re-centralización del poder en Colombia. La búsqueda de equilibrios entre la nación y las entidades territoriales}
+      \field{volume}{23}
+      \field{year}{2014}
+      \field{pages}{171\bibrangedash 194}
+      \range{pages}{24}
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global}
+    \entry{constitucion}{legislation}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6219cdd3d85e644ad40e36d0101be3ff}{%
+           family={Constituyente},
+           familyi={C\bibinitperiod},
+           given={Asamblea\bibnamedelima Nacional},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \strng{fullhash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \strng{bibnamehash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \strng{authorbibnamehash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \strng{authornamehash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \strng{authorfullhash}{6219cdd3d85e644ad40e36d0101be3ff}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{21}
+      \field{howpublished}{\url{http://secretariasenado.gov.co/senado/basedoc/constitucion_politica_1991.html}}
+      \field{month}{7}
+      \field{note}{[Accessed 21-08-2024]}
+      \field{title}{Constitución Política de la República de Colombia}
+      \field{year}{1991}
+      \field{dateera}{ce}
+    \endentry
+    \entry{tomo1}{book}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=882f7e8fe2d7b132cb919ac37f06775e}{%
+           family={Verdad},
+           familyi={V\bibinitperiod},
+           given={Colombia\bibnamedelima Comisión},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0,
+           prefix={de\bibnamedelima la},
+           prefixi={d\bibinitperiod\bibinitdelim l\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {es}%
+      }
+      \strng{namehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{fullhash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{bibnamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authorbibnamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authornamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authorfullhash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \field{extraname}{1}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{1}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{``El Informe Final Hay futuro si hay verdad es una obra de dominio público, que constituye una medida de reparación del derecho a la verdad individual y colectiva de las víctimas del conflicto armado en Colombia, y por tanto debe ser objeto de la máxima divulgación. En ese sentido, se autoriza a cualquier persona natural o jurídica, pública o privada, a reproducir, comunicar y distribuir la Declaración y los tomos del Informe Final, siempre y cuando se haga un uso parcial o total de los mismos de manera contextualizada, y se reconozcan a la Comisión de la Verdad como autor corporativo y a quienes aparecen en los créditos correspondientes de cada tomo y documento en sus diferentes roles y actividades''. Editor.}
+      \field{month}{8}
+      \field{title}{Convocatoria a la paz grande: declaración de la Comisión para el Esclarecimiento de la Verdad, la Convivencia y la No Repetición}
+      \field{year}{2022}
+      \field{dateera}{ce}
+    \endentry
+    \entry{tomos}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=882f7e8fe2d7b132cb919ac37f06775e}{%
+           family={Verdad},
+           familyi={V\bibinitperiod},
+           given={Colombia\bibnamedelima Comisión},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0,
+           prefix={de\bibnamedelima la},
+           prefixi={d\bibinitperiod\bibinitdelim l\bibinitperiod}}}%
+      }
+      \strng{namehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{fullhash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{bibnamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authorbibnamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authornamehash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \strng{authorfullhash}{882f7e8fe2d7b132cb919ac37f06775e}
+      \field{extraname}{2}
+      \field{sortinit}{d}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradate}{2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.comisiondelaverdad.co/hay-futuro-si-hay-verdad}}
+      \field{month}{8}
+      \field{note}{[Accessed 22-08-2024]}
+      \field{title}{{H}ay futuro si hay verdad | {I}nforme {F}inal {C}omisión de la {V}erdad --- comisiondelaverdad.co}
+      \field{year}{2022}
+      \field{dateera}{ce}
+    \endentry
+    \entry{senadoMisionVision}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=b3a625b31d3f4118dc149fe03a77eae0}{%
+           family={Senado},
+           familyi={S\bibinitperiod},
+           given={Colombia},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \strng{fullhash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \strng{bibnamehash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \strng{authorbibnamehash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \strng{authornamehash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \strng{authorfullhash}{b3a625b31d3f4118dc149fe03a77eae0}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.senado.gov.co/index.php/el-senado/mision-y-vision}}
+      \field{note}{[Accessed 22-08-2024]}
+      \field{title}{{M}isión y {V}isión --- senado.gov.co}
+      \field{year}{2021}
+    \endentry
+    \entry{centro}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=a91fce6d12cac0ea2342029a730e0f56}{%
+           family={Valencia-Tello},
+           familyi={V\bibinithyphendelim T\bibinitperiod},
+           given={Diana\bibnamedelima Carolina},
+           giveni={D\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2292d40e6d959c891a09413804392066}{%
+           family={Chueiri},
+           familyi={C\bibinitperiod},
+           given={Vera\bibnamedelima Karam},
+           giveni={V\bibinitperiod\bibinitdelim K\bibinitperiod},
+           givenun=0,
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{publisher}{1}{%
+        {Universidad de La Sabana}%
+      }
+      \strng{namehash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \strng{fullhash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \strng{bibnamehash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \strng{authorbibnamehash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \strng{authornamehash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \strng{authorfullhash}{29aab42ff226fa6bced5c3231fe19cb7}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0120-8942}
+      \field{journaltitle}{Díkaion}
+      \field{number}{1}
+      \field{title}{Descentralización y re-centralización del poder en Colombia. La búsqueda de equilibrios entre la nación y las entidades territoriales}
+      \field{volume}{23}
+      \field{year}{2014}
+      \field{pages}{171\bibrangedash 194}
+      \range{pages}{24}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

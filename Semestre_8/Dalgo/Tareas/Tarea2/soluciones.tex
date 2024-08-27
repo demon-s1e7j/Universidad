@@ -27,10 +27,53 @@
       &= \begin{cases}
         5 \\
 	7
-      \end{cases}  \\
+      \end{cases}
     .\end{align*}
 
+    \subsubsection*{Solución Homogénea}
+    $H\left( n \right) = c_1\cdot 5^{n} + c_2\cdot 7^{n}$
+    \subsubsection*{Solución Particular}
+    \begin{enumerate}
+      \item $a$
+	\begin{align*}
+	  F\left( n \right) - 12F\left( n -1 \right) - 35F\left( n - 2 \right) &= 0 \\
+	  a - 12\cdot a - 35\cdot a &= 0 \\
+	  a\left( -46 \right) &= 0 \\
+	  a &= 0
+	.\end{align*}
+      \item $a \cdot n$ 
+	\begin{align*}
+	  F\left( n \right) - 12F\left( n -1 \right) - 35F\left( n - 2 \right) &= 0 \\
+	  a\cdot n - 12\cdot a \left( n - 1 \right) - 35 \cdot a \left( n - 2 \right) &= 0 \\
+	  an\left( -49 \right) &= 0 \\
+	  a &= 0
+	.\end{align*}
+    \end{enumerate}
+    \subsubsection*{Solución Total}
+    \begin{align*}
+      F\left( n \right) &= H\left( n \right) + P\left( n \right)  \\
+      F\left( n \right) &= c_1\cdot 5^{n} + c_2 7^{n}
+    .\end{align*}
 
+    \subsubsection*{Calculo Constantes}
+    \begin{align*}
+      F\left( 0 \right) &= 3 \\
+      c_1 + c_2 &= 3 \\
+      F\left( 1 \right) &= 19 \\
+      c_1\cdot 5 + c_2 \cdot 7 &= 19 \\
+      c_1 &= 3 - c_2 \\
+      \left( 3 - c_2 \right)\cdot 5 + c_2 \cdot 7 &= 19 \\
+      15 - 5c_2 + 7c_2 &= 19 \\
+      2c_2 &= 4 \\
+      c_2 &= 2 \\
+      c_1 &= 3 - c_2 \\
+      c_1 &= 1 \\
+      c_2 &= 2
+    .\end{align*}
+    \subsection{Respuesta}
+    $F\left( n \right) = 1\cdot 5^{n} + 2 \cdot 7^{n} $
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////
     \section*{Segunda Pregunta}
     \subsection*{Enunciado}
     \begin{align*}
@@ -38,9 +81,50 @@
       F\left( 0 \right) &= 14
     .\end{align*}
     \subsection*{Solución}
+    \subsubsection*{Poner en forma Estándar}
+    $F\left( n \right) - 7\cdot F\left( n - 1 \right) = 7^{n}$
 
+    \subsubsection*{Raíces del Polinomio Característico}
+    \begin{align*}
+      F\left( n \right) - 7\cdot F\left( n - 1 \right) &= 0 \\
+      \lambda - 7 &= 0 \\
+      \lambda &= 7
+    .\end{align*}
+    \subsubsection*{Solución Homogénea}
+    $H\left( n \right) = a\left( 7^{n} \right) $
 
+    \subsubsection*{Solución Particular}
+    \begin{enumerate}
+      \item $n\cdot b\cdot 7^{n}$ (Probamos directamente desde aquí por que sabemos que no puede ser igual a la solución Homogénea)
+	\begin{align*}
+	  F\left( n \right) - 7\cdot F\left( n - 1 \right) &= 7^{n}\\
+	  n\cdot b\cdot 7^{n} - 7\cdot \left( n - 1 \right) b \cdot 7^{n - 1} &= 7^{n} \\
+	  n\cdot b \cdot 7^{n} - \left( n - 1 \right) \cdot b \cdot 7^{n}&= 7^{n} \\
+	  n\cdot b \cdot 7^{n} - b\cdot n\cdot 7^{n} + b \cdot 7^{n} &= 7^{n} \\
+	  b\cdot 7^{n} &= 7^{n} \\
+	  b &= 1
+	.\end{align*}
+    \end{enumerate}
 
+    \subsubsection*{Solución Total}
+    \begin{align*}
+      F\left( n \right) &= H\left( n \right) + P\left( n \right)  \\
+      F\left( n \right)  &= a\left( 7^{n} \right) + n\cdot 7^{n}
+    .\end{align*}
+
+    \subsubsection*{Calculo de constantes}
+    \begin{align*}
+      F\left( 0 \right) &= 14 \\
+      a\left( 7^{0} \right) + 0 \cdot 7^{0} &= 14 \\
+      a &= 14
+    .\end{align*}
+
+    \subsection{Respuesta}
+    \[
+      F\left( n \right) = 14\left( 7^{n} \right) + n\cdot 7^{n} 
+    .\] 
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////
     \section*{Tercera Pregunta}
     \subsection*{Enunciado}
     \begin{align*}
@@ -48,4 +132,57 @@
       F\left( 1 \right) &= \frac{7}{4}
     .\end{align*}
     \subsection*{Solución}
+    \subsubsection*{Transformación}
+    Sea $n=5^{m}$ entonces esto queda:
+    \begin{align*}
+      F\left( n \right) &= 5\cdot F\left( \frac{n}{5} \right) + 4\cdot \log_5\left( n \right)  \\
+      F\left( 5^{m} \right) &= 5\cdot F\left( \frac{5^{m}}{5} \right) + 4 \cdot \log_5\left( 5^{m} \right)  \\
+      F\left( 5^{m} \right) &= 5\cdot F\left( 5^{m - 1} \right) + 4\cdot m \\
+      G\left( m \right) &= 5\cdot G\left( m - 1 \right) + 4 \cdot m
+    .\end{align*}
+
+    A partir de este punto trabajaremos con esta transformación y pasaremos de nuevo a $F$ al final del desarrollo.
+
+    \subsubsection*{Forma Estándar}
+    $G\left( m \right) - 5\cdot G\left( m - 1 \right) = 4\cdot m$
+    \subsubsection*{Raíces del Polinomio Característico}
+    \begin{align*}
+      G\left( m \right) - 5\cdot G\left( m - 1 \right) = 0\\
+      \lambda - 5 &= 0 \\
+      \lambda &= 5
+    .\end{align*}
+    \subsubsection*{Solución Homogénea}
+    $H\left( m \right) = a\cdot 5^{n}$
+    \subsubsection*{Solución Particular}
+    \begin{enumerate}
+      \item $b\cdot m$
+	\begin{align*}
+	  G\left( m \right) - 5 \cdot G\left( m - 1 \right) &= 4 \cdot m \\
+	  b\cdot m - 5\cdot b \cdot m &= 4\cdot m \\
+	  -4\cdot b \cdot m &= 4\cdot m \\
+	  b &= -1 \\
+	.\end{align*}
+    \end{enumerate}
+    \subsubsection*{Solución Total}
+    \begin{align*}
+      G\left( m \right) &= H\left( m \right) + P\left( n \right)  \\
+      G\left( m \right) &= a\cdot 5^{m} - m \\
+    .\end{align*}
+    \subsubsection*{Valor Original}
+    \begin{align*}
+      m &= \log_5\left( n \right) \\
+      G\left( m \right) &= a\cdot 5^{m} - m \\
+      G\left( \log_5\left( n \right)  \right) &= a\cdot 5^{\log_{5}\left( n \right) } - \log_5\left( n \right)  \\
+      F\left( n \right) &= a \cdot n - \log_5\left( n \right)
+    .\end{align*}
+
+    \subsubsection*{Calculo de Constantes}
+    \begin{align*}
+      F\left( 1 \right) &= \frac{7}{4} \\
+      a \cdot 1 - \log_5\left( 1 \right)  &= \frac{7}{4} \\
+      a &= \frac{7}{4}
+    .\end{align*}
+
+    \subsection{Respuesta}
+    $F\left( n \right) = \frac{7}{4} \cdot n - \log_5\left( n \right)  $
 \end{document}
