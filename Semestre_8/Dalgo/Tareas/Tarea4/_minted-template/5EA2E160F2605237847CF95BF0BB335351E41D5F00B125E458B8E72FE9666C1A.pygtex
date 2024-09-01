@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{n+nd}{@Test}
+\PYG{+w}{  }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{primerTest}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{str}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Esto es una prueba\PYGZdq{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{pal}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{LongestPalinSubstring}\PYG{p}{.}\PYG{n+na}{longestPalSubstr}\PYG{p}{(}\PYG{n}{str}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{assert}\PYG{+w}{ }\PYG{n}{pal}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{String}\PYG{p}{.}\PYG{n+na}{format}\PYG{p}{(}
+\PYG{+w}{    }\PYG{l+s}{\PYGZdq{}Algoritmo: \PYGZpc{}d | Respuesta: \PYGZpc{}d\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{pal}\PYG{p}{,}
+\PYG{+w}{    }\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{  }\PYG{n+nd}{@Test}
+\PYG{+w}{  }\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{segundoTest}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{String}\PYG{+w}{ }\PYG{n}{str}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Para probarraborp tenemos hannah\PYGZdq{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{pal}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{LongestPalinSubstring}\PYG{p}{.}\PYG{n+na}{longestPalSubstr}\PYG{p}{(}\PYG{n}{str}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{assert}\PYG{+w}{ }\PYG{n}{pal}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{14}\PYG{p}{:}\PYG{+w}{ }\PYG{n}{String}\PYG{p}{.}\PYG{n+na}{format}\PYG{p}{(}
+\PYG{+w}{    }\PYG{l+s}{\PYGZdq{}Algoritmo: \PYGZpc{}d | Respuesta: \PYGZpc{}d\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{pal}\PYG{p}{,}
+\PYG{+w}{    }\PYG{l+m+mi}{14}\PYG{p}{);}
+\PYG{+w}{  }\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

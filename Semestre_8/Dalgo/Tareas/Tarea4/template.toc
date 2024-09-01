@@ -1,0 +1,17 @@
+\contentsline {chapter}{\numberline {1}Pregunta 1}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Código}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Recurrencia}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Explicación}{3}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Diagrama Necesidades}{3}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Complejidad Temporal}{3}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Complejidad Espacial}{4}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Ejemplos}{4}{section.1.7}%
+\contentsline {chapter}{\numberline {2}Pregunta 2}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Código}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Recurrencia}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Explicación}{7}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Diagrama Necesidades}{7}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Complejidad Temporal}{7}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Complejidad Espacial}{8}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Ejemplos}{8}{section.2.7}%
+\contentsfinish 
