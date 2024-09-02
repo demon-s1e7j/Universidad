@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{  }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kt}{long}\PYG{+w}{ }\PYG{n+nf}{count}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{coins}\PYG{o}{[]}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{,}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{sum}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{dp}\PYG{o}{[]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{o}{[}\PYG{n}{sum}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{o}{]}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// C1 | 1}
+\PYG{+w}{    }\PYG{n}{dp}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// C2 | 1}
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{n}{n}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{i}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// C3 | n}
+\PYG{+w}{    }\PYG{k}{for}\PYG{+w}{ }\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{coins}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{j}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{n}{sum}\PYG{p}{;}\PYG{+w}{ }\PYG{n}{j}\PYG{o}{++}\PYG{p}{)}\PYG{+w}{ }\PYG{c+c1}{// C4 | n*sum}
+\PYG{+w}{    }\PYG{n}{dp}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{+=}\PYG{+w}{ }\PYG{n}{dp}\PYG{o}{[}\PYG{n}{j}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{coins}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]]}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// C5 | n*sum}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{dp}\PYG{o}{[}\PYG{n}{sum}\PYG{o}{]}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// C6 | 1}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
