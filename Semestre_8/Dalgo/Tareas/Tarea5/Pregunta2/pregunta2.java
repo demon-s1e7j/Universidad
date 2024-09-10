@@ -13,9 +13,18 @@ public class pregunta2 {
     BufferedReader br = new BufferedReader(is); 
   ) {
       String line = br.readLine();
-      int[] nums = Arrays.stream(line.split(" ")).mapToInt(f -> Integer.parseInt(f)).toArray();
-      boolean isDiv = pregunta2.isDividible(nums);
-      System.out.println(isDiv);
+      int casos = Integer.parseInt(line);
+      boolean[] res = new boolean[casos];
+      line = br.readLine();
+      for (int i = 0; i < casos && line != null && line.length() > 0; i++) {
+        int[] nums = Arrays.stream(line.split(" ")).mapToInt(f -> Integer.parseInt(f)).toArray();
+        boolean isDiv = pregunta2.isDividible(nums);
+        res[i] = isDiv;
+        line = br.readLine();
+      }
+      for (boolean var : res) {
+        System.out.println(var);
+      }
     } catch (IOError | IOException e) {
       System.err.println("Ocurrio un error" + e.toString());
     }
@@ -41,10 +50,10 @@ public class pregunta2 {
       for (int j = 1; j < sum + 1; j++) {
 
         if(j < arr[i-1])
-          matrix[i][j] = matrix[i-1][j] ; 
+        matrix[i][j] = matrix[i-1][j] ; 
 
         else
-          matrix[i][j] = matrix[i-1][j] || matrix[i-1][j-arr[i-1]] ; 
+        matrix[i][j] = matrix[i-1][j] || matrix[i-1][j-arr[i-1]] ; 
       }
     }
     return matrix[arr.length][sum];
@@ -53,7 +62,7 @@ public class pregunta2 {
   public static void imprimirMatriz(boolean[][] matrix) {
     for (boolean[] a: matrix) {
       for (boolean b: a) 
-        System.out.print(b + " ");
+      System.out.print(b + " ");
       System.out.println();
     }
   }
