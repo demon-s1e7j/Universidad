@@ -1,0 +1,77 @@
+  \documentclass[3pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Métodos Matemáticos} % This is the name of the course 
+\newcommand{\examnum}{Ecuaciones Parcial 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+\newcommand{\Res}{\mathrm{Res}}
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Nombre:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{itemize}
+  \item \textbf{Funciones Complejas:}
+    \begin{align*}
+      f\left( z \right) &= f\left( x, y \right) = u\left( x, y \right) + i v\left( x, y \right)  \\
+      f'\left( z \right) &= \text{Como si }z \in \mathbb{R}
+    .\end{align*}
+    \begin{itemize}
+      \item \textbf{Función Analítica:} Se puede hacer transformada de Fourier
+      \item \textbf{Función Holomorfa:} Se puede derivar
+      \item  $\text{Analitica} \Leftrightarrow \text{Holomorfa} $
+    \end{itemize}
+  \item \textbf{Ecuaciones Cauchy-Riemann:}
+     \begin{align*}
+       \frac{\partial u}{\partial x} &= \frac{\partial v}{\partial y}; \frac{\partial u}{\partial y}  = -\frac{\partial v}{\partial x} 
+    .\end{align*}
+  \item \textbf{Serie de Fourier:} \[
+  \sum_{n=1}^{\infty} a_n\left( z - z_0 \right)^{n}
+  .\] 
+ \item \textbf{Serie de Laurent:} \[
+ \sum_{n=-\infty}^{\infty} a_n\left( z - z_0 \right)^{n}
+ .\] 
+\item \textbf{Teorema de Cauchy:} \[
+\oint_{C} f\left( z \right) dz = 0
+.\] cuando $C$ es un contorno sin polos para $f\left( z \right) $
+\item \textbf{Integral de Cauchy:} \[
+f\left( a \right) = \frac{1}{2\pi i}\oint_{C} \frac{f\left( z \right) }{z - a} dz 
+.\] Donde $f\left( z \right) $ es holomorfa para todo $C$
+\item \textbf{Integral de Residuos:}  \[
+\oint_{C} f\left( z \right) dz = 2\pi i \sum_{k=1}^{n} \Res\left( f, a_k \right)  
+.\] Donde $a_k$ son los polos que hay dentro de $C$
+\item \textbf{Residuo Polo Simple:} \[
+Res\left( f, z_0 \right) = \lim_{z \to z_0} \left( z - z_0 \right) f\left( z \right) 
+.\] 
+
+\end{itemize}
+
+\end{document}
