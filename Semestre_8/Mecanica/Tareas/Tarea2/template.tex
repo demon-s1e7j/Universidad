@@ -209,4 +209,59 @@ Por lo tanto dado que $L = T - V$ nos queda:
   L &=  \frac{1}{2}l_1^2\dot{\phi_1}^2\left( m_1 + m_2 \right) + \frac{1}{2}m_2l_2^2\dot{\phi_2}^2 + m_2l_1l_2\dot{\varphi_1}\dot{\varphi_2}\cos\left( \varphi_1 - \varphi_2 \right) -\left( - gl_1\cos\left( \varphi_1 \right) \left( m_1 + m_2 \right) - m_2 gl_2\cos\left( \varphi_2 \right) \right)  \\
    &=  \frac{1}{2}l_1^2\dot{\phi_1}^2\left( m_1 + m_2 \right) + \frac{1}{2}m_2l_2^2\dot{\phi_2}^2 + m_2l_1l_2\dot{\varphi_1}\dot{\varphi_2}\cos\left( \varphi_1 - \varphi_2 \right) +  gl_1\cos\left( \varphi_1 \right) \left( m_1 + m_2 \right) + m_2 gl_2\cos\left( \varphi_2 \right)
 .\end{align*}
+
+\chapter{}
+
+En este caso vamos a partir de que un cilindro rueda sobre otro. Para este caso tenemos dos cilindros, uno de radio $a$  y uno de radio $\alpha a$. Las medidas se pueden observar en la figura \ref{fig:img-pregunta_3_1-png}. 
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{img/pregunta_3_1.png}
+  \caption{Dimensiones y descripción del problema}
+  \label{fig:img-pregunta_3_1-png}
+\end{figure}
+
+Con esto entonces nos hace falta ver las fuerzas que las puede encontrar en la figura \ref{fig:img-pregunta_3_2-png}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{img/pregunta_3_2.png}
+  \caption{Fuerzas en el sistema}
+  \label{fig:img-pregunta_3_2-png}
+\end{figure}
+
+En este caso, dado que el cilindro $\alpha a$ ira teniendo cada vez una menor fuerza $Z$ (dado que el angulo en el que se encuentra con respecto a su eje disminuye) entonces sabemos que eventualmente este cilindro se despegara del fijo $a$. Ademas, sabemos que estos dos perderán contacto en cuanto la fuerza normal  $F$ ya no tenga ingerencia. Es decir, cuando \[
+F = 0
+.\] Ademas, sabemos por el como funciona la fricción que \[
+f \le \mu F
+.\] donde $\mu$ es el coeficiente de fricción. Lo que implica que este movimiento eventualmente empezara a deslizar sobre la superficie. Por lo tanto, podemos dividir este análisis en 3 momentos definidos por los ángulos $\theta_1$, $\theta_2$ y $\theta_3$. Para iniciar, desde $0$ hasta $\theta_1$ el cilindro rueda sin deslizar, lo que se describe en que la fricción seria \[
+f = \mu F
+.\] Ahora, entre $\theta_1$ y $\theta_2$ el cilindro se deslizaría pues la fricción es muy pequeña y en $\theta_2$ el cilindro dejaría de estar en contacto con el otro y por lo tanto se sostendría $F = 0$ y de ahí en adelante caería libremente.
+
+Ahora bien iniciemos caso a caso
+\section{}
+
+Para empezar para un movimiento que no desliza entonces sabemos que:
+\begin{align*}
+  a\theta &= \alpha a \left( \varphi - \theta \right) \\
+  \theta &= \alpha \left( \varphi - \theta \right) \\
+  \theta &= \alpha \varphi - \alpha \theta \\
+  \theta + \alpha \theta &= \alpha\varphi \\
+  \left( 1 + \alpha \right) \theta &= \alpha \varphi
+.\end{align*}
+
+Ahora bien, podemos definir una función desarrollando:
+\begin{align*}
+  \left( 1 + \alpha \right) \theta &= \alpha \varphi \\
+  \theta &= \frac{\alpha \varphi}{\left( 1 + \alpha \right) } \\
+  \gamma &= \theta - \frac{\alpha \varphi}{\left( 1 + \alpha \right) }
+.\end{align*}
+
+Donde, como se puede notar cuando esto no desliza $\gamma = 0$. Ahora bien, por otro lado, tenemos que al estar estos dos cilindros en contacto la distancia entre los centros queda: \[
+r = a + \alpha a = \left( 1 + \alpha \right) a
+.\] Ahora bien,
+\begin{align*}
+  T_1 &= \frac{1}{2}m \\
+.\end{align*}
+
 \end{document}
