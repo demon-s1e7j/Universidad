@@ -1,0 +1,17 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'Talleres.blg'
+[115] biber:340> INFO - === Tue Sep 17, 2024, 11:58:18
+[286] Biber.pm:419> INFO - Reading 'Talleres.bcf'
+[442] Biber.pm:979> INFO - Found 3 citekeys in bib section 0
+[475] Biber.pm:4419> INFO - Processing section 0
+[490] Biber.pm:4610> INFO - Looking for bibtex file 'bibliography.bib' for section 0
+[492] bibtex.pm:1713> INFO - LaTeX decoding ...
+[499] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliography.bib'
+[577] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[578] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[578] Biber.pm:4239> INFO - Sorting list 'ynt/apasortcite//global/global' of type 'entry' with template 'ynt' and locale 'es-ES'
+[599] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[599] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[599] Biber.pm:4239> INFO - Sorting list 'ynt/global//global/global' of type 'entry' with template 'ynt' and locale 'es-ES'
+[612] bbl.pm:660> INFO - Writing 'Talleres.bbl' with encoding 'UTF-8'
+[616] bbl.pm:763> INFO - Output to Talleres.bbl

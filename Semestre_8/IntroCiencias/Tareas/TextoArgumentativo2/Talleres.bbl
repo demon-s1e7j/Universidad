@@ -1,0 +1,243 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{ynt/apasortcite//global/global}
+    \entry{simulacion}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=da42fc222487291436d87e09bb1cb1be}{%
+           family={Serrano},
+           familyi={S\bibinitperiod},
+           given={Luz\bibnamedelima Ángela},
+           giveni={L\bibinitperiod\bibinitdelim Á\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=412fc5ca56f4dcd432ec4175fc45f9b0}{%
+           family={Ortiz},
+           familyi={O\bibinitperiod},
+           given={Jorge\bibnamedelima Eduardo},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {spa ; eng}%
+      }
+      \list{location}{1}{%
+        {Bogota}%
+      }
+      \list{publisher}{1}{%
+        {Universidad Nacional de Colombia}%
+      }
+      \strng{namehash}{a52436e5bdf937663cddb329ceb0d25e}
+      \strng{fullhash}{a52436e5bdf937663cddb329ceb0d25e}
+      \strng{bibnamehash}{a52436e5bdf937663cddb329ceb0d25e}
+      \strng{authorbibnamehash}{a52436e5bdf937663cddb329ceb0d25e}
+      \strng{authornamehash}{a52436e5bdf937663cddb329ceb0d25e}
+      \strng{authorfullhash}{a52436e5bdf937663cddb329ceb0d25e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Se presenta un modelo de simulación para la evaluación del desempeño de un sistema de transporte público masivo (STPM). El prototipo resultante, es flexible, tanto en la construcción del "esqueleto" de un STPM a partir de un esquema base que proporciona los componentes a usar y las reglas para la ubicación y las relaciones de los mismos, como para el modelamiento de los eventos aleatorios característicos de este tipo de sistemas. El modelo final es una red de colas complementada con elementos adicionales como matrices origen/ destino que permiten considerar fenómenos propios de un STPM. El prototipo permite definir y evaluar medidas de desempeño típicas de las líneas de espera, como por ejemplo, tiempos de permanencia promedio en el sistema y en cola, longitudes esperadas de las colas, etc.}
+      \field{issn}{0120-0011}
+      \field{journaltitle}{Revista de la Facultad de Medicina, Universidad Nacional de Colombia}
+      \field{number}{1}
+      \field{title}{Simulación de sistemas de transporte público masivo}
+      \field{volume}{52}
+      \field{year}{2004}
+      \field{pages}{75\bibrangedash 82}
+      \range{pages}{8}
+    \endentry
+    \entry{ODS}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ed07de2f45d373cf018bc040bb099af9}{%
+           family={ONU},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed07de2f45d373cf018bc040bb099af9}
+      \strng{fullhash}{ed07de2f45d373cf018bc040bb099af9}
+      \strng{bibnamehash}{ed07de2f45d373cf018bc040bb099af9}
+      \strng{authorbibnamehash}{ed07de2f45d373cf018bc040bb099af9}
+      \strng{authornamehash}{ed07de2f45d373cf018bc040bb099af9}
+      \strng{authorfullhash}{ed07de2f45d373cf018bc040bb099af9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 09 17, 2024}
+      \field{title}{Objetivos Sostenibles}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.un.org/sustainabledevelopment/es/cities/
+      \endverb
+      \verb{url}
+      \verb https://www.un.org/sustainabledevelopment/es/cities/
+      \endverb
+    \endentry
+    \entry{Wolfram}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=fc7f119c141fbcc7810a4b3a86f599db}{%
+           family={Wolfram},
+           familyi={W\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \strng{fullhash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \strng{bibnamehash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \strng{authorbibnamehash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \strng{authornamehash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \strng{authorfullhash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 09 17, 2024}
+      \field{title}{A Class of Models with the Potential to Represent Fundamental Physics}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://www.wolframphysics.org/technical-introduction/
+      \endverb
+      \verb{url}
+      \verb https://www.wolframphysics.org/technical-introduction/
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{ynt/global//global/global}
+    \entry{simulacion}{article}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=da42fc222487291436d87e09bb1cb1be}{%
+           family={Serrano},
+           familyi={S\bibinitperiod},
+           given={Luz\bibnamedelima Ángela},
+           giveni={L\bibinitperiod\bibinitdelim Á\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=412fc5ca56f4dcd432ec4175fc45f9b0}{%
+           family={Ortiz},
+           familyi={O\bibinitperiod},
+           given={Jorge\bibnamedelima Eduardo},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{language}{1}{%
+        {spa ; eng}%
+      }
+      \list{location}{1}{%
+        {Bogota}%
+      }
+      \list{publisher}{1}{%
+        {Universidad Nacional de Colombia}%
+      }
+      \strng{namehash}{a52436e5bdf937663cddb329ceb0d25e}
+      \strng{fullhash}{a52436e5bdf937663cddb329ceb0d25e}
+      \strng{bibnamehash}{a52436e5bdf937663cddb329ceb0d25e}
+      \strng{authorbibnamehash}{a52436e5bdf937663cddb329ceb0d25e}
+      \strng{authornamehash}{a52436e5bdf937663cddb329ceb0d25e}
+      \strng{authorfullhash}{a52436e5bdf937663cddb329ceb0d25e}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Se presenta un modelo de simulación para la evaluación del desempeño de un sistema de transporte público masivo (STPM). El prototipo resultante, es flexible, tanto en la construcción del "esqueleto" de un STPM a partir de un esquema base que proporciona los componentes a usar y las reglas para la ubicación y las relaciones de los mismos, como para el modelamiento de los eventos aleatorios característicos de este tipo de sistemas. El modelo final es una red de colas complementada con elementos adicionales como matrices origen/ destino que permiten considerar fenómenos propios de un STPM. El prototipo permite definir y evaluar medidas de desempeño típicas de las líneas de espera, como por ejemplo, tiempos de permanencia promedio en el sistema y en cola, longitudes esperadas de las colas, etc.}
+      \field{issn}{0120-0011}
+      \field{journaltitle}{Revista de la Facultad de Medicina, Universidad Nacional de Colombia}
+      \field{number}{1}
+      \field{title}{Simulación de sistemas de transporte público masivo}
+      \field{volume}{52}
+      \field{year}{2004}
+      \field{pages}{75\bibrangedash 82}
+      \range{pages}{8}
+    \endentry
+    \entry{ODS}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=ed07de2f45d373cf018bc040bb099af9}{%
+           family={ONU},
+           familyi={O\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed07de2f45d373cf018bc040bb099af9}
+      \strng{fullhash}{ed07de2f45d373cf018bc040bb099af9}
+      \strng{bibnamehash}{ed07de2f45d373cf018bc040bb099af9}
+      \strng{authorbibnamehash}{ed07de2f45d373cf018bc040bb099af9}
+      \strng{authornamehash}{ed07de2f45d373cf018bc040bb099af9}
+      \strng{authorfullhash}{ed07de2f45d373cf018bc040bb099af9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 09 17, 2024}
+      \field{title}{Objetivos Sostenibles}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.un.org/sustainabledevelopment/es/cities/
+      \endverb
+      \verb{url}
+      \verb https://www.un.org/sustainabledevelopment/es/cities/
+      \endverb
+    \endentry
+    \entry{Wolfram}{misc}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=fc7f119c141fbcc7810a4b3a86f599db}{%
+           family={Wolfram},
+           familyi={W\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \strng{fullhash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \strng{bibnamehash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \strng{authorbibnamehash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \strng{authornamehash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \strng{authorfullhash}{fc7f119c141fbcc7810a4b3a86f599db}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed on 09 17, 2024}
+      \field{title}{A Class of Models with the Potential to Represent Fundamental Physics}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://www.wolframphysics.org/technical-introduction/
+      \endverb
+      \verb{url}
+      \verb https://www.wolframphysics.org/technical-introduction/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,88 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage[
+backend=biber,
+style=apa,
+sorting=ynt
+]{biblatex}
+\addbibresource{bibliography.bib}
+
+\usepackage{tikz}
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+\usepackage[T1]{fontenc}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Introducción a las Ciencias} % This is the name of the course 
+\newcommand{\examnum}{Texto Argumentativo 2} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Nombre:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{Objetivos}
+
+\textbf{ODS:} 11 - Ciudades y Comunidades Sostenibles
+
+\textbf{Objetivo:} 11.2 - De aquí a 2030, proporcionar acceso a sistemas de transporte seguros, asequibles, accesibles y sostenibles para todos y mejorar la seguridad vial, en particular mediante la ampliación del transporte público, prestando especial atención a las necesidades de las personas en situación de vulnerabilidad, las mujeres, los niños, las personas con discapacidad y las personas de edad. \cite{ODS}
+
+\section{Simulaciones de Flujo como Aproximación Automovilística}
+
+En los últimos años, las ciencias se han enfocado cada vez mas en simulaciones y computación. Llegando incluso al punto en el que tenemos teorías físicas basadas casi exclusivamente en términos computacionales \cite{Wolfram}. Con estos avances, la computación para modelar sistemas complejos a entrado dentro del set de herramientas de los físicos y nos ha permitido avanzar en muchos campos. Ahora bien, dados estos avances podemos hacer similitudes con la manera en la que funciona el transporte de  las personas. Es decir, con los conocimientos de física actual, se podría hacer estudios de transporte por medio de simulaciones computacionales con las cuales tomar mejores decisiones con respecto a las políticas de las vías.
+
+Las simulaciones para transportes públicos no son nuevas. Sin embargo, estas suelen tener una aproximación mucho mas computacional \cite{simulacion}. Ahora bien, estas simulaciones suelen cambiar velocidad y facilidad por precisión (aunque su contrario también es cierto). Por otro lado, la física se ha enfrentado a problemas similares durante su desarrollo y a creado simulaciones simples pero precisas para estos problemas. En este texto, iniciaremos definiendo cual es el problema y como este tiene paralelismos con problemas físicos que ya tienen simulaciones. Ademas, explicaremos algunas de estas simulaciones. Con esto esperamos mostrar como una aproximación física a estos problemas puede ayudar a tomar un enfoque distinto a este problema.
+
+\subsection{Que es el transporte}
+
+En general, el transporte se refiere a la movilidad de un montón de personas que desean moverse de un lugar a otro. Esto es un modelo realmente complejo, pues depende de horarios de cada una de esas personas, medio de transporte y muchas otras variables que harían aun mas compleja la simulación. Sin embargo, podríamos simplificar esto como que son muchas partículas queriéndose mover de un lugar a otro. En particular, podríamos asumir, que estas partículas quieren moverse desde una zona $a$ a una zona $b$ con mas o menos precisión. Esta simulación resulta realmente simple para físicos pues solo se tendría que desarrollar dos campos y sus fuerzas para ver el como se mueve de un lugar a otro. Sin embargo, esto tiene un problema. Si lo único que tenemos son dos zonas que para nuestra aproximación están cargadas con una fuerzas esto no permitiría representar de manera correcta el transporte pues todo el trafico se distribuiría de manera mas o menos igual (dado que no habría un punto de menor resistencia). Con esto entonces podríamos tomar una aproximación similar a la que se toma en circuitos. En estas simulaciones existen múltiples caminos pero cada uno de estos tiene una resistencia diferente. La resistencia en el caso de los circuitos se refiere a un componente claro. Sin embargo, podemos hacer una aproximación similar para las vías definiendo una transformación entre resistencia vial y resistencia eléctrica (Esto podría ser una función que dependa del tamaño de las vías, la calidad de las mismas, el limite de velocidad, la probabilidad de accidentes y otros factores). Con esto, tenemos una aproximación global al problema del trafico de manera muy simple y con simulaciones existentes.
+
+\section{Ventajas}
+
+Uno de los problemas de las simulaciones de trafico es que nacen de un modelo estático y en el que los principios iniciales resultan bastante mas importantes que las variables que puedan manejar. Por ejemplo, pueden nacer de teoría de colas (en computación) \cite{simulacion} y esto aunque da resultados sumamente útiles los limita en la movilidad de estos procesos. Por el contrario, al tener parámetros que definen el comportamiento de cada calle esto permitiría cambiar rápidamente los resultados de una simulación. 
+
+Otro problema de las simulaciones clásicas es que toman cada partícula de manera individual y aunque esto puede producir resultados mas precisos resulta costoso en términos computacionales. Por otro lado, las simulaciones físicas lidian con campos y estructuras de mayor nivel que permiten ser ejecutadas mucho mas rápido (Pues se podría reducir a solucionar una serie de ecuaciones para todo el campo). Con lo cual se tendría la capacidad de tomar decisiones urgentes mucho mas rápido. Por ejemplo, si se ve que una calle no esta teniendo suficiente flujo se podría disminuir su resistencia cambiando los tiempos de los semáforos.
+
+\section{Limitaciones}
+
+En este caso, esta simulación tendría múltiples limitaciones como modelo para simular el trafico. En particular, no toma en consideración los distintos estilos de conducción y asume una homogeneidad que no tiene por que ser correcta. Otra situación es que no toma en consideración las distintas eficiencias de los vehículos para transitar una ciudad. Por ejemplo, para este modelo no resulta realmente distinto el uso de motos y carros en el transporte aunque solo por su tamaño estos dos resultan diametralmente distintos. Sin embargo, este es solo una primera iteración realmente simple y que serviría para enseñar las base (De hecho se hace: \url{https://brilliant.org/wiki/physics-of-traffic-jams/}). Por lo tanto, se podrían hacer mejores modelos que permitan tomar en cuenta estos procesos aunque su base sea la misma. 
+
+\section{Entonces funciona?}
+
+En general, estas simulaciones físicas como las presentamos aquí son de juguete y no resultan mas precisas que una simulación tradicional. Sin embargo, este resulta un campo prolífico en donde la investigación y los conocimientos que se tienen de computación y simulación pueden resultar realmente útiles. Por lo tanto, una aproximación física a la optimización de vías por medio de simulaciones seria una fuerte herramienta para poder solucionar problemas de trafico en las ciudades. Estas simulaciones, tendrían la ventaja de que al no considerar partícula por partícula (o en este caso, persona a persona) resultan mucho mas rápidas de ejecutar y en consecuencia podrían dar resultados con menor latencia y permitir la toma de decisiones urgentes mucho mas rápidas. Por lo tanto, aunque no son las simulaciones mas precisas podrían resultar útiles en soluciones de trafico.
+
+
+\printbibliography
+
+
+\end{document}
