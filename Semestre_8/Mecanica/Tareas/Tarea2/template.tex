@@ -212,6 +212,56 @@ Por lo tanto dado que $L = T - V$ nos queda:
 
 \chapter{}
 
+\section{}
+
+Para comenzar, definamos cuantas coordenadas generalizadas existen. Dado que tenemos dos partículas tenemos $3N$ en coordenadas cartesianas. Ahora bien, tenemos 5 ligaduras las cuales son:
+\begin{enumerate}
+  \item $z_1 = 0$ 
+  \item $z_2 = 0$ 
+  \item 
+    \begin{align*}
+      \ell' &= \ell + \pi R\\
+      \ell &= \ell' - \pi R \\
+      \ell &= CTE\\
+      \ell &= y_1 + y_2 = CTE
+    .\end{align*}
+  \item $x_1 = -R$
+  \item $x_2 = R$
+\end{enumerate}
+
+Con esto entonces sabemos que tenemos $3N - n = 3\cdot 2 - 5 = 1$ grados de libertad. Por lo cual solo lo describiremos como $\phi$. En particular, tendremos que 
+\begin{align*}
+  y_1 &= \phi \\
+  y_2 &= \ell - \phi
+.\end{align*}
+
+Una vez definimos esto, podemos calcular el lagrangiano:
+\begin{align*}
+  T &= \frac{1}{2}m_1\left( \dot{\phi} \right)^2 + \frac{1}{2}m_2\left( \dot{\phi} \right)^2 \\
+  V &= m_1g\phi + m_2g\left( \ell - \phi \right)  \\
+  \mathcal{L} &= T - V \\
+  &= \frac{1}{2}m_1\left( \dot{\phi} \right)^2 + \frac{1}{2}m_2\left( \dot{\phi} \right)^2 - \left( m_1g\phi + m_2g\left(\ell-\phi\right)\right)\\
+  &= \left( \frac{1}{2}\dot{\phi}^2 \right)\left( m_1 + m_2 \right) - g\left( m_1\phi + m_2\ell - m_2\phi \right)  \\
+.\end{align*}
+
+Con lo cual podemos mirar las ecuaciones de movimiento:
+\begin{align*}
+  \frac{\delta \mathcal{L}}{\delta \phi} &= 0 \\
+  \frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial \dot{\phi}}  \right) - \frac{\partial \mathcal{L}}{\partial \phi} &= 0 \\
+  \frac{\partial \mathcal{L}}{\partial \dot{\phi}} &= \frac{\partial}{\partial \dot{\phi}} \left( \frac{1}{2}\dot{\phi}^2 \right)\left( m_1 + m_2 \right) - g\left( m_1\phi + m_2\ell - m_2\phi \right) \\
+						   &= \left( m_1 + m_2 \right) \dot{\phi} \\
+  \frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial \phi}  \right) &= \frac{d}{dt}\left( \left( m_1 + m_2 \right)\dot{\phi}  \right)  \\
+									 &= \left( m_1 + m_2 \right) \ddot{\phi} \\
+  \frac{\partial \mathcal{L}}{\partial \phi} &= \frac{\partial}{\partial \phi} \left(\left( \frac{1}{2}\dot{\phi}^2 \right)\left( m_1 + m_2 \right) - g\left( m_1\phi + m_2\ell - m_2\phi \right)  \right)  \\
+  &= -g\left( m_1 - m_2 \right)  \\
+  \frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial \dot{\phi}}  \right) - \frac{\partial \mathcal{L}}{\partial \phi} &= \left( m_1 + m_2 \right) \ddot{\phi} - \left( -g\left( m_1 - m_2 \right) \right) = 0 \\
+  \left( m_1 + m_2 \right) \ddot{\phi} - \left( g\left( m_2 - m_1 \right) \right) &= 0\\
+  \left( m_1 + m_2 \right) \ddot{\phi} &= g\left( m_2 - m_1 \right)  \\
+  \ddot{\phi} &= \frac{g\left( m_2 - m_1 \right) }{\left( m_1 + m_2 \right) }
+.\end{align*}
+
+\chapter{}
+
 En este caso vamos a partir de que un cilindro rueda sobre otro. Para este caso tenemos dos cilindros, uno de radio $a$  y uno de radio $\alpha a$. Las medidas se pueden observar en la figura \ref{fig:img-pregunta_3_1-png}. 
 
 \begin{figure}[H]
@@ -254,14 +304,105 @@ Ahora bien, podemos definir una función desarrollando:
 \begin{align*}
   \left( 1 + \alpha \right) \theta &= \alpha \varphi \\
   \theta &= \frac{\alpha \varphi}{\left( 1 + \alpha \right) } \\
-  \gamma &= \theta - \frac{\alpha \varphi}{\left( 1 + \alpha \right) }
+  \gamma &= \theta - \frac{\alpha \varphi}{\left( 1 + \alpha \right) }\\
+  \frac{\alpha \varphi}{\left( 1 + \alpha \right) } &= \theta - \gamma \\
+  \alpha \varphi &= \left( \theta - \gamma \right) \left( 1 + \alpha \right)  \\
+  \varphi &= \frac{\left( \theta - \gamma \right) \left( 1 + \alpha \right) }{\alpha}
 .\end{align*}
 
 Donde, como se puede notar cuando esto no desliza $\gamma = 0$. Ahora bien, por otro lado, tenemos que al estar estos dos cilindros en contacto la distancia entre los centros queda: \[
 r = a + \alpha a = \left( 1 + \alpha \right) a
 .\] Ahora bien,
 \begin{align*}
-  T_1 &= \frac{1}{2}m \\
+  T &= \frac{1}{2}m\left( \dot{r}^2 + r^2\dot{\theta}^2 \right) + \frac{1}{2}\left( \frac{1}{2}m \right) \left( \alpha^2 a^2 \dot{\varphi}^2 \right)  \\
+    &= \frac{1}{2}m\dot{r}^2 + \frac{1}{2}m r^2\dot{\theta}^2 + \frac{1}{4}m\left( \alpha^2 a^2 \left( \frac{\left( \theta - \gamma \right)\left( 1 + \alpha \right) }{\alpha} \right)^2 \right) \\ 
+    \frac{1}{4} m \left( \alpha^2 a^2 \left( \frac{\left( \theta - \gamma \right) \left( 1 + \alpha \right) }{\alpha} \right)^2 \right) &= \frac{1}{4}m \left( \alpha^2 a^2 \frac{\left( \theta - \gamma \right)^2 \left( 1 + \alpha \right)^2}{\alpha^2} \right)  \\
+    &=  \frac{1}{4}m \left( a^2 \left( 1 + \alpha \right)^2 \left( \dot{\theta}^2 - 2\dot{\gamma}\dot{\theta} + \dot{\gamma}^2 \right)  \right) \\
+    T &= \frac{1}{2}m\dot{r}^2 + \frac{1}{2}m r^2\dot{\theta}^2 +\frac{1}{4}m \left( a^2 \left( 1 + \alpha \right)^2 \left( \dot{\theta}^2 - 2\dot{\gamma}\dot{\theta} + \dot{\gamma}^2 \right)  \right)
+.\end{align*}
+
+Ahora bien, podemos encontrar las fuerzas generalizadas con la ecuación
+\begin{align*}
+  \delta W_k &= Q_k \delta q_k \\
+  Q_k &= \frac{\delta W_k}{\delta q_k} \\
+  Q_k &= - \frac{\partial V}{\partial q_k}
+.\end{align*}
+
+% TODO Desarrollo V
+\textbf{TODO} V
+
+Con lo cual, podríamos usar:
+\begin{align*}
+  V &= mgr\cos\left( \theta \right) + \gamma fa\left( 1 + \alpha \right) - F_r  \\
+  Q_k &= - \frac{\partial V}{\partial k}  \\
+  Q_\theta &= - \left( - mgr \sin\left( \theta \right) + 0 + 0 \right)  \\
+  &= mgr \sin\left( \theta \right)  \\
+  Q_\gamma &= - \left( 0 + f\left( 1 + \alpha \right) - 0 \right)  \\
+  &= -fa\left( 1 + \alpha \right)  \\
+  Q_r &= - \left( mg\cos\left( \theta \right) - F\right)  \\
+  &= F - mg\cos\left( \theta \right)
+.\end{align*}
+
+Con lo cual
+
+\begin{align*}
+  Q_\theta &= mgr\sin\left( \theta \right)  \\
+  Q_\gamma &= - fa\left( 1 + \alpha \right)  \\
+  Q_r &= F - mg\cos\left( \theta \right)
+.\end{align*}
+
+Ahora bien, queda:
+\begin{align*}
+  \mathcal{L} &= T - V \\
+  &=  \frac{1}{2}m\dot{r}^2 + \frac{1}{2}m r^2\dot{\theta}^2 +\frac{1}{4}m \left( a^2 \left( 1 + \alpha \right)^2 \left( \dot{\theta}^2 - 2\dot{\gamma}\dot{\theta} + \dot{\gamma}^2 \right)  \right)\\
+  &- \left( mgr\cos\left( \theta \right) + \gamma fa\left( 1 + \alpha \right) - Fr \right) 
+.\end{align*}
+
+Con lo cual \[
+  \frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial \dot{q_k}}  \right) - \frac{\partial \mathcal{L}}{\partial q_k} = Q_k
+.\] 
+
+Ahora para esto:
+\begin{align*}
+  \frac{\partial \mathcal{L}}{\partial \theta} &= mr^2\dot{\theta} + \frac{1}{2}m\left( a^2\left( 1 + \alpha \right)^2 \right)\left( \dot{\theta} - \dot{\gamma} \right)  \\
+.\end{align*}
+
+\chapter{}
+
+Para iniciar podemos describir la energía cinética como:
+\begin{align*}
+  T &= \frac{1}{2}mv^2 \\
+  T &= \frac{1}{2}m\left( a^2\dot{\theta}^2 + a^2\omega^2 \sin^2\left( \theta \right)  \right)  \\
+  T &= \frac{1}{2}ma^2\dot{\theta}^2 + \frac{1}{2}ma^2\omega^2\sin^2\left( \theta \right)  \\
+  V &= -mgy\\
+  V &= -mg\left( a \cos\left( \theta \right)  \right)  \\
+  \mathcal{L} &= T - V \\
+  \mathcal{L} &= \frac{1}{2}ma^2\dot{\theta}^2 + \frac{1}{2}ma^2\omega^2\sin^2\left( \theta \right) + mg\left( a \cos\left( \theta \right) \right) 
+.\end{align*}
+
+Ademas, podemos notar que \[
+  \frac{\partial \mathcal{L}}{\partial t}  = 0
+.\] Con esto entonces, podemos utilizar la ecuación: \[
+\sum_{k=1}^{f} \dot{q_k}\frac{\partial \mathcal{L}}{\partial \dot{q_k}} - \mathcal{L} = CTE
+.\] Que dado que solo tenemos un grado de libertad esto se puede resumir a
+
+\begin{align*}
+  \dot{q_k}\frac{\partial \mathcal{L}}{\partial \dot{q_k}} &= \left( ma^2\dot{\theta}^2 \right) -\frac{1}{2}ma^2\dot{\theta}^2 - \frac{1}{2}ma^2\omega^2\sin^2\left( \theta \right) - mg\left( a \cos\left( \theta \right) \right)   \\
+  &= \frac{1}{2}ma^2\dot{\theta}^2 - \frac{1}{2}ma^2\omega^2\sin^2\left( \theta \right) - mg\left( a \cos\left( \theta \right) \right) \\
+  &= \mathcal{E}
+.\end{align*}
+
+Que esto lo podemos tomar como un lagrangiano con un eje fijo. Con lo cual
+\begin{align*}
+  \mathcal{V}\left( \theta \right) &= -\frac{1}{2}ma^2\omega^2\sin^2\left( \theta \right) - mga\cos\left( \theta \right)  \\
+.\end{align*}
+
+Que para comprobar la velocidad angular limite tenemos
+\begin{align*}
+  \mathcal{V}\left( \theta \right) &= -\frac{1}{2}ma^2\omega^2\sin^2\left( \theta \right)  - mga\cos\left( \theta \right) \\
+  &= -\frac{1}{2}ma^2\left( \left( \frac{g}{a} \right)^{\frac{1}{2}} \right)^2\sin^2\left( \theta \right)  - mga\cos\left( \theta \right)  \\
+  &= -\frac{1}{2}mag\sin^2\left( \theta \right)  - mga\cos\left( \theta \right)  \\
+  &= -\frac{1}{2}\sin^2\left( \theta \right) - \cos\left( \theta \right)  \\
 .\end{align*}
 
 \end{document}

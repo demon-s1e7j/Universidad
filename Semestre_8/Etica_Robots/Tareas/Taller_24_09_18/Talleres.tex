@@ -1,0 +1,65 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Ética para Robots} % This is the name of the course 
+\newcommand{\examnum}{Taller Impacto Ambiental} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Nombre:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+'El agua es un recurso renovable'. Esta fue la frase que mi profesora de primaria me dijo cuando estábamos hablando de medio ambiente y de los distintos tipos de recursos en el planeta. En su momento me resulto simple y la aprendí como si de una verdad universal se tratara. Sin embargo, a medida que pasa el tiempo comienzo a ser cada vez mas consciente del como esta visión es o bien errada o bien mal intencionada. Con esto dicho, la problemática medio ambiental de la que discutiré en este texto se centra en el consumo de agua por parte de los grandes centros de datos que son la columna en la que se sostiene la industria de la IA. En particular, tomare un análisis desde el utilitarismo puesto que creo que es el mas benéfico con este tipo de situaciones y aun así creo que existen argumentos validos para controvertir esto.
+
+\section{Ok... ¡pero mira el aumento de productividad!}
+
+Para iniciar, esta sección va a tratar sobre el utilitarismo. Quizás lo mas prudente sea iniciar con una definición de como trataremos aquí al utilitarismo:
+
+\textbf{Utilitarismo:} Posición ética y filosófica en la cual los pros y contras de una decisión y/o acción se ponderan para saber si existen mas beneficios o problemas y con ello determinar si la acción es buena o mala. Con esto, se toma por lo general una métrica que permita determinar el bienestar que genera y mucho del problema del utilitarismo (Incluso en el caso de aceptar sus premisas) se encuentra en la traducción de métricas y el como es completamente contextual su valoración.
+
+Ahora bien, veamos un ejemplo de este problema para traducir métricas en nuestro caso concreto. Asuma que para un centro de datos se van a usar $100$ litros de agua por segundo. Esta resulta ser nuestra métrica pues es el producto limitado que vamos a utilizar para producir "algo". Es decir, en términos utilitaristas este centro de datos resultaría ético si los efectos positivos que tenga resultan mayores a las perdidas ocasionadas por utilizar esta agua en otras cosas.
+
+Eh aquí en donde inicia la contextualidad del problema. Imagine inicialmente que este centro de datos se encuentra en una región en donde el agua potable resulta increíblemente abundante y estos $100$ litros por segundo se pueden sacar incluso del superávit de este recurso. En este caso es difícil argumentar que el uso de esta agua sea algo malo. Pues las consecuencias de usar esta agua no resulta en lastimar a nadie (en una visión bastante local, pero con eso nos sirve en este caso) y a cambio produce la posibilidad de aumentar la productividad y desarrollar mucho bienestar en otras partes del mundo (O los beneficios de la IA que tanto se nos han vendido desde su implantación en la cultura popular). Ahora bien, imagine una zona en la que el acceso al agua resulta muy restringido. En este caso es claro el como con este aumento abrupto del consumo de agua en esta zona los habitantes de este lugar sufrirían una sequía.
+
+Una vez viendo estos efectos visibles, comienza el juego de traducción y equivalencia. Imagine usted que por estas sequías una persona muere, esto es una situación trágica, sin lugar a dudas. Sin embargo, que tal que por usar este recurso limitado la investigación en una enfermada mortal avance mucho mas rápidamente y como tal se puedan salvar miles de personas. En términos concretos aquí estamos utilizando una métrica similar (vidas humanas) sin embargo, esta aceleración es apenas probabilística. Es perfectamente plausible que con el uso de este recurso no se consiga mas que un par de personas tengan respuestas que le pudo dar un buscador tradicional y un par de imágenes bonitas. En ese caso como se ingresa en la ecuación estas posibilidades. Traducirlo a ecuaciones matemáticas es posible sin embargo las incertidumbres de hacerlo en este caso (que es de juguete) ya empiezan a ser difícil.
+
+Por otro lado, también existe un problema en el análisis cuando los posibles efectos resultan diametralmente distintos entre ellos. Por ejemplo, imagine que en vez de un humano muera por la sequía muere un animal no humano. En ese caso la pregunta del valor de una vida nace de inmediato. Pero este ejemplo resulta aun muy abstracto. Imagine, ademas, que este animal era uno de los últimos especímenes de una especie en vía de extinción. ¿Acaso su condición hace que su vida resulte mas valiosa que la de otros posibles animales? Ahora imagine que ademas de eso, por el alto consumo de agua los cultivos no tuvieron toda la productividad que podrían haber tenido. Esto es aun mas abstracto pues ¿como puedo medir cuanta productividad habrían tenido los cultivos en caso de que no se hubiera hecho uso de este recurso?
+
+Por lo tanto, para un utilitarista este consumo resultaría ético si luego de hacer la ponderación de las consecuencias benéficas y maliciosas son mas grandes y/o importantes las primeras. Sin embargo, hacer este calculo resulta sumamente difícil en la mayoría de los casos y necesitaría mucho mas contexto y trabajo del que nos puede dar un ejemplo de juguete como el que trabajamos en los párrafos anteriores. Sin embargo, seria una responsabilidad ética de la empresa el realizar este estudio. Aunque esto podría resultar en pedirle un imposible.
+
+\textbf{Nota:} Me gustaría que este taller valiera por dos para mi.
+
+
+\end{document}
