@@ -18,114 +18,7 @@
 \tableofcontents
 \pagebreak
 
-\chapter{}
-\section{Random Examples}
-\dfn{Limit of Sequence in $\bs{\bbR}$}{Let $\{s_n\}$ be a sequence in $\bbR$. We say $$\lim_{n\to\infty}s_n=s$$ where $s\in\bbR$ if $\forall$ real numbers $\eps>0$ $\exists$ natural number $N$ such that for $n>N$ $$s-\eps<s_n<s+\eps\text{ i.e. }|s-s_n|<\eps$$}
-\qs{}{Is the set ${x-}$axis${\setminus\{\text{Origin}\}}$ a closed set}
-\sol We have to take its complement and check whether that set is a open set i.e. if it is a union of open balls
-\nt{We will do topology in Normed Linear Space  (Mainly $\bbR^n$ and occasionally $\bbC^n$)using the language of Metric Space}
-\clm{Topology}{}{Topology is cool}
-\ex{Open Set and Close Set}{
-	\begin{tabular}{rl}
-		Open Set:   & $\bullet$ $\phi$                                              \\
-		            & $\bullet$ $\bigcup\limits_{x\in X}B_r(x)$ (Any $r>0$ will do) \\[3mm]
-		            & $\bullet$ $B_r(x)$ is open                                    \\
-		Closed Set: & $\bullet$ $X,\ \phi$                                          \\
-		            & $\bullet$ $\overline{B_r(x)}$                                 \\
-		            & $x-$axis $\cup$ $y-$axis
-	\end{tabular}}
-\thm{}{If $x\in$ open set $V$ then $\exists$ $\delta>0$ such that $B_{\delta}(x)\subset V$}
-\begin{myproof}By openness of $V$, $x\in B_r(u)\subset V$
-	\begin{center}
-		\begin{tikzpicture}
-			\draw[red] (0,0) circle [x radius=3.5cm, y radius=2cm] ;
-			\draw (3,1.6) node[red]{$V$};
-			\draw [blue] (1,0) circle (1.45cm) ;
-			\filldraw[blue] (1,0) circle (1pt) node[anchor=north]{$u$};
-			\draw (2.9,0.4) node[blue]{$B_r(u)$};
-			\draw [green!40!black] (1.7,0) circle (0.5cm) node [yshift=0.7cm]{$B_{\delta}(x)$} ;
-			\filldraw[green!40!black] (1.7,0) circle (1pt) node[anchor=west]{$x$};
-		\end{tikzpicture}
-	\end{center}
-
-	Given $x\in B_r(u)\subset V$, we want $\delta>0$ such that $x\in B_{\delta} (x)\subset B_r(u)\subset V$. Let $d=d(u,x)$. Choose $\delta $ such that $d+\delta<r$ (e.g. $\delta<\frac{r-d}{2}$)
-
-	If $y\in B_{\delta}(x)$ we will be done by showing that $d(u,y)<r$ but $$d(u,y)\leq d(u,x)+d(x,y)<d+\delta<r$$
-\end{myproof}
-
-\cor{}{By the result of the proof, we can then show...}
-\mlenma{}{Suppose $\vec{v_1}, \dots, \vec{v_n} \in \RR[n]$ is subspace of $\RR^n$.}
-\mprop{}{$1 + 1 = 2$.}
-
-\section{Random}
-\dfn{Normed Linear Space and Norm $\boldsymbol{\|\cdot\|}$}{Let $V$ be a vector space over $\bbR$ (or $\bbC$). A norm on $V$ is function $\|\cdot\|\ V\to \bbR_{\geq 0}$ satisfying \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
-		\item \label{n:1}$\|x\|=0 \iff x=0$ $\forall$ $x\in V$
-		\item \label{n:2}	$\|\lambda x\|=|\lambda|\|x\|$ $\forall$ $\lambda\in\bbR$(or $\bbC$), $x\in V$
-		\item \label{n:3} $\|x+y\| \leq \|x\|+\|y\|$ $\forall$ $x,y\in V$ (Triangle Inequality/Subadditivity)
-	\end{enumerate}And $V$ is called a normed linear space.
-
-	$\bullet $ Same definition works with $V$ a vector space over $\bbC$ (again $\|\cdot\|\to\bbR_{\geq 0}$) where \ref{n:2} becomes $\|\lambda x\|=|\lambda|\|x\|$ $\forall$ $\lambda\in\bbC$, $x\in V$, where for $\lambda=a+ib$, $|\lambda|=\sqrt{a^2+b^2}$ }
-
-
-\ex{$\bs{p-}$Norm}{\label{pnorm}$V={\bbR}^m$, $p\in\bbR_{\geq 0}$. Define for $x=(x_1,x_2,\cdots,x_m)\in\bbR^m$ $$\|x\|_p=\Big(|x_1|^p+|x_2|^p+\cdots+|x_m|^p\Big)^{\frac1p}$$(In school $p=2$)}
-\textbf{Special Case $\bs{p=1}$}: $\|x\|_1=|x_1|+|x_2|+\cdots+|x_m|$ is clearly a norm by usual triangle inequality. \par
-\textbf{Special Case $\bs{p\to\infty\ (\bbR^m$ with $\|\cdot\|_{\infty})}$}: $\|x\|_{\infty}=\max\{|x_1|,|x_2|,\cdots,|x_m|\}$\\
-For $m=1$ these $p-$norms are nothing but $|x|$.
-Now exercise
-\qs{}{\label{exs1}Prove that triangle inequality is true if $p\geq 1$ for $p-$norms. (What goes wrong for $p<1$ ?)}
-\sol{\textbf{For Property \ref{n:3} for norm-2}	\subsubsection*{\textbf{When field is $\bbR:$}} We have to show\begin{align*}
-		         & \sum_i(x_i+y_i)^2\leq \left(\sqrt{\sum_ix_i^2} +\sqrt{\sum_iy_i^2}\right)^2                                       \\
-		\implies & \sum_i (x_i^2+2x_iy_i+y_i^2)\leq \sum_ix_i^2+2\sqrt{\left[\sum_ix_i^2\right]\left[\sum_iy_i^2\right]}+\sum_iy_i^2 \\
-		\implies & \left[\sum_ix_iy_i\right]^2\leq \left[\sum_ix_i^2\right]\left[\sum_iy_i^2\right]
-	\end{align*}So in other words prove $\langle x,y\rangle^2 \leq \langle x,x\rangle\langle y,y\rangle$ where
-	$$\langle x,y\rangle =\sum\limits_i x_iy_i$$
-
-	\begin{note}
-		\begin{itemize}
-			\item $\|x\|^2=\langle x,x\rangle$
-			\item $\langle x,y\rangle=\langle y,x\rangle$
-			\item $\langle \cdot,\cdot\rangle$ is $\bbR-$linear in each slot i.e. \begin{align*}
-				      \langle rx+x',y\rangle=r\langle x,y\rangle+\langle x',y\rangle	\text{ and similarly for second slot}
-			      \end{align*}Here in $\langle x,y\rangle$ $x$ is in first slot and $y$ is in second slot.
-		\end{itemize}
-	\end{note}Now the statement is just the Cauchy-Schwartz Inequality. For proof $$\langle x,y\rangle^2\leq \langle x,x\rangle\langle y,y\rangle $$ expand everything of $\langle x-\lambda y,x-\lambda y\rangle$ which is going to give a quadratic equation in variable $\lambda $ \begin{align*}
-		\langle x-\lambda y,x-\lambda y\rangle & =\langle x,x-\lambda y\rangle-\lambda\langle y,x-\lambda y\rangle                                       \\
-		                                       & =\langle x ,x\rangle -\lambda\langle x,y\rangle -\lambda\langle y,x\rangle +\lambda^2\langle y,y\rangle \\
-		                                       & =\langle x,x\rangle -2\lambda\langle x,y\rangle+\lambda^2\langle y,y\rangle
-	\end{align*}Now unless $x=\lambda y$ we have $\langle x-\lambda y,x-\lambda y\rangle>0$ Hence the quadratic equation has no root therefore the discriminant is greater than zero.
-
-	\subsubsection*{\textbf{When field is $\bbC:$}}Modify the definition by $$\langle x,y\rangle=\sum_i\overline{x_i}y_i$$Then we still have $\langle x,x\rangle\geq 0$}
-
-\section{Algorithms}
-\begin{algorithm}[H]
-\KwIn{This is some input}
-\KwOut{This is some output}
-\SetAlgoLined
-\SetNoFillComment
-\tcc{This is a comment}
-\vspace{3mm}
-some code here\;
-$x \leftarrow 0$\;
-$y \leftarrow 0$\;
-\uIf{$ x > 5$} {
-    x is greater than 5 \tcp*{This is also a comment}
-}
-\Else {
-    x is less than or equal to 5\;
-}
-\ForEach{y in 0..5} {
-    $y \leftarrow y + 1$\;
-}
-\For{$y$ in $0..5$} {
-    $y \leftarrow y - 1$\;
-}
-\While{$x > 5$} {
-    $x \leftarrow x - 1$\;
-}
-\Return Return something here\;
-\caption{what}
-\end{algorithm}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{}
 
 \begin{figure}[H]
@@ -210,9 +103,36 @@ Por lo tanto dado que $L = T - V$ nos queda:
    &=  \frac{1}{2}l_1^2\dot{\phi_1}^2\left( m_1 + m_2 \right) + \frac{1}{2}m_2l_2^2\dot{\phi_2}^2 + m_2l_1l_2\dot{\varphi_1}\dot{\varphi_2}\cos\left( \varphi_1 - \varphi_2 \right) +  gl_1\cos\left( \varphi_1 \right) \left( m_1 + m_2 \right) + m_2 gl_2\cos\left( \varphi_2 \right)
 .\end{align*}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{}
 
+Quizás lo mejor en este caso es iniciar por notar que la altura del pivote depende de $L\cos\left( \theta \right) $ que es la altura dada por el angulo $\theta$ y también depende de $a\cos\left( \gamma t \right) $ que nos lo da el enunciado. Con esto entonces, podemos conseguir la energía potencial del sistema como: \[
+V = - mg\left( a\cos\left( \gamma t \right) + L \cos\left( \theta \right)  \right) 
+.\] Note que es negativo por que el sistema de coordenadas esta ordenado en ese sentido.
+
+Una vez con esto, intentemos describir $T$ 
+\begin{align*}
+  T &= \frac{1}{2}m\left( \dot{x}^2 + \dot{y}^2 \right)  \\
+    &= \frac{1}{2}m\left( L^2\cos^2\left( \theta \right)\dot{\theta} - \left(a\sin\left( \gamma t \right) + L \sin\left( \theta \right) \dot{\theta}\right)^2  \right)  \\
+  \left(a\sin\left( \gamma t \right) + L \sin\left( \theta \right) \dot{\theta}\right)^2 &= a^2\sin^2\left( \gamma t \right) + a\sin\left( \gamma t \right) L\sin\left( \theta \right) \dot{\theta}  + L^2 \sin^2\left( \theta \right) \dot{\theta}^2\\
+  L^2\cos^2\left( \theta \right) \dot{\theta}^2 - L^2\sin^2\left( \theta \right) \dot{\theta}^2 &= L^2\dot{\theta}^2 \\
+												&= \frac{1}{2}m \left[ L^2\dot{\theta}^2 + a^2\gamma^2\sin^2\left( \gamma t \right) + 2 a\gamma\dot{\theta}L\sin\left( \gamma t \right) \sin\left( \theta \right)   \right]
+.\end{align*}
+
+Y con esto podemos encontrar el lagrangiano simplemente con
+\begin{align*}
+  \mathcal{L} &= T - V \\
+  \mathcal{L} &=  \frac{1}{2}m \left[ L^2\dot{\theta}^2 + a^2\gamma^2\sin^2\left( \gamma t \right) + 2 a\gamma\dot{\theta}L\sin\left( \gamma t \right) \sin\left( \theta \right)   \right] + mg\left( a\cos\left( \gamma t \right) + L \cos\left( \theta \right)  \right)
+.\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+
 \section{}
+
+\subsection{}
 
 Para comenzar, definamos cuantas coordenadas generalizadas existen. Dado que tenemos dos partículas tenemos $3N$ en coordenadas cartesianas. Ahora bien, tenemos 5 ligaduras las cuales son:
 \begin{enumerate}
@@ -237,11 +157,10 @@ Con esto entonces sabemos que tenemos $3N - n = 3\cdot 2 - 5 = 1$ grados de libe
 
 Una vez definimos esto, podemos calcular el lagrangiano:
 \begin{align*}
-  T &= \frac{1}{2}m_1\left( \dot{\phi} \right)^2 + \frac{1}{2}m_2\left( \dot{\phi} \right)^2 \\
-  V &= m_1g\phi + m_2g\left( \ell - \phi \right)  \\
+  T &= \frac{1}{2}m_1\left( \dot{\phi} \right)^2 + \frac{1}{2}m_2\left( \dot{\phi} \right)^2 \\ V &= m_1g\phi + m_2g\left( \ell - \phi \right)  \\
   \mathcal{L} &= T - V \\
   &= \frac{1}{2}m_1\left( \dot{\phi} \right)^2 + \frac{1}{2}m_2\left( \dot{\phi} \right)^2 - \left( m_1g\phi + m_2g\left(\ell-\phi\right)\right)\\
-  &= \left( \frac{1}{2}\dot{\phi}^2 \right)\left( m_1 + m_2 \right) - g\left( m_1\phi + m_2\ell - m_2\phi \right)  \\
+  &= \left( \frac{1}{2}\dot{\phi}^2 \right)\left( m_1 + m_2 \right) - g\left(m_1\phi+m_2\ell-m_2\phi \right)
 .\end{align*}
 
 Con lo cual podemos mirar las ecuaciones de movimiento:
@@ -260,6 +179,150 @@ Con lo cual podemos mirar las ecuaciones de movimiento:
   \ddot{\phi} &= \frac{g\left( m_2 - m_1 \right) }{\left( m_1 + m_2 \right) }
 .\end{align*}
 
+Sin embargo, esto no es en si mismo lo que nos pedía el ejercicio. Para esto debemos romper una ligadura pues como se ve la tensión no tendría sentido para este caso. En ese caso romperemos la ligadura de 3 o $\ell = CTE$. El procedimiento aunque no igual es semejante a medir la tensión con un dinamómetro. Con lo cual tendríamos: \[
+\frac{\delta T}{\delta x} = Q_x \land \frac{\delta T}{\delta \ell} = Q_{\ell}
+.\] Con lo cual
+\begin{align*}
+  \delta \omega &= \left( m_1g - \tau \right) \delta x + \left(m_2g=\tau\right)\left(-\delta x \right)  \\
+  \delta \omega &= \left( m_1 - m_2 \right) g \delta x = Q_x \delta x \\
+  Q_x &= \left( m_1 - m_2 \right)g
+.\end{align*}
+
+Ahora bien, dejando $x$ constante y variando $\ell$ entonces nos queda
+\begin{align*}
+  \delta \omega &= \left( m_2g - \tau \right)\delta \ell = Q_\ell d_\ell \\
+  Q_\ell &= \left( m_2g - \tau \right)
+.\end{align*}
+
+Ahora bien, dado que lo que estamos variando es $\ell$ entonces nos queda:
+\begin{align*}
+  \dot{x}_2 &= \frac{dx_2}{dt} \\
+  &= \frac{d}{dt}\left( \ell - x_1 \right)  \\
+  &= \frac{d\ell}{dt} - \frac{d\ell}{dt} \\
+  &= \dot{\ell} - \dot{x_1}
+.\end{align*}
+
+Con lo cual podemos ponerlo en $T$ 
+\begin{align*}
+  T &= \frac{1}{2}m_1\dot{x_1}^2 + \frac{1}{2}m_2\left( \dot{\ell} - \dot{x_1} \right)^2
+.\end{align*}
+
+Y ahora con esto entonces podemos volver a las ecuaciones de segundo orden
+\begin{align*}
+  \frac{\delta T}{\delta x} &= Q_x \\
+  \frac{d}{dt}\left( \frac{\partial T}{\partial \dot{x_1}}  \right) - \frac{\partial T}{\partial x_1} &= Q_{x_1} \\
+  \frac{\partial T}{\partial \dot{x}}&=m_1\dot{x_1}+m_2\left( \dot{\ell} - \dot{x} \right) \left( -1\right)\\
+  \frac{\partial T}{\partial x}  &= 0 \\
+  \frac{d}{dt}\left( \frac{\partial T}{\partial \dot{x}}  \right) &= m_1\ddot{x_1} - m_2\left( \ddot{\ell} - \ddot{x_1} \right)  \\
+								  &= \left( m_1 + m_2 \right) \ddot{x_1} \\
+  \frac{\delta T}{\delta x} &= \frac{d}{dt}\left( \frac{\partial T}{\partial \dot{x}}  \right)  \\
+			    &= \left( m_1 + m_2 \right) \ddot{x_1}
+.\end{align*}
+
+Y por el otro lado
+\begin{align*}
+  \frac{\delta T}{\delta \ell} &= Q_\ell \\
+  \frac{d}{dt}\left( \frac{\partial T}{\partial \dot{\ell}}  \right) - \frac{\partial T}{\partial \ell} &= Q_\ell \\
+  \frac{\partial T}{\partial \dot{\ell}} &= m_2\left( \dot{\ell} - \dot{x_1} \right)  \\
+  \frac{d}{dt}\left( \frac{\partial T}{\partial \dot{\ell}}  \right) &= m_2 \ddot{\ell} - m_2\ddot{x_1} \\
+  \frac{\partial T}{\partial \ell} &= 0 \\
+  \frac{\delta T}{\delta \ell} &= \frac{d}{dt}\left( \frac{\partial T}{\partial \dot{\ell}}  \right) - \frac{\partial T}{\partial \ell}  \\
+			       &= -m_2\ddot{x_1} = Q_\ell \\
+			       &= m_2g - \tau
+.\end{align*}
+
+Con lo cual tendríamos
+\begin{align*}
+  \tau &= m_2\ddot{x_1} + m_2g \\
+       &= m_2\left( \ddot{x_1} + g \right)  \\
+       &= m_2\left( g + \frac{\left( m_1 - m_2 \right) }{\left( m_1 + m_2 \right) }g \right)  \\
+       &= m_2\left( \frac{g\left( m_1 - m_2 \right) + g\left( m_1 + m_2 \right) }{m_1 + m_2} \right)  \\
+       &= \frac{2m_1m_2 g}{m_1 + m_2}
+.\end{align*}
+
+\subsection{}
+
+Ahora con multiplicadores de Lagrange tendríamos dos coordenadas generalizadas y por tanto esto quedaría:
+\begin{align*}
+  \frac{\delta \mathcal{L}}{\delta q_i} &= \frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial \dot{q_i}}  \right) - \left( \frac{\partial \mathcal{L}}{\partial q_i}  \right) = \sum_{n=1}^{2} \lambda_n \frac{\partial F_n}{\partial q_n} = Q \\
+  \mathcal{L} &= T - V \\
+  \mathcal{L} &= \left( \frac{1}{2}m_1\dot{x_1}^2 + \frac{1}{2}m_2\dot{x_2}^2 \right) - \left( m_1gx_1 + m_2gx_2 \right) 
+\end{align*}
+
+Con este lagrangiano podemos obtener
+
+\begin{align*}
+  \frac{\partial \mathcal{L}}{\partial \dot{q_1}} &= m_1\dot{x_1}\\
+  \frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial \dot{q_1}}  \right) &= m_1\ddot{x_1}\\
+  \frac{\partial \mathcal{L}}{\partial q_1} &= -m_1g \\
+  \frac{\delta \mathcal{L}}{\delta q_1} &= m_1\ddot{x_1} + m_1g = \lambda \frac{\partial F}{\partial q_1} = \lambda
+.\end{align*}
+
+Igual que para $q_2$ 
+\begin{align*}
+  \frac{\partial \mathcal{L}}{\partial \dot{q_2}} &= m_2\dot{x_2} \\
+  \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{q_2}} = m_2\ddot{x_2}\\
+  \frac{\partial \mathcal{L}}{\partial q_2} &= -m_2g \\
+  \frac{\delta \mathcal{L}}{\delta q_2} &= m_2\ddot{x_2} + m_2g = \lambda \frac{\partial F}{\partial x_2} = \lambda
+.\end{align*}
+
+Con esto entonces podemos desarrollar
+\begin{align*}
+  m_1\ddot{x_1} + m_1g &= \lambda \\
+  m_2\ddot{x_2} + m_2g &= \lambda \\
+  F &= x_1 + x_2 \\
+  m_1\ddot{x_1} + m_1 g &= m_2\ddot{x_2} + m_2g \\
+  m_1\left( - \ddot{x_2} \right) - m_2 \ddot{x_2} &= m_2g - m_1g  \\
+  -\ddot{x_2}\left( m_1 + m_2 \right) &= g \left( m_2 - m_1 \right)  \\
+  -\ddot{x_2} &= \frac{g\left( m_2 - m_1 \right) }{m_1 + m_2} \\
+  \ddot{x_1} &= \frac{g\left( m_2 - m_1 \right) }{\left( m_1 + m_2 \right) }
+.\end{align*}
+
+Que ahora con la primera ecuación nos queda: \[
+  \lambda = m_1\left( \ddot{x_1} + g \right)
+.\] 
+
+Ahora podemos desarrollar la tensión como
+\begin{align*}
+       \tau &= m_1\left( g + \frac{\left( m_2 - m_1 \right) }{\left( m_1 + m_2 \right) }g \right)  \\
+       &= m_1\left( \frac{g\left( m_2 - m_1 \right) + g\left( m_1 + m_2 \right) }{m_1 + m_2} \right)  \\
+       &= \frac{2m_1m_2 g}{m_1 + m_2}
+.\end{align*}
+
+\section{}
+
+Con esta cuenta, lo que podemos hacer es definir unas coordenadas generalizadas que sean solo el radio en el que se encuentra la cuenta respecto al eje desde donde ocurre la rotación. Por lo tanto, esto lo podemos expresar como:
+\begin{align*}
+  x = r\cos\left( \dot{\theta}t \right) \implies \dot{x} = \dot{r}\cos\left( \dot{\theta}t \right) - r\dot{\theta}\sin\left( \dot{\theta}t \right) \\
+  y = r\sin\left( \dot{\theta} \right)  \implies \dot{y} = \dot{r}\sin\left( \dot{\theta}t \right) + r\dot{\theta}\cos\left( \dot{\theta}t \right) 
+.\end{align*}
+
+Ahora bien, dado que esta cuenta se esta moviendo solamente y no tenemos efectos de otras fuerzas entonces este sistema no tiene energía potencial. Por lo tanto solo necesitamos la energía cinética para encontrar el lagrangiano.
+
+\begin{align*}
+  T &= \frac{1}{2}m\left[ \left( \dot{r}\cos\left( \dot{\theta}t \right) - r\dot{\theta}\sin\left( \dot{\theta}t \right) \right)^2 + \left( \dot{r}\sin\left( \dot{\theta}t \right) + r\dot{\theta}\cos\left( \dot{\theta}t \right) \right)^2  \right] \\
+  \left( \dot{r}\cos\left( \dot{\theta}t \right) - r\dot{\theta}\sin\left( \dot{\theta}t \right) \right)^2 &= \dot{r}^2\cos^2\left( \dot{\theta}t \right) - 2\dot{r}r\dot{\theta}\cos\left( \dot{\theta}t \right)\sin\left( \dot{\theta}t \right)  + r^2\dot{\theta}^2\sin^2\left( \dot{\theta}t \right) \\
+  \left( \dot{r}\sin\left( \dot{\theta}t \right) - r\dot{\theta}\cos\left( \dot{\theta}t \right) \right)^2 &= \dot{r}^2\sin^2\left( \dot{\theta}t \right) + 2\dot{r}r\dot{\theta}\sin\left( \dot{\theta}t \right)\cos\left( \dot{\theta}t \right)  + r^2\dot{\theta}^2\cos^2\left( \dot{\theta}t \right) \\
+  \dot{r}^2\sin^2\left( \dot{\theta}t \right) + \dot{r}^2\cos^2\left( \dot{\theta}t \right) &= \dot{r}^2\left( \cos^2\left( \dot{\theta}t \right) + \sin^2\left( \dot{\theta}t \right)  \right)  \\
+											    &\implies \dot{r}^2\\
+											    2\dot{r}r\dot{\theta}\cos\left( \dot{\theta}t \right)\sin\left( \dot{\theta}t \right) - 2\dot{r}r\dot{\theta}\cos\left( \dot{\theta}t \right)\sin\left( \dot{\theta}t \right) &= 0 \\
+											    r^2\dot{\theta}^2\cos^2\left( \dot{\theta}t \right) + r^2\dot{\theta}^2\cos^2\left( \dot{\theta}t \right) &= r^2\dot{\theta}^2 \left( \cos^2\left( \dot{\theta}t \right) + \sin^2\left( \dot{\theta}t \right)  \right)  \\
+																								      &\implies r^2\dot{\theta}^2\\
+											    T &= \frac{1}{2}m\left(\dot{r}^2 + r^2\dot{\theta}^2 \right) = \mathcal{L}
+.\end{align*}
+
+Ahora con esto:
+\begin{align*}
+  \frac{\partial \mathcal{L}}{\partial r} &= mr\dot{\theta}^2 \\
+  \frac{\partial \mathcal{L}}{\partial \dot{r}} &= m\dot{r}\\
+  \frac{d}{dt}\left( \frac{\partial \mathcal{L}}{\partial r}  \right) &= m \ddot{r} \\
+  m\ddot{r} - mr\dot{\theta}^2 &= 0 \\
+  \ddot{r} - r\dot{\theta}^2 &= 0 \\
+  r &= \dot{\theta}^2
+.\end{align*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{}
 
 En este caso vamos a partir de que un cilindro rueda sobre otro. Para este caso tenemos dos cilindros, uno de radio $a$  y uno de radio $\alpha a$. Las medidas se pueden observar en la figura \ref{fig:img-pregunta_3_1-png}. 
@@ -328,9 +391,6 @@ Ahora bien, podemos encontrar las fuerzas generalizadas con la ecuación
   Q_k &= - \frac{\partial V}{\partial q_k}
 .\end{align*}
 
-% TODO Desarrollo V
-\textbf{TODO} V
-
 Con lo cual, podríamos usar:
 \begin{align*}
   V &= mgr\cos\left( \theta \right) + \gamma fa\left( 1 + \alpha \right) - F_r  \\
@@ -367,6 +427,61 @@ Ahora para esto:
   \frac{\partial \mathcal{L}}{\partial \theta} &= mr^2\dot{\theta} + \frac{1}{2}m\left( a^2\left( 1 + \alpha \right)^2 \right)\left( \dot{\theta} - \dot{\gamma} \right)  \\
 .\end{align*}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{}
+
+Dado que estamos en un péndulo esférico lo mas simple es pasar nuestras coordenadas generalizadas para que sean esféricas. En este caso, las velocidades son:
+\begin{align*}
+  \dot{r}^2 + r^2\dot{\theta}^2 + r^2\dot{\ell}^2\sin^2\left( \theta \right) 
+.\end{align*}
+
+Ahora bien, dado que este es un péndulo sabemos que $r$ es constante. Por lo tanto, mis coordenadas generalizadas serian $\theta$ y $\ell$. Y con la velocidad descrita como arriba la energía cinética me queda como:
+\begin{align*}
+  T &= \frac{1}{2}m\left( r^2\dot{\theta}^2 + r^2\dot{\ell}^2\sin^2\left( \theta \right)  \right)  \\
+.\end{align*}
+
+Por otro lado, el único potencial que existe en este sistema es el gravitacional  y este solo depende de $\theta$ dado que solo esta definido por la altura. Por lo tanto este queda como \[
+V = mg r\cos\left( \theta \right) 
+.\] Con esto ya calculado podemos saber que el lagrangiano es
+\begin{align*}
+  \mathcal{L} = T - V = \frac{1}{2}m\left( r^2\dot{\theta}^2 + r^2\dot{\ell}^2\sin^2\left( \theta \right)  \right) - mgr\cos\left( \theta \right) 
+.\end{align*}
+
+Con esto entonces las ecuaciones de Euler Lagrange nos quedan como
+\begin{align*}
+  \frac{\delta \mathcal{L}}{\delta \theta} &= 0 \\
+  \frac{\partial \mathcal{L}}{\partial \dot{\theta}} &= mr^2\dot{\theta} \\
+  \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{\theta}} &= m\ddot{\theta}r^2 \\
+  \frac{\partial \mathcal{L}}{\partial \theta} &= mr^2\dot{\ell}^2\sin\left( \theta \right) \cos\left( \theta \right) + mgr\sin\left( \theta \right)  \\
+  \frac{\delta \mathcal{L}}{\delta \theta} &= mr^2\ddot{\theta} -mr^2\dot{\ell}^2\sin\left( \theta \right) \cos\left( \theta \right) - mgr\sin\left( \theta \right) = 0 \\
+  \frac{\delta \mathcal{L}}{\delta \ell} &= 0 \\
+  \frac{\partial \mathcal{L}}{\partial \dot{\ell}} &= mr^2\dot{\ell}\sin^2\left( \theta \right)  \\
+  \frac{d}{dt}\frac{\partial \mathcal{L}}{\partial \dot{\ell}} &= mr^2\ddot{\ell}\sin^2\left( \theta \right) \\
+  \frac{\partial \mathcal{L}}{\partial \ell} &= 0\\
+  \frac{\delta \mathcal{L}}{\delta \ell} &= mr^2\ddot{\ell}\sin^2\left( \theta \right) = 0
+.\end{align*}
+
+Note que
+\begin{align*}
+  \frac{\delta \mathcal{L}}{\delta \ell} &= mr^2\ddot{\ell}\sin^2\left( \theta \right) = 0\\
+  0 &= \frac{d}{dt}\left( mr^2\dot{\ell}\sin^2\left( \theta \right) \right)  \\
+  p_\ell &= CTE =  mr^2\dot{\ell}\sin^2\left( \theta \right)
+.\end{align*}
+
+Ahora bien, sabemos que \[
+  \dot{\theta} \frac{\partial L}{\partial \dot{\theta}} + \dot{\ell}\frac{\partial L}{\partial \dot{\ell}} - L = E
+.\] donde $E$ es una constante, que al reemplazar todo nos queda como
+\begin{align*}
+  \frac{1}{2}mr^2\dot{\theta}^2 + \frac{p_\ell^{2}}{2mr^2\sin^2\left( \theta \right) } + mgr\cos\left( \theta \right) &= E \\
+.\end{align*}
+
+Con esto podemos tomar lo que esencialmente es un potencial en este caso como:
+\begin{align*}
+  \mathcal{V} = \frac{p_\ell^{2}}{2mr^2\sin^2\left( \theta \right) } + mgr\cos\left( \theta \right)
+.\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{}
 
 Para iniciar podemos describir la energía cinética como:

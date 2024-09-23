@@ -1,0 +1,74 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Mecánica} % This is the name of the course 
+\newcommand{\examnum}{Bono Parcial 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Nombre:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+Tenemos un oscillador armonico armotiguado. En este caso imaginemoslo como una masa pegada a un resorte y tiene la amortiguación del Aire. Con esto entonces, sabemos que tanto $y$ como $z$ son 0. Por lo tanto, solo hay una coordenada generalizada. Llamemos a esta coordenada $q$. Ademas, por mostremos que esta coordenada funcionaria de la manera $x\left( t \right) = e^{-\frac{\lambda}{2}t}q\left( t \right) $ lo que nos deja:
+\begin{align*}
+  x\left( t \right) &= e^{-\frac{\lambda}{2}t}q\left( t \right)  \\
+  \dot{x}\left( t \right) &= -\frac{\lambda}{2}e^{-\frac{\lambda}{2}t}q\left( t \right) + e^{-\frac{\lambda}{2}t}\dot{q}\left( t \right)  \\
+  \ddot{x}\left( t \right) &= \frac{\lambda^2}{4}e^{-\frac{\lambda}{2}t}q\left( t \right) - \frac{\lambda}{2}e^{-\frac{\lambda}{2}t}\dot{q}\left( t \right) - \frac{\lambda}{2}e^{-\frac{\lambda}{2}t}\dot{q}\left( t \right) + e^{-\frac{\lambda}{2}t}\ddot{q}\left( t \right)   \\
+			   &= e^{-\frac{\lambda}{2}t}\left( \ddot{q}\left( t \right) - \lambda\dot{q}\left( t \right) + \frac{\lambda^2}{4}q\left( t \right)  \right)
+.\end{align*}
+
+Ahora con esto, podemos mirar en la ecuación original que podemos conseguir con:
+\begin{align*}
+  m\ddot{x} &= -k x - b \dot{x} \\
+  \ddot{x} + \lambda \dot{x} + \omega^2 x &= 0
+.\end{align*}
+
+Y reemplazando queda:
+\begin{align*}
+  e^{-\frac{\lambda}{2}t}\left( \ddot{q}\left( t \right) - \lambda\dot{q}\left( t \right) + \frac{\lambda^2}{4}q\left( t \right)  \right) + \lambda \left( -\frac{\lambda}{2}e^{-\frac{\lambda}{2}t}q\left( t \right) + e^{-\frac{\lambda}{2}t}\dot{q}\left( t \right) \right) + \omega^2 e^{-\frac{\lambda}{2}t} q\left( t \right) &= 0 \\
+  \ddot{q}\left( t \right) - \lambda\dot{q}\left( t \right) + \frac{\lambda^2}{4}q\left( t \right) - \frac{\lambda^2}{2}q\left( t \right) + \lambda \dot{q}\left( t \right) + \omega^2q\left( t \right) &= 0 \\
+  \ddot{q}\left( t \right) + \left( \omega^2 - \frac{\lambda^2}{4} \right) q\left( t \right) &= 0 \\
+.\end{align*}
+
+Esta ultima ecuación es esencialmente la de un oscilador armónico simple con una frecuencia de $\sqrt{\omega^2 - \frac{\lambda^2}{4}} $. Por lo tanto, esta transformación simplemente nos permitió pasar de un oscilador amortiguado a uno simple. Con esto en mente podemos tomar el lagrangiano normalmente haciendo los reemplazos necesarios:
+\begin{align*}
+\dot{q}^2 &= \left( e^{\frac{\lambda}{2} t} \left( \dot{x}(t) + \frac{\lambda}{2} x(t) \right) \right)^2 = e^{\lambda t} \left( \dot{x}^2 + \lambda \dot{x} x + \frac{\lambda^2}{4} x^2 \right)\\
+q^2 &= e^{\lambda t} x^2\\
+\mathcal{L} &= \frac{1}{2} m e^{\lambda t} \left( \dot{x}^2 + \lambda \dot{x} x + \frac{\lambda^2}{4} x^2 \right) - \frac{1}{2} m e^{\lambda t} \left( \omega^2 - \frac{\lambda^2}{4} \right) x^2\\
+\mathcal{L} &= \frac{1}{2} e^{\lambda t} m e^{\lambda t} \dot{x}^2 - \frac{\lambda}{2}m e^{\lambda t}x\dot{x} - \frac{1}{2}me^{\lambda t}\omega^2 x^2 \\
+\mathcal{L} &= \frac{1}{2} m e^{\lambda t} \dot{x}^2 - \frac{1}{2} m e^{\lambda t} \omega^2 x^2\\
+\mathcal{L} &= \frac{1}{2} e^{\lambda t} \left( \dot{x}^2 - \omega^2 x^2 \right)\\
+\end{align*}
+
+\end{document}
