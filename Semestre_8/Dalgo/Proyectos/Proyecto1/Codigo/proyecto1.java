@@ -5,6 +5,20 @@ import java.io.BufferedReader;
 import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.function;
+
+import com.sun.org.apache.xpath.internal.functions.Function;
+
+enum Personaje {
+  Indiana,
+  Marion,
+  Sallah
+}
+
+@FunctionalInterface
+interface AccesibleOperations {
+  boolean isAccesible(int column, int x, int y);
+}
 
 public class proyecto1 {
   public static void main(String[] args) {
@@ -17,8 +31,8 @@ public class proyecto1 {
       for (int i = 0; i<casos && line != null && line.length() > 0; i++) {
         try {
           int[][] val = getMatrix(br);
-          System.out.println("***********************************************");
           printMatrix(val);
+          int indi = calculate(matrix);
         } catch (Error | Exception e) {
           System.err.println("Ocurrio un error " + e);
         }
@@ -27,6 +41,16 @@ public class proyecto1 {
       System.err.println("Ocurrio un error" + e.toString());
     }
   }
+
+  public static void calculate(int[][] matrix, Personaje p) {
+    int l = matrix.length;
+    int c = matrix[0].length;
+    int mid_l = l / 2;
+    int mid_c = c / 2;
+  }
+
+  public static void calculate(int[][]matrix, int from, int to, )
+
   public static int[][] getMatrix(BufferedReader br) throws Exception, Error {
     try {
       String line = br.readLine();
@@ -48,11 +72,27 @@ public class proyecto1 {
 
   public static void printMatrix(int[][] matrix) {
     for (int[] val: matrix) {
-      System.out.print("[ ");
       for (int v: val) {
-        System.out.print(v + ", ");
+        System.out.print(v + "| ");
+      }
+      System.out.println();
+    }
+  }
+
+  public static void printMatrixAcces(int[][] matrix) {
+    for (int i = 0; i < matrix.length; i++) {
+      System.out.print("[ ");
+      for (int j = 0; j < matrix[0].length; j++) {
+        if (isAccesible(matrix[0].length, i, j))
+          System.out.print("*, ");
+        else
+          System.out.print(matrix[i][j] + ", ");
       }
       System.out.println(" ]");
     }
+  }
+
+  public static boolean isAccesible(int column, int x, int y) {
+    return x >= y || x >= (column - y - 1);
   }
 }
