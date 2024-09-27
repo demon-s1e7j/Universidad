@@ -5,9 +5,6 @@ import java.io.BufferedReader;
 import java.io.IOError;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.function;
-
-import com.sun.org.apache.xpath.internal.functions.Function;
 
 enum Personaje {
   Indiana,
@@ -32,7 +29,7 @@ public class proyecto1 {
         try {
           int[][] val = getMatrix(br);
           printMatrix(val);
-          int indi = calculate(matrix);
+          int indi = calculate(val, Personaje.Indiana);
         } catch (Error | Exception e) {
           System.err.println("Ocurrio un error " + e);
         }
@@ -42,14 +39,26 @@ public class proyecto1 {
     }
   }
 
-  public static void calculate(int[][] matrix, Personaje p) {
+  public static int calculate(int[][] matrix, Personaje p) {
     int l = matrix.length;
     int c = matrix[0].length;
     int mid_l = l / 2;
     int mid_c = c / 2;
+    calculateUp(matrix, c, mid_l, (int x, int y, int z) -> true);
+    return 1;
   }
 
-  public static void calculate(int[][]matrix, int from, int to, )
+  public static void calculateUp(int[][]matrix, int column, int to, AccesibleOperations function) {
+    for (int x = 0; x < to; x++) {
+      for (int y = 0; y < column; y++){
+        if (function.isAccesible(column, x, y))
+          System.out.print("*, ");
+        else 
+          System.out.print(matrix[x][y] + ", ");
+      }
+      System.out.println();
+    }
+  }
 
   public static int[][] getMatrix(BufferedReader br) throws Exception, Error {
     try {
