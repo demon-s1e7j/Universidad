@@ -1,4 +1,4 @@
-// No esta en ningun proyecto
+// Autor: Sergio Montoya Ramirez (S1e7J) - 202112171
 
 import java.util.Arrays; import java.io.BufferedReader;
 import java.io.IOError;
