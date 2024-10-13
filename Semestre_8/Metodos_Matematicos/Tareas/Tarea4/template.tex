@@ -1,0 +1,234 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Métodos Matemáticos}\\Tarea 4}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{202112171}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Arfken: 19.1.1}
+
+En este caso tenemos la definición:
+\begin{align*}
+  \Delta p &= \int_{0}^{2\pi}\left[ f\left( x \right) - \frac{a_0}{2} - \sum_{n=1}^{p} \left( a_n \cos\left(nx \right) + b_n \sin\left( nx \right) \right)  \right]^2 dx 
+.\end{align*}
+
+Por lo tanto:
+\begin{align*}
+  0 = \frac{\partial \Delta p}{\partial a_n}  &= -2 \int_{0}^{2\pi} \left[ f\left( x \right) - \frac{a_0}{2} - \sum_{n=1}^{\infty} \left( a_n \cos\left( nx \right) + b_n \sin\left( nx \right)  \right)  \right] \cos\left( nx \right) dx\\
+  &= -2 \int_{0}^{2\pi} f\left( x \right) \cos\left( nx \right) dx + 2\pi a_n
+.\end{align*}
+
+Por otro lado:
+\begin{align*}
+  0 = \frac{\partial \Delta p}{\partial b_n} &= -2 \int_{0}^{2\pi}\left[ f\left( x \right) - \frac{a_0}{2} - \sum_{n=1}^{\infty} \left( a_n \cos\left( nx \right) + b_n \sin\left( nx \right)  \right)  \right] \sin\left( nx \right) dx \\
+  &= -2 \int_{0}^{2\pi} f\left( x \right) \sin\left( nx \right) dx + 2\pi b_n
+.\end{align*}
+
+\chapter{Arfken: 19.1.5}
+
+Tenemos: \[
+a_n = \frac{1}{\pi}\int_{0}^{2\pi}f\left( s \right) \cos\left( ns \right) ds
+.\] 
+
+Lo cual implica que
+\begin{align*}
+  a_n &= \frac{1}{\pi}\int_{0}^{2\pi} \frac{\sin\left( nx \right) \cos\left( nx \right) }{n} dx \\
+  a_n &= 0;\ n \ge 0
+.\end{align*}
+
+Por otro lado:
+\begin{align*}
+  b_n &= \frac{1}{\pi}\int_{0}^{2\pi}f\left( s \right) \sin\left( ns \right) ds \\
+  &= \frac{1}{2\pi}\left[ \int_{0}^{\pi} \left( \pi - x \right) \sin\left( nx \right) dx - \int_{-\pi}^{0}\left( \pi + x \right) \sin\left( nx \right) dx \right]  \\
+  &= \frac{1}{2\pi}\left[ - \frac{\pi}{n} \cos\left( nx \right) + \frac{x}{n}\cos\left( nx \right)  \right]_{0}^{\pi} - \frac{1}{2\pi n}\int_{0}^{\pi}\cos\left( nx \right) dx \\ 
+  &- \frac{1}{2\pi n}\int_{-\pi}^{0} \cos\left( nx \right) dx - \frac{1}{2\pi}\left[ - \frac{\pi}{n}\cos\left( nx \right) - \frac{x}{n}\cos\left( nx \right)  \right]_{-\pi}^{0}\\
+  &= \frac{1}{n} - \left. \frac{\sin\left( nx \right) }{2\pi n^2}\right|_{0}^{\pi} - \left. \frac{\sin\left( nx \right) }{2\pi n^2}\right|_{-\pi}^{0} = \frac{1}{n}
+.\end{align*}
+
+\chapter{Arfken: 19.1.10}
+
+En este caso tenemos: \[
+f\left( x \right) = \begin{cases}
+  4x\left( 1 - x \right) & 0 \le x \le 1 \\
+  4x(1 + x) & -1 \le x \le 0
+\end{cases} = \sum_{n=1}^{\infty} b_n \sin\left( n\pi x \right) 
+.\] 
+
+Ahora necesitamos encontrar $b_n$
+
+\begin{align*}
+  b_n &= \int_{-1}^{1}f\left( x \right) \sin\left( nx\pi \right) dx;\ n = 1,2,\ldots \\
+  &= \frac{1}{\pi}\left[ \int_{-1}^{0} 4x\left( 1 + x \right) \sin\left( n\pi x \right) dx + \int_{0}^{1} 4x\left( 1 - x \right) \sin\left( n\pi x \right) dx \right]  \\
+  &= \frac{1}{\pi}\left[ \int_{-1}^{0}\left( 4x + 4x^2 \right) \sin\left( n\pi x \right) dx + \int_{0}^{1}\left( 4x - 4x^2 \right) \sin\left( n\pi x \right) dx \right] \\
+  &= \frac{1}{\pi}\left[ \int_{-1}^{0} 4x \sin\left( n\pi x \right) dx + \int_{-1}^{0} 4x^2\sin\left( n\pi x \right) dx \right.\\
+  &\left.+\int_{0}^{1} 4x\sin\left( n\pi x \right) dx - \int_{0}^{1} 4x^2 \sin\left( n\pi x \right) dx\right]
+.\end{align*}
+
+Con esto ya podemos simplemente notar que con $n$ par tendríamos que su valor es 0 pues estas funciones serian pares. Por otro lado, quitando $x^2\sin\left( n \pi x \right) $ por ser pares queda entonces para $n$ impar queda entonces
+\begin{align*}
+  b_n &= 8 \left( \frac{2}{n\pi} - \frac{6}{n^{3}\pi^{3}} \right) \\
+  &= \frac{32}{n^{3}\pi^{3}}
+.\end{align*}
+
+
+\chapter{Arfken: 19.2.17}
+
+\section{Parte a}
+
+En este caso necesitamos $b_n$ lo cual es:
+\begin{align*}
+  b_n = \frac{2}{L}\int_0^{L} \delta\left( x - a \right) \sin\left( \frac{n\pi x}{L} \right) dx
+.\end{align*}
+
+Lo cual por la definición de $\delta$ nos queda como  \[
+b_n = \frac{2}{L}\sin\left( \frac{n \pi a}{L} \right)
+.\] Ahora, reemplazando en la definición de serie seno de fourier nos queda:
+\begin{align*}
+  f(x) &= \sum_{n=1}^{\infty} b_n \sin\left( \frac{n\pi x}{L} \right)  \\
+  &= \sum_{n=1}^{\infty} \frac{2}{L}\sin\left( \frac{n\pi a}{L} \right) \sin\left( \frac{n \pi x}{L} \right)  \\
+  &= \frac{2}{L}\sum_{n=1}^{\infty} \sin\left( \frac{n\pi a}{L} \right) \sin\left( \frac{n \pi x}{L} \right)
+.\end{align*}
+
+\section{Parte b}
+
+En este caso al hacer la integral tenemos:
+\begin{align*}
+  \delta \left( x - a \right)  &= \sum_{n=1}^{\infty} \sin\left( \frac{n\pi a}{L} \right) \sin\left( \frac{n \pi x}{L} \right) \\
+  \int_{0}^{x} \delta\left( x - a \right) dx &= \int_{0}^{x} \sum_{n=1}^{\infty} \sin\left( \frac{n\pi a}{L} \right) \sin\left( \frac{n \pi x}{L} \right) dx\\
+  \begin{cases}
+   0& 0 \le  x < a\\
+   1& a < x < L
+  \end{cases} &= \sum_{n=1}^{\infty} \sin\left( \frac{n\pi a}{L} \right) \int_{0}^{x} \sin\left( \frac{n\pi x}{L} \right)dx   \\
+  &= \frac{2}{L}\sum_{n=1}^{\infty} \sin\left( \frac{n\pi a}{L} \right) \left( \frac{L}{n\pi} \right) \left[ 1 - \cos\left( \frac{n\pi x}{L} \right)  \right]  \\
+  &= \frac{2}{\pi}\sum_{n=1}^{\infty} \frac{1}{n}\sin\left( \frac{n\pi a}{L} \right) - \frac{2}{\pi}\sum_{n=1}^{\infty}\frac{1}{n} \sin\left( \frac{n\pi a}{L} \right) \cos\left( \frac{n \pi x}{L} \right)
+.\end{align*}
+
+\chapter{Arfken: 19.2.20}
+
+Ahora queda:
+\begin{align*}
+  \sum_{n=1}^{\infty} \frac{d^2 b_n\left( t \right) }{dt^2} \sin\left( \frac{n \pi x}{L} \right) &= v^2 \sum_{n=1}^{\infty} b_n\left( t \right) \left( \frac{n^2\pi^2}{L^2} \right) \sin\left( \frac{n\pi x}{L} \right) \\
+  \frac{d^2 b_n\left( t \right) }{dt^2} + v^2 \frac{n^2\pi^2}{L^2}b_n\left( t \right) &= 0 \\
+  b_n\left( t \right) &= A_n \cos\left( \frac{n\pi v}{L}t \right) + B_n \sin\left( \frac{n\pi v}{L}t \right)  \\
+  u\left( x, 0 \right) &= \sum_{n=1}^{\infty} b_n\left( 0 \right) \sin\left( \frac{n\pi x}{L} \right) = f\left( x \right)  \\
+  b_n\left( 0 \right) &= A_n \\
+  A_n &= \frac{2}{L}\int_{0}^{L} f\left( x \right) \sin\left( \frac{n\pi x}{L} \right) dx \\
+  \frac{\partial u\left( x, t \right) }{\partial t} &= \sum_{n=1}^{\infty} \left( -A_n \frac{n\pi v}{L}\sin\left( \frac{n \pi v}{L} t \right) + B_n \frac{n\pi v}{L}\cos\left( \frac{n\pi v}{L}t \right)  \right)\sin\left( \frac{n \pi x}{L} \right) \\
+  &\text{Con }t = 0 \\
+  \sum_{n=1}^{\infty} B_n \frac{n \pi v}{L}\sin\left( \frac{n \pi x}{L} \right) &= g\left( x \right)  \\
+  B_n &= \frac{2}{n \pi v}\int_{0}^{L}g\left( x \right) \sin\left(\frac{n \pi x}{L} \right)dx
+.\end{align*}
+
+Con esto entonces ya encontramos cuanto es $b_n$ y por lo tanto llegamos a la respuesta correcta.
+
+\chapter{Tellez: 3.5.1}
+
+Para iniciar sacamos los valores de $a_n$
+
+\begin{align*}
+  a_0 &= \frac{1}{\pi}\int_{0}^{\pi}\sin\left( x \right) dx \\
+  &= \frac{1}{\pi}\left[ -\cos\left( x \right)  \right]_{0}^{\pi} \\
+  &= \frac{2}{\pi}.
+\end{align*}
+\begin{align*}
+  a_n &= \frac{1}{\pi}\int_{0}^{\pi}\sin\left( x \right) \cos\left( nx \right) dx \\
+  &= \frac{1}{2\pi} \int_{0}^{\pi}\left( \sin\left( 1 + n \right) x + \sin\left( 1 - \frac{n}{x} \right)  \right) dx \\
+  &= -\frac{1}{2\pi}\left[ \frac{\cos\left( 1 + n \right) x}{1 + n} + \frac{\cos\left( 1 - n \right) x}{1 - n} \right]_{0}^{\pi} \\
+  &= - \frac{1}{2\pi}\left[ \frac{\left( -1 \right)^{1 + n}}{1 + n} + \frac{\left( -1 \right)^{1 - n}}{1 - n} - \left( \frac{1}{1 + m} + \frac{1}{1 - m} \right)  \right]  \\
+  &= \frac{1}{\pi}\frac{\left( -1 \right)^{n} + 1}{\left( 1 - n^2 \right) }\ \left( n \neq 1 \right).
+\end{align*}
+
+\begin{align*}
+  a_1 &= \frac{1}{\pi}\int_{0}^{\pi}\sin\left( x \right) \cos\left( x \right) dx \\
+  &= \frac{1}{2\pi}\int_{0}^{\pi} \sin\left( 2\pi \right) dx \\
+  &= \frac{1}{2\pi}\left( \frac{1 - \cos\left( 2x \right) }{2} \right)_{0}^{\pi} \\
+  &= 0
+.\end{align*}
+
+Ahora sacamos los valores de $b_n$
+\begin{align*}
+  b_n &= \frac{1}{\pi}\int_{0}^{\pi}\sin\left( x \right) \sin\left( nx \right) dx \\
+  &= \frac{1}{2\pi} \int_{0}^{\pi}\left( \cos\left( n - 1 \right) x - \cos\left( n + 1 \right) x \right) dx \\
+  &= \frac{1}{2\pi}\left[ \frac{\sin\left( n - 1 \right) x}{n - 1} - \frac{\sin\left( n + 1 \right) x}{n + 1} \right]_{0}^{\pi} \\
+  &= 0\ \left( n \neq 1 \right)
+.\end{align*}
+\begin{align*}
+  b_1 &= \frac{1}{\pi}\int_{0}^{\pi}\sin\left( x \right) \sin\left( x \right) dx \\
+  &= \frac{1}{\pi}\int_{0}^{\pi} \frac{1 - \cos\left( 2x \right) }{2} \\
+  &= \frac{1}{2\pi}\left[ x - \frac{\sin\left( 2x \right) }{2} \right]_{0}^{\pi} \\
+  &= \frac{1}{2\pi} + \pi \\
+  &= \frac{1}{2}
+.\end{align*}
+
+Ahora juntando todo:
+
+\begin{align*}
+  f\left( x \right) &= \frac{1}{\pi} + \frac{1}{\pi}\sum_{n=2}^{\infty} \frac{1}{\pi}\frac{\left( -1 \right)^{n} + 1}{\left( 1 - n^2 \right) } \frac{1}{2} \sin\left( x \right)
+.\end{align*}
+
+\chapter{Tellez: 3.5.5}
+
+En este caso asuma $u\left( x, t \right) = X\left( t \right)T\left( t \right)  $
+
+Ahora poniendo esto en la ecuación queda:
+\begin{align*}
+  \ddot{X}\left( x \right) T\left( t \right) &= \frac{1}{c^2}X\left( x \right) \ddot{T}\left( t \right)  \\
+  \frac{\ddot{X}\left( x \right) T\left( t \right)}{X\left( x \right) T\left( t \right) } &= \frac{1}{c^2} \frac{X\left( x \right) \ddot{T}\left( t \right) }{X\left( x \right) T\left( t \right) } \\
+  \frac{\ddot{X}\left( x \right) }{X\left( x \right) } &= \frac{1}{c^2} \frac{\ddot{T}\left( t \right) }{T\left( t \right) } = -\lambda
+.\end{align*}
+
+Con esto entonces encontramos dos ecuaciones:
+\begin{align*}
+  \ddot{X}\left( x \right) + \lambda X\left( x \right) &= 0 \\
+  \ddot{T}\left( t \right) + \lambda c^2 T\left( t \right) &= 0
+.\end{align*}
+
+Ahora resolviendo para $X\left( x \right) $ tenemos que usar $X\left( 0 \right) = 0$ y $X\left( L \right) = 0$ y teniendo \[
+X\left( x \right) = A\sin\left( \sqrt{\lambda} x \right) + B \cos\left( \sqrt{\lambda} x \right)
+.\] Con lo cual
+\begin{align*}
+  X\left( 0 \right) &= A\sin\left( 0 \right) + B \cos\left( 0 \right)  \\
+  0 &= B
+.\end{align*}
+
+Por lo tanto $X\left( x \right) = A \sin\left( \sqrt{\lambda} x \right) $ con lo que queda
+\begin{align*}
+  X\left( L \right)  &= A \sin\left( \sqrt{\lambda} x \right)  \\
+  0 &= \sin\left( \sqrt{\lambda} x \right)  \\
+  \sqrt{\lambda} L &= n\pi \\
+  \lambda &= \frac{n^2\pi^2}{L^2}
+.\end{align*}
+
+Con lo que queda
+\begin{align*}
+  X_n\left( x \right) &= A_n \sin\left( \frac{n\pi x}{L} \right) 
+.\end{align*}
+
+Y ahora probando con $T\left( t \right) $ queda \[
+  \ddot{T}\left( t \right) + \frac{n^2\pi^2c^2}{L^2}T\left( t \right) = 0
+.\] Con la solución general \[
+T_n\left( t \right) = B_n \cos\left( \frac{n\pi c}{L}t \right) + C_n \sin\left( \frac{n\pi c}{L}t \right) 
+.\] y tomando $\frac{\partial u}{\partial t} \left( x, 0 \right) = 0$ entonces
+\begin{align*}
+  T_n\left( t \right) &= B_n \cos\left( \frac{n\pi c}{L}t \right) + C_n \sin\left( \frac{n\pi c}{L}t \right) \\
+\dot{T}_n\left( 0 \right) &= - B_n \sin\left( 0 \right) + C_n \cos\left( 0 \right)  \\
+0 &= C_n
+.\end{align*}
+
+Con lo cual queda \[
+u\left( x, t \right) = \sum_{n=1}^{\infty} A_n \sin\left( \frac{n\pi x}{L} \right) \cos\left( \frac{n \pi c}{L}t \right) 
+.\] 
+
+\end{document}
