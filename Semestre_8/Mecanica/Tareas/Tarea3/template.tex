@@ -1,0 +1,194 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\newcommand{\Lag}{\mathcal{L}}
+
+\title{\Huge{Mecánica}\\Tarea 3}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+
+En este caso, tenemos para la fuerza $F$ un potencial de
+\begin{align*}
+  U &= \frac{1}{2}kr^2 \\
+  &= \frac{1}{2}k\left( x^2 + y^2 + z^2 \right)  \\
+  x^2 + y^2 &= R^2 \\
+  &= \frac{1}{2}k\left( R^2 + z^2 \right)
+.\end{align*}
+
+Ahora, también utilizaremos coordenadas cilíndricas para escribir el cuadrado de la velocidad como: \[
+  v^2 = \dot{R}^2 + R^2\dot{\theta}^2 + \dot{z}^2
+.\] Sin embargo, $R$ es una constante y por lo tanto $\dot{R} = 0$ por lo tanto la energía cinética queda como \[
+T = \frac{1}{2}m\left( R^2\dot{\theta}^2 + \dot{z}^2 \right) 
+.\] Ahora bien, con esto entonces el Lagrangiano y los momentos generalizados son:
+\begin{align*}
+  L &= T - U \\
+  &= \frac{1}{2}m\left( R^2\dot{\theta}^2 + \dot{z}^2 \right) - \frac{1}{2}k\left( R^2 + z^2 \right)  \\
+  p_\theta &= \frac{\partial L}{\partial \dot{\theta}}  \\
+  &= mR^2\dot{\theta} \\
+  p_z &= \frac{\partial L}{\partial \dot{z}}  \\
+  &= m\dot{z} \\
+.\end{align*}
+
+Ahora bien, dado que el sistema es conservativo y el Lagrangiano no depende del tiempo entonces
+\begin{align*}
+  H\left( z, p_\theta, p_z \right) &= T + U \\
+  &= \frac{p_\theta^2}{2mR^2} + \frac{p_z^2}{2m} + \frac{1}{2}kz^2
+.\end{align*}
+
+Con lo cual terminamos teniendo:
+\begin{align*}
+  \dot{p_\theta} &= - \frac{\partial H}{\partial \theta} = 0 \\
+  \dot{p_z} &= - \frac{\partial H}{\partial z} = -kz \\
+  \dot{\theta} &= \frac{\partial H}{\partial p_\theta} = \frac{p_\theta}{mR^2} \\
+  \dot{z} &= \frac{\partial H}{\partial p_z} = \frac{p_z}{m}
+.\end{align*}
+
+\chapter{}
+
+La partícula tiene dos grados de libertad $\theta, z$ y por lo tanto para el espacio de fases son 4 las variables $\theta, p_\theta, z, p_z$. Sin embargo, $p_\theta$ es constante. Por lo tanto puede ser suprimido. En la dirección $z$ esto es un armónico simple. Por lo tanto, en el eje $z-p_z$ esto seria simplemente una elipse con espiral.
+
+\chapter{}
+
+Tomando en cuenta que las coordenadas generalizadas son $\theta$ y $\phi$ la energía cinética es  \[
+T = \frac{1}{2} mb^2\dot{\theta}^2 + \frac{1}{2}mb^2\sin^2\left( \theta \dot{\phi}^2 \right) 
+.\] La única fuerza que actúa en el péndulo es la gravedad y definimos que el 0 del potencial estaría en el punto en el que el péndulo esta amarrado. \[
+U = - mgb\cos\left( \theta \right) 
+.\] Ahora entonces podemos saber que \[
+\Lag = T - U = \frac{1}{2} mb^2\dot{\theta}^2 + \frac{1}{2}mb^2\sin^2\left( \theta \dot{\phi}^2 \right) + mgb\cos\left( \theta \right)
+.\] Con lo cual los momentos generalizados son:
+\begin{align*}
+  p_\theta &= \frac{\partial \Lag}{\partial \dot{\theta}} = mb^2\dot{\theta}\\
+  p_\phi &= \frac{\partial \Lag}{\partial \dot{\phi}} = mb^2\sin^2\left( \theta \dot{\phi} \right)
+.\end{align*}
+
+Dado que $\Lag$ no tiene dependencia temporal entonces:
+\begin{align*}
+  H &= T + U \\
+    &= \frac{1}{2}mb^2 \frac{p_\theta^2}{\left( mb^2 \right)^2} + \frac{1}{2} \frac{mb^2\sin^2\theta p_\phi^2}{\left( mb^2\sin^2\theta \right)^2} - mgb\cos\left( \theta \right) \\
+    &= \frac{1}{2} \frac{p_\theta^2}{mb^2} + \frac{1}{2} \frac{p_\phi^2}{mb^2\sin^2\theta} - mgb\cos\left( \theta \right)
+.\end{align*}
+
+Con lo cual las ecuaciones de movimiento son:
+\begin{align*}
+  \dot{\theta} &= \frac{\partial H}{\partial p_\theta} = \frac{p_\theta}{mb^2}\\
+  \dot{\phi} &= \frac{\partial H}{\partial p_\phi} = \frac{p_\phi}{mb^2\sin^2\theta} \\
+  \dot{p_\theta}^2 &= - \frac{\partial H}{\partial \theta} = \frac{p_\phi^2\cos\theta}{\left(   mb^2\sin^3\theta\right)^2} - mgb \sin\theta \\
+  \dot{p_\phi} &= - \frac{\partial H}{\partial \phi} = 0
+.\end{align*}
+
+\chapter{}
+
+En este caso tenemos que la coordenada $\rho$ esta determinada por que la partícula tiene que moverse en un cono con lo cual podemos desarrollar
+ \begin{align*}
+  T &= \frac{1}{2}m\left[ \dot{\rho}^2 + \left( \rho \dot{\phi} \right)^2 + \dot{z}^2 \right]  \\
+  &= \frac{1}{2}m\left[ \left( c^2 + 1 \right)\dot{z}^2 + \left( cz \dot{\phi} \right)^2 \right]
+.\end{align*}
+
+Por otro lado, la energía potencial es solamente la gravitatoria por lo tanto esta seria $U = mgz$ con lo cual podemos desarrollar  \[
+\Lag = \frac{1}{2}m\left[ \left( c^2 + 1 \right)\dot{z}^2 + \left( cz \dot{\phi} \right)^2 \right] - mgz
+.\] Con lo cual podemos sacar los momentos generalizados como:
+\begin{align*}
+  p_z &= \frac{\partial \Lag}{\partial \dot{z}}  \\
+  &= m\left( c^2 + 1\right)\dot{z}  \\
+  \dot{z} &= \frac{p_z}{m\left( c^2 + 1 \right) } \\
+  p_\phi &= \frac{\partial \Lag}{\partial \dot{\phi}}  \\
+  &= mc^2z^2 \dot{\phi}\\
+  \dot{\phi} &= \frac{p_\phi}{mc^2z^2}
+.\end{align*}
+
+Tomando en cuenta que $\Lag$ no depende del tiempo entonces esto nos quedaría como \[
+H = T + U = \frac{1}{2m}\left( \frac{p_z^2}{\left( c^2 + 1 \right) } + \frac{p_\phi^2}{c^2z^2}\right) + mgz
+.\] Con lo cual las ecuaciones canónicas de Hamilton nos quedan como:
+\begin{align*}
+  \dot{z} &= \frac{\partial H}{\partial p_z} = \frac{p_z}{m\left( c^2 + 1 \right) } \\
+  \dot{p_z} &= - \frac{\partial H}{\partial z} = \frac{p_\phi^2}{mc^2z^3} - mg \\
+  \dot{\phi} &= \frac{\partial H}{\partial p_\phi} = \frac{p_\phi}{mc^2z^2} \\
+  \dot{p_\phi} &= - \frac{\partial H}{\partial phi} = 0
+.\end{align*}
+
+Donde la ultima ecuación implica que $p_z$ es una constante
+
+\chapter{}
+
+En este caso dado que solo tenemos una dimensión nos queda relativamente fácil encontrar $T = \frac{1}{2}m \dot{x}^2$ y $U = \frac{1}{2}kx^2 = \frac{1}{2}m\omega^2x^2$ donde solo hay un momento generalizado $p_x$ con lo que queda \[
+p_x = p = \frac{\partial T}{\partial \dot{x}} = m \dot{x}
+.\] y dado que no dependemos del tiempo el Hamiltoniano queda como \[
+H = T + U = \frac{p^2}{2m} + \frac{1}{2}m\omega^2x^2
+.\] y las ecuaciones canónicas de Hamilton quedan como:
+\begin{align*}
+  \dot{x} &= \frac{\partial H}{\partial p} = \frac{p}{m}\\
+  \dot{p} &= - \frac{\partial H}{\partial x} = - m\omega^2x
+.\end{align*}
+
+Es mas fácil en este caso encontrar $\dot{x} = -\omega^2x$ que se resuelve con $x = A\cos\left( \omega t - \delta \right) $ con lo que $p = m\dot{x} = -m\omega A\sin\left( \omega t - \delta \right) $.  En el espacio de fase esta solución 1 dimensional define la parametrización de una elipse trazada en el sentido de las manecillas del reloj. Por lo tanto, esto muestra que la órbita debe ser una elipse.
+
+Partiendo de nuevo del hamiltoniano podemos desarrollar \[
+H = T + U = \frac{p^2}{2m} + \frac{1}{2}m\omega^2x^2 = \frac{1}{2m}\left( p^2 + m^2\omega^2x^2 \right) 
+.\] ahora dado que nos interesa encontrar una forma cíclica de este ejercicio nos interesa que sean de la forma:
+\begin{align*}
+  p &= f\left( P \right) \cos Q\\
+  x &= \frac{f\left( P \right) }{m\omega}\sin Q\\
+  K &= H = \frac{f^2\left( P \right) }{2m}\left( \cos^2 Q + \sin^2 Q \right)  \\
+  &= \frac{f^2\left( P \right) }{2m}
+.\end{align*}
+
+Ahora para eso podríamos utilizar una función de primer tipo dada por:
+\begin{align*}
+  F_1 &= \frac{m\omega q^2}{2}\cot Q \\
+  p &= \frac{\partial F_1}{\partial q} = m\omega q \cot Q \\
+  P &= - \frac{\partial F_1}{\partial Q} = \frac{m\omega q^2}{2\sin^2 Q} \\
+  q^2 &= \frac{2P}{m\omega}\sin^2 Q \\
+  q &= \sqrt{\frac{2P}{m\omega}} \sin Q\\
+  p &= m\omega \sqrt{\frac{2P}{m\omega}} \sin Q \cot Q \\
+  p &= \sqrt{2Pm\omega} \cos Q
+.\end{align*}
+
+Ahora volviendo a desarrollar:
+\begin{align*}
+  p &= F(P) \cos Q \\
+  F\left( P \right) &= \frac{p}{\cos Q} \\
+  F\left( P \right) &= \frac{\sqrt{2Pm\omega} \cos Q}{\cos Q} \\
+  F\left( P \right) &= \sqrt{2Pm\omega}
+.\end{align*}
+
+De esto sigue \[
+H = \omega P
+.\] Dado que lo estamos definiendo de manera cíclica entonces esto sigue de \[
+P = \frac{E}{\omega}
+.\] y con esto entonces podemos desarrollar:
+\begin{align*}
+  \dot{Q} &= \frac{\partial H}{\partial P} = \omega\\
+  Q &= \omega t + \alpha \\
+  q &= \sqrt{\frac{2E}{m\omega^2}} \sin\left( \omega t + \alpha \right)  \\
+  p &= \sqrt{2 mE} \cos\left( \omega t + \alpha \right)
+.\end{align*}
+
+Ahora con esto mostramos las diferentes coordenadas que se pueden seguir desde estas ecuaciones pues variando los valores de los parámetros podemos pasar por varias curvas (Ver la figura que esta en el enunciado).
+
+\chapter{}
+
+Tenemos desde el punto anterior \[
+H = \frac{p_\phi^2}{2ml^2}- mgl\cos\phi = E
+.\] Por lo tanto para el espacio de fase podemos conseguir:
+\begin{align*}
+  p_\phi &= \pm \sqrt{2ml^2\left( E + mgl\cos\phi \right) }  \\
+.\end{align*}
+
+Con lo cual obtenemos una serie de curvas con la energía como parámetro. Para energías $E < mgl$ las trayectorias son cerradas (Elipses). En caso contrario entonces el péndulo aun tiene energía cinética en el punto mas alto y por lo tanto se sigue moviendo.
+
+
+\end{document}

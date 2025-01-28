@@ -1,0 +1,130 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Métodos Matemáticos}\\Tarea 5}
+\author{\huge{Sergio Montoya}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Arfken:20.2.1}
+
+\begin{enumerate}
+  \item Dado que nos piden que sea condición suficiente y necesaria necesitamos mostrar las dos direcciones.
+    \begin{enumerate}
+      \item[$\to$] Sea $f$ real entonces $f\left( x \right) = f^{*}\left( x \right) $ lo que quiere decir:
+	\begin{align*}
+	  g^{*}\left( \omega \right) &= \left[ \frac{1}{\left( 2\pi \right)^{\frac{1}{2}}}\int_{-\infty}^{\infty} f\left( x \right) e^{i\omega x}dx \right]^{*} \\
+				     &= \frac{1}{\left( 2\pi \right)^{\frac{1}{2}}} \int_{-\infty}^{\infty}f\left( x \right) e^{-i\omega x}dx = g\left( -\omega \right)
+	.\end{align*}
+      \item[$\leftarrow$] Sin asumir de $f\left( x \right) $ tenemos por el enunciado:
+	\begin{align*}
+	  \frac{1}{\left( 2\pi \right)^{\frac{1}{2}} } \int_{-\infty}^{\infty}f^{*}\left( x \right) e^{-i\omega x}dx &= \frac{1}{\left( 2\pi \right)^{\frac{1}{2}}} \int_{-\infty}^{\infty} f\left( x \right) e^{-i \omega x} dx \\
+	.\end{align*}
+
+	Esto se debe cumplir para todo $\omega$ cosa que solo puede ser cierta si $f\left( x \right) = f^{*}\left( x \right) $.
+    \end{enumerate}
+
+  \item Para probar esto la muestra es esencialmente igual que la anterior. Lo que sucede es que el $-$ lo toma $f$
+\end{enumerate}
+
+\chapter{Arfken:20.2.4}
+
+Para encontrar la transformada de Fourier de este pulso tenemos:
+\begin{align*}
+  \hat{f}\left( \omega \right)  &= \int_{-\infty}^{\infty} f\left( x \right) e^{-i \omega x}dx \\
+  &= \int_{-\frac{1}{a}}^{0}h\left( 1 + a\left| x \right|  \right) e^{-i\omega x} dx + \int_{0}^{\frac{1}{a}} h\left( 1 - a\left| x \right|  \right) e^{-i\omega x}dx\\
+  &= h \int_{0}^{\frac{1}{a}}e^{i\omega x}dx - a\left| x \right|e^{-i \omega x} + \int_{0}^{\frac{1}{a}} e^{-i\omega x}dx - a\left| x \right|e^{-i \omega x}   \\
+  &= h \int_{0}^{\frac{1}{a}} \left( e^{i\omega x}  + e^{-i \omega x} \right) - a \left| x \right| \left( e^{i\omega x}  + e^{-i \omega x} \right) dx \\
+  &= \frac{h a}{\omega^2}\left( 1 - \cos\left( \frac{\omega}{a} \right)  \right)
+.\end{align*}
+
+\chapter{Arfken:20.2.8}
+
+\begin{align*}
+  a\left( \omega \right) &= \frac{1}{\sqrt{2\pi} }\int_{-\infty}^{\infty}A_0e^{\frac{-\omega_0t}{\left( 2Q \right) }}e^{-i\omega_0 t}e^{i\omega tA}\\
+  &= \frac{1}{\sqrt{2\pi} }A_0\int_{-\infty}^{\infty}e^{-\left( \frac{\omega_0}{2Q} + i\omega_0 - i\omega \right)t } \\
+  &= \frac{1}{\sqrt{2\pi} } A_0\int_{-\infty}^{\infty}e^{-\left( \frac{\omega_0}{2Q} + \left( \omega_0-\omega\right)i  \right)t } \\
+  &= \frac{1}{\sqrt{2\pi} }A_0 \cdot \frac{1}{\frac{\omega_0}{2Q} + i\left( \omega_0 - \omega \right) } \\
+  a^{*}\left( \omega \right)a\left( \omega \right)  &=  \frac{A_0^2}{2\pi } \cdot \frac{1}{\left( \omega_0 - \omega \right)^2 + \left( \frac{\omega_0}{2Q} \right) }
+.\end{align*}
+
+\chapter{Arfken:20.3.6}
+
+Haciendo $g\left( t \right) $ la transformada de fourier tenemos entonces \[
+\left[ \phi\left( x \right)'' \right]^{T} = -t^2g\left( t \right) 
+.\] entonces nos queda 
+\begin{align*}
+  Dt^2 g\left( t \right) + K^2Dg\left( t \right) &= \frac{Q}{\sqrt{2\pi} }
+.\end{align*}
+
+Con esto podemos solucionar $g$ de manera algebraica como:
+\begin{align*}
+  g\left( t \right) = \frac{Q}{D\sqrt{2\pi} }\frac{1}{t^2 + K^2}
+.\end{align*}
+
+Y ahora necesitamos la transformada inversa con lo que queda:
+\begin{align*}
+  \phi\left( x \right) &= \frac{Q}{2K D}e^{-\left| Kx \right| }
+.\end{align*}
+
+\chapter{Arfken:20.4.3}
+
+\begin{enumerate}
+  \item En este caso
+    \begin{align*}
+      F\left( t \right) &= \frac{1}{\sqrt{2\pi} }\int_{-a}^{a} e^{itx}dx \\
+      &= \frac{1}{\sqrt{2\pi} } \frac{e^{ita}- e^{-ita}}{it} \\
+      &= \frac{1}{\sqrt{2} \sqrt{\pi} }\frac{2 \sin\left( at \right) }{t} \\
+      &= \sqrt{\frac{2}{\pi}}\frac{\sin\left( at \right) }{t} 
+    .\end{align*}
+  \item Tenemos por la relación de Parseval:
+    \begin{align*}
+      \frac{2}{\pi}\int_{-\infty}^{\infty} \left( \frac{\sin\left( t \right) }{t} \right)^2 dt &= \int_{-1}^{1}\left[ f\left( x \right)  \right]^2 dx \\
+      \frac{2}{\pi}\int_{-\infty}^{\infty} \left( \frac{\sin\left( t \right) }{t} \right)^2 dt &= 2\\
+      \int_{-\infty}^{\infty} \left( \frac{\sin\left( t \right) }{t} \right)^2 dt &= 2 \frac{\pi}{2}\\
+      \int_{-\infty}^{\infty} \left( \frac{\sin\left( t \right) }{t} \right)^2 dt &= \pi
+    .\end{align*}
+\end{enumerate}
+
+\chapter{Tellez:4.6.3}
+
+\begin{enumerate}
+  \item Tenemos que dado que la intensidad debe cumplir $J\left( k \right) = J\left( -k \right) $ con lo que tendríamos que expandir para que los valores en $-k$ también lleguen al mismo resultado que $k$ con lo que queda:
+    \begin{align*}
+      J\left( k \right) &= C\left( \delta\left( k - k_1 \right) +\delta\left( k - k_2 \right) +\delta\left( k + k_1 \right) +\delta\left( k + k_2 \right) + \right) 
+    .\end{align*}
+
+  \item 
+    \begin{align*}
+      I\left( x \right) &= I_0 + \int_{-\infty}^{\infty} J\left( k \right) e^{ikx}dk \\
+      I\left( X \right) &= I_0 + \int_{-\infty}^{\infty} C\left( \delta\left( k - k_1 \right) +\delta\left( k - k_2 \right) +\delta\left( k + k_1 \right) +\delta\left( k + k_2 \right) + \right) e^{ikx}dk\\
+      I\left( X \right) &= I_0 + C\int_{-\infty}^{\infty} \left( \delta\left( k - k_1 \right) +\delta\left( k - k_2 \right) +\delta\left( k + k_1 \right) +\delta\left( k + k_2 \right) + \right) e^{ikx}dk\\
+      I\left( X \right) &= I_0 + C\left( e^{ik_1x} + e^{ik_2x} +e^{-ik_1x} +e^{-ik_2x} \right)\\
+      I\left( X \right) &= I_0 + C2\left( \cos\left( k_1 x \right) + \cos\left( k_2 x \right)  \right).
+    \end{align*}
+   \item 
+    \begin{align*}
+      I\left( X \right) &= I_0 + C 4\left( \cos\left( \frac{k_1x + k_2x}{2} \right) \cos\left( \frac{k_1x - k_2x}{2} \right) \right)
+    .\end{align*}
+    \item
+    \item Esencialmente lo que hace esta convolución es esencialmente representar la superposición de estas dos funciones por lo que nos expresa la intensidad como la muestra de un elemento solo y primordial junto con el choque de las impurezas naturales de la física.
+    \item Tenemos
+      \begin{align*}
+        I &= I_0 + \int_{-\infty}^{\infty}W^{*}J\left( k \right) e^{ikx} \\
+	\hat{I} &= 4C\int_{-\infty}^{\infty} \hat{W} e^{ikx} dx\\
+	I &= 4CW
+      .\end{align*}
+\end{enumerate}
+
+\end{document}

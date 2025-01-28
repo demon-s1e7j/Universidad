@@ -1,0 +1,7 @@
+\contentsline {chapter}{\numberline {1}Arfken:20.2.1}{2}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Arfken:20.2.4}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Arfken:20.2.8}{4}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Arfken:20.3.6}{5}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Arfken:20.4.3}{6}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Tellez:4.6.3}{7}{chapter.6}%
+\contentsfinish 

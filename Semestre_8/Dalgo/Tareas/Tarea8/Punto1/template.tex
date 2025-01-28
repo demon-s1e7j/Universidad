@@ -1,0 +1,148 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{booktabs}
+
+\title{\Huge{Diseño y Análisis de Algoritmos}\\Tarea 8}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{202112171}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+
+\section{}
+
+\subsection{Tabla}
+
+\noindent \begin{tabularx}{\textwidth}{@{} l X X X @{}}
+\toprule
+\textbf{E/S} & \textbf{Nombre} & \textbf{Tipo} & \textbf{Descripción} \\
+\midrule
+E
+& graph
+& $List<List<int>>$
+& Esta es una matriz de adyacencia. Cada vértice esta representado sin colisión por el indice de la lista. Por otro lado, la entrada $graph[i][j]$ es la distancia que hay entre el nodo $i$ y el $j$. En caso de que $i = j$ entonces el valor de esta entrada es  $\infty$ \\
+S
+& bestRoute
+& $List<int>$
+& Lista con el camino mas barato de vertices que pasa por todos\\
+\bottomrule
+\end{tabularx}
+
+\subsection{Pre condición}
+\begin{align*}
+  \forall i, j \in V: graph[i][j] = graph[j][i]\\
+  \forall i, j \in V: graph[i][j] >  0\\
+  graph \neq null
+.\end{align*}
+
+\subsection{Post condición}
+
+\begin{align*}
+  bestRoute = min(H)\\ \text{ Donde }H\text{ es el conjunto de caminos hamiltonianos sobre matrix}\\
+  DEG(bestRoute) = DEG(V) + 1\\
+  bestRoute[0] = bestRoute[-1]
+.\end{align*}
+
+\section{}
+
+\subsection{Tabla}
+
+\noindent \begin{tabularx}{\textwidth}{@{} l X X X @{}}
+\toprule
+\textbf{E/S} & \textbf{Nombre} & \textbf{Tipo} & \textbf{Descripción} \\
+\midrule
+E
+& graph
+& $List<List<int>>$
+& Esta es una matriz de adyacencia. Cada vértice esta representado sin colisión por el indice de la lista. Por otro lado, la entrada $graph[i][j]$ es la distancia que hay entre el nodo $i$ y el $j$. En caso de que $i = j$ entonces el valor de esta entrada es  $\infty$ \\
+E
+& k
+& int
+& Valor que me interesa decidir si existe un camino con peso menor o igual a $k$\\
+S
+& bestRoute
+& $List<int>$
+& Lista con un camino hamiltoniano con peso menor o igual a $k$\\
+S
+& existsRoute
+& $bool$
+& Existe un camino hamiltoniano con peso menor o igual a  $k$\\
+\bottomrule
+\end{tabularx}
+
+\subsection{Pre condición}
+\begin{align*}
+  \forall i, j \in V: graph[i][j] = graph[j][i]\\
+  \forall i, j \in V: graph[i][j] >  0\\
+  graph \neq null\\
+  k > 0
+.\end{align*}
+
+\subsection{Post condición}
+
+\begin{align*}
+  bestRoute \in H\\ \text{ Donde }H\text{ es el conjunto de caminos hamiltonianos sobre matrix}\\
+  DEG(bestRoute) = DEG(V) + 1\\
+  bestRoute[0] = bestRoute[-1]\\
+  \sum_{n=0}^{DEG(V)} graph[bestRoute[n]][bestRoute[n + 1]] \le k
+.\end{align*}
+
+\section{}
+
+\subsection{Tabla}
+
+\noindent \begin{tabularx}{\textwidth}{@{} l X X X @{}}
+\toprule
+\textbf{E/S} & \textbf{Nombre} & \textbf{Tipo} & \textbf{Descripción} \\
+\midrule
+E
+& graph
+& $List<List<int>>$
+& Esta es una matriz de adyacencia. Cada vértice esta representado sin colisión por el indice de la lista. Por otro lado, la entrada $graph[i][j]$ es la distancia que hay entre el nodo $i$ y el $j$. En caso de que $i = j$ entonces el valor de esta entrada es  $\infty$ \\
+E
+& k
+& int
+& Valor que me interesa decidir si existe un camino con peso menor o igual a $k$\\
+E
+& bestRoute
+& $List<int>$
+& Lista con un camino hamiltoniano con peso menor o igual a $k$\\
+S
+& fullFill
+& $bool$
+& El camino hamiltoniano $bestRoute$ tiene un costo menor a  $k$\\
+\bottomrule
+\end{tabularx}
+
+\subsection{Pre condición}
+\begin{align*}
+  \forall i, j \in V: graph[i][j] = graph[j][i]\\
+  \forall i, j \in V: graph[i][j] >  0\\
+  graph \neq null\\
+  k > 0\\
+  bestRoute \in H\\ \text{ Donde }H\text{ es el conjunto de caminos hamiltonianos sobre matrix}\\
+  DEG(bestRoute) = DEG(V) + 1\\
+  bestRoute[0] = bestRoute[-1]
+.\end{align*}
+
+\subsection{Post condición}
+
+\begin{align*}
+  k = true \to \sum_{n=0}^{DEG(V)} graph[bestRoute[n]][bestRoute[n + 1]] \le k\\
+  k = false \to \sum_{n=0}^{DEG(V)} graph[bestRoute[n]][bestRoute[n + 1]] > k
+.\end{align*}
+
+\end{document}

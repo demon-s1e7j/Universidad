@@ -1,0 +1,63 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+% \newcommand{\Lap}{\mathcal{L}}
+
+\title{\Huge{Métodos Matemáticos}\\Tarea 6}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+
+Desde 
+\begin{align*}
+  J_0\left( t \right) &= \frac{1}{2\pi}\int_{0}^{2\pi}e^{it \cos\theta}d\theta \\
+  \Lap\left\{ J_0\left( t \right)  \right\} &= \frac{1}{2\pi}\int_{0}^{2\pi} d\theta \int_{0}^{\infty}dt e^{-st + it \cos\theta} = \frac{1}{2\pi}\int_{0}^{2\pi}\frac{d\theta}{s - i \cos\theta} \\
+  \int_{0}^{2\pi}\frac{d\theta}{1 + a\cos\theta} &= \frac{2\pi}{\sqrt{1 - a^2} } \\
+  \Lap\left\{ J_0\left( t \right)  \right\} &= \frac{1}{2\pi s}\int_0^{2\pi}\frac{d\theta}{1 - \left( \frac{i}{s} \right) \cos\theta} \\
+  &= \frac{1}{2\pi s} \frac{2\pi}{\sqrt{1 - \left( \frac{i}{s} \right)^2} } \\
+  &= \Lap\left\{ J_0\left( t \right)  \right\} = \frac{1}{s\sqrt{1 - \left( \frac{i}{s} \right)^2} } \\
+  \Lap\left\{ J_0\left( t \right)  \right\} &= \left( s^2 + 1 \right)^{-\frac{1}{2}}
+.\end{align*}
+
+\chapter{}
+
+Para comenzar tenemos:
+\begin{align*}
+  f\left( s \right) &= \frac{s}{s^2 + a^2} \\
+  F\left( t \right) &= \cos at \\
+  g\left( s \right) &= \frac{1}{s^2 + b^2} \\
+  G\left( t \right) &= \frac{\sin bt}{b} \\
+  \Lap^{-1}\left\{ f\left( s \right) g\left( s \right)  \right\} &= \int_{0}^{t} F\left( t - z \right) G\left( z \right) dz \\
+  &= \frac{1}{b}\int_{0}^{t}\cos a\left( t - z \right) \sin bz dz \\
+  &= \frac{1}{2b}\int_{0}^{t}\left[ \sin\left( at - az + bz \right) - \sin\left( at - az - bz \right)  \right] dz \\
+  &= \left[ \frac{1}{2b\left( a - b \right) } \cos\left( at - az + bz \right) - \frac{1}{2b\left( a + b \right) } \cos\left( at - az - bz \right)  \right]_{z = 0}^{t}  \\
+  &= \frac{\cos bt - \cos at}{a^2 - b^2}
+.\end{align*}
+
+\chapter{}
+
+En este caso si cerramos la integral como se muestra en el enunciado notamos que dentro del contorno no hay ninguna singularidad ni tampoco aporta nada ninguno de los círculos. Sin embargo, en las lineas que pasan por la linea de corte si aportan y de hecho no se cancelan si no que duplican sus valores. Estas ramas tienen como valor $re^{-i \pi}$ y nos dejan con
+\begin{align*}
+  ds &= -dr\\
+  e^{ts}&= e^{-tr} \\
+  s^{-\frac{1}{2}} &= r^{-\frac{1}{2}}e^{+i \frac{\pi}{2}} = ir^{- \frac{1}{2}} \\
+  \Lap^{-1}\left\{ s^{-\frac{1}{2}} \right\} &= -2 \left( \frac{1}{2\pi i} \right) \int_{0}^{\infty} \left( ir^{-\frac{1}{2}} \right) e^{-tr}\left( -dr \right) \\
+  &= \frac{1}{\pi}\int_{0}^{\infty} r^{-\frac{1}{2}}e^{-tr}dr \\
+  &= \frac{1}{\pi t^{\frac{1}{2}}}\Gamma\left( \frac{1}{2} \right)  \\
+  &= \frac{1}{\left( \pi t \right)^{\frac{1}{2}}}
+.\end{align*}
+
+\end{document}
