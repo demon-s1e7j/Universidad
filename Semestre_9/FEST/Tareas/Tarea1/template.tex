@@ -1,0 +1,114 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Física Estadística}\\Tarea 1}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{202112171}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+
+\section*{Metodologia}
+
+Para comenzar este ejercicio creo que es primero valioso que pensemos en lo que estamos haciendo. Para iniciar, lo primero que podríamos considerar al oír el enunciado es hacer uso de un conteo estricto de todas las posibilidades pues así podríamos tener los resultados simplemente contando. Sin embargo, solo necesitamos realizar un calculo para darnos cuenta que esto resultaría extremadamente ineficiente. El calculo en cuestión es el numero de posibles resultados. Sabemos que cada dado tiene 6 caras y por lo tanto por cada uno de ellos hay 6 posibilidades lo que implica que el numero total de posibles resultados es \[
+6^{6} = 46656
+.\] Cosa que resultaría muy difícil de hacer sin una computador (E incluso con una es considerable pensar si vale la pena el esfuerzo tomando en cuenta que podemos usar otras técnicas de conteo). Por lo tanto, vamos a utilizar las siguientes técnicas:
+
+\begin{enumerate}
+  \item Para el primer y tercer punto utilizaremos una distribución binomial donde la probabilidad no esta repartida de manera equitativa. Es decir, en esencia esto es como si se tratase de una caminata aleatoria donde las dos posibilidades son sacar un 1 o no sacar un 1. Por lo tanto, quedaría tal que \[
+  p = \frac{1}{6};\ q = \frac{5}{6}
+  .\] Entonces buscaríamos los resultados para $n_1 = 2$ en el primer punto y para $n_1 = 4$ en el segundo punto.
+\item En este caso, aunque también podríamos realizar un ejercicio similar al hecho en los puntos previamente expuestos. Creo que lo mejor y mas fácil es enfrentar este problema con conteo. Es decir, aprovechando que sabemos cuantos casos posibles existen ($46656$) podemos entonces averiguar cuantos casos existen que cumplen el requisito de tener al menos 1 as y así dividir este numero por el de casos totales.
+\end{enumerate}
+
+
+\section{}
+
+Dado que tenemos dos posibilidades podemos utilizar la distribución binomial que nos dice: \[
+W_N\left( n_1 \right) = \frac{N!}{n_1!\left( N-n_1 \right)!}p^{n_1}q^{N - n_1}
+.\] Donde
+\begin{enumerate}
+  \item $N$ es el numero de dados (Es decir $6$)
+  \item $n_1$ es el numero de 1 que queremos obtener (Es decir $2$)
+  \item $p$ es la posibilidad de sacar un 1 (Es decir $\frac{1}{6}$ )
+  \item $q$ es la posibilidad de no sacar un 1 (Es decir  $\frac{5}{6}$ )
+\end{enumerate}
+
+Si ponemos todo en la ecuación nos queda:
+\begin{align*}
+  W_6\left( 2 \right) &= \frac{6!}{2!\left( 6 - 2 \right)!}\left( \frac{1}{6} \right) ^{2} \left( \frac{1}{5} \right) ^{6-2} \\
+  W_6\left( 2 \right) &= \frac{\cancel{4!}\cdot 5 \cdot 6}{2!\cancel{4!}}\left( \frac{1}{6} \right) ^{2}\left( \frac{5}{6} \right) ^{4} \\
+  W_6\left( 2 \right) &= \frac{5 \cdot 6}{2}\left( \frac{1}{6^2} \frac{5^{4}}{6^{4}}\right)  \\
+  W_6\left( 2 \right) &= 5 \cdot 3 \left( \frac{5^{4}}{6^{6}} \right)  \\
+  W_6\left( 2 \right) &= 3 \cdot \left( \frac{5^{5}}{6^{6}} \right)
+.\end{align*}
+
+Con esto, ya todo lo que nos resta es pasarlo por una calculadora. Por lo tanto el resultado es: \[
+W_6\left( 2 \right) = 3 \cdot \left( \frac{5^{5}}{6^{6}} \right) = 0.20093878600823045 \approx 20\%
+.\] 
+
+\section{}
+
+Para determinar cuantas posibilidades existen con que hayan lo que podemos hacer es en vez de tirar 6 dados tiramos solamente 4 pues sabemos que el resultado de los otros 2 siempre debe ser 1. De ese modo entonces la cantidad de posibilidades nos queda como: \[
+6^{4} = 1296
+.\] Lo cual implica que hay $1296$ con los 4 dados restantes. Sin embargo, nosotros tenemos el numero $6^{6}$ que toma en consideración el orden en el que se encuentran. Por lo tanto, necesitamos encontrar de cuantas maneras podríamos escoger 2 de esos 6 dados para que sean el 1. Esto se puede hacer con combinatoria y por lo tanto esto seria:
+\begin{align*}
+  \frac{6!}{2!\left( 6-2 \right)!} &= \frac{4! \cdot  5 \cdot 6}{2! 4!} \\
+  &= \frac{5 \cdot 6}{2} \\
+  &= 5\cdot 3 \\
+  &= 15
+.\end{align*}
+
+Y ahora si multiplicamos el resultado anterior y lo dividimos por la cantidad total de posibilidades nos queda:
+\begin{align*}
+  \frac{15 \cdot 6^{4}}{6^{6}} &= \frac{15}{6^{2}} \\
+  &= \frac{15}{32} \\
+  &= 0.46875 \\
+  &\approx 46\%
+.\end{align*}
+
+\section{}
+
+En este caso, volvemos a enfrentarnos al caso de una distribución binomial. Sin embargo, en esta ocasión necesitamos que salgan exactamente 4 dados con 1 (2 ases). Por lo tanto, tenemos las siguientes condiciones: \[
+W_N\left( n_1 \right) = \frac{N!}{n_1!\left( N-n_1 \right)!}p^{n_1}q^{N - n_1}
+.\] Donde
+\begin{enumerate}
+  \item $N$ es el numero de dados (Es decir $6$)
+  \item $n_1$ es el numero de 1 que queremos obtener (Es decir $4$)
+  \item $p$ es la posibilidad de sacar un 1 (Es decir $\frac{1}{6}$ )
+  \item $q$ es la posibilidad de no sacar un 1 (Es decir  $\frac{5}{6}$ )
+\end{enumerate}
+
+Con lo cual si ponemos todo en la ecuación queda:
+
+\begin{align*}
+  W_6\left( 4 \right) &= \frac{6!}{4!\left( 6 - 4 \right)!}\left( \frac{1}{6} \right) ^{4} \left( \frac{1}{5} \right) ^{6-4} \\
+  W_6\left( 4 \right) &= \frac{\cancel{4!} \cdot 5 \cdot 6}{\cancel{4!}2!}\left( \frac{1}{6} \right)^{4}\left( \frac{5}{6} \right)^{2} \\
+  W_6\left( 4 \right) &= \frac{5\cdot 6}{2}\left( \frac{1}{6^{4}}\frac{5^2}{6^2} \right)  \\
+  W_6\left( 4 \right) &= 5\cdot 3 \left( \frac{5^2}{6^{6}} \right)  \\
+  W_6\left( 4 \right) &= 3\cdot \left( \frac{5^{3}}{6^{6}} \right)  \\
+.\end{align*}
+
+Con lo cual lo podemos pasar por una calculadora y nos da como resultado: \[
+W_6\left( 4 \right) = 3 \cdot \left( \frac{5^{3}}{6^{6}} \right) = 0.008037551440329218 \approx 0.8\%
+.\] 
+
+\chapter{}
+
+\section{}
+
+Para mostrar que la distribución esta normalizada lo que debemos mostrar es que
+
+
+\end{document}
