@@ -4,6 +4,8 @@
 \input{macros}
 \input{letterfonts}
 
+\usepackage{amsthm}
+
 \title{\Huge{Física Estadística}\\Tarea 1}
 \author{\huge{Sergio Montoya Ramírez}}
 \date{202112171}
@@ -19,7 +21,7 @@
 
 \chapter{}
 
-\section*{Metodologia}
+\section*{Metodología}
 
 Para comenzar este ejercicio creo que es primero valioso que pensemos en lo que estamos haciendo. Para iniciar, lo primero que podríamos considerar al oír el enunciado es hacer uso de un conteo estricto de todas las posibilidades pues así podríamos tener los resultados simplemente contando. Sin embargo, solo necesitamos realizar un calculo para darnos cuenta que esto resultaría extremadamente ineficiente. El calculo en cuestión es el numero de posibles resultados. Sabemos que cada dado tiene 6 caras y por lo tanto por cada uno de ellos hay 6 posibilidades lo que implica que el numero total de posibles resultados es \[
 6^{6} = 46656
@@ -55,7 +57,7 @@ Si ponemos todo en la ecuación nos queda:
 .\end{align*}
 
 Con esto, ya todo lo que nos resta es pasarlo por una calculadora. Por lo tanto el resultado es: \[
-W_6\left( 2 \right) = 3 \cdot \left( \frac{5^{5}}{6^{6}} \right) = 0.20093878600823045 \approx 20\%
+W_6\left( 2 \right) = 3 \cdot \left( \frac{5^{5}}{6^{6}} \right) = 0.20093878600823045 \approx 20\% \square
 .\] 
 
 \section{}
@@ -65,8 +67,7 @@ Para determinar cuantas posibilidades existen con que hayan lo que podemos hacer
 .\] Lo cual implica que hay $1296$ con los 4 dados restantes. Sin embargo, nosotros tenemos el numero $6^{6}$ que toma en consideración el orden en el que se encuentran. Por lo tanto, necesitamos encontrar de cuantas maneras podríamos escoger 2 de esos 6 dados para que sean el 1. Esto se puede hacer con combinatoria y por lo tanto esto seria:
 \begin{align*}
   \frac{6!}{2!\left( 6-2 \right)!} &= \frac{4! \cdot  5 \cdot 6}{2! 4!} \\
-  &= \frac{5 \cdot 6}{2} \\
-  &= 5\cdot 3 \\
+  &= \frac{5 \cdot 6}{2} \\ &= 5\cdot 3 \\
   &= 15
 .\end{align*}
 
@@ -101,14 +102,87 @@ Con lo cual si ponemos todo en la ecuación queda:
 .\end{align*}
 
 Con lo cual lo podemos pasar por una calculadora y nos da como resultado: \[
-W_6\left( 4 \right) = 3 \cdot \left( \frac{5^{3}}{6^{6}} \right) = 0.008037551440329218 \approx 0.8\%
+W_6\left( 4 \right) = 3 \cdot \left( \frac{5^{3}}{6^{6}} \right) = 0.008037551440329218 \approx 0.8\% \square
 .\] 
 
 \chapter{}
 
+\section*{Requisitos}
+
+Para poder solucionar varios de estos puntos vamos a necesitar lo siguiente:
+
+\thm{Teorema del Binomio}{
+Es una formula que nos permite expandir un binomial: \[
+  (x + y)^{n} = \sum_{k = 0}^{n} {n \choose k} x^{k}y^{n - k}
+.\] 
+}\label{thm:binomio}
+
+
 \section{}
 
-Para mostrar que la distribución esta normalizada lo que debemos mostrar es que
+Para mostrar que la distribución esta normalizada lo que debemos mostrar es que \[
+\sum_{n=0}^{N} W_n\left( n_1 \right) = 1 \implies \sum_{n=0}^{N} \frac{N!}{n_1!\left( N - n_1 \right)!}p^{n}q^{\left( N - n_1 \right) } = 1
+.\] 
 
+Sin embargo, esto es esencialmente directo pues podemos ver que esta es en esencia una muestra del teorema \ref{thm:binomio} por lo tanto, podemos convertir esto a:
+\begin{align*}
+  \sum_{n=0}^{N} W_n\left( n_1 \right) &= \sum_{n=0}^{N} \frac{N!}{n_1!\left( N - n_1 \right)!}p^{n}q^{\left( N - n_1 \right) }\\
+				       &= \sum_{n_1=0}^{N} {N \choose n_1} p^{n_1}q^{\left( N - n_1 \right) } \\
+				       &= \left( p + q \right)^{N} \\
+				       p + q &= 1 \\
+				       &= 1^{N} \\
+				       &= 1 \square
+.\end{align*}
+\section{}
+
+En este caso partimos de la definición de valor promedio \[
+\overline{u} = \sum_{i=0}^{N} \frac{p\left( u_i \right) u_i}{p\left( u_i \right) }
+.\]  Ahora bien, como ya mostramos que esta formula esta normalizada sabemos que para este caso $\sum p(n_i) = 1$ por lo tanto queda \[
+\overline{u} = \sum_{i=0}^{N} p\left( u_i \right) u_i
+.\] Ahora con esto podemos desarrollar:
+\begin{align*}
+  \overline{n_1} &= \sum_{n_1=0}^{N} n_1 \cdot  W_N\left( n_1 \right) \\
+  &= \sum_{n_1 = 0}^{N} n_1 \cdot  \frac{N!}{n_1!\left( N - n_{1} \right)!}p^{n_1}q^{\left( N - n_1 \right) } \\
+  &= \sum_{n_1 = 1}^{N} \cancel{n_1} \cdot \frac{N!}{\left( n_1 - 1 \right)! \cancel{n_1} \left( N - n_1 \right)!}p^{n_1}q^{\left( N - n_1 \right) } \\
+  &= \sum_{n_1 = 1}^{N} \frac{N!}{\left( n_1 - 1 \right)! \left( N - n_1 \right)!}p^{n_1}q^{\left( N - n_1 \right) } \\
+  u &= n_1 - 1 \implies n_1 = u + 1 \\
+  &= \sum_{u = 0}^{N - 1} \frac{N!}{u! \left( N - u - 1 \right)! } p^{u + 1} q^{\left( N - u - 1 \right) }\\
+  &= \sum_{u = 0}^{N - 1} \frac{\left( N - 1 \right) ! N}{u! \left( \left( N - 1 \right) - u \right)!}p^{u}pq^{\left( \left( N - 1 \right) - u \right) } \\
+  &= \sum_{u = 0}^{N - 1} Np \frac{\left( N - 1 \right)!}{u! \left( \left( N - 1 \right) - u \right)! }p^{u}q^{\left( \left( N - 1 \right) - u \right) } \\
+  &= Np \sum_{u = 0}^{N - 1} \frac{\left( N - 1 \right)!}{u! \left( \left( N - 1 \right) - u \right)! }p^{u}q^{\left( \left( N - 1 \right) - u \right) } \\
+  \left( p + q \right)^{N - 1} &= \sum_{u = 0}^{N - 1} \frac{\left( N - 1 \right)!}{u! \left( \left( N - 1 \right) - u \right)! }p^{u}q^{\left( \left( N - 1 \right) - u \right) } \text{ Por \ref{thm:binomio}} \\
+  &= Np \left( p + q \right)^{N - 1} \\
+  &= Np \left( 1 \right)^{N - 1} \\
+  &= Np \square
+.\end{align*}
+
+\section{}
+
+De manera similar al punto anterior debemos partir de \[
+\overline{u} = \sum_{i=0}^{N} p\left( u_i \right) u_i
+.\] 
+Sin embargo, en este caso dado que nos preguntan por $n_2$ lo mas fácil es alterar $W_N\left( n_1 \right) $ para que ahora la variable sea $n_2$. Por lo tanto esto nos quedaría como: \[
+W_N\left( n_2 \right) = \frac{N!}{n_2!\left( N - n_2 \right)!}q^{n_2}p^{N - n_2}
+.\] Con esto, podemos hacer un desarrollo muy similar al punto anterior de modo tal que nos de un resultado equivalente. Es decir, nos da $Nq$.
+Sin embargo, repetire aqui el desarrollo alterado de modo tal que no quede duda de donde llega este valor:
+\begin{align*}
+  \overline{n_2} &= \sum_{n_2=0}^{N} n_2 \cdot  W_N\left( n_2 \right) \\
+  &= \sum_{n_2 = 0}^{N} n_2 \cdot  \frac{N!}{n_2!\left( N - n_2 \right)!}q^{n_2}p^{\left( N - n_2 \right) } \\
+  &= \sum_{n_2 = 1}^{N} \cancel{n_2} \cdot \frac{N!}{\left( n_2 - 1 \right)! \cancel{n_2} \left( N - n_2 \right)!}q^{n_2}p^{\left( N - n_2 \right) } \\
+  &= \sum_{n_2 = 1}^{N} \frac{N!}{\left( n_2 - 1 \right)! \left( N - n_2 \right)!}q^{n_2}p^{\left( N - n_2 \right) } \\
+  u &= n_2 - 1 \implies n_2 = u + 1 \\
+  &= \sum_{u = 0}^{N - 1} \frac{N!}{u! \left( N - u - 1 \right)! } q^{u + 1} p^{\left( N - u - 1 \right) }\\
+  &= \sum_{u = 0}^{N - 1} \frac{\left( N - 1 \right) ! N}{u! \left( \left( N - 1 \right) - u \right)!}q^{u}qp^{\left( \left( N - 1 \right) - u \right) } \\
+  &= \sum_{u = 0}^{N - 1} Nq \frac{\left( N - 1 \right)!}{u! \left( \left( N - 1 \right) - u \right)! }q^{u}p^{\left( \left( N - 1 \right) - u \right) } \\
+  &= Nq \sum_{u = 0}^{N - 1} \frac{\left( N - 1 \right)!}{u! \left( \left( N - 1 \right) - u \right)! }q^{u}p^{\left( \left( N - 1 \right) - u \right) } \\
+  \left( q + p \right)^{N - 1} &= \sum_{u = 0}^{N - 1} \frac{\left( N - 1 \right)!}{u! \left( \left( N - 1 \right) - u \right)! }q^{u}p^{\left( \left( N - 1 \right) - u \right) } \text{ por \ref{thm:binomio}} \\
+  &= Nq \left( q + p \right)^{N - 1} \\
+  &= Nq \left( 1 \right)^{N - 1} \\
+  &= Nq \square
+.\end{align*}
+
+\section{}
+
+En este caso, 
 
 \end{document}
