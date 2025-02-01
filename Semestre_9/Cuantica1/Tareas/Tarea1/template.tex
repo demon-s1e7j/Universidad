@@ -1,0 +1,97 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Some Class}\\Random Examples}
+\author{\huge{Your Name}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+
+\section{}
+En este caso, dado que nos piden demostrar la ley de Wien partiremos del ejercicio $1.3$ de las notas. Esto se debe a que en las mismas notas explica que esta es la manera en la que se demuestra la ley de Wien desde la intensidad.
+
+Tenemos  \[
+u_{\lambda}\left( \lambda, T \right) = \frac{8\pi h c}{\lambda^{5}} \frac{1}{e^{\frac{hc}{\lambda  Tk }}}
+.\] Ahora bien, la siguiente parte nos dice que demostremos bajo un cambio de variable adecuado que el máximo de la distribución de la energía cumple $x = 5\left( 1 - e^{-x} \right) $. Ahora bien, para este cambio de variable y dado que tenemos un $e^{-x}$ supongamos que es el exponente de $e$ en la ecuación anterior. Esto nos deja con:
+\begin{align*}
+  x &= \frac{hc}{\lambda Tk} \\
+  \lambda &= \frac{hc}{x Tk} \\
+  u_\lambda\left( x \right) &= \frac{8\pi hc}{\left( \frac{hc}{x Tk} \right)^5} \frac{1}{e^{x} - 1} \\
+  &= \frac{8\pi hc}{\left( \frac{hc}{Tk} \right)^{5}\frac{1}{x^{5}}} \frac{1}{e^{x} - 1} \\
+  &= \frac{8\pi hc}{\left( \frac{hc}{Tk} \right)^{5}} \frac{x^{5}}{e^{x} - 1}
+.\end{align*}
+
+Dado que nos piden que el máximo de la función cumpla una cierta condición debemos entonces encontrar el máximo para lo cual utilizaremos optimización. Es decir, nos interesa encontrar para el caso en el que $\frac{du}{dx} = 0$
+
+\begin{align*}
+  \frac{du}{dx} &= \frac{ d\left(\frac{8\pi hc}{\left( \frac{hc}{Tk} \right)^{5}} \frac{x^{5}}{e^{x} - 1} \right)}{dx} = 0 \\
+  0 &= \frac{d\left( \frac{x^{5}}{e^{x} - 1} \right) }{dx} \\
+  \frac{d\left( \frac{f}{g} \right) }{dx} &= \frac{\frac{df}{dx}g - f \frac{dg}{dx}}{g^2} \\
+  0 &= \frac{\frac{dx^{5}}{dx} \left( e^{x} - 1 \right) - x^{5} \frac{d\left( e^{x} - 1\right) }{dx}}{\left( e^{x} - 1 \right)^2}  \\
+  0\left( e^{x} - 1 \right)^2 &= 5x^{4}\left( e^{x} - 1 \right) - x^{5}e^{x} \\
+  0 &= 5x^{4}\left( e^{x} - 1 \right) - x^{5}e^{x} \\
+  x^{5}e^{x} &= 5x^{4}\left( e^{x} - 1 \right)  \\
+  \frac{x^{5}}{x^{4}} &= \frac{5\left( e^{x} - 1 \right) }{e^{x}} \\
+  x &= 5 \left( \frac{e^{x}}{e^{x}} - \frac{1}{e^{x}} \right)  \\
+  x &= 5\left( 1 - e^{-x} \right)
+.\end{align*}
+
+Con lo cual se llegaba a esta sección. Para proseguir en este mismo punto decían que se hiciera un script de sympy para encontrar el valor de $x$. Ahora bien juntare esto con lo próximo que nos piden que es comprobar que  $\lambda T = 2.898 \times 10^{-3}mK$ y lo montare todo en un solo script. Este script ya lo desarrolle y es el siguiente:
+
+\lstinputlisting[language=Python]{code/punto_1_a.py}
+
+Ahora bien, cuando ejecutamos este código nos devuelve:
+\begin{lstlisting}
+-x + 5 - 5*exp(-x)
+Soluciones en Simbolos: [0, LambertW(-5*exp(-5)) + 5]
+Aproximacion numerica: 4.96511423174428*kilogram*meter**2/(joule*second**2)
+Aproximacion numerica a partir de los simbolos: 4.96511423174428
+######## Constantes #################
+299792458*meter/second
+6.62607015e-34*kilogram*meter**2/second
+1.380649e-23*joule/kelvin
+####### Fin Constantes ##############
+Comprobacion del valor de lambda T 0.00289777195518517*kelvin*meter
+\end{lstlisting}
+
+Que como se puede ver por el resultado final se muestra que coincide con lo esperado. Este resultado muestra que existe un $\lambda_{max}$ que solo depende de la temperatura (pues todo lo demás esta como una constante). A esto se le conoce como ley de Wien.
+
+\section{}
+
+\section{}
+
+En este caso partiremos de la formula de plank pero con intensidad $\nu$ así como intentaremos llegar a la formula de Rayleigh-Jeans de la intensidad con bajas intensidades. Es decir, nos interesa mostrar que: \[
+u\left( \nu, T \right) = \frac{8\pi \nu^2}{c^3} \frac{h\nu}{e^{\frac{h\nu}{kT}} - 1}
+.\] Es equivalente a \[
+u\left( \nu, T \right) = \frac{8\pi \nu}{c^{3}}kT
+.\] para $\nu$ pequeños.
+
+Ahora bien, dado que $\nu$ es pequeño entonces podemos saber que $\frac{h\nu}{kT}$ es pequeño. Por lo tanto podamos usar la aproximación $e^{x} = x + 1$ para $x$ pequeño. Con esto entonces podemos desarrollar:
+\begin{align*}
+  u\left( \nu,T \right) &= \frac{8\pi \nu^2}{c^{3}} \frac{h\nu}{e^{\frac{h\nu}{kT}}- 1} \\
+			&\approx \frac{8\pi \nu^2}{c^3} \frac{h\nu}{\frac{h\nu}{kT} + 1 - 1}\\
+			&\approx \frac{8\pi \nu^2}{c^{3}}\frac{\frac{h\nu}{1}}{\frac{h\nu}{kT}}\\
+			&\approx \frac{8\pi \nu^2}{c^{3}}\frac{\cancel{h\nu} kT}{\cancel{h\nu}}\\
+			&\approx \frac{8\pi \nu^2}{c^{3}}kT \square
+.\end{align*}
+
+\section{}
+
+DAVID
+
+\section{}
+
+
+\end{document}

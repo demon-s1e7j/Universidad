@@ -183,6 +183,276 @@ Sin embargo, repetire aqui el desarrollo alterado de modo tal que no quede duda 
 
 \section{}
 
-En este caso, 
+Para este caso es importante notar que
+\mlenma{}{Por definición se cumple que:
+  \begin{align*}
+    \overline{u + n} &= \overline{u} + \overline{n}
+  .\end{align*}
+}{}
+
+Por lo tanto, podemos solucionar este punto como:
+
+
+  \begin{align*}
+    m &= n_2 - n_1\\
+    \overline{m} &= \overline{n_2 - n_1} \\
+    \overline{m} &= \overline{n_2} - \overline{n_1} \\
+    \overline{m} &= Nq - Np \\
+    \overline{m} &= N\left( q - p \right) \square
+  .\end{align*}
+
+\section{}
+
+Para este caso vamos a desarrollar el siguiente problema: \[
+\overline{\left( \Delta u \right)^2} = \sum_{u=0}^{N} P(u)\cdot \left( u - \overline{u} \right)^2
+.\] lo que para nuestro caso es:
+\begin{align*}
+  \overline{\left( \delta n_1 \right)^2 } &= \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot \left( n_1 - \overline{n_1} \right)^2 \\
+  \overline{\left( \delta n_1 \right)^2 } &= \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot \left( n_1 - Np \right)^2 \\
+  \overline{\left( \delta n_1 \right)^2 } &= \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot \left( n_1^2 - 2n_1Np + \left( Np \right)^2 \right) \\
+  \overline{\left( \delta n_1 \right)^2 } &= \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1^2 -\sum_{n_1 = 0}^{N} W_N\left( n_1 \right)\cdot  2n_1Np +\sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot \left( Np \right)^2
+.\end{align*}
+
+Como podemos ver cada una de estas sumas es independiente entre si por lo tanto las trataremos por separado:
+\begin{enumerate}
+  \item $\displaystyle\sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1^2$
+
+    Para este caso podemos partir de notar que: \[
+      n_1^2 = n_1\left( n_1 - 1 \right) + n_1
+    .\] Con lo cual lo podemos sustituir y nos da:
+    \begin{align*}
+      \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1^2 &= \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1\left( n_1 - 1\right) + \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1
+    .\end{align*}
+
+    Donde el segundo termino podemos notar que es esencialmente $\overline{n_1} = Np$ por lo tanto esto se simplifica y queda como:
+
+    \begin{align*}
+      \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1^2 &= \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1\left( n_1 - 1\right) + Np
+    .\end{align*}
+
+    Ahora bien, para la primera sumatoria desarrollemos por aparte:
+    \begin{align*}
+      \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1\left( n_1 - 1 \right)  &= \sum_{n_1 = 0}^{N} \frac{N!}{n_1!\left( N - n_1 \right)!}p^{n_1}q^{N - n_1}\cdot n_1\left( n_1 - 1 \right)  \\
+      &=  \frac{N!}{0!\left( N - 0 \right)!}p^{0}q^{N - 0}\cdot 0\left( 0 - 1 \right) + \sum_{n_1 = 1}^{N} \frac{N!}{n_1!\left( N - n_1 \right)!}p^{n_1}q^{N - n_1}\cdot n_1\left( n_1 - 1 \right)\\
+      &= \sum_{n_1 = 1}^{N} \frac{N!}{n_1!\left( N - n_1 \right)!}p^{n_1}q^{N - n_1}\cdot n_1\left( n_1 - 1 \right) \\
+      &= \sum_{n_1 = 1}^{N} \frac{N!}{\left( n_1 - 2 \right) !\cancel{\left( n_1 - 1 \right) }\cancel{n_1}\left( N - n_1 \right)!}p^{n_1}q^{N - n_1}\cdot \cancel{n_1}\cancel{\left( n_1 - 1 \right)} \\
+      &= \sum_{n_1 = 1}^{N} \frac{N!}{\left( n_1 - 2 \right)! \left( N - n_1 \right)!}p^{n_1}q^{N - n_1} \\
+      k &= n_1 - 2 \implies n_1 = k + 2 \\
+      &= \sum_{k = 0}^{N} \frac{N!}{k! \left( N - \left( k + 2 \right)  \right)!}p^{k + 2}q^{N - \left( k + 2 \right) } \\
+      &= \sum_{k = 0}^{N - 2} N\left( N - 1 \right) \frac{\left( N - 2 \right) !}{k! \left( \left( N - 2 \right)  - k  \right)!}p^{k}p^2q^{\left( N - 2 \right) - k } \\
+      &= N\left( N - 1 \right) p^2 \sum_{k=0}^{n} \frac{\left( n - 2 \right)!}{k! \left( \left( n - 2 \right) - k \right)!}p^{k}q^{\left( n - 2 \right) - k}\\
+      \left( p + q \right)^{N - 2} &= N\left( N - 1 \right) p^2 \sum_{k=0}^{n} \frac{\left( n - 2 \right)!}{k! \left( \left( n - 2 \right) - k \right)!}p^{k}q^{\left( n - 2 \right) - k}\\
+      &= N\left( N - 1 \right)p^2 \left( p + q \right)^{N - 2} \\
+      &= N\left( N -1 \right)p^{2} \left( 1 \right)^{N - 2} \\
+      &= N\left( N - 1 \right)p^2
+    .\end{align*}
+
+    Por lo tanto, el resultado total de esta sección concreta es: \[
+      \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1^2 = \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1\left( n_1 - 1\right) + \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1 = N\left( N - 1 \right)p^2 + Np
+    .\] 
+
+  \item $\displaystyle\sum_{n_1 = 0}^{N} W_N\left( n_1 \right)\cdot  2n_1Np$
+    
+    Para este caso, es importante notar que $2Np$ es un valor constante por lo tanto podemos sacarlo de la sumatoria lo que nos lleva a \[
+    \sum_{n_1 = 0}^{N} W_N\left( n_1 \right)\cdot  2n_1Np = 2Np \sum_{n_1 = 0}^{N} W_N\left( n_1 \right)\cdot  n_1
+    .\] Donde podemos notar que la sumatoria que queda es $\overline{n_1} = Np$ por lo tanto el total de esta sumatoria seria: \[
+    \sum_{n_1 = 0}^{N} W_N\left( n_1 \right)\cdot  2n_1Np = 2Np \sum_{n_1 = 0}^{N} W_N\left( n_1 \right)\cdot  n_1 = 2Np\cdot Np = 2\left( Np \right)^2
+    .\] 
+  \item $\displaystyle\sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot \left( Np \right)^2$
+
+    Como en el caso anterior  $\left( Np \right)^2$ es un valor constante por lo tanto podemos desarrollar de la siguiente manera:
+    \begin{align*}
+      \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot \left( Np \right)^2 &= \left( Np \right)^2 \sum_{n_1 = 0}^{N} W_N\left( n_1 \right)
+    .\end{align*}
+
+    Sin embargo, ya mostramos en el punto 1 que esta probabilidad esta normalizada por lo tanto esto queda como: \[
+      \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot \left( Np \right)^2 = \left( Np \right)^2 \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) = \left( Np \right)^2
+    .\] 
+\end{enumerate}
+
+Ahora, juntando todos los resultados anteriores tenemos:
+
+\begin{align*}
+  \overline{\left( \delta n_1 \right)^2 } &= \sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot n_1^2 -\sum_{n_1 = 0}^{N} W_N\left( n_1 \right)\cdot  2n_1Np +\sum_{n_1 = 0}^{N} W_N\left( n_1 \right) \cdot \left( Np \right)^2 \\
+  &= N\left( N - 1 \right)p^2 + Np - 2\left( Np \right)^2 + \left( Np \right)^2 \\
+  &= N\left( N - 1 \right) p^2 + Np - \left( Np \right)^2 \\
+  &= Np\left[ \left( N - 1 \right)p + 1 - Np \right]  \\
+  &= Np\left[ \cancel{Np} - p + 1 - \cancel{Np} \right]  \\
+  &= Np\left[ 1 - p \right]  \\
+  &= Npq \square
+.\end{align*}
+
+\chapter{}
+
+\section{}
+
+En este caso vamos a partir de la definición de $W_N\left( n_1 \right) $ con lo cual tenemos
+\begin{align*}
+  \ln\left( W_N\left( n_1 \right)  \right) &= \ln\left( \frac{N!}{n_1!\left( N - n_1 \right)!} p^{n_1}q^{N - n_1}\right) \\
+  &= \ln\left( N! \right) - \ln\left( n_1!\left( N - n_1 \right)! \right) + \ln\left( p^{n_1} \right) + \ln\left( q^{N - n_1} \right)   \\
+  &= \ln\left( N! \right) - \ln\left( n_1! \right) - \ln\left( \left( N - 1 \right)!  \right) + n_1\ln\left( p \right) + \left( N - n_1 \right) \ln\left( q \right)
+.\end{align*}
+
+Ahora bien, podemos hacer uso de la formula de stirling para seguir resolviendo este problema:
+\thm{Formula de Stirling}{
+  Para un $n$ grande se cumple que: \[
+  \ln\left( n! \right) = n\ln\left( n \right) - n
+  .\] 
+}
+
+  Con esto podemos desarrollar
+  \begin{align*}
+    W_N\left( n_1 \right) &= \ln\left( N! \right) - n_1\ln\left( n_1 \right) + n_1 - \left( N - n_1 \right) \ln\left( N - n_1 \right) - N + n_1 + n_1\ln\left( p \right) + N\ln\left( q \right) - n_1\ln\left( q \right)  \\
+    W_N\left( n_1 \right) &= \ln\left( N! \right) - n_1\ln\left( n_1 \right) + n_1 - N\ln\left( N - n_1 \right) + n_1 \ln\left( N - n_1 \right) - N + n_1 + n_1\ln\left( p \right) + N\ln\left( q \right) - n_1\ln\left( q \right)  \\
+   \end{align*}
+   Ahora con esta formula podemos calcular su derivada
+  \begin{align*}
+    \frac{dW_N\left( n_1 \right) }{d n_1}&= 0 - \left( \ln\left( n_1 \right) + \frac{n_1}{n_1} \right) + 1 + \frac{N}{N - n_1} + \left( \ln\left( N - n_1 \right) - \frac{n_1}{N - n_1} \right) - 0 + 1 + \ln\left( p \right) - \ln\left( q \right)  \\
+    \frac{dW_N\left( n_1 \right) }{d n_1}&= 0 - \left( \ln\left( n_1 \right) + \frac{n_1}{n_1} \right) + 1 + \frac{N - n_1}{N - n_1} + \left( \ln\left( N - n_1 \right) \right) - 0 + 1 + \ln\left( p \right) - \ln\left( q \right)  \\
+    \frac{dW_N\left( n_1 \right) }{d n_1}&= -  \ln\left( n_1 \right) - 1 + 1 + 1 + \ln\left( N - n_1 \right) + 1 + \ln\left( p \right) - \ln\left( q \right)  \\
+  \end{align*}
+
+  Y con esto podemos sacar su segunda derivada
+  
+  \begin{align*}
+    \frac{d^2W_N\left( n_1 \right) }{d n_1^2} &=  - \frac{1}{n_1} - \frac{1}{N - n_1}\\
+    \frac{d^2 W_N\left( \overline{n_1} \right) }{d n_1^2} &= - \frac{1}{Np} - \frac{1}{N - Np} \\
+    \frac{d^2 W_N\left( \overline{n_1} \right) }{d n_1^2} &= - \frac{1}{Np} - \frac{1}{N\left( 1 - p \right) } \\
+    \frac{d^2 W_N\left( \overline{n_1} \right) }{d n_1^2} &= - \frac{1}{Np} - \frac{1}{Nq } \\
+    \frac{d^2 W_N\left( \overline{n_1} \right) }{d n_1^2} &= - \frac{Nq + Np}{N^2pq}\\
+  \frac{d^2 W_N\left( \overline{n_1} \right) }{d n_1^2} &= - \frac{\cancel{N}\left( p + q \right) }{N^{\cancel{2}}pq}\\
+    \frac{d^2 W_N\left( \overline{n_1} \right) }{d n_1^2} &= - \frac{\left( 1\right) }{Npq}\\
+    \frac{d^2 W_N\left( \overline{n_1} \right) }{d n_1^2} &= - \frac{1}{Npq}\\
+    \left|  \frac{d^2 W_N\left( \overline{n_1} \right) }{d n_1^2} \right|  &=  \frac{1}{Npq}
+  .\end{align*}
+
+\section{}
+
+En este caso, en las notas de clase nos dan una pista diciendo que partamos de la definición de normalización en continuos:
+\begin{align*}
+  \int_{-\infty}^{\infty} \tilde{W} e^{-\frac{1}{2}\left| B_2 \right| \eta^2} d\eta &= 1 \\
+  \tilde{W} \int_{-\infty}^{\infty} e^{-\frac{1}{2}\left| B_2 \right| \eta^2} d\eta &= 1 \\
+.\end{align*}
+
+Ahora bien, debo ser honesto y decir que esta integral luego de intentarlo un par de veces la busque en Internet. Con esto encontré \href{https://es.wikipedia.org/wiki/Integral_de_Gauss}{esta} pagina de la wikipedia en donde decía: \[
+\int_{-\infty}^{\infty} e^{-a \left( x + b \right)^2}dx = \sqrt{\frac{\pi}{a}} 
+.\] lo cual nos solucionaba todos los problemas. Sin embargo, no me sentía cómodo siguiendo simplemente esta formula y por lo tanto seguí buscando otras soluciones hasta encontrar \href{https://youtu.be/qNfj96GcLJQ?si=QGbjJLlPIro5kT6y}{este} vídeo. Luego de verlo desarrolle por mi cuenta siguiendo su método y ademas busque otros lugares en donde desarrollaran esta integral y la mayoría lo seguía. Por lo tanto tomo la decisión de desarrollar la integral por esta misma ruta luego de entenderla y reescribirla por mi cuenta. 
+
+Suponga \[
+  G = \int_{-\infty}^{\infty} e^{-ax^2}dx
+.\] 
+Con lo cual podemos desarrollar \[
+  G^2 = \int_{\infty}^{\infty} e^{-a\left( x^2 + y^2 \right) } dxdy
+.\] Ahora bien, podemos pasar de coordenadas cartesianas a polares haciendo sustitución:
+\begin{align*}
+  G^2 &= \int_{0}^{2\pi}d\theta \int_{0}^{\infty} e^{-a r^2}r dr\\
+  u&= ar^2 \\
+  du &= 2ar dr \\
+  dr &= \frac{du}{2ar} \\
+  &=  \int_{0}^{2\pi}d\theta \int_{0}^{\infty} e^{-u} \frac{du}{2a}\\
+  &= \left( 2\pi - 0 \right)\frac{1}{2a} \left( \left[ -e^{u} \right]_0^{\infty} \right) \\
+  &= \left( 2\pi - 0 \right)\frac{-1}{2a} \left( e^{-\infty} - e^{0} \right) \\
+  &= \left( 2\pi \right)\frac{-1}{2a} \left( -1 \right) \\
+  &= \frac{\pi}{a}\\
+  G &= \sqrt{\frac{\pi}{a}}
+.\end{align*}
+
+Con lo cual podemos sustituir en la formula que teníamos antes y nos queda:
+\begin{align*}
+  \tilde{W}\int_{-\infty}^{\infty} e^{-\frac{1}{2}\left| B_2 \right| \eta^2}d\eta &= 1 \\
+  a &= \frac{\left| B_2 \right| }{2} \\
+\tilde{W}  \sqrt{\frac{2\pi}{\left| B_2 \right| }} &= 1 \\
+\tilde{W} &= \sqrt{\frac{\left| B_2 \right| }{2\pi}}  \\
+\tilde{W} &= \sqrt{\frac{1}{2\pi Npq}} \square
+.\end{align*}
+
+\chapter{}
+
+\section{}
+
+En este caso desarrollemos la integral:
+\begin{align*}
+  \left< x \right> &= \int_{-\infty}^{\infty}x p\left( x \right)dx  \\
+  &= \int_{-\infty}^{\infty} x \frac{1}{\sqrt{2\pi}\sigma } e^{- \frac{\left( x - \mu \right)^2 }{2\sigma^2}} \\
+  &= \frac{1}{\sqrt{2\pi} \sigma} \int_{-\infty}^{\infty} x e^{- \frac{\left( x - \mu \right)^2}{2 \sigma^2}} \\
+  u &= x - \mu \\
+  x &= u + \mu \\
+  &= \frac{1}{\sqrt{2\pi} \sigma} \int_{-\infty}^{\infty} \left( u + \mu \right) e^{- \frac{1}{2\sigma^2} u^2} du \\
+  &= \frac{1}{\sqrt{2\pi} \sigma} \left( \int_{-\infty}^{\infty} u e^{-\frac{u^2}{2\sigma^2}} du + \mu \int_{-\infty}^{\infty} e^{-\frac{1}{2\sigma^2} u^2} du \right)  \\
+  &= \frac{1}{\sqrt{2\pi} \sigma}\left( \int_{-\infty}^{0} ue^{-\frac{u^2}{2\sigma^2}}du + \int_{0}^{\infty} ue^{-\frac{u^2}{2\sigma^2}}du +\mu \int_{-\infty}^{\infty} e^{-\frac{1}{2\sigma^2} u^2} du \right)  \\
+  &= \frac{1}{\sqrt{2\pi} \sigma}\left( - \int_{0}^{\infty} ue^{-\frac{u^2}{2\sigma^2}}du + \int_{0}^{\infty} ue^{-\frac{u^2}{2\sigma^2}}du +\mu \int_{-\infty}^{\infty} e^{-\frac{1}{2\sigma^2} u^2} du \right)  \\
+  &= \frac{1}{\sqrt{2\pi} \sigma}\left(\mu \int_{-\infty}^{\infty} e^{-\frac{1}{2\sigma^2} u^2} du \right)  \\
+  \int_{-\infty}^{\infty} e^{-b u^2} du &= \sqrt{\frac{\pi}{b}} \text{ Integral previa, Integral de Gauss}  \\
+  &= \frac{1}{\sqrt{2\pi} \sigma}\left( \mu\sqrt{\frac{\pi}{2\sigma^2}}  \right)  \\
+  &= \frac{1}{\cancel{\sqrt{2\pi} \sigma}}\left( \mu \cancel{\sqrt{2\pi}\sigma}  \right)  \\
+  \left<x \right> &= \mu \square
+.\end{align*}
+
+\section{}
+En este caso vamos a desarrollar:
+\begin{align*}
+  \left<\sigma^2 \right> &= \int_{-\infty}^{\infty}\left( x - \mu \right)^2 \frac{1}{\sqrt{2\pi} \sigma} e^{- \frac{\left( x - \mu \right)^2}{2 \sigma^2}} dx \\
+  u &= \frac{x - \mu}{\sigma} \\
+  \left( x - \mu \right) &= u \sigma \\
+  &= \frac{1}{\sqrt{2\pi}\sigma} \int_{-\infty}^{\infty} u^2\sigma^2 e^{- \frac{u^2}{2}} \\
+  &= \frac{\sigma^2}{\sqrt{2\pi}\sigma} \int_{-\infty}^{\infty} u^2 e^{- \frac{u^2}{2}}\\
+  &= \frac{\sigma}{\sqrt{2\pi}} \int_{-\infty}^{\infty} u^2 e^{- \frac{u^2}{2}}
+.\end{align*}
+
+Ahora, para la integral podemos desarrollar:
+\begin{align*}
+  \int_{-\infty}^{\infty} x^2 e^{- a x^2} dx &= 2\int_{0}^{\infty} x \cdot x e^{-a x^{2}} dx \\
+  u &= x; dx = dx \\
+  dv &= x e^{-a x^2}; v = -\frac{e^{-ax^2}}{2a} \\
+  \int_{0}^{\infty} udv &= \left[ uv \right]_{0}^{\infty}  - \int_0^{\infty} vdu\\
+  &=2 \left( \left[ - \frac{x e^{-ax^2}}{2a} \right]_{0}^{\infty} + \int_{0}^{\infty} \frac{e^{-ax^2}}{2a} dx \right) \\
+  &= 2\left( \frac{1}{2a} \int_{0}^{\infty} e^{-ax^2} dx\right)  \\
+  &= 2\left( \frac{1}{2a} \frac{1}{2}\sqrt{\frac{\pi}{a}}  \right)  \\
+  &= \frac{1}{2a} \sqrt{\frac{\pi}{a}}
+.\end{align*}
+
+Que si reemplazamos todo queda:
+\begin{align*}
+  \frac{\sigma}{\sqrt{2\pi}} \int_{-\infty}^{\infty} u^2 e^{- \frac{u^2}{2}} &= \frac{\sigma}{\sqrt{2\pi} } \frac{1}{2a} \sqrt{\frac{\pi}{a}}  \\
+  &= \frac{\sigma}{\sqrt{2\pi} } \frac{2}{2} \sqrt{2\pi}  \\
+  &= \frac{\sigma \sqrt{2\pi} }{\sqrt{2\pi} } \\
+  \left<\sigma^2 \right> &= \sigma
+.\end{align*}
+
+\chapter{}
+
+\section{}
+
+En este caso vamos a desarrollar como se nos recomienda:
+\begin{align*}
+  \left( 1 - p \right)^{N -n} &= \left( 1 - p \right)^{N - n} \\
+  \ln\left( \left( 1 - p \right)^{N - n} \right)  &= \left( N - n \right) \ln\left( 1 - p \right)  \\
+  \ln\left( \left( 1 - p \right)^{N - n} \right) &\approx \left( N - n \right) -p \\
+  \ln\left( \left( 1 - p \right)^{N - n} \right) &\approx -Np \text{ Dado que } n \ll N\\
+  e^{\ln\left( \left( 1 - p \right)^{N - n} \right) } &\approx e^{-Np}\\
+  \left( 1 - p \right)^{N - n} &\approx e^{-Np} \square
+.\end{align*}
+
+\section{}
+
+En este caso vamos a partir de nuevo de la definición y nos iremos aproximando poco a poco:
+\begin{align*}
+  \frac{N!}{n!\left( N - n \right)!}
+.\end{align*}
+
+Ahora bien, dada la definición de $x!$ sabemos que al poner $\left( N - n \right)!$ en el denominador lo que nos queda en el numerador es esencialmente la multiplicación desde $\left( N - n + 1 \right) $ hasta $N$ lo cual son exactamente  $n$ términos. Considerando que $n \ll N$ entonces podemos aproximar todos estos términos a $N$ con lo cual quedaría  $N^{n}$. En un desarrollo mas matemático, esto se vería como:
+\begin{align*}
+  \frac{N!}{n!\left( N - n \right)!} &= \frac{\left( N - n + 1 \right) \cdot \left( N - n + 2 \right) \cdot \ldots \left( N - n + (n - 1) \right)  \cdot \left( N \right) }{n!} \\
+  \frac{N!}{n!\left( N - n \right)!} &\approx \frac{\left( N \right) \cdot \left( N  \right) \cdot \ldots \left( N  \right)  \cdot \left( N \right) }{n!} \text{ Dado que } n \ll N\\
+  \frac{N!}{n!\left( N - n \right)!} &\approx \frac{N^{n}}{n!} \square
+.\end{align*}
+
+\section{}
+
+Esta ultima parte es relativamente simple pues todo lo que debemos hacer es reemplazar lo encontrado en el punto anterior en la formula original:
+\begin{align*}
+  \frac{N!}{n!\left( N - n \right)!} p^{n}\left( 1 - p \right)^{N - n} &\approx \frac{N^{n}}{n!}p^n e^{-Np}\\
+  & \approx \frac{\left(Np\right)^n}{n!}e^{-Np} \square
+.\end{align*}
 
 \end{document}

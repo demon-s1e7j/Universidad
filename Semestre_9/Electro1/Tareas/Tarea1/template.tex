@@ -1,0 +1,146 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Electromagnetismo 1}\\Tarea 1}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{202112171}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+Partiendo de que: \[
+  \vec{E} = \frac{1}{4\pi\varepsilon_0} \int \frac{dq}{r^2} \hat{r}
+.\] podemos notar que en este caso por simetría las componentes $x$ y $y$ no aportan dado que por cada punto con carga existe un opuesto con carga igual (dado que $\rho$ es constante) pero a $180^{\circ}$ lo que hace que sus componentes en estos ejes se cancelen.
+
+Ahora bien, si expresamos esto en esféricas nos quedaríamos entonces con que la componente $z$ del campo seria \[
+d E_z = dE \cdot \cos\left( \theta \right) = \frac{1}{4\pi\varepsilon_0} \frac{\rho dV}{r^2} \cdot \cos\left( \theta \right) 
+.\] Ahora bien, en este caso $dV$ lo vamos a expresar en coordinadas esféricas (pues dada la geometría del sistema es lo mas simple). Por lo tanto, este diferencial quedaría como: \[
+dV = \left( dr \right) \left( r d\theta \right) \left( r \sin\theta d\phi \right) = r^2\sin\theta dr d\theta d\phi
+.\] Por lo tanto esto nos quedaría como:
+\begin{align*}
+  E = \frac{1}{4\pi\varepsilon_0}\int\int \int \frac{\rho}{r^2}\cos\theta r^2 \sin\theta dr d\theta d\phi
+.\end{align*}
+
+Ahora bien, estas integrales están definidas. En este caso necesitamos que tengan los limites de integración que expresen de manera correcta la forma de la figura. En este caso esto seria así:
+\begin{enumerate}
+  \item $r$: Dado que es un solido de $0$ a $R$.
+  \item  $\theta$ :  Dado que solo tenemos el hemisferio inferior seria $\frac{\pi}{2}$ a $\pi$
+  \item $\phi$ Dado que es toda la semiesfera seria de $0$ a $2\pi$
+\end{enumerate}
+
+Con lo cual podemos ahora si ver la integral:
+\begin{align*}
+  \vec{E} &= \frac{1}{4\pi\varepsilon_0}\int_{0}^{2\pi} \int_{\frac{\pi}{2}}^{\pi} \int_{0}^{R} \frac{\rho}{r^2}\cos\theta r^2 \sin\theta dr d\theta d\phi\\
+  \vec{E} &= \frac{\rho}{4\pi\varepsilon_0}\int_{0}^{2\pi} \int_{\frac{\pi}{2}}^{\pi} \int_{0}^{R} \cos\theta \sin\theta dr d\theta d\phi\\
+  &= \frac{\rho}{4\pi\varepsilon_0} \int_{0}^{2\pi} \int_{\frac{\pi}{2}}^{\pi} \cos\theta \sin\theta \left[ r \right]_{0}^{R} d\theta d\phi \\
+  &= \frac{\rho R}{4\pi\varepsilon_0} \int_{0}^{2\pi} \int_{\frac{\pi}{2}}^{\pi} \cos\theta \sin\theta d\theta d\phi \\
+  u &= \sin\theta \implies du = \cos\theta d\theta \\
+  &= \frac{\rho R}{4\pi\varepsilon_0} \int_{0}^{2\pi} \int_{1}^{0} u du d\phi \\
+  &= \frac{\rho R}{4\pi\varepsilon_0} \int_{0}^{2\pi} \left[ \frac{u^2}{2} \right]_{1}^{0} d\phi \\
+  &= -\frac{\rho R}{8\pi\varepsilon_0}\int_{0}^{2\pi} d\phi \\
+  &= -\frac{\rho R}{8\pi\varepsilon_0}\left[ \phi \right]_{0}^{2\pi} \\
+  &= -\frac{\rho R \cancel{2}\cancel{\pi}}{\cancel{8}\cancel{\pi}\varepsilon_0} \\
+  &= - \frac{\rho R}{4\varepsilon_0} \square
+.\end{align*}
+
+\chapter{}
+
+En este caso vamos a partir de: \[
+V\left( r \right) = \frac{1}{4\pi\varepsilon_0}\int \frac{dq}{\varkappa}
+.\] Ademas, en este caso dado que sabemos que es una superficie el disco sabemos que \[
+dq = \sigma da
+.\] que en este caso para coordenadas cilíndricas seria: \[
+dq = \sigma dr r d\theta
+.\] sustituyendo en la ecuación anterior tenemos: \[
+V\left( r \right) = \frac{\sigma}{4\pi\varepsilon_0}\int \frac{r dr d\theta}{\varkappa}
+.\] Ahora bien para encontrar $\varkappa$ vamos a realizar el siguiente desarrollo
+ \begin{align*}
+   \vec{\varkappa} &= \vec{r} - \vec{r'}\\
+   &= \left( r \hat{r} + 0 \hat{\theta} + 0 \hat{z} \right) - \left( 0 \hat{r} + 0 \theta + z \hat{z} \right)  \\
+   &= r \hat{r} + 0 \hat{\theta} - z\hat{z} \\
+   \varkappa^2 &= \varkappa \cdot  \varkappa = r^2 + 0^2 + \left( -z \right) ^2 \\
+   \varkappa^2 &= r^2 + z^2 \\
+   \varkappa &= \sqrt{r^2 + z^2}
+.\end{align*}
+
+Ahora bien, ya sustituyendo con todo nos da: \[
+V\left( r \right) = \frac{\sigma}{4\pi\varepsilon_0}\int_{0}^{2\pi}d\theta \int_{0}^{R} \frac{r dr}{\sqrt{r^2 + z^2} }
+.\] Ahora, para desarrollar la integral realmente compleja veamos la siguiente opción
+\begin{align*}
+  u &= r^2 + z^2 \\
+  du &= 2r dr \\
+  \frac{du}{2} &= r dr \\
+  \int_{0}^{R} \frac{r dr}{\sqrt{r^2 + z^2} } &= \frac{1}{2}\int_{z^2}^{R^2 + z^2} \frac{du}{\sqrt{u} } \\
+  &= \frac{1}{2}\left[ 2\sqrt{u}  \right]_{z^2}^{R^2 + z^2} \\
+  &= \left( \sqrt{R^2 + z^2} - z \right)  \\
+.\end{align*}
+
+Que ahora  sustituyendo todo queda:
+\begin{align*}
+  V\left( r \right) &= \frac{\sigma}{4\pi\varepsilon_0} 2\pi \left( \sqrt{R^2 + z^2} - z  \right) \\
+  V\left( r \right) &= \frac{\sigma}{2\varepsilon_0}\left( \sqrt{R^2 + z^2} - z \right) 
+.\end{align*}
+
+Ahora, cuando nos piden el campo debemos recordar que \[
+E = \nabla V
+.\] pero como en este caso solo tenemos componente $z$ esto nos queda como \[
+E = - \frac{d V}{dz}
+.\] Para lo cual podemos desarrollar:
+\begin{align*}
+  E\left( z \right) &= -\frac{\sigma}{2\varepsilon_0}\left( \frac{1}{\sqrt{R^2 - z^2} }z - 1 \right)  \\
+  E\left( z \right) &= \frac{\sigma}{2\varepsilon_0}\left(1 - \frac{1}{ \sqrt{R^2 - z^2} }z \right)
+.\end{align*}
+
+Ahora, para este caso nos preguntan que ocurre cuando $R \to \infty$. En cuyo caso el valor de $R$ en la expresión $\sqrt{R^2 - z^2}$ se haría muy grande y por tanto $\sqrt{R^2 + z^2} \approx R $ y con lo cual al $R \to  \infty$ queda el campo como
+\begin{align*}
+  E\left( z \right) &= \frac{\sigma}{2\varepsilon_0} \left( 1 - 0 \right)  \\
+  E\left( z \right) &= \frac{\sigma}{2\varepsilon}
+.\end{align*}
+
+Lo cual lo podemos identificar como un plano infinito (lo que tiene sentido pues un disco de radio infinito es un plano infinito).
+
+Por otro lado, para los casos en los que: $z \gg R$ podemos hacer el siguiente desarrollo:
+\begin{align*}
+  \sqrt{R^2 + z^2} &= z\sqrt{1 + \frac{R^2}{z^2}}  \\
+  \frac{R^2}{z^2} &\ll 1\\
+  x &= \frac{R^2}{z^2} \ll 1 \\
+  \sqrt{1 + x} &\approx \left( 1 + \frac{x}{2} \right) \\
+  z\sqrt{1 + \frac{R^2}{z^2}} &\approx z\left( 1 + \frac{R^2}{2z^2} \right) 
+.\end{align*}
+
+Con lo cual podemos sustituir y nos da:
+\begin{align*}
+  E &= \frac{\sigma}{2\varepsilon_0} \left( 1 - \frac{z}{z\left( 1 + \frac{R^2}{2z^2} \right) } \right) \\
+  E &= \frac{\sigma}{2\varepsilon_0} \left( 1 - \frac{1}{\left( 1 + \frac{R^2}{2z^2} \right) } \right) \\
+  \frac{1}{1 + x} &\approx 1 - x; x \ll 1\\
+  E &= \frac{\sigma}{2\varepsilon_0}\left( 1 - 1 + \frac{R^2}{2z^2} \right)  \\
+  E &= \frac{\sigma R^2}{4\varepsilon z^2}
+.\end{align*}
+
+Que ahora bien, tomando en cuenta que el disco esta cargado como $\sigma sup$ donde  $sup$ es la superficie de un disco ( o lo que es lo mismo $2\pi R^2$ entonces podemos ver que aquí podríamos sustituir y nos quedaría: \[
+E = \frac{Q}{4\pi\varepsilon_0} \frac{1}{z^2}
+.\]  Que es la formula de una carga puntual $\square$.
+
+\chapter{}
+
+En este caso, podemos modelar este sistema esencialmente con la regla de la superposición como si en vez de quitar un pedazo pusiéramos otra circunferencia pero con densidad de carga $-\rho$ de modo tal que en este punto se cancelen.
+
+Por lo tanto, iniciemos por el valor de la esfera completa. Esta es simplemente:
+\begin{align*}
+  \oint_{C} \vec{E} \cdot d\vec{A} &= \frac{Q}{\varepsilon_0} \\
+  dV &= r^2 \sin\left( \theta \right) dr d\theta \\
+  E \pi a^2 &= \frac{\int_{0}^{a} \int_{0}^{2\pi} r^2 \sin\left( \theta \right) dr d\theta }{\varepsilon_0} \\
+.\end{align*}
+
+
+\end{document}
