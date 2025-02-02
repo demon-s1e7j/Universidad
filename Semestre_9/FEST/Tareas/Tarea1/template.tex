@@ -455,4 +455,44 @@ Esta ultima parte es relativamente simple pues todo lo que debemos hacer es reem
   & \approx \frac{\left(Np\right)^n}{n!}e^{-Np} \square
 .\end{align*}
 
+\chapter{}
+
+\section{}
+
+En este caso,
+una de las primeras cosas que debemos probar es $U\left( \lambda S, \lambda V, \lambda N \right) = \lambda U \left( S, V, N \right) $.
+Por lo tanto, desarrollemos:
+\begin{align*}
+  U\left( S, V, N \right) &= \left( \frac{R\theta}{v_0} \right)NV\left( 1 + \frac{S}{NR} \right) e^{- \frac{S}{NR}} \\
+  U\left( \lambda S, \lambda V, \lambda N \right) &= \left( \frac{R\theta}{v_0} \right)\lambda N\lambda V\left( 1 + \frac{\cancel{\lambda} S}{\cancel{\lambda} NR} \right) e^{- \frac{\cancel{\lambda} S}{\cancel{\lambda} NR}} \\
+  &=\lambda^2 \left(  \frac{R\theta}{v_0} \right)NV\left( 1 + \frac{S}{NR} \right) e^{- \frac{S}{NR}} \\
+  U\left( \lambda S, \lambda V, \lambda N \right) &= \lambda^2 U\left( S, V, N \right) \square
+.\end{align*}
+
+Con lo cual mostramos que esta no puede ser una ecuación fundamental.
+
+\section{}
+
+Al igual que en el punto anterior debemos empezar por mostrar que $S\left( \lambda U, \lambda V, \lambda N \right) = \lambda S\left( U, V, N \right) $. Con esto, desarrollemos:
+\begin{align*}
+  S\left( U, V, N \right) &= \left( \frac{R^{3}}{v_0 \theta^2} \right)^{\frac{1}{5}} \left[ N^2 U^2 V \right]^{\frac{1}{5}} \\
+  S\left( \lambda U, \lambda V, \lambda N \right) &= \left( \frac{R^3}{v_0 \theta^2} \right)^{\frac{1}{5}} \left[ \left( \lambda N \right)^2 \left( \lambda U \right)^2 \left( \lambda V \right)  \right]^{\frac{1}{5}} \\
+  S\left( \lambda U, \lambda V, \lambda N \right) &= \left( \frac{R^3}{v_0 \theta^2} \right)^{\frac{1}{5}} \left[ \lambda^2 N^2 \lambda^2 U^2 \lambda V  \right]^{\frac{1}{5}} \\
+  S\left( \lambda U, \lambda V, \lambda N \right) &= \left( \frac{R^3}{v_0 \theta^2} \right)^{\frac{1}{5}} \left[ \lambda^5 N^2 U^2 V \right]^{\frac{1}{5}} \\
+  S\left( \lambda U, \lambda V, \lambda N \right) &= \left( \frac{R^3}{v_0 \theta^2} \right)^{\frac{1}{5}} \lambda \left[ N^2 U^2 V \right]^{\frac{1}{5}} \\
+  S\left( \lambda U, \lambda V, \lambda N \right) &= \lambda S\left( U, V, N \right) 
+.\end{align*}
+
+Con lo cual sabemos que se cumplen los postulados $II$ y  $III$
+
+Ahora, también debemos mostrar que $\left. \frac{\partial S}{\partial N}  \right|_{N, V} > 0 $. Con esto entonces:
+  \begin{align*}
+  S\left( U, V, N \right) &= \left( \frac{R^{3}}{v_0 \theta^2} \right)^{\frac{1}{5}} \left[ N^2 U^2 V \right]^{\frac{1}{5}} \\
+  S\left( U, V, N \right) &= \left( \frac{R^{3}}{v_0 \theta^2} \right)^{\frac{1}{5}} \left[ N^2  V \right]^{\frac{1}{5}} \left( U^2 \right)^{\frac{1}{5}}  \\
+  S\left( U, V, N \right) &= \left( \frac{R^{3}}{v_0 \theta^2} \right)^{\frac{1}{5}} \left[ N^2  V \right]^{\frac{1}{5}} U^{\frac{2}{5}}  \\
+  \left. \frac{\partial S}{\partial U}  \right|_{N, V} &= \left( \frac{R^{3}}{v_0 \theta^2} \right)^{\frac{1}{5}} \left[ N^2  V \right]^{\frac{1}{5}} \frac{2}{5}U^{-\frac{3}{5}} \\
+  .\end{align*}
+
+  Con lo cual se muestra por las condiciones de $U, N, V$ que la entropía siempre aumenta. Por lo tanto esta relación si puede ser una relación fundamental $\square$.
+
 \end{document}
