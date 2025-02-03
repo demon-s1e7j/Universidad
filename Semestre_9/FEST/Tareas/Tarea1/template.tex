@@ -495,4 +495,25 @@ Ahora, también debemos mostrar que $\left. \frac{\partial S}{\partial N}  \righ
 
   Con lo cual se muestra por las condiciones de $U, N, V$ que la entropía siempre aumenta. Por lo tanto esta relación si puede ser una relación fundamental $\square$.
 
+\chapter{}
+
+Tenemos $u = \left(\frac{\theta}{R}\right)s^2 e^{- \frac{v^2}{v_0^2}}$. Por lo tanto, necesitamos encontrar $T$ y $P$. Con esto entonces planteemos:
+\begin{align*}
+  T &= \left(\frac{\partial u}{\partial v}\right)_s \\
+  T &= \frac{\partial u}{\partial v} \left[ \left( \frac{\theta}{R} \right)s^2 e^{- \frac{v^2}{v^2_0}} \right] \\
+  T &= \left[ \left( \frac{\theta}{R} \right)e^{- \frac{v^2}{v^2_0}} \right] \frac{\partial u}{\partial v} s^2 \\
+  T &= \left[ \left( \frac{\theta}{R} \right)e^{- \frac{v^2}{v^2_0}} \right]  2 s \\
+  T &= \left[ \left( \frac{2\theta}{R} \right) s e^{- \frac{v^2}{v^2_0}} \right] \square.
+\end{align*}
+
+Ahora bien, note que todos los componentes de esta ecuación son mayores o iguales a 0. Por lo tanto, podemos saber que la energia es positiva.
+
+Ahora para el caso de $P$ necesitamos implementar:
+\begin{align*}
+  P &= - \left( \frac{\partial u}{\partial v} \right)_s \\
+  &= - \left[ \frac{\partial}{\partial v} \left( \frac{\theta}{R} s^2 e^{- \frac{v^2}{v_0^2}} \right) \right]\\
+  &= - \left[ \left( \frac{\theta}{R} s^2 \right) \right]\frac{\partial}{\partial v} e^{- \frac{v^2}{v_0^2}}\\
+  &= \left[ \left( \frac{\theta}{R} s^2 \right) \right]\frac{2v}{v_0^2} e^{- \frac{v^2}{v_0^2}} \square.
+\end{align*}
+
 \end{document}
