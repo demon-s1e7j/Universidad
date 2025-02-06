@@ -13,6 +13,8 @@ def probability(n: int, N: int, p1: float = 1/6, p2: float = 5/6) -> float:
 print("Parte A:", probability(2, 6))
 
 ## Punto 2
+print("0: ", probability(0, 6))
+print("1: ", probability(1, 6))
 print("Parte B:", 1 - sum([probability(n, 6) for n in range(2)]))
 
 ## Punto 3

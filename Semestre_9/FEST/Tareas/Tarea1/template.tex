@@ -31,7 +31,7 @@ Para comenzar este ejercicio creo que es primero valioso que pensemos en lo que 
   \item Para el primer y tercer punto utilizaremos una distribución binomial donde la probabilidad no esta repartida de manera equitativa. Es decir, en esencia esto es como si se tratase de una caminata aleatoria donde las dos posibilidades son sacar un 1 o no sacar un 1. Por lo tanto, quedaría tal que \[
   p = \frac{1}{6};\ q = \frac{5}{6}
   .\] Entonces buscaríamos los resultados para $n_1 = 2$ en el primer punto y para $n_1 = 4$ en el segundo punto.
-\item En este caso, aunque también podríamos realizar un ejercicio similar al hecho en los puntos previamente expuestos. Creo que lo mejor y mas fácil es enfrentar este problema con conteo. Es decir, aprovechando que sabemos cuantos casos posibles existen ($46656$) podemos entonces averiguar cuantos casos existen que cumplen el requisito de tener al menos 1 as y así dividir este numero por el de casos totales.
+\item Para el punto 2 lo que haremos sera encontrar $1 - P_N(n)_{n = 0, 1}$ que son los valores en donde esto no se cumple.
 \end{enumerate}
 
 
@@ -62,21 +62,25 @@ W_6\left( 2 \right) = 3 \cdot \left( \frac{5^{5}}{6^{6}} \right) = 0.20093878600
 
 \section{}
 
-Para determinar cuantas posibilidades existen con que hayan lo que podemos hacer es en vez de tirar 6 dados tiramos solamente 4 pues sabemos que el resultado de los otros 2 siempre debe ser 1. De ese modo entonces la cantidad de posibilidades nos queda como: \[
-6^{4} = 1296
-.\] Lo cual implica que hay $1296$ con los 4 dados restantes. Sin embargo, nosotros tenemos el numero $6^{6}$ que toma en consideración el orden en el que se encuentran. Por lo tanto, necesitamos encontrar de cuantas maneras podríamos escoger 2 de esos 6 dados para que sean el 1. Esto se puede hacer con combinatoria y por lo tanto esto seria:
+Lo que debemos hacer es esencialmente desarrollar la ecuación dos veces:
 \begin{align*}
-  \frac{6!}{2!\left( 6-2 \right)!} &= \frac{4! \cdot  5 \cdot 6}{2! 4!} \\
-  &= \frac{5 \cdot 6}{2} \\ &= 5\cdot 3 \\
-  &= 15
+  W_6\left( 0 \right) &= \frac{6!}{0!6!}\left( \frac{1}{6} \right)^{0}\left( \frac{5}{6}\right)  ^{6} \\
+  &= \frac{5^{6}}{6^{6}} \\
+  &= 0.3348979766803842
 .\end{align*}
 
-Y ahora si multiplicamos el resultado anterior y lo dividimos por la cantidad total de posibilidades nos queda:
+Y por el otro lado queda:
 \begin{align*}
-  \frac{15 \cdot 6^{4}}{6^{6}} &= \frac{15}{6^{2}} \\
-  &= \frac{15}{32} \\
-  &= 0.46875 \\
-  &\approx 46\%
+  W_6\left( 1 \right) &= \frac{6!}{1!5!}\left( \frac{1}{6} \right) \left( \frac{5}{6} \right)^{5} \\
+  &= 6 \frac{5^{5}}{6^{6}} \\
+  &= 0.401877572016461
+.\end{align*}
+
+Ahora sumamos ambas y lo restamos. Lo que se puede ver como:
+\begin{align*}
+  P &= 1 - W_6\left( 0 \right) - W_6\left( 1 \right) \\
+  &= 1 - 0.3348979766803842 - 0.401877572016461 \\
+  &= 0.26322445130315475
 .\end{align*}
 
 \section{}
@@ -515,5 +519,88 @@ Ahora para el caso de $P$ necesitamos implementar:
   &= - \left[ \left( \frac{\theta}{R} s^2 \right) \right]\frac{\partial}{\partial v} e^{- \frac{v^2}{v_0^2}}\\
   &= \left[ \left( \frac{\theta}{R} s^2 \right) \right]\frac{2v}{v_0^2} e^{- \frac{v^2}{v_0^2}} \square.
 \end{align*}
+
+\chapter{}
+
+\section{}
+
+En este caso iniciamos por
+\begin{align*}
+  PV &= NRT \\
+  U &= cNRT
+.\end{align*}
+
+Donde $c = \frac{3}{2}$ dado que es un gas monoatomico. Con esto entonces podemos reescribir estas ecuaciones como:
+\begin{align*}
+  \frac{1}{T} &= \frac{c NR}{U} \\
+  \frac{P}{T} &= \frac{NR}{V}
+.\end{align*}
+
+Ahora, podemos reescribir esto de manera molar como:
+\begin{align*}
+  \frac{1}{T} &= \frac{cR}{u} \\
+  \frac{P}{T} &= \frac{R}{v}
+.\end{align*}
+
+Con lo cual podemos encontrar $\frac{\mu}{T}$ y ponerlo en la relación Gibbs-Duhem:
+\begin{align*}
+  d \left( \frac{\mu}{T} \right) &= u d\left( \frac{1}{T} \right) + v d\left( \frac{P}{T} \right)  \\
+  d \left( \frac{\mu}{T} \right) &= u \left( - \frac{cR}{u^2}du \right) + v \left( - \frac{R}{v^2}dv \right)  \\
+  d\left( \frac{\mu}{T} \right) &= - \frac{cR du}{u} - \frac{Rdv}{v} \\
+  \int d\left( \frac{\mu}{T} \right) &= - \int \frac{cR du}{u} -\int \frac{Rdv}{v} \\
+  \frac{\mu}{T} - \left( \frac{\mu}{T} \right)_{0} &= - CR \ln\left( \frac{u}{u_0} \right)  - R \ln\left( \frac{v}{v_0} \right)
+.\end{align*}
+
+Con esto entonces podemos sustituir en la ecuación de Euler:
+\begin{align*}
+  S &= \left( \frac{1}{T} \right) U + \left( \frac{P}{T} \right) V - \left( \frac{\mu}{T} \right) N \\
+  S &= \frac{cRN}{\cancel{U}}\cancel{U} + \left( \frac{RN}{\cancel{V}}\cancel{V} \right) + cRN \ln\left( \frac{u}{u_0} \right) + RN \ln\left( \frac{v}{v_0} \right) - \left( \frac{\mu}{T} \right)_{0}N  \\
+  S &= NR\left( C + 1 \right) + NR\ln\left[ \left( \frac{u}{u_0} \right)^{c}\left( \frac{v}{v_0} \right)  \right] - \left( \frac{\mu}{T} \right)_0 N \\
+  S &= N\varkappa_0 + NR\ln\left[ \left( \frac{\frac{U}{N}}{\frac{U_0}{N_0}} \right)^{c}\left( \frac{\frac{V}{N}}{\frac{V_{0}}{N_0}} \right) \right] ;\ \varkappa_0 = R\left( c + 1 \right) - \left( \frac{\mu}{T} \right)_{0} \\
+  S &= N\varkappa_0 + NR\ln\left[ \left( \frac{U}{U_0} \right)^{c} \left( \frac{V}{V_0} \right) \left( \frac{N}{N_0} \right)^{-\left( c + 1 \right) } \right]
+.\end{align*}
+
+Con esto entonces podemos aplicar:
+\begin{align*}
+  e^{S} &= e^{N\varkappa_0 + NR\ln\left[ \left( \frac{U}{U_0} \right)^{c} \left( \frac{V}{V_0} \right) \left( \frac{N}{N_0} \right)^{-\left( c + 1 \right) } \right]} \\
+  e^{S} &= e^{N\varkappa_0 + \ln\left[ \left( \left( \frac{U}{U_0} \right)^{c} \left( \frac{V}{V_0} \right) \left( \frac{N}{N_0} \right)^{-\left( c + 1 \right) } \right)^{NR}\right]} \\
+e^{S} &= e^{N\varkappa_0}\left( \left( \frac{U}{U_0} \right)^{c} \left( \frac{V}{V_0} \right) \left( \frac{N}{N_0} \right)^{-\left( c + 1 \right) } \right)^{NR}\\
+\frac{e^{S}}{e^{N\varkappa_0}} &= \left( \frac{U}{U_0} \right)^{cNR}\left( \frac{V}{V_0} \right)^{NR}\left( \frac{N}{N_0} \right)^{-\left( c + 1 \right) NR} \\
+\frac{e^{\frac{S}{cNR}}}{e^{\frac{N\varkappa_0}{cNR}}} &= \left( \frac{U}{U_0} \right)\left( \frac{V}{V_0} \right)^{\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\frac{-\left( c + 1 \right) NR}{cNR}} \\
+\frac{e^{\frac{S}{cNR}}}{e^{\frac{N\varkappa_0}{cNR}}} &= \left( \frac{U}{U_0} \right)\left( \frac{V}{V_0} \right)^{\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\frac{-\left( c + 1 \right)}{c}} \\
+\frac{U}{U_0} &= \frac{e^{\frac{S}{cNR}}}{e^{\frac{N\varkappa_0}{cNR}}} \left( \frac{V}{V_0} \right)^{\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\frac{-\left( c + 1 \right)}{c}} \\
+U &= U_0\frac{e^{\frac{S}{cNR}}}{e^{\frac{N\varkappa_0}{cNR}}} \left( \frac{V}{V_0} \right)^{-\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\frac{\left( c + 1 \right)}{c}}
+.\end{align*}
+
+\section{}
+
+En este caso, encontremos $T = \frac{\partial U}{\partial S}$ aunque sabemos que nos va a dar $U = cNRT$. Sin embargo, comprobemos:
+\begin{align*}
+U &= U_0\frac{e^{\frac{S}{cNR}}}{e^{\frac{N\varkappa_0}{cNR}}} \left( \frac{V}{V_0} \right)^{-\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\frac{\left( c + 1 \right)}{c}}\\
+\frac{\partial U}{\partial S} &= \frac{U_0}{cNR} \frac{e^{\frac{S}{cNR}}}{e^{\frac{N\varkappa_0}{cNR}}} \left( \frac{V}{V_0} \right)^{-\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\frac{\left( c + 1 \right)}{c}}\\
+T &= \frac{U_0}{cNR} \frac{e^{\frac{S}{cNR}}}{e^{\frac{N\varkappa_0}{cNR}}} \left( \frac{V}{V_0} \right)^{-\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\frac{\left( c + 1 \right)}{c}}\\
+e^{\frac{S}{cNR}} &= T \frac{cNR}{U_0}\left( \frac{V}{V_0} \right)^{\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\frac{-\left( c + 1 \right)}{c}} e^{\frac{N\varkappa_0}{cNR}} \\
+U &= U_0\frac{T \frac{cNR}{U_0}\left( \frac{V}{V_0} \right)^{\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\frac{-\left( c + 1 \right)}{c}} e^{\frac{N\varkappa_0}{cNR}}}{e^{\frac{N\varkappa_0}{cNR}}} \left( \frac{V}{V_0} \right)^{-\frac{1}{c}}\left( \frac{N}{N_0} \right)^{\frac{\left( c + 1 \right)}{c}}\\
+U &= cNRT
+.\end{align*}
+
+Ahora, si tomamos $S$ y reemplazamos $U$ nos quedaría:
+\begin{align*}
+  S &= N\varkappa_0 + NR\ln\left[ \left( \frac{cNRT}{U_0} \right)^{c} \left( \frac{V}{V_0} \right) \left( \frac{N}{N_0} \right)^{-\left( c + 1 \right) } \right]
+.\end{align*}
+
+Que ahora reemplazando todo queda:
+\begin{align*}
+  F &= U - TS \\
+  &= cNRT - T\left( N\varkappa_0 + NR\ln\left[ \left( \frac{cNRT}{U_0} \right)^{c} \left( \frac{V}{V_0} \right) \left( \frac{N}{N_0} \right)^{-\left( c + 1 \right) } \right] \right)
+.\end{align*}
+
+\section{}
+
+Desarrollemos desde Gibbs como:
+\begin{align*}
+  G &= U - TS + PV \\
+  &= cNRT - T\left( N\varkappa_0 + NR\ln\left[ \left( \frac{cNRT}{U_0} \right)^{c} \left( \frac{V}{V_0} \right) \left( \frac{N}{N_0} \right)^{-\left( c + 1 \right) } \right] \right) + NRT
+.\end{align*}
 
 \end{document}

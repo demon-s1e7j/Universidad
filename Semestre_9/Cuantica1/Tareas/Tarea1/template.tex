@@ -104,4 +104,40 @@ Donde:
   \item $m_e$ es la masa en reposo de un electron
 \end{itemize}
 
+\begin{align*}
+  <x> &= \int_{-\infty}^{\infty} Ae^{-\frac{x^2}{a_0^2}}x dx\\
+      &= \int_{-\infty}^{0} x Ae^{-\frac{x^2}{a_0^2}} dx + \int_{0}^{\infty} x e^{- \frac{x^2}{a_0^2}}dx\\
+      &= \int_{0}^{\infty} - x Ae^{-\frac{-x^2}{a_0^2}} dx + \int_{0}^{\infty} x e^{- \frac{x^2}{a_0^2}}dx\\
+      &= - \int_{0}^{\infty} x Ae^{-\frac{x^2}{a_0^2}} dx + \int_{0}^{\infty} x e^{- \frac{x^2}{a_0^2}}dx\\
+      &= 0
+.\end{align*}
+
+\begin{align*}
+  <p^2> &= \int_{-\infty}^{\infty} \hbar \psi \frac{\partial^2 \psi}{\partial x^2}\\
+  \frac{\partial \psi}{\partial x} &= \frac{-2x}{a_0^2}Ae^{-\frac{x^2}{a_0^2}}\\
+  \frac{\partial^2 \psi}{\partial x^2} &= \frac{2}{a_0^2}A e^{- \frac{x^2}{a_0^2}} + \left(- \frac{2x}{a_0^2}A \frac{2x}{a_0^2}e^{-\frac{x^2}{a_0^2}}\right)\\
+  \frac{\partial^2 \psi}{\partial x^2} &= 2A e^{-\frac{x^2}{a_0^2}}\left( \frac{1}{a_0^2} - \frac{2 x^2}{a_{0}^{4}} \right) \\
+  \frac{\partial^2 \psi}{\partial x^2} &= 2A e^{-\frac{x^2}{a_0^2}}\left( \frac{a_0^2 - 2 x^2}{a_{0}^{4}} \right) \\
+  \frac{\partial^2 \psi}{\partial x^2} &= \frac{2Ae^{-\frac{x^2}{a_0^2}}(a_0^2-2x^2)}{a_0^4}\\
+	&= \psi \cdot \frac{\partial^2 \psi}{\partial x^2} = Ae^{-\frac{x^2}{a_0^2}}\cdot \frac{2Ae^{-\frac{x^2}{a_0^2}}(a_0^2-2x^2)}{a_0^4}\\
+	&= \frac{A^2e^{-\frac{2x^2}{a_0^2}}(a_o^2-2x^2)}{a_0^4}\\
+	&=\frac{\hbar A^2}{a_0^4} \int_{-\infty}^{\infty}e^{-\frac{2x^2}{a_0^2}}(a_0^2 -2x^2)\\
+	&=\frac{\hbar A^2}{a_0^4} \left(\int_{-\infty}^{\infty}a_0^2e^{-\frac{2x^2}{a_0}} - \int_{-\infty}^{\infty}2x^2e^{-\frac{2x^2}{a_0^2}}\right)\\
+	&=\frac{\hbar A^2}{a_0^4} \left(a_0^2\sqrt{\frac{\pi a_0^2}{2}}-\frac{1}{2}\sqrt{\frac{\pi}{2}}a_0^3\right)
+\end{align*}
+\begin{align*}
+  <x^2> &= \int_{-\infty}^{\infty}\psi*x^2\psi dx\\
+	&=\int_{-\infty}^{\infty} Ae^{-\frac{x^2}{a_0^2}}x^2 Ae^{-\frac{x^2}{a_0^2}}dx\\
+	&=A^2\int_{-\infty}^{\infty} x^2 e^{-\frac{2x^2}{a_0^2}}=A^2\frac{1}{4}\sqrt{\frac{\pi}{2}}a_0^3
+.\end{align*}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{img/General.png}
+  \caption{Gráfica de Intensidad respecto a la longitud de onda}
+  \label{fig:lng}
+\end{figure}
+
+
+
 \end{document}
