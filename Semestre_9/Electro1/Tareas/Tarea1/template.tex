@@ -137,4 +137,80 @@ En este caso, podemos modelar este sistema esencialmente con la regla de la supe
 
 Por lo tanto, iniciemos por el valor de la esfera completa. Esta es simplemente:
 
+\chapter{}
+
+Para este caso, vamos a partir de un punto muy similar a si este fuera un plano infinito. Sin embargo, hay una diferencia relevante. La diferencia es que en este caso la cantidad de carga es  variable dependiendo de $y$.
+
+\chapter{}
+
+\section{}
+
+Para calcular la carga superficial debemos encontrar la carga que tendría la superficie y dividirla por el área. En este caso sabemos que todas estas son esferas por lo tanto tienen un área de $4\pi r^2$ donde $r$ es el radio concreto de cada esfera. Ademas, dado que sabemos que la esfera esta hecha de un semiconductor entonces la carga de la cara interna de cada una de esas cargas (Es decir $\sigma_a$ y $\sigma_b$) van a tener una carga opuesta a la carga que lo contiene y a su vez la esfera completa va a tener la suma de las dos cargas. Por lo tanto esto se calcularía como:
+\begin{align*}
+  \sigma_a &= - \frac{q_a}{4\pi a^2} \\
+  \sigma_b &= - \frac{q_b}{4\pi b^2} \\
+  \sigma_R &= \frac{q_a + q_b}{4\pi R^2}
+.\end{align*}
+
+\section{}
+
+Dado que ya conocemos la carga que tiene esta superficie y que esta es una esfera podemos aplicar la ley de Gauss sin preocuparnos por sus detalles lo que nos da:
+\begin{align*}
+  E \cdot \oint_{C} d\vec{A} &= \frac{q_{en}}{\varepsilon_0} \\ 
+  E \cdot 4 \pi r^2 &= \frac{\left( q_a + q_b \right) + q_a + q_b - q_a - q_b}{\varepsilon_0} \\
+  E &= \frac{q_a + q_b}{4\pi \varepsilon_0 r^2} \\
+  \vec{E} &= \frac{q_a + q_b}{4\pi \varepsilon_0 r^2} \hat{r}
+.\end{align*}
+
+\section{}
+
+En este punto podríamos usar de nuevo ley de Gauss. Sin embargo, dado que sabemos que la única carga encerrada dentro de estas cavidades es la puntual podemos simplemente utilizar la formula del campo eléctrico para una carga puntual. Con lo cual nos queda:
+\begin{align*}
+  \vec{E_a} &= \frac{1}{4\pi\varepsilon_0}\frac{q_a}{r_a^2}\hat{r_a} \\
+  \vec{E_b} &= \frac{1}{4\pi\varepsilon_0}\frac{q_b}{r_b^2}\hat{r_b}
+.\end{align*}
+
+\section{}
+
+En este caso vamos a trabajar en un abstracto. Dadas las condiciones de un semiconductor sabemos que las únicas cargas que podrían hacer que el punto $q_x$ sufriera una fuerza son las de la superficie del semiconductor. Sin embargo, si intentamos encontrar el campo eléctrico dentro de esta cavidad por ley de Gauss (Cosa que es completamente valida pues seguimos utilizando una curva cerrada) podemos notar que este no contiene ninguna carga en su interior. Por lo tanto el campo causado por la carga en la superficie es 0. Esto en verdad no es si no una manera de reescribir lo que se a mostrado en clase que para una esfera vacía el campo que reside en su interior es 0.
+
+\section{}
+
+En este caso dado que cada una de las cargas esta esencialmente dividido y aislado por el conductor que los separa entonces no habría diferencia para la fuerza que experimenta $q_a$ ni $q_b$ ni tampoco para el campo eléctrico que hay dentro de cada cavidad. Tampoco habría diferencia para el caso de la carga superficial de $\sigma_a$ o $\sigma_b$. Lo que si cambiaría es todo lo relacionado a la parte externa pues tendría que tener en consideración la nueva carga. Es decir, el campo eléctrico fuera del conductor así como su carga superficial cambiaría.
+
+\chapter{}
+
+Para este caso vamos a partir del campo eléctrico en un cilindro que lo podemos conseguir con la ley de Gauss.
+\begin{align*}
+  \oint_{C} \vec{E} d\vec{A} &= \frac{Q_{enc}}{\varepsilon_0} \\
+  E \cdot 2\pi r \cdot L &= \frac{Q_{enc}}{\varepsilon_0} \\
+  E &= \frac{Q_{enc}}{2\pi r \cdot L \cdot \varepsilon_0} \\
+  \vec{E} &= \frac{Q_{enc}}{2\pi\cdot L \cdot \varepsilon_0 \cdot r} \hat{r}
+.\end{align*}
+
+Ahora en este caso podemos calcular la diferencia de potencial como:
+\begin{align*}
+  V\left( a \right) - V\left( b \right) &= \int_{a}^{b} E\cdot dl \\
+  &= \int_{a}^{b} \frac{Q_{enc}}{2\pi\cdot L \cdot \varepsilon_0 \cdot r} dr\\
+  &= \frac{Q_{enc}}{2\pi\cdot L \cdot \varepsilon_0}\int_{a}^{b} \frac{1}{r} dr\\
+  &= \frac{Q_{enc}}{2\pi\cdot L \cdot \varepsilon_0} \left[ \ln(x) \right]_{a}^{b}\\
+  &= \frac{Q_{enc}}{2\pi\cdot L \cdot \varepsilon_0} \ln(b) - \ln(a)\\
+  &= \frac{Q_{enc}}{2\pi\cdot L \cdot \varepsilon_0} \ln\left( \frac{b}{a} \right)
+.\end{align*}
+
+Ahora con esto la capacitancia es:
+\begin{align*}
+  C &= \frac{Q}{V} \\
+  &= \frac{Q}{\frac{Q}{2\pi\cdot L \cdot \varepsilon_0} \ln\left( \frac{b}{a} \right)} \\
+  &= \frac{Q \cdot 2\pi\cdot L \cdot \varepsilon_0}{Q \ln\left( \frac{b}{a} \right)} \\
+  &= \frac{2\pi\cdot L \cdot \varepsilon_0}{\ln\left( \frac{b}{a} \right)}
+.\end{align*}
+
+Ahora esta es la capacitancia total. Si no la piden por unidad de longitud seria dividir entre $L$ lo que nos daría:
+ \begin{align*}
+  \frac{C}{L} &= \frac{\frac{2\pi\cdot L \cdot \varepsilon_0}{\ln\left( \frac{b}{a} \right)}}{L}  \\
+   &= \frac{2\pi \cdot \varepsilon_0}{\ln\left( \frac{b}{a} \right)} 
+.\end{align*}
+
+
 \end{document}
