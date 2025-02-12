@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/VoidLinux) (preloaded format=pdflatex 2025.2.3)  12 FEB 2025 11:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/VoidLinux) (preloaded format=pdflatex 2025.2.3)  12 FEB 2025 13:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1280,13 +1280,13 @@ File: tikzlibraryshadows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 Package: titletoc 2021/07/05 v2.14 TOC entries
 \ttl@leftsep=\dimen331
 ))
-(./macros.tex) (./letterfonts.tex)
-No file template.aux.
+(./macros.tex) (./letterfonts.tex) (./template.aux)
 \openout1 = `template.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/npxmi/m/it on input line 11.
 LaTeX Font Info:    Trying to load font information for OML+npxmi on input line
  11.
+
 (/usr/share/texmf-dist/tex/latex/newpx/omlnpxmi.fd
 File: omlnpxmi.fd 2013/03/21 Fontinst v1.933 font definitions for OML/npxmi.
 )
@@ -1446,7 +1446,14 @@ LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
 
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-No file template.toc.
+(./template.toc
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+)
 \tf@toc=\write5
 \openout5 = `template.toc'.
 
@@ -1482,15 +1489,11 @@ Chapter 4.
 Chapter 5.
 [11
 
-]
+] [12]
 Chapter 6.
-[12
+[13
 
-] [13]
-Chapter 7.
-[14
-
-] [15] (./template.aux)
+] [14] (./template.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
@@ -1498,18 +1501,15 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 37355 strings out of 476025
- 746654 string characters out of 5796501
+ 37404 strings out of 476025
+ 747675 string characters out of 5796501
  1870388 words of memory out of 5000000
- 57086 multiletter control sequences out of 15000+600000
- 541656 words of font info for 116 fonts, out of 8000000 for 9000
+ 57133 multiletter control sequences out of 15000+600000
+ 542565 words of font info for 119 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,19n,102p,711b,582s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,19n,102p,711b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb></usr/share/texmf
 -dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
@@ -1517,14 +1517,15 @@ onts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
 fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/am
-sfonts/latxfont/line10.pfb></usr/share/texmf-dist/fonts/type1/public/newpx/pxmi
-aX.pfb></usr/share/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/share/te
-xmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/share/texmf-dist/fonts/type1/
-public/txfonts/txsya.pfb>
-Output written on template.pdf (16 pages, 142036 bytes).
+sfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/latxfont/
+line10.pfb></usr/share/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/newtx/txexs.pfb></usr/share/texmf-dist/fonts/type1/public/txfonts/t
+xsya.pfb>
+Output written on template.pdf (15 pages, 152088 bytes).
 PDF statistics:
- 252 PDF objects out of 1000 (max. 8388607)
- 182 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
- 261 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 271 PDF objects out of 1000 (max. 8388607)
+ 189 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
+ 253 words of extra memory for PDF output out of 10000 (max. 10000000)
 

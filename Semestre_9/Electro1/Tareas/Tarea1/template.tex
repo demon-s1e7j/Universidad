@@ -245,9 +245,19 @@ Ahora con esto sumemos los resultados:
 
 \chapter{}
 
-\chapter{}
+Para este caso, vamos a partir de un punto muy similar a si este fuera un plano infinito. Sin embargo, hay una diferencia relevante. La diferencia es que en este caso la cantidad de carga es  variable dependiendo de $y$. Ahora bien, dado esto podemos seguir haciendo en esencia esta esta distribución:
 
-Para este caso, vamos a partir de un punto muy similar a si este fuera un plano infinito. Sin embargo, hay una diferencia relevante. La diferencia es que en este caso la cantidad de carga es  variable dependiendo de $y$.
+
+\begin{tikzpicture}
+  \draw[green, fill=green!25] (-2, 1) rectangle (2, -1);
+  \draw[black] (-1, 2) -- (-1, -2);
+  \draw[black] (1, 2) -- (1, -2);
+  \draw[black, fill=black] (0, 0) circle (2pt);
+  \draw[->, black] (0, 0) -- (-1, 0) node[midway, below] {a};
+  \draw[->, black] (0, 0) -- (1, 0) node[midway, below] {a};
+  \node (I) at (-2.5, 0) {$y < -a$};
+  \node (II) at (2.5, 0) {$y > a$};
+\end{tikzpicture}
 
 \chapter{}
 
