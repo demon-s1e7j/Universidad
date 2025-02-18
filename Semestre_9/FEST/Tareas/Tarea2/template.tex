@@ -1,0 +1,146 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Fisica Estadistica}\\Tarea 2}
+\author{\huge{Sergio Montoya Ramirez}}
+\date{202112171}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+% PUNTO 1
+\chapter{}
+
+\section{}
+
+En este caso simplemente tenemos que despejar:
+\begin{align*}
+  S\left(N, V, E\right) &= Nk\ln\left[\frac{V}{h^3}\left(\frac{4 \pi m E}{3N}\right)^{\frac{3}{2}}\right] + \frac{3}{2}Nk \\
+  S &= Nk\ln\left[\frac{V}{h^3}\left(\frac{4 \pi m E}{3N}\right)^{\frac{3}{2}}\right] + \frac{3}{2}Nk \\
+  S &= \ln\left[\left(\frac{V}{h^3}\left(\frac{4 \pi m E}{3N}\right)^{\frac{3}{2}}\right)^{Nk}\right] + \frac{3}{2}Nk \\
+  e^{S} &= e^{\ln\left[\left(\frac{V}{h^3}\left(\frac{4 \pi m E}{3N}\right)^{\frac{3}{2}}\right)^{Nk}\right] + \frac{3}{2}Nk} \\
+  e^{S} &= \left(\frac{V}{h^3}\right)^{Nk}\left(\frac{4 \pi m E}{3N}\right)^{\frac{3}{2}Nk} e^{\frac{3}{2}Nk} \\
+  e^{S} \left(\frac{V}{h^3}\right)^{-Nk} e^{-\frac{3}{2}Nk} &= \left(\frac{4 \pi m E}{3N}\right)^{\frac{3}{2}Nk} \\
+  \left(e^{S} \left(\frac{V}{h^3}\right)^{-Nk} e^{-\frac{3}{2}Nk}\right)^{\frac{2}{3Nk}} &= \left(\frac{4 \pi m E}{3N}\right) \\
+  e^{\frac{2S}{3Nk}} \left(\frac{V}{h^3}\right)^{-\frac{2}{3}} e^{-1} &= \left(\frac{4 \pi m E}{3N}\right) \\
+  E &= e^{\frac{2S}{3Nk}} \frac{h^2}{V^{\frac{2}{3}}} e^{-1} \left(\frac{3N}{4 \pi m}\right) \\
+  E &= e^{\frac{2S}{3Nk} -1} \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right)
+.\end{align*}
+
+\section{}
+
+Para este caso vamos a usar:
+\begin{align*}
+  E &= e^{\frac{2S}{3Nk} -1} \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right)\\
+  T &= \frac{\partial E}{\partial S}\\
+  T &= \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right) e^{-1} \frac{\partial e^{\frac{2S}{3Nk}}}{\partial S}\\
+  T &= \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right) e^{-1} \frac{2}{3Nk}e^{\frac{2S}{3Nk}} \\
+  T &= \left(\frac{h^2}{k 2 \pi m V^{\frac{2}{3}}}\right) e^{-1} e^{\frac{2S}{3Nk}} \\
+  T \left(\frac{k 2 \pi m V^{\frac{2}{3}}}{h^2}\right) &= e^{\frac{2S}{3Nk} - 1} \\
+  E &= e^{\frac{2S}{3Nk} -1} \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right)\\
+  E &= T \left(\frac{k 2 \pi m V^{\frac{2}{3}}}{h^2}\right) \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right)\\
+  E &= T \left(\frac{3Nk}{2}\right)\\
+  E &= \frac{3}{2} NkT
+.\end{align*}
+
+\section{}
+
+Ahora desarrollemos:
+\begin{align*}
+  E &= e^{\frac{2S}{3Nk} -1} \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right)\\
+  P &= -\frac{\partial E}{\partial V} \\
+  P &= -e^{\frac{2S}{3Nk} -1} \left(\frac{3Nh^2}{4 \pi m }\right)\frac{\partial V^{-\frac{2}{3}}}{\partial V} \\
+  P &= \frac{2}{3}e^{\frac{2S}{3Nk} -1} \left(\frac{3Nh^2}{4 \pi m }\right)V^{- \frac{5}{3}} \\
+  T &= \left(\frac{h^2}{k 2 \pi m V^{\frac{2}{3}}}\right) e^{\frac{2S}{3Nk} - 1} \\
+  \frac{P}{T} &= \frac{\frac{2}{3}e^{\frac{2S}{3Nk} -1} \left(\frac{3Nh^2}{4 \pi m }\right)V^{- \frac{5}{3}}}{\left(\frac{h^2}{k 2 \pi m V^{\frac{2}{3}}}\right) e^{\frac{2S}{3Nk} - 1}}\\
+  \frac{P}{T} &= \frac{2}{3}\frac{\left(\frac{3Nh^2}{4 \pi m }\right)}{\left(\frac{h^2}{k 2 \pi m V^{\frac{2}{3}}}\right)}V^{- \frac{5}{3}}\\
+  \frac{P}{T} &= \frac{2}{3}\left(\frac{3Nh^2k 2 \pi m V^{\frac{2}{3}}}{4 \pi m h^2}\right)V^{- \frac{5}{3}}\\
+  \frac{P}{T} &= \frac{4}{3}\left(\frac{3Nh^2k\pi m V^{\frac{2}{3}}}{4 \pi m h^2 V^{\frac{2}{3}}}\right)V^{-1}\\
+  \frac{P}{T} &= \left(Nk\right)V^{-1} \\
+  PV &= NkT
+.\end{align*}
+
+\section{}
+
+\begin{align*}
+  C_v &= \frac{\partial E}{\partial T}\\
+  &= \frac{\partial \left( \frac{3}{2} NkT\right)}{\partial T}\\
+  &= \frac{3}{2} Nk\\
+  C_p &= \frac{\partial \left(E + PV\right)}{\partial T}\\
+  &= \frac{\partial \left(\frac{3}{2} NkT + NkT\right)}{\partial T}\\
+  &= \frac{\partial NkT \left(\frac{3}{2} + 1\right)}{\partial T}\\
+  &= \frac{\partial \frac{5}{2}NkT}{\partial T}\\
+  &= \frac{5}{2} Nk\\
+  \frac{C_p}{C_v} &= \frac{\frac{5}{2}Nk}{\frac{3}{2}Nk}\\
+  &= \frac{5\cdot 2}{3 \cdot 2}\\
+  &= \frac{5}{3}
+.\end{align*}
+
+\section{}
+
+Para este caso necesitamos
+\begin{align*}
+  E &= e^{\frac{2S}{3Nk} -1} \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right)\\
+  \mu &= \frac{\partial E}{\partial N}\\
+  &= \frac{\partial e^{\frac{2S}{3Nk} -1} \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right)}{\partial N}\\
+  &= \frac{\partial e^{\frac{2S}{3Nk} -1}}{\partial N} \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right) + e^{\frac{2S}{3Nk} -1}\frac{\partial \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right)}{\partial N}\\
+  &= -\frac{2S}{3N^2 k}e^{\frac{2S}{3Nk} -1} \left(\frac{3Nh^2}{4 \pi m V^{\frac{2}{3}}}\right) + e^{\frac{2S}{3Nk} -1}\left(\frac{3h^2}{4 \pi m V^{\frac{2}{3}}}\right)\\
+  &= -\frac{2S}{3N k}e^{\frac{2S}{3Nk} -1} \left(\frac{3h^2}{4 \pi m V^{\frac{2}{3}}}\right) + e^{\frac{2S}{3Nk} -1}\left(\frac{3h^2}{4 \pi m V^{\frac{2}{3}}}\right)\\
+  &= e^{\frac{2S}{3Nk} -1} \left(\frac{3h^2}{4 \pi m V^{\frac{2}{3}}}\right)\left(1 -\frac{2S}{3N k} \right)
+.\end{align*}
+
+Y con esto podemos probar si
+\begin{align*}
+  \mu\left(\lambda N, \lambda V, \lambda S\right) &= \lambda \mu \left(N, V, S\right)\\
+  &= e^{\frac{2\lambda S}{3\lambda Nk} -1} \left(\frac{3h^2}{4 \pi m \lambda^{\frac{2}{3}}V^{\frac{2}{3}}}\right)\left(1 -\frac{2\lambda S}{3\lambda N k} \right)\\
+  &= e^{\frac{2S}{3Nk} -1} \left(\frac{3h^2}{4 \pi m \lambda^{\frac{2}{3}}V^{\frac{2}{3}}}\right)\left(1 -\frac{2S}{3N k} \right)
+\end{align*}
+
+Que como se ve no se coincide con una cantidad intensiva.
+
+\section{}
+\section{}
+
+% PUNTO 2
+\chapter{}
+
+% PUNTO 3
+\chapter{}
+
+\section{}
+\section{}
+\section{}
+
+% PUNTO 4
+\chapter{}
+
+\section{}
+\section{}
+\section{}
+\section{}
+\section{}
+
+% PUNTO 5
+\chapter{}
+
+\section{}
+\section{}
+\section{}
+
+% PUNTO 6
+\chapter{}
+
+\section{}
+\section{}
+\section{}
+
+\end{document}

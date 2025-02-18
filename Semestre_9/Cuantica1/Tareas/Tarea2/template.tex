@@ -19,4 +19,386 @@
 
 \chapter{}
 
+\chapter{}
+
+\chapter{}
+
+Para comenzar, veamos el hamiltoniano que nos dieron:
+\begin{align*}
+  H &= \frac{1}{2M}\vec{p}\cdot\vec{p} + \frac{1}{2}M\omega^2 \vec{r}\cdot\vec{r}\\
+  H &= \frac{1}{2M}\left( \hat{p}_x^2 + \hat{p}_y^2 + \hat{p}_z^2 \right) + \frac{1}{2}M\omega^2 \left(x^2 + y^2 + z^2\right)\\
+  \hat{p}_i &= - i\hbar \frac{\partial}{\partial x_i}\\
+  H &= \frac{1}{2M}\left(  - \hbar \frac{\partial^2}{\partial x^2} - \hbar \frac{\partial^2}{\partial y^2} - \hbar \frac{\partial^2}{\partial z^2}\right) + \frac{1}{2}M\omega^2 \left(x^2 + y^2 + z^2\right)\\
+  H &= \frac{-\hbar}{2M}\left(  \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}\right) + \frac{1}{2}M\omega^2 \left(x^2 + y^2 + z^2\right)\\
+\end{align*}
+
+Ahora bien, viendo esto en la ecuación de Schrodinger veriamos:
+\begin{align*}
+  H\psi(\vec{r}) &= E\psi(\vec{r})\\
+  \left[\frac{-\hbar}{2M}\left(  \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}\right) + \frac{1}{2}M\omega^2 \left(x^2 + y^2 + z^2\right)\right]\psi &= E\psi
+\end{align*}
+
+Ahora asumamos \[\psi = X(x)Y(y)Z(z)\]
+\begin{align*}
+  \left[\frac{-\hbar}{2M}\left(  \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}\right) + \frac{1}{2}M\omega^2 \left(x^2 + y^2 + z^2\right)\right]X(x)Y(y)Z(z) &= EX(x)Y(y)Z(z)\\
+  \left[\frac{-\hbar}{2M}\left(  YZ\frac{\partial^2 X}{\partial x^2} + XZ\frac{\partial^2 Y}{\partial y^2} + XY\frac{\partial^2 Z}{\partial z^2}\right) + \frac{1}{2}M\omega^2 \left(x^2 + y^2 + z^2\right)X(x)Y(y)Z(z)\right] &= EX(x)Y(y)Z(z)\\
+  \left[\frac{-\hbar}{2M}\left(  YZX'' + XZY'' +  XYZ''\right) + \frac{1}{2}M\omega^2 \left(x^2 + y^2 + z^2\right)XYZ\right] &= EXYZ\\
+  \frac{\left[\frac{-\hbar}{2M}\left(  YZX'' + XZY'' +  XYZ''\right) + \frac{1}{2}M\omega^2 \left(x^2 + y^2 + z^2\right)XYZ\right]}{XYZ} &= \frac{EXYZ}{XYZ}\\
+  \left[\frac{-\hbar}{2M}\left(  \frac{X''}{X} + \frac{Y''}{Y} +  \frac{Z''}{Z}\right) + \frac{1}{2}M\omega^2 \left(x^2 + y^2 + z^2\right)\right] &= E\\
+  E &= E_x + E_y + E_z\\
+  \frac{-\hbar}{2M}\frac{X''}{X} + \frac{1}{2}M\omega^2x^2 &= E_x\\
+  \frac{-\hbar}{2M}\frac{Y''}{Y} + \frac{1}{2}M\omega^2y^2 &= E_y\\
+  \frac{-\hbar}{2M}\frac{Z''}{Z} + \frac{1}{2}M\omega^2x^2 &= E_z\\
+\end{align*}
+
+En este caso, puede transformar de esto a las ecuaciones de estado para potenciales armonicos de la siguiente manera:
+\begin{align*}
+  \frac{-\hbar}{2M}\frac{X''}{X} + \frac{1}{2}M\omega^2x^2 &= E_x\\
+  \frac{-\hbar}{2M}\frac{Y''}{Y} + \frac{1}{2}M\omega^2y^2 &= E_y\\
+  \frac{-\hbar}{2M}\frac{Z''}{Z} + \frac{1}{2}M\omega^2x^2 &= E_z\\
+  \frac{-\hbar}{2M}\frac{X''}{X}X + \frac{1}{2}M\omega^2x^2X &= E_xX\\
+  \frac{-\hbar}{2M}\frac{Y''}{Y}Y + \frac{1}{2}M\omega^2y^2Y &= E_yY\\
+  \frac{-\hbar}{2M}\frac{Z''}{Z}Z + \frac{1}{2}M\omega^2x^2Z &= E_zZ\\
+  \frac{-\hbar}{2M}X'' + \frac{1}{2}M\omega^2x^2X &= E_xX\\
+  \frac{-\hbar}{2M}Y'' + \frac{1}{2}M\omega^2y^2Y &= E_yY\\
+  \frac{-\hbar}{2M}Z'' + \frac{1}{2}M\omega^2x^2Z &= E_zZ\\
+  \left[\frac{-\hbar}{2M}\frac{d^2}{dx^2} + \frac{1}{2}M\omega^2x^2\right]X &= E_xX\\
+  \left[\frac{-\hbar}{2M}\frac{d^2}{dy^2} + \frac{1}{2}M\omega^2y^2\right]Y &= E_yY\\
+  \left[\frac{-\hbar}{2M}\frac{d^2}{dz^2} + \frac{1}{2}M\omega^2x^2\right]Z &= E_zZ\\
+\end{align*}
+
+Ahora bien, con esto ya mostrado podemos solucionar cada uno de estos casos como si se tratace de un armonico simple. Estos armonicos como se mostro en clase (y en las notas) tienen una solución relacionada con los polinomios de Hermit. Dado que nos piden exactamente la energia entonces tambien podemos saber que: \[E_n = \left(n + \frac{1}{2}\right)\hbar\omega,\ n=0,1,2,3,...\]. Ahora dado que tenemos $3$ dimensiones pasamos:
+\begin{align*}
+  E_x &= \left(n_x + \frac{1}{2}\right)\hbar\omega\\
+  E_y &= \left(n_y + \frac{1}{2}\right)\hbar\omega\\
+  E_z &= \left(n_z + \frac{1}{2}\right)\hbar\omega\\
+  E &= E_x + E_y + E_z\\
+  E &= \left(n_x + \frac{1}{2}\right)\hbar\omega + \left(n_y + \frac{1}{2}\right)\hbar\omega + \left(n_z + \frac{1}{2}\right)\hbar\omega\\
+  E &= \left(n_x + \frac{1}{2} + n_y + \frac{1}{2} + n_z + \frac{1}{2} \right)\hbar\omega\\
+  E &= \left(n_x + n_y + n_z + \frac{3}{2} \right)\hbar\omega
+\end{align*}
+
+\chapter{}
+
+\chapter{}
+
+\section*{Ayuda:}
+
+En este caso nos dicen que lo mejor es expandir la función de onda \[A\sin\left(\frac{\pi x}{L}\right)\] en las funciones propias. Para eso vamos a comenzar por la formula de reducción de potencial trigonometrico con lo cual:
+\begin{align*}
+  \sin^2(x) &= \frac{1 - \cos(2x)}{2}\\
+  \sin^4(x) &= \left(\sin^2(x)\right)^2\\
+  &= \left(\frac{1 - \cos(2x)}{2}\right)^2\\
+  &= \frac{\left( 1 - \cos(2x)\right)^2}{4}\\
+  &= \frac{1 - 2\cos(2x) + \cos^2(2x)}{4}\\
+  \sin^5(x) &= \sin(x)\sin^4(x) \\
+  &= \sin(x)\left(\frac{1 - 2\cos(2x) + \cos^2(2x)}{4}\right)\\
+  &= \frac{\sin(x) - 2\sin(x)\cos(2x) + \sin(x)\cos^2(2x)}{4}\\
+\end{align*}
+
+Ahora con esto podemos usar las siguientes identidades trigonometricas
+\begin{align*}
+\sin(x)\cos(2x) &= \frac{1}{2}\left(- \sin(x) + \sin(3x)\right)\\
+  \cos^2(2x) &= \frac{1 + \cos(4x)}{2}\\
+  \sin(x)\cos^2(2x) &= \frac{\sin(x) + \sin(x)\cos(4x)}{2}\\
+  \sin(x)\cos^2(2x) &= \frac{\sin(x) + \frac{\sin(5x) - \sin(3x)}{2}}{2}\\
+  &= \frac{1}{2}\sin(x) + \frac{1}{4}\sin(5x) - \frac{1}{4}\sin(3x)\\
+\end{align*}
+
+Que reemplazando y calculando nos da:
+\begin{align*}
+  \sin^5(x) &= \frac{\sin(x) - 2\sin(x)\cos(2x) + \sin(x)\cos^2(2x)}{4}\\
+  \sin^5(x) &= \frac{\sin(x) - 2\left(\frac{1}{2}\left(-\sin(x) + \sin(3x)\right) \right) + \frac{1}{2}\sin(x) + \frac{1}{4}\sin(5x) - \frac{1}{4}\sin(3x)}{4}\\
+  \sin^5(x) &= \frac{\sin(x) + \sin(x) - \sin(3x) + \frac{1}{2}\sin(x) + \frac{1}{4}\sin(5x) - \frac{1}{4}\sin(3x)}{4}\\
+  \sin^5(x) &= \frac{\sin(x)}{4} + \frac{\sin(x)}{4} - \frac{\sin(3x)}{4} + \frac{\frac{1}{2}\sin(x)}{4} + \frac{\frac{1}{4}\sin(5x)}{4} - \frac{\frac{1}{4}\sin(3x)}{4}\\
+  \sin^5(x) &= \frac{\sin(x)}{4} + \frac{\sin(x)}{4} - \frac{\sin(3x)}{4} + \frac{\sin(x)}{8} + \frac{\sin(5x)}{16} - \frac{\sin(3x)}{16}\\
+  \sin^5(x) &= \frac{4\sin(x)}{16} + \frac{4\sin(x)}{16} - \frac{4\sin(3x)}{16} + \frac{2\sin(x)}{16} + \frac{\sin(5x)}{16} - \frac{\sin(3x)}{16}\\
+  \sin^5(x) &= \left( \frac{4}{16} + \frac{4}{16} + \frac{2}{16}\right)\sin(x) - \left( \frac{1}{16} + \frac{4}{16}\right)\sin(3x) + \frac{1}{16} \sin(5x)\\
+  \sin^5(x) &= \frac{10}{16}\sin(x) - \frac{5}{16}\sin(3x) + \frac{1}{16} \sin(5x)
+\end{align*}
+
+Ahora bien, recordemos que esta funcion en verdad es \[A \sin^5\left(\frac{\pi x}{L}\right)\] por lo tanto reemplazando:
+\begin{align*}
+  \sin^5(x) &= \frac{10}{16}\sin(x) - \frac{5}{16}\sin(3x) + \frac{1}{16} \sin(5x)\\
+  A \sin^5\left(\frac{\pi x}{L}\right) &= A\left[\frac{10}{16}\sin\left(\frac{\pi x}{L}\right) - \frac{5}{16}\sin\left(3\frac{\pi x}{L}\right) + \frac{1}{16} \sin\left(5\frac{\pi x}{L}\right)\right]\\
+  \phi_n &= \sqrt{\frac{2}{L}} \sin\left(\frac{n \pi x}{L}\right)\\
+  C_1 &= \frac{10}{16}\sqrt{\frac{L}{2}} \\
+  C_2 &= -\frac{5}{16}\sqrt{\frac{L}{2}} \\
+  C_3 &= \frac{1}{16}\sqrt{\frac{L}{2}} \\
+  A \sin^5\left(\frac{\pi x}{L}\right) &= AC_1\phi_1 + AC_2\phi_3 + AC_3\phi_5
+\end{align*}
+
+\nt{Note que:
+\begin{align*}
+  \psi^2 = A^2\left(C_1^2\phi_1^2 + C_2^2\phi_3^2+ C_3^2\phi_5^2\right)
+\end{align*}
+
+Dado que $\phi_n\phi_m = 0$ para $n \neq m$ dado que son ortonormales entre si.
+}
+
+\section{}
+
+Para este caso tenemos que:
+\begin{align*}
+  \int_{0}^{L} \left|\psi\left(x\right)\right|^2 dx &= 1\\
+  \int_{0}^{L} \left|\psi\left(x\right)\right|^2 dx &= \int_0^L A^2C_1^2\phi_1^2 dx + \int_0^L A^2C_2^2\phi_3^2 dx + \int_0^L A^2C_3^2 \phi_5 dx \\
+  \int_{0}^{L} \left|\psi\left(x\right)\right|^2 dx &= A^2C_1^2\int_0^L \phi_1^2 dx + A^2C_2^2\int_0^L \phi_3^2 dx + A^2C_3^2\int_0^L  \phi_5 dx \\
+  \int_{0}^{L} \left|\psi\left(x\right)\right|^2 dx &= A^2C_1^2 + A^2C_2^2 + A^2C_3^2 \\
+  C_1 &= \frac{10}{16}\sqrt{\frac{L}{2}} \\
+  C_2 &= -\frac{5}{16}\sqrt{\frac{L}{2}} \\
+  C_3 &= \frac{1}{16}\sqrt{\frac{L}{2}} \\
+  C_1^2 &= \frac{100}{256}\frac{L}{2} \\
+   &= \frac{100L}{512}\\
+  C_2^2 &= \frac{25}{256}{\frac{L}{2}} \\
+   &= \frac{25 L}{512}\\
+  C_3^2 &= \frac{1}{256}{\frac{L}{2}} \\
+   &= \frac{1 L}{512}\\
+  \int_{0}^{L} \left|\psi\left(x\right)\right|^2 dx &= A^2\left(C_1^2 + C_2^2 + C_3^2\right) \\
+   &= A^2\left( \frac{100L}{512}+ \frac{25 L}{512} + \frac{1 L}{512}\right) \\
+   &= A^2\left( \frac{126L}{512}\right) \\
+   &= A^2\left( \frac{63L}{256}\right) \\
+   A^2\left( \frac{63L}{256}\right) &= 1\\
+   A^2 &= \left( \frac{256}{63L}\right)\\
+   A &= \left( \frac{16}{\sqrt{63L}}\right)\\
+\end{align*}
+
+Que es la constante de normalización.
+
+\section{}
+\subsection{}
+
+\nt{
+  Note que:
+  \begin{align*}
+    \phi_n (x) &= \sqrt{\frac{2}{L}}\sin\left(\frac{n \pi x}{L}\right)\\
+    \phi_n (L - x) &= \sqrt{\frac{2}{L}}\sin\left(\frac{n \pi (L - x)}{L}\right)\\
+    \phi_n (L - x) &= \sqrt{\frac{2}{L}}\sin\left(\frac{n \pi x}{L} - n\pi\right)\\
+    \phi_n (L - x) &= \sqrt{\frac{2}{L}}\sin\left(\frac{n \pi x}{L}\right)\\
+    \phi_n (L - x) &= \phi_n(x)
+  \end{align*}
+
+  Lo que nos permite saber que es simetrico y por lo tanto queda 
+  \[\int_0^L x \phi_n dx = \frac{L}{2} \int_0^2 \phi_n dx\]
+}
+
+En este caso tenemos:
+\begin{align*}
+  \left<x\right> &= \int_0^L x\left|\psi(x)\right|^2 dx\\
+  &= A^2\left(C_1^2 + C_2^2 + C_3^3\right) \left(\int_0^L x\phi_1^2 dx + \int_0^L x\phi_3^2 dx+ \int_0^L x\phi_1^2 dx\right)\\
+  x &= L - x\\
+  &= A^2\left(C_1^2 + C_2^2 + C_3^3\right) \left(\int_0^L (L - x)\phi_1^2(L - x) dx + \int_0^L (L - x)\phi_3^2(L - x) dx+ \int_0^L (L - x)\phi_1^2(L - x) dx\right)\\
+  &= A^2\left(C_1^2 + C_2^2 + C_3^3\right) \left(\frac{L}{2}\int_0^L \phi_1^2(x) dx + \frac{L}{2}\int_0^L \phi_3^2(x) dx+ \frac{L}{2}\int_0^L \phi_1^2(x) dx\right)\\
+  &= A^2\left(C_1^2 + C_2^2 + C_3^3\right) \frac{L}{2}\left(\int_0^L \phi_1^2(x) dx + \int_0^L \phi_3^2(x) dx+ \int_0^L \phi_1^2(x) dx\right)\\
+  &= A^2\left(C_1^2 + C_2^2 + C_3^3\right) \frac{L}{2}\\
+  1 &= A^2\left(C_1^2 + C_2^2 + C_3^3\right) \\
+  &= \frac{L}{2}
+\end{align*}
+
+\subsection{}
+
+\begin{align*}
+  \left< p \right> &= \int_0^L \psi^* (-i \hbar) \frac{\partial }{\partial x} \psi dx \\
+  &= -i \hbar\int_0^L \psi \frac{\partial }{\partial x} \psi dx \\
+  &= -i \hbar\int_0^L \psi \frac{d }{dx} \psi dx \\
+  u &= \psi\\
+  du &= \frac{d}{dx} \psi \\
+  dv &= \frac{d}{dx} \psi\\
+  v &= \psi\\
+  \int udv &= uv - \int vdu\\
+  \int_0^L \psi \frac{d }{d x} \psi dx &= \left[\psi^2\right]_0^L - \int_0^L \psi \frac{d}{dx}\psi dx\\
+  \int_0^L \psi \frac{d }{d x} \psi dx + \int_0^L \psi \frac{d}{dx}\psi dx &= \left[\psi^2\right]_0^L\\
+  2 \int_0^L \psi \frac{d }{d x} \psi dx &= \left[\psi^2(L) - \psi^2(0)\right]\\
+  \int_0^L \psi \frac{d }{d x} \psi dx &= 0\\
+  \left< p \right> &= -i \hbar\int_0^L \psi \frac{d }{dx} \psi dx \\
+  \left< p \right> &= -i \hbar 0\\
+  \left< p \right> &= 0
+\end{align*}
+
+\subsection{}
+
+En este caso sabemos que \[\sigma_x = \sqrt{\left<x^2\right> - \left<x\right>^2}\] por lo tanto nos falta $\left< x^2 \right>$ que requerimos.
+
+\begin{align*}
+  \left< x^2 \right> &= \int_0^L x^2 \psi^2 dx\\
+  &= \int_0^L x^2 A^2\left(C_1^2\phi_1^2 + C_2^2\phi_3^2+ C_3^2\phi_5^2\right)dx\\
+  &= A^2 \int_0^L x^2 \left(C_1^2\phi_1^2 + C_2^2\phi_3^2+ C_3^2\phi_5^2\right)dx\\
+  &= A^2 \left(\int_0^L x^2 C_1^2\phi_1^2 dx+ \int_0^L C_2^2\phi_3^2 dx+ \int_0^L C_3^2\phi_5^2 dx\right)\\
+  %SEPARATOR
+  \int_0^L x^2 C_1^2\phi_1^2 dx &= \int\limits_{0}^{L} \frac{25 x^{2} \sin^{2}{\left(\frac{\pi x}{L} \right)}}{64}\, dx\\
+  &=\frac{25 L^{4} \left(-3 + 2 \pi^{2}\right)}{3072 \pi^{2}}\\
+  \int_0^L x^2 C_2^2\phi_3^2 dx &= \int\limits_{0}^{L} \frac{25 x^{2} \sin^{2}{\left(\frac{3 \pi x}{L} \right)}}{256}\, dx\\
+  &= \frac{25 L^{4} \left(-1 + 6 \pi^{2}\right)}{36864 \pi^{2}}\\
+  \int_0^L x^2 C_3^2\phi_5^2 dx &= \int\limits_{0}^{L} \frac{x^{2} \sin^{2}{\left(\frac{5 \pi x}{L} \right)}}{256}\, dx\\
+  &=- \frac{L^{4}}{102400 \pi^{2}} + \frac{L^{4}}{6144}\\
+  \left(\int_0^L x^2 C_1^2\phi_1^2 dx+ \int_0^L C_2^2\phi_3^2 dx+ \int_0^L C_3^2\phi_5^2 dx\right) &= \frac{L^{4} \left(-11567 + 9450 \pi^{2}\right)}{460800 \pi^{2}}\\
+  \left< x^2 \right> &= \int_0^L x^2 \psi^2 dx\\
+  \left< x^2 \right> &= A^2 \left(\int_0^L x^2 C_1^2\phi_1^2 dx+ \int_0^L C_2^2\phi_3^2 dx+ \int_0^L C_3^2\phi_5^2 dx\right)\\
+  \left< x^2 \right> &=\frac{L^{3} \left(-11567 + 9450 \pi^{2}\right)}{113400 \pi^{2}}\\
+  &= 0.072998393904842 L^{3}
+\end{align*}
+
+En este punto se puede ver que muchas de las integrales son complejas. Por lo tanto, consideramos que lo mas prudente era realizarlo de manera computacional. Esto se hizo por medio de sympy con el siguiente codigo:
+
+\lstinputlisting[language=Python]{code/punto_5.py}
+
+Con esto en consideraciónlo unico que falta es regresar a la forma original:
+\begin{align*}
+  \sigma_x &= \sqrt{\left<x^2\right> - \left<x\right>^2}\\
+  &= \sqrt{0.072998393904842 L^{3} - \frac{L^2}{4}}\\
+  &= \frac{\sqrt{14} \sqrt{- L^{2} \left(L \left(11567 - 9450 \pi^{2}\right) + 28350 \pi^{2}\right)}}{1260 \pi}
+\end{align*}
+
+\subsection{}
+
+En este caso, nos vamos a aprovechar de:
+\begin{align*}
+  \left< p^2 \right> &= \int\limits_0^L \psi(x)\left( -\hbar^2 \frac{\partial^2}{\partial x^2}\right)\psi(x) dx = 2m\left<E\right>
+\end{align*}
+
+Dado que podemos plantear este $\psi$ es expresado en terminos de funciones propias sabemos que: \[E_n = \frac{\hbar^2\pi^2n^2}{2mL^2}\] y dado que todos estos son diferentes entre si entonces podemos expresarlo como:
+
+\begin{align*}
+  \left<p^2\right> &= 2m \sum_{n = 1, 3, 5} C_n^2 E_n\\
+  &= \sum_{n = 1, 3, 5} A^2 C_n^2 \frac{\hbar^2\pi^2n^2}{L^2}\\
+  C_1^2 &= \frac{100L}{512}\\
+  C_2^2 &= \frac{25 L}{512}\\
+  C_3^2 &= \frac{1 L}{512}\\
+  A^2 C_1^2 &= \frac{256}{63 L}\frac{100L}{512}\\
+  A^2 C_2^2 &= \frac{256}{63 L}\frac{25 L}{512}\\
+  A^2 C_3^2 &= \frac{256}{63 L}\frac{1  L}{512}\\
+  A^2 C_1^2 &= \frac{1}{63}\frac{100}{2}\\
+  A^2 C_2^2 &= \frac{1}{63}\frac{25 }{2}\\
+  A^2 C_3^2 &= \frac{1}{63}\frac{1  }{2}\\
+  A^2 C_1^2 &= \frac{100}{126}\\
+  A^2 C_2^2 &= \frac{25 }{126}\\
+  A^2 C_3^2 &= \frac{1  }{126}\\
+  &= \frac{\hbar^2\pi^2}{L^2}\sum_{n = 1, 3, 5} A^2 C_n^2 n^2 \\
+  &= \frac{\hbar^2\pi^2}{L^2}\left[\frac{100}{126} + \frac{25 3^2}{126} + \frac{5^2}{126}\right] \\
+  &= \frac{\hbar^2\pi^2}{L^2}\left[\frac{25}{9}\right] \\
+  \sigma_x &= \sqrt{\left<p^2\right> - \left<p\right>^2}\\
+  \sigma_x &= \sqrt{\left<p^2\right>}\\
+  \sigma_x &= \sqrt{\frac{\hbar^2\pi^2}{L^2}\left[\frac{25}{9}\right] }\\
+  \sigma_x &= \frac{\hbar\pi}{L}\left[\frac{5}{3}\right]\\
+\end{align*}
+
+\section{}
+
+En este caso vamos a usar \[
+  A \sin^5\left(\frac{\pi x}{L}\right) = AC_1\phi_1 + AC_2\phi_3 + AC_3\phi_5
+\] puesto que sabemos que para $\phi_n$ se cumple que,
+\begin{align*}
+  \phi_n(x, t) &= \phi_n(x)e^{- \frac{i}{\hbar}E_n t}\\
+  E_n &= \frac{\hbar^2 \pi^2 n^2}{2m L^2}
+\end{align*}
+
+Por lo tanto podemos ponerlo en estos mismos terminos como:
+\begin{align*}
+  \psi(x) &= A \sin^5\left(\frac{\pi x}{L}\right)\\
+  &= AC_1\phi_1 + AC_2\phi_3 + AC_3\phi_5\\
+  \psi\left(x, t\right) &= AC_1\phi_1e^{- \frac{i}{\hbar}E_1 t} + AC_2\phi_3e^{- \frac{i}{\hbar}E_3 t} + AC_3\phi_5e^{- \frac{i}{\hbar}E_5 t}
+\end{align*}
+
+Con lo cual ya encontramos lo que nos pidieron.
+
+\section{}
+\subsection{}
+
+En este caso tenemos:
+\begin{align*}
+  \left<x\right> &= \int_0^L x\left|\psi(x)\right|^2 dx\\
+  &= A^2\left(C_1^2 e^{- \frac{i}{\hbar}(E_1 - E_1) t}+ C_2^2e^{- \frac{i}{\hbar}(E_3 - E_3) t} + C_3^3e^{- \frac{i}{\hbar}(E_5 - E_5) t}\right) \left(\int_0^L x\phi_1^2 dx + \int_0^L x\phi_3^2 dx+ \int_0^L x\phi_1^2 dx\right)\\
+  &= A^2\left(C_1^2 e^{0}+ C_2^2e^{0} + C_3^3e^{0}\right) \left(\int_0^L x\phi_1^2 dx + \int_0^L x\phi_3^2 dx+ \int_0^L x\phi_1^2 dx\right)\\
+  &= A^2\left(C_1^2 + C_2^2 + C_3^3\right) \left(\int_0^L x\phi_1^2 dx + \int_0^L x\phi_3^2 dx+ \int_0^L x\phi_1^2 dx\right)\\
+  \frac{L}{2} &= \left(\int_0^L x\phi_1^2 dx + \int_0^L x\phi_3^2 dx+ \int_0^L x\phi_1^2 dx\right) \text{ Esto sale del punto anterior}\\
+  1 &= A^2\left(C_1^2 + C_2^2 + C_3^3\right) \\
+  &= \frac{L}{2}
+\end{align*}
+
+\subsection{}
+
+\begin{align*}
+  \left< p \right> &= \int_0^L \psi^* (-i \hbar) \frac{\partial }{\partial x} \psi dx \\
+  &= -i \hbar\int_0^L \psi \frac{\partial }{\partial x} \psi dx \\
+  &= -i \hbar\int_0^L \psi \frac{d }{dx} \psi dx \\
+  u &= \psi\\
+  du &= \frac{\partial}{\partial x} \psi dx\\
+  dv &= \frac{\partial}{\partial x} \psi dx\\
+  v &= \psi\\
+  \int udv &= uv - \int vdu\\
+  \int_0^L \psi \frac{\partial }{\partial x} \psi dx &= \left[\psi^2\right]_0^L - \int_0^L \psi \frac{\partial}{\partial x}\psi dx\\
+  \int_0^L \psi \frac{\partial }{\partial x} \psi dx + \int_0^L \psi \frac{\partial}{\partial x}\psi dx &= \left[\psi^2\right]_0^L\\
+  2 \int_0^L \psi \frac{\partial }{\partial x} \psi dx &= \left[\psi^2(L) - \psi^2(0)\right]\\
+  \int_0^L \psi \frac{\partial }{\partial x} \psi dx &= 0\\
+  \left< p \right> &= -i \hbar\int_0^L \psi \frac{\partial }{\partial x} \psi dx \\
+  \left< p \right> &= -i \hbar 0\\
+  \left< p \right> &= 0
+\end{align*}
+
+\subsection{}
+
+En este caso sabemos que \[\sigma_x = \sqrt{\left<x^2\right> - \left<x\right>^2}\] por lo tanto nos falta $\left< x^2 \right>$ que requerimos.
+
+\begin{align*}
+  \left< x^2 \right> &= \int_0^L x^2 \psi^2 dx\\
+  &= \int_0^L x^2 A^2\left(C_1^2\phi_1^2 + C_2^2\phi_3^2+ C_3^2\phi_5^2\right)dx\\
+  &= A^2 \int_0^L x^2 \left(C_1^2\phi_1^2 + C_2^2\phi_3^2+ C_3^2\phi_5^2\right)dx\\
+  &= A^2 \left(\int_0^L x^2 C_1^2\phi_1^2 dx+ \int_0^L C_2^2\phi_3^2 dx+ \int_0^L C_3^2\phi_5^2 dx\right)\\
+  %SEPARATOR
+  \int_0^L x^2 C_1^2\phi_1^2 dx &= \int\limits_{0}^{L} \frac{25 x^{2} \sin^{2}{\left(\frac{\pi x}{L} \right)}}{64}\, dx\\
+  &=\frac{25 L^{4} \left(-3 + 2 \pi^{2}\right)}{3072 \pi^{2}}\\
+  \int_0^L x^2 C_2^2\phi_3^2 dx &= \int\limits_{0}^{L} \frac{25 x^{2} \sin^{2}{\left(\frac{3 \pi x}{L} \right)}}{256}\, dx\\
+  &= \frac{25 L^{4} \left(-1 + 6 \pi^{2}\right)}{36864 \pi^{2}}\\
+  \int_0^L x^2 C_3^2\phi_5^2 dx &= \int\limits_{0}^{L} \frac{x^{2} \sin^{2}{\left(\frac{5 \pi x}{L} \right)}}{256}\, dx\\
+  &=- \frac{L^{4}}{102400 \pi^{2}} + \frac{L^{4}}{6144}\\
+  \left(\int_0^L x^2 C_1^2\phi_1^2 dx+ \int_0^L C_2^2\phi_3^2 dx+ \int_0^L C_3^2\phi_5^2 dx\right) &= \frac{L^{4} \left(-11567 + 9450 \pi^{2}\right)}{460800 \pi^{2}}\\
+  \left< x^2 \right> &= \int_0^L x^2 \psi^2 dx\\
+  \left< x^2 \right> &= A^2 \left(\int_0^L x^2 C_1^2\phi_1^2 dx+ \int_0^L C_2^2\phi_3^2 dx+ \int_0^L C_3^2\phi_5^2 dx\right)\\
+  \left< x^2 \right> &=\frac{L^{3} \left(-11567 + 9450 \pi^{2}\right)}{113400 \pi^{2}}\\
+  &= 0.072998393904842 L^{3}
+\end{align*}
+
+En este punto se puede ver que muchas de las integrales son complejas. Por lo tanto, consideramos que lo mas prudente era realizarlo de manera computacional. Esto se hizo por medio de sympy con el siguiente codigo:
+
+\lstinputlisting[language=Python]{code/punto_5.py}
+
+Con esto en consideraciónlo unico que falta es regresar a la forma original:
+\begin{align*}
+  \sigma_x &= \sqrt{\left<x^2\right> - \left<x\right>^2}\\
+  &= \sqrt{0.072998393904842 L^{3} - \frac{L^2}{4}}\\
+  &= \frac{\sqrt{14} \sqrt{- L^{2} \left(L \left(11567 - 9450 \pi^{2}\right) + 28350 \pi^{2}\right)}}{1260 \pi}
+\end{align*}
+
+\subsection{}
+
+En este caso, nos vamos a aprovechar de:
+\begin{align*}
+  \left< p^2 \right> &= \int\limits_0^L \psi(x)\left( -\hbar^2 \frac{\partial^2}{\partial x^2}\right)\psi(x) dx = 2m\left<E\right>
+\end{align*}
+
+Dado que podemos plantear este $\psi$ es expresado en terminos de funciones propias sabemos que: \[E_n = \frac{\hbar^2\pi^2n^2}{2mL^2}\] y dado que todos estos son diferentes entre si entonces podemos expresarlo como:
+
+\begin{align*}
+  \left<p^2\right> &= 2m \sum_{n = 1, 3, 5} C_n^2 E_n\\
+  &= \sum_{n = 1, 3, 5} A^2 C_n^2 \frac{\hbar^2\pi^2n^2}{L^2}\\
+  C_1^2 &= \frac{100L}{512}\\
+  C_2^2 &= \frac{25 L}{512}\\
+  C_3^2 &= \frac{1 L}{512}\\
+  A^2 C_1^2 &= \frac{256}{63 L}\frac{100L}{512}\\
+  A^2 C_2^2 &= \frac{256}{63 L}\frac{25 L}{512}\\
+  A^2 C_3^2 &= \frac{256}{63 L}\frac{1  L}{512}\\
+  A^2 C_1^2 &= \frac{1}{63}\frac{100}{2}\\
+  A^2 C_2^2 &= \frac{1}{63}\frac{25 }{2}\\
+  A^2 C_3^2 &= \frac{1}{63}\frac{1  }{2}\\
+  A^2 C_1^2 &= \frac{100}{126}\\
+  A^2 C_2^2 &= \frac{25 }{126}\\
+  A^2 C_3^2 &= \frac{1  }{126}\\
+  &= \frac{\hbar^2\pi^2}{L^2}\sum_{n = 1, 3, 5} A^2 C_n^2 n^2 \\
+  &= \frac{\hbar^2\pi^2}{L^2}\left[\frac{100}{126} + \frac{25 3^2}{126} + \frac{5^2}{126}\right] \\
+  &= \frac{\hbar^2\pi^2}{L^2}\left[\frac{25}{9}\right] \\
+  \sigma_x &= \sqrt{\left<p^2\right> - \left<p\right>^2}\\
+  \sigma_x &= \sqrt{\left<p^2\right>}\\
+  \sigma_x &= \sqrt{\frac{\hbar^2\pi^2}{L^2}\left[\frac{25}{9}\right] }\\
+  \sigma_x &= \frac{\hbar\pi}{L}\left[\frac{5}{3}\right]\\
+\end{align*}
+
 \end{document}
