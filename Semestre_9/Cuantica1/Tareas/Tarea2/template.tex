@@ -4,8 +4,8 @@
 \input{macros}
 \input{letterfonts}
 
-\title{\Huge{Some Class}\\Random Examples}
-\author{\huge{Your Name}}
+\title{\Huge{Mecánica Cuántica I}\\Tarea 2}
+\author{\huge{David Pachon / Sergio Montoya}}
 \date{}
 
 \begin{document}
@@ -338,42 +338,28 @@ En este caso tenemos:
 
 En este caso sabemos que \[\sigma_x = \sqrt{\left<x^2\right> - \left<x\right>^2}\] por lo tanto nos falta $\left< x^2 \right>$ que requerimos.
 
-\begin{align*}
-  \left< x^2 \right> &= \int_0^L x^2 \psi^2 dx\\
-  &= \int_0^L x^2 A^2\left(C_1^2\phi_1^2 + C_2^2\phi_3^2+ C_3^2\phi_5^2\right)dx\\
-  &= A^2 \int_0^L x^2 \left(C_1^2\phi_1^2 + C_2^2\phi_3^2+ C_3^2\phi_5^2\right)dx\\
-  &= A^2 \left(\int_0^L x^2 C_1^2\phi_1^2 dx+ \int_0^L C_2^2\phi_3^2 dx+ \int_0^L C_3^2\phi_5^2 dx\right)\\
-  %SEPARATOR
-  \int_0^L x^2 C_1^2\phi_1^2 dx &= \int\limits_{0}^{L} \frac{25 x^{2} \sin^{2}{\left(\frac{\pi x}{L} \right)}}{64}\, dx\\
-  &=\frac{25 L^{4} \left(-3 + 2 \pi^{2}\right)}{3072 \pi^{2}}\\
-  \int_0^L x^2 C_2^2\phi_3^2 dx &= \int\limits_{0}^{L} \frac{25 x^{2} \sin^{2}{\left(\frac{3 \pi x}{L} \right)}}{256}\, dx\\
-  &= \frac{25 L^{4} \left(-1 + 6 \pi^{2}\right)}{36864 \pi^{2}}\\
-  \int_0^L x^2 C_3^2\phi_5^2 dx &= \int\limits_{0}^{L} \frac{x^{2} \sin^{2}{\left(\frac{5 \pi x}{L} \right)}}{256}\, dx\\
-  &=- \frac{L^{4}}{102400 \pi^{2}} + \frac{L^{4}}{6144}\\
-  \left(\int_0^L x^2 C_1^2\phi_1^2 dx+ \int_0^L C_2^2\phi_3^2 dx+ \int_0^L C_3^2\phi_5^2 dx\right) &= \frac{L^{4} \left(-11567 + 9450 \pi^{2}\right)}{460800 \pi^{2}}\\
-  \left< x^2 \right> &= \int_0^L x^2 \psi^2 dx\\
-  \left< x^2 \right> &= A^2 \left(\int_0^L x^2 C_1^2\phi_1^2 dx+ \int_0^L C_2^2\phi_3^2 dx+ \int_0^L C_3^2\phi_5^2 dx\right)\\
-  \left< x^2 \right> &=\frac{L^{3} \left(-11567 + 9450 \pi^{2}\right)}{113400 \pi^{2}}\\
-  &= 0.072998393904842 L^{3}
-\end{align*}
-
-En este punto se puede ver que muchas de las integrales son complejas. Por lo tanto, consideramos que lo mas prudente era realizarlo de manera computacional. Esto se hizo por medio de sympy con el siguiente codigo:
-
-\lstinputlisting[language=Python]{code/punto_5.py}
-
-Con esto en consideraciónlo unico que falta es regresar a la forma original:
-\begin{align*}
-  \sigma_x &= \sqrt{\left<x^2\right> - \left<x\right>^2}\\
-  &= \sqrt{0.072998393904842 L^{3} - \frac{L^2}{4}}\\
-  &= \frac{\sqrt{14} \sqrt{- L^{2} \left(L \left(11567 - 9450 \pi^{2}\right) + 28350 \pi^{2}\right)}}{1260 \pi}
-\end{align*}
-
 \subsection{}
 
 En este caso, nos vamos a aprovechar de:
 \begin{align*}
   \left< p^2 \right> &= \int\limits_0^L \psi(x)\left( -\hbar^2 \frac{\partial^2}{\partial x^2}\right)\psi(x) dx = 2m\left<E\right>
 \end{align*}
+
+Necesitamos para este caso $\left< p^2 \right>$. Sin embargo, sabemos que en el pozo de potencial:
+\begin{align*}
+  \hat{p}^2 &= 2m H\\
+.\end{align*}
+
+Sin embargo, sabemos que las funciones $\phi$ son funciones propias de este estado con un valor propio $E_n$ con lo cual nos queda un resultado de
+\begin{align*}
+  \hat{p}^2 \phi_n &= 2m H \phi_n = 2m E_n \phi_n\\
+  \left< \phi_m \right| \hat{p}^2 \left| \phi_n \right> &= 2m E_n \left<\phi_m | \phi_n \right> \\
+  \left< \hat{p}^2\right> &= 2m  \sum_{n=1,3,5} A C_n^2 e^{\frac{i}{\hbar}\left( E_n - E_n \right)t }E_n \\
+  \left< \hat{p}^2\right> &= 2m  \sum_{n=1,3,5} A C_n^2 e^{\frac{i}{\hbar}\left( 0 \right)t }E_n \\
+  \left< \hat{p}^2\right> &= 2m  \sum_{n=1,3,5} A C_n^2 E_n \\
+.\end{align*}
+
+Lo cual es esencialmente el mismo $\left<p^2 \right>$ de cuando $\psi$ no dependía del tiempo. Por lo tanto lo desarrollaremos de igual manera pues es independiente.
 
 Dado que podemos plantear este $\psi$ es expresado en terminos de funciones propias sabemos que: \[E_n = \frac{\hbar^2\pi^2n^2}{2mL^2}\] y dado que todos estos son diferentes entre si entonces podemos expresarlo como:
 
