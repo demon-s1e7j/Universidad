@@ -113,34 +113,248 @@ Que como se ve no se coincide con una cantidad intensiva.
 % PUNTO 2
 \chapter{}
 
+Tenemos
+\begin{align*}
+  \varepsilon &= \frac{hc}{2L}\sqrt{n_x^2 + n_y^2 + n_z^2}  \\
+  \sqrt{n_x^2 + n_y^2 + n_z^2} &= \frac{2L}{hc}\varepsilon = \varepsilon^{*}
+.\end{align*}
+
+Ahora, extendiendo esto a $N$ partículas y tres dimensiones tenemos:
+\begin{align*}
+  E^{*} &= \sum_{n=1}^{N} \varepsilon^{*} \\
+  V &= L^{3} \\
+  E &= \sum_{n=1}^{N} \varepsilon
+.\end{align*}
+
+Con lo cual podemos desarrollar:
+\begin{align*}
+  \Omega = E^{*} &= \frac{2V^{\frac{1}{3}}}{hc}\sum_{i=1}^{N} \varepsilon_i \\
+  &= \frac{2V^{\frac{1}{3}}}{hc}E \\
+  \Omega \propto V^{\frac{1}{3}}E\\
+  S = k\ln\left( \Omega \right) \\
+  \implies S \propto V^{\frac{1}{3}}E
+.\end{align*}
+
+Para un proceso reversible adiabatico:
+\begin{align*}
+  V^{\frac{1}{3}}E &= CTE \\
+  E &= \frac{CTE}{V^{\frac{1}{3}}}
+.\end{align*}
+
+Con lo cual
+\begin{align*}
+  P &= -\left( \frac{\partial E}{\partial V}  \right)_{N, S} = -\frac{1}{3}\frac{1}{V} -E\\
+  &= \frac{CTE}{3V^{\frac{4}{3}}} \\
+  &= \frac{CTE}{3V^{\frac{4}{3}}} \\
+  P V^{\frac{4}{3}}&= \frac{CTE}{3} \\
+  PV^{\gamma} &= cte\\
+  \frac{4}{3} &= \gamma
+.\end{align*}
+
+
 % PUNTO 3
 \chapter{}
 
 \section{}
+
+Tenemos
+\begin{align*}
+  \varepsilon &= nhv\\
+  \frac{\varepsilon}{hv} &= n = \varepsilon^{*} \\
+  E^{*}&= \sum_{n=1}^{N} \varepsilon_n^{*} \\
+  E^{*}&= \frac{1}{hv}\sum_{n=1}^{N} \varepsilon_n
+.\end{align*}
+
+Ahora, para esto necesitamos entonces
+\begin{align*}
+  \Omega &= \frac{\left( E^{*} + N - 1 \right)!}{E^{*}! \left( N - 1 \right)!}\\
+  S &= k\ln\Omega \\
+  &= k\ln\left( \frac{\left( E^{*} + N - 1 \right)!}{E^{*}! \left( N - 1 \right)!} \right)  \\
+  &= k \ln\left( \left( E^{*} + N -1 \right)! \right) - k\ln E^{*}! - k\ln\left( \left( N - 1 \right)! \right)  \\
+ \frac{S}{k} &= \left( E^{*} + N -1 \right)\ln\left( \left( E^{*} + N -1 \right) \right) -\left( E^{*} + N -1 \right) - E^{*}\ln E^{*} + E^{*} - \left( N - 1 \right) \ln\left( \left( N - 1 \right) \right) + \left( N - 1 \right)   \\
+ \frac{S}{k} &=  \left( E^{*} + N -1 \right)\ln\left( \left( E^{*} + N -1 \right) \right) - E^{*}\ln E^{*} - \left( N - 1 \right) \ln\left( \left( N - 1 \right) \right) \\
+ \frac{S}{k} &= \left( E^{*} + N -1 \right)\ln\left( \left( E^{*} + N -1 \right) \right) - E^{*}\ln E^{*} - \left( N - 1 \right) \ln\left( \left( N - 1 \right) \right) \\
+  \frac{S}{k} &= \left( E^{*} \right)\ln\left( \left( E^{*} + N -1 \right) \right) +  \left( N - 1 \right)\ln\left( \left( E^{*} + N -1 \right)\right) - E^{*}\ln E^{*} - \left( N - 1 \right) \ln\left( \left( N - 1 \right) \right) \\
+   \frac{S}{k} &= E^{*}\left( \ln\left(\frac{E^{*} + N - 1}{E^{*}} \right)  \right) + \left( N - 1 \right)\ln \frac{E^{*} + N - 1}{N - 1} \\
+   N &\gg 1\\
+   \frac{S}{k} &= E^{*}\left( \ln\left(\frac{E^{*} + N}{E^{*}} \right)  \right) + \left( N \right)\ln \frac{E^{*} + N}{N} \\
+   \frac{S}{k} &= \frac{E}{hv}\left( \ln\left(\frac{\frac{E}{hv} + N}{\frac{E}{hv}} \right)  \right) + \left( N \right) \ln\frac{\frac{E}{hv} + N}{N} \\
+   \frac{S}{k} &= \frac{E}{hv}\left( \ln\left(\frac{E + Nhv}{E} \right)  \right) + \left( N \right) \ln\frac{E + Nhv}{Nhv}\\
+   S &= k \left( \frac{E}{hv}\left( \ln\left(\frac{E + Nhv}{E} \right)  \right) + \left( N \right) \ln\frac{E + Nhv}{Nhv} \right) 
+.\end{align*}
+
 \section{}
+
+Ahora para este caso:
+\begin{align*}
+  \frac{1}{T} &= \left( \frac{\partial S}{\partial E}  \right)_{N} \\
+  \frac{1}{T} &= k\left( \frac{\partial \frac{E}{hv}\left( \ln\left(\frac{E + Nhv}{E} \right)  \right) + \left( N \right) \ln\frac{E + Nhv}{Nhv}}{\partial E}  \right)_{N} \\
+  \frac{1}{kT} &= \frac{1}{hv}\ln\left( \frac{E + Nhv}{E} \right) + \frac{E}{hv}\frac{1}{\frac{E + Nhv}{E}}  + \frac{1}{hv}\frac{1}{\frac{E + Nhv}{Nhv}}\\
+  \frac{hv}{kT} &= \ln\left( \frac{E + Nhv}{E} \right) + \frac{1}{\frac{E + Nhv}{E}}\left( 1 - \frac{1}{E} \right)   + \frac{1}{\frac{E + Nhv}{Nhv}} - Nhv\\
+  \frac{hv}{kT} &= \ln\left( \frac{E + Nhv}{E} \right) + E\frac{E}{E + Nhv}  + \frac{Nhv}{E + Nhv} - Nhv\\
+  \frac{hv}{kT} &= \ln\left( \frac{E + Nhv}{E} \right) + \frac{Nhv + E}{E + Nhv} - Nhv\\
+  \frac{hv}{kT} &= \ln\left( \frac{E + Nhv}{E} \right) + 1 - Nhv\\
+  \frac{hv}{k\ln\left( \frac{E + Nhv}{E} \right) + 1 - Nhv} &=T
+.\end{align*}
 \section{}
+
+Para este caso entonces el termino que mas aporta es el primero por lo tanto quedamos con:
+\begin{align*}
+  T &= \frac{hv}{k \ln\left( 1 + \frac{Nhv}{E} \right) } \\
+  &= \frac{hv}{k \frac{Nhv}{E}} \\
+  &= \frac{Ehv}{k Nhv} \\
+  &= \frac{E}{Nk}
+.\end{align*}
 
 % PUNTO 4
 \chapter{}
 
 \section{}
+  Podemos expresar este sistema simplemente reemplazando:
+  \begin{align*}
+  	S\left(N, V, E\right) &= Nk\ln\left[\frac{V}{h^3}\left(\frac{4 \pi m E}{3N}\right)^{\frac{3}{2}}\right] + \frac{3}{2}Nk \\
+	E &= \frac{3}{2}NkT \\
+  	S\left(N, V, T\right) &= Nk\ln\left[\frac{V}{h^3}\left(\frac{4 \pi m \frac{3}{2}NkT}{3N}\right)^{\frac{3}{2}}\right] + \frac{3}{2}Nk \\
+  	S\left(N, V, T\right) &=Nk\ln V + Nk\ln\left[\frac{1}{h^3}\left(\frac{2 \pi m kT}{1}\right)^{\frac{3}{2}}\right] + \frac{3}{2}Nk \\
+  	S\left(N, V, T\right) &=Nk\ln V + Nk\ln\left[\left(\frac{2 \pi m kT}{h^2}\right)^{\frac{3}{2}}\right] + \frac{3}{2}Nk \\
+  	S\left(N, V, T\right) &=Nk\ln V + \frac{3}{2}Nk\ln\left[\left(\frac{2 \pi m kT}{h^2}\right)\right] + \frac{3}{2}Nk \\
+  	S\left(N, V, T\right) &=Nk\ln V + \frac{3}{2}Nk\left\{ 1 + \ln\left[\left(\frac{2 \pi m kT}{h^2}\right)\right]\right\} \\
+  .\end{align*}
+
+  Con esto entonces lo unico que queda es reemplazar:
+  \begin{align*}
+  	S_1\left(N_1, V_1, T\right) &=N_1k\ln V_1 + \frac{3}{2}N_1k\left\{ 1 + \ln\left[\left(\frac{2 \pi m kT}{h^2}\right)\right]\right\} \\
+  	S_2\left(N_2, V_2, T\right) &=N_2k\ln V_2 + \frac{3}{2}N_2k\left\{ 1 + \ln\left[\left(\frac{2 \pi m kT}{h^2}\right)\right]\right\} \\
+	S_T &= \sum_{i=1}^{2} \left[ N_ik\ln V + \frac{3}{2}N_ik\left\{ 1 + \ln\left( \frac{2\pi m kT}{h^2} \right)  \right\}  \right]
+  .\end{align*}
+
 \section{}
+\begin{align*}
+  \Delta S &= S_T - S_1 - S_2
+.\end{align*}
+
+Notemos que con estas expresiones el segundo termino se cancelan mutuamente. Por lo tanto, solo nos interesa quedarnos con $N_i k\ln V$ lo que implica
+\begin{align*}
+  \Delta S &= N_1 k\ln V + N_2 k \ln V - N_1 k \ln V_1 - N_2 k \ln V_2 \\
+  &= k\left[ N_1 \ln V + N_2 \ln V - N_1 \ln V_1 - N_2 \ln V_2 \right]  \\
+  &= k\left[ N_1 \ln \left( \frac{V}{V_1} \right)  + N_2 \ln\left( \frac{V}{V_2} \right) \right]  \\
+  &= k\left[ N_1 \ln \left( \frac{V_1 + V_2}{V_1} \right)  + N_2 \ln\left( \frac{V_1 + V_2}{V_2} \right) \right]
+.\end{align*}
+
 \section{}
+
+Ahora en este caso partimos de que $\frac{N_1}{V_1} = \frac{N_2}{V_2} = \frac{N_1 + N_2}{V_1 + V_2} = \delta$. Por lo tanto, podemos despejar como:
+\begin{align*}
+  \frac{N_1 + N_2}{\delta} &= V_1 + V_2 \\
+  \frac{N_1}{\delta} &= V_1 \\
+  \frac{N_2}{\delta} &= V_2
+.\end{align*}
+
+Ahora si lo ponemos todo dentro nos queda:
+\begin{align*}
+  \Delta S &= k\left[ N_1 \ln \left( \frac{\frac{N_1 + N_2}{\delta}}{\frac{N_1}{\delta}} \right)  + N_2 \ln\left( \frac{\frac{N_1 + N_2}{\delta}}{\frac{N_2}{\delta}} \right) \right]\\
+  &= k\left[ N_1 \ln \left( \frac{N_1 + N_2}{N_1} \right)  + N_2 \ln\left( \frac{N_1 + N_2}{N_2} \right) \right]
+.\end{align*}
+
 \section{}
+
+En este caso volvemos a partir de la expresión anterior:
+\begin{align*}
+  \Delta S &= k\left[ N_1 \ln \left( \frac{N_1 + N_2}{N_1} \right)  + N_2 \ln\left( \frac{N_1 + N_2}{N_2} \right) \right]\\
+  &= k\left[ N_1 \ln \left( N_1 + N_2 \right) - N_1\ln\left( N_1 \right)  + N_2 \ln\left( N_1 + N_2\right) - N_2\ln\left( N_2 \right)  \right]\\
+  &= k\left[ \left( N_1 + N_2 \right)  \ln \left( N_1 + N_2 \right) - N_1\ln\left( N_1 \right) - N_2\ln\left( N_2 \right)  \right] \\
+  &= k\left[ \left( N_1 + N_2 \right)  \ln \left( N_1 + N_2 \right) - N_1\ln\left( N_1 \right) - N_2\ln\left( N_2 \right) + N_1 - N_1 + N_2 - N_2 \right] \\
+  &= k\left[ \left( N_1 + N_2 \right)  \ln \left( N_1 + N_2 \right) - \left( N_1 + N_2 \right) - N_1\ln\left( N_1 \right) + N_1 - N_2\ln\left( N_2 \right) + N_2 \right] \\
+  &= k\left[ \left( N_1 + N_2 \right)  \ln \left( N_1 + N_2 \right) - \left( N_1 + N_2 \right) - \left(N_1\ln\left( N_1 \right) - N_1\right) + \left(N_2\ln\left( N_2 \right) - N_2\right) \right]
+.\end{align*}
+
+Esto dado que $N$ es grande nos permite usar la aproximación de Stirling $\ln\left( N! \right) = N \ln\left( N \right) - N$. Lo que entonces nos permite poner esto como se nos pide:
+\begin{align*}
+  \Delta S &= k\left[ \left( N_1 + N_2 \right)  \ln \left( N_1 + N_2 \right) - \left( N_1 + N_2 \right) - \left(N_1\ln\left( N_1 \right) - N_1\right) - \left(N_2\ln\left( N_2 \right) - N_2\right) \right] \\
+  \Delta S &= k\left[ \ln \left( \left( N_1 + N_2 \right)! \right) - \ln\left( N_1! \right) - \ln\left( N_2! \right)\right]
+.\end{align*}
+
 \section{}
+
+Cuando despejamos con la consideración de Gibbs queda:
+\begin{align*}
+  S\left(N, V, E\right) &= Nk\ln\left[\frac{V}{h^3}\left(\frac{4 \pi m E}{3N}\right)^{\frac{3}{2}}\right] + \frac{3}{2}Nk - k\ln\left( N! \right)  \\
+  S\left(N, V, E\right) &= Nk\ln\left[\frac{V}{h^3}\left(\frac{4 \pi m E}{3N}\right)^{\frac{3}{2}}\right] + \frac{3}{2}Nk - kN\ln\left( N \right)+ Nk  \\
+  S\left( N, V, E \right) &= Nk\ln\left[ \frac{V}{Nh^{3}}\left( \frac{4\pi mE}{3N} \right)^{\frac{3}{2}} \right] + \frac{5}{2}Nk \\
+  &= Nk\ln\left( \frac{V}{N} \right) + Nk\ln\left[ \left( \frac{4\pi mE}{3N h^2} \right)^{\frac{3}{2}} \right] + \frac{5}{2}Nk \\
+  &= Nk\ln\left( \frac{V}{N} \right) + \frac{3}{2}Nk\ln\left[ \left( \frac{4\pi mE}{3N h^2} \right) \right] + \frac{5}{2}Nk \\
+  &= Nk\ln\left( \frac{V}{N} \right) + \frac{3}{2}Nk\ln\left[ \left( \frac{4\pi m \frac{3}{2} Nk T}{3N h^2} \right) \right] + \frac{5}{2}Nk \\
+  &= Nk\ln\left( \frac{V}{N} \right) + \frac{3}{2}Nk\left\{ \frac{5}{3} + \ln \left( \frac{2\pi m kT}{h^2}  \right)  \right\}
+.\end{align*}
+
+Ahora volvamos a notar que en el caso de que $\Delta S$ el segundo termino se cancelaría mutuamente. Por lo tanto solo nos interesa el primer caso con lo cual tendríamos:
+\begin{align*}
+    \Delta S &= k\left[ \left( N_1 + N_2 \right) \ln\left( \frac{V_1 + V_2}{N_1 + N_2} \right) - N_1\ln\left( \frac{V_1}{N_1} \right) - N_2\ln\left( \frac{V_2}{N_2} \right) \right]
+.\end{align*}
+
+Ahora, en el caso de $\frac{N_1}{V_1} = \frac{N_2}{V_2} = \frac{N_1 + N_2}{V_1 + V_2} = \delta^{-1}$ nos queda
+\begin{align*}
+    \Delta S &= k\left[ \left( N_1 + N_2 \right) \ln\left( \delta \right) - N_1\ln\left( \delta \right) - N_2\ln\left( \delta \right) \right]\\
+    \Delta S &= k\left[ \left( N_1 + N_2 \right) \ln\left( \delta \right) - \left( N_1 + N_2 \right) \ln\left( \delta \right)\right]\\
+    \Delta S &= k\left[0\right]\\
+    \Delta S &= 0
+.\end{align*}
 
 % PUNTO 5
 \chapter{}
 
 \section{}
+
+Si partimos de un espacio de fase entonces la manera en la que estos puntos cambian en el espacio es:
+\begin{align*}
+  \frac{\partial}{\partial t} \int_{\omega} \rho d\omega\\
+  \omega &= d^{3N}q d^{3N}p
+.\end{align*}
+
+Ahora bien, el ratio neto en que los puntos se mueven fuera de nuestra superficie queda:
+\begin{align*}
+  \int_{\sigma} \rho\left( v\cdot \hat{n} \right) d\sigma&= \int_{\omega} div\left( \rho v \right) d\omega \\
+  div(pv) &= \sum_{i=1}^{3N} \left\{ \frac{\partial}{\partial q_i} \left( \rho \dot{q_i} \right) + \frac{\partial}{\partial p_i} \left( \rho \dot{p_i}\right)  \right\} 
+.\end{align*}
+
+Dado que no hay fuentes ni sumideros entonces sabemos que:
+\begin{align*}
+  \frac{\partial}{\partial t} \int_{\omega} \rho d\omega &= - \int_{\omega}div\left( \rho v \right) d\omega \\
+  \int_{\omega}\left\{ \frac{\partial \rho}{\partial t} + div\left( \rho v \right)  \right\} d\omega &= 0 \\
+  \frac{\partial \rho}{\partial t} + div\left( \rho v \right) &= 0 \\
+  \frac{\partial \rho}{\partial t} + \sum_{i=1}^{3N} \left( \frac{\partial \rho}{\partial q_i} \dot{q_i} + \frac{\partial \rho}{\partial p_i} \dot{p_i} \right) + \rho \sum_{i=1}^{3N} \left( \frac{\partial \dot{q_i}}{\partial q_i}  + \frac{\partial \dot{p_i}}{\partial p_i}  \right) &= 0 \\
+  \frac{\partial \dot{q_i}}{\partial q_i} &= \frac{\partial^2 H}{\partial q_i \partial p_i} = - \frac{\partial \dot{p_i}}{\partial p_i}  \\
+  \frac{\partial \rho}{\partial t} + \sum_{i=1}^{3N} \left( \frac{\partial \rho}{\partial q_i} \dot{q_i} + \frac{\partial \rho}{\partial p_i} \dot{p_i} \right) + \rho \sum_{i=1}^{3N} \left( -\frac{\partial \dot{p_i}}{\partial p_i}  + \frac{\partial \dot{p_i}}{\partial p_i}  \right) &= 0 \\
+  \frac{\partial \rho}{\partial t} + \sum_{i=1}^{3N} \left( \frac{\partial \rho}{\partial q_i} \dot{q_i} + \frac{\partial \rho}{\partial p_i} \dot{p_i} \right) &= 0 \\
+.\end{align*}
+
 \section{}
+
+Partimos del teorema:
+\begin{align*}
+  \frac{\partial \rho}{\partial t} + \sum_{i=1}^{3N} \left( \frac{\partial \rho}{\partial q_i} \dot{q_i} + \frac{\partial \rho}{\partial p_i} \dot{p_i} \right) &= 0 \\
+  \rho &= cte\\
+  \frac{\partial cte}{\partial t} + \sum_{i=1}^{3N} \left( \frac{\partial cte}{\partial q_i} \dot{q_i} + \frac{\partial cte}{\partial p_i} \dot{p_i} \right) &= 0 \\
+  0 + \sum_{i=1}^{3N} \left( 0 \dot{q_i} + 0 \dot{p_i} \right) &= 0 \\
+  0 &= 0
+.\end{align*}
 \section{}
+
+Partimos del teorema:
+\begin{align*}
+  \frac{\partial \rho}{\partial t} + \sum_{i=1}^{3N} \left( \frac{\partial \rho}{\partial q_i} \dot{q_i} + \frac{\partial \rho}{\partial p_i} \dot{p_i} \right) &= 0 \\
+  \frac{\partial \rho\left[H(q_i,p_i)\right]}{\partial t} + \sum_{i=1}^{3N} \left( \frac{\partial \rho\left[H(q_i,p_i)\right]}{\partial q_i} \dot{q_i} + \frac{\partial \rho\left[H(q_i,p_i)\right]}{\partial p_i} \dot{p_i} \right) &= 0 \\
+  0 + \sum_{i=1}^{3N} \left( \rho \frac{\partial \left[H(q_i,p_i)\right]}{\partial q_i} \dot{q_i} + \rho\frac{\partial \left[H(q_i,p_i)\right]}{\partial p_i} \dot{p_i} \right) &= 0 \\
+  \frac{\partial \left[H(q_i,p_i)\right]}{\partial p_i} &=  \dot{q_i}\\
+  \frac{\partial \left[H(q_i,p_i)\right]}{\partial q_i} &= - \dot{p_i}\\
+  0 + \sum_{i=1}^{3N} \left( -\rho\dot{p_i} \dot{q_i} + \rho \dot{q_i} \dot{p_i} \right) &= 0 \\
+  0 &= 0 
+.\end{align*}
 
 % PUNTO 6
 \chapter{}
 
 \section{}
-\section{}
-\section{}
 
+En este caso tenemos solo un grado de libertad por lo tanto tenemos solo una variable a la que llamaremos $\theta$. Por lo tanto, su momento angular seria $p_\theta = mL^2\theta$
 \end{document}

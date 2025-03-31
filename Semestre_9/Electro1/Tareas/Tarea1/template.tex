@@ -257,7 +257,34 @@ Para este caso, vamos a partir de un punto muy similar a si este fuera un plano 
   \draw[->, black] (0, 0) -- (1, 0) node[midway, below] {a};
   \node (I) at (-2.5, 0) {$y < -a$};
   \node (II) at (2.5, 0) {$y > a$};
+  \node (III) at (0, 1.5) {$-a < y < a$};
 \end{tikzpicture}
+
+Ahora con esto entonces podemos desarrollar como:
+\begin{align*}
+  \oint_{C} E da &= \frac{Q}{\varepsilon_0} \\ 
+  &= \frac{\rho_0 \left( A 2y \right) }{\varepsilon_0} \\
+  \left| E \right| &= \frac{\rho_0 \cancel{\left( A 2y \right) }}{\varepsilon_0 \cancel{\left( 2A \right) }} \\
+  \vec{E} &= \frac{\rho_0 y}{\varepsilon_0} \hat{y}
+.\end{align*}
+
+Ahora en el caso de $y > a$ tenemos:
+ 
+\begin{align*}
+  \oint_{C} E da &= \frac{Q}{\varepsilon_0} \\ 
+  &= \frac{\rho_0 \left( A 2a \right) }{\varepsilon_0} \\
+  \left| E \right| &= \frac{\rho_0 \cancel{\left( A 2a \right) }}{\varepsilon_0 \cancel{\left( 2A \right) }} \\
+  \vec{E} &= \frac{\rho_0 a}{\varepsilon_0} \hat{y}
+.\end{align*}
+
+Con el siguiente:
+
+\begin{align*}
+  \oint_{C} E da &=- \frac{Q}{\varepsilon_0} \\ 
+  &=- \frac{\rho_0 \left( A 2a \right) }{\varepsilon_0} \\
+  \left| E \right| &=- \frac{\rho_0 \cancel{\left( A 2a \right) }}{\varepsilon_0 \cancel{\left( 2A \right) }} \\
+  \vec{E} &=- \frac{\rho_0 a}{\varepsilon_0} \hat{y}
+.\end{align*}
 
 \chapter{}
 

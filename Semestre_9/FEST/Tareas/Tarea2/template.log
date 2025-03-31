@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.8)  12 FEB 2025 21:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2025.1.8)  21 FEB 2025 16:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1449,7 +1449,6 @@ Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
-Missing character: There is no ; in font nullfont!
 )
 \tf@toc=\write5
 \openout5 = `template.toc'.
@@ -1466,31 +1465,32 @@ l.19
 Chapter 1.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 21.
+(Font)              size <5> substituted on input line 26.
 
 [2
 
-{/usr/share/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}] [3]
+{/usr/share/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}] [3] [4] [5]
+[6]
 Chapter 2.
-[4
-
-] [5] [6]
-Chapter 3.
 [7
 
-] [8] [9]
+]
+Chapter 3.
+[8
+
+] [9]
 Chapter 4.
 [10
 
-] [11]
+] [11] [12]
 Chapter 5.
-[12
+[13
 
-] [13]
+] [14]
 Chapter 6.
-[14
+[15
 
-] [15] (./template.aux)
+] (./template.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1505,13 +1505,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 37208 strings out of 476014
- 739232 string characters out of 5792006
- 1946187 words of memory out of 5000000
- 58616 multiletter control sequences out of 15000+600000
- 586999 words of font info for 118 fonts, out of 8000000 for 9000
+ 37147 strings out of 476014
+ 737879 string characters out of 5792006
+ 1956187 words of memory out of 5000000
+ 58546 multiletter control sequences out of 15000+600000
+ 588244 words of font info for 122 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 99i,19n,102p,711b,608s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,102p,545b,626s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb></usr/share/texmf
 -dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
@@ -1519,15 +1519,13 @@ onts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
 fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/latxfont/
-line10.pfb></usr/share/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/sha
-re/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/share/texmf-dist/fonts/t
-ype1/public/newtx/txexs.pfb></usr/share/texmf-dist/fonts/type1/public/newtx/txs
-ym.pfb>
-Output written on template.pdf (16 pages, 165900 bytes).
+sfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb><
+/usr/share/texmf-dist/fonts/type1/public/newpx/pxsys.pfb></usr/share/texmf-dist
+/fonts/type1/public/newtx/txexs.pfb>
+Output written on template.pdf (16 pages, 160284 bytes).
 PDF statistics:
- 276 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 253 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 339 PDF objects out of 1000 (max. 8388607)
+ 247 compressed objects within 3 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 365 words of extra memory for PDF output out of 10000 (max. 10000000)
 
