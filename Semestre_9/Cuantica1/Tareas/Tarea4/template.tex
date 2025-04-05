@@ -1,0 +1,163 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Mecanica Cuantica}\\Tarea 4}
+\author{\huge{Sergio Montoya}\\\huge{David Pachon}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+
+\section{}
+
+Para iniciar este punto simplemente podemos solucionar:
+
+\begin{align*}
+	\hat{A}^2 - 3\hat{A} + 2 &= 0 \\
+	\hat{A} &= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\\
+	&= \frac{3 \pm \sqrt{3^2 - 4(1)(2)}}{2(1)} \\
+	&= \frac{3 \pm \sqrt{9 - 8}}{2}\\
+	&= \frac{3 \pm \sqrt{1}}{2}\\
+	&= \frac{3 \pm 1}{2}\\
+	A_+ &= \frac{3 + 1}{2} = \frac{4}{2} = 2\\
+	A_- &= \frac{3 - 1}{2} = \frac{2}{2} = 1
+\end{align*}
+
+Dado que $\lambda_1 \neq \lambda_2$ entonces $\hat{A}$ es diagonalizable en su base canónica. Esto quiere decir que podemos escribir $A$ como:
+
+\[
+	A = 
+	\begin{bmatrix}
+		2 & 0 \\
+		0 & 1
+	\end{bmatrix}
+\]
+
+Lo que nos sera de mucha utilidad para los siguientes puntos.
+
+\section{}
+
+En este punto podemos utilizar que ya encontramos los eigenvalues de la matriz $A$. Lo que seria:
+\begin{align*}
+	\hat{A}\left| \psi_1 \right> &= \lambda_1 \psi_1\\
+	\hat{A}\left| \psi_1 \right> &= 1 \psi_1\\
+	\begin{bmatrix}
+		2 & 0 \\
+		0 & 1
+	\end{bmatrix}
+	\begin{bmatrix}
+		\psi_1 \\
+		\psi_2
+	\end{bmatrix}
+	&= \begin{bmatrix}
+		\psi_1 \\
+		\psi_2
+	\end{bmatrix}\\
+	&= \begin{bmatrix}
+		2 \psi_1 + 0 \psi_2 \\
+		0 \psi_1 + 1 \psi_2 
+	\end{bmatrix}\\
+	\begin{bmatrix}
+		2 \psi_1 \\
+		\psi_2 
+	\end{bmatrix} &= \begin{bmatrix}
+		\psi_1 \\
+		\psi_2
+	\end{bmatrix}\\
+	\implies \left| \psi_1 \right> &= \begin{bmatrix} 0 \\ 1 \end{bmatrix}\\
+\end{align*}
+
+Para el segundo eigenvector:
+
+\begin{align*}
+	\hat{A}\left| \psi_2 \right> &= \lambda_2 \psi_2\\
+	\hat{A}\left| \psi_2 \right> &=  2 \psi_2\\
+	\begin{bmatrix}
+		2 & 0 \\
+		0 & 1
+	\end{bmatrix}
+	\begin{bmatrix}
+		\psi_1 \\
+		\psi_2
+	\end{bmatrix}
+	&= 2\begin{bmatrix}
+		\psi_1 \\
+		\psi_2
+	\end{bmatrix}\\
+	\begin{bmatrix}
+		2 \psi_1 \\
+		\psi_2
+	\end{bmatrix}
+	&= \begin{bmatrix}
+		2\psi_1 \\
+		2\psi_2
+	\end{bmatrix}\\
+	\implies \left| \psi_2 \right> &= \begin{bmatrix} 1 \\ 0 \end{bmatrix}\\
+\end{align*}
+
+Aunque para ser completamente honesto, este resultado es trivial, puesto que la matriz $A$ con la que estamos trabajando fue construida en la base de sus vectores propios diagonalizando sus eigenvalues.
+
+
+\section{}
+
+Lo unico que nos falta para mostrar que $A$ es un observable (dado que ya mostramos que es diagonalizable) es que $A$ es hermitica. Lo cual significa que tenemos que mostrar
+\begin{align}
+	\hat{A}^\dagger &= \bar{\hat{A}}^*\\
+	&= \begin{bmatrix}
+		2 & 0 \\
+		0 & 1
+	\end{bmatrix}^*\\
+	&= \begin{bmatrix}
+		2 & 0 \\
+		0 & 1
+	\end{bmatrix}\\
+	\hat{A} &= \begin{bmatrix}
+		2 & 0 \\
+		0 & 1
+	\end{bmatrix}\\
+	\implies \hat{A}^\dagger &= \hat{A}
+\end{align}
+
+Con esto ya tenemos que $A$ es hermitica. Ademas, como sabemos que $A$ tiene valores propios reales. Esto demuestra que $A$ es observable.
+
+\chapter{}
+
+En este caso iniciamos por definir $\hat{v}$ como:
+\[
+	\hat{v_i} = \frac{1}{m}\left( \hat{p_i} - qA_i \right)
+\]
+
+Ahora, podemos calcular el conmutador $\left[ v_i, v_j \right]$ como:
+\begin{align*}
+	\left[ v_i, v_j \right] &= \left[ \frac{1}{m}\left( \hat{p_i} - qA_i \right), \frac{1}{m}\left( \hat{p_j} - qA_j \right) \right]\\
+	3.\quad \left[ \alpha \hat{\Omega}, \hat{\Lambda} \right] &= \alpha \left[ \hat{\Omega}, \hat{\Lambda} \right], \\
+	\left[ v_i, v_j \right] &= \frac{1}{m^2}\left[ \hat{p_i} - qA_i, \hat{p_j} - qA_j \right]\\
+	2.\quad \left[ \hat{\Omega}, \hat{\Lambda} + \hat{\Sigma} \right] &= \left[ \hat{\Omega}, \hat{\Lambda} \right] + \left[ \hat{\Omega}, \hat{\Sigma} \right], \\
+	\left[ v_i, v_j \right] &= \frac{1}{m^2}\left(\left[ \hat{p_i}, \hat{p_j}\right] - q\left[\hat{p_i}, A_j\right] - q\left[A_i, \hat{p_j}\right] + q^2 \left[A_i, A_j \right]\right)\\
+	\left[ \hat{p_i}, \hat{p_j}\right] &= 0\\
+	\left[ A_i, A_j \right] &= 0\\
+	\left[ v_i, v_j \right] &= \frac{1}{m^2}\left( - q\left[\hat{p_i}, A_j\right] - q\left[A_i, \hat{p_j}\right] \right)\\
+	\left[ v_i, v_j \right] &= \frac{- q}{m^2}\left( \left[\hat{p_i}, A_j\right] + \left[A_i, \hat{p_j}\right] \right)\\
+	\left[\hat{p_i}, A_j\right] &= \hat{p_i}A_j - A_j\hat{p_i}\\
+	\left[\hat{p_i}, A_j\right] \psi &= -i\hbar\frac{\partial A_j}{\partial x_i}\psi - i\hbar A_j\frac{\partial \psi}{\partial x_i} + A_j i\hbar\frac{\partial \psi}{\partial x_j}\\
+	\left[\hat{p_i}, A_j\right] \psi &= -i\hbar\frac{\partial A_j}{\partial x_i}\psi \\
+	\left[\hat{p_i}, A_j\right] &= -i\hbar\frac{\partial A_j}{\partial x_i} \\
+	\left[A_i, \hat{p_j}\right] &= - \left[ \hat{p_j}, A_i \right]\\
+	&= i\hbar\frac{\partial A_i}{\partial x_j} \\
+	\left[ v_i, v_j \right] &= \frac{- q}{m^2}\left( -i\hbar\frac{\partial A_j}{\partial x_i} + i\hbar\frac{\partial A_i}{\partial x_j} \right)\\
+	\left[ v_i, v_j \right] &= \frac{i\hbar q}{m^2}\left( \frac{\partial A_j}{\partial x_i} - \frac{\partial A_i}{\partial x_j} \right)\\
+	\left[ v_i, v_j \right] &= \frac{i\hbar q}{m^2}\epsilon_{ijk}\left( \nabla \times A  \right)_k
+\end{align*}
+
+\end{document}

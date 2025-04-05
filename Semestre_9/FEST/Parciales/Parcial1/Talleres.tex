@@ -1,0 +1,68 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Física Estadistica} % This is the name of the course 
+\newcommand{\examnum}{Parcial 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{align*}
+	W_N \left( n_1 \right) &= \frac{N!}{n_1! \left( N - n_1 \right)!} p^{n_1}q^{N - n_1}\\
+	\left( x + y \right)^n &= \displaystyle\sum_{k=0}^{n}\binom{n}{k}x^k y^{n - k}\ \text{Expansión Binomial}\\
+	\bar{u} &= \displaystyle\sum_{i = 0}^{N} \frac{p \left( u_i \right)u_i}{p(u_i)}\\
+	\overline{u + v} &= \bar{u} + \bar{v}\\
+	\left< \Delta n_1^2 \right> &= \left( n_1^2 \right) - \left< n_1 \right>^2\\
+	\overline{\Delta u} &= \displaystyle\sum_{u=0}^{N} P(u)\cdot(u - \overline{u})^2\\
+	\ln \left( N! \right) &= N\ln(N) - N\\
+	\displaystyle\int_{-\infty}^{\infty} e^{-ax^2} dx &= \sqrt{\frac{\pi}{a}}\\
+	\left< x \right> &= \displaystyle\int_{-\infty}^{\infty} x p(x)dx\\
+	S \left( \lambda U, \lambda V, \lambda N \right) &= \lambda S \left( U, V, N \right)\\
+	\frac{\partial S}{\partial U} &> 0\\
+	\left.\frac{\partial U}{\partial S}\right|_{s=0} &= 0\\
+	T &= \left( \frac{\partial U}{\partial S} \right)_{N, V}\\
+	P &= - \left( \frac{\partial U}{\partial V} \right)_{S, N}\\
+	\mu &= \left( \frac{\partial U}{\partial N} \right)_{S, V}\\
+	S \left( N, V, E \right) &= Nk\ln \left[ \frac{V}{h^3}\left( \frac{4\pi m E}{3N} \right)^{\frac{3}{2}} \right] + \frac{3}{2}Nk\\
+	C_v &= \left( \frac{\partial E}{\partial T} \right)_{N, V}\\
+	C_p &= \left( \frac{\partial \left( E + PV \right)}{\partial T} \right)_{N, P}\\
+\end{align*}
+\begin{align*}
+	S \left( N, V, E \right) &= Nk\ln \left[ \frac{V}{h^3}\left( \frac{4\pi m E}{3N} \right)^{\frac{3}{2}} \right] + \frac{3}{2}Nk - k\ln \left( N! \right)\\
+	S \left( N, V, E \right) &= Nk\ln \left[ \frac{V}{Nh^3}\left( \frac{4\pi m E}{3N} \right)^{\frac{3}{2}} \right] + \frac{5}{2}Nk\\
+\end{align*}
+
+\end{document}

@@ -1,0 +1,464 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+\usepackage{tikz-3dplot}
+
+\title{\Huge{Some Class}\\Random Examples}
+\author{\huge{Your Name}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Punto 1}
+
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale=3,tdplot_main_coords]
+	\def\x{.5}
+	\filldraw[
+		draw=red,%
+		fill=red!20,%
+	]          (-0.5,-0.25,0)
+	-- (1,-0.25,0)
+	-- (1,1,0)
+	-- (-0.5,1,0)
+	-- cycle;
+	\draw[green, <->] (0, -0.25, 0.5) -- (0, 1, 0.5);
+	\draw[thick,->] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+	\draw[thick,->] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+	\draw[thick,->] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+	\draw[thick, blue] (0,0,0) -- (0,0,0.5) node[midway, left] {d};
+	\node (V) at (-0.3, 0.25, 0) {$V=0$};
+\end{tikzpicture}
+
+En este caso, lo que podemos hacer para poder aplicar metodo de imagenes es ver este punto como si ubiera un cable con densidad por unidad de carga de $-\lambda$.
+
+\section{}
+
+\mlenma{Potencial cable infinito}{Vamos a hacer uso del potencial para un cable infinito con densidad $\lambda$. \[V = - \displaystyle\frac{1}{4\pi \varepsilon_0} 2\lambda \ln \left( \frac{s}{a} \right)\]}
+
+Con esto entonces podemos construir:
+\begin{align*}
+	+\lambda: V_+ &= -\frac{\lambda}{2\pi \varepsilon_0 }\ln \left( \frac{S_+}{a} \right)\\
+	-\lambda: V_- &=  \frac{\lambda}{2\pi \varepsilon_0 }\ln \left( \frac{S_-}{a} \right)\\
+	V &= V_+ + V_-\\
+	V &= \frac{\lambda}{2\pi \varepsilon_0 }\ln \left( \frac{S_-}{a} \right) - \frac{\lambda}{2\pi \varepsilon_0 }\ln \left( \frac{S_+}{a} \right)\\
+	V &= \frac{\lambda}{2\pi \varepsilon_0 } \left(  \ln \left( \frac{S_-}{a} \right) - \ln \left( \frac{S_+}{a} \right) \right)\\
+	V &= \frac{\lambda}{2\pi \varepsilon_0 } \left(  \ln \left( S_- \right) - \ln(a) - \ln \left( S_+a \right) + \ln(a) \right)\\
+	V &= \frac{\lambda}{2\pi \varepsilon_0 } \ln \left( \frac{S_-}{S_+} \right)
+\end{align*}
+
+Con esto entonces nos falta encontrar $S_+$ y $S_-$
+
+
+\begin{tikzpicture}
+	\draw[thick, <->] (-2, 0) -- (2, 0) node[below] {$y$};
+	\draw[thick, <->] (0, -2) -- (0, 2) node[right] {$z$};
+	\draw[] (0, -1) -- (1, 1) node[midway, below, sloped] {$S_-$};
+	\draw[] (0, 1) -- (1, 1) node[midway, above] {$S_+$};
+	\draw[thick, fill=red] (1, 1) circle (2pt);
+	\draw[thick, fill=green] (0, -1) circle (2pt);
+	\draw[thick, fill=green] (0, 1) circle (2pt);
+\end{tikzpicture}
+
+Con esto entonces, podemos conseguir con relativa facilidad $S_-$ y $S_+$ como:
+\begin{align*}
+	S_+ &= \sqrt{y^2 + \left( z - d \right)^2}\\
+	S_- &= \sqrt{y^2 + \left( z + d \right)^2}\\
+\end{align*}
+
+Con lo que nos queda:
+\begin{align*}
+	V &= \frac{\lambda}{2\pi \varepsilon_0 } \ln \left( \frac{S_-}{S_+} \right)\\
+	V &= \frac{\lambda}{2\pi \varepsilon_0 } \ln \left( \frac{\sqrt{y^2 + \left( z + d \right)^2}}{\sqrt{y^2 + \left( z - d \right)^2}} \right)\\
+	V &= \frac{\lambda}{2\pi \varepsilon_0 } \frac{1}{2}\ln \left( \frac{y^2 + \left( z + d \right)^2}{y^2 + \left( z - d \right)^2} \right)\\
+	V &= \frac{\lambda}{4\pi \varepsilon_0 } \ln \left( \frac{y^2 + \left( z + d \right)^2}{y^2 + \left( z - d \right)^2} \right)\\
+\end{align*}
+
+Ahora, cuando revisamos nuestras condiciones de borde.
+\begin{align*}
+	\lim_{z \to 0} V &= 0\\
+	\lim_{z \to 0} \frac{\lambda}{4\pi \varepsilon_0 } \ln \left( \frac{y^2 + \left( z + d \right)^2}{y^2 + \left( z - d \right)^2} \right) &= \frac{\lambda}{4\pi \varepsilon_0 } \ln \left( \frac{y^2 + \left( 0 + d \right)^2}{y^2 + \left( 0 - d \right)^2} \right)\\
+	&= \frac{\lambda}{4\pi\varepsilon_0 } \ln \left( \frac{y^2 + d^2}{y^2 + d^2} \right)\\
+	&= \frac{\lambda}{4\pi\varepsilon_0 } \ln \left( 1 \right)\\
+	&= 0
+\end{align*}
+
+Por lo tanto, por el teorema de unicidad estos dos problemas son equivalentes.
+
+\section{}
+
+En este caso, dado que nos interesa $E_z$ nos quedaremos con:
+\begin{align*}
+	E_z &= - \frac{\partial}{\partial z}\left[\frac{\lambda}{4\pi \varepsilon_0 } \ln \left( \frac{y^2 + \left( z + d \right)^2}{y^2 + \left( z - d \right)^2} \right)\right]\\
+	E_z &= - \frac{\lambda}{4\pi \varepsilon_0 } \frac{\partial}{\partial z}\left[\ln \left( \frac{y^2 + \left( z + d \right)^2}{y^2 + \left( z - d \right)^2} \right)\right]\\
+	E_z &= - \frac{\lambda}{4\pi \varepsilon_0 } \frac{\partial}{\partial z}\left[\ln \left( y^2 + \left( z + d \right)^2 \right) - \ln \left( y^2 + \left( z - d \right)^2 \right)\right]\\
+	E_z &= - \frac{\lambda}{4\pi \varepsilon_0 } \left[ \frac{2 \left( z + d \right)}{\left( y^2 + \left( z + d \right)^2 \right)} - \frac{2 \left( z - d \right)}{\left( y^2 + \left( z - d \right)^2 \right)}\right]\\
+\end{align*}
+
+Y ahora, cuando miramos con $z \to 0$ entonces queda:
+\begin{align*}
+	E_z &= - \frac{\lambda}{4\pi \varepsilon_0 } \left[ \frac{2 \left( 0 + d \right)}{\left( y^2 + \left( 0 + d \right)^2 \right)} - \frac{2 \left( 0 - d \right)}{\left( y^2 + \left( 0 - d \right)^2 \right)}\right]\\
+	E_z &= - \frac{\lambda}{4\pi \varepsilon_0 } \left[ \frac{2 \left( d \right)}{\left( y^2 + \left( d \right)^2 \right)} - \frac{2 \left( - d \right)}{\left( y^2 + \left(  - d \right)^2 \right)}\right]\\
+	E_z &= - \frac{\lambda}{4\pi \varepsilon_0 } \left[ \frac{2 \left( d \right)}{\left( y^2 + \left( d \right)^2 \right)} + \frac{2 \left( d \right)}{\left( y^2 + \left(d \right)^2 \right)}\right]\\
+	E_z &= - \frac{\lambda}{4\pi \varepsilon_0 } \left[ \frac{4 \left( d \right)}{\left( y^2 + \left( d \right)^2 \right)} \right]\\
+	E_z &= - \frac{\lambda d}{\pi \varepsilon_0 \left( y^2 + d^2 \right)}
+\end{align*}
+
+\section{}
+
+Ahora, en este caso para encontrar $\sigma$
+\begin{align*}
+	E &= \frac{\sigma}{\varepsilon_0}\\
+	\sigma &= \varepsilon_0 E\\
+	&= \varepsilon_0 \left(- \frac{\lambda d}{\pi \varepsilon_0 \left( y^2 + d^2 \right)}\right)\\
+	&= \left(- \frac{\lambda d}{\pi\left( y^2 + d^2 \right)}\right)
+\end{align*}
+
+\section{}
+
+\chapter{Punto 3}
+
+\section{}
+
+En este caso, este es un problema de tener dos planos a potencial 0. El problema con esto es que si colocamos una carga en alguno de los puntos imagen de la carga en $b$ se daria que en ese momento el potencial en la placa contraria a la que tenemos ya no seria 0. Por lo tanto tendriamos que colocar una carga en la posición espejo del otro lado pero con una carga negativa. Lo que de nuevo haria que el potencial en el plano contrario tampoco fuese 0. Este proceso deberia seguir al infinito y por lo tanto terminamos con un arreglo de cargas infinitas
+
+\section{}
+
+Para conseguir el valor del potencial necesitamos considerar el aporte de todas estas cargas por lo que quedamos con:
+\begin{align*}
+	V \left( x, y \right) &= \frac{1}{4\pi \varepsilon_0} \sum_{n = -\infty}^{+\infty} \left[ \frac{\left( -1 \right)^n Q}{\sqrt{\rho^2 + (y - \left( b + 2na \right))^2}} +\frac{\left( -1 \right)^n Q}{\sqrt{\rho^2 + (y - \left( b - 2na \right))^2}} \right]
+\end{align*}
+
+\section{}
+
+En este caso la densidad $\sigma$ seria $\sigma = \left.\varepsilon_0 \frac{\partial V}{\partial y}\right|_{y=a}$
+
+Con esto podemos sacar las derivadas como
+\begin{align*}
+	\frac{\partial V}{\partial y} &= \frac{1}{4\pi \varepsilon_0 } \sum_{n= -\infty}{\infty}\left( -1 \right)^n Q \left( - \frac{\left( y - \left( b + 2na \right) \right)}{\left( \rho^2 + \left( y - \left( b + 2na \right) \right)^2 \right)^{\frac{3}{2}}} - \frac{\left( y - \left( b + 2na \right) \right)}{\left( \rho^2 + \left( y - \left( b - 2na \right) \right)^2 \right)^{\frac{3}{2}}} \right)\\
+	&= \frac{Q}{4\pi \varepsilon_0 } \sum_{n = -\infty}^{\infty} \left( -1 \right)^n \left( \frac{b + 2na}{\left( p^2 + \left( b + 2na \right)^2 \right)^{\frac{3}{2}}} + \frac{b - 2na}{\left( p^2 + \left( b - 2na \right)^2 \right)^{\frac{3}{2}}} \right)\\
+	\sigma &= \varepsilon_0 \frac{Q}{4\pi \varepsilon_0 } \sum_{n = -\infty}^{\infty} \left( -1 \right)^n \left( \frac{b + 2na}{\left( p^2 + \left( b + 2na \right)^2 \right)^{\frac{3}{2}}} + \frac{b - 2na}{\left( p^2 + \left( b - 2na \right)^2 \right)^{\frac{3}{2}}} \right)_{y = a}\\
+	\sigma &= \frac{Q}{4\pi} \sum_{n = -\infty}^{\infty} \left( -1 \right)^n \left( \frac{b + 2na}{\left( p^2 + \left( b + 2na \right)^2 \right)^{\frac{3}{2}}} + \frac{b - 2na}{\left( p^2 + \left( b - 2na \right)^2 \right)^{\frac{3}{2}}} \right)_{y = a}
+\end{align*}
+
+\chapter{Punto 4}
+
+En este caso partimos de la ecuación de Laplace:
+\begin{align*}
+	\Delta^2 V &= \frac{\partial V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} = 0
+\end{align*}
+
+Por lo tanto las condiciones de frontera son:
+\begin{align*}
+	V \left( 0, y \right) &= 
+	\begin{cases}
+		+ V_0 & 0 \le y < \frac{a}{2}\\
+		- V_0 & \frac{a}{2} \le y \le a
+	\end{cases}\\
+	V(x, 0) &= V(x, a) = 0\\
+	\lim_{x\to\infty} V(x, y) &= 0
+\end{align*}
+
+Ahora, sea \[
+	V \left( x, y \right) = X(x)Y(y)
+\]
+
+\begin{align*}
+	\frac{\partial V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} &= 0\\
+	\frac{\partial X(x)Y(y)}{\partial x^2} + \frac{\partial^2 X(x)Y(y)}{\partial y^2} &= 0\\
+	X''(x)Y(y) + X(x)Y''(y) &= 0\\
+	\frac{X''(x)}{X(x)} + \frac{Y''(y)}{Y(y)} &= 0\\
+	\frac{X''(x)}{X(x)} &= - \frac{Y''(y)}{Y(y)} = \lambda \\
+\end{align*}
+
+Ahora, podemos ver caso a caso:
+\begin{align*}
+	\frac{X''(x)}{X(x)} &= \lambda\\
+	X''(x) &= \lambda X(x)\\
+	X''(x) - \lambda X(x) &= 0\\
+	X(x) &= A e^{\sqrt{\lambda}x} + B e^{-\sqrt{\lambda}x}\\
+\end{align*}
+
+Dado que $V\to 0$ cuando $x\to \infty$ entonces $A = 0$ con lo que queda \[
+	X(x) = Be^{-\sqrt{\lambda}x}
+\]
+
+Ahora para el caso de $Y$ queda:
+\begin{align*}
+	-\frac{Y''(y)}{Y(y)} &= \lambda\\
+	Y''(y) &= -\lambda Y(y)\\
+	Y''(y) + \lambda Y(y) &= 0\\
+	Y(y) &= C\cos(\sqrt{\lambda}y) + D\sin(\sqrt{\lambda}y)
+\end{align*}
+
+Dado que $V\to 0$ con $y \to 0$ entonces esto queda como \[
+	Y(y) = D\sin(\sqrt{\lambda}y)
+\]
+
+Con lo que el potencial queda como:
+
+\begin{align*}
+	V(x, y) &= \sum_{n = 1}^{\infty} C_n e^{-\frac{n\pi}{a}x}\sin \left( \frac{n\pi}{a} y \right)
+\end{align*}
+
+Ahora determinemos $C_n$
+\begin{align*}
+	V(0, y) &= \sum_{n = 1}^{\infty} C_n\sin \left( \frac{n\pi}{a}y \right) = \begin{cases}+V_0, & 0 \le y < \frac{a}{2} \\ -V_0, & \frac{a}{2} \le y \le a \end{cases}\\
+		C_n &= \frac{2}{a}\left[ \int_0^{\frac{a}{2}} V_0 \sin \left( \frac{n\pi}{a} y \right)dy - \int_{\frac{a}{2}}^a V_0 \sin \left( \frac{n\pi}{a}y \right) dy\right]\\
+		\alpha &= \frac{n\pi}{a}\\
+		\int_0^{\frac{a}{2}} V_0 \sin \left( \frac{n\pi}{a} y \right)dy &= \int_0^{\frac{a}{2}} \sin \left( \alpha y \right)dy\\
+		&= - \frac{1}{\alpha} \left[ \cos \left( \alpha y \right)\right]_{0}^{\frac{a}{2}}\\
+		&= - \frac{1}{\alpha} \left( \cos \left( \frac{n\pi}{2} \right) - 1\right)\\
+		\int_{\frac{a}{2}}^a V_0 \sin \left( \frac{n\pi}{a}y \right) dy &= \int_{\frac{a}{2}}^a \sin \left( \alpha y \right) dy\\
+		&= - \frac{1}{\alpha} \left[ \cos \left( \alpha y \right) \right]_{\frac{a}{2}}^{a}\\
+		&= - \frac{1}{\alpha} \left( \cos \left( n\pi \right) - \cos \left( \frac{n\pi}{2} \right) \right)\\
+		\int_0^{\frac{a}{2}} V_0 \sin \left( \frac{n\pi}{a} y \right)dy -\int_{\frac{a}{2}}^a V_0 \sin \left( \frac{n\pi}{a}y \right) dy &= \frac{1}{\alpha} \left[ 1 + \cos \left( n\pi \right) - 2\cos \left( \frac{n\pi}{2} \right) \right]\\
+		C_n &= \frac{2}{a} \frac{1}{\alpha} \left[ 1 + \cos \left( n\pi \right) - 2\cos \left( \frac{n\pi}{2} \right) \right]\\
+		C_n &= \frac{2 V_0}{n\pi} \left[ 1 + \cos \left( n\pi \right) - 2\cos \left( \frac{n\pi}{2} \right) \right]\\
+\end{align*}
+
+Ahora con esto entonces miremos que para $n$ impar se da: \[
+	\cos \left( n\pi \right) = - 1; \cos \left( \frac{n\pi}{2} \right) = 0 \implies C_n = 0
+\]
+
+Ahora, para $n$ par se da:
+\begin{align*}
+	\cos \left( 2m\pi \right) &= 1\\
+	\cos \left( \frac{2m\pi}{2} \right)  &= \left( -1 \right)^m\\
+	1 + 1 - 2 \left( -1 \right)^m &= 2 - 2 \left( -1 \right)^m\\
+	\text{m par }: 2 - 2 &= 0\\
+	\text{m impar}: 2 + 2 &= 4\\
+\end{align*}
+
+Por lo tanto queda:
+\begin{align*}
+	V \left( x, y \right) &= \sum_{k = 0}^{\infty} \frac{4V_0}{\left( 2k + 1 \right)\pi} \exp \left( - \frac{\left( 4k + 2 \right)\pi}{a}x \right)\sin \left( \frac{(4k + 2)\pi}{a}y \right)
+\end{align*}
+
+
+\chapter{Punto 6}
+
+En este caso tenemos un problema de una esfera conductora lo que hace que sea equipotencial en su superficie. 
+
+Ahora con esto miremos la ecuación de Laplace pero miremosla en simetria esferica respecto a $z$. Con esto quedaria como:
+\begin{align*}
+	V \left( r, \phi \right) &= \sum_{\ell = 0}^{\infty}\left[ A_\ell r^\ell + \frac{B_\ell}{r^{\ell + 1}} \right] P_\ell \left( \cos\theta \right)
+\end{align*}
+
+Ahora bien, para que $V$ no sea divergente en $r \to \infty$ debemos anular $\ell \ge 2$ lo que nos deja unicamente con el monopolo y el dipolo.
+
+Para el caso a grandes distancias el potencial debe reproducir un campo electrico uniforme. lo que entonces implica:
+\begin{align*}
+	V \left( r, \theta \right) &= - E_0 z\\
+	&= -E_0 r \cos(\theta)
+	P_1 \left( \cos\theta \right) &= \cos\theta
+	-E_0 r \cos(\theta) &=  A_1 r P_1 \left( \cos \theta \right)\\
+	A_1 &= -E_0
+\end{align*}
+
+Ahora bien, por otro lado la esfera tiene una carga neta que nos da un potencial como:
+\begin{align*}
+	V_Q \left( r \right) &= \frac{1}{4\pi \varepsilon_0 } \frac{Q}{r}\\
+	\left[ A_0 r^0 + \frac{B_0}{r^{0 + 1}} \right]P_0 \left( \cos\theta \right) &= A_0 + \frac{B_0}{r}\\
+	A_0 &= 0\\
+	\frac{B_0}{r} &= \frac{1}{4\pi \varepsilon_0 } \frac{Q}{r}\\
+	B_0 &= \frac{Q}{4\pi \varepsilon_0 }
+\end{align*}
+
+Ademas de esto, hay un dipolo inducido que sale de esta esfera con \[
+	\frac{B_1}{r^2} \cos\theta
+\]
+
+Todo esto sumado hace que:
+\begin{align*}
+	V \left( r, \theta \right) &= \frac{Q}{4\pi \varepsilon_0 r} + \left( - E_0 r \cos\theta \right) + \frac{B_1}{r^2}\cos\theta\\
+\end{align*}
+
+Ahora, para la condicion de contorno $V(R, \theta) = C$ vamos a plantear
+\begin{align*}
+	V \left( R, \theta \right) &= \frac{Q}{4\pi\varepsilon_0 R} - E_0 R \cos\theta + B_1 \frac{\cos\theta}{R^2} = C\\
+	-E_0R\cos\theta + B_1 \frac{\cos\theta}{R^2} &= 0\\
+	-E_0R + \frac{B_1}{R^2} &= 0\\
+	\frac{B_1}{R^2} &= E_0R\\
+	B_1 &= E_0R^3
+\end{align*}
+
+Con esto entonces encontramos todas las condiciones que debiamos satisfacer y por lo tanto nos queda:
+\begin{align*}
+	V \left( r, \theta \right) &= \frac{Q}{4\pi \varepsilon_0 r } - E_0 r \cos\theta + E_0 R^3 \frac{\cos\theta}{r^2}
+\end{align*}
+
+\chapter{Punto 8}
+
+En este caso partimos desde \[
+	\frac{1}{s}\frac{\partial}{\partial s} \left( s \frac{\partial V}{\partial s} \right) + \frac{1}{s^2}\frac{\partial^2 V}{\partial \phi^2} = 0
+\]
+
+Ahora, vamos a mirar las soluciones de la forma \[
+	V \left( s, \phi \right) = S(s)\Phi(\phi) \implies \frac{1}{s}\Phi \frac{d}{ds} \left( s \frac{dS}{ds} \right) + \frac{1}{s^2} S\frac{d^2\Phi}{d\phi^2} = 0
+\]
+
+Ahora bien, si despejamos como:
+\begin{align*}
+	\frac{1}{s}\Phi \frac{d}{ds} \left( s \frac{dS}{ds} \right) + \frac{1}{s^2} S\frac{d^2\Phi}{d\phi^2} &= 0\\
+	\frac{s^2}{S\phi} \left( \frac{1}{s}\phi \frac{d}{ds} \left( s \frac{ds}{ds} \right) + \frac{1}{s^2} s\frac{d^2\phi}{d\phi^2} \right) &= 0\\
+	\frac{s}{S}\frac{d}{ds} \left( s \frac{ds}{ds} \right) + \frac{1}{\Phi}\frac{d^2\phi}{d\phi^2} &= 0\\
+	\frac{s}{S}\frac{d}{ds} \left( s \frac{ds}{ds} \right) &= \frac{1}{\Phi}\frac{d^2\phi}{d\phi^2}
+\end{align*}
+
+Dado que dependen de variables distintas entonces cada una de estas ecuaciones deben ser una constante tal que:
+\begin{align*}
+	\frac{s}{S}\frac{d}{ds} \left( s \frac{ds}{ds} \right) &= C_1\\
+	\frac{1}{\Phi}\frac{d^2\phi}{d\phi^2} &= C_2\\
+	C_1 + C_2 &= 0
+\end{align*}
+
+Con esto entonces suponga
+\begin{align*}
+	C_2 &= -k^2
+\end{align*}
+
+Puesto que en caso contrario $\Phi$ se iria a exponencial que es no es lo que nos interesa.
+Por lo tanto
+\begin{align*}
+	\frac{d^2 \Phi}{d\phi^2} &= -k^2\\
+	\Phi &= A\cos\left(k\phi\right) + B \sin \left( k\phi \right)\\
+	\Phi(\phi + 2\pi) &= \Phi(\phi) \implies k = 0, 1, 2, \ldots
+\end{align*}
+
+Por el otro lado
+\begin{align*}
+	s \frac{d}{ds}\left( s \frac{d S}{ds} \right) &= k^2 S\\
+	S &= s^n\\
+	s \frac{d}{ds}\left( s n s^{n - 1} \right) &= sn\frac{d}{ds} s^n\\
+	&= n^2 s s^{n - 1}\\
+	&= n^2 s^n\\
+	n^2 s^n &= k^2 S \implies n = \pm k
+\end{align*}
+
+Ahora bien, esto hace que la solución general sea \[
+	S = C s^k + D s^{-k}
+\] Pero en el caso de que $k = 0$ se tiene una solución que podemos mirar:
+\begin{align*}
+	s \frac{d}{ds}\left( s \frac{d S}{ds} \right) &= k^2 S\\
+	s \frac{d}{ds}\left( s \frac{d S}{ds} \right) &= 0^2 S\\
+	s \frac{d}{ds}\left( s \frac{d S}{ds} \right) &= 0\\
+	s \frac{d S}{ds} &= C\\
+	\frac{d S}{ds} &= \frac{C}{s}\\
+	d S &= C\frac{ds}{s}\\
+	S &= C\ln s + D
+\end{align*}
+
+Entonces la solución general es:
+\begin{align*}
+	V \left( s, \phi \right) &= a_0 + b_0 \ln s + \sum_{k = 1}^{\infty} \left[ s^k \left( a_k \cos \left( k\phi \right) + b_k \sin \left( k\phi \right)\right) + s^{-k} \left( c_k \cos \left( k\phi \right) + d_k \sin \left( k\phi \right)\right)\right]
+\end{align*}
+
+
+\chapter{Punto 9}
+
+En este caso:
+\begin{align*}
+	V \left( s, \phi \right) &= a_0 + b_0 \ln s + \sum_{k = 1}^{\infty} \left[ s^k \left( a_k \cos \left( k\phi \right) + b_k \sin \left( k\phi \right)\right) + s^{-k} \left( c_k \cos \left( k\phi \right) + d_k \sin \left( k\phi \right)\right)\right]
+\end{align*}
+
+Pero note que $s^{-k}$ y $\ln s$ se van a infinito en el caso de $s = 0$ y a su vez $s^k$ y $\ln s$ se van a infinito cuando $s \to \infty$ por lo tanto esto queda como:
+
+\begin{align*}
+	Dentro:\ V \left( s, \phi \right) &= a_0 + \sum_{k = 1}^{\infty} \left[ s^k \left( a_k \cos \left( k\phi \right) + b_k \sin \left( k\phi \right)\right) \right]\\
+	Fuera:\ V \left( s, \phi \right) &= a_0 + \sum_{k = 1}^{\infty} \left[ s^{-k} \left( c_k \cos \left( k\phi \right) + d_k \sin \left( k\phi \right)\right)\right]
+\end{align*}
+
+Ahora bien:
+\begin{align*}
+	\sigma &= - \left.\varepsilon_0 \left( \frac{\partial V_{out}}{\partial s} - \frac{\partial V_{in}}{\partial s} \right)\right|_{s = R}\\
+	a\sin \left( 5\phi \right)&= - \left.\varepsilon_0 \sum_{k = 1}^{\infty} \left( - \frac{k}{s^{k+1}}\left( c_k \cos k\phi + d_k \sin k\phi \right) - k s^{k - 1}\left( a_k \cos k\phi + b_k \sin k \phi \right) \right)\right|_{s = R}\\
+	a\sin \left( 5\phi \right)&= - \varepsilon_0 \sum_{k = 1}^{\infty} \left( - \frac{k}{R^{k+1}}\left( c_k \cos k\phi + d_k \sin k\phi \right) - k R^{k - 1}\left( a_k \cos k\phi + b_k \sin k \phi \right) \right)\\
+\end{align*}
+
+En este caso, para todos los $k$ excepto $k = 5$ se deben ir a 0 y en el caso de $k = 5$ podemos mirarlo como
+\begin{align*}
+	a\sin \left( 5\phi \right)&= - \varepsilon_0 \left( - \frac{5}{R^{5+1}}\left( d_5 \sin 5\phi \right) - 5 R^{5 - 1}\left( b_5 \sin 5 \phi \right) \right)\\
+	a\sin \left( 5\phi \right)&= - \varepsilon_0 5 \sin \left( 5\phi \right) \left( - \frac{1}{R^{6}}\left( d_5 \right) - R^{4}\left( b_5 \right)\right)\\
+	a &= \varepsilon_0 5 \left( \frac{1}{R^{6}}\left( d_5 \right) + R^{4}\left( b_5 \right)\right)\\
+	a_0 + \frac{1}{R^{6}}\left( d_5 \right) &= \hat{a_0} + \left(  R^{4}\left( b_5 \right)\right)\\
+	a_0 &= \hat{a_0} \text{ Podemos escogerlo como }0\\
+	\frac{1}{R^{6}}\left( d_5 \right) &= \left(  R^{4}\left( b_5 \right)\right)\\
+	\left( d_5 \right) &= \left(  R^{10}\left( b_5 \right)\right)\\
+\end{align*}
+
+Con esto podemos despejar
+\begin{align*}
+	a &= \varepsilon_0 5 \left( \frac{1}{R^{6}}\left( d_5 \right) + R^{4}\left( b_5 \right)\right)\\
+	a &= \varepsilon_0 5 \left( \frac{1}{R^{6}}\left( R^{10} b_5 \right) + R^{4}\left( b_5 \right)\right)\\
+	a &= \varepsilon_0 5 \left( \left( R^{4} b_5 \right) + R^{4}\left( b_5 \right)\right)\\
+	a &= \varepsilon_0 5 R^{4}\left( \left( b_5 \right) + \left( b_5 \right)\right)\\
+	a &= \varepsilon_0 5 R^{4} 2 b_5\\
+	a &= \varepsilon_0 10 R^{4} b_5\\
+	b_5 &= \frac{a}{10 \varepsilon_0 R^{4} }\\
+	d_5 &= R^{10}b_5\\
+	d_5 &= R^{10}\frac{a}{10 \varepsilon_0 R^{4} }\\
+	d_5 &= \frac{R^{6} a}{10 \varepsilon_0 }
+\end{align*}
+
+\chapter{Punto 10}
+
+\begin{enumerate}
+	\item \textit{Monopolo}:
+
+		\begin{align*}
+			Q &= \int \rho d\tau\\
+			&= kR \int \left[ \frac{1}{r^2} \left( R - 2r \right) \sin\theta \right]r^2 \sin \theta dr d\theta d\phi\\
+			&= kR \int \left[ \left( R - 2r \right) \sin\theta \right] \sin \theta dr d\theta d\phi\\
+			&= \int_0^R \left( R - 2r \right) dr\\
+			&= \left.\left( Rr - r^2 \right)\right|_{0}^{R} dr\\
+			&= \left.\left( R^2 - R^2 \right)\right|_{0}^{R} dr\\
+			&= 0
+		\end{align*}
+	\item \textit{Dipolo}:
+		\begin{align*}
+			\int r \cos \theta \rho d\tau &= kR \int \left( r \cos\theta \right) \left[ \frac{1}{r^2} \left( R - 2r \right) \sin\theta \right]r^2 \sin \theta dr d\theta d\phi\\
+			&= kR \int \left( r \cos\theta \right) \left[ \left( R - 2r \right) \sin^2\theta \right]dr d\theta d\phi\\
+			&= \int\limits^{\pi}_{0} \left( \cos\theta\sin^2\theta \right) d\theta\\
+			&= \left. \frac{\sin^3\theta}{3}\right|_{0}^{\pi}\\
+			&= \frac{1}{3}\left( 0 - 0 \right)\\
+			&= 0
+		\end{align*}
+	\item \textit{Cuadrupolo}:
+		\begin{align*}
+			\int r^2 \left( \frac{3}{2}\cos^2\theta - \frac{1}{2} \right)\rho d\tau &= \frac{1}{2}kR \int\int r^2 \left( 3 \cos^2\theta - 1 \right)\left[ \frac{1}{r^2} \left( R - 2r \right)\sin\theta \right] r^2 \sin\theta drd\theta\\
+			r:\ \int_0^R r^2 \left( R - 2r \right)dr &= \left. \left( \frac{r^3}{3}R - \frac{r^4}{2} \right)\right|_0^R\\
+			&= \frac{R^4}{3} - \frac{R^4}{2}\\
+			&= - \frac{R^4}{6}\\
+			\theta:\ \int_0^pi \left( 3\cos^2\theta - 1 \right) \sin^2\theta d\theta &= \int_0^\pi 3 \left(  \left( 1 - \sin^2\theta \right) - 1\right) \sin^2\theta d\theta\\
+			&= \int_0^\pi \left( 2 - 3\sin^2\theta \right) \sin^2\theta d\theta\\
+			&= 2 \int_0^\pi \sin^2\theta d\theta - 3\int_0^\pi \sin^4\theta d\theta\\
+			&= 2 \left( \frac{\pi}{2} \right) - 3 \left( \frac{3\pi}{8} \right)\\
+			&= \pi \left( 1 - \frac{9}{8} \right)\\
+			&= - \frac{\pi}{8}\\
+			\phi:\ \int_0^{2\pi} d\phi &= 2\pi
+		\end{align*}
+		Con esto entonces la integral completa es:
+		\begin{align*}
+			\frac{1}{2}kR \left( - \frac{R^4}{6} \right) \left( - \frac{\pi}{8} \right)\left( 2\pi \right)
+		\end{align*}
+\end{enumerate}
+
+Por lo tanto para el punto P en el eje $z$ el potencial aproximado es:
+\begin{align*}
+	V \left( z \right) \approx \frac{1}{4\pi\varepsilon_0 } \frac{k\pi^2 R^5}{48z^3}
+\end{align*}
+
+
+
+
+\end{document}

@@ -1,0 +1,515 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Física Estadistica}\\Tarea 3}
+\author{\huge{Sergio Montoya} \\ 202112171}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+% PUNTO 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+Simplemente desarrollemos como:
+\begin{align*}
+	- \frac{\partial}{\partial \beta} ln \left( Z \right)&= - \frac{\partial}{\partial \beta} \ln \left( \sum_{i} e^{-\beta E_i} \right)\\
+	&= - \frac{\sum_{i} \frac{\partial}{\partial \beta} e^{-\beta E_i}}{\sum_{i} e^{-\beta E_i}}\\
+	&= - \frac{\sum_{i} - E_i e^{-\beta E_i}}{\sum_{i} e^{-\beta E_i}}\\
+	&= \frac{\sum_{i} E_i e^{-\beta E_i}}{\sum_{i} e^{-\beta E_i}}\\
+	&= \left< E_i \right>\\
+	&= U
+\end{align*}
+
+\section{}
+
+\begin{align*}
+	F &= - \frac{1}{\beta} \ln Z\\
+	S &= - \left( \frac{\partial F}{\partial T} \right)_{N, V}\\
+	&= - \frac{\partial}{\partial T} \left( - \frac{1}{\beta} \ln Z \right)\\
+	&= \frac{\partial}{\partial T} \left( \frac{1}{\beta} \ln Z \right)\\
+	&= \frac{\partial}{\partial T} \left( kT \ln Z \right)\\
+	&= k \frac{\partial}{\partial T} \left( T \ln Z \right)\\
+	&= k \left( \ln Z + T \frac{\partial}{\partial T} \ln Z \right) \\
+	\frac{\partial \ln Z}{\partial \beta} &= \frac{\partial \ln Z}{\partial \beta} \frac{\partial \beta}{\partial T}\\
+	\frac{\partial \beta}{\partial T} &=  - \frac{1}{k T^2}\\
+	S &= k \left( \ln Z - \frac{T}{k T^2} \frac{\partial \ln Z}{\partial \beta} \right) \\
+	&= k \left( \ln Z - \frac{1}{k T} \frac{\partial \ln Z}{\partial \beta} \right) \\
+	&= k \left( \ln Z - \frac{1}{k T} \frac{\partial \ln Z}{\partial \beta} \right) \\
+	&= k \left( \ln Z - \beta \frac{\partial \ln Z}{\partial \beta} \right) \\
+\end{align*}
+
+\section{}
+
+\begin{align*}
+	C_V &= \left( \frac{\partial E}{\partial T} \right)_{N,V}\\
+	&= \frac{\partial}{\partial T} \left( - \frac{\partial}{\partial \beta} \ln Z \right)\\
+	\frac{\partial}{\partial \beta} &= \frac{\partial}{\partial \beta}\frac{\partial \beta}{\partial T}\\
+	\frac{\partial}{\partial \beta} &=  - \frac{\partial}{\partial \beta}\frac{1}{kT^2}\\
+	C_V &= - \frac{\partial}{\partial \beta} \frac{1}{kT^2} \left(- \frac{\partial}{\partial \beta} \ln Z \right)\\
+	&=\frac{\partial}{\partial \beta} \frac{1}{kT^2} \frac{k}{k} \left(\frac{\partial}{\partial\beta} \ln Z \right)\\
+	&=\frac{\partial}{\partial \beta} \frac{1}{k^2T^2} k \left(\frac{\partial}{\partial \beta} \ln Z \right)\\
+	&= k\beta^2 \left(\frac{\partial^2}{\partial \beta^2} \ln Z \right)
+\end{align*}
+
+
+% PUNTO 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+Sabemos que para este modelo, la probabilidad \[
+	P_i = g_i e^{- \frac{E_i}{k_B T}}
+\]
+
+pero el propio enunciado nos da el degeneramiento. Ahora bien, es importante notar que la degeneración total para el estado $n = 2$ es $8$ dada por el enunciado. Sin embargo, esto esta compuesto de dos estados en donde solamente 1 nos interesa (pues tenemos 2s y 2p) por lo tanto partamos estos estados notando que 2s tiene una degeneración de $2$. Por lo tanto juntando todo esto la probabilidad simplemente se nos reduce a:
+\begin{align*}
+	P(2p) &= \frac{g_{2p} e^{- \frac{E_2}{k T}}}{2 e^{- \frac{E_i}{kT}} + 8 e^{-\frac{E_2}{k T}}}
+\end{align*}
+
+
+% PUNTO 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+
+En este caso partimo de:
+\begin{align*}
+	Z &= \sum_{i = 0}^{\infty} e^{-\beta E_i}\\
+	Z_1 &= \sum_{i = 0}^{\infty} e^{-\beta \hbar \omega \left( n + \frac{1}{2} \right)}\\
+	&= \sum_{i = 0}^{\infty} e^{-\beta \hbar \omega n}  e^{- \beta \hbar \omega\frac{1}{2}}\\
+	&= e^{- \beta \hbar \omega\frac{1}{2}} \sum_{i = 0}^{\infty} e^{-\beta \hbar \omega n}  \\
+	&= e^{- \beta \hbar \omega\frac{1}{2}} \sum_{i = 0}^{\infty} \left(e^{-\beta \hbar \omega }\right)^n  \\
+	\sum_{n=0}^{\infty} y^n &= \frac{1}{1 - y} \text{ Serie Geometrica}\\
+	Z_1 &= e^{-\beta \hbar \omega \frac{1}{2}} \frac{1}{1 - e^{-\beta\hbar\omega}}\\
+	&=  \frac{1}{e^{-\beta \hbar \omega \frac{1}{2}}\left(1 - e^{-\beta\hbar\omega}\right)}\\
+	&=  \frac{1}{e^{-\beta \hbar \omega \frac{1}{2}} - e^{-\frac{1}{2}\beta\hbar\omega}}\\
+	&=  \frac{1}{e^{-\beta \hbar \omega \frac{1}{2}} - e^{-\frac{1}{2}\beta\hbar\omega}} \frac{2}{2} \\
+	&=  \frac{2}{e^{-\beta \hbar \omega \frac{1}{2}} - e^{-\frac{1}{2}\beta\hbar\omega}} \frac{1}{2} \\
+	&=  \frac{1}{\sinh\left( \frac{\beta \hbar \omega}{2} \right) 2}  \\
+	&=  \left[{\sinh\left( \frac{\beta \hbar \omega}{2} \right) 2}\right]^{-1} \square \\
+\end{align*}
+
+\section{}
+
+En este caso :
+\begin{align*}
+		Z_N &= \prod_v Z_1\\
+		Z_N &= \prod_{v} \frac{1}{2\sinh \left( \frac{\beta \hbar \omega(v)}{2} \right)}\\
+\end{align*}
+
+Ahora tenemos la energia libre de Helmholtz como:
+\begin{align*}
+	F &= - \frac{1}{\beta} \ln Z_N\\
+	&= - \frac{1}{\beta} \ln \prod_v Z_1\\
+	\ln \left( a * b \right) &= \ln(a) + \ln(b) \implies \ln \prod_n a_n = \sum_n \ln a_n\\
+	F &= - \frac{1}{\beta} \sum_{v} \ln Z_1\\
+	Z_1 &= e^{-\beta \hbar \omega \frac{1}{2}} \frac{1}{1 - e^{-\beta\hbar\omega}}\\
+	F &= - \frac{1}{\beta} \sum_{v} \ln e^{-\beta \hbar \omega \frac{1}{2}} \frac{1}{1 - e^{-\beta\hbar\omega}} \\
+	&= - \frac{1}{\beta} \sum_{v} \left(\ln e^{-\beta \hbar \omega \frac{1}{2}} - \ln 1 - e^{-\beta\hbar\omega}\right) \\
+	&= - \frac{1}{\beta} \sum_{v} \left( -\beta \hbar \omega \frac{1}{2} - \ln 1 - e^{-\beta\hbar\omega}\right) \\
+	&= \sum_{v} \left(\frac{1}{\beta}\beta \hbar \omega \frac{1}{2} + \frac{1}{\beta}\ln \left(1 - e^{-\beta\hbar\omega}\right)\right) \\
+	&= \sum_{v} \left( \hbar \omega \frac{1}{2} + \frac{1}{\beta}\ln \left(1 - e^{-\beta\hbar\omega}\right)\right) \\
+	&= \sum_{v} F_v\square
+\end{align*}
+
+\section{}
+
+En este caso partimos de
+\begin{align*}
+	U &= - \frac{\partial}{\partial \beta} \ln Z\\
+	&= - \frac{\partial}{\partial \beta} \ln \prod_v Z_1\\
+	&= - \frac{\partial}{\partial \beta} \sum_v \ln Z_1\\
+	&=\sum_v - \frac{\partial}{\partial \beta} \ln Z_1\\
+\end{align*}
+
+Ahora definimos: \[
+	u_v = - \frac{\partial}{\partial \beta} \ln Z_1\\
+\]
+
+Con lo que podemos desarrollar como:
+\begin{align*}
+	\ln Z_1 &= \ln \left( e^{-\beta \hbar \omega \frac{1}{2}} \frac{1}{1 - e^{-\beta\hbar\omega}} \right)\\
+	\ln Z_1 &= \ln \left( e^{-\beta \hbar \omega \frac{1}{2}}\right) + \ln \left( \frac{1}{1 - e^{-\beta\hbar\omega}} \right)\\
+	\ln Z_1 &= -\beta \hbar \omega \frac{1}{2} - \ln \left( 1 - e^{-\beta\hbar\omega} \right)
+\end{align*}
+
+Que ahora derivamos parcialmente respecto a $\beta$ con lo que tenemos:
+\begin{align*}
+	u_v &= - \frac{\partial}{\partial \beta} \ln Z_1\\
+	&= - \frac{\partial}{\partial \beta} \left( -\beta \hbar \omega \frac{1}{2} - \ln \left( 1 - e^{-\beta\hbar\omega} \right) \right) \\
+	&= \frac{\partial}{\partial \beta} \beta \hbar \omega \frac{1}{2} + \frac{\partial}{\partial \beta}\ln \left( 1 - e^{-\beta\hbar\omega} \right) \\
+	&= \hbar \omega \frac{1}{2} + \left( \frac{1}{1 - e^{-\beta\hbar\omega}} \right) \frac{\partial - e^{-\beta\hbar\omega}}{\partial \beta}\\
+	&= \hbar \omega \frac{1}{2} + \left( \frac{1}{1 - e^{-\beta\hbar\omega}} \right) \hbar\omega e^{-\beta\hbar\omega}\\
+	&= \hbar \omega \frac{1}{2} + \left( \frac{e^{-\beta\hbar\omega}}{1 - e^{-\beta\hbar\omega}} \right) \hbar\omega \\
+	&= \hbar \omega \frac{1}{2} + \left( \frac{1}{e^{\beta\hbar\omega}\left(1 - e^{-\beta\hbar\omega}\right)} \right) \hbar\omega \\
+	&= \hbar \omega \frac{1}{2} + \left( \frac{1}{e^{\beta\hbar\omega} - 1} \right) \hbar\omega \\
+	&= \hbar\omega\left[\frac{1}{2} + \left( \frac{1}{e^{\beta\hbar\omega} - 1} \right)\right] \\
+	&= \hbar\omega\left[\frac{1}{2} + n_v(\beta)\right]\square \\
+\end{align*}
+
+\section{}
+
+En este caso partimos desde el punto anterior
+\begin{align*}
+	U &=\frac{Na}{2\pi}\int_{-\frac{\pi}{a}}^{+\frac{\pi}{a}}\left[ n_v(\beta) + \frac{1}{2} \right]\hbar \omega(v) dv\\
+	U &=\frac{Na}{2\pi}\int_{-\frac{\pi}{a}}^{+\frac{\pi}{a}}\left[ n_v(\beta) + \frac{1}{2} \right]\hbar C_L \left| v \right| dv\\
+	&=\frac{Na}{\pi}\int_{0}^{\frac{\pi}{a}}\left[ n_v(\beta) + \frac{1}{2} \right]\hbar C_L v dv\\
+	&=\frac{Na}{\pi}\int_{0}^{\frac{\pi}{a}}\left[ \frac{1}{e^{\beta\hbar c_L v} - 1} + \frac{1}{2} \right]\hbar C_L v dv\\
+	&=\frac{Na}{\pi}\int_{0}^{\frac{\pi}{a}}\left[ \frac{\hbar C_L v}{e^{\beta\hbar c_L v} - 1} + \frac{C_L v}{2} \right]\hbar dv\\
+	x &= \beta \hbar C_L v\\
+	dv &= \frac{dx}{\beta \hbar c_L}\\
+	U &=\frac{Na}{\pi}\int_{0}^{\frac{\beta\hbar c_L\pi}{a}}\left[ \frac{\frac{x}{\beta}}{e^{x} - 1} + \frac{\frac{x}{\beta}}{2} \right] \frac{dx}{\beta\hbar c_L} \\
+	U &=\frac{Na}{\pi}\int_{0}^{\frac{\beta\hbar c_L\pi}{a}}\left[ \frac{x}{e^{x} - 1} + \frac{x}{2} \right] \frac{dx}{\beta^2\hbar c_L} \\
+	U &=\frac{Na}{\beta^2\hbar c_L\pi}\int_{0}^{\frac{\beta\hbar c_L\pi}{a}}\left[ \frac{x}{e^{x} - 1} + \frac{x}{2} \right] dx \\
+	\Theta &= \frac{\hbar c_L\pi}{k a}\\
+	\frac{\Theta}{T} &= \frac{\beta\hbar c_L\pi}{a}\\
+	U &=\frac{Na}{\beta^2\hbar c_L\pi}\int_{0}^{\frac{\Theta}{T}}\left[ \frac{x}{e^{x} - 1} + \frac{x}{2} \right] dx \\
+\end{align*}
+
+Con lo que podemos  complementar como 
+\begin{align*}
+	U &=\frac{Na}{\beta^2\hbar c_L\pi}\int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx +\int_{0}^{\frac{\Theta}{T}} \frac{x}{2} dx \\
+	U &=\frac{Na}{\beta^2\hbar c_L\pi}\int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx + \frac{1}{4}\left( \frac{\Theta}{T} \right)^2 \\
+	\beta &= \frac{1}{kT}\\
+	U &=\frac{k^2T^2 N a}{\hbar c_L\pi}\int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx + \frac{1}{4}\left( \frac{\Theta}{T} \right)^2 \\
+	U &=N k T^2 \frac{k a}{\hbar c_L\pi}\int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx + \frac{1}{4}\left( \frac{\Theta}{T} \right)^2 \\
+	U &=N k T^2 \frac{1}{\Theta} \int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx + \frac{1}{4}\left( \frac{\Theta}{T} \right)^2 \\
+	U &=N k T^2 \frac{1}{\Theta} \left[\int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx + \frac{1}{4}\left( \frac{\Theta}{T} \right)^2\right] \\
+	U &=N k T^2 \frac{1}{\Theta} \left[\int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx + \frac{1}{4}\left( \frac{\Theta}{T} \right)^2\right] \\
+	U &=N k T^2 \frac{1}{\Theta} \left[\int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx + \frac{1}{4}\left( \frac{\Theta}{T} \right)^2\right] \\
+	U &=N k \left[\frac{T^2}{\Theta} \int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx + \frac{1}{4}\frac{T^2}{\Theta}\left( \frac{\Theta}{T} \right)^2\right] \\
+	U &=N k \left[\frac{T^2}{\Theta} \frac{\Theta}{\Theta} \int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx + \frac{1}{4}\frac{T^2}{\Theta}\left( \frac{\Theta}{T} \right)^2\right] \\
+	U &=N k \left[\Theta\frac{T^2}{\Theta^2} \int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x} - 1} dx + \frac{1}{4}\Theta\right] \\
+	U &=N k \Theta\left[\frac{T^2}{\Theta^2} \int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x}- 1} dx + \frac{1}{4}\right]\\
+	U &=N k \Theta\left[\frac{1}{4} +\left(\frac{T}{\Theta}\right)^2 \int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x}- 1} dx\right]
+\end{align*}
+
+
+\section{}
+
+Dado que $\Theta >> T$ entonces hagamos $\frac{\Theta}{T} \to \infty$ Con lo cual desarrollemos primero la integral:
+\begin{align*}
+	\int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x}- 1} dx &\to \int_{0}^{\infty}\frac{x}{e^{x}- 1} dx\\
+	&= \int_{0}^{\infty}\frac{x}{e^{x}- 1} dx\\
+	&= \int_{0}^{\infty} x \sum_{n= 0}^{\infty} e^{-nx} dx\\
+	&= \sum_{n = 0}^{\infty} \int_{0}^{\infty}  x e^{-nx} dx\\
+	u &= x;\ du = dx\\
+	dv &= e^{-nx}dx;\ v = - \frac{1}{n} e^{-nx}\\
+	\int udv &= uv -\int vdu\\
+	\int_{0}^{\infty}  x e^{-nx} dx &= \left.- \frac{x}{n e^{nx}}\right|_0^\infty + \frac{1}{n} \int_0^\infty e^{-nx} dx\\
+	\left.- \frac{x}{n e^{nx}}\right|_0^\infty &= \lim_{x \to \infty}- \frac{x}{n e^{nx}} - 0\\
+	\left.- \frac{x}{n e^{nx}}\right|_0^\infty &= 0 - 0 = 0\\
+	\int_{0}^{\infty}  x e^{-nx} dx &= \frac{1}{n} \int_0^\infty e^{-nx} dx\\
+	\int_{0}^{\infty}  x e^{-nx} dx &= \frac{1}{n} \frac{1}{n}\\
+	\int_{0}^{\infty}  x e^{-nx} dx &= \frac{1}{n^2}\\
+	\sum_{n = 0}^{\infty} \int_{0}^{\infty}  x e^{-nx} dx &= \sum_{n = 0}^{\infty} \frac{1}{n^2}\\
+\end{align*}
+
+Esta es una serie conocida como \textit{Basel Problem} y tiene como resultado $\frac{\pi^2}{6}$. Ahora dado que tenemos
+la integral podemos volver a la expresión completa de U
+\begin{align*}
+	U &=N k \Theta\left[\frac{1}{4} +\left(\frac{T}{\Theta}\right)^2 \int_{0}^{\frac{\Theta}{T}}\frac{x}{e^{x}- 1} x\right]\\
+	&=N k \Theta\left[\frac{1}{4} +\left(\frac{T}{\Theta}\right)^2 \frac{\pi^2}{6} \right]
+\end{align*}
+
+Ahora con esto podemos simplemente derivar para obtener $C_V$
+\begin{align*}
+	C_V &= \frac{\partial U}{\partial T}\\
+	&= \frac{\partial}{\partial T} N k \Theta\left[\frac{1}{4} +\left(\frac{T}{\Theta}\right)^2 \frac{\pi^2}{6} \right]\\
+	&=  N k \Theta\left[\frac{\partial}{\partial T}\left(\frac{T}{\Theta}\right)^2 \frac{\pi^2}{6} \right]\\
+	&=  N k \Theta\left[ 2 T\left(\frac{1}{\Theta}\right)^2 \frac{\pi^2}{6} \right]\\
+	&=  N k \left[ 2 \left(\frac{T}{\Theta}\right) \frac{\pi^2}{6} \right]\\
+	&=  N k \left[ \left(\frac{T}{\Theta}\right) \frac{\pi^2}{3} \right]\\
+	&=  N k \left(\frac{T}{\Theta}\right) \frac{\pi^2}{3}\square\\
+\end{align*}
+
+
+% PUNTO 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+
+Para esto partimos con:
+\begin{align*}
+	Z &= \frac{1}{N! h^{3N}} \int e^{-\beta \sum_{i = 0}^{N} p_i c} d^{3N}q d^{3N}p\\
+	&= \frac{1}{N! h^{3N}} \int e^{-\beta \sum_{i = 0}^{N} p_i c} d^{3N}p \int d^{3N}q\\
+	&= \frac{1}{N! h^{3N}} \int e^{-\beta \sum_{i = 0}^{N} p_i c} d^{3N}p V^N\\
+	&= \frac{V^N}{N! h^{3N}} \int e^{-\beta \sum_{i = 0}^{N} p_i c} d^{3N}p\\
+	&= \frac{V^N}{N! h^{3N}} \left[\int e^{-\beta \sum_{i = 0}^{N} p_i c} p_i^2 \sin\theta dpi d\theta d\phi\right]^N\\
+	&= \frac{V^N}{N! h^{3N}} \left[\int_0^\infty e^{-\beta \sum_{i = 0}^{N} p_i c} p_i^2 dpi \int_0^\pi \sin\theta d\theta \int_0^{2\pi} d\phi\right]^N\\
+	&= \frac{V^N}{N! h^{3N}} \left[\int_0^\infty e^{-\beta \sum_{i = 0}^{N} p_i c} p_i^2 dpi 4\pi\right]^N\\
+	&= \frac{1}{N!} \left[\int_0^\infty e^{-\beta \sum_{i = 0}^{N} p_i c} \frac{V 4pi}{h^3}p_i^2 dpi\right]^N\\
+	\int_0^\infty e^{-\beta \sum_{i = 0}^{N} p_i c} \frac{V 4pi}{h^3}p_i^2 dpi &= \frac{8\pi V}{h^3} \frac{1}{\beta^3 C^3}\\
+	Z &= \frac{1}{N!}\left( \frac{8\pi V}{h^3} \frac{1}{\beta^3 C^3} \right)^N\\
+	&= \frac{1}{N!} \left( 8\pi V \left( \frac{kT}{hC} \right)^3\right)^N
+\end{align*}
+
+\section{}
+
+Para este caso
+\begin{align*}
+	F &= - \frac{1}{\beta} \ln \left( Z \right)\\
+	&= - \frac{1}{\beta} \ln \left( \frac{1}{N!} \left( 8\pi V \left( \frac{kT}{hC} \right)^3\right)^N\right)\\
+	&= - \frac{1}{\beta} \left( N \ln \left( 8\pi V \left( \frac{kT}{hC} \right)^3\right) - \ln(N!) \right)\\
+	&= - \frac{1}{\beta} \left( N \ln \left( 8\pi V \left( \frac{kT}{hC} \right)^3\right) - N\ln(N) + N \right)\\
+	&= - \frac{N}{\beta} \left( \ln \left( 8\pi V \left( \frac{kT}{hC} \right)^3\right) - \ln(N) + 1 \right)\\
+	&= - \frac{N}{\beta} \left( \ln \left( \frac{8\pi V}{N} \left( \frac{kT}{hC} \right)^3\right) + 1 \right)\\
+	&= - kT N \left( \ln \left( \frac{8\pi V}{N} \left( \frac{kT}{hC} \right)^3\right) + 1 \right)\\
+\end{align*}
+
+\section{}
+
+Tenemos:
+\begin{align*}
+	S &= - \left( \frac{\partial F}{\partial T} \right)_{N, V}\\
+	&= - \left( \frac{\partial}{\partial T} - kT N \left( \ln \left( \frac{8\pi V}{N} \left( \frac{kT}{hC} \right)^3\right) + 1 \right)\right)_{N, V}\\
+	&= -kN \left( \ln \left( \frac{8\pi V}{N} \left( \frac{kT}{hC} \right)^3 \right) + 1\right) - kN\cancel{T} \left( \cancel{\frac{N}{8\pi V}} \cancel{\left( \frac{hc}{kT} \right)^3} \right) \cancel{\frac{8\pi V}{N}} 3 \left( \cancel{\frac{k}{hC}} \right)^3 \cancel{T^2}\\
+	&= -kN \left( \ln \left( \frac{8\pi V}{N} \left( \frac{kT}{hC} \right)^3 \right) + 1 + 3 \right)
+	&= -kN \left( \ln \left( \frac{8\pi V}{N} \left( \frac{kT}{hC} \right)^3 \right) + 4 \right)
+\end{align*}
+
+\section{}
+
+En este caso
+\begin{align*}
+	U &= - \frac{\partial}{\partial \beta} \ln Z\\
+	&= - \frac{\partial}{\partial \beta} \left( \ln \left( \frac{1}{N!} \left( \frac{8\pi V}{h^3} \frac{1}{\beta^3 C^3} \right) \right)^N \right)\\
+	&= - \frac{\partial}{\partial \beta} \left(\ln \left( \frac{1}{N!} \right) - N \ln \left( \frac{\beta^3 C^3}{8\pi V} \right)\right)\\
+	&= \frac{\partial}{\partial \beta} \left( N \ln \left( \frac{\beta^3 C^3}{8\pi V} \right)\right)\\
+	&= N \frac{8\pi V}{\beta^3 C^3} \frac{C^3}{8\pi V} 3 \beta^2\\
+	&= \frac{3N}{\beta}\\
+	&= 3Nk T
+\end{align*}
+
+Ahora nos queda
+\begin{align*}
+	C_v &= \left( \frac{\partial U}{\partial T} \right)_{N, V}\\
+	&= 3Nk
+\end{align*}
+
+Por otro lado:
+\begin{align*}
+	C_p &= \frac{\partial \left( U + PV \right)}{\partial T}\\
+	&= \frac{\partial}{\partial T} \left( 3NkT + NkT \right)\\
+	&= 4Nk
+\end{align*}
+
+Por lo tanto
+\begin{align*}
+	\gamma &= \frac{C_p}{C_v}\\
+	&= \frac{4Nk}{3Nk}\\
+	&= \frac{4}{3}
+\end{align*}
+
+
+
+% PUNTO 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+
+Partimos desde:
+\begin{align*}
+	Z &= \frac{1}{h} \int e^{-\beta \frac{p^2}{2m}} dp \int e^{-\beta \left( cq^2 - gq^3 - fq^4 \right)} dq\\
+	&= \frac{1}{h} \int e^{-\beta \frac{p^2}{2m}} dp \int e^{-\beta \left( cq^2\right)}e^{-\beta\left(- gq^3 - fq^4 \right)} dq\\
+	e^{-\beta\left(- gq^3 - fq^4 \right)} &= \sum_{n = 0}^{\infty} \left(-\beta CU q^3 - Fq^4\right)^n\\
+	& = 1 + \beta Cgq^3 + F q^4 + \frac{\beta}{2} g^2 q^6 + \dots\\
+	Z&= \gamma \left( \sqrt{\frac{\pi}{\beta C}} + \int_{-\infty}^{\infty} e^{-\beta rq^2} \beta gq^3 dq + \int_{-\infty}^{\infty} e^{-\beta cq^2} \beta F q^4 dq + \int_{-\infty}^{\infty} e^{-\beta cq^2} \frac{1}{2} \beta^2 g^2 q^6 dq\right)\\
+	e^{-\beta C q^2}q^4 &= \frac{\partial^2}{\partial q^2} C e^{-\beta Cq^2} \frac{1}{\beta F}\\
+	e^{-\beta C q^2}q^6 &= \frac{\partial^3}{\partial q^3} C e^{-\beta Cq^2} \frac{1}{\beta^2 g^2}\\
+	\int_{-\infty}^{\infty} e^{-\beta cq^2} q^4 \beta F dq &= \beta F \left( \frac{3}{4} \sqrt{\frac{\pi}{\left( \beta C \right)^2}} \right)\\
+	\int_{-\infty}^{\infty} \frac{1}{2} \beta g^2 e^{-\beta Cq^2} q^6 dq &= - \frac{\beta^2 g^2}{2} \left( - \frac{15}{8} \sqrt{\frac{\pi}{\left( \beta C \right)^7}}\right)\\
+	Z_1 &= \frac{1}{h} \sqrt{\frac{2m\pi}{\beta C}} \left( \sqrt{\frac{\pi}{\beta C}} + \frac{3}{4} \beta F \sqrt{\frac{\pi}{\left(\beta C\right)^5}} + \frac{15}{16} B^2 g^2 \sqrt{\frac{\pi}{\left( C\beta \right)^2}} \right)\\
+	&= \frac{\pi}{\beta h} \sqrt{\frac{2m}{C}} \left( 1 + \frac{3}{4} \frac{F}{\beta C^2} + \frac{15}{16} \frac{g^2}{bC^3} \right)
+\end{align*}
+
+\begin{align*}
+	U &= - \frac{\partial}{\partial \beta} \ln Z\\
+	&= \frac{\partial}{\partial \beta} \left( \ln \left( \frac{\pi}{\beta h} \sqrt{\frac{2m}{C}} \left( 1 + \frac{3}{4} \frac{F}{\beta C^2} + \frac{15}{16} \frac{g^2}{bC^3} \right) \right) \right)\\
+	&= \frac{\partial}{\partial \beta} \left( \ln \left( \frac{\pi}{\beta h} \sqrt{\frac{2m}{C}}\right) + \ln \left( 1 + \frac{3}{4} \frac{F}{\beta C^2} + \frac{15}{16} \frac{g^2}{bC^3} \right) \right)\\
+	&= \frac{1}{\beta} + \frac{-\frac{3 F}{4\beta^2C^2} + \frac{15 g^2}{16 8^2 c^63}}{1 + \frac{3f}{4\beta C^2} + \frac{\beta g^2}{16 \beta C^3}}\\
+	&= \frac{1}{\beta} + \frac{\frac{3F}{4C^2} + \frac{15 g^2}{16 c^3}}{B^2 + \frac{3F\beta}{4C^2} + \frac{15 g^2}{16 C^3}}\\
+	U \approx \frac{1}{\beta} + \frac{1}{\beta^2} \left( \frac{3 F}{4C^2} + \frac{15 g^2}{16 C^3} \right)
+\end{align*}
+
+\section{}
+
+Tenemos que:
+\begin{align*}
+	C_V &= \frac{\partial U}{\partial T}\\
+	&= \frac{\partial}{\partial T} \left(kT + k^2 T^2 \left( \frac{3 F}{4C^2} + \frac{15 g^2}{16 C^3} \right)\right)\\
+	&= k + 2k^2 T \left( \frac{3 F}{4C^2} + \frac{15 g^2}{16 C^3} \right)T\\
+\end{align*}
+
+\section{}
+
+Para este caso partimos desde:
+\begin{align*}
+	\left< q \right> &= \frac{1}{h} \int_{-\infty}^{\infty} e^{-\beta \frac{\beta^2}{2m} + \left( q^i - gq^3 - Fq^4 \right)} q dp dq\\
+	&= \frac{\sqrt{\frac{2m \beta}{h z}}} \int_{-\infty}^{\infty} e^{-\beta cq^2} \left( q + \beta \left( g q^4 + Fq^3 \right) \right) + \frac{1}{2} \beta^2 g^2 q^7 dq\\
+	&= \frac{\sqrt{\frac{2m\pi}{hz}}} \int_{-\infty}^{\infty} e^{-\beta cq^2} \beta g q^7\\
+	&= \frac{\sqrt{\frac{2m\pi}{hz}}} \int_{-\infty}^{\infty} e^{-\beta cq^2} \beta g \left( \frac{3}{4} \sqrt{\frac{\pi}{\beta c^5}} \right)\\
+	&= \frac{3}{4} \frac{\pi g}{hz} \sqrt{\frac{2m}{\beta^4 c^5}}\\
+	&= \frac{\frac{3\pi g}{4h} \sqrt{\frac{2m}{\beta^4 c^3}}}{\frac{\pi}{\beta h} \sqrt{\frac{2m}{c}} \left( 1 + \frac{3F}{4\beta c^2} + \frac{15 g^2}{16\beta c^2} \right)}\\
+\end{align*}
+\begin{align*}
+	&= \frac{3}{4} \frac{g}{\beta c^2} \left( 1 + \frac{3F}{4\beta c^2} + \frac{15 g^2}{16 \beta c^5} \right)^{-1}\\
+	\left< q \right> &= \frac{3g}{4\beta c^2}\\
+	\frac{1}{q_0} \frac{\partial \left< q \right>}{\partial T} &= \frac{1}{q_0} \frac{\partial}{\partial T} \left( \frac{3g}{4c^2} kT \right)\\
+	&= \frac{1}{q_0} \frac{3}{4} \frac{g}{c^2} k = \alpha
+\end{align*}
+
+\section{}
+
+\begin{align*}
+	Z_1 &= \frac{1}{h}\sum_{n = 0}^{\infty} e^{- \beta \left[\left( ch + \frac{1}{2}\right) \hbar \omega - X \left( n + \frac{1}{2} \right)^2 \hbar \omega \right]}\\
+	&= \sum_{n = 1}^{\infty} e^{-\beta \hbar w \left( n + \frac{1}{2} \right)} - e^{\beta x h w \left( n + \frac{1}{2} \right)}\\
+	e^{\beta x w \hbar \left( n + \frac{1}{2} \right)} &= 1 + \beta x w \hbar \left( n + \frac{1}{2} \right)\\
+	Z_1 &= \sum_{n = 0}^{\infty} e^{-\beta \hbar w \left( n + \frac{1}{2} \right)} \left( 1 + \beta x w \hbar \left( n + \frac{1}{2} \right) \right)\\
+	&= e^{- \frac{\beta k w}{2}}\left( \sum_{k = 0}^{\infty} \left( e^{-\beta k w} \right) \right) + \beta w x \hbar \left( \frac{1}{2}\sum_{n = 0}^{\infty} \left( e^{-\beta \hbar w} \right)^n + \sum_{n = 2}^{\infty} e^{-\beta \hbar \omega n} \right)\\
+	&= \frac{\text{csch} \left( \frac{1}{2} \beta \hbar w \right)}{2} \left( 1 + \frac{\beta w x \hbar}{2} \right) - \beta w x \hbar \frac{\partial}{\partial \beta \hbar w} \left( \frac{\text{csch} \left( \frac{1}{2}\beta \hbar w \right)}{2} \right)\\
+	&= \frac{\text{csch} \frac{1}{2} \beta \hbar w}{2} \left( 1 + \frac{\beta w x \hbar}{2}\left( \frac{1}{2} \coth \left( \frac{1}{2}\beta \hbar w \right) + 1 \right) \right)
+\end{align*}
+
+\section{}
+
+\begin{align*}
+	U &= \beta \hbar w\\
+	&= - \frac{\partial}{\partial \beta}\ln \left( z_1 \right)\\
+	&= - h w \frac{\partial}{\partial u} \ln Z_1\\
+	\ln z_1 &= - \ln \left( 2\sinh \left( \frac{u}{2} \right) \right) + \frac{xu}{2} \left( \frac{1}{2} \coth \left( \frac{1}{2} u \right) \right) + 1\\
+	U &= - \hbar w \frac{\partial}{\partial u} \left( \frac{2x}{w} + \frac{x h}{12} + \frac{xu^3}{120} \right)
+	&= - k w x \left( \frac{2k^2 T^2}{\hbar^2 w^2} - \frac{1}{12} - \frac{\hbar^2 w^2}{40k^2T^2} \right)
+\end{align*}
+
+\section{}
+
+\begin{align*}
+	C_V &= \frac{\partial U}{\partial T}\\
+	&= \frac{\partial U}{\partial u}\frac{\partial u}{\partial} \frac{\partial \beta}{\partial T}\\
+	&= \frac{h^2 w^2}{kT^2} x \left( \frac{4}{w^3} - \frac{w}{20} \right)\\
+	&= \frac{4 x\hbar^2 w^2}{kT^2 \beta^2 \hbar^2 w^2} \left( \frac{1}{w} + \frac{u^3}{30} \right)\\
+	&= 4x k \left( \frac{1}{u} + \frac{u^3}{30} \right)
+\end{align*}
+
+\section{}
+
+\begin{align*}
+	C_V &= 4x k \left( \frac{kT}{\hbar w} + \frac{\hbar^3 w^3}{k^3 T^3 80}\right)\\
+	&= \frac{4x k - T}{\hbar w}\alpha k^2 T \text{ Clasico}\\
+	C_V &= \frac{3}{2} k^2 \left( \frac{F}{c^2} + \frac{5g^2}{4c^3} \right)T \alpha k^2 T\text{ Cuantico}
+\end{align*}
+
+
+% PUNTO 6 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+
+Podemos tratar esta función como separable para cada grado de libertad. Por lo
+tanto se veria algo como:
+\begin{align*}
+	Z_1 = Z_r Z_\Omega Z_{dip}
+\end{align*}
+
+Con lo cual:
+
+\begin{align*}
+	Z_r &= \frac{1}{h^3} \int e^{-\beta \frac{p^2}{2m}} d^3p \int d^3 r\\
+	&= \left( 2\pi m k T \right)^{\frac{3}{2}} \frac{V}{h^3}
+\end{align*}
+
+\begin{align*}
+	L^2 &= p_\theta^2 + \frac{p^2_\phi}{\sin \theta}\\
+	E_\Omega &= \frac{L^2}{2I}\\
+	Z_\Omega &= \frac{1}{h^3}\int e^{-\beta E_\Omega} d^3L d\Omega\\
+	Z_\Omega &= \frac{1}{h^3}\int_0^\infty \int_0^\pi \int_0^{2\pi} e^{-\beta \frac{L^2}{2I}} L^2 dLd\cos\theta_L d\phi_L\\
+	\int_0^{\pi} d\cos\theta_L &= 2\\
+	\int_0^{2\pi} d\phi_L &= 2\pi\\
+	u &= \beta \frac{L^2}{2I}\\
+	du &= \beta \frac{L}{I} dL\\
+	\int_0^\infty L^2 e^{-\beta \frac{L^2}{2I}}dL &= \int_0^\infty L e^{-u}\frac{I}{\beta} du\\
+	&= \frac{I}{\beta}\int_0^\infty L e^{-u} du\\
+	&= \frac{I}{\beta} \cdot \frac{4I^2}{\beta}\\
+	Z_\Omega &= \frac{4\pi^2 IkT}{h^2}
+\end{align*}
+
+\begin{align*}
+	Z_{dip} &= \frac{1}{4\pi}\int_0^{2\pi}\int_0^\pi e^{\beta \mu E\cos\theta} \sin d\theta d\phi\\
+	&= \frac{\sinh \left( \beta\mu E \right)}{\beta \mu E}
+\end{align*}
+
+Ahora para construir toda la función de partición simplemente multiplicamos por todos los resultados lo que nos da:
+\begin{align*}
+	Z_1 &= \left( 2\pi m k T \right)^{\frac{3}{2}} \frac{V}{h^3} \frac{4\pi^2 IkT}{h^2} \frac{\sinh \left( \beta\mu E \right)}{\beta \mu E}
+\end{align*}
+
+Para encontrar la función de partición total simplemente es la función de partición de cada molecula y se multiplica por la corrección de Gibbs con lo que nos da:
+\begin{align*}
+	Z_N &= \frac{1}{N!} \left[ Z_1 \right]^N\\
+	Z_N &= \frac{1}{N!} \left[ \left( 2\pi m k T \right)^{\frac{3}{2}} \frac{V}{h^3} \frac{4\pi^2 IkT}{h^2} \frac{\sinh \left( \beta\mu E \right)}{\beta \mu E} \right]^N
+\end{align*}
+
+\section{}
+
+En este caso
+
+\begin{align*}
+	\left< \mu \cos\theta \right> &= \frac{\int_0^{\pi} \mu \cos\theta e^{\beta \mu E \cos\theta} \sin\theta d\theta}{\int_0^{\pi} e^{\beta \mu E\cos\theta}\sin\theta d\theta}\\
+	\int_0^{\pi} e^{\beta \mu E\cos\theta}\sin\theta d\theta &= \frac{\sinh \left( \beta \mu E \right)}{\beta \mu E}\\
+	\int_0^{\pi} \mu \cos\theta e^{\beta \mu E \cos\theta} \sin\theta d\theta &= mu \frac{d}{d \left( \beta \mu E \right)} \int_0^\pi e^{\beta \mu E \cos\theta} \sin\theta d\theta\\
+	&= \frac{d}{d \left( \beta \mu E \right)} \frac{\sinh \left( \beta \mu E \right)}{\beta \mu E}\\
+	&= \frac{\beta\mu E\cosh \left( \beta \mu E \right) - \sinh \left( \beta \mu E \right)}{\left( \beta \mu E^2 \right)}\\
+	\left<\mu \cos\theta \right> &= \mu \frac{\cosh \left( \beta \mu E \right)}{\sinh \left( \beta \mu E \right)} - \frac{1}{\beta \mu E}\\
+	&= \mu L \left( \beta \mu E \right)
+\end{align*}
+
+Donde $L(x) = \coth x - \frac{1}{x}$ es la función de Langevin.
+
+\section{}
+
+Para este caso vamos a usar:
+\begin{align*}
+	P &= \frac{N}{V} \left<\mu \cos\theta \right>\\
+	&= \frac{N}{V} \mu L \left( \beta \mu E \right)\\
+	x \ll 1 &\implies L(x) = \frac{x}{3}\\
+	P &\approx \frac{N}{V} \mu \left( \frac{\beta \mu E}{3} \right)\\
+	&\approx \frac{N}{V} \mu \left( \frac{\beta \mu}{3} \right) E\\
+	\alpha &= \frac{N}{V} \mu \left( \frac{\beta \mu}{3} \right)\\
+	&\approx \alpha E
+\end{align*}
+
+Ahora, para mostar que
+\begin{align*}
+	\alpha &= \lim_{E \to 0} \frac{\partial \frac{N}{V3}\left< \mu \cos\theta \right>}{\partial E}\\
+	\alpha &= \lim_{E \to 0} \frac{N}{V3}\mu\frac{\partial L \left( \beta \mu E \right)}{\partial E}\\
+	\alpha &= \lim_{E \to 0} \frac{N}{V3}\mu \left( \beta \mu \left( 1 - L \left( \beta\mu E \right)^2 \right) \right)\\
+	\alpha &= \frac{N}{V3}\mu \left( \beta \mu \left( 1 - 0^2 \right) \right)\\
+	\alpha &= \frac{N}{V3}\mu \beta \mu\\
+	\alpha &= \frac{N}{V}\mu \left(\frac{\beta \mu}{3}\right)
+\end{align*}
+
+\section{}
+
+Salimos de
+\begin{align*}
+	P &= \frac{N}{V} \mu \left( \frac{\beta \mu}{3} \right) E\\
+	P &= \epsilon_0 \chi_e E\\
+	\chi_e &= \frac{P}{\epsilon_0 E}\\
+	&= \frac{N}{V} \frac{\mu^2}{3\epsilon_0 kT}\\
+	k &= 1 + \chi_e\\
+	&= 1 + \frac{N}{V} \frac{\mu^2}{3\epsilon_0 kT}\\
+	&= 1 + f \left( \frac{1}{T} \right)\square
+\end{align*}
+
+
+\end{document}

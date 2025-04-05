@@ -1,0 +1,426 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Mecanica Cuantica I}\\Tarea 3}
+\author{\huge{Sergio Montoya} \\ \huge{David Pachon}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+% PROBLEMA 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+
+Para iniciar este punto quizas lo mejor que podriamos hacer es revisar las notas de clase. Con lo que nos encontramos con la siguiente expresión en las notas para la semana 2, 3 y 4 en el capitulo 3.8.2: \[
+	\psi_{n \ell m} = \sqrt{\left( \frac{2}{na_0} \right)^3 \frac{\left( n - \ell - 1 \right)!}{2n \left( \left( n + \ell \right)! \right)^3}} \left( \frac{2r}{n a_0} \right)^{\ell} e^{-\frac{r}{n a_0}} L_{n - \ell - 1}^{2\ell + 1} \left( \frac{2r}{n a_0} \right) Y_{\ell}^{m}\left( \theta, \phi \right)
+\]
+
+Por lo tanto, lo que nos queda es esencialmente reemplazar:
+\begin{align*}
+	\psi_{4 3 3} &= \sqrt{\left( \frac{2}{4a_0} \right)^3 \frac{\left( 4 - 3 - 1 \right)!}{2\cdot4 \left( \left( 4 + 3 \right)! \right)^3}} \left( \frac{2r}{4 a_0} \right)^{3} e^{-\frac{r}{4 a_0}} L_{4 - 3 - 1}^{2\cdot3 + 1} \left( \frac{2r}{4 a_0} \right) Y_{3}^{3}\left( \theta, \phi \right)
+\end{align*}
+
+Vamos entonces termino a termino.
+
+\subsection{}
+
+Para la raiz tenemos:
+\begin{align*}
+	\sqrt{\left( \frac{3}{4a_0} \right)^3 \frac{\left( 4 - 3 - 1 \right)!}{2\cdot4 \left( \left( 4 + 3 \right)! \right)^3}} &= \sqrt{\left( \frac{2}{4a_0} \right)^3 \frac{\left( 0 \right)!}{2\cdot4 \left( \left( 7 \right)! \right)^3}}\\
+	&= \sqrt{\left( \frac{1}{2a_0} \right)^3 \frac{1}{2\cdot4 \left( 5040 \right)^3}}\\
+	&= \sqrt{\frac{1}{2^3a_0^3} \frac{1}{2\cdot4\cdot128024064000}}\\
+	&= \frac{1}{\left( 2 a_0\right)^{\frac{3}{2}}} \sqrt{\frac{1}{8 \cdot 2 \cdot 4 \cdot 128024064000}}
+\end{align*}
+
+\subsection{}
+
+Para el caso del siguiente termino la simplificación es realmente simple:
+\begin{align*}
+	\left( \frac{2 r}{4 a_0} \right)^3 &= \left( \frac{1 r}{2 a_0} \right)^3\\
+	&= \frac{r^3}{\left( 2 a_0 \right)^{3}}
+\end{align*}
+
+Ahora si combinamos esto con el punto anterior tenemos:
+\begin{align*}
+	&= \frac{1}{\left( 2 a_0\right)^{\frac{3}{2}}} \sqrt{\frac{1}{8 \cdot 2 \cdot 4 \cdot 128024064000}} \frac{r^3}{\left( 2a_0 \right)^3}\\
+\end{align*}
+
+Podemos meter esto en sympy para encontrar una expresión. El script quedaria algo asi:
+\lstinputlisting[language=Python]{./code/punto_1_a_simplification.py}
+
+Que nos da como resultado:
+
+\[
+	\frac{\sqrt{35} r^{3}}{135475200 a_{0}^{\frac{9}{2}}}
+\]
+
+\subsection{}
+
+Esta expresión no tiene simplificación, va a quedar como
+\begin{align*}
+	e^{- \frac{r}{4 a_0}}
+\end{align*}
+
+\subsection{}
+Para el caso del polinomio de Laguerre revisemo poco a poco
+\begin{align*}
+	L_{4 - 3 - 1}^{2\cdot3 + 1} \left( \frac{2r}{4 a_0} \right) &= L_{0}^{7}\left( \frac{2r}{4 a_0} \right)
+\end{align*}
+
+Ahora, para que esto cumpla la formula de rodrigues veamos que
+\begin{align*}
+	L_{q - p}^{p} &= L_{0}^{7} \iff p = 7 \land q = 7
+\end{align*}
+
+Por lo tanto podemos usar la formula de Rodriguez
+\begin{align*}
+	L_{q - p}^{p} \left( x \right) &= \left( -1 \right)^p \left( \frac{d}{dx} \right)^p L_q \left( x \right)\\
+	L_{q - p}^{p} \left( x \right) &= \left( -1 \right)^p \left( \frac{d}{dx} \right)^p e^x \left( \frac{d}{dx} \right)^q \left( e^{-x} x^q \right)\\
+\end{align*}
+
+Ahora bien, dado que estamos hablando de una derivada septima esto resultaria absurdamente complejo de hacer a mano. Entonces hagamos uso de sympy para que haga el trabajo duro por nosotros:
+
+Si escribimos la formula en sympy nos quedaria:
+\lstinputlisting[language=Python]{./code/punto_1_a_laguerr.py}
+
+Lo que nos da como resultado: \[
+	5040
+\]
+
+Note que este resultado no esta en terminos de (x) por lo tanto, por mucho que en este caso $x = \frac{2r}{4 a_0}$ no nos importa este valor y todo este termino se reduce a $1$
+
+\subsection{}
+
+Ahora lo unico que nos queda es \[
+	Y_{3}^{3}\left( \theta, \phi \right)
+\]
+
+Este responde a la formula:
+\begin{align*}
+	Y_\ell^m \left( \theta, \phi \right) &= \sqrt{\frac{2\ell + 1}{4\pi} \frac{\left( \ell - m \right)!}{\left( \ell + m \right)!}}P_\ell^m \left( \cos\theta \right) e^{im\phi}
+\end{align*}
+
+Donde $P_\ell^m$ es el polinomio asociado de legendre y se expresa como:
+\begin{align*}
+	P_\ell^m \left( x \right) &= \frac{\left( -1 \right)^m}{2^\ell \ell!} \left( 1 - x^2 \right)^{\frac{m}{2}} \frac{d^{\ell + m}}{dx^{\ell + m}} \left[ \left( x^2 - 1 \right)^\ell \right]
+\end{align*}
+
+Una vez mas nos encontramos ante un problema dificil de hacer a mano. Por lo tanto, hagamoslo de nuevo en sympy.
+
+para poner esto en codigo simplemente realizamos un par de funciones:
+\lstinputlisting[language=Python]{./code/punto_1_a_legendre.py}
+
+Lo que nos da como resultado: \[
+	- \frac{\sqrt{35} \left(\sin^{2}{\left(\theta \right)}\right)^{1.5} e^{3 i \phi}}{8 \sqrt{\pi}}
+\] Debo confesar que no comfiamos en primera instancia en este resultado pues parecia bastante arbitrario entonces solo por confirmar revise la siguiente tabla de la wikipedia: \url{https://en.wikipedia.org/wiki/Table_of_spherical_harmonics} la cual nos daba el mismo resultado pero con un formato distinto. Eso me da tranquilidad en mi resultado y aqui pongo la transformación necesaria para que estos dos queden expresados de la misma forma:
+\begin{align*}
+	- \frac{\sqrt{35} \left(\sin^{2}{\left(\theta \right)}\right)^{1.5} e^{3 i \phi}}{8 \sqrt{\pi}} &= - \frac{1}{8}\frac{\sqrt{35}}{\sqrt{\pi}} \left(\sin^{2}{\left(\theta \right)}\right)^{1.5} e^{3 i \phi}\\
+	&= - \frac{1}{8}\sqrt{\frac{35}{\pi}} sin^{2 \cdot 1.5}{\left(\theta \right)} e^{3 i \phi}\\
+	&= - \frac{1}{8}\sqrt{\frac{35}{\pi}} sin^{3}{\left(\theta \right)} e^{3 i \phi}\\
+\end{align*}
+
+Con esto queda tal cual como lo que esperabamos. Ahora bien, juntando absolutamente todo lo que hicimos antes esto nos queda como:
+\begin{align*}
+	\psi_{4 3 3} &= \frac{\sqrt{35} r^{3}}{135475200 a_{0}^{\frac{9}{2}}} e^{- \frac{r}{4 a_0}} 5040 \left(- \frac{1}{8}\sqrt{\frac{35}{\pi}} sin^{3}{\left(\theta \right)} e^{3 i \phi}\right)\\
+\end{align*}
+
+\section{}
+
+Dado el resultado anterior, lo podemos expresar para nosotros como:
+\begin{align*}
+	\psi_{4 3 3} &= \frac{\sqrt{35} r^{3}}{135475200 a_{0}^{\frac{9}{2}}} e^{- \frac{r}{4 a_0}} 5040 Y_3^3 \\
+\end{align*}
+
+Con esto entonces $\left< r \right>$ nos quedaria como:
+\begin{align*}
+	\left< r \right> &= \int_0^\infty \int_0^{2\pi} \int_0^\pi \psi_{4 3 3}^* r \psi_{4 3 3} r^2 \sin\theta d\theta d\phi dr\\
+	\left< r \right> &= \int_0^\infty \int_0^{2\pi} \int_0^\pi \left| \psi_{4 3 3}\right|^2 r^3 \sin\theta d\theta d\phi dr\\
+	\left< r \right> &= \int_0^\infty \int_0^{2\pi} \int_0^\pi \left| \psi_{4 3 3}\right|^2 r^3 \sin\theta d\theta d\phi dr\\
+	\left< r \right> &= \int_0^\infty \left|\frac{\sqrt{35} r^{3}}{135475200 a_{0}^{\frac{9}{2}}} e^{- \frac{r}{4 a_0}} 5040\right|^2 r^3 dr \int_0^{2\pi} \int_0^\pi \left| Y_{3}^3 \right|^2 \sin\theta d\theta d\phi\\
+	\int_0^{2\pi} \int_0^\pi \left| Y_{3}^3 \right|^2 \sin\theta d\theta d\phi &= 1\\
+	\left< r \right> &= \int_0^\infty \left|\frac{\sqrt{35} r^{3}}{135475200 a_{0}^{\frac{9}{2}}} e^{- \frac{r}{4 a_0}} 5040 \right|^2 r^3 dr
+\end{align*}
+
+Podemos poner esta integral en sympy con el siguiente script:
+\lstinputlisting[language=Python]{./code/punto_1_b.py}
+
+que nos da como resultado \[
+	18 a_{0}
+\]
+
+\section{}
+
+Ahora para este caso dado que nos siguen pidiendo los rangos angulares completos se sigue cumpliendo que: \[
+	\int_0^{2\pi} \int_0^\pi \left| Y_{3}^3 \right|^2 \sin\theta d\theta d\phi = 1\\
+\]
+
+Por lo tanto este problema queda reducido a:
+\begin{align*}
+	P &= \int_{\frac{a_0}{2}}^{a_0} \left|\frac{\sqrt{35} r^{3}}{135475200 a_{0}^{\frac{9}{2}}} e^{- \frac{r}{4 a_0}} 5040 \right|^2 r^2 dr
+\end{align*}
+
+Me saltare el desarrollo de esto pues es esencialmente lo mismo que el de la seccion anterior solo cambiando los limites de la integral y no teniendo un $r$ que es la del operador $r$.
+
+Ahora con esto entonces metamoslo en sympy de manera esencialmente equivalente al punto anterior con el siguiente script:
+\lstinputlisting[language=Python]{./code/punto_1_c.py}
+
+y esto nos da como resultado:
+\begin{align*}
+	P &= - \frac{17017969}{10321920 e^{\frac{1}{2}}} + \frac{3392923553}{2642411520 e^{\frac{1}{4}}}\\
+	P &\approx 3.42709384773915 \cdot 10^{-9}
+\end{align*}
+
+
+% PROBLEMA 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+
+% PROBLEMA 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+
+En este caso
+\begin{align*}
+	1 &= \int_0^{\infty} \int_0^\pi \int_0^{2\pi} \left| \psi_{2, 1, -1} \right|^2 r^2 \sin\theta d\phi d\theta dr\\
+	1 &= \int_0^{\infty} \int_0^\pi \int_0^{2\pi} \left| N e^{-\frac{r}{2 a_0}} Y_1^{-1}\left( \theta, \phi \right) \right|^2 r^2 \sin\theta d\phi d\theta dr\\
+	1 &= |N|^2 \int_0^{\infty} \int_0^\pi \int_0^{2\pi} \left| e^{-\frac{r}{2 a_0}} Y_1^{-1}\left( \theta, \phi \right) \right|^2 r^2 \sin\theta d\phi d\theta dr\\
+	1 &= |N|^2 \int_0^{\infty} e^{-\frac{r}{2 a_0}} r^2  dr \int_0^\pi \int_0^{2\pi} \left|  Y_1^{-1}\left( \theta, \phi \right) \right|^2 \sin\theta d\phi d\theta
+\end{align*}
+
+Con esto lo podemos partir en factora radial y angular lo que nos permitiria acomodar como:
+\subsection{Factor Radial}
+\begin{align*}
+	\int_0^\infty \left| e^{- \frac{r}{2 a_0}} \right|^2 r^2dr &= \int_0^{\infty} e^{- \frac{r}{a_0}}r^2 dr
+\end{align*}
+
+Esta integral la podemos hacer con sympy como:
+\lstinputlisting[language=Python]{./code/punto_3_a_radial.py}
+
+lo que nos da como resultado: \[
+	2 a_{0}^{3}
+\]
+
+\subsection{Factor Angular}
+
+En este caso, tambien podemos hacer esta integral con sympy como:
+\lstinputlisting[language=Python]{./code/punto_3_a_angular.py}
+
+Lo que nos da como resultado \[
+	1
+\]
+
+Con todo esto podemos rebovinar y encontrar el valor de $N$. Teniamos:
+\begin{align*}
+	1 &= |N|^2 \int_0^{\infty} e^{-\frac{r}{2 a_0}} r^2  dr \int_0^\pi \int_0^{2\pi} \left|  Y_1^{-1}\left( \theta, \phi \right) \right|^2 \sin\theta d\phi d\theta\\
+	1 &= |N|^2 \left( 2a_0^3 \right) \left( 1 \right)\\
+	|N|^2 &= \frac{1}{2a_0^3}\\
+	|N| &= \frac{1}{\sqrt{2a_0^3}}
+\end{align*}
+
+Nos quedamos con $N$ positivo y con eso podemos concluir que:
+\begin{align*}
+	N &= \frac{1}{\sqrt{2a_0^3}}
+\end{align*}
+
+\section{}
+
+Dado que $|\phi|^2$ es la probabilidad este ejercicio se puede plantear como:
+\begin{align*}
+	P =  \int_{0}^{a_0} N^2 r^2 e^{-\frac{r}{a_0}} \int_0^{\frac{\pi}{3}}\int_0^{\frac{\pi}{4}} Y_1^{-1} d\theta d\phi
+\end{align*}
+
+Tomando en cuenta esto podemos trabajar separando cada una de esas integrales y siendo honesto simplemente alterar ligeramente nuestros scripts anteriores para encontrar los resultados:
+\subsection{Parte Radial}
+
+En este caso lo unico que debemos hacer es multiplicar nuestra expresión original por $\frac{1}{2a_0^3}$ y cambiar los limites de integración lo que nos deja con el siguiente script
+\lstinputlisting[language=Python]{./code/punto_3_b_radial.py}
+
+lo que nos da como resultado: \[
+	1 - \frac{5}{2 e}
+\]
+
+\subsection{Parte Angular}
+
+En este caso, la unica diferencia real que tenemos que poner con el script para la sección anterior es cambiar los limites de la integral.
+\lstinputlisting[language=Python]{./code/punto_3_b_angular.py}
+
+lo que nos da como resultado: \[
+	\frac{1}{12} - \frac{5 \sqrt{2}}{96}
+\]
+
+Ahora, volvemos a tener simplemente la relación:
+\begin{align*}
+	P &= \left( 1 - \frac{5}{2 e} \right)\left( \frac{1}{12} - \frac{5 \sqrt{2}}{96} \right)\\
+	&= \left( \frac{2e - 5}{2e} \right) \left( \frac{8 - 5\sqrt{2} }{96} \right)\\
+	&= \frac{\left(2 e - 5\right) \left(8 - 5 \sqrt{2}\right)}{192 e}
+\end{align*}
+
+Este resultado se puede hacer a mano (como se ve aqui) pero para comprobar mis resultados lo pasamos por un script super facil de sympy que es el siguiente:
+\lstinputlisting[language=Python]{./code/punto_3_b_total.py}
+
+y nos dio como resultado \[
+	\frac{\left(-5 + 2 e\right) \left(8.0 - 5 \sqrt{2}\right)}{192 e}
+\]
+
+Que es el mismo resultado.
+
+\section{}
+
+En este caso, debemos tomar en consideración que estos operadores estan definidos en cordenadas cartesianas. Por lo tanto, debemos traducirlos primero a coordenadas polares que son las que nos interesan en este caso:
+\begin{align*}
+	x &= r\sin\theta\cos\phi\\
+	y &= r\sin\theta\sin\phi
+\end{align*}
+
+Ahora con esto partamos de cada uno de esos casos:
+\subsection{x}
+
+En este caso nos interesa la integral:
+\begin{align*}
+	\int \psi^* \left( r, \theta, \phi \right)x \psi \left( r, \theta, \phi \right) d^3r &= \int_0^\infty \int_0^\pi \int_0^{2\pi} x \left| \psi \right|^2 r^2 \sin\theta d\phi d\theta dr\\
+	&= \int_0^\infty \int_0^\pi \int_0^{2\pi} r\sin\theta\cos\phi \left| \psi \right|^2 r^2 \sin\theta d\phi d\theta dr\\
+	&= \int_0^\infty \int_0^\pi \int_0^{2\pi} \left| \psi \right|^2 r^3 \sin^2\theta\cos\phi d\phi d\theta dr\\
+	&= \int_0^\infty N^2 r^3 e^{-\frac{r}{a_0}} dr \int_0^\pi \int_0^{2\pi} \left| Y_1^{-1} \right|^2\sin^2\theta\cos\phi d\phi d\theta\\
+\end{align*}
+
+Esto lo podemos poner en sympy para encontrar los resultados
+
+\subsubsection{Parte Radial}
+
+Podemos escribir este script como
+\lstinputlisting[language=Python]{./code/punto_3_c_radial.py}
+
+Lo que nos da \[
+	3 a_{0}
+\]
+
+\subsubsection{Parte Angular}
+
+Podemos escribir esta integral en sympy con:
+\lstinputlisting[language=Python]{./code/punto_3_c_angular.py}
+
+lo que nos da como resultado: \[
+	0
+\]
+
+Ahora bien, retomando nuestros valores esto es:
+\begin{align*}
+	\left< x \right> &= \int_0^\infty N^2 r^3 e^{-\frac{r}{a_0}} dr \int_0^\pi \int_0^{2\pi} \left| Y_1^{-1} \right|^2\sin^2\theta\cos\phi d\phi d\theta\\
+	&= 3 a_0 \left( 0 \right)\\
+	&= 0
+\end{align*}
+
+\subsection{Y}
+
+Para este caso nos interesa la integral:
+\begin{align*}
+	\int \psi^* \left( r, \theta, \phi \right)y \psi \left( r, \theta, \phi \right) d^3r &= \int_0^\infty \int_0^\pi \int_0^{2\pi} y \left| \psi \right|^2 r^2 \sin\theta d\phi d\theta dr\\
+	&= \int_0^\infty \int_0^\pi \int_0^{2\pi} r\sin\theta\sin\phi \left| \psi \right|^2 r^2 \sin\theta d\phi d\theta dr\\
+	&= \int_0^\infty \int_0^\pi \int_0^{2\pi} \left| \psi \right|^2 r^3 \sin^2\theta\sin\phi d\phi d\theta dr\\
+	&= \int_0^\infty N^2 r^3 e^{-\frac{r}{a_0}} dr \int_0^\pi \int_0^{2\pi} \left| Y_1^{-1} \right|^2\sin^2\theta\sin\phi d\phi d\theta\\
+\end{align*}
+
+Con estas integrales entonces podemos pasarlas por sympy
+\subsubsection{Parte Radial}
+En este caso podemos escribir la integral igual que antes y por lo tanto nos da la misma respuesta que es \[
+	3 a_0
+\]
+
+\subsubsection{Parte Angular}
+
+En este nuevo caso el cambio es simplemente $cos$ por $sin$ en el script anterior como:
+\lstinputlisting[language=Python]{./code/punto_3_c_angular_x.py}
+
+lo que nos da como resultado \[
+	0
+\]
+
+Por lo tanto el resultado es el mismo que en anterior como:
+\begin{align*}
+	\left< x \right> &= \int_0^\infty N^2 r^3 e^{-\frac{r}{a_0}} dr \int_0^\pi \int_0^{2\pi} \left| Y_1^{-1} \right|^2\sin^2\theta\sin\phi d\phi d\theta\\
+	&= \left( 3 a_0 \right) \left( 0 \right)\\
+	&= 0
+\end{align*}
+
+
+
+% PROBLEMA 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+Este problema podemos simplemente aplicar el operador como
+
+\begin{align*}
+	L_+ &= \hbar e^{i\phi}\left( \frac{\partial}{\partial \theta} + i\cot\theta \frac{\partial}{\partial \phi}\right)\\
+	Y_2^1 &= - \sqrt{\frac{15}{8\pi}}\sin\theta\cos\theta e^{i\phi}\\
+	L_+ Y_2^1 &= \hbar e^{i\phi}\left( \frac{\partial Y_2^1}{\partial \theta} + i\cot\theta \frac{\partial Y_2^1}{\partial \phi} \right)\\
+\end{align*}
+
+Ahora, miremos cada una de estas derivadas parciales por aparte
+\begin{align*}
+	\frac{\partial Y_2^1}{\partial \theta} &= \frac{\partial}{\partial \theta} \left( -\sqrt{\frac{15}{8\pi}} \sin\theta\cos\theta e^{i\phi}\right)\\
+	&= -\sqrt{\frac{15}{8\pi}}e^{i\phi} \frac{\partial}{\partial \theta}\left( \sin\theta\cos\theta \right)\\
+	&= -\sqrt{\frac{15}{8\pi}}e^{i\phi} \left( \frac{\partial \sin\theta}{\partial \theta}\cos\theta + \sin\theta\frac{\partial\cos\theta}{\partial \theta} \right)\\
+	&= -\sqrt{\frac{15}{8\pi}}e^{i\phi} \left( \cos^2\theta - \sin^2\theta \right)\\
+	&= \sqrt{\frac{15}{8\pi}}e^{i\phi}\left( \sin^2\theta - \cos^2\theta \right)\\
+\end{align*}
+Y para el otro caso 
+\begin{align*}
+	\frac{\partial Y_2^1}{\partial \phi} &= \frac{\partial}{\partial \phi} \left( - \sqrt{\frac{15}{8\pi}}\sin\theta\cos\theta e^{i\phi}  \right)\\
+	&= -\sqrt{\frac{15}{8\pi}}\sin\theta\cos\theta \left( \frac{\partial e^{i\phi}}{\partial \phi} \right)\\
+	&= -\sqrt{\frac{15}{8\pi}}\sin\theta\cos\theta i e^{i\phi}\\
+\end{align*}
+
+\begin{align*}
+	i\cot\theta \frac{\partial Y_2^1}{\partial \phi} &= i \frac{\cos\theta}{\sin\theta}\left( -\sqrt{\frac{15}{8\pi}}\sin\theta\cos\theta i e^{i\phi} \right)\\
+	&= \sqrt{\frac{15}{8\pi}} \cos^2\theta e^{i\phi}
+\end{align*}
+
+Con esto podemos retornar a nuestra expresión original con lo que tenemos
+
+\begin{align*}
+	L_+ Y_2^1 &= \hbar e^{i\phi} \left( \sqrt{\frac{15}{8\pi}}e^{i\phi}\left( \sin^2\theta - \cos^2\theta \right) +\sqrt{\frac{15}{8\pi}} \cos^2\theta e^{i\phi}  \right)\\
+	&= \hbar e^{i\phi} \left( \sqrt{\frac{15}{8\pi}}e^{i\phi} \left( sin^2\theta - \cos^2\theta + \cos^2\theta \right) \right)\\
+	&= \sqrt{\frac{15}{8\pi}}\hbar e^{2i\phi}  sin^2\theta
+\end{align*}
+
+ahora, tomando en cuenta que
+\begin{align*}
+	Y_2^2 &= \sqrt{\frac{15}{32\pi}}\sin^2\theta e^{2i\phi}
+\end{align*}
+
+Ahora bien, note que:
+\begin{align*}
+	\sqrt{\frac{15}{18\pi}} &= \sqrt{\frac{15}{18\pi} \frac{4}{4}}\\
+	&= 2 \sqrt{\frac{15}{32\pi}}
+\end{align*}
+
+Lo que entonces nos deja con la expresión como:
+\begin{align*}
+	L_+ Y_2^1 &= \sqrt{\frac{15}{8\pi}}\hbar e^{2i\phi}  sin^2\theta\\
+	&= 2 \sqrt{\frac{15}{32\pi}}\hbar e^{2i\phi}  sin^2\theta\\
+	&= 2\hbar \sqrt{\frac{15}{32\pi}}e^{2i\phi}  sin^2\theta
+\end{align*}
+
+Que note que esto es $Y_2^2$ con lo que este termino seria:
+\begin{align*}
+	L_+ Y_2^1 &= 2\hbar Y_2^2
+\end{align*}
+
+\chapter{Notas}
+
+Durante el desarrollo de este trabajo se hizo uso de multiples scripts de sympy. Intentamos que cada uno de estos fuera autoconclusivo de modo que no se tenia que ver ningun otro para poder llegar al resultado esperado. Llegando incluso al punto de copiar las mismas funciones de un archivo a otro. Tambien creemos que se hicieron lo suficientemente facil como para que con solo mirarlos se pueda entender lo que hace. Sin embargo, entendemos que puede resultar interesante revisar 1 a 1 cada uno de esotos scripts para confirmar sus resultados por lo que si lo desea puede verificar cada uno de ellos en el siguiente repositorio: \url{https://github.com/S1e7J/Cuantica_Tarea_3}. Muchas gracias por su atención
+
+
+\end{document}
