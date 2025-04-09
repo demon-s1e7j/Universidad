@@ -21,41 +21,129 @@
 
 \chapter{Punto 2}
 
-\section{}
-
 \dfn{Fuerza de Lorentz}{
 	\[ \vec{F} = q \left( \vec{E} + \vec{v} \times \vec{B} \right) \]
 }
 
-Miremos entonces:
+\section{}
+
 \begin{align*}
-	\vec{E} &= E\hat{x}\\
-	\vec{B} &= B\hat{y}\\
-	\vec{v} &= v_x \hat{x}+ v_y \hat{y}+ v_z \hat{z} \\
+	\vec{v} &= 0 \hat{x} + \dot{y} \hat{y} + z \hat{z}\\
+	\vec{B} &= B_0 \hat{x} + 0 \hat{y} + 0 \hat{z}\\
 	\vec{v} \times \vec{B} &= \begin{bmatrix}
-		\hat{x} & \hat{y} & \hat{z} \\
-		v_x & v_y & v_z \\
-		0 & B & 0
+		\hat{x} & \hat{y} & \hat{z}\\
+		0 & \dot{y} & \dot{z} \\
+		B_0 & 0 & 0
 	\end{bmatrix}\\
-	&= \hat{x} \left( v_y 0 - v_z B \right) - \hat{y} \left( v_x 0 - v_z 0 \right) + \hat{z} \left( v_x B - v_y 0 \right) \\
-	&=  - v_z B \hat{x}+  v_x B \hat{z}\\
-	\vec{F} &= q \left( E\hat{x} - v_z B \hat{x} + v_x B \hat{z} \right) \\
-	\vec{F} &= q \left( \left(E - v_z B\right) \hat{x} + v_x B \hat{z} \right) \\
+	&= 0 \hat{x} + \dot{z}B_0 \hat{y} - \dot{y}B_0 \hat{z}\\
+	&= \dot{z}B_0 \hat{y} - \dot{y}B_0 \hat{z}\\
+	\vec{F} &= Q \left( \vec{E} + \vec{v} \times \vec{B} \right)\\
+	\vec{F} &= Q \left( E_0 \hat{z} + \dot{z}B_0 \hat{y} - \dot{y}B_0 \hat{z} \right)\\
+	\vec{F_x} &= 0\\
+	\vec{F_y} &= Q \dot{z}B_0 \hat{y}\\
+	\vec{F_z} &= Q \left( E_0 - \dot{y}B_0 \right) \hat{z}\\
+	m \ddot{x} &= 0\\
+	m \ddot{y} &= Q \dot{z}B_0 \hat{y}\\
+	m \ddot{z} &= Q \left( E_0 - \dot{y}B_0 \right) \hat{z}
 \end{align*}
 
-Con esta fuerza entonces podemos calcular con la ecuación de movimiento:
+Con esto entonces tenemos:
 \begin{align*}
-	m\vec{\dot{v_x}} &= q \left(E - v_z B\right) \hat{x} \\
-	m\vec{\dot{v_y}} &= q \left( 0 \right) \hat{y} \\
-	\implies \vec{\dot{v_y}} &= 0 \\
-	m\vec{\dot{v_z}} &= q \left( v_x B \right) \hat{z} \\
+	\ddot{z} + \frac{Q B_0}{m}\dot{y} - \frac{Q E_0}{m} &= 0\\
+	\omega &= \frac{Q B_0}{m}\\
+	\ddot{z} + \omega \dot{y} - \omega \frac{E_0}{B_0} &= 0\\
+	\ddot{z} + \omega \left(\dot{y} - \frac{E_0}{B_0} \right) &= 0\\
 \end{align*}
 
-Dado que la particula sale del reposo, entonces $\vec{v_y} = 0$
+Y tambien:
+\begin{align*}
+	\ddot{y} - \frac{Q B_0}{m} \dot{z} &= 0\\
+	\omega &= \frac{Q B_0}{m}\\
+	\ddot{y} - \omega \dot{z} &= 0\\
+	\ddot{y} &= \omega \dot{z}\\
+\end{align*}
+
+Juntando todo:
+\begin{align*}
+	\dddot{y} &= \omega \ddot{z} \\
+	\iff \ddot{z} &= \frac{\dddot{y}}{\omega}\\
+	\ddot{z} &= \frac{\dddot{y}}{\omega}\\
+	&= \omega \left( \frac{E_0}{B_0} - \dot{y} \right)\\
+	\dddot{y} &= \omega^2 \left( \frac{E_0}{B_0} - \dot{y} \right)
+\end{align*}
+
+Con esto entonces:
+\begin{align*}
+	y(t) &= C_1 \cos \left(\omega t \right) + C_2 \sin\left( \omega t \right) + \frac{E_0}{B_0} t + C_3\\
+	z(t) &= C_2 \cos \left(\omega t \right) - C_1 \sin\left( \omega t \right) + \frac{E_0}{B_0} + C_3\\
+\end{align*}
+
+Ahora lo que nos hace falta es encontrar los valores dadas las condiciones iniciales.
+\begin{align*}
+	\dot{y} (0) &= \dot{z} (0) = 0\\
+	y(0) &= z(0) = 0
+\end{align*}
+
+Con esto entonces:
+\begin{align*}
+	y(0) &= C_1 \cos \left(\omega 0 \right) + C_2 \sin\left( \omega 0 \right) + \frac{E_0}{B_0} 0 + C_3\\
+	y(0) &= C_1 + C_3\\
+	z(0) &= C_2 \cos \left(\omega 0 \right) - C_1 \sin\left( \omega 0 \right) + C_4\\
+	z(0) &= C_2 + C_4\\
+	C_1 + C_3 &= C_2 + C_4\\
+	\dot{y}(t) &= - C_1\omega \sin \left(\omega t \right) + C_2 \omega\cos\left( \omega t \right) + \frac{E_0}{B_0}\\
+	\dot{z}(t) &= - C_2\omega \sin \left(\omega t \right) - C_1 \omega\cos\left( \omega t \right)\\
+	C_2 \omega + \frac{E_0}{B_0} &= - C_1 \omega\\
+	\leftrightarrow C_2 &= \frac{1}{\omega} \left( - \frac{E_0}{B_0} - C_1 \omega\right)\\
+	&= - \frac{E_0}{B_0 \omega} - C_1\\
+\end{align*}
+
+Con esto entonces:
+\begin{align*}
+	C_1 + C_3 &= 0 \iff C_1 = - C_3\\
+	C_2 \omega + \frac{E_0}{B_0} &= 0 \iff C_2 = - \frac{E_0}{\omega B_0}\\
+	C_2 + C_4 &= 0\\
+	C_2 &= - C_4\\
+	C_4 &= \frac{E_0}{\omega B_0}
+\end{align*}
+
+Con lo cual finalmente queda:
+\begin{align*}
+	y(t) &= - \frac{E_0}{\omega B_0} \sin \left(\omega t\right) + \frac{E_0}{B_0} t\\
+	&= \frac{E_0}{B_0 \omega} \left( \omega t - \sin \left(\omega t \right)\right)\\
+	z(t) &= - \frac{E_0}{\omega B_0} \cos\left(\omega t\right) + \frac{E_0}{\omega B_0}\\
+	z(t) &= \frac{E_0}{\omega B_0} \left( 1 - \cos\left(\omega t\right)\right)
+\end{align*}
 
 \section{}
 
+Ahora con esto para encontrar el Radio tomemos
+\begin{align*}
+	R &= \frac{E_0}{\omega B_0}\\
+	y(t) &= \frac{E_0}{B_0 \omega} \left(\omega t - \sin\left(\omega t\right)\right)\\
+	- \sin \left(\omega t\right) &= \frac{B_0 \omega}{E_0} \left(y(t) - \frac{E_0 t}{B_0}\right)\\
+	Z(t) &= \frac{E_0}{\omega B_0} \left(1 - \cos\left(\omega t \right)\right)\\
+	- \cos\left(\omega t\right) &= \frac{\omega B_0}{E_0}\left(z(t) - \frac{E_0}{\omega B_0}\right)\\
+	- \cos\left(\omega t\right) &= \frac{1}{R} \left( z(t) - R\right)\\
+	\cos^2\left(\omega t\right) + \sin^2\left(\omega t\right) &= 1\\
+	a^2 &= -a^2\\
+	\sin^2\left(\omega t\right) + \cos^2\left(\omega t\right) &= \left(- \sin\left(\omega t\right)\right)^2 + \left(- \cos\left(\omega t\right)\right)^2\\
+	\left(\frac{1}{R^2} \left(y(t) - R \omega t\right)^2\right) + \left(\frac{1}{R^2} \left(z(t) - R \right)^2\right) &= 1\\
+	\left(y(t) - R\omega t\right)^2 + \left(z(t) - R\right)^2 &= R^2
+\end{align*}
+
+Con esto encontramos un circulo con radio $R$
+
 \section{}
+
+Este problema es en esencia el ejemplo $5.2$ de la cuarta edición del Griffiths. Por lo tanto reutilizare su dibujo para no complicarme con ello.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.95\textwidth]{img/book_5_7.png}
+	\end{center}
+	\caption{Dibujo del movimiento.}\label{fig:book_5_7}
+\end{figure}
 
 \chapter{Punto 3}
 
@@ -66,6 +154,20 @@ Dado que la particula sale del reposo, entonces $\vec{v_y} = 0$
 \chapter{Punto 9}
 
 \chapter{Punto 11}
+
+Para este fonografo dado que rota a una velocidad angular $\omega$ tenemos
+\begin{align*}
+	I &= \sigma v dr\\
+	&= \sigma \omega r dr
+\end{align*}
+
+Y podemos ver esto como la suma infinitesimal de pequeños arcos como:
+\begin{align*}
+	\mu &= \int_0^R \pi r^2 \sigma \omega r dr\\
+	\mu &= \pi \sigma \omega \int_0^R r^3 dr\\
+	\mu &= \pi \sigma \omega \left[ \frac{r^4}{4} \right]_0^R\\
+	\mu &= \pi \sigma \omega \frac{R^4}{4} \square
+\end{align*}
 
 \chapter{Punto 12}
 

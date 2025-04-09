@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.3.27)  8 APR 2025 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2026/dev/Arch Linux) (preloaded format=pdflatex 2025.3.27)  8 APR 2025 22:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1478,66 +1478,84 @@ l.21
 Chapter 1.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 28.
+(Font)              size <5> substituted on input line 26.
 
 
 
 [2
 
 {/usr/share/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}]
-Chapter 2.
+
+[3]
+<img/book_5_7.png, id=123, 236.38312pt x 118.94438pt>
+File: img/book_5_7.png Graphic file (type png)
+<use img/book_5_7.png>
+Package pdftex.def Info: img/book_5_7.png  used on input line 143.
+(pdftex.def)             Requested size: 466.86188pt x 234.92435pt.
 
 
-[3
-
-]
-Chapter 3.
-
-
-[4
-
-]
-Chapter 4.
-
+[4]
 
 [5
-
-]
-Chapter 5.
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.148 \chapter
+              {Punto 3} <./img/book_5_7.png (PNG copy)>]
+Chapter 2.
 
 
 [6
 
 ]
-Chapter 6.
+Chapter 3.
 
 
 [7
 
 ]
-Chapter 7.
-<img/book_5_21.png, id=138, 167.12437pt x 182.18062pt>
-File: img/book_5_21.png Graphic file (type png)
-<use img/book_5_21.png>
-Package pdftex.def Info: img/book_5_21.png  used on input line 84.
-(pdftex.def)             Requested size: 122.85878pt x 133.93031pt.
+Chapter 4.
 
 
 [8
+
+]
+Chapter 5.
+
+
+[9
+
+]
+Chapter 6.
+
+
+[10
+
+]
+Chapter 7.
+<img/book_5_21.png, id=155, 167.12437pt x 182.18062pt>
+File: img/book_5_21.png Graphic file (type png)
+<use img/book_5_21.png>
+Package pdftex.def Info: img/book_5_21.png  used on input line 186.
+(pdftex.def)             Requested size: 122.85878pt x 133.93031pt.
+
+
+[11
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.1}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.101 \end{align*}
+l.203 \end{align*}
                    <./img/book_5_21.png (PNG copy)>]
 
-[9] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+[12] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2024/09/23 1.10c listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 128.
+nput line 230.
 
 (./code/punto_12_b.py
 Overfull \hbox (6.56993pt too wide) in paragraph at lines 25--26
@@ -1546,14 +1564,14 @@ Overfull \hbox (6.56993pt too wide) in paragraph at lines 25--26
  []
 
 )
-<img/punto_12_b.png, id=154, 578.16pt x 361.35pt>
+<img/punto_12_b.png, id=170, 578.16pt x 361.35pt>
 File: img/punto_12_b.png Graphic file (type png)
 <use img/punto_12_b.png>
-Package pdftex.def Info: img/punto_12_b.png  used on input line 134.
+Package pdftex.def Info: img/punto_12_b.png  used on input line 236.
 (pdftex.def)             Requested size: 368.57634pt x 230.35895pt.
 
 
-[10{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+[13{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 (./code/punto_12_c.py
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
 6.
@@ -1564,7 +1582,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 16.
 
 
-[11
+[14
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.2}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
@@ -1572,26 +1590,26 @@ has been already used, duplicate ignored
 l.28 print(
            "\n") <./img/punto_12_b.png>]) (./code/punto_12_e.py
 
-[12])
-<img/punto_12_e.png, id=236, 578.16pt x 361.35pt>
+[15])
+<img/punto_12_e.png, id=251, 578.16pt x 361.35pt>
 File: img/punto_12_e.png Graphic file (type png)
 <use img/punto_12_e.png>
-Package pdftex.def Info: img/punto_12_e.png  used on input line 191.
+Package pdftex.def Info: img/punto_12_e.png  used on input line 293.
 (pdftex.def)             Requested size: 466.86188pt x 291.78764pt.
 
 
-[13]
+[16]
 
-[14
+[17
 pdfTeX warning (ext4): destination with the same identifier (name{figure.7.3}) 
 has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.216 P
+l.318 P
        ara mostrar esto tambien lo hice con sympy y obtuve los mismos result...
  <./img/punto_12_e.png>] (./code/punto_12_f.py)
 
-[15] (./template.aux)
+[18] (./template.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1606,11 +1624,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 37703 strings out of 475171
- 741253 string characters out of 5767095
- 1417184 words of memory out of 5000000
- 59861 multiletter control sequences out of 15000+600000
- 587520 words of font info for 117 fonts, out of 8000000 for 9000
+ 37712 strings out of 475171
+ 741378 string characters out of 5767095
+ 1417186 words of memory out of 5000000
+ 59865 multiletter control sequences out of 15000+600000
+ 587886 words of font info for 118 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  103i,15n,108p,545b,2083s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb></usr/share/texmf
@@ -1624,11 +1642,12 @@ msfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
 are/texmf-dist/fonts/type1/public/newpx/pxmiaX.pfb></usr/share/texmf-dist/fonts
 /type1/public/newpx/pxsys.pfb></usr/share/texmf-dist/fonts/type1/public/cm-supe
-r/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/newtx/txexs.pfb>
-Output written on template.pdf (16 pages, 250404 bytes).
+r/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/
+share/texmf-dist/fonts/type1/public/newtx/txsym.pfb>
+Output written on template.pdf (19 pages, 274044 bytes).
 PDF statistics:
- 454 PDF objects out of 1000 (max. 8388607)
- 356 compressed objects within 4 object streams
- 153 named destinations out of 1000 (max. 500000)
- 314 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 475 PDF objects out of 1000 (max. 8388607)
+ 371 compressed objects within 4 object streams
+ 157 named destinations out of 1000 (max. 500000)
+ 319 words of extra memory for PDF output out of 10000 (max. 10000000)
 
