@@ -5,6 +5,8 @@
 \input{letterfonts}
 
 \usepackage{float}
+\usetikzlibrary{decorations.markings, calc}
+\usetikzlibrary{arrows.meta}
 
 \title{\Huge{Electro 1}\\Tarea 4}
 \author{\huge{Sergio Montoya Ramirez}}
@@ -138,14 +140,223 @@ Con esto encontramos un circulo con radio $R$
 
 Este problema es en esencia el ejemplo $5.2$ de la cuarta edición del Griffiths. Por lo tanto reutilizare su dibujo para no complicarme con ello.
 
-\begin{figure}
+\begin{figure}[H]
 	\begin{center}
-		\includegraphics[width=0.95\textwidth]{img/book_5_7.png}
+		\includegraphics[width=0.45\textwidth]{img/book_5_7.png}
 	\end{center}
 	\caption{Dibujo del movimiento.}\label{fig:book_5_7}
 \end{figure}
 
 \chapter{Punto 3}
+
+\section{}
+
+El campo de una corriente es:
+\dfn{Biot-Savart}{
+	\[
+		\vec{B}\left(\vec{r}\right) = \frac{\mu_0}{4\pi} \int \frac{\vec{I}\times \hat{r}}{r^2}dl' = \frac{\mu_0}{4\pi} I \int \frac{d\ell' \times \hat{r}}{r^2}
+	\]
+}
+
+Vamos a tomar entonces este ejercicio como el de una espira cuadrada con lado $2R$
+
+\begin{center}
+	\begin{tikzpicture}[
+    current direction/.style={
+        decoration={
+            markings,
+            mark=at position 0.5 with {\arrow{latex}}
+        },
+        postaction={decorate}
+    },
+    medida/.style={|<->|, red, thick, shorten >=1mm, shorten <=1mm}
+]
+
+\def\R{1.5} % Tamaño base del sistema
+
+% Ejes coordenados
+\draw[->] (-2.5*\R,0) -- (2.5*\R,0) node[right] {$z$};
+\draw[->] (0,-2.5*\R) -- (0,2.5*\R) node[above] {$y$};
+
+% Espira cuadrada con corriente (lado izquierdo en rojo)
+\draw[thick, current direction] (\R,\R) -- (-\R,\R) node[midway, above] {$I$}; % Superior
+\draw[thick, red, current direction] (-\R,\R) -- (-\R,-\R); % Izquierdo (rojo)
+\draw[thick, current direction] (-\R,-\R) -- (\R,-\R); % Inferior
+\draw[thick, current direction] (\R,-\R) -- (\R,\R); % Derecho
+
+% Punto central
+\node[fill=red, circle, inner sep=2pt] at (0,0) {};
+
+% Punto en lado izquierdo (a mitad de altura)
+\coordinate (punto) at (-\R,0.5*\R);
+\fill[red] (punto) circle (2pt);
+
+% Línea entre centro y punto
+\draw[dashed] (0,0) -- (punto);
+
+% Triángulo rectángulo
+\draw[help lines] (0,0) -- (-\R,0) -- (punto); % Lados del triángulo
+\draw[medida] (-\R,0) -- node[right] {$y$} (punto); % Medida vertical
+\draw[medida] (0,0) -- node[below] {$R$} (-\R,0); % Medida horizontal
+
+% Marcas de ángulo recto
+\draw[red] (-\R,0) ++(0.15,0.15) -- ++(-0.15,0) -- ++(0,-0.15);
+
+% Etiqueta distancia
+
+\end{tikzpicture}
+\end{center}
+
+Visto desde arriba y si lo miramos por un lado seria
+\begin{center}
+	\begin{tikzpicture}[scale=0.5]
+  % Eje horizontal (corriente I)
+  \draw[thick, ->] (-2,0) -- (5,0) node[right] {$I$};
+
+  % Elemento de corriente dl'
+  \draw[thick, ->] (3,0) -- (4,0) node[midway, above] {$d\vec{l}'$};
+
+  % Punto P
+  \fill (3,3) circle (3pt) node[above] {$P$};
+
+  % Vector r
+  \draw[thick, ->] (4,0) -- (3,3) node[midway, above right] {$\vec{r}$};
+
+  % Línea vertical desde dl' hasta la altura de P
+  \draw[dashed] (4,0) -- (4,3);
+
+  % Ángulo theta
+  \draw (4,3) -- (3.8,3) arc (90:135:0.2) node[midway, left] {$\theta$};
+
+  % Ángulo alpha
+  \draw (4,0) -- (4.2,0) arc (0:45:0.2) node[midway, right] {$\alpha$};
+
+  % Distancia r
+  \draw[dashed] (3,3) -- (3,0) node[midway, left] {$r$};
+
+  % Distancia l'
+  \draw[thick, -] (0,-0.5) -- (4,-0.5);
+  \draw[thick, -|] (0,-0.7) -- (0,-0.3);
+  \draw[thick, |-] (4,-0.7) -- (4,-0.3);
+  \node[below] at (2,-0.5) {$l'$};
+
+\end{tikzpicture}
+\end{center}
+
+En estos diagramas se ve que $d\ell' \times \hat{r}$ apunta hacia afuera y tiene magnitud \[
+	\left|dl'\right|\left|\hat{r}\right| \sin\alpha = d\ell' \cos\theta 
+\]
+
+Ademas, podemos notar que:
+\begin{align*}
+	\tan\theta &= \frac{\ell'}{R} \iff \ell' = \tan\theta R\\
+	\frac{d\ell'}{d\theta} &= R\frac{1}{\cos^2\theta}\\
+	d\ell' &= \frac{R}{\cos^2\theta} d\theta\\
+	\cos\theta &= \frac{R}{\left|\vec{r}\right|} \iff R = \left|\vec{r}\right| \cos\theta\\
+	R &= r \cos\theta\\
+	r &= \frac{R}{\cos\theta}\\
+	\frac{1}{r^2} = \frac{\cos^2\theta}{R^2}\\
+\end{align*}
+
+Con esto
+\begin{align*}
+	\left|\vec{B}\left(\vec{r}\right)\right| &= \frac{\mu_0}{4\pi} \int \frac{\vec{I}\times \hat{r}}{r^2}dl' = \frac{\mu_0}{4\pi} I \int \frac{d\ell' \times \hat{r}}{r^2}\\
+	&= \frac{\mu_0 I}{4\pi} \int \frac{d\ell' \cos\theta}{r^2}\\
+	&= \frac{\mu_0 I}{4\pi} \int \frac{\cos^2\theta}{R^2} \cos\theta \frac{R}{\cos^2\theta} d\theta\\
+	&= \frac{\mu_0 I}{4\pi} \int \frac{\cos\theta}{R} d\theta\\
+	&= \frac{\mu_0 I}{4R\pi} \int \cos\theta d\theta\\
+	&= \frac{\mu_0 I}{4R\pi} \left(\sin\theta_2 - \sin\theta_1\right)\\
+\end{align*}
+
+Ahora partimos la espira en cuatro segmentos y nos da:
+\begin{align*}
+	&= \frac{\mu_0 I}{4R\pi} \left(\sin\theta_2 - \sin\theta_1\right)\\
+	&= \frac{\mu_0 I}{4R\pi} \left(\sin\frac{\pi}{4} - \sin-\frac{\pi}{4}\right)\\
+	&= \frac{\mu_0 I}{4R\pi} \left(\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}\right)\\
+	&= \frac{\mu_0 I\sqrt{2}}{4R\pi}
+\end{align*}
+
+Y en total tenemos 4 de estas secciones
+
+\section{}
+
+\begin{center}
+	\begin{tikzpicture}[>=Stealth]
+  % Punto P
+  \coordinate (P) at (0,0);
+  \node at (P) [below left] {$P$};
+
+  % Radios a y b
+  \draw[dashed] (P) -- (2,0) node[midway, below] {$a$};
+  \draw[dashed] (P) -- ({2*cos(60)},{2*sin(60)}) node[midway, above left] {$b$};
+
+  % Arco de radio a
+  \draw[thick, ->] (2,0) arc (0:60:2);
+
+  % Arco de radio b
+  \draw[thick, ->] ({2.5*cos(60)},{2.5*sin(60)}) arc (60:0:2.5);
+
+  % Segmento vertical izquierdo
+  \draw[thick, ->] ({2.5*cos(60)},{2.5*sin(60)}) -- ({2*cos(60)},{2*sin(60)}) node[midway, left] {$I$};
+
+  % Segmento horizontal derecho
+  \draw[thick, ->] (2.5,0) -- (2,0) node[midway, below] {$I$};
+
+  % Segmento vertical superior
+  \draw[thick, ->] (0,{2.5*sin(60)}) -- (0,{2*sin(60)}) node[midway, left] {$I$};
+
+  % Ángulo
+  \draw (0.4,0) arc (0:60:0.4);
+
+\end{tikzpicture}
+\end{center}
+
+Con esto entonces:
+\begin{align*}
+	\left|d\ell' \times \hat{r} \right| &= \left|d\ell'\right|\left|\hat{r}\right| \sin \left(90^{\circ}\right)\\
+	\left| \vec{r}\right| &= r = R\\
+	\left|\vec{B}\right| &= \frac{\mu_0 I}{4\pi} \int_{\frac{\pi}{2}}^0 \frac{\left|\vec{d\ell}'\times \hat{r}\right|}{R^2}\\
+	\left|\vec{B}\right| &= \frac{\mu_0 I}{4\pi R} \int_{\theta_1}^{\theta_2} d\theta
+\end{align*}
+
+Con lo que
+
+\begin{align*}
+	\left|\vec{B}\right| &= \frac{\mu_0 I}{4\pi R} \int_{\theta_1}^{\theta_2} d\theta\\
+	\left|\vec{B}\right| &= \frac{\mu_0 I}{4\pi R} \frac{\pi}{2}\\
+	\left|\vec{B}\right| &= \frac{\mu_0 I}{8 R}\\
+\end{align*}
+
+\section{}
+
+Este punto es basicamente una combinación de los anteriores.
+
+Tenemos para las secciones rectas:
+\begin{align*}
+	\left| \vec{B} \right| &= \frac{\mu_0 I}{4\pi R} \left(\sin\theta_2 - \sin\theta_1\right)
+\end{align*}
+
+Con la regla de la mano derecha vemos que entra el vector
+\begin{align*}
+	\left| \vec{B} \right| &= \frac{\mu_0 I}{4\pi R}\left(\sin\pi - \sin 0\right)\\
+	&= \frac{\mu_0 I}{4\pi R}\\
+\end{align*}
+
+En el caso del semicirculo 
+
+\begin{align*}
+	\left| \vec{B}\right| &= \frac{\mu_0 I}{4\pi R} \int_{\theta_1}^{\theta_2} d\theta\\
+	&= \frac{\mu_0 I}{4 R}\left( \frac{3}{2} - \frac{1}{2}\right)\\
+	&= \frac{\mu I}{4 R}
+\end{align*}
+
+Ahora sumamos todo y nos queda:
+\begin{align*}
+	B &= \frac{\mu_0 I}{4\pi R} + \frac{\mu_0 I}{4\pi R} + \frac{\mu I}{4 R}\\
+	&= \frac{\mu_0 I}{4R} \left(\frac{2}{\pi} + 1 \right)
+\end{align*}
+
+
 
 \chapter{Punto 7}
 
