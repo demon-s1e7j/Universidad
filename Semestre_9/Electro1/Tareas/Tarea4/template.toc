@@ -8,8 +8,10 @@
 \contentsline {chapter}{\numberline {5}Punto 9}{6}{chapter.5}%
 \contentsline {chapter}{\numberline {6}Punto 11}{7}{chapter.6}%
 \contentsline {chapter}{\numberline {7}Punto 12}{8}{chapter.7}%
-\contentsline {chapter}{\numberline {8}}{9}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Random Examples}{9}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Random}{10}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Algorithms}{12}{section.8.3}%
+\contentsline {section}{\numberline {7.1}}{8}{section.7.1}%
+\contentsline {section}{\numberline {7.2}}{10}{section.7.2}%
+\contentsline {section}{\numberline {7.3}}{11}{section.7.3}%
+\contentsline {section}{\numberline {7.4}}{12}{section.7.4}%
+\contentsline {section}{\numberline {7.5}}{12}{section.7.5}%
+\contentsline {section}{\numberline {7.6}}{14}{section.7.6}%
 \contentsfinish 

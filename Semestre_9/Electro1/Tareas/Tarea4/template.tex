@@ -4,6 +4,8 @@
 \input{macros}
 \input{letterfonts}
 
+\usepackage{float}
+
 \title{\Huge{Electro 1}\\Tarea 4}
 \author{\huge{Sergio Montoya Ramirez}}
 \date{}
@@ -67,113 +69,152 @@ Dado que la particula sale del reposo, entonces $\vec{v_y} = 0$
 
 \chapter{Punto 12}
 
+\section{}
 
-\chapter{}
-\section{Random Examples}
-\dfn{Limit of Sequence in $\bs{\bbR}$}{Let $\{s_n\}$ be a sequence in $\bbR$. We say $$\lim_{n\to\infty}s_n=s$$ where $s\in\bbR$ if $\forall$ real numbers $\eps>0$ $\exists$ natural number $N$ such that for $n>N$ $$s-\eps<s_n<s+\eps\text{ i.e. }|s-s_n|<\eps$$}
-\qs{}{Is the set ${x-}$axis${\setminus\{\text{Origin}\}}$ a closed set}
-\sol We have to take its complement and check whether that set is a open set i.e. if it is a union of open balls
-\nt{We will do topology in Normed Linear Space  (Mainly $\bbR^n$ and occasionally $\bbC^n$)using the language of Metric Space}
-\clm{Topology}{}{Topology is cool}
-\ex{Open Set and Close Set}{
-	\begin{tabular}{rl}
-		Open Set:   & $\bullet$ $\phi$                                              \\
-		            & $\bullet$ $\bigcup\limits_{x\in X}B_r(x)$ (Any $r>0$ will do) \\[3mm]
-		            & $\bullet$ $B_r(x)$ is open                                    \\
-		Closed Set: & $\bullet$ $X,\ \phi$                                          \\
-		            & $\bullet$ $\overline{B_r(x)}$                                 \\
-		            & $x-$axis $\cup$ $y-$axis
-	\end{tabular}}
-\thm{}{If $x\in$ open set $V$ then $\exists$ $\delta>0$ such that $B_{\delta}(x)\subset V$}
-\begin{myproof}By openness of $V$, $x\in B_r(u)\subset V$
+Lo primero que debemos hacer para este punto es encontrar el campo magnético para una espira. Para ello, vamos a usar Biot-Savart.
+
+\dfn{Biot-Savart}{
+	\[ \vec{B} = \frac{\mu_0}{4\pi} \int \frac{I \vec{ds} \times \hat{r}}{r^2} \]
+}
+
+Ademas, este es el ejemplo $5.6$ de la sexta edición del Griffiths. Tomemos entonces su grafica para ubicarnos mejor:
+
+\begin{figure}[h]
 	\begin{center}
-		\begin{tikzpicture}
-			\draw[red] (0,0) circle [x radius=3.5cm, y radius=2cm] ;
-			\draw (3,1.6) node[red]{$V$};
-			\draw [blue] (1,0) circle (1.45cm) ;
-			\filldraw[blue] (1,0) circle (1pt) node[anchor=north]{$u$};
-			\draw (2.9,0.4) node[blue]{$B_r(u)$};
-			\draw [green!40!black] (1.7,0) circle (0.5cm) node [yshift=0.7cm]{$B_{\delta}(x)$} ;
-			\filldraw[green!40!black] (1.7,0) circle (1pt) node[anchor=west]{$x$};
-		\end{tikzpicture}
+		\includegraphics[width=0.25\textwidth]{img/book_5_21.png}
 	\end{center}
+	\caption{Figura de Representación para el problema de una espira.}\label{fig:Fig_5_21}
+\end{figure}
 
-	Given $x\in B_r(u)\subset V$, we want $\delta>0$ such that $x\in B_{\delta} (x)\subset B_r(u)\subset V$. Let $d=d(u,x)$. Choose $\delta $ such that $d+\delta<r$ (e.g. $\delta<\frac{r-d}{2}$)
+Con esto entonces puede notar que los componentes de $d I'$ y de $d B$ se cancelan en todos los ejes excepto en el vertical en donde se suman. Por lo tanto:
+\begin{align*}
+	B &= \frac{\mu_0}{4\pi} \int \frac{I \vec{d s} \times \hat{r}}{r^2}\\
+	B &\propto \int d B_y = \int dB \cos\theta\\
+	B &= \frac{\mu_0}{4\pi} \int \frac{I \vec{d s} \sin\left(90^{\circ}\right)}{r^2}\cos\theta\\
+	B &= \frac{\mu_0 I}{4\pi} \int \frac{\vec{d s}}{r^2}\cos\theta\\
+	\cos\theta &= \frac{R}{\sqrt{z^2 + R^2}}\\
+	r &= \sqrt{z^2 + R^2}\\
+	B &= \frac{\mu_0 I}{4\pi} \int \frac{\vec{d s}}{\left(z^2 + R^2\right)}\frac{R}{\sqrt{z^2 + R^2}}\\
+	B &= \frac{\mu_0 I R}{4\pi \left[ z^2 + R^2\right]^{\frac{3}{2}}} \int \vec{d s}\\
+	B &= \frac{\mu_0 I R}{4\pi \left[ z^2 + R^2\right]^{\frac{3}{2}}} \left( 2\pi R\right)\\
+	B &= \frac{\mu_0 I R^2}{2\left[ z^2 + R^2\right]^{\frac{3}{2}}}\\
+\end{align*}
 
-	If $y\in B_{\delta}(x)$ we will be done by showing that $d(u,y)<r$ but $$d(u,y)\leq d(u,x)+d(x,y)<d+\delta<r$$
-\end{myproof}
+Ahora bien dado que tenemos dos espiras por superposición podemos poner:
 
-\cor{}{By the result of the proof, we can then show...}
-\mlenma{}{Suppose $\vec{v_1}, \dots, \vec{v_n} \in \RR[n]$ is subspace of $\RR^n$.}
-\mprop{}{$1 + 1 = 2$.}
+\begin{enumerate}
+	\item $$z = \frac{d}{2} + z$$
+		\begin{align*}
+			B_+ &= \frac{\mu_0 I R^2}{2\left[ z^2 + R^2\right]^{\frac{3}{2}}}\\
+			B_+ &= \frac{\mu_0 I R^2}{2\left[ \left(\frac{d}{2} + z\right)^2 + R^2\right]^{\frac{3}{2}}}\\
+		\end{align*}
+	\item $$z = \frac{d}{2} - z$$
+		\begin{align*}
+			B_- &= \frac{\mu_0 I R^2}{2\left[ z^2 + R^2\right]^{\frac{3}{2}}}\\
+			B_- &= \frac{\mu_0 I R^2}{2\left[ \left(\frac{d}{2} - z\right)^2 + R^2\right]^{\frac{3}{2}}}\\
+		\end{align*}
+\end{enumerate}
 
-\section{Random}
-\dfn{Normed Linear Space and Norm $\boldsymbol{\|\cdot\|}$}{Let $V$ be a vector space over $\bbR$ (or $\bbC$). A norm on $V$ is function $\|\cdot\|\ V\to \bbR_{\geq 0}$ satisfying \begin{enumerate}[label=\bfseries\tiny\protect\circled{\small\arabic*}]
-		\item \label{n:1}$\|x\|=0 \iff x=0$ $\forall$ $x\in V$
-		\item \label{n:2}	$\|\lambda x\|=|\lambda|\|x\|$ $\forall$ $\lambda\in\bbR$(or $\bbC$), $x\in V$
-		\item \label{n:3} $\|x+y\| \leq \|x\|+\|y\|$ $\forall$ $x,y\in V$ (Triangle Inequality/Subadditivity)
-	\end{enumerate}And $V$ is called a normed linear space.
+Con lo cual el resultado total es:
+\begin{align*}
+	B &= B_+ + B_-\\
+	& = \frac{\mu_0 I R^2}{2\left[ \left(\frac{d}{2} + z\right)^2 + R^2\right]^{\frac{3}{2}}} + \frac{\mu_0 I R^2}{2\left[ \left(\frac{d}{2} - z\right)^2 + R^2\right]^{\frac{3}{2}}}\\
+	& = \frac{\mu_0 I R^2}{2} \left[\frac{1}{\left[ \left(\frac{d}{2} + z\right)^2 + R^2\right]^{\frac{3}{2}}} + \frac{1}{\left[ \left(\frac{d}{2} - z\right)^2 + R^2\right]^{\frac{3}{2}}}\right]\\
+\end{align*}
 
-	$\bullet $ Same definition works with $V$ a vector space over $\bbC$ (again $\|\cdot\|\to\bbR_{\geq 0}$) where \ref{n:2} becomes $\|\lambda x\|=|\lambda|\|x\|$ $\forall$ $\lambda\in\bbC$, $x\in V$, where for $\lambda=a+ib$, $|\lambda|=\sqrt{a^2+b^2}$ }
+\section{}
 
+Podemos simplemente poner este resultado con python como:
+\lstinputlisting[language=Python]{./code/punto_12_b.py}
 
-\ex{$\bs{p-}$Norm}{\label{pnorm}$V={\bbR}^m$, $p\in\bbR_{\geq 0}$. Define for $x=(x_1,x_2,\cdots,x_m)\in\bbR^m$ $$\|x\|_p=\Big(|x_1|^p+|x_2|^p+\cdots+|x_m|^p\Big)^{\frac1p}$$(In school $p=2$)}
-\textbf{Special Case $\bs{p=1}$}: $\|x\|_1=|x_1|+|x_2|+\cdots+|x_m|$ is clearly a norm by usual triangle inequality. \par
-\textbf{Special Case $\bs{p\to\infty\ (\bbR^m$ with $\|\cdot\|_{\infty})}$}: $\|x\|_{\infty}=\max\{|x_1|,|x_2|,\cdots,|x_m|\}$\\
-For $m=1$ these $p-$norms are nothing but $|x|$.
-Now exercise
-\qs{}{\label{exs1}Prove that triangle inequality is true if $p\geq 1$ for $p-$norms. (What goes wrong for $p<1$ ?)}
-\sol{\textbf{For Property \ref{n:3} for norm-2}	\subsubsection*{\textbf{When field is $\bbR:$}} We have to show\begin{align*}
-		         & \sum_i(x_i+y_i)^2\leq \left(\sqrt{\sum_ix_i^2} +\sqrt{\sum_iy_i^2}\right)^2                                       \\
-		\implies & \sum_i (x_i^2+2x_iy_i+y_i^2)\leq \sum_ix_i^2+2\sqrt{\left[\sum_ix_i^2\right]\left[\sum_iy_i^2\right]}+\sum_iy_i^2 \\
-		\implies & \left[\sum_ix_iy_i\right]^2\leq \left[\sum_ix_i^2\right]\left[\sum_iy_i^2\right]
-	\end{align*}So in other words prove $\langle x,y\rangle^2 \leq \langle x,x\rangle\langle y,y\rangle$ where
-	$$\langle x,y\rangle =\sum\limits_i x_iy_i$$
+Con lo cual recibimos la siguiente grafica:
 
-	\begin{note}
-		\begin{itemize}
-			\item $\|x\|^2=\langle x,x\rangle$
-			\item $\langle x,y\rangle=\langle y,x\rangle$
-			\item $\langle \cdot,\cdot\rangle$ is $\bbR-$linear in each slot i.e. \begin{align*}
-				      \langle rx+x',y\rangle=r\langle x,y\rangle+\langle x',y\rangle	\text{ and similarly for second slot}
-			      \end{align*}Here in $\langle x,y\rangle$ $x$ is in first slot and $y$ is in second slot.
-		\end{itemize}
-	\end{note}Now the statement is just the Cauchy-Schwartz Inequality. For proof $$\langle x,y\rangle^2\leq \langle x,x\rangle\langle y,y\rangle $$ expand everything of $\langle x-\lambda y,x-\lambda y\rangle$ which is going to give a quadratic equation in variable $\lambda $ \begin{align*}
-		\langle x-\lambda y,x-\lambda y\rangle & =\langle x,x-\lambda y\rangle-\lambda\langle y,x-\lambda y\rangle                                       \\
-		                                       & =\langle x ,x\rangle -\lambda\langle x,y\rangle -\lambda\langle y,x\rangle +\lambda^2\langle y,y\rangle \\
-		                                       & =\langle x,x\rangle -2\lambda\langle x,y\rangle+\lambda^2\langle y,y\rangle
-	\end{align*}Now unless $x=\lambda y$ we have $\langle x-\lambda y,x-\lambda y\rangle>0$ Hence the quadratic equation has no root therefore the discriminant is greater than zero.
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.75\textwidth]{img/punto_12_b.png}
+	\end{center}
+	\caption{Campo magnetico a lo largo del eje de dos bobinas de Helmholtz (d = R)}\label{fig:Punto_12_b}
+\end{figure}
 
-	\subsubsection*{\textbf{When field is $\bbC:$}}Modify the definition by $$\langle x,y\rangle=\sum_i\overline{x_i}y_i$$Then we still have $\langle x,x\rangle\geq 0$}
+\section{}
 
-\section{Algorithms}
-\begin{algorithm}[H]
-\KwIn{This is some input}
-\KwOut{This is some output}
-\SetAlgoLined
-\SetNoFillComment
-\tcc{This is a comment}
-\vspace{3mm}
-some code here\;
-$x \leftarrow 0$\;
-$y \leftarrow 0$\;
-\uIf{$ x > 5$} {
-    x is greater than 5 \tcp*{This is also a comment}
-}
-\Else {
-    x is less than or equal to 5\;
-}
-\ForEach{y in 0..5} {
-    $y \leftarrow y + 1$\;
-}
-\For{$y$ in $0..5$} {
-    $y \leftarrow y - 1$\;
-}
-\While{$x > 5$} {
-    $x \leftarrow x - 1$\;
-}
-\Return Return something here\;
-\caption{what}
-\end{algorithm}
+Este punto lo podemos mirar basicamente como si esta corriente no varie mucho. Para hacer esto en esencia lo
+que nos interesa es encontrar que $\frac{d^2B}{dz^2}(0) = \frac{dB}{dz}(0) = 0$ para algun $d$. Por simetria ya sabemos
+que $\frac{dB}{dz}(0) = 0$. Por lo tanto solo nos queda encontrar una $d$ en la que se cumpla lo primero.
+
+Para esto vamos a ponerlo en Sympy:
+\lstinputlisting[language=Python]{./code/punto_12_c.py}
+
+Con esto entonces podemos saber que para $B$ tenemos:
+\begin{align*}
+	\frac{dB}{d z}&= - \frac{24 I R^{2} \mu_{0} \left(\left(4 R^{2} + \left(d - 2 z\right)^{2}\right)^{\frac{5}{2}} \left(d + 2 z\right) - \left(4 R^{2} + \left(d + 2 z\right)^{2}\right)^{\frac{5}{2}} \left(d - 2 z\right)\right)}{\left(4 R^{2} + \left(d - 2 z\right)^{2}\right)^{\frac{5}{2}} \left(4 R^{2} + \left(d + 2 z\right)^{2}\right)^{\frac{5}{2}}}\\
+	\frac{d^2 B}{d z^2} &= - \frac{48 I R^{2} \mu_{0}}{\left(4 R^{2} + \left(d + 2 z\right)^{2}\right)^{\frac{5}{2}}} + \frac{240 I R^{2} \mu_{0} \left(d + 2 z\right)^{2}}{\left(4 R^{2} + \left(d + 2 z\right)^{2}\right)^{\frac{7}{2}}} - \frac{48 I R^{2} \mu_{0}}{\left(4 R^{2} + \left(d - 2 z\right)^{2}\right)^{\frac{5}{2}}} + \frac{240 I R^{2} \mu_{0} \left(d - 2 z\right)^{2}}{\left(4 R^{2} + \left(d - 2 z\right)^{2}\right)^{\frac{7}{2}}}
+\end{align*}
+
+Ahora para solucionar podemos simplemente reemplazar $z = 0$ que nos queda como:
+\[
+	\frac{d^2B}{dz^2}(0) = \frac{384 I R^{2} \mu_{0} \left(- R^{2} + d^{2}\right)}{\left(4 R^{2} + d^{2}\right)^{\frac{7}{2}}}
+\]
+
+Y por ultimo bucamos un valor de $d$ para el cual
+\[
+	\frac{d^2B}{dz^2}(0) = 0
+\]
+
+Y nos da como resultado:
+\[
+	\left[ \left\{ d : R\right\}\right]
+\]
+
+Y con esto queda solucionado. Ahora veamos esta, esta bobina de Helmholtz se hace mucho mas estable cuando $d = R$ cosa que explica el por que trabajamos con ello en el punto anterior.
+
+\section{}
+
+Este punto es esencialmente equivalente al $A$ por lo tanto no volveremos a mirar como solucionar el campo para una espira y simplemente partiremos de antes:
+\begin{align*}
+	B &= B_+ + B_-\\
+	& = \frac{\mu_0 I R^2}{2\left[ \left(\frac{d}{2} + z\right)^2 + R^2\right]^{\frac{3}{2}}} + \frac{\mu_0 - I R^2}{2\left[ \left(\frac{d}{2} - z\right)^2 + R^2\right]^{\frac{3}{2}}}\\
+	& = \frac{\mu_0 I R^2}{2} \left[\frac{1}{\left[ \left(\frac{d}{2} + z\right)^2 + R^2\right]^{\frac{3}{2}}} - \frac{1}{\left[ \left(\frac{d}{2} - z\right)^2 + R^2\right]^{\frac{3}{2}}}\right]\\
+\end{align*}
+
+En esencia es evidente lo que estoy poniendo pues es simplemente decir que cuando las corrientes son inversas no se contribuyen si no que se restan.
+
+\section{}
+
+Para graficar esto vamos a reutilizar el codigo de antes simplemente cambiando un signo:
+
+\lstinputlisting[language=Python]{./code/punto_12_e.py}
+
+Con lo que nos queda el siguiente resultado:
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=0.95\textwidth]{img/punto_12_e.png}
+	\end{center}
+	\caption{Campo magnetico a lo largo del eje de Anti-Helmholtz (d = R)}\label{fig:}
+\end{figure}
+
+\section{}
+
+Ahora vamos a buscar que en el centro $ B = - B_T$ que recordemos es aproximadamente $B_T = 50 \mu T$. Lo primero es notar que este va a ser una bobina de Helmholtz y no una antibobina pues nos interesa que en el centro sea el mayor valor y no $0$. Por lo tanto tomaremos los ejemplos anteriores.
+
+Lo que haremos en esencia sera coger el termino anterior y reemplazarle $z = 0$ y $d = R$. Esto nos dara el resultado para $B(0)$ de una bobina de Helmholtz que queda como:
+\begin{align*}
+	B & = \frac{\mu_0 I R^2}{2} \left[\frac{1}{\left[ \left(\frac{d}{2} + z\right)^2 + R^2\right]^{\frac{3}{2}}} + \frac{1}{\left[ \left(\frac{d}{2} - z\right)^2 + R^2\right]^{\frac{3}{2}}}\right]\\
+	B & = \frac{\mu_0 I R^2}{2} \left[\frac{1}{\left[ \left(\frac{R}{2} + 0\right)^2 + R^2\right]^{\frac{3}{2}}} + \frac{1}{\left[ \left(\frac{R}{2} - 0\right)^2 + R^2\right]^{\frac{3}{2}}}\right]\\
+	B(0) &= \frac{8 \sqrt{5} I \mu_{0}}{25 R}
+\end{align*}
+
+Ahora con esto lo que nos interesa es ver cuando $B(0) = B_{tierra}$ lo cual nos permitiria despejar para la corriente y simplemente con eso ya tendriamos dado $R$ cual deberia ser la corriente que pase para que en el centro el campo terrestre se anule:
+
+\begin{align*}
+	B(0) &= \frac{8 \sqrt{5} I \mu_{0}}{25 R} = B_{tierra}\\
+	B(0) &= \frac{5 \sqrt{5} B_{tierra} R}{8 \mu_{0}}
+\end{align*}
+
+Ahora ya apartir de esto podemos hacerlo tan arbitrario como  querramos.
+
+Para mostrar esto tambien lo hice con sympy y obtuve los mismos resultados:
+\lstinputlisting[language=Python]{./code/punto_12_f.py}
+
 
 \end{document}
