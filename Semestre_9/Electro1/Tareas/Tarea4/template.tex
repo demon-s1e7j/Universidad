@@ -360,9 +360,107 @@ Ahora sumamos todo y nos queda:
 
 \chapter{Punto 7}
 
+Si pensamos en los componentes particularmente en la circunferencia tenemos que esta seria constante alrededor de un loop de amper concentrico en el solenoide. Por lo tanto:
+\begin{align*}
+	\oint \vec{B} \cdot d\ell &= B_\phi 2 \pi R &= \mu_0 I = 0
+\end{align*}
+
+Lo que implica que este loop no encierra corriente. Por lo tanto solo nos queda un componente que es un vector en el eje vertical que por la regla de la mano derecha sabemos que sube.
+
+Con esto entonces tenemos:
+
+\begin{align*}
+	\vec{B} &= \begin{cases}
+		\mu_0 n I \hat{z}, & r < R\\
+		0, & r > R\\
+	\end{cases}\\
+	\vec{B_1} &= \begin{cases}
+		\mu_0 n_1 I \hat{z}, & r < a\\
+		0, & r > a\\
+	\end{cases}\\
+	\vec{B} &= \begin{cases}
+		-\mu_0 n_2 I \hat{z}, & r < b\\
+		0, & r > b\\
+	\end{cases}
+\end{align*}
+
+Con este desarrollo entonces:
+
+\begin{enumerate}
+	\item 
+		\begin{align*}
+			\vec{B} &= B_1 + B_2\\
+			&= \mu_0 I \left(n1 - n2\right) \hat{z}
+		\end{align*}
+
+	\item
+		\begin{align*}
+			\vec{B} &= - \mu_0 n_2 I \hat{z}
+		\end{align*}
+	
+	\item
+		\begin{align*}
+			\vec{B} &= 0
+		\end{align*}
+\end{enumerate}
+
+
 \chapter{Punto 8}
 
-\chapter{Punto 9}
+Tomemos un punto $\vec{r}' = \left(0, y, 0\right)$ y una fuente en $\left(x', y', z'\right)$ tenemos entonces que
+\begin{align*}
+	\mathbf{r} &= -x' \hat{\mathbf{x}} + (y - y') \hat{\mathbf{y}} - z' \hat{\mathbf{z}}, \quad d\mathbf{l}' = dx' \hat{\mathbf{x}} + dy' \hat{\mathbf{y}};\\
+	d\mathbf{l}' \times \mathbf{r} &=
+	\begin{vmatrix}
+	\hat{\mathbf{x}} & \hat{\mathbf{y}} & \hat{\mathbf{z}} \\
+	dx' & dy' & 0 \\
+	-x' & (y - y') & -z'
+	\end{vmatrix}
+	= (-z' dy') \hat{\mathbf{x}} + (z' dx') \hat{\mathbf{y}} + [(y - y') dx' + x' dy'] \hat{\mathbf{z}}.\\
+	d\mathbf{B}_1 &= \frac{\mu_0 I}{4\pi} \frac{d\mathbf{l}' \times \mathbf{r}}{r^3} = \frac{\mu_0 I}{4\pi} \frac{(-z' dy') \hat{\mathbf{x}} + (z' dx') \hat{\mathbf{y}} + [(y - y') dx' + x' dy'] \hat{\mathbf{z}}}{[(x')^2 + (y - y')^2 + (z')^2]^{3/2}}.
+\end{align*}
+
+Ahora tomando en cuenta que el solenoide es infinito lo que hace que exista un elemento fuente puesto en $\left(x', y', -z'\right)$
+
+\begin{align*}
+	\mathbf{r} = -x' \hat{\mathbf{x}} + (y - y') \hat{\mathbf{y}} - (-z') \hat{\mathbf{z}} = -x' \hat{\mathbf{x}} + (y - y') \hat{\mathbf{y}} + z' \hat{\mathbf{z}}, \quad d\mathbf{l}' = dx' \hat{\mathbf{x}} + dy' \hat{\mathbf{y}}\\
+	d\mathbf{l}' \times \mathbf{r} =
+\begin{vmatrix}
+\hat{\mathbf{x}} & \hat{\mathbf{y}} & \hat{\mathbf{z}} \\
+dx' & dy' & 0 \\
+-x' & (y - y') & z'
+\end{vmatrix}
+= (z' dy') \hat{\mathbf{x}} + (-z' dx') \hat{\mathbf{y}} + [(y - y') dx' + x' dy'] \hat{\mathbf{z}}.\\
+d\mathbf{B}_1 = \frac{\mu_0 I}{4\pi} \frac{d\mathbf{l}' \times \mathbf{r}}{r^3} = \frac{\mu_0 I}{4\pi} \frac{(z' dy') \hat{\mathbf{x}} + (-z' dx') \hat{\mathbf{y}} + [(y - y') dx' + x' dy'] \hat{\mathbf{z}}}{[(x')^2 + (y - y')^2 + (z')^2]^{3/2}}.
+\end{align*}
+
+Esto era evidente que seria simetrico en todos los otros componentes excepto en uno que era lo que nos pedian demostrar.
+
+Para terminar este punto es importante notar que con los mismos argumentos que en el punto anterior se sigue:
+\begin{align*}
+	\vec{B} &= \begin{cases}
+		\mu_0 n I \hat{z}, & r < R\\
+		0, & r > R\\
+	\end{cases}\\
+\end{align*}
+
+Ahora bien, para el caso de un toroide tenemos:
+\begin{align*}
+	\vec{B} &= \begin{cases}
+		\frac{\mu_0 N I}{2\pi r} \hat{\phi}, & \text{dentro}\\
+		0, & \text{fuera}\\
+	\end{cases}\\
+\end{align*}
+
+Ahora, si el radio es muy grande entonces:
+\begin{align*}
+	\frac{N}{2\pi r} &= n\\
+	\vec{B} &= \begin{cases}
+		\mu_0 n I \hat{z}, & r < R\\
+		0, & r > R\\
+	\end{cases}\\
+\end{align*}
+	
 
 \chapter{Punto 11}
 
