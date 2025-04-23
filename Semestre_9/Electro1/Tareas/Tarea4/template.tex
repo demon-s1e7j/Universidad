@@ -5,8 +5,7 @@
 \input{letterfonts}
 
 \title{\Huge{Electro 1}\\Tarea 4}
-\author{\huge{Sergio Montoya Ramirez}}
-\date{}
+\author{\huge{Sergio Montoya Ramirez}} \date{}
 
 \begin{document}
 
@@ -49,7 +48,15 @@ Con esta fuerza entonces podemos calcular con la ecuación de movimiento:
 	m\vec{\dot{v_z}} &= q \left( v_x B \right) \hat{z} \\
 \end{align*}
 
-Dado que la particula sale del reposo, entonces $\vec{v_y} = 0$
+Dado que la particula sale del reposo, entonces $\vec{v_y} = 0$ por lo tanto queda como:
+\begin{align*}
+	m\vec{\dot{v_x}} &= q \left(E - v_z B\right) \hat{x} \\
+  \implies\vec{v_x} &= \frac{E}{B} \sin \left( \omega t\right)\\
+	m\vec{\dot{v_z}} &= q \left( v_x B \right) \hat{z} \\
+  \implies \vec{v_z} &= \frac{E}{B} \left[ 1 - \cos\left( \omega t\right)\right]
+\end{align*}
+
+Con estas ecuaciones podemos ver que la particula se mueve en forma de una cicloide.
 
 \section{}
 
