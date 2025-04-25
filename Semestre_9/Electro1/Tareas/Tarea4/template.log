@@ -1506,4 +1506,186 @@ has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.150 \chapter
-              {Punto 3} <./img
+              {Punto 3} <./img/book_5_7.png (PNG copy)>]
+Chapter 2.
+
+
+[6
+
+]
+
+[7]
+
+[8]
+Chapter 3.
+
+
+[9
+
+]
+Chapter 4.
+
+LaTeX Font Warning: Font shape `OT1/cmr/b/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 421.
+
+
+
+[10
+
+]
+Chapter 5.
+
+
+[11
+
+]
+Chapter 6.
+<img/book_5_21.png, id=174, 167.12437pt x 182.18062pt>
+File: img/book_5_21.png Graphic file (type png)
+<use img/book_5_21.png>
+Package pdftex.def Info: img/book_5_21.png  used on input line 495.
+(pdftex.def)             Requested size: 122.85878pt x 133.93031pt.
+
+
+[12
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.512 \end{align*}
+                   <./img/book_5_21.png (PNG copy)>]
+
+[13] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 539.
+
+(./code/punto_12_b.py
+Overfull \hbox (6.56993pt too wide) in paragraph at lines 25--26
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][] 
+ []
+
+)
+<img/punto_12_b.png, id=189, 578.16pt x 361.35pt>
+File: img/punto_12_b.png Graphic file (type png)
+<use img/punto_12_b.png>
+Package pdftex.def Info: img/punto_12_b.png  used on input line 545.
+(pdftex.def)             Requested size: 368.57634pt x 230.35895pt.
+
+
+[14{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+(./code/punto_12_c.py
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
+6.
+ (/usr/share/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 16.
+
+
+[15
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.28 print(
+           "\n") <./img/punto_12_b.png>]) (./code/punto_12_e.py
+
+[16])
+<img/punto_12_e.png, id=274, 578.16pt x 361.35pt>
+File: img/punto_12_e.png Graphic file (type png)
+<use img/punto_12_e.png>
+Package pdftex.def Info: img/punto_12_e.png  used on input line 602.
+(pdftex.def)             Requested size: 466.86188pt x 291.78764pt.
+
+
+[17]
+
+[18
+pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3}) 
+has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.627 P
+       ara mostrar esto tambien lo hice con sympy y obtuve los mismos result...
+ <./img/punto_12_e.png>] (./code/punto_12_f.py)
+
+[19] (./template.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 38009 strings out of 475171
+ 748773 string characters out of 5767095
+ 1420066 words of memory out of 5000000
+ 60138 multiletter control sequences out of 15000+600000
+ 589686 words of font info for 124 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 103i,16n,108p,545b,2083s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+pdfTeX warning (dest): name{section.7.6} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.7.5} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.7.4} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.7.3} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.7.2} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.7.1} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{chapter.7} has been referenced but does not exist, 
+replaced by a fixed one
+
+</usr/share/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb></usr/share/texmf-d
+ist/fonts/type1/public/newpx/NewPXMI_gnu.pfb></usr/share/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmb10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pf
+b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
+fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fo
+nts/type1/public/newpx/pxmiaX.pfb></usr/share/texmf-dist/fonts/type1/public/new
+px/pxsys.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></
+usr/share/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/share/texmf-dist/
+fonts/type1/public/newtx/txsym.pfb>
+Output written on template.pdf (20 pages, 299832 bytes).
+PDF statistics:
+ 512 PDF objects out of 1000 (max. 8388607)
+ 401 compressed objects within 5 object streams
+ 171 named destinations out of 1000 (max. 500000)
+ 335 words of extra memory for PDF output out of 10000 (max. 10000000)
+
