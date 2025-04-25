@@ -1,0 +1,278 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Some Class}\\Random Examples}
+\author{\huge{Your Name}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+
+En este caso podemos dividir el problema en 3 subproblemas cada uno mas simple. Estos serian
+
+\begin{itemize}
+	\item \textbf{Tramo Recto Vertical:} esto seria una linea que va de $y = R$ hasta $y = 2R$. Para un segmento recto
+		se cumple que
+
+		$$ dE = \frac{1}{4\pi\varepsilon_0}\frac{dq}{\left|r\right|^2} \hat{r} $$
+
+
+		Sabemos que $dq = \lambda dy$, ademas, por la ubicación podemos saber que $\left|r\right|^2 = y^2$ y $\hat{r} = - \hat{y}$
+
+		En este caso, sabemos que este campo apunta para $-\hat{y}$. Ahora, para saber lo que vale tenemos:
+
+		\begin{align*}
+			E_y^{\left(v\right)} &= \frac{\lambda}{4\pi\varepsilon_0}\int_R^{2R} \frac{dy}{y^2}(-\hat{y})\\
+			E_y^{\left(v\right)} &= - \frac{\lambda}{4\pi\varepsilon_0} \left[-\frac{1}{y}\right]_{R}^{2R}\hat{y}\\
+			E_y^{\left(v\right)} &= - \frac{\lambda}{4\pi\varepsilon_0} \left[- \frac{1}{2R} + \frac{1}{R}\right]\hat{y}\\
+			E_y^{\left(v\right)} &= - \frac{\lambda}{4\pi\varepsilon_0} \left[\frac{2 - 1}{2R}\right]\hat{y}\\
+			E_y^{\left(v\right)} &= - \frac{\lambda}{4\pi\varepsilon_0} \left[\frac{1}{2R}\right]\hat{y}\\
+		\end{align*}
+	\item \textbf{Tramo Recto Horizontal:} Del mismo modo que en el punto anterior podemos ver que 
+		$dq = \lambda dx$, ademas, por la ubicación podemos saber que $\left|r\right|^2 = x^2$ y $\hat{r} = - \hat{x}$ con esto entonces nos queda en esencia la misma integral que antes pero con $\hat{x}$
+		\begin{align*}
+			E_x^{\left(h\right)} &= \frac{\lambda}{4\pi\varepsilon_0}\int_R^{2R} \frac{dx}{x^2}(-\hat{x})\\
+			E_x^{\left(h\right)} &= - \frac{\lambda}{4\pi\varepsilon_0} \left[-\frac{1}{x}\right]_{R}^{2R}\hat{x}\\
+			E_x^{\left(h\right)} &= - \frac{\lambda}{4\pi\varepsilon_0} \left[- \frac{1}{2R} + \frac{1}{R}\right]\hat{x}\\
+			E_x^{\left(h\right)} &= - \frac{\lambda}{4\pi\varepsilon_0} \left[\frac{2 - 1}{2R}\right]\hat{x}\\
+			E_x^{\left(h\right)} &= - \frac{\lambda}{4\pi\varepsilon_0} \left[\frac{1}{2R}\right]\hat{x}\\
+		\end{align*}
+
+	\item \textbf{Tramo de Arco de Cuarto de Circulo:} De manera similar al punto anterior
+		\begin{align*}
+			dE &= \frac{1}{4\pi\varepsilon_0} \frac{\lambda d\ell}{R^2} \left(-\hat{r}\right)\\
+		\end{align*}
+
+		donde $d\ell$ es el diferencia de longitud para el arco que depende del angulo $\theta$. Por lo tanto esto seria
+		\begin{align*}
+			dE &= - \frac{\lambda}{4\pi\varepsilon_0} \frac{R d\theta}{R^2} \hat{r}\\
+			E &= \int_{\frac{\pi}{2}}^0 - \frac{\lambda}{4\pi\varepsilon_0} \frac{d\theta}{R} \hat{r}\\
+			E &= - \frac{\lambda}{4\pi\varepsilon_0 R} \int_{\frac{\pi}{2}}^0 d\theta \hat{r}\\
+			E &= - \frac{\lambda}{4\pi\varepsilon_0 R} \left(\int \cos\theta d\theta  \hat{x} + \int \sin\theta d\theta \hat{y}\right)\\
+			E &= - \frac{\lambda}{4\pi\varepsilon_0 R} - \left( \hat{x} + \hat{y}\right)\\
+			E &= \frac{\lambda}{4\pi\varepsilon_0 R} \left( \hat{x} + \hat{y}\right)\\
+		\end{align*}
+\end{itemize}
+
+Ahora si sumamos todo nos da:
+\begin{align*}
+	E(P) &= E^a + E^v + E^h\\
+	&= \frac{\lambda}{4\pi\varepsilon_0 R} \left( \hat{x} + \hat{y}\right) - \frac{\lambda}{4\pi\varepsilon_0} \left[\frac{1}{2R}\right]\hat{x} - \frac{\lambda}{4\pi\varepsilon_0} \left[\frac{1}{2R}\right]\hat{y}\\
+	&= \frac{\lambda}{4\pi\varepsilon_0 R} \left( \hat{x} + \hat{y}\right) - \frac{\lambda}{4\pi\varepsilon_0} \left[\frac{1}{2R}\right]\left(\hat{x} + \hat{y}\right)\\
+	&= \frac{2\lambda - \lambda}{2\cdot4\pi\varepsilon_0 R} \left( \hat{x} + \hat{y}\right)\\
+	&= \frac{\lambda}{8\pi\varepsilon_0 R} \left( \hat{x} + \hat{y}\right)\\
+\end{align*}
+
+\chapter{}
+
+\section{}
+
+Para este punto vamos a usar la ley de Gauss
+
+\subsection{$r < a$}
+
+No se tiene carga encerrada por lo tanto $E = 0$
+
+\subsection{$a < r < b$}
+
+En este caso la carga encerrada es:
+\begin{align*}
+	Q_{enc} &= \int \rho(r) dV\\
+	Q_{enc} &= \int \rho(r) rdrd\phi dz\\
+	Q_{enc} &= \int_a^r \frac{k}{r^3} rdr \int_0^{2\pi} d\phi \int_0^L dz\\
+	Q_{enc} &= \int_a^r \frac{k}{r^3} rdr 2\pi L\\
+	Q_{enc} &= 2\pi L k \int_a^r \frac{1}{r^2} dr\\
+	Q_{enc} &= 2\pi L k \left(\frac{1}{a} - \frac{1}{r}\right)\\
+\end{align*}
+
+Ahora por Gauss tenemos:
+\begin{align*}
+	E 2 \pi r L &= \frac{Q_{enc}}{\varepsilon_0}\\
+	E &= \frac{1}{\varepsilon_0 2\pi r L}2\pi L k \left(\frac{1}{a} - \frac{1}{r}\right)\\
+	E &= \frac{1}{\varepsilon_0 \cancel{2\pi} r \cancel{L}}\cancel{2\pi} \cancel{L} k \left(\frac{1}{a} - \frac{1}{r}\right)\\
+	E &= \frac{k}{\varepsilon_0 r} \left(\frac{1}{a} - \frac{1}{r}\right)\\
+	E &= \frac{k}{\varepsilon_0} \left(\frac{1}{ar} - \frac{1}{r^2}\right)
+\end{align*}
+
+\subsection{$r > b$}
+
+Para este caso ahora tenemos siempre la misma carga encerrada. El calculo es esencialmente el mismo que en el punto anterior pero cambiando los limites de integración de $r$ a $b$. Repitamos el proceso:
+
+\begin{align*}
+	Q_{enc} &= \int \rho(r) dV\\
+	Q_{enc} &= \int \rho(r) rdrd\phi dz\\
+	Q_{enc} &= \int_a^b \frac{k}{r^3} rdr \int_0^{2\pi} d\phi \int_0^L dz\\
+	Q_{enc} &= \int_a^b \frac{k}{r^3} rdr 2\pi L\\
+	Q_{enc} &= 2\pi L k \int_a^b \frac{1}{r^2} dr\\
+	Q_{enc} &= 2\pi L k \left(\frac{1}{a} - \frac{1}{b}\right)\\
+\end{align*}
+
+Ahora poniendolo en Gauss tenemos:
+\begin{align*}
+	E 2 \pi r L &= \frac{Q_{enc}}{\varepsilon_0}\\
+	E &= \frac{1}{\varepsilon_0 2\pi r L}2\pi L k \left(\frac{1}{a} - \frac{1}{b}\right)\\
+	E &= \frac{1}{\varepsilon_0 \cancel{2\pi} r \cancel{L}}\cancel{2\pi} \cancel{L} k \left(\frac{1}{a} - \frac{1}{b}\right)\\
+	E &= \frac{k}{\varepsilon_0 r} \left(\frac{1}{a} - \frac{1}{b}\right)\\
+\end{align*}
+
+Con esto encontramos el campo para todo $r$ y si lo escribimos completo seria
+
+\begin{align*}
+	E(r) &= \begin{cases}0 & r < a\\
+		\frac{k}{\varepsilon_0} \left(\frac{1}{ar} - \frac{1}{r^2}\right) & a < r < b\\
+		\frac{k}{\varepsilon_0 r} \left(\frac{1}{a} - \frac{1}{b}\right) & r > b\\
+	\end{cases}
+\end{align*}
+
+\section{}
+
+Para este caso partimos de:
+
+\[
+	V(r_f) - V(r_i) = - \int_{r_i}^{r_f} E(r) dr
+\]
+
+Con esto entonces es importante notar que esta integral para nuestro caso debe ser dividida en tres secciones para que coincida con las partes planeadas:
+
+\begin{align*}
+	V(2b) - V\left(\frac{a}{2}\right) &= - \int_{\frac{a}{2}}^{2b} E(r) dr\\
+	&= - \left(\int_{\frac{a}{2}}^{a} E(r) dr + \int_{a}^{b} E(r) dr + \int_{b}^{2b} E(r) dr\right)\\
+\end{align*}
+
+Para la primera integral se da que:
+$$
+	\int_{\frac{a}{2}}^{a} E(r) dr = \int_{\frac{a}{2}}^{a} 0 dr = 0
+$$
+
+Para la segunda integral tenemos:
+\begin{align*}
+	\int_{a}^{b} E(r) dr &= \int_a^b \frac{k}{\varepsilon_0} \left(\frac{1}{ar} - \frac{1}{r^2}\right) dr\\
+	&= \frac{k}{\varepsilon_0} \int_a^b  \left(\frac{1}{ar} - \frac{1}{r^2}\right) dr\\
+	&= \frac{k}{\varepsilon_0} \left(\int_a^b  \frac{1}{ar} dr - \int_a^b \frac{1}{r^2} dr\right)\\
+	&= \frac{k}{\varepsilon_0} \left(a^{-1}\int_a^b  \frac{1}{r} dr - \int_a^b \frac{1}{r^2} dr\right)\\
+	&= \frac{k}{\varepsilon_0} \left(a^{-1}\left[\ln(r) \right]_a^{b} - \left[ - \frac{1}{r} \right]_a^b \right)\\
+	&= \frac{k}{\varepsilon_0} \left(a^{-1}\left[\ln(b) - \ln(a)\right] - \left[ - \frac{1}{b} + \frac{1}{a}\right]\right)\\
+	&= \frac{k}{\varepsilon_0} \left(\frac{1}{a}\ln\left(\frac{b}{a}\right) + \frac{1}{b} - \frac{1}{a}\right)
+\end{align*}
+
+Para la tercera integral tenemos:
+
+\begin{align*}
+	\int_{b}^{2b} E(r) dr &= \int_{b}^{2b} \frac{k}{\varepsilon_0 r} \left(\frac{1}{a} - \frac{1}{b}\right) dr\\
+	\int_{b}^{2b} E(r) dr &= \frac{k}{\varepsilon_0} \left(\frac{1}{a} - \frac{1}{b}\right) \int_{b}^{2b} \frac{1}{r}  dr\\
+	\int_{b}^{2b} E(r) dr &= \frac{k}{\varepsilon_0} \left(\frac{1}{a} - \frac{1}{b}\right) \left[\ln (r) \right]_{b}^{2R} \\
+	\int_{b}^{2b} E(r) dr &= \frac{k}{\varepsilon_0} \left(\frac{1}{a} - \frac{1}{b}\right) \left[\ln(2b) - \ln(b) \right] \\
+	\int_{b}^{2b} E(r) dr &= \frac{k}{\varepsilon_0} \left(\frac{1}{a} - \frac{1}{b}\right) \left[\ln\left(\frac{2b}{b}\right)\right] \\
+	\int_{b}^{2b} E(r) dr &= \frac{k}{\varepsilon_0} \left(\frac{1}{a} - \frac{1}{b}\right)\ln(2)\\
+\end{align*}
+
+Ahora reemplazando en el termino original tenemos:
+
+\begin{align*}
+	V(2b) - V\left(\frac{a}{2}\right) &= - \left(\int_{\frac{a}{2}}^{a} E(r) dr + \int_{a}^{b} E(r) dr + \int_{b}^{2b} E(r) dr\right)\\
+	&= - \left(0 + \frac{k}{\varepsilon_0} \left(\frac{1}{a}\ln\left(\frac{b}{a}\right) + \frac{1}{b} - \frac{1}{a}\right) + \frac{k}{\varepsilon_0} \left(\frac{1}{a} - \frac{1}{b}\right)\ln(2)\right)\\
+	&= - \frac{k}{\varepsilon_0} \left(\frac{1}{a}\ln\left(\frac{b}{a}\right) + \frac{1}{b} - \frac{1}{a} + \left(\frac{1}{a} - \frac{1}{b}\right)\ln(2)\right)\\
+\end{align*}
+
+\chapter{}
+
+\section{}
+
+Las condiciones de frontera son:
+\begin{enumerate}
+	\item \textbf{Continuidad} en la superficie debe cumplirse que:
+		\[
+			V_{r < R}(R, \theta) = V_{r > R}(R, \theta) = V_0(\theta) = k P_3(\cos\theta)
+		\]
+	\item \textbf{Discontinuidad de la Derivada Radial:} debido a la carga superficial
+		\[
+			-\varepsilon_0 \left.\frac{\partial V_{r > R}}{\partial r}\right|_{r=R} + \varepsilon_0 \left.\frac{\partial V_{r < R}}{\partial r}\right|_{r=R} = \sigma(\theta)
+		\]
+	\item $V_{r < R}$ debe ser finito en $r = 0$
+	\item $r \to \infty \implies V_{r > R} \to 0$ 
+\end{enumerate}
+
+\section{}
+
+Para el caso de $r < R$ tenemos que
+\begin{align*}
+	V_{r < R}(R) &= V_0\\
+	\sum_{\ell = 0}^\infty A_\ell R^\ell P_\ell(\cos\theta) &= k P_3(\cos\theta)\\
+	\int_{-1}^{1}\left[\sum_{\ell = 0}^\infty A_\ell R^\ell P_\ell(\cos\theta)\right]P_m(\cos\theta)d\cos\theta &= \int_{-1}^1 k P_3(\cos\theta) P_m(\cos\theta) d\cos\theta\\
+	\sum_{\ell = 0}^\infty A_\ell R^\ell \int_{-1}^{1} P_\ell(\cos\theta)P_m(\cos\theta)d\cos\theta &= k \int_{-1}^1 P_3(\cos\theta) P_m(\cos\theta) d\cos\theta\\
+	\int_{-1}^1 P_3(\cos\theta) P_m(\cos\theta) d\cos\theta &= 0\ \forall m \neq 3\\
+	A_\ell R^\ell \int_{-1}^{1} P_\ell(\cos\theta)P_m(\cos\theta)d\cos\theta &= 0\ \forall \ell \neq m \\
+\end{align*}
+
+Con esto entonces podemos notar que el unico termino que sobrevive es $\ell = 3$ podriamos continuar por esta ruta pero la verdad es que esta integral ya nos aporto lo que debia y el termino $\frac{2}{2\ell + 1}$ se cancelaria para ambos casos. Con esto entonces tenemos:
+
+\begin{align*}
+	V_{r < R}(R) &= V_0\\
+	A_3 R^3 P_3(\cos\theta) &= k P_3(\cos\theta)\\
+	A_3 &= \frac{k}{R^3} 
+\end{align*}
+
+Entonces en general esto seria:
+\[
+	V_{r < R}(R) = \frac{k}{R^3} r^3 P_3(\cos\theta)
+\]
+
+\section{}
+
+Este funciona de manera muy similar a la sección anterior partimos de:
+\begin{align*}
+	V_{r > R}(R) &= V_0\\
+	\sum_{\ell = 0}^{\infty} \frac{B_\ell}{R^{\ell + 1}} P_\ell(\cos\theta) &= k P_3(\cos\theta)\\
+	\int_{-1}^{1}\left[\sum_{\ell = 0}^{\infty} \frac{B_\ell}{R^{\ell + 1}} P_\ell(\cos\theta)\right]P_m(\cos\theta)d\cos\theta &= \int_{-1}^{1} k P_3(\cos\theta)P_m(\cos\theta) d\cos\theta\\
+	\sum_{\ell = 0}^{\infty} \frac{B_\ell}{R^{\ell + 1}} \int_{-1}^{1} P_\ell(\cos\theta)P_m(\cos\theta)d\cos\theta &= k \int_{-1}^{1} P_3(\cos\theta)P_m(\cos\theta)d\cos\theta\\
+	\int_{-1}^1 P_3(\cos\theta) P_m(\cos\theta) d\cos\theta &= 0\ \forall m \neq 3\\
+	\frac{B_\ell}{R^{\ell + 2}} \int_{-1}^{1} P_\ell(\cos\theta)P_m(\cos\theta)d\cos\theta &= 0\ \forall \ell \neq m \\
+\end{align*}
+
+Como en el caso anterior volvemos a quedar en el caso $\ell = 3$ y volvemos a ignorar lo que sigue pues de nuevo simplemente se cancelaria.
+
+\begin{align*}
+	V_{r > R}(R) &= V_0\\
+	\frac{B_3}{R^{3 + 1}} P_3(\cos\theta) &= k P_3(\cos\theta)\\
+	\frac{B_3}{R^{4}} &= k \\
+	B_3 &= k R^4
+\end{align*}
+
+Lo que nos deja con el termino general:
+\[
+	V_{r > R} = k \frac{R^4}{r^4} P_3(\cos\theta)
+\]
+
+\section{}
+
+tenemos
+\[
+	-\varepsilon_0 \left.\frac{\partial V_{r > R}}{\partial r}\right|_{r=R} + \varepsilon_0 \left.\frac{\partial V_{r < R}}{\partial r}\right|_{r=R} = \sigma(\theta)
+\]
+
+Reemplazando tenemos:
+\begin{align*}
+	\sigma(\theta) &= -\varepsilon_0 \left.\frac{\partial V_{r > R}}{\partial r}\right|_{r=R} + \varepsilon_0 \left.\frac{\partial V_{r < R}}{\partial r}\right|_{r=R}\\
+	&= -\varepsilon_0 \left.\frac{\partial k\frac{R^4}{r^4}P_3(\cos\theta)}{\partial r}\right|_{r=R} + \varepsilon_0 \left.\frac{\partial \frac{k}{R^3}r^3 P_3(\cos\theta)}{\partial r}\right|_{r=R} \\
+	\varepsilon_0 \left.\frac{\partial k\frac{R^4}{r^4}P_3(\cos\theta)}{\partial r}\right|_{r=R} &= - \left.4 k \frac{R^4}{r^5} P_3(\cos\theta)\right|_{r = R}\\
+	&= -4\frac{k}{R}P_3(\cos\theta)\\
+	\left.\frac{\partial \frac{k}{R^3}r^3 P_3(\cos\theta)}{\partial r}\right|_{r=R} &= \left. 3\frac{k}{R^3}r^2 P_3(\cos\theta) \right|_{r=R}\\
+	&= 3 \frac{k}{R}P_3(\cos\theta)\\
+	\sigma(\theta) &= -\varepsilon_0 \left.\frac{\partial V_{r > R}}{\partial r}\right|_{r=R} + \varepsilon_0 \left.\frac{\partial V_{r < R}}{\partial r}\right|_{r=R}\\
+	\sigma(\theta) &= \varepsilon_0 4\frac{k}{R}P_3(\cos\theta) + \varepsilon_0 3 \frac{k}{R}P_3(\cos\theta)\\
+	\sigma(\theta) &= \varepsilon_0 7\frac{k}{R}P_3(\cos\theta)
+\end{align*}
+
+
+\end{document}
