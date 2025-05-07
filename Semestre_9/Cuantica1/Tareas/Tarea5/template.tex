@@ -1,0 +1,122 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Mecanica Cuantica}\\Tarea 5}
+\author{\huge{Sergio Montoya}\\ \huge{David Pachon}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+
+\chapter{}
+
+\section{}
+
+Para mostrar que esta normalizado sumamos cada coeficiente y mostramos que esto equivale a $1$
+
+\begin{align*}
+  \left| c_0 \right|^2 +
+  \left| c_1 \right|^2 +
+  \left| c_2 \right|^2 +
+  \left| c_3 \right|^2 &= 1\\
+  \left| \frac{\sqrt{2}}{4} \right|^2 +
+  \left| \frac{2i}{4} \right|^2 +
+  \left| - \frac{i}{4} \right|^2 +
+  \left| \frac{3}{4}e^{i \frac{\pi}{3}} \right|^2 &= 1\\
+  \frac{2}{16} +
+  \frac{4}{16} +
+  \frac{1}{16} +
+  \left| \frac{3}{4}\right|^2 \left|e^{i \frac{\pi}{3}} \right|^2 &= 1\\
+  \frac{2}{16} +
+  \frac{4}{16} +
+  \frac{1}{16} +
+  \frac{9}{16}\left|\cos\left(\frac{\pi}{3}\right) + i\sin\left(\frac{\pi}{3}\right)\right|^2 &= 1\\
+  \frac{2}{16} +
+  \frac{4}{16} +
+  \frac{1}{16} +
+  \frac{9}{16}\left(\sqrt{\cos^2\left(\frac{\pi}{3}\right) + \sin^2\left(\frac{\pi}{3}\right)}\right)^2 &= 1\\
+  \frac{2}{16} +
+  \frac{4}{16} +
+  \frac{1}{16} +
+  \frac{9}{16}\left( 1 \right)^2 &= 1\\
+  \frac{2}{16} +
+  \frac{4}{16} +
+  \frac{1}{16} +
+  \frac{9}{16} &= 1\\
+  \frac{2 + 4 + 1 + 9}{16} &= 1\\
+  1 &= 1\\
+\end{align*}
+
+\section{}
+
+Para encontrar la energia podemos usar la ecuación $4.2.27$ de las notas de clase en donde sabemos que los estados se pueden encontrar como:
+$$
+  E_{n} = \left(n + \frac{1}{2}\right)\hbar \omega
+$$
+
+Por lo tanto las energias son:
+\begin{align*}
+  E_{n} &= \left(n + \frac{1}{2}\right)\hbar \omega\\
+  E_{0} &= \left(0 + \frac{1}{2}\right)\hbar \omega\\
+  &= \frac{1}{2}\hbar\omega\\
+  E_{1} &= \left(1 + \frac{1}{2}\right)\hbar \omega\\
+  &= \left(\frac{3}{2}\right)\hbar \omega\\
+  E_{2} &= \left(2 + \frac{1}{2}\right)\hbar \omega\\
+  &= \left(\frac{5}{2}\right)\hbar \omega\\
+  E_{3} &= \left(3 + \frac{1}{2}\right)\hbar \omega\\
+  &= \left(\frac{7}{2}\right)\hbar \omega\\
+\end{align*}
+
+Ahora bien, las probabilidades son:
+\begin{align*}
+  P_n &= \left|\left<n | \psi\right>\right|^2\\
+  &= \left|c_n\right|^2
+\end{align*}
+
+Esto ya lo calculamos en la sección anterior por lo que sabemos que serian:
+\begin{align*}
+  P_0 &= \frac{2}{16}\\
+  P_1 &= \frac{4}{16}\\
+  P_2 &= \frac{1}{16}\\
+  P_3 &= \frac{9}{16}
+\end{align*}
+
+\section{}
+
+Para calcular
+\[
+  \langle E \rangle = \sum_{n = 0}^{3} P_n E_n
+\]
+
+Tomando los resultados de la sección anterior tenemos:
+\begin{align*}
+  \langle E \rangle &= P_0E_0 + P_1E_1 + P_2E_2 + P_3E_3\\
+  &= \frac{2}{16}\left(\frac{1}{2}\hbar\omega\right) +
+\frac{4}{16}\left(\frac{3}{2}\hbar\omega\right) +
+\frac{1}{16}\left(\frac{5}{2}\hbar\omega\right) +
+\frac{9}{16}\left(\frac{7}{2}\hbar\omega\right)\\
+  &= \left(\frac{2}{32}\hbar\omega\right) +
+\left(\frac{12}{32}\hbar\omega\right) +
+\left(\frac{5}{32}\hbar\omega\right) +
+\left(\frac{63}{32}\hbar\omega\right)\\
+  &= \left(\frac{2 + 12 + 5 + 63}{32}\hbar\omega\right)\\
+  &= \left(\frac{82}{32}\hbar\omega\right)\\
+  &= \left(\frac{41}{16}\hbar\omega\right)
+\end{align*}
+
+\chapter{}
+
+\chapter{}
+
+\end{document}

@@ -4,8 +4,8 @@
 \input{macros}
 \input{letterfonts}
 
-\title{\Huge{Some Class}\\Random Examples}
-\author{\huge{Your Name}}
+\title{\Huge{Electromagnetismo 1}\\Corrección Parcial 1}
+\author{\huge{Sergio Montoya Ramirez}\\202112171}
 \date{}
 
 \begin{document}
@@ -274,5 +274,132 @@ Reemplazando tenemos:
 	\sigma(\theta) &= \varepsilon_0 7\frac{k}{R}P_3(\cos\theta)
 \end{align*}
 
+\chapter{}
+
+\section{}
+
+Dado por el metodo de imagenes tendriamos
+
+\begin{center}
+\begin{tikzpicture}[
+    charge/.style={circle, minimum size=6mm, thick, draw=black},
+    real/.style={fill=red!30},
+    image/.style={fill=blue!30, opacity=0.8},
+    plane/.style={draw=black!50, thick, fill=gray!10}]
+    
+    % Eje z
+    \draw[-Latex] (0,-3) -- (0,3) node[above] {$z$};
+    
+    % Plano semiconductor (X-Y)
+    \draw[plane] (-3,0) -- (3,0) node[right] {Plano Semiconductor (X-Y)};
+    \fill[gray!20, opacity=0.4] (-3,0) rectangle (3,0.2);
+    
+    % Cargas reales
+    \node[charge, real] (q1) at (0,1.5) {$-2q$};
+    \node[charge, real] (q2) at (0,3) {$+q$};
+    
+    % Cargas imagen
+    \node[charge, image] (iq1) at (0,-1.5) {$+2q$};
+    \node[charge, image] (iq2) at (0,-3) {$-q$};
+    
+    % Líneas de posición
+    \draw[dashed] (-0.5,1.5) -- ++(-1,0) node[left] {$z = d$};
+    \draw[dashed] (-0.5,3) -- ++(-1,0) node[left] {$z = 2d$};
+    \draw[dashed] (-0.5,-1.5) -- ++(-1,0) node[left] {$z = -d$};
+    \draw[dashed] (-0.5,-3) -- ++(-1,0) node[left] {$z = -2d$};
+\end{tikzpicture}
+\end{center}
+
+En donde las cargas azules son imagenes que nos permiten hacer este calculo. 
+
+para calcular el potencial electrico en un punto con \( z > 0 \) debemos sumar los potenciales de las 4 cargas.
+
+\[
+V(x, y, z) = \frac{1}{4\pi\epsilon_0} \left[
+\frac{-2q}{\sqrt{x^2 + y^2 + (z - d)^2}} +
+\frac{+q}{\sqrt{x^2 + y^2 + (z - 2d)^2}} +
+\frac{+2q}{\sqrt{x^2 + y^2 + (z + d)^2}} +
+\frac{-q}{\sqrt{x^2 + y^2 + (z + 2d)^2}}
+\right]
+\]
+
+Si usamos coordenadas cilíndricas (\( \rho = \sqrt{x^2 + y^2} \), \( \phi \), \( z \)), el potencial depende solo de \( \rho \) y \( z \) (simetría axial):
+
+\[
+V(\rho, z) = \frac{1}{4\pi\epsilon_0} \left[
+\frac{-2q}{\sqrt{\rho^2 + (z - d)^2}} +
+\frac{+q}{\sqrt{\rho^2 + (z - 2d)^2}} +
+\frac{+2q}{\sqrt{\rho^2 + (z + d)^2}} +
+\frac{-q}{\sqrt{\rho^2 + (z + 2d)^2}}
+\right]
+\]
+
+\section{}
+
+La solución planteada en el punto anterior utiliza el metodo de las imagenes como base para su desarrollo. Este metodo se fundamente principalmente en el teorema de la unicidad. Esto basicamente nos dice que si una solución para la ecuación de Poisson satisface las condiciones de frontera entonces esta solución debe ser la unica valida. Nosotros podemos ver que esto se cumple pues para $z = 0$ se da que:
+
+\[
+V(x, y, 0) = \frac{1}{4\pi\epsilon_0} \left[
+\frac{-2q}{\sqrt{x^2 + y^2 + d^2}} +
+\frac{+q}{\sqrt{x^2 + y^2 + (2d)^2}} +
+\frac{+2q}{\sqrt{x^2 + y^2 + d^2}} +
+\frac{-q}{\sqrt{x^2 + y^2 + (2d)^2}}
+\right] = 0.
+\]
+Que es exactamente lo que esperabamos
+\[
+V(x, y, 0) = 0
+\]
+
+Ademas podemos ver que $d\to \infty \implies V \to 0$ que tambien corresponde con la otra condición de frontera. En esencia haciendo uso del teorema de unicidad se creo el metodo de las imagenes que como vimos esta solución cumple las condiciones y por tanto es unica.
+
+\section{}
+
+La fuerza que experimenta $-2q$ es la suma de las fuerzas que ejercen las otras cargas sobre esta. Por lo tanto todo lo que debemos hacer es plantear:
+
+\begin{align*}
+  F_i &= \frac{1}{4\pi\epsilon_0} \frac{(q_i)(q_i)}{\left| r \right|^2} \hat{r}\\
+  F_{\text{net}} &= F_1 + F_2 + F_3\\
+  F_1 &= \frac{1}{4\pi\epsilon_0} \frac{(-2q)(+q)}{d^2} - \hat{z}\\
+  &= \frac{2q^2}{4\pi\epsilon_0 d^2} \hat{z}\\
+  F_2 &= \frac{1}{4\pi\epsilon_0} \frac{(-2q)(+2q)}{(2d)^2} \hat{z}\\ 
+  &= -\frac{4q^2}{16\pi\epsilon_0 d^2} \hat{z}\\ 
+  &= -\frac{q^2}{4\pi\epsilon_0 d^2} \hat{z}\\
+  F_3 &=  \frac{1}{4\pi\epsilon_0} \frac{(-2q)(-q)}{(3d)^2} \hat{z}\\
+  &= \frac{2q^2}{36\pi\epsilon_0 d^2} \hat{z}\\
+  &= \frac{q^2}{18\pi\epsilon_0 d^2} \hat{z}\\
+  F_{\text{net}} &= F_1 + F_2 + F_3\\
+  &= \left( \frac{2q^2}{4\pi\epsilon_0 d^2} - \frac{q^2}{4\pi\epsilon_0 d^2} + \frac{q^2}{18\pi\epsilon_0 d^2} \right) \hat{z}\\
+  &= \frac{q^2}{4\pi\epsilon_0 d^2} \left( \frac{2}{1} - \frac{1}{1} + \frac{1}{4.5} \right) \hat{z}\\
+  &= \frac{11}{36} \frac{q^2}{\pi\epsilon_0 d^2} \hat{z}.
+\end{align*}
+
+\section{}
+
+El campo electrico para una carga $Q$ en la componente vertical con $z=0$ es:
+\[
+E_z = -\frac{Q}{4\pi\epsilon_0} \frac{z_i}{\left(\rho^2 + z_i^2\right)^{3/2}},
+\]
+
+Con lo cual podemos pasarlo para cada una de las cargas de modo tal que:
+\begin{align*}
+  E_{z1} &= -\frac{(-2q)}{4\pi\epsilon_0} \frac{d}{\left(\rho^2 + d^2\right)^{3/2}}\\ &= \frac{2qd}{4\pi\epsilon_0 \left(\rho^2 + d^2\right)^{3/2}}\\
+  E_{z2} &= -\frac{(+q)}{4\pi\epsilon_0} \frac{2d}{\left(\rho^2 + (2d)^2\right)^{3/2}}\\ &= -\frac{2qd}{4\pi\epsilon_0 \left(\rho^2 + 4d^2\right)^{3/2}}\\
+  E_{z3} &= -\frac{(+2q)}{4\pi\epsilon_0} \frac{(-d)}{\left(\rho^2 + d^2\right)^{3/2}}\\ &= \frac{2qd}{4\pi\epsilon_0 \left(\rho^2 + d^2\right)^{3/2}}\\
+  E_{z4} &= -\frac{(-q)}{4\pi\epsilon_0} \frac{(-2d)}{\left(\rho^2 + (2d)^2\right)^{3/2}}\\ &= -\frac{2qd}{4\pi\epsilon_0 \left(\rho^2 + 4d^2\right)^{3/2}}
+\end{align*}
+
+Ahora sumando todo esto nos da:
+\begin{align*}
+  E_z &= \frac{2qd}{4\pi\epsilon_0 \left(\rho^2 + d^2\right)^{3/2}} + \frac{2qd}{4\pi\epsilon_0 \left(\rho^2 + d^2\right)^{3/2}} - \frac{2qd}{4\pi\epsilon_0 \left(\rho^2 + 4d^2\right)^{3/2}} - \frac{2qd}{4\pi\epsilon_0 \left(\rho^2 + 4d^2\right)^{3/2}}\\
+  &= \frac{qd}{\pi\epsilon_0} \left[ \frac{1}{\left(\rho^2 + d^2\right)^{3/2}} - \frac{1}{\left(\rho^2 + 4d^2\right)^{3/2}} \right]
+\end{align*}
+
+Con lo cual la densidad de carga es:
+
+\begin{align*}
+  \sigma(\rho) &= \epsilon_0 E_z\\
+  &= \frac{qd}{\pi} \left[ \frac{1}{\left(\rho^2 + d^2\right)^{3/2}} - \frac{1}{\left(\rho^2 + 4d^2\right)^{3/2}} \right]
+\end{align*}
 
 \end{document}

@@ -1,0 +1,298 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{\Huge{Some Class}\\Random Examples}
+\author{\huge{Your Name}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Punto 1}
+
+\subsection{}
+
+Tenemos que:
+\[
+  F = 2\pi I R B\cos\theta
+\]
+
+Pero ademas
+\begin{align*}
+  B &= \frac{\mu_0}{4\pi} \frac{\left[ 3 (m_1\cdot \hat{r})\hat{r} - m_1 \right]}{r^3}\\
+  B \cos\theta &= B \cdot \hat{y}\\
+  B\cos\theta &=\frac{\mu_0}{4\pi} \frac{1}{r^3} \left[ 3 (m_1\cdot \hat{r})(\hat{r} \cdot \hat{y}) - (m_1\cdot \hat{y}) \right]\\
+  m_1 \cdot \hat{y} &= 0\\
+  \hat{r}\cdot\hat{y} &= \sin\phi\\
+  m_1 \cdot \hat{r} &= m_1 \cos\theta\\
+  B\cos\theta &= \frac{\mu_0}{4\pi} \frac{1}{r^3} \left[ 3 m_1\sin\phi \cos\phi \right]\\
+\end{align*}
+
+Ahora bien, si reemplazamos en la ecuación previa:
+\begin{align*}
+  F &= 2 \pi I R \frac{\mu_0}{4\pi} \frac{1}{r^3} \left[ 3 m_1\sin\phi \cos\phi \right]\\
+  \sin\phi &= \frac{R}{r}\\
+  \cos\phi &= \frac{\sqrt{r^2 - R^2}}{r}\\
+  F &= 3 \frac{\mu_0}{2} m_1 I R^2 \frac{\sqrt{r^2 - R^2}}{r^5}\\
+  I R^2 \pi &= m_2\\
+  F &= 3 \frac{\mu_0}{2\pi} m_1m_2\frac{\sqrt{r^2 - R^2}}{r^5}
+\end{align*}
+
+Ahora bien, en el caso de que $R \ll r$
+
+\begin{align*}
+  F &= 3 \frac{\mu_0}{2\pi} m_1m_2\frac{\sqrt{r^2}}{r^5}\\ F &= 3 \frac{\mu_0}{2\pi} m_1m_2\frac{r}{r^5}\\
+  F &= 3 \frac{\mu_0}{2\pi} \frac{m_1m_2}{r^4}
+\end{align*}
+
+\subsection{}
+
+Tenemos que
+\begin{align*}
+  F &= \nabla (m_2 \cdot B)\\
+  &= (m_2 \cdot \nabla)B\\
+  &= \left(m_2 \frac{d}{dz} \right)\left[ \frac{\mu_0}{4\pi} \frac{1}{z^3} (3(m_1\cdot\hat{z})\hat{z} - m_1)\right]\\
+  2 m_1 &= (3(m_1\cdot\hat{z})\hat{z} - m_1)\\
+  &= \left(m_2 \frac{d}{dz} \right)\left[ \frac{\mu_0}{4\pi} \frac{1}{z^3} 2m_1\right]\\
+  &= \left(m_2 \frac{d}{dz} \right)\left[ \frac{\mu_0}{2\pi} \frac{1}{z^3} m_1\right]\\
+  &= \frac{\mu_0}{2\pi} m_1 m_2 \frac{d}{dz} \left[ \frac{1}{z^3} \right]\\
+  \frac{d}{dz} \left[ \frac{1}{z^3} \right] &= - 3 \frac{1}{z^4}\\
+  F &= \frac{\mu_0}{2\pi} m_1 m_2 \left( - 3 \frac{1}{z^4} \right)\\
+  F &= 3 \frac{\mu_0}{2\pi} \frac{m_1m_2}{r^4}
+\end{align*}
+
+\chapter{Punto 3}
+
+\subsection{Esfera Magnetizada}
+
+Tenemos $K_M = M \times \hat{n}$ que teniendo un vector normal $\hat{n} = \hat{r}$ nos quedamos con:
+\[
+  K_M = M \times \hat{r}
+\]
+
+\section{Cascaron}
+
+Ahora, teniendo un cascaron con carga superficial tenemos
+\begin{align*}
+  K_\sigma &= \sigma v\\
+  &= \sigma (\omega \times r)
+  &= \sigma (\omega \times R\hat{r})
+  &= R\sigma (\omega \times \hat{r})
+\end{align*}
+
+\section{Igualdad}
+
+Tenemos que mostrar:
+\begin{align*}
+  K_M &= K_\sigma\\
+  M \times \hat{r} &= \sigma R (\omega \times \hat{r})\\
+  M &= \sigma R \omega
+\end{align*}
+
+Con esto entonces mostramos que si se cumple esta condición estos tendran una densidad de corriente igual.
+
+\chapter{Punto 5}
+
+Tenemos
+\begin{align*}
+  \nabla \times M &= J_b\\
+  &= \frac{1}{s}\frac{\partial}{\partial s}(s k s^2)\hat{z}\\
+  &= \frac{1}{s}(3ks^2)\hat{z}\\
+  &= 3ks\hat{z}
+\end{align*}
+
+Ademas, tenemos
+\begin{align*}
+  K_b &= M \times \hat{n}\\
+  &= k s^2 (\hat{\phi} \times \hat{s})\\
+  &= -kR^2\hat{z}
+\end{align*}
+
+Por lo tanto, la corriente fluye encima del cilindro y luego vuelve a bajar a la superficie. Ahora, dado que las corrientes son simetricas en la simetria  podemos conseguir el campo con la ley de Ampere.
+
+\begin{align*}
+  B \cdot 2\pi s &= \mu_0 I_{enc}\\
+  &= \mu_0 \int_0^s J_b da\\
+  &= 2\pi k \mu_0 s^3\\
+  B &= \mu_0 k s^2 \hat{\phi}\\
+  &= \mu_0 M
+\end{align*}
+
+Fuera del cilindro $I_{enc} = 0 \implies B = 0$
+
+\chapter{Punto 8}
+
+Iniciamos con
+\begin{align*}
+  \oint H \cdot d l &= I_{f_{enc}}\\
+  &= I\\
+  \implies H &= \frac{I}{2\pi s}\hat{\phi}\\
+  B &= \mu_0 (1 + \chi_m)H\\
+  &= \mu_0 (1 + \chi_m) \frac{I}{2\pi s}\hat{\phi}\\
+  M &= \chi_m H\\
+  &= \frac{\chi_m I}{2\pi s}\hat{\phi}\\
+  J_b &= \nabla \times M\\
+  &= \frac{1}{s}\frac{\partial}{\partial s}\left(s \frac{\chi_m I}{2\pi s} \right)\hat{z}\\
+  &= 0\\
+  K_b &= M \times \hat{n}\\
+  &= \begin{cases}
+    \frac{\chi_m I}{2\pi a}\hat{z} & s = a\\
+    -\frac{\chi_m I}{2\pi b}\hat{z} & r = b
+  \end{cases}
+\end{align*}
+
+La corriente total de un loop entre los cilindros:
+
+\begin{align*}
+  I + \frac{\chi_m I}{2\pi a} 2\pi a &= (1 + \chi_m)I\\
+  \oint B \cdot dl &= \mu_0 I_{enc}\\
+  &= \mu_0 (1 + \chi_m) I\\
+  B &= \frac{\mu_0(1 + \chi_m)I}{2\pi s}\hat{\phi}
+\end{align*}
+
+\chapter{Punto 9}
+
+Tenemos
+\begin{align*}
+  \oint H \cdot dl &= H (2\pi s)\\
+  &= I_{f_{enc}}\\
+  &= \begin{cases}
+    I \left(\frac{s^2}{a^2}\right), & (s < a)\\
+    I, & (s > a)
+  \end{cases}\\
+  H &= \begin{cases}
+    \frac{Is}{2\pi a^2}, & (s < a)\\
+    \frac{I}{2\pi s}, & (s > a)
+  \end{cases}
+\end{align*}
+
+Ahora por lo tanto
+\begin{align*}
+  B &= \mu H\\
+  &= \begin{cases}
+    \frac{\mu_0(1 + \chi_m)Is}{2\pi a^2}, & (s < a)\\
+    \frac{\mu_0 I}{2\pi s}, & (s > a)
+  \end{cases}
+\end{align*}
+
+Para el $J_b$, $K_b$ y $I_b$
+
+\begin{align*}
+  J_b &= \chi_m J_f\\
+  J_f &= \frac{I}{\pi a^2}\\
+  J_b &= \frac{\chi_m I}{\pi a^2}\\
+  K_b &= M \times \hat{n} = \chi_m H \times \hat{n}\\
+  &= \frac{\chi_m I}{2\pi a}\\
+  I_b &= J_b(\pi a^2) + K_b(2\pi a)\\
+  &= \chi_m I - \chi_m I\\
+  &= 0
+\end{align*}
+
+\chapter{Punto 11}
+
+\section{}
+
+\begin{align*}
+  B_1 &= \frac{\mu_0}{4\pi} \frac{2m}{z^3}\hat{z}\\
+  m_2\cdot B_1 &= - \frac{\mu_0}{2\pi}\frac{m^2}{z^3}\\
+  F &= \nabla (m\cdot B)\\
+  &= \frac{\partial}{\partial z}\left[ - \frac{\mu_0}{2\pi}\frac{m^2}{z^3} \right] \hat{z}\\
+  &= \frac{3\mu_0 m^2}{2\pi z^4}\hat{z}
+\end{align*}
+
+Esta fuerza tiene que ser igual a la fuerza gravitacional para cancelarce por lo tanto
+\begin{align*}
+  \frac{3\mu_0 m^2}{2\pi z^4} - m_d g &= 0\\
+  \frac{3\mu_0 m^2}{2\pi z^4} &= m_d g\\
+  \frac{1}{2\pi z^4} &= \frac{m_d g}{3\mu_0 m^2}\\
+  \frac{1}{z^4} &= \frac{2\pi m_d g}{3\mu_0 m^2}\\
+  z^4 &= \frac{3\mu_0 m^2}{2\pi m_d g}\\
+  z &= \left(\frac{3\mu_0 m^2}{2\pi m_d g}\right)^{\frac{1}{4}}\\
+\end{align*}
+
+\section{}
+
+Agregando un iman entonces el iman en el medio siente dos fuerzas, una hacia arriba y una hacia abajo quedando
+\begin{align*}
+  \frac{3\mu_0 m^2}{2\pi x^4} -\frac{3\mu_0 m^2}{2\pi y^4} - m_d g &= 0\\
+\end{align*}
+
+Ahora bien, el iman de arriba es repelido por el iman del medio y atraido por el de abajo lo que queda:
+
+\begin{align*}
+  \frac{3\mu_0 m^2}{2\pi y^4} -\frac{3\mu_0 m^2}{2\pi (x + y)^4} - m_d g &= 0\\
+\end{align*}
+
+Ahora si sustraemos todo tenemos
+\begin{align*}
+  \frac{3\mu_0 m^2}{2\pi x^4} -\frac{3\mu_0 m^2}{2\pi y^4} - m_d g  - \left(\frac{3\mu_0 m^2}{2\pi y^4} -\frac{3\mu_0 m^2}{2\pi (x + y)^4} - m_d g\right) &= 0\\
+  \frac{3\mu_0 m^2}{2\pi x^4} -\frac{3\mu_0 m^2}{2\pi y^4} - m_d g  - \frac{3\mu_0 m^2}{2\pi y^4} + \frac{3\mu_0 m^2}{2\pi (x + y)^4} + m_d g &= 0\\
+  \left(\frac{3\mu_0 m^2}{2\pi x^4} -\frac{3\mu_0 m^2}{2\pi y^4}   - \frac{3\mu_0 m^2}{2\pi y^4} + \frac{3\mu_0 m^2}{2\pi (x + y)^4}\right) + m_d g - m_d g &= 0\\
+  \frac{3\mu_0 m^2}{2\pi} \left(\frac{1}{x^4} -\frac{1}{y^4}   - \frac{1}{y^4} + \frac{1}{(x + y)^4}\right) &= 0\\
+  \frac{1}{x^4} - \frac{2}{y^4} + \frac{1}{(x + y)^4} &= 0\\
+  \left(\frac{1}{x^4} - \frac{2}{y^4} + \frac{1}{(x + y)^4}\right)y^{4} &= 0\\
+  \frac{1}{\left(\frac{x}{y}\right)^4} - 2 + \frac{1}{\left(\frac{x}{y} + 1\right)^4} &= 0\\
+  \frac{1}{\left(\frac{x}{y}\right)^4} + \frac{1}{\left(\frac{x}{y} + 1\right)^4} &= 2\\
+  a &= \frac{x}{y}\\
+  \frac{1}{a^4} + \frac{1}{\left(a + 1\right)^4} &= 2\\
+\end{align*}
+
+Ahora podemos meter esto en sympy de la siguiente manera
+
+\lstinputlisting[language=Python]{./code/punto_11.py}
+
+Esto nos da como resultado:
+
+\begin{align*}
+  a &= \\
+  &-1.85011497953762\\
+  &0.850114979537622\\
+  &-1.01324463844346 - 0.809817345066314 i\\
+  &-1.01324463844346 + 0.809817345066314 i\\
+  &-0.5 - 0.195044382162859 i\\
+  &-0.5 + 0.195044382162859 i\\
+  &0.0132446384434638 - 0.809817345066314 i\\
+  &0.0132446384434638 + 0.809817345066314 i\\
+\end{align*}
+
+En donde el unico que nos sirve es $$\frac{x}{y} = 0.850114979537622$$
+
+\end{document}
