@@ -4,6 +4,9 @@
 \input{macros}
 \input{letterfonts}
 
+\newcommand{\rlangle}[1]{\langle\alpha\left|#1\right|\alpha\rangle}
+\newcommand{\inangle}[1]{\langle#1\rangle}
+
 \title{\Huge{Mecanica Cuantica}\\Tarea 5}
 \author{\huge{Sergio Montoya}\\ \huge{David Pachon}}
 \date{08 de Abril de 2025}
@@ -62,7 +65,7 @@ Para mostrar que esta normalizado sumamos cada coeficiente y mostramos que esto 
 
 Para encontrar la energia podemos usar la ecuación $4.2.27$ de las notas de clase en donde sabemos que los estados se pueden encontrar como:
 $$
-  E_{n} = \left(n + \frac{1}{2}\right)\hbar \omega
+E_{n} = \left(n + \frac{1}{2}\right)\hbar \omega
 $$
 
 Por lo tanto las energias son:
@@ -103,13 +106,13 @@ Tomando los resultados de la sección anterior tenemos:
 \begin{align*}
   \langle E \rangle &= P_0E_0 + P_1E_1 + P_2E_2 + P_3E_3\\
   &= \frac{2}{16}\left(\frac{1}{2}\hbar\omega\right) +
-\frac{4}{16}\left(\frac{3}{2}\hbar\omega\right) +
-\frac{1}{16}\left(\frac{5}{2}\hbar\omega\right) +
-\frac{9}{16}\left(\frac{7}{2}\hbar\omega\right)\\
+  \frac{4}{16}\left(\frac{3}{2}\hbar\omega\right) +
+  \frac{1}{16}\left(\frac{5}{2}\hbar\omega\right) +
+  \frac{9}{16}\left(\frac{7}{2}\hbar\omega\right)\\
   &= \left(\frac{2}{32}\hbar\omega\right) +
-\left(\frac{12}{32}\hbar\omega\right) +
-\left(\frac{5}{32}\hbar\omega\right) +
-\left(\frac{63}{32}\hbar\omega\right)\\
+  \left(\frac{12}{32}\hbar\omega\right) +
+  \left(\frac{5}{32}\hbar\omega\right) +
+  \left(\frac{63}{32}\hbar\omega\right)\\
   &= \left(\frac{2 + 12 + 5 + 63}{32}\hbar\omega\right)\\
   &= \left(\frac{82}{32}\hbar\omega\right)\\
   &= \left(\frac{41}{16}\hbar\omega\right)
@@ -118,5 +121,202 @@ Tomando los resultados de la sección anterior tenemos:
 \chapter{}
 
 \chapter{}
+
+\section{}
+
+Para solucionar esto partimos desde:
+
+\[
+  x = \sqrt{\frac{\hbar}{2m\omega}} \paren{a_{-} + a_{+}};\ p = i \sqrt{\frac{m\omega}{2}}\paren{a_{+} - a_{-}}
+\]
+
+Ahora bien, tomemos que:
+\begin{align*}
+  \langle \alpha | a_{-} | \alpha \rangle &= \langle \alpha | \alpha | \alpha \rangle \\ &= \alpha \langle \alpha  | \alpha \rangle \\ &= \alpha\\
+  \langle \alpha | a_{+} | \alpha \rangle &= \langle \alpha | \alpha^* | \alpha \rangle \\ &= \alpha^* \langle \alpha  | \alpha \rangle \\ &= \alpha^*\\
+\end{align*}
+
+Por lo tanto
+\begin{align*}
+  x &= \sqrt{\frac{\hbar}{2m\omega}} \paren{a_{-} + a_{+}}\\
+  \langle x \rangle &= \sqrt{\frac{\hbar}{2m\omega}} \langle \alpha |\paren{a_{-} + a_{+}}| \alpha \rangle\\
+  &= \sqrt{\frac{\hbar}{2m\omega}} \paren{\alpha + \alpha^*}\\
+  &= \sqrt{\frac{\hbar}{2m\omega}} 2\Re\paren{\alpha}\\
+  &= \sqrt{\frac{4\hbar}{2m\omega}} \Re\paren{\alpha}\\
+  &= \sqrt{\frac{2\hbar}{m\omega}} \Re\paren{\alpha}
+\end{align*}
+
+Para $\langle p \rangle$
+\begin{align*}
+  p &= i \sqrt{\frac{m\omega}{2}}\paren{a_{+} - a_{-}}\\
+  \langle p \rangle &= i \sqrt{\frac{m\omega}{2}}\langle \alpha | \paren{a_{+} - a_{-}} | \alpha \rangle\\
+  &= i \sqrt{\frac{m\omega}{2}}\paren{\alpha^* - \alpha} \\
+  &= i \sqrt{\frac{m\omega}{2}}\paren{-2i\Im\paren{\alpha}}\\
+  &= \sqrt{\frac{4 m\omega}{2}}\Im\paren{\alpha}\\
+  &= \sqrt{2 m\omega}\Im\paren{\alpha}
+\end{align*}
+
+Ahora con los casos de $\langle x^2 \rangle$ y $\langle p^2 \rangle$
+
+Primero miremos lo siguiente:
+\begin{align*}
+  x^2 &= \frac{\hbar}{2m\omega} \paren{a_{-} + a_{+}}^2\\
+  &= \frac{\hbar}{2m\omega} \paren{a_{-}^2 + a_{+}^2 + a_- a_+ + a_+a_-}\\
+  p^2 &= - \frac{m\omega}{2}\paren{a_{+} - a_{-}}^2\\
+  &= - \frac{m\omega}{2}\paren{a_{+}^2 + a_{-}^2 - a_+a_- - a_-a_+}
+\end{align*}
+
+Por lo tanto vamos a necesitar:
+\begin{align*}
+  \langle \alpha | a_-^2 | \alpha \rangle &= \alpha\langle \alpha | a_- | \alpha \rangle\\
+  &= \alpha^2\\
+  \langle \alpha | a_+^2 | \alpha \rangle &= \alpha^*\langle \alpha | a_- | \alpha \rangle\\
+  &= \paren{\alpha^*}^2\\
+  \langle \alpha | a_+a_- | \alpha \rangle &= \alpha \langle \alpha | a_+ | \alpha \rangle\\
+  &= \alpha\alpha^* \langle \alpha | \alpha \rangle\\
+  &= \left|\alpha\right|^2\\
+  \langle \alpha | a_-a_+ | \alpha \rangle &= \langle \alpha | a_+a_- + 1 | \alpha \rangle\\
+  &= \alpha \langle \alpha | a_+ | \alpha \rangle + \langle \alpha | 1 | \alpha \rangle\\
+  &= \alpha\alpha^* \langle \alpha | \alpha \rangle + 1 \langle \alpha | \alpha \rangle\\
+  &= \left|\alpha\right|^2 + 1
+\end{align*}
+
+Ya con esto podemos pasar a calcular
+\begin{enumerate}
+  \item $\langle x^2 \rangle$
+    \begin{align*}
+      x^2 &= \frac{\hbar}{2m\omega} \paren{a_{-}^2 + a_{+}^2 + a_- a_+ + a_+a_-}\\
+      \langle x^2 \rangle &= \frac{\hbar}{2m\omega} \langle \alpha |\paren{a_{-}^2 + a_{+}^2 + a_- a_+ + a_+a_-}| \alpha \rangle\\
+      &= \frac{\hbar}{2m\omega} \paren{\rlangle{a_{-}^2} + \rlangle{a_{+}^2} + \rlangle{a_- a_+} + \rlangle{a_+a_-}}\\
+      &= \frac{\hbar}{2m\omega} \paren{\alpha^2 + \paren{\alpha^*}^2 + \left|\alpha\right|^2 + \left|\alpha\right|^2 + 1}\\
+      &= \frac{\hbar}{2m\omega} \paren{\alpha^2 + \paren{\alpha^*}^2 + 2\left|\alpha\right|^2+ 1}\\
+      &= \frac{\hbar}{2m\omega} \paren{2\Re \paren{\alpha}^2 - 2\Im \paren{\alpha}^2 + 2\Re\paren{\alpha}^2 + 2\Im\paren{\alpha}^2 + 1}\\
+      &= \frac{\hbar}{2m\omega} \paren{4\Re \paren{\alpha}^2 + 1}\\
+      &= \frac{2\hbar}{m\omega}\Re \paren{\alpha}^2 + \frac{\hbar}{2m\omega}
+    \end{align*}
+
+  \item $\langle p^2 \rangle$
+    \begin{align*}
+      p^2 &= - \frac{m\omega}{2}\paren{a_{+}^2 + a_{-}^2 - a_+a_- - a_-a_+}\\
+      \langle p^2 \rangle &= - \frac{m\omega}{2}\rlangle{a_{+}^2 + a_{-}^2 - a_+a_- - a_-a_+}\\
+      &= - \frac{m\omega}{2}\paren{\rlangle{a_{+}^2} + \rlangle{a_{-}^2} - \rlangle{a_+a_-} - \rlangle{a_-a_+}}\\
+      &= - \frac{m\omega}{2}\paren{\alpha^2 + \paren{\alpha^*}^2 - \left|\alpha\right|^2 - \paren{\left|\alpha\right|^2 + 1}}\\
+      &= - \frac{m\omega}{2}\paren{2\Re\paren{\alpha}^2 - 2\Im\paren{\alpha}^2 - \left|\alpha\right|^2 - \left|\alpha\right|^2 - 1}\\
+      &= - \frac{m\omega}{2}\paren{2\Re\paren{\alpha}^2 - 2\Im\paren{\alpha}^2 - 2\Re\paren{\alpha}^2 - 2\Im\paren{\alpha}^2 - 1}\\
+      &= - \frac{m\omega}{2}\paren{- 4\Im\paren{\alpha}^2 - 1}\\
+      &= \frac{m\omega}{2}\paren{4\Im\paren{\alpha}^2 + 1}\\
+      &= \frac{m\omega}{2}4\Im\paren{\alpha}^2 + \frac{m\omega}{2}\\
+      &= 2m\omega\Im\paren{\alpha}^2 + \frac{m\omega}{2}
+    \end{align*}
+\end{enumerate}
+
+Por lo tanto los resultados son:
+\begin{enumerate}
+  \item $\langle x \rangle = \sqrt{\frac{2\hbar}{m\omega}} \Re\paren{\alpha}$
+  \item $\langle p \rangle = \sqrt{2 m\omega}\Im\paren{\alpha}$
+  \item $\langle x^2 \rangle = \frac{2\hbar}{m\omega}\Re \paren{\alpha}^2 + \frac{\hbar}{2m\omega}$
+  \item $\langle p^2 \rangle = 2m\omega\Im\paren{\alpha}^2 + \frac{m\omega}{2}$
+\end{enumerate}
+
+\pagebreak
+
+\section{}
+
+En este caso tenemos:
+\[
+  \sigma_x = \sqrt{\inangle{x^2} - \inangle{x}^2}
+\]
+
+Por lo tanto veamos cuanto es $\inangle{x}^2$
+
+\begin{align*}
+  \inangle{x}^2 &= \paren{\sqrt{\frac{2\hbar}{m\omega}} \Re\paren{\alpha}}^2\\
+  \inangle{x}^2 &= \frac{2\hbar}{m\omega} \Re\paren{\alpha}^2
+\end{align*}
+
+Con esto entonces
+\begin{align*}
+  \sigma_x &= \sqrt{\inangle{x^2} - \inangle{x}^2}\\
+  &= \sqrt{\frac{2\hbar}{m\omega}\Re \paren{\alpha}^2 + \frac{\hbar}{2m\omega} - \frac{2\hbar}{m\omega} \Re\paren{\alpha}^2}\\
+  &= \sqrt{\frac{\hbar}{2m\omega}}
+\end{align*}
+
+Por el otro lado
+\[
+  \sigma_p = \sqrt{\inangle{p^2} - \inangle{p}^2}
+\]
+
+con
+\begin{align*}
+  \inangle{p}^2 &= \paren{\sqrt{2 m\omega}\Im\paren{\alpha}}^2\\
+   &= \paren{\sqrt{2 m\omega}\Im\paren{\alpha}}^2\\
+   &= 2 m\omega\Im\paren{\alpha}^2\\
+\end{align*}
+
+De nuevo calculemos
+\begin{align*}
+  \sigma_p &= \sqrt{\inangle{p^2} - \inangle{p}^2}\\
+  &= \sqrt{2m\omega\Im\paren{\alpha}^2 + \frac{m\omega}{2} - 2 m\omega\Im\paren{\alpha}^2}\\
+  &= \sqrt{\frac{m\omega}{2}}
+\end{align*}
+
+Ahora al final:
+\begin{align*}
+  \sigma_x\sigma_p &= \sqrt{\frac{\hbar}{2m\omega}} \cdot \sqrt{\frac{m\omega}{2}}\\
+  \sigma_x\sigma_p &= \sqrt{\frac{\hbar^2 m\omega}{2\cdot2m\omega}}\\
+  \sigma_x\sigma_p &= \sqrt{\frac{\hbar^2}{4}}\\
+  \sigma_x\sigma_p &= \frac{\hbar}{2}
+\end{align*}
+
+\pagebreak
+
+\section{}
+
+Apliquemos $a_-$ de la siguiente manera
+\begin{align*}
+  a_-\left| \alpha \right> &= \alpha \sum_{n} c_n \left| n \right>\\
+  &= \sum_{n} c_n \sqrt{n} \left| n - 1 \right>\\
+\end{align*}
+
+Dado que son esencialmente los mismos podemos hacer
+\begin{align*}
+  \alpha \sum_{n} c_n \left| n \right> &= \sum_{n} c_n \sqrt{n} \left| n - 1 \right>\\
+  \sum_{n} \alpha c_n \left| n \right> &= \sum_{n} c_n \sqrt{n} \left| n - 1 \right>\\
+  \sum_{n} \alpha c_n \left| n \right> &= \sum_{n} c_{n + 1} \sqrt{n - 1} \left| n \right>\\
+  \alpha c_n &= c_{n + 1} \sqrt{n - 1}\\
+  \frac{\alpha}{\sqrt{n - 1}} c_n &= c_{n + 1}
+\end{align*}
+
+Dada esta definición recursiva podemos reducirla hasta
+\[
+  \frac{\alpha^n}{\sqrt{n!}} c_0 = c_{n}
+\]
+
+\section{}
+
+Tenemos:
+\begin{align*}
+  \inangle{\alpha | \alpha} &= \sum_{n = 0}^{\infty} \left|c_n\right|^2 = 1\\
+  \sum_{n = 0}^{\infty} \left|\frac{\alpha^n}{\sqrt{n!}}\right|^2 &= \left|c_0\right|^2 \sum_{n = 0}^{\infty} \frac{\left|\alpha\right|^{2n}}{n!}\\
+  \sum_{n = 0}^{\infty} \left|\frac{\alpha^n}{\sqrt{n!}}\right|^2 &= \left|c_0\right|^2 \sum_{n = 0}^{\infty} \frac{\paren{\left|\alpha\right|^{2}}^n}{n!}
+\end{align*}
+
+Esta es una serie exponencial conocida:
+\[
+  \sum_{k = 0}^\infty \frac{z^k}{k!} = e^z
+\]
+
+Por lo tanto
+
+\begin{align*}
+  \left|c_0\right|^2 \sum_{n = 0}^{\infty} \frac{\left|\alpha\right|^{2n}}{n!} &= \left|c_0\right|^2 e^{\left|\alpha\right|^2}\\
+  \left|c_0\right|^2 e^{\left|\alpha\right|^2} &= 1\\
+  \left|c_0\right|^2 &= e^{-\left|\alpha\right|^2}\\
+  c_0 &= e^{-\left|\alpha\right|^2/2}
+\end{align*}
+
+\pagebreak
+
+\section{}
 
 \end{document}
