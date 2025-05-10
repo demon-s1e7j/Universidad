@@ -127,7 +127,7 @@ Tomando los resultados de la sección anterior tenemos:
 Para solucionar esto partimos desde:
 
 \[
-  x = \sqrt{\frac{\hbar}{2m\omega}} \paren{a_{-} + a_{+}};\ p = i \sqrt{\frac{m\omega}{2}}\paren{a_{+} - a_{-}}
+  x = \sqrt{\frac{\hbar}{2m\omega}} \paren{a_{-} + a_{+}};\ p = i \sqrt{\frac{m\omega\hbar}{2}}\paren{a_{+} - a_{-}}
 \]
 
 Ahora bien, tomemos que:
@@ -148,12 +148,12 @@ Por lo tanto
 
 Para $\langle p \rangle$
 \begin{align*}
-  p &= i \sqrt{\frac{m\omega}{2}}\paren{a_{+} - a_{-}}\\
-  \langle p \rangle &= i \sqrt{\frac{m\omega}{2}}\langle \alpha | \paren{a_{+} - a_{-}} | \alpha \rangle\\
-  &= i \sqrt{\frac{m\omega}{2}}\paren{\alpha^* - \alpha} \\
-  &= i \sqrt{\frac{m\omega}{2}}\paren{-2i\Im\paren{\alpha}}\\
-  &= \sqrt{\frac{4 m\omega}{2}}\Im\paren{\alpha}\\
-  &= \sqrt{2 m\omega}\Im\paren{\alpha}
+  p &= i \sqrt{\frac{m\omega\hbar}{2}}\paren{a_{+} - a_{-}}\\
+  \langle p \rangle &= i \sqrt{\frac{m\omega\hbar}{2}}\langle \alpha | \paren{a_{+} - a_{-}} | \alpha \rangle\\
+  &= i \sqrt{\frac{m\omega\hbar}{2}}\paren{\alpha^* - \alpha} \\
+  &= i \sqrt{\frac{m\omega\hbar}{2}}\paren{-2i\Im\paren{\alpha}}\\
+  &= \sqrt{\frac{4 m\omega\hbar}{2}}\Im\paren{\alpha}\\
+  &= \sqrt{2 m\omega\hbar}\Im\paren{\alpha}
 \end{align*}
 
 Ahora con los casos de $\langle x^2 \rangle$ y $\langle p^2 \rangle$
@@ -162,8 +162,8 @@ Primero miremos lo siguiente:
 \begin{align*}
   x^2 &= \frac{\hbar}{2m\omega} \paren{a_{-} + a_{+}}^2\\
   &= \frac{\hbar}{2m\omega} \paren{a_{-}^2 + a_{+}^2 + a_- a_+ + a_+a_-}\\
-  p^2 &= - \frac{m\omega}{2}\paren{a_{+} - a_{-}}^2\\
-  &= - \frac{m\omega}{2}\paren{a_{+}^2 + a_{-}^2 - a_+a_- - a_-a_+}
+  p^2 &= - \frac{m\omega\hbar}{2}\paren{a_{+} - a_{-}}^2\\
+  &= - \frac{m\omega\hbar}{2}\paren{a_{+}^2 + a_{-}^2 - a_+a_- - a_-a_+}
 \end{align*}
 
 Por lo tanto vamos a necesitar:
@@ -197,16 +197,16 @@ Ya con esto podemos pasar a calcular
 
   \item $\langle p^2 \rangle$
     \begin{align*}
-      p^2 &= - \frac{m\omega}{2}\paren{a_{+}^2 + a_{-}^2 - a_+a_- - a_-a_+}\\
-      \langle p^2 \rangle &= - \frac{m\omega}{2}\rlangle{a_{+}^2 + a_{-}^2 - a_+a_- - a_-a_+}\\
-      &= - \frac{m\omega}{2}\paren{\rlangle{a_{+}^2} + \rlangle{a_{-}^2} - \rlangle{a_+a_-} - \rlangle{a_-a_+}}\\
-      &= - \frac{m\omega}{2}\paren{\alpha^2 + \paren{\alpha^*}^2 - \left|\alpha\right|^2 - \paren{\left|\alpha\right|^2 + 1}}\\
-      &= - \frac{m\omega}{2}\paren{2\Re\paren{\alpha}^2 - 2\Im\paren{\alpha}^2 - \left|\alpha\right|^2 - \left|\alpha\right|^2 - 1}\\
-      &= - \frac{m\omega}{2}\paren{2\Re\paren{\alpha}^2 - 2\Im\paren{\alpha}^2 - 2\Re\paren{\alpha}^2 - 2\Im\paren{\alpha}^2 - 1}\\
-      &= - \frac{m\omega}{2}\paren{- 4\Im\paren{\alpha}^2 - 1}\\
-      &= \frac{m\omega}{2}\paren{4\Im\paren{\alpha}^2 + 1}\\
-      &= \frac{m\omega}{2}4\Im\paren{\alpha}^2 + \frac{m\omega}{2}\\
-      &= 2m\omega\Im\paren{\alpha}^2 + \frac{m\omega}{2}
+      p^2 &= - \frac{m\omega\hbar}{2}\paren{a_{+}^2 + a_{-}^2 - a_+a_- - a_-a_+}\\
+      \langle p^2 \rangle &= - \frac{m\omega\hbar}{2}\rlangle{a_{+}^2 + a_{-}^2 - a_+a_- - a_-a_+}\\
+      &= - \frac{m\omega\hbar}{2}\paren{\rlangle{a_{+}^2} + \rlangle{a_{-}^2} - \rlangle{a_+a_-} - \rlangle{a_-a_+}}\\
+      &= - \frac{m\omega\hbar}{2}\paren{\alpha^2 + \paren{\alpha^*}^2 - \left|\alpha\right|^2 - \paren{\left|\alpha\right|^2 + 1}}\\
+      &= - \frac{m\omega\hbar}{2}\paren{2\Re\paren{\alpha}^2 - 2\Im\paren{\alpha}^2 - \left|\alpha\right|^2 - \left|\alpha\right|^2 - 1}\\
+      &= - \frac{m\omega\hbar}{2}\paren{2\Re\paren{\alpha}^2 - 2\Im\paren{\alpha}^2 - 2\Re\paren{\alpha}^2 - 2\Im\paren{\alpha}^2 - 1}\\
+      &= - \frac{m\omega\hbar}{2}\paren{- 4\Im\paren{\alpha}^2 - 1}\\
+      &= \frac{m\omega\hbar}{2}\paren{4\Im\paren{\alpha}^2 + 1}\\
+      &= \frac{m\omega\hbar}{2}4\Im\paren{\alpha}^2 + \frac{m\omega\hbar}{2}\\
+      &= 2m\omega\hbar\Im\paren{\alpha}^2 + \frac{m\omega\hbar}{2}
     \end{align*}
 \end{enumerate}
 
@@ -215,7 +215,7 @@ Por lo tanto los resultados son:
   \item $\langle x \rangle = \sqrt{\frac{2\hbar}{m\omega}} \Re\paren{\alpha}$
   \item $\langle p \rangle = \sqrt{2 m\omega}\Im\paren{\alpha}$
   \item $\langle x^2 \rangle = \frac{2\hbar}{m\omega}\Re \paren{\alpha}^2 + \frac{\hbar}{2m\omega}$
-  \item $\langle p^2 \rangle = 2m\omega\Im\paren{\alpha}^2 + \frac{m\omega}{2}$
+  \item $\langle p^2 \rangle = 2m\omega\hbar\Im\paren{\alpha}^2 + \frac{m\omega\hbar}{2}$
 \end{enumerate}
 
 \pagebreak
@@ -248,21 +248,21 @@ Por el otro lado
 
 con
 \begin{align*}
-  \inangle{p}^2 &= \paren{\sqrt{2 m\omega}\Im\paren{\alpha}}^2\\
-   &= \paren{\sqrt{2 m\omega}\Im\paren{\alpha}}^2\\
-   &= 2 m\omega\Im\paren{\alpha}^2\\
+  \inangle{p}^2 &= \paren{\sqrt{2 m\omega\hbar}\Im\paren{\alpha}}^2\\
+   &= \paren{\sqrt{2 m\omega\hbar}\Im\paren{\alpha}}^2\\
+   &= 2 m\omega\hbar\Im\paren{\alpha}^2\\
 \end{align*}
 
 De nuevo calculemos
 \begin{align*}
   \sigma_p &= \sqrt{\inangle{p^2} - \inangle{p}^2}\\
-  &= \sqrt{2m\omega\Im\paren{\alpha}^2 + \frac{m\omega}{2} - 2 m\omega\Im\paren{\alpha}^2}\\
-  &= \sqrt{\frac{m\omega}{2}}
+  &= \sqrt{2m\omega\hbar\Im\paren{\alpha}^2 + \frac{m\omega\hbar}{2} - 2 m\omega\hbar\Im\paren{\alpha}^2}\\
+  &= \sqrt{\frac{m\omega\hbar}{2}}
 \end{align*}
 
 Ahora al final:
 \begin{align*}
-  \sigma_x\sigma_p &= \sqrt{\frac{\hbar}{2m\omega}} \cdot \sqrt{\frac{m\omega}{2}}\\
+  \sigma_x\sigma_p &= \sqrt{\frac{\hbar}{2m\omega}} \cdot \sqrt{\frac{m\omega\hbar}{2}}\\
   \sigma_x\sigma_p &= \sqrt{\frac{\hbar^2 m\omega}{2\cdot2m\omega}}\\
   \sigma_x\sigma_p &= \sqrt{\frac{\hbar^2}{4}}\\
   \sigma_x\sigma_p &= \frac{\hbar}{2}
@@ -323,5 +323,66 @@ En los punto anterior definimos que:
 \begin{equation*}
   \left| \alpha \right> = \sum_{n} c_n \left| n \right> = \sum_{n} \frac{\alpha^n}{\sqrt{n!}} c_0 \left| n \right> = \sum_{n} \frac{\alpha^n}{\sqrt{n!}} e^{-\left|\alpha\right|^2/2} \left| n \right> = e^{-\left|\alpha\right|^2/2} \sum_{n} \frac{\alpha^n}{\sqrt{n!}}  \left| n \right>
 \end{equation*}
+
+Con esto entonces, podemos pasar a $\left| \alpha (t) \right>$ de la manera en la que nos dicen esto queda como
+\begin{equation*}
+  \left| \alpha(t) \right> = e^{-\left|\alpha\right|^2/2} \sum_{n} \frac{\alpha^n}{\sqrt{n!}}  e^{-i E_n t/ \hbar}\left| n \right>
+\end{equation*}
+
+Ahora apliquemos $a_-$
+
+\begin{align*}
+  a_{-}\left|\alpha(t)\right> &=e^{-\left|\alpha\right|^2/2} \sum_{n} \frac{\alpha^n}{\sqrt{n!}}  e^{-i E_n t/ \hbar}\sqrt{n}\left| n - 1\right> \\
+  a_{-}\left|\alpha(t)\right> &=e^{-\left|\alpha\right|^2/2} \sum_{n + 1} \frac{\alpha^{n + 1}}{\sqrt{n + 1!}} \sqrt{n + 1} e^{-i E_{n + 1} t/ \hbar}\left| n\right> \\
+  a_{-}\left|\alpha(t)\right> &=e^{-\left|\alpha\right|^2/2} \sum_{n} \frac{\alpha^{n}}{\sqrt{n!}}\alpha e^{-i E_{n + 1} t/ \hbar}\left| n\right> \\
+  E_n &= \hbar\omega\paren{n + \frac{1}{2}}\\
+  \implies E_{n + 1} &= \hbar\omega\paren{n + \frac{3}{2}}\\
+  \implies e^{-iE_{n + 1}t/\hbar} &= e^{-i\omega t}e^{-i E_n t/\hbar}\\
+  a_{-}\left|\alpha(t)\right> &=e^{-\left|\alpha\right|^2/2} \alpha \sum_{n} \frac{\alpha^{n}}{\sqrt{n!}} e^{-i\omega t}e^{-i E_n t/\hbar} \left| n\right> \\
+  a_{-}\left|\alpha(t)\right> &=e^{-\left|\alpha\right|^2/2} \alpha e^{-i\omega t}\sum_{n} \frac{\alpha^{n}}{\sqrt{n!}} e^{-i E_n t/\hbar} \left| n\right> \\
+  \alpha e^{-i\omega t} &= \alpha(t)\\
+  a_{-}\left|\alpha(t)\right> &=\alpha(t) e^{-\left|\alpha\right|^2/2} \sum_{n} \frac{\alpha^{n}}{\sqrt{n!}} e^{-i E_n t/\hbar} \left| n\right> \\
+  a_{-}\left|\alpha(t)\right> &=\alpha(t) \left|\alpha(t)\right>
+\end{align*}
+
+Esto en esencia quiere decir que este operador oscila de manera coherente con un oscilador clasico de periodo $\omega$. Cosa que para ser honestos tiene sentido pues estamos minimizando la incertidumbre.
+
+\pagebreak
+
+\section{}
+
+Verifiquemos cada caso:
+
+\begin{align*}
+  a_{-}\left| 0 \right> &= 0 \cdot \left| 0 \right>\\\
+  \alpha &= 0\\
+  \left| \alpha \right> &= e^{-\left|\alpha\right|^2/2} \sum_{n} \frac{\alpha^n}{\sqrt{n!}}  \left| n \right>\\
+  \left| \alpha = 0 \right> &= e^{-\left| 0 \right|^2/2} \sum_{n} \frac{0^n}{\sqrt{n!}}  \left| n \right>\\
+  \left| \alpha = 0 \right> &= \sum_{n} 0  \left| n \right>\\
+  \left| \alpha = 0 \right> &= \left| 0 \right>
+\end{align*}
+
+Por ultimo
+\begin{enumerate}
+  \item $\langle x \rangle = \sqrt{\frac{2\hbar}{m\omega}} \Re\paren{0} = 0$
+  \item $\langle p \rangle = \sqrt{2 m\omega\hbar}\Im\paren{0} = 0$
+  \item $\langle x^2 \rangle = \frac{2\hbar}{m\omega}\Re \paren{0}^2 + \frac{\hbar}{2m\omega} = \frac{\hbar}{2m\omega}$
+  \item $\langle p^2 \rangle = 2m\omega\hbar\Im\paren{0}^2 + \frac{m\omega\hbar}{2} = \frac{m\omega\hbar}{2}$
+\end{enumerate}
+
+Por lo tanto:
+\begin{align*}
+  \sigma_x &= \sqrt{\inangle{x^2} - \inangle{x}^2}\\
+  &= \sqrt{\frac{\hbar}{2m\omega} - 0}\\
+  &= \sqrt{\frac{\hbar}{2m\omega}}\\
+  \sigma_p &= \sqrt{\inangle{p^2} - \inangle{p}^2}\\
+  &= \sqrt{\frac{m\omega\hbar}{2} - 0}\\
+  &= \sqrt{\frac{m\omega\hbar}{2}}\\
+  \sigma_x\sigma_p &= \sqrt{\frac{\hbar}{2m\omega}} \cdot \sqrt{\frac{m\omega\hbar}{2}}\\
+  \sigma_x\sigma_p &= \sqrt{\frac{\hbar^2}{4}}\\
+  \sigma_x\sigma_p &= \frac{\hbar}{2}
+\end{align*}
+
+Por lo tanto si es un estado coherente con $\alpha = 0$
 
 \end{document}
