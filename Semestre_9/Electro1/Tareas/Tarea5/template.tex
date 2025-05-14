@@ -33,8 +33,8 @@
 
 \lstset{style=mystyle}
 
-\title{\Huge{Some Class}\\Random Examples}
-\author{\huge{Your Name}}
+\title{\Huge{Electromagnetismo 1}\\Tarea 5}
+\author{\huge{Sergio Montoya Ramirez}}
 \date{}
 
 \begin{document}
@@ -48,7 +48,7 @@
 
 \chapter{Punto 1}
 
-\subsection{}
+\section{}
 
 Tenemos que:
 \[
@@ -63,7 +63,7 @@ Pero ademas
   m_1 \cdot \hat{y} &= 0\\
   \hat{r}\cdot\hat{y} &= \sin\phi\\
   m_1 \cdot \hat{r} &= m_1 \cos\theta\\
-  B\cos\theta &= \frac{\mu_0}{4\pi} \frac{1}{r^3} \left[ 3 m_1\sin\phi \cos\phi \right]\\
+  B\cos\theta &= \frac{\mu_0}{4\pi} \frac{1}{r^3} \left[ 3 m_1\sin\phi \cos\phi \right]
 \end{align*}
 
 Ahora bien, si reemplazamos en la ecuación previa:
@@ -79,11 +79,12 @@ Ahora bien, si reemplazamos en la ecuación previa:
 Ahora bien, en el caso de que $R \ll r$
 
 \begin{align*}
-  F &= 3 \frac{\mu_0}{2\pi} m_1m_2\frac{\sqrt{r^2}}{r^5}\\ F &= 3 \frac{\mu_0}{2\pi} m_1m_2\frac{r}{r^5}\\
+  F &= 3 \frac{\mu_0}{2\pi} m_1m_2\frac{\sqrt{r^2}}{r^5}\\
+  F &= 3 \frac{\mu_0}{2\pi} m_1m_2\frac{r}{r^5}\\
   F &= 3 \frac{\mu_0}{2\pi} \frac{m_1m_2}{r^4}
 \end{align*}
 
-\subsection{}
+\section{}
 
 Tenemos que
 \begin{align*}
@@ -101,7 +102,7 @@ Tenemos que
 
 \chapter{Punto 3}
 
-\subsection{Esfera Magnetizada}
+\section{Esfera Magnetizada}
 
 Tenemos $K_M = M \times \hat{n}$ que teniendo un vector normal $\hat{n} = \hat{r}$ nos quedamos con:
 \[
@@ -113,8 +114,8 @@ Tenemos $K_M = M \times \hat{n}$ que teniendo un vector normal $\hat{n} = \hat{r
 Ahora, teniendo un cascaron con carga superficial tenemos
 \begin{align*}
   K_\sigma &= \sigma v\\
-  &= \sigma (\omega \times r)
-  &= \sigma (\omega \times R\hat{r})
+  &= \sigma (\omega \times r)\\
+  &= \sigma (\omega \times R\hat{r})\\
   &= R\sigma (\omega \times \hat{r})
 \end{align*}
 
@@ -272,7 +273,7 @@ Ahora si sustraemos todo tenemos
   \frac{1}{\left(\frac{x}{y}\right)^4} - 2 + \frac{1}{\left(\frac{x}{y} + 1\right)^4} &= 0\\
   \frac{1}{\left(\frac{x}{y}\right)^4} + \frac{1}{\left(\frac{x}{y} + 1\right)^4} &= 2\\
   a &= \frac{x}{y}\\
-  \frac{1}{a^4} + \frac{1}{\left(a + 1\right)^4} &= 2\\
+  \frac{1}{a^4} + \frac{1}{\left(a + 1\right)^4} &= 2
 \end{align*}
 
 Ahora podemos meter esto en sympy de la siguiente manera
@@ -290,7 +291,7 @@ Esto nos da como resultado:
   &-0.5 - 0.195044382162859 i\\
   &-0.5 + 0.195044382162859 i\\
   &0.0132446384434638 - 0.809817345066314 i\\
-  &0.0132446384434638 + 0.809817345066314 i\\
+  &0.0132446384434638 + 0.809817345066314 i
 \end{align*}
 
 En donde el unico que nos sirve es $$\frac{x}{y} = 0.850114979537622$$

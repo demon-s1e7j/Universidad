@@ -1,0 +1,225 @@
+\documentclass{report}
+
+\usepackage[spanish]{babel}
+
+\NewDocumentCommand{\paren}{m}{\left(#1\right)}
+\NewDocumentCommand{\inangle}{m}{\left<#1\right>}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{Física Estadistica}\\Tarea 5}
+\author{\huge{Sergio Montoya Ramirez}\\ 202112171}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+%%% PUNTO 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+
+En las secciones 6.1 y 6.2 del librio Pathria se llego a
+
+\begin{align}
+  \frac{PV}{kT} &= \sum_{\varepsilon}\ln\paren{1 + ze^{-\beta\varepsilon}}\label{eq:8-1}\\
+  N &= \sum_{\varepsilon} \frac{1}{z^{-1}e^{\beta\varepsilon} + 1}\label{eq:8-2}
+\end{align}
+
+Sin embargo
+\[
+  \sum_{\varepsilon} \to \int_0^\infty g(\varepsilon) d\varepsilon
+\]
+
+donde
+\[
+  g(\varepsilon) d\varepsilon = \frac{V g \sqrt{\varepsilon}}{2\pi^2 \hbar^3} (2m)^{3/2} d\varepsilon,
+\] 
+
+Ademas usaremos:
+\[
+  f_{n}\paren{z} = \frac{1}{\Gamma\paren{n}}\int_0^\infty \frac{x^{n - 1}}{z^{-1}e^{x} + 1}
+\]
+
+por lo tanto aplicando en \ref{eq:8-1} y \ref{eq:8-2} tenemos
+\begin{enumerate}
+  \item Para \ref{eq:8-1}
+    \begin{align*}
+      \frac{PV}{kT} &= \sum_{\varepsilon}\ln\paren{1 + ze^{-\beta\varepsilon}}\\
+      \frac{PV}{kT} &= \int_0^\infty \ln\paren{1 + ze^{-\beta\varepsilon}}\frac{V g \sqrt{\varepsilon}}{2\pi^2 \hbar^3} (2m)^{3/2} d\varepsilon\\
+      \frac{PV}{kT} &= \frac{V g }{2\pi^2 \hbar^3} (2m)^{3/2}\int_0^\infty \ln\paren{1 + ze^{-\beta\varepsilon}} \sqrt{\varepsilon}d\varepsilon\\
+      x &= \beta x\\
+      \varepsilon &= kTx\\
+      d\varepsilon &= kTdx\\
+      \frac{PV}{kT} &= \frac{V g }{2\pi^2 \hbar^3} (2m)^{3/2}\int_0^\infty \ln\paren{1 + ze^{-x}} \sqrt{kTx}kTdx\\
+      \frac{PV}{kT}&=\frac{V g }{2\pi^2 \hbar^3} (2m)^{3/2} \paren{kT}^{\frac{3}{2}}\int_0^\infty \ln\paren{1 + ze^{-x}}\sqrt{x}dx
+    \end{align*}
+
+    Ahora para solucionar la integral podemos hacerla por partes de la siguiente manera
+
+    \begin{align*}
+      u &= \ln\paren{1 + ze^{-x}}\\
+      du &= \frac{-ze^{-x}}{1 + ze^{-x}}dx\\
+      dv &= \sqrt{x}dx\\
+      v &= \frac{2}{3}x^{\frac{3}{2}}\\
+      \int udv &= uv - \int vdu\\
+      \int_0^\infty \ln\paren{1 + ze^{-x}}\sqrt{x}dx &= \left[\ln\paren{1 + ze^{-x}}\frac{2}{3}x^{\frac{3}{2}}\right]_{0}^\infty - \int_0^\infty \frac{2}{3}x^{\frac{3}{2}}\frac{-ze^{-x}}{1 + ze^{-x}}dx\\
+      &=  \frac{2}{3}\int_0^\infty \frac{x^{\frac{3}{2}}ze^{-x}}{1 + ze^{-x}}dx\\
+      &=  \frac{2}{3}\Gamma\paren{\frac{5}{2}}f_{\frac{5}{2}}\paren{z}\\
+      \Gamma\paren{\frac{5}{2}} &= \frac{3}{4}\sqrt{\pi}\\
+      &=  \frac{\sqrt{\pi}}{2}f_{\frac{5}{2}}\paren{z}
+    \end{align*}
+
+    Con esto entonces
+    \begin{align*}
+      \frac{PV}{kT}&=\frac{V g }{2\pi^2 \hbar^3} (2m)^{3/2} \paren{kT}^{\frac{3}{2}}\frac{\sqrt{\pi}}{2}f_{\frac{5}{2}}\paren{z}\\
+      \frac{PV}{kT}&=\frac{V g }{2\pi^2 \hbar^3} (2mkT)^{3/2} \frac{\sqrt{\pi}}{2}f_{\frac{5}{2}}\paren{z}\\
+      \frac{PV}{kT}&=\frac{V g }{2\pi^2 \frac{h^3}{8\pi^3}} (2mkT)^{3/2} \frac{\sqrt{\pi}}{2}f_{\frac{5}{2}}\paren{z}\\
+      \frac{PV}{kT}&=\frac{V g }{\frac{h^3}{2\pi}} (2mkT)^{3/2} \frac{\sqrt{\pi}}{2}f_{\frac{5}{2}}\paren{z}\\
+      \frac{PV}{kT}&=2\pi\frac{V g }{h^3} (2mkT)^{3/2} \frac{\sqrt{\pi}}{2}f_{\frac{5}{2}}\paren{z}\\
+      \frac{PV}{kT}&=\frac{V g }{h^3} (2\pi mkT)^{3/2} f_{\frac{5}{2}}\paren{z}\\
+      \lambda &= \frac{h}{\sqrt{2\pi mkT}}\\
+      \lambda^3 &= \frac{h^3}{\paren{2\pi mkT}^{\frac{3}{2}}}\\
+      \frac{1}{\lambda^3} &= \frac{\paren{2\pi mkT}^{\frac{3}{2}}}{h^3}\\
+      \frac{PV}{kT}&=\frac{V g }{\lambda^3} f_{\frac{5}{2}}\paren{z}\\
+      \frac{P}{kT}&=\frac{g }{\lambda^3} f_{\frac{5}{2}}\paren{z}\\
+    \end{align*}
+    
+  \item Para \ref{eq:8-2}
+    \begin{align*}
+      N &= \sum_{\varepsilon} \frac{1}{z^{-1}e^{\beta\varepsilon} + 1}\\
+      &= \int_0^{\infty} \frac{1}{z^{-1}e^{\beta\varepsilon} + 1} g(\varepsilon) d\varepsilon\\
+      &= \int_0^{\infty} \frac{1}{z^{-1}e^{\beta\varepsilon} + 1} \frac{V g \sqrt{\varepsilon}}{2\pi^2 \hbar^3} (2m)^{3/2} d\varepsilon\\
+      &= \frac{V g }{2\pi^2 \hbar^3} (2m)^{3/2} \int_0^{\infty} \frac{1}{z^{-1}e^{\beta\varepsilon} + 1} \sqrt{\varepsilon} d\varepsilon\\
+      &= \frac{V g }{2\pi^2 \hbar^3} (2m)^{3/2} \int_0^{\infty} \frac{\varepsilon^{1/2}}{z^{-1}e^{\beta\varepsilon} + 1}  d\varepsilon\\
+      &= \frac{V g }{2\pi^2 \hbar^3} (2m)^{3/2} \int_0^{\infty} \frac{\varepsilon^{1/2}}{z^{-1}e^{\beta\varepsilon} + 1}  d\varepsilon\\
+      x &= \beta\varepsilon\\
+      kTx &= \varepsilon\\
+      d\varepsilon &= kTdx\\
+      &= \frac{V g }{2\pi^2 \hbar^3} (2m)^{3/2} \int_0^{\infty} \frac{\paren{kTx}^{1/2}}{z^{-1}e^{x} + 1}  kTdx\\
+      &= \frac{V g }{2\pi^2 \hbar^3} (2mkT)^{3/2} \int_0^{\infty} \frac{\paren{x}^{1/2}}{z^{-1}e^{x} + 1}  dx\\
+      &= \frac{V g }{2\pi^2 \hbar^3} (2mkT)^{3/2} \Gamma\paren{\frac{3}{2}} f_{\frac{3}{2}}\paren{z}\\
+      &= \frac{V g }{2\pi^2 \hbar^3} (2mkT)^{3/2} \frac{\sqrt{\pi}}{2} f_{\frac{3}{2}}\paren{z}\\
+      &= \frac{V g }{\frac{h^3}{2\pi}} (2mkT)^{3/2} \frac{\sqrt{\pi}}{2} f_{\frac{3}{2}}\paren{z}\\
+      &= 2\pi\frac{V g }{h^3} (2mkT)^{3/2} \frac{\sqrt{\pi}}{2} f_{\frac{3}{2}}\paren{z}\\
+      &= \frac{V g }{h^3} (2\pi mkT)^{3/2} f_{\frac{3}{2}}\paren{z}\\
+      &= \frac{V g }{\lambda^3} f_{\frac{3}{2}}\paren{z}\\
+      N &= \frac{V g }{\lambda^3} f_{\frac{3}{2}}\paren{z}\\
+      \frac{N}{V} &= \frac{g}{\lambda^3} f_{\frac{3}{2}}\paren{z}\\
+    \end{align*}
+\end{enumerate}
+
+\section{}
+
+Tenemos
+\begin{align*}
+  U &= kT^2 \paren{\frac{\partial}{\partial T}\frac{PV}{kT}}\\
+  U &= kT^2 \paren{\frac{\partial}{\partial T}\frac{Vg}{\lambda^3}f_{\frac{5}{2}}\paren{z}}\\
+  U &= kT^2Vg \paren{\frac{\partial}{\partial T}\frac{1}{\lambda^3}f_{\frac{5}{2}}\paren{z}}\\
+  U &= kT^2Vg \paren{\frac{\partial}{\partial T}\frac{1}{\lambda^3}f_{\frac{5}{2}}\paren{z} + \frac{1}{\lambda^3}\frac{\partial}{\partial T}f_{\frac{5}{2}}\paren{z}}\\
+  U &= kT^2Vg \paren{\frac{3}{2\lambda^3T}f_{\frac{5}{2}}\paren{z} + \frac{1}{\lambda^3}0}\\
+  U &= kT^2Vg \frac{3}{2\lambda^3T}f_{\frac{5}{2}}\paren{z}\\
+  U &= \frac{3kT^2Vg}{2\lambda^3T}f_{\frac{5}{2}}\paren{z}\\
+  \frac{N}{V} &= \frac{g}{\lambda^3} f_{\frac{3}{2}}\paren{z}\\
+  \frac{N}{f_{\frac{3}{2}}\paren{z}} &= \frac{gV}{\lambda^3}\\
+  U &= \frac{3kT N}{2f_{\frac{3}{2}}\paren{z}}f_{\frac{5}{2}}\paren{z}\\
+  U &= \frac{3}{2}kT N\frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}}\\
+\end{align*}
+
+\section{}
+
+Para esto usaremos
+\[
+  C_V = \paren{\frac{\partial U}{\partial T}}_{V}
+\]
+
+Con lo cual:
+\begin{align*}
+  U &= \frac{3}{2}kT N\frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}}\\
+  C_V &= \paren{\frac{\partial}{\partial T} \frac{3}{2}kT N\frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} }_{V}\\
+  C_V &= \frac{3}{2}Nk\paren{\frac{\partial}{\partial T} T \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} }_{V}\\
+  C_V &= \frac{3}{2}Nk\paren{ \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} + T\frac{\partial}{\partial T} \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} }_{V}\\
+  C_V &= \frac{3}{2}Nk\paren{ \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} + T\frac{f_{\frac{3}{2}}(z) \frac{\partial f_{\frac{5}{2}}(z)}{\partial T} - f_{\frac{5}{2}}(z) \frac{\partial f_{\frac{3}{2}}(z)}{\partial T}}{\left[f_{\frac{3}{2}}(z)\right]^2} }_{V}\\
+  C_V &= \frac{3}{2}Nk\paren{ \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} + T\frac{f_{\frac{3}{2}}(z) \frac{\partial f_{\frac{5}{2}}(z)}{\partial z} \frac{\partial z}{\partial T} - f_{\frac{5}{2}}(z) \frac{\partial f_{\frac{3}{2}}(z)}{\partial z}\frac{\partial z}{\partial T}}{\left[f_{\frac{3}{2}}(z)\right]^2} }_{V}\\
+  C_V &= \frac{3}{2}Nk\paren{ \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} + T\frac{f_{\frac{3}{2}}(z) \frac{f_{\frac{3}{2}}(z)}{z} \frac{\partial z}{\partial T} - f_{\frac{5}{2}}(z) \frac{f_{\frac{1}{2}}(z)}{z}\frac{\partial z}{\partial T}}{\left[f_{\frac{3}{2}}(z)\right]^2} }_{V}\\
+  C_V &= \frac{3}{2}Nk\paren{ \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} + \frac{T}{z} \frac{\partial z}{\partial T}\frac{f_{\frac{3}{2}}(z)^2   - f_{\frac{5}{2}}(z) f_{\frac{1}{2}}(z)}{\left[f_{\frac{3}{2}}(z)\right]^2} }_{V}\\
+  C_V &= \frac{3}{2}Nk\paren{ \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} + \frac{T}{z} \paren{-\frac{3}{2}\frac{z}{T}\frac{f_{\frac{3}{2}}(z)}{f_{\frac{1}{2}}(z)}}\frac{f_{\frac{3}{2}}(z)^2   - f_{\frac{5}{2}}(z) f_{\frac{1}{2}}(z)}{\left[f_{\frac{3}{2}}(z)\right]^2} }\\
+  C_V &= \frac{3}{2}Nk\paren{ \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} - \frac{3}{2}\frac{f_{\frac{3}{2}}(z)^2   - f_{\frac{5}{2}}(z) f_{\frac{1}{2}}(z)}{f_{\frac{3}{2}}(z)f_{\frac{1}{2}}(z)} }\\
+  C_V &= \frac{3}{2}Nk\paren{ \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} - \frac{3}{2}\frac{f_{\frac{3}{2}}(z)^2}{f_{\frac{3}{2}}(z)f_{\frac{1}{2}}(z)}   + \frac{3}{2}\frac{f_{\frac{5}{2}}(z) f_{\frac{1}{2}}(z)}{f_{\frac{3}{2}}(z)f_{\frac{1}{2}}(z)} }\\
+  C_V &= \frac{3}{2}Nk\paren{ \frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} - \frac{3f_{\frac{3}{2}}(z)}{2f_{\frac{1}{2}}(z)}   + \frac{3f_{\frac{5}{2}}(z)}{2f_{\frac{3}{2}}(z)} }\\
+  C_V &= \frac{3}{2}Nk\paren{ \frac{5f_{\frac{5}{2}}\paren{z}}{2f_{\frac{3}{2}}\paren{z}} - \frac{3f_{\frac{3}{2}}(z)}{2f_{\frac{1}{2}}(z)}}\\
+  C_V &= Nk\frac{3}{2}\paren{ \frac{5f_{\frac{5}{2}}\paren{z}}{2f_{\frac{3}{2}}\paren{z}} - \frac{3f_{\frac{3}{2}}(z)}{2f_{\frac{1}{2}}(z)}}\\
+  C_V &= Nk\paren{\frac{15}{4}\frac{f_{\frac{5}{2}}\paren{z}}{f_{\frac{3}{2}}\paren{z}} - \frac{9}{4}\frac{f_{\frac{3}{2}}(z)}{f_{\frac{1}{2}}(z)}}\\
+\end{align*}
+
+\section{}
+
+En el Apendice $E$ del libro de Pathria explican que para $z$ pequeños se cumple que:
+\[
+  f_v(z) = z - \frac{z^2}{2^v} + \frac{z^3}{3^v} - \ldots
+\]
+
+Nos piden encontrar esta serie en terminos de $n\lambda^3$ por lo tanto partamos de la expresión para $n = \frac{N}{V}$ con lo cual:
+
+\begin{align*}
+  n &= \frac{g}{\lambda^3}f_{\frac{3}{2}}(z)\\
+  n &= \frac{g}{\lambda^3}\paren{z - \frac{z^2}{2^{\frac{3}{2}}} + \frac{z^3}{3^{\frac{3}{2}}} - \ldots}\\
+  \frac{n\lambda^3}{g} &= \paren{z - \frac{z^2}{2^{\frac{3}{2}}} + \frac{z^3}{3^{\frac{3}{2}}} - \ldots}
+\end{align*}
+
+\section{}
+
+\section{}
+
+\section{}
+
+%%%% PUNTO 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+
+\section{}
+
+\section{}
+
+\section{}
+
+%%% PUNTO 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+
+Partimos desde \[\chi = \frac{2n\mu^{*2}}{\paren{\frac{\partial \mu_0 \paren{xN}}{\partial x}}_{x=1/2}}\]
+
+Tenemos que considerar que segun Pathria en la ecuación 8.1.34
+
+\section{}
+
+\section{}
+
+%%%% PUNTO 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{}
+
+\section{}
+
+\section{}
+
+\section{}
+
+\section{}
+
+\section{}
+
+\section{}
+
+\section{}
+
+\end{document}
