@@ -172,12 +172,111 @@ Nos piden encontrar esta serie en terminos de $n\lambda^3$ por lo tanto partamos
 \begin{align*}
   n &= \frac{g}{\lambda^3}f_{\frac{3}{2}}(z)\\
   n &= \frac{g}{\lambda^3}\paren{z - \frac{z^2}{2^{\frac{3}{2}}} + \frac{z^3}{3^{\frac{3}{2}}} - \ldots}\\
-  \frac{n\lambda^3}{g} &= \paren{z - \frac{z^2}{2^{\frac{3}{2}}} + \frac{z^3}{3^{\frac{3}{2}}} - \ldots}
+  \frac{n\lambda^3}{g} &= \paren{z - \frac{z^2}{2^{\frac{3}{2}}} + \frac{z^3}{3^{\frac{3}{2}}} - \ldots}\\
+  z &\approx \frac{n\lambda^3}{g} + \frac{\paren{n\lambda^3}^2}{2\sqrt{2}g^2}
+\end{align*}
+
+Ademas de eso veamos las equivalencias de las funciones:
+\begin{align*}
+f_{\frac{5}{2}}(z) &\approx z - \frac{z^2}{2^{\frac{5}{2}}} + \cdots = z - \frac{z^2}{4\sqrt{2}} + \cdots, \\
+f_{\frac{3}{2}}(z) &\approx z - \frac{z^2}{2^{\frac{3}{2}}} + \cdots = z - \frac{z^2}{2\sqrt{2}} + \cdots, \\
+f_{\frac{1}{2}}(z) &\approx z - \frac{z^2}{2^{\frac{1}{2}}} + \cdots = z - \frac{z^2}{\sqrt{2}} + \cdots.
+\end{align*}
+
+Ahora tomando en cuenta que
+\[
+C_V = Nk \left( \frac{15}{4} \frac{f_{\frac{5}{2}}(z)}{f_{\frac{3}{2}}(z)} - \frac{9}{4} \frac{f_{\frac{3}{2}}(z)}{f_{\frac{1}{2}}(z)} \right).
+\]
+
+Podemos desarrollar cada una de las fracciones por aparte como
+
+\begin{align*}
+\frac{f_{\frac{5}{2}}(z)}{f_{\frac{3}{2}}(z)} &\approx \frac{z - \frac{z^2}{4\sqrt{2}}}{z - \frac{z^2}{2\sqrt{2}}} \approx 1 + \frac{z}{4\sqrt{2}}, \\
+\frac{f_{\frac{3}{2}}(z)}{f_{\frac{1}{2}}(z)} &\approx \frac{z - \frac{z^2}{2\sqrt{2}}}{z - \frac{z^2}{\sqrt{2}}} \approx 1 + \frac{z}{2\sqrt{2}}.
+\end{align*}
+
+Lo que nos dejaria con un desarrollo como
+
+\begin{align*}
+  C_V &\approx Nk \left( \frac{15}{4} \left(1 + \frac{z}{4\sqrt{2}} \right) - \frac{9}{4} \left(1 + \frac{z}{2\sqrt{2}} \right) \right)\\
+  C_V &= Nk \left( \frac{15}{4} - \frac{9}{4} + \frac{15}{16\sqrt{2}} z - \frac{9}{8\sqrt{2}} z \right)\\ &= Nk \left( \frac{3}{2} - \frac{3}{16\sqrt{2}} z \right)\\
+  C_V &= \frac{3}{2}Nk - \frac{3}{16\sqrt{2}} \frac{n\lambda^3}{g} Nk + \cdots\\
+\end{align*}
+
+note que siempre que si $n\lambda^3 > 0$ entonces \[\frac{3}{16\sqrt{2}} \frac{n\lambda^3}{g} Nk > 0\] por lo tanto dado que esto es positivo el termino total seria menor. Es decir:
+\begin{align*}
+  C_V = \frac{3}{2}Nk - \frac{3}{16\sqrt{2}} \frac{n\lambda^3}{g} Nk &< \frac{3}{2}Nk\\
+  C_V &< \frac{3}{2}Nk\\
 \end{align*}
 
 \section{}
 
+En este caso usaremos
+
+\[
+f_{3/2}(z) \approx \frac{2}{3\sqrt{\pi}} \mu^{3/2} \left[ 1 + \frac{\pi^2}{8} \left( \frac{kT}{\mu} \right)^2 + \cdots \right].
+\]
+
+Con lo cual podemos revisar para $\frac{N}{V}$
+
+\begin{align*}
+  n &= \frac{g}{\lambda^3} f_{3/2}(z)\\
+  n &\approx \frac{g}{\lambda^3} \frac{2}{3\sqrt{\pi}} \mu^{3/2} \left[ 1 + \frac{\pi^2}{8} \left( \frac{kT}{\mu} \right)^2 \right]\\
+  n &= \frac{g}{6\pi^2} \left( \frac{2mE_F}{\hbar^2} \right)^{3/2}\\
+\end{align*}
+
+Ahora igualando las expresiones para $n$
+
+\begin{align*}
+  1 &\approx \left( \frac{\mu}{E_F} \right)^{3/2} + \frac{\pi^2}{8} \left( \frac{T}{T_F} \right)^2 \left( \frac{E_F}{\mu} \right)^{1/2}\\
+  \mu &= E_F(1 + \delta)\\
+  1 &\approx 1 + \frac{3}{2}\delta + \frac{\pi^2}{8} \left( \frac{T}{T_F} \right)^2\\
+  \delta &\approx -\frac{\pi^2}{12} \left( \frac{T}{T_F} \right)^2\\
+  \mu(T) &= E_F \left[ 1 - \frac{\pi^2}{12} \left( \frac{T}{T_F} \right)^2 \right]\\
+\end{align*}
+
 \section{}
+
+Partimos desde la definición:
+\[
+  U = \frac{3}{2}NkT\frac{f_{\frac{5}{2}}(z)}{f_{\frac{3}{2}}(z)}
+\]
+
+Utilizando la expansión:
+\[
+  f_v(z) \approx \frac{\paren{\ln z}^v}{\Gamma\paren{v + 1}} \left[1 + \frac{\pi^2}{6}\frac{v(v - 1)}{\paren{\ln z}^2} + \ldots \right]
+\]
+
+Con esto entonces podemos encontra
+\begin{align*}
+f_{\frac{5}{2}}(z) &\approx \frac{(\ln z)^{\frac{5}{2}}}{\Gamma\left(\frac{7}{2}\right)} \left[ 1 + \frac{\pi^2}{6} \frac{\frac{5}{2} \cdot \frac{3}{2}}{(\ln z)^2} \right]\\
+f_{\frac{3}{2}}(z) &\approx \frac{(\ln z)^{\frac{3}{2}}}{\Gamma\left(\frac{5}{2}\right)} \left[ 1 + \frac{\pi^2}{6} \frac{\frac{3}{2} \cdot \frac{1}{2}}{(\ln z)^2} \right]
+\end{align*}
+
+Con esto entonces podemos encontrar cada una de las fracciones de $U$. Queda:
+\begin{align*}
+  \frac{f_{\frac{5}{2}}(z)}{f_{\frac{3}{2}}(z)} &\approx \frac{\Gamma\left(\frac{5}{2}\right)}{\Gamma\left(\frac{7}{2}\right)} (\ln z) \left[ 1 + \frac{\pi^2}{8} \frac{1}{(\ln z)^2} \right]\\
+  \Gamma\left(\frac{7}{2}\right) &= \frac{15}{8}\sqrt{\pi}\\
+  \Gamma\left(\frac{5}{2}\right) &= \frac{3}{4}\sqrt{\pi}\\
+  \frac{f_{\frac{5}{2}}(z)}{f_{\frac{3}{2}}(z)} &\approx \frac{2}{5} (\ln z) \left[ 1 + \frac{\pi^2}{8} \frac{1}{(\ln z)^2} \right].
+\end{align*}
+
+Con el resultado de la sección anterior tenemos
+
+\begin{align*}
+  \ln z = \frac{\mu(T)}{kT} &= \frac{E_F}{kT} \left[ 1 - \frac{\pi^2}{12} \left( \frac{T}{T_F} \right)^2 \right]\\
+  U &\approx \frac{3}{2} NkT \cdot \frac{2}{5} \frac{E_F}{kT} \left[ 1 + \frac{\pi^2}{8} \left( \frac{kT}{E_F} \right)^2 \right]\\
+  U &\approx \frac{3}{5} N E_F + \frac{3\pi^2}{20} Nk^2 \frac{T^2}{E_F}
+\end{align*}
+
+Ahora dado que $C_V = \frac{\partial U}{\partial T}$ lo que nos quedaria como:
+\begin{align*}
+  C_V &= \frac{\partial U}{\partial T} = \frac{3\pi^2}{10} Nk^2 \frac{T}{E_F}\\
+  E_F &= kT_F\\
+  C_V &= \frac{\partial U}{\partial T} = \frac{3\pi^2}{10} Nk^2 \frac{T}{kTF}\\
+  C_V &= Nk \left\{\frac{\pi^2}{2} \frac{T}{T_F} + o\left( \frac{T}{T_F} \right)\right\}
+\end{align*}
+
 
 \section{}
 

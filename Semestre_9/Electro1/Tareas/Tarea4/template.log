@@ -1264,4 +1264,56 @@ File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 (/usr/share/texmf-dist/tex/latex/pgf-blur/tikzlibraryshadows.blur.code.tex
  v1.02, 2012/12/09
-(/usr/share/t
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+shadows.code.tex
+File: tikzlibraryshadows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+\pgfbs@fading@count=\count468
+)
+\c@mylabelcounter=\count469
+\diffdbox=\box145
+ (/usr/share/texmf-dist/tex/latex/titlesec/titletoc.sty
+Package: titletoc 2025/01/04 v2.17 TOC entries
+\ttl@leftsep=\dimen332
+))
+(./macros.tex) (./letterfonts.tex)
+(/usr/share/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count470
+\float@exts=\toks55
+\float@box=\box146
+\@float@everytoks=\toks56
+\@floatcapt=\box147
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+decorations.markings.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorati
+ons.markings.code.tex)) (./template.aux
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 <
+      <<<<<< HEAD
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.19 <
+      <<<<<< HEAD
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+ 
+Here is how much of TeX's memory you used:
+ 35939 strings out of 475171
+ 716147 string characters out of 5767095
+ 1197425 words of memory out of 5000000
+ 58356 multiletter control sequences out of 15000+600000
+ 558837 words of font info for 36 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 103i,1n,108p,459b,588s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!
