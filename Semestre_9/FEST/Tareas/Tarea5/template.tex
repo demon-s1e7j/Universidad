@@ -286,6 +286,45 @@ Ahora dado que $C_V = \frac{\partial U}{\partial T}$ lo que nos quedaria como:
 
 \section{}
 
+\begin{align*}
+  \psi\paren{\vec{r}} &= \psi\paren(x, y)\\
+  &= e^{i\vec{k}\cdot \vec{r}}\\
+  &= e^{i\paren{k_x x + k_y y}}\\
+  k_x &= \frac{2\pi}{L}n_x\\
+  k_y &= \frac{2\pi}{L}n_y\\
+  \Delta k_x \Delta k_y &= \paren{\frac{2\pi}{L}\paren{n_x + 1} - \frac{2\pi}{L}n_x}\paren{\frac{2\pi}{L}\paren{n_y + 1} - \frac{2\pi}{L}n_y}\\
+  &= \frac{2\pi}{L}\frac{2\pi}{L}\\
+  &= \paren{\frac{2\pi}{L}}^2\\
+  &= \frac{\paren{2\pi}^2}{A}\\
+  &= \text{Area por Estado}
+\end{align*}
+
+Esto biene de cumplirse:
+\begin{align}
+  \psi\paren{x + L, y} = \psi\paren{x, y} &\implies e^{ik_x L} = 1\label{eq:2_1}\\
+  &\implies k_x = \frac{2\pi}{L}n_x\label{eq:2_2}
+\end{align}
+
+Ahora para mostrar \ref{eq:2_2} podemos tomar:
+\begin{align*}
+  e^{ik_x L} &= 1\\
+  e^{ik_x L} &= e^{i2\pi n_x}\\
+  ik_x L &= i2\pi n_x\\
+  k_x&= \frac{2\pi}{L} n_x
+\end{align*}
+
+Ahora para mostrar \ref{eq:2_1}
+\begin{align*}
+  \psi\paren{x + L, y} &= e^{i\paren{k_x (x + L) + k_y y}}\\
+  &= e^{i\paren{k_x (x + L) + k_y y}}\\
+  &= e^{ik_x L}e^{i\paren{k_x x + k_y y}}\\
+  &= e^{ik_x L}\psi\paren{x, y}\\
+  \psi\paren{x, y}&= e^{ik_x L}\psi\paren{x, y}\\
+  1 &= e^{ik_x L}
+\end{align*}
+
+Por lo tanto al tener $\varepsilon = \frac{\hbar^2k^2}{2m}$, podemos tener $g\paren{\varepsilon}d\varepsilon$
+
 \section{}
 
 \section{}
@@ -297,10 +336,6 @@ Ahora dado que $C_V = \frac{\partial U}{\partial T}$ lo que nos quedaria como:
 
 \section{}
 
-Partimos desde \[\chi = \frac{2n\mu^{*2}}{\paren{\frac{\partial \mu_0 \paren{xN}}{\partial x}}_{x=1/2}}\]
-
-Tenemos que considerar que segun Pathria en la ecuación 8.1.34
-
 \section{}
 
 \section{}
@@ -310,15 +345,333 @@ Tenemos que considerar que segun Pathria en la ecuación 8.1.34
 
 \section{}
 
-\section{}
+Teniendo el potencial vectorial:
+\[
+  A = \paren{0, B_x, 0}
+\]
+
+Ahora, podemos definir el momento canonico como
+\[
+  \Pi = p - \frac{e}{c}A
+\]
+
+Ahora bien, para este sistema podemos definir el hamiltoniano sin spin como:
+
+\begin{align*}
+  H &= \frac{\Pi}{2m}\\
+  &= \frac{1}{2m} \left[\paren{p_x}^2 + \paren{p_y - \frac{eB}{c}x}^2 + p_z^2\right]
+\end{align*}
+
+Ahora para solucionar una ecuación asi podemos suponer que la solución es de la forma:
+
+\begin{align*}
+  \psi\paren{x, y, z} &= \phi\paren{x, y}e^{ik_zz}
+\end{align*}
+
+Con esto entonces podemos meterlo en la ecuación de Schrodinger lo que nos queda como:
+
+\begin{align*}
+  -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial z^2} \paren{e^{ik_zz}} &= E_z e^{ik_zz}\\
+  -\frac{\hbar^2}{2m}i^2k_z^2 e^{ik_zz} &= E_z e^{ik_zz}\\
+  \frac{\hbar^2k_z^2}{2m} &= E_z
+\end{align*}
+
+Por el otro lado para el componente $xy$ queda el hamiltoniano como:
+\begin{align*}
+  H_{xy} &= \frac{1}{2m} \left[\paren{p_x}^2 + \paren{p_y - \frac{eB}{c}x}^2\right]
+\end{align*}
+
+Dado que el campo magnetico no varia en $y$ entonces $p_y$ es una constante que llamaremos $\hbar k_y$ nos queda
+
+\begin{align*}
+  H_{xy} &= \frac{1}{2m} \left[\paren{p_x}^2 + \paren{p_y - \frac{eB}{c}x}^2\right]\\
+  H_{xy} &= \frac{1}{2m} \left[p_x^2 + \paren{\frac{eB}{c}}^2\paren{x - \frac{\hbar ck_y}{eB}}\right]
+\end{align*}
+
+Esto se ve en esencia equivalente a un oscilador que lo vemos como
+\begin{align*}
+  \omega_c &= \frac{eB}{mc}\\
+  x_0 &= \frac{\hbar c k_y}{eB}\\
+  H_{xy} &= \frac{p_x^2}{2m} + \frac{1}{2}m\omega_c^2 \paren{x - x_0}^2
+\end{align*}
+
+Ahora bien, dado que esto es un oscilador armonico sabemos la solución cuantica y que esta responde a:
+\begin{align*}
+  E_{xy} &= \hbar\omega_c\paren{n + \frac{1}{2}}\\
+  E &= E_{xy} + E_z\\
+  &= \hbar\frac{eB}{mc}\paren{n + \frac{1}{2}} + \frac{\hbar^2k_z^2}{2m}
+\end{align*}
 
 \section{}
 
-\section{}
+Tomemos el hamiltoniano en $xy$ como
+\begin{align*}
+  \Pi_x &= p_x\\
+  \Pi_y &= p_y - \frac{e B}{c}x\\
+  H_{xy} &= \frac{\Pi_x^2 + \Pi_y^2}{2m}
+\end{align*}
+
+Ahora teniendo justo como antes:
+\begin{align*}
+  E_n &= \hbar\omega_c\paren{n + \frac{1}{2}}\\
+  \frac{\Pi_x^2 + \Pi_y^2}{2m} &= \hbar\omega_c\paren{n + \frac{1}{2}}\\
+  \Pi_x^2 + \Pi_y^2 &= 2m\hbar\omega_c\paren{n + \frac{1}{2}}\\
+  \Pi_x^2 + \Pi_y^2 &= 2m\hbar\frac{eB}{mc}\paren{n + \frac{1}{2}}\\
+  \Pi_x^2 + \Pi_y^2 &= 2m\hbar\frac{eB}{mc}\paren{n + \frac{1}{2}}\\
+  \hbar^2\paren{k_x^2 + k_y^2} &= 2m\hbar\frac{eB}{mc}\paren{n + \frac{1}{2}}\\
+  \paren{k_x^2 + k_y^2} &= 2\frac{eB}{\hbar c}\paren{n + \frac{1}{2}}\\
+\end{align*}
+
+Esto es un circulo de radio:
+\[
+  r = \sqrt{2\frac{eB}{\hbar c}\paren{n + \frac{1}{2}}}
+\]
 
 \section{}
 
+Podemos saber que
+
+\begin{align*}
+r_j^2 &= \Pi_x^2 + \Pi_y^2\\
+  &= 2\hbar\,\frac{eB}{c}\Bigl(j + \tfrac12\Bigr),
+\end{align*}
+
+Ahora, dado que necesitamos la diferencia de areas entre niveles desarrollamos como:
+
+
+\begin{align*}
+\Delta A_p &= \pi\,r_{j+1}^2 \;-\;\pi\,r_j^2\\
+&= \pi\Bigl[2\hbar\,\tfrac{eB}{c}\bigl((j+1)+\tfrac12\bigr)
+     -2\hbar\,\tfrac{eB}{c}\bigl(j+\tfrac12\bigr)\Bigr]\\
+&= 2\pi\hbar\,\frac{eB}{c},
+\end{align*}
+
+Con esto entonces la degeneración queda como:
+\begin{align*}
+g_j &= \frac{A\;\Delta A_p}{h^2}\\
+  &= \frac{L_xL_y}{h^2}\;\Bigl(2\pi\hbar\,\tfrac{eB}{c}\Bigr)\\
+&= \frac{A\,eB}{2\pi\hbar\,c}.
+\end{align*}
+
 \section{}
+
+En el ensamble gran canónico,
+\[
+\ln \mathcal{Z}
+=\sum_{j=0}^\infty g_j
+  \,\frac{L_z}{2\pi}\int_{-\infty}^\infty dp_z\,
+  \ln\bigl[1 + z\,e^{-\beta(\hbar\omega_c(j+\tfrac12)+p_z^2/2m)}\bigr],
+\]
+con \(\beta=1/(kT)\), \(z\) la fugacidad, y el degeneramiento como
+\[
+g_j
+=\frac{A\,eB}{2\pi\hbar c}\,.
+\]
+Por tanto
+\begin{align*}
+\ln \mathcal{Z}
+=\frac{A\,eB}{2\pi\hbar c}\,\frac{L_z}{2\pi}
+\int_{-\infty}^{\infty}dp_z
+\;\sum_{j=0}^\infty
+\ln\!\bigl[1 + z\,e^{-\beta(\hbar\omega_c(j+\tfrac12)+p_z^2/2m)}\bigr].
+\end{align*}
+Definimos la función
+\[
+f(x)
+=\ln\!\bigl[1 + z\,e^{-\beta(\hbar\omega_c\,x + p_z^2/2m)}\bigr],
+\]
+de modo que \(\sum_{j=0}^\infty f(j+\tfrac12)\) se aproxima por la regla de Euler–Maclaurin:
+\[
+\sum_{j=0}^\infty f\Bigl(j+\tfrac12\Bigr)
+=\int_{0}^{\infty}f(x)\,dx
+-\frac1{24}f'(0)+\cdots.
+\]
+1. El primer término
+\(\displaystyle \int_0^\infty f(x)\,dx\) da una contribución independiente de \(B\),
+que llamamos \(f_0(T,V)\).  
+2. El siguiente término, \(-\tfrac1{24}f'(0)\), es el que aporta la dependencia principal en \(B^2\).  
+   Calculamos
+   \begin{align*}
+   f'(x)
+     &= -\,\beta\,\hbar\omega_c\,
+     \frac{z\,e^{-\beta(\hbar\omega_c x + p_z^2/2m)}}
+          {1 + z\,e^{-\beta(\hbar\omega_c x + p_z^2/2m)}}\\
+   f'(0)
+     &= -\,\beta\,\hbar\omega_c\,
+     \frac{z\,e^{-\beta(p_z^2/2m)}}
+          {1 + z\,e^{-\beta(p_z^2/2m)}}.
+          \end{align*}
+   Luego
+   \[
+   -\frac1{24}f'(0)
+   = \frac{\beta\,\hbar\omega_c}{24}
+     \,\frac{z\,e^{-\beta(p_z^2/2m)}}
+          {1 + z\,e^{-\beta(p_z^2/2m)}}.
+   \]
+   Como \(\omega_c=eB/(mc)\), y reuniendo factores,
+   \begin{align*}
+   \ln \mathcal{Z}
+     &\approx f_0(T,V)
+   + \frac{A\,eB}{2\pi\hbar c}\,\frac{L_z}{2\pi}
+     \int_{-\infty}^\infty dp_z
+     \,\Bigl(-\tfrac1{24}f'(0)\Bigr)\\
+     &=f_0(T,V)
+   -\frac{A\,L_z}{(2\pi)^2}\,
+    \frac{eB}{\hbar c}\,
+    \frac{\beta\,\hbar eB}{24\,m c}
+   \int_{-\infty}^\infty dp_z
+   \frac{1}{\,z^{-1}e^{\beta\,p_z^2/2m}+1\,}.
+   \end{align*}
+   Identificando \(V=A\,L_z\) y \(\mu_{\rm eff}=\tfrac{e\hbar}{4\pi m c}\), simplificamos:
+   \[
+   \frac{eB}{\hbar c}\,\frac{\hbar eB}{24\,m c}
+   =\frac{e\,\mu_{\rm eff}\,B^2}{h^2\,kT},
+   \]
+   de modo que finalmente
+   \[
+     \ln \mathcal{Z}
+     \;\approx\;
+     f_0(T,V)
+     \;-\;
+     \frac{V\,e\,\mu_{\rm eff}\,B^2}{h^2\,kT}
+     \int_{-\infty}^{\infty}
+       \frac{dp_z}{\,z^{-1}e^{\,p_z^2/(2mkT)}+1\,}.
+   \]
+
+\section{}
+
+Partimos de
+\[
+\ln \mathcal{Z}
+\;\approx\;
+f_0(T,V)
+\;-\;
+\frac{V\,e\,\mu_{\rm eff}\,B^2}{h^2\,kT}
+\int_{-\infty}^{\infty}
+\frac{dp_z}{\,z^{-1}e^{\,\frac{p_z^2}{2mkT}}+1\,},
+\]
+donde \(\beta=1/(kT)\) y \(\mu_{\rm eff}=e\hbar/(4\pi m c)\).  
+
+La magnetización total en el ensamble gran canónico es
+\[
+M
+=\frac{1}{\beta}\,
+\Bigl(\frac{\partial \ln \mathcal{Z}}{\partial B}\Bigr)_{z,V,T}.
+\]
+Como \(f_0\) no depende de \(B\), diferenciamos sólo el segundo término:
+\[
+\frac{\partial \ln \mathcal{Z}}{\partial B}
+=
+-\,\frac{V\,e\,\mu_{\rm eff}}{h^2\,kT}
+\;\frac{\partial}{\partial B}\Bigl(B^2\Bigr)
+\;\;
+\int_{-\infty}^{\infty}
+\frac{dp_z}{\,z^{-1}e^{\,\frac{p_z^2}{2mkT}}+1\,}
+=
+-\,\frac{2V\,e\,\mu_{\rm eff}}{h^2\,kT}\;B\;
+I,
+\]
+donde hemos definido la integral
+\[
+I \;=\;\int_{-\infty}^{\infty}
+\frac{dp_z}{\,z^{-1}e^{\,\frac{p_z^2}{2mkT}}+1\,}.
+\]
+Entonces
+\[
+M
+=\frac{1}{\beta}\,
+\Bigl(-\frac{2V\,e\,\mu_{\rm eff}}{h^2\,kT}\;B\,I\Bigr)
+=
+kT \;\Bigl(-\frac{2V\,e\,\mu_{\rm eff}}{h^2\,kT}\;B\,I\Bigr)
+=
+-\,\frac{2V\,e\,\mu_{\rm eff}}{h^2}\;B\;I.
+\]
+Por tanto, la magnetización por unidad de volumen 
+\(\,m=M/V\) es
+\[
+m = -\,\frac{2\,e\,\mu_{\rm eff}}{h^2}\;B\;
+\int_{-\infty}^{\infty}
+\frac{dp_z}{\,z^{-1}e^{\,\frac{p_z^2}{2mkT}}+1\,}
+\;\propto\; B,
+\]
+lo que muestra explícitamente que \(M\) es proporcional a \(B\) (respuesta diamagnética).
+
+\section{}
+
+Partimos de la magnetización por volumen que obtuvimos en el apartado anterior,
+\[
+m \equiv \frac{M}{V}
+\;=\;
+-\,\frac{2\,e\,\mu_{\rm eff}}{h^2}\;B\;
+\int_{-\infty}^{\infty}\!\!
+\frac{dp_z}{\,z^{-1}e^{\,p_z^2/(2mkT)}+1\,}
+\;\propto\;B,
+\]
+donde 
+\(\displaystyle \mu_{\rm eff}=\frac{e\hbar}{4\pi m c}\)
+y hemos definido
+\[
+I \;=\;\int_{-\infty}^{\infty}
+\frac{dp_z}{\,z^{-1}e^{\,p_z^2/(2mkT)}+1\,}.
+\]
+
+La susceptibilidad magnética se define como
+\[
+\chi \;\equiv\;\frac{1}{V}\,
+\Bigl(\frac{\partial M}{\partial B}\Bigr)_{z,V,T}
+\;=\;
+\frac{\partial m}{\partial B}
+\Bigg|_{z,T}\,.
+\]
+Dado que \(m\propto B\), tenemos
+\begin{align*}
+\chi
+  &=\frac{\partial}{\partial B}\Bigl(m\Bigr)\\
+  &=-\,\frac{2\,e\,\mu_{\rm eff}}{h^2}\;
+\int_{-\infty}^{\infty}
+\frac{dp_z}{\,z^{-1}e^{\,p_z^2/(2mkT)}+1\,}
+\;\equiv\;
+-\,C(T,z)\\
+C(T,z)
+  &=\frac{2\,e\,\mu_{\rm eff}}{h^2}\,
+\int_{-\infty}^{\infty}
+\frac{dp_z}{\,z^{-1}e^{\,p_z^2/(2mkT)}+1\,}.
+\end{align*}
+
+Para expresar \(C(T,z)\) en términos de la densidad de electrones
+\(\displaystyle n=\frac{N}{V}\), usamos que a \(B=0\) y \(T\) fijo
+\begin{align*}
+n
+  &=2\int\frac{d^3p}{h^3}\;\frac{1}{\,z^{-1}e^{p^2/(2mkT)}+1\,}\\
+  &=2\,\frac{2\pi m kT}{h^2}\;
+\int_{-\infty}^{\infty}
+\frac{dp_z}{\,z^{-1}e^{p_z^2/(2mkT)}+1\,}\\
+  &=\;\frac{4\pi m kT}{h^2}\;I.
+\end{align*}
+De aquí
+\(\displaystyle I=\frac{h^2}{4\pi m kT}\,n\). Sustituyendo en \(C(T,z)\):
+\begin{align*}
+C(T,z)
+&=\frac{2\,e\,\mu_{\rm eff}}{h^2}\;
+\frac{h^2}{4\pi m kT}\,n\\
+&=\frac{e\,\mu_{\rm eff}}{2\pi m kT}\,n.
+\end{align*}
+Por tanto
+\begin{align*}
+\chi
+  &=-\,C(T,z)\\
+  &=-\,\frac{n\,e\,\mu_{\rm eff}}{2\pi m kT}
+  \;\times\;\bigl(2\pi m c\bigr)\\
+  \bigl(2\pi m c\bigr)&=\,\frac{e\hbar}{\mu_{\rm eff}}
+\end{align*}
+pero como
+\(\displaystyle\mu_{\rm eff}=\frac{e\hbar}{4\pi m c}\)
+se simplifica directamente a
+\[
+\chi
+=-\frac{n\,\mu_{\rm eff}^2}{3\,kT}\,,
+\]
+mostrando que la respuesta es diamagnética (\(\chi<0\)) y proporcional a \(1/T\).
 
 \section{}
 
