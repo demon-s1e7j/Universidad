@@ -323,18 +323,186 @@ Ahora para mostrar \ref{eq:2_1}
   1 &= e^{ik_x L}
 \end{align*}
 
-Por lo tanto al tener $\varepsilon = \frac{\hbar^2k^2}{2m}$, podemos tener $g\paren{\varepsilon}d\varepsilon$
+Por lo tanto al tener $\varepsilon = \frac{\hbar^2k^2}{2m}$, podemos tener $g\paren{\varepsilon}d\varepsilon$ lo cual nos deja para nuestro caso como:
+\begin{align*}
+  g\paren{\varepsilon} d\varepsilon &= 2 \cdot \frac{A}{\paren{2\pi}^2}\cdot 2\pi k dk\\
+  g\paren{\varepsilon} d\varepsilon &= \frac{A}{\pi} k dk\\
+  \varepsilon &= \frac{\hbar^2 k^2}{2 m}\\
+  &\iff \frac{d\varepsilon}{d k} = \frac{\hbar^2 k}{m}\\
+  &\iff k dk = \frac{m}{\hbar^2}d\varepsilon\\
+  g\paren{\varepsilon} d\varepsilon &= \frac{A}{\pi} \frac{m}{\hbar^2} d\varepsilon \\
+  g\paren{\varepsilon} d\varepsilon &= \frac{A m}{\hbar^2 \pi} d\varepsilon \\
+  g\paren{\varepsilon} &= \frac{A m}{\hbar^2 \pi} \\
+\end{align*}
 
 \section{}
 
-\section{}
+Tenemos
+\begin{align*}
+  N &= \sum_{\varepsilon}\inangle{n_\varepsilon}\\
+  &\implies N = \int_0^\infty g\paren{\varepsilon} \inangle{n_\varepsilon} d\varepsilon\\
+\end{align*}
+
+\begin{align*}
+  \inangle{n_\varepsilon} &= \frac{1}{e^{\frac{\paren{\varepsilon - \mu}}{kT}} + 1}\\
+  &= \begin{cases}
+    1 & \varepsilon < \mu_0\\
+    0 & \varepsilon > \mu_0
+  \end{cases}\\
+  N &= \int_0^\infty g\paren{\varepsilon} \inangle{n_\varepsilon}d\varepsilon\\
+  &= \int_0^\infty g(\varepsilon) d\varepsilon\\
+  &= \int_0^{\varepsilon_f}\frac{mA}{\pi\hbar^2} d\varepsilon\\
+  &= \left.\frac{m A}{\pi \hbar^2}(\varepsilon)\right|_0^{\varepsilon_f}\\
+  &= \frac{m A}{\pi\hbar^2}\varepsilon_f\\
+  \varepsilon_f &= \frac{\pi\hbar^2}{mA}N\\
+  &= \frac{\pi \hbar^2}{m}\frac{N}{A}\\
+  &= \frac{\pi \hbar^2}{m}n \\
+  n &= \frac{m\varepsilon_f}{\pi \hbar^2} \\
+\end{align*}
+
+Lo que entonces hace que:
+\begin{align*}
+  \inangle{n} &= \int_{-\infty}^{\infty} g(\varepsilon)f(\varepsilon) d\varepsilon\\
+  \varepsilon &= \frac{\hbar^2 k^2}{2 m}\\
+  \inangle{n} &= \int_{-\infty}^{\infty} g(\varepsilon)\frac{1}{e^{\beta(\varepsilon - \mu)} + 1}d\varepsilon\\
+  g\paren{\varepsilon} &= \frac{A m}{\hbar^2 \pi} \\
+  \inangle{n} &= \int_{-\infty}^{\infty} \frac{m}{\pi\hbar^2}\frac{1}{e^{\beta(\varepsilon - \mu)} + 1}d\varepsilon\\
+  &= \frac{m}{\pi \hbar^2} \int_0^\infty \frac{1}{z^{-1}e^{\beta\varepsilon} + 1}d\varepsilon\\
+  x &= e^{\beta\varepsilon}\\
+  &\implies \frac{dx}{d\varepsilon} = \beta e^{\beta \varepsilon}\\
+  &\iff dx = \beta e^{\beta \varepsilon}d\varepsilon\\
+  d\varepsilon &= \frac{dx}{\beta e^{\beta \varepsilon}}\\
+  &= \frac{dx}{\beta x}
+\end{align*}
+
+\begin{align*}
+  \inangle{n} &= \frac{m}{\pi\hbar^2} \int_1^\infty \frac{dx}{\beta x\paren{z^{-1}x + 1}}\\
+  &= \frac{m k T}{\pi \hbar^2} \int_1^\infty \frac{zdx}{x\paren{x + z}}\\
+  \frac{z}{x\paren{x + z}} &= \frac{x + z - x}{x\paren{x + z}}\\
+  &= \frac{1}{x} - \frac{1}{x + z}\\
+  \inangle{n} &= \frac{m}{\pi\hbar^2}\int_1^\infty \frac{1}{x} - \frac{1}{x + z} dx \\
+  &= \frac{mkT}{\pi\hbar^2} \paren{\left.\ln\paren{x}\right|_1^\infty - \left.\ln\paren{x + z}\right|_1^\infty}\\
+  n &= \frac{mkT}{\pi\hbar^2}\ln\paren{1 + z}\\
+  &= \frac{mkT}{\pi\hbar^2}\ln\paren{1 + e^{\frac{\mu}{kT}}}\\
+  \frac{n\pi\hbar^2}{mkT} &=\ln\paren{1 + e^{\frac{\mu}{kT}}}\\
+  \frac{n\pi\hbar^2}{m}\frac{1}{kT} &=\ln\paren{1 + e^{\frac{\mu}{kT}}}\\
+  \varepsilon_f\frac{1}{kT} &=\ln\paren{1 + e^{\frac{\mu}{kT}}}\\
+  1 + e^{\frac{\mu}{kT}} &= e^{\frac{\varepsilon_f}{kT}}\\
+  \frac{\mu}{kT} &= \ln\paren{1 + e^{\frac{\mu}{kT}}}\\
+  \mu &= kT \ln\paren{1 + e^{\frac{\mu}{kT}}}
+\end{align*}
+
+Ahora usamos que:
+\begin{align*}
+  \frac{PA}{kT} &= \int^\infty_0 g(\varepsilon) \ln\paren{1 + z e^{\beta E}}d\varepsilon\\
+  g(\varepsilon) &= \frac{Am}{\pi \hbar^2}\\
+  \frac{PA}{kT} &= \int^\infty_0 \frac{Am}{\pi \hbar^2} \ln\paren{1 + z e^{\beta E}}d\varepsilon\\
+  x &= \beta \varepsilon\\
+  \frac{dx}{d\varepsilon} &= \beta\\
+  d\varepsilon &= \frac{dx}{\beta}\\
+  \frac{PA}{kT} &= \frac{Am}{\pi \hbar^2\beta} \int^\infty_0\ln\paren{1 + z e^{x}}dx\\
+  u &= \ln\paren{1 + z e^{x}}dx\\
+  du &= \frac{1}{1 + ze^{-x}}(-1) z e^{-x} dx\\
+  dv &= dx\\
+  v &= x
+\end{align*}
+\begin{align*}
+  \frac{PA}{kT} &= \frac{Am}{\pi \hbar^2\beta} \left.x\ln\paren{1 + z e^{x}}\right|_0^\infty \int^\infty_0 x \frac{z e^{-x}}{1 + ze^{-x}}dx\\
+  \frac{PA}{kT} &= \frac{Am}{\pi \hbar^2\beta} \int^\infty_0 x \frac{z e^{-x}}{1 + ze^{-x}}dx\\
+  \frac{PA}{kT} &= \frac{Am}{\pi \hbar^2\beta} \int^\infty_0 x \frac{z e^{-x}}{1 + ze^{-x}}\frac{e^x z^{-1}}{e^x z^{-1}}dx\\
+  \frac{PA}{kT} &= \frac{Am}{\pi \hbar^2\beta} \int^\infty_0 x \frac{x^{2 - 1}}{z^{-1}e^{x} + 1} dx\\
+  F_v (z) &= \int_0^{\infty} \frac{x^{v - 1}}{z^{-1}e^{x} + 1} dx\\
+  \frac{PA}{kT} &= \frac{Am}{\pi \hbar^2\beta} F_2(z)\\
+  \frac{PA}{kT} &= \frac{Am}{\pi \hbar^2\beta} \Gamma(2)f_2(z)\\
+\end{align*}
 
 \section{}
+
+\begin{align*}
+  \inangle{n_\varepsilon} &= \frac{1}{e^{\paren{\varepsilon - \mu}} + 1}\\
+  \inangle{n_\varepsilon} &= \frac{1}{\zeta^{-1} e^{\paren{\beta\varepsilon}} + 1}\\
+  \inangle{n_\varepsilon} &= F(\varepsilon)\\
+  \inangle{U} &= \int_{-\infty}^{\infty} g(\varepsilon)\cdot \varepsilon \cdot F(\varepsilon) d\varepsilon\\
+  \inangle{U} &=\int_{0}^{\infty}\varepsilon\frac{Am}{\pi\hbar^2} \frac{1}{z^{-1}e^{\beta \varepsilon} + 1}d\varepsilon\\
+  x &= \beta \varepsilon\\
+  dx &= \beta d\varepsilon\\
+  \frac{dx}{\beta} &= d\varepsilon\\
+  \inangle{U} &= \frac{Am}{\pi\hbar^2\beta} \int_{0}^{\infty}\frac{x^{2 - 1}}{z^{-1}e^{x} + 1}dx\\
+  \inangle{U} &= \frac{Am}{\pi\hbar^2\beta} F_2(z)\\
+  \inangle{U} &= \frac{Am}{\pi\hbar^2\beta} \Gamma(2)f_2(z)
+\end{align*}
+
+\section{}
+
+\begin{align*}
+  U &= \frac{Am}{\pi\hbar^2\beta^2} \Gamma(2) f_2(z)\\
+  &= \frac{Am}{\pi\hbar^2}k^2T^2 f_2(z)\\
+  C_V &= \paren{\frac{\partial U}{\partial T}}_{N, V}\\
+  &= \frac{Am}{\pi\hbar^2}\frac{\partial}{\partial T}\paren{k^2T^2f_2(z)}\\
+  &= \frac{Am}{\pi\hbar^2}\paren{k^2 2 Tf_2(z) + k^2T^2 \frac{\partial\paren{f_2(z)}}{\partial}}\\
+  \frac{\partial f_2(z)}{\partial T} &= \frac{\partial f_2(z)}{\partial z}\frac{\partial z}{\partial T}\\
+  &= \frac{\partial f_2(z)}{\partial z}\frac{\mu(-1)}{kT^2} e^{\frac{\mu}{kT}}\\
+  &= - \frac{\mu}{kT^2}z\frac{\partial f_2(z)}{\partial z}\\
+  z\frac{\partial f_v(z)}{\partial z} &= f_{v - 1}(z)\\
+  \frac{\partial f_2(z)}{\partial T} &= - \frac{\mu}{kT^2}f_1(z)\\
+  C_V &= \frac{Am}{\pi\hbar^2}\paren{2k^2Tf_2(z) + k^2T^2(-1)\frac{\mu}{kT^2}f_1(z)}\\
+  &= \frac{Am}{\pi\hbar^2}\paren{2k^2 T f_2(z) - k\mu f_1(z)}
+\end{align*}
+
+En el limite clasico $z\ll 1$ se da que $f_v(z) \approx z$ lo que da:
+\begin{align*}
+  C_V &= \frac{Am}{\pi\hbar^2}\paren{2kTZ - kT\ln(z)Z}k\\
+  &= Nk
+\end{align*}
+
+Ahora en el limite cuantico (es decir $z \gg 1$) tenemos
+\begin{align*}
+  f_v(e^{\ln(z)}) &= f_v(z)\\
+  &\approx \frac{\ln(z)}{\Gamma(v + 1)}\paren{1 + v(v - 1)\frac{\pi^2}{6}\paren{\ln(z)}^{-2}}\\
+  C_V &\approx T
+\end{align*}
 
 %%% PUNTO 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{}
 
 \section{}
+
+\begin{align*}
+  z &= e^{\frac{\mu}{kT}}\\
+  &\iff \ln(z) = \frac{\mu}{kT}\\
+  &\iff \mu = kT\ln(z)\\
+  \mu_0 &= kT \ln(z)\\
+  \mu_0(xN) &= kT \ln(z(xN))\\
+  \frac{N}{V} &= \frac{g}{\lambda^3}f_{\frac{3}{2}}(z)\\
+  \frac{N}{V} &= \frac{1}{\lambda^3}f_{\frac{3}{2}}(z)\\
+  f_{\frac{3}{2}}(z) &= \frac{N}{V}\lambda^3\\
+  f_{\frac{3}{2}}(z(xN)) &= \frac{xN}{V}\lambda^3\\
+  \mu_0(xN) &= kT \ln (z (xN))\\
+  \frac{\partial \mu_0(xN)}{\partial X} &= kT \frac{1}{z(x)} \frac{dz}{dx}\\
+  \frac{\partial f_{\frac{3}{2}}(z(xN))}{\partial x} &= \frac{\partial f_{\frac{3}{2}}(z(xN))}{\partial z}\frac{\partial z}{\partial x}\\
+  &= \frac{\partial \paren{x \frac{N}{V}\lambda^3}}{\partial X}\\
+  &= \frac{N}{V}\lambda^3\\
+  &= \frac{\frac{xN}{V}\lambda^3}{\frac{X}{1}}\\
+  &= \frac{f_{\frac{3}{2}}(z(xN))}{x}\\
+  \frac{\partial f_{\frac{3}{2}}(z(xN))}{\partial z} \frac{\partial z}{\partial x} &= \frac{f_{\frac{3}{2}}(z (xN))}{x}\\
+  &\iff \frac{dz}{dx} = \frac{f_{\frac{3}{2}}(z(xN))}{x}\paren{\frac{\partial F_{\frac{3}{2}}(z(xN))}{\partial z}}^{-1}
+\end{align*}
+
+Con esto entonces:
+\begin{align*}
+  z \frac{\partial}{\partial z} (f_v(z)) &= f_{v-1}(z)\\
+  \frac{\partial}{\partial z} f_v(z) &= \frac{f_{v-1}(z)}{z}\\
+  \frac{\partial}{\partial z} f_{\frac{3}{2}}(z) &= \frac{f_{\frac{1}{2}}(z)}{z}\\
+  \frac{dz}{dx} &= \frac{f_{\frac{3}{2}}(z(xN))}{x}\paren{\frac{\partial F_{\frac{3}{2}}(z(xN))}{\partial z}}^{-1}\\
+  \frac{dz}{dx} &= \frac{f_{\frac{3}{2}}(z(xN))}{x}\paren{\frac{z}{f_{\frac{1}{2}}}}\\
+  \frac{\partial \mu_0}{\partial x} &= kT \frac{1}{z} \frac{\partial z}{\partial x}\\
+  &= kT \frac{1}{z}\frac{f_{\frac{3}{2}}}{x}\frac{z}{f_{\frac{1}{2}}(z)}\\
+  &= kT \frac{f_{\frac{3}{2}}}{f_{\frac{1}{2}}(z)}\\
+  \left.\paren{\frac{\partial \mu_0}{\partial x}}\right|_{x = \frac{1}{2}} &= 2kT \frac{f_{\frac{3}{2}}(z)}{f_{\frac{1}{2}}(z)}\\
+  \chi &= \frac{2n \mu^{*2}}{\paren{\frac{\partial \mu_0(xN)}{\partial x}}_{x = \frac{1}{2}}}\\
+  \chi &= \frac{2n \mu^{*2}}{2 kT \frac{f_{\frac{3}{2}}}{f_{\frac{1}{2}}(z)}}\\
+  \chi &= \frac{n \mu^{*2}}{kT \frac{f_{\frac{3}{2}}}{f_{\frac{1}{2}}(z)}}\\
+\end{align*}
 
 \section{}
 

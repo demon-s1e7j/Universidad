@@ -1,0 +1,327 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Cuantica} % This is the name of the course 
+\newcommand{\examnum}{Taller 3} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+\NewDocumentCommand{\bra}{m}{\left<#1\right|}
+\NewDocumentCommand{\ket}{m}{\left|#1\right>}
+\NewDocumentCommand{\braket}{m m}{\left<#1|#2\right>}
+\NewDocumentCommand{\med}{m}{\left<#1\right>}
+\NewDocumentCommand{\paren}{m}{\left(#1\right)}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{Primer Punto}
+
+\subsection{Enunciado}
+
+Considere un oscilador armonico simple en una dimensión. La función de onda $\psi$ en $t = 0$ es
+\begin{equation}
+	\psi(0) = \frac{1}{\sqrt{5}}\left|1\right> + \frac{2}{\sqrt{5}} \left| 2\right> \label{eq:1}
+\end{equation}
+
+Donde $\left| n \right>$ representa el estado propio para una energia $E_n$.
+\begin{enumerate}
+	\item Escriba la función de onda para cualquier tiempo $t$.
+	\item Escriba el valor esperado para la energia.
+	\item Encuentre la expresión para el valor esperado de la posición dependiente del tiempo:
+		\begin{equation}
+			\left<\psi(t)\right|\hat{x}\left|\psi(t)\right>\label{eq:2_3}
+		\end{equation}
+\end{enumerate}
+
+\subsection{Solución}
+
+\begin{enumerate}
+	\item
+		Para iniciar debemos considerar que para convertir una función de onda independiente del tiempo a una dependiente del tiempo en este caso debemos multiplicar por $e^{-iE_nt/\hbar}$ en cada uno de los terminos de \ref{eq:1}. Tomando en consideración que para un oscilador armonico se cumple que: \[E_n = \left(n + \frac{1}{2}\right)\hbar\omega\] tendriamos los siguientes valores:
+		\begin{align}
+			E_{1} &= \left(1 + \frac{1}{2}\right)\hbar\omega\nonumber\\
+			&= \frac{3}{2}\hbar\omega\label{eq:e1}\\
+			E_2 &= \left(2 + \frac{1}{2}\right)\hbar\omega\nonumber\\
+			&= \frac{5}{2}\hbar\omega\label{eq:e2}
+		\end{align}
+	
+		Con lo cual los valores serian:
+		\begin{align*}
+			e^{-\frac{iE_1t}{\hbar}} &= e^{-\frac{i\frac{3}{2}\hbar\omega t}{\hbar}}\\
+			&= e^{-i\frac{3}{2}\omega t}\\
+			e^{-\frac{iE_2t}{\hbar}} &= e^{-\frac{i\frac{5}{2}\hbar\omega t}{\hbar}}\\
+			&= e^{-i\frac{5}{2}\omega t}
+		\end{align*}
+
+		Con lo cual la función de onda para cualquier $t$ seria:
+		\begin{equation}
+			\psi(t) = \frac{1}{\sqrt{5}}e^{-i\frac{3}{2}\omega t}\left|1\right> + \frac{2}{\sqrt{5}} e^{-i\frac{5}{2}\omega t}\left| 2\right> \label{eq:res_1a}
+		\end{equation}
+	\item 
+		La expresión general para la energia promedio es:
+		\begin{equation}
+			\bra{\psi(0)}\hat{H}\ket{\psi(0)}\label{eq:E_med}
+		\end{equation}
+
+		Teniendo entonces dada la equación \ref{eq:1} nos queda
+		\begin{align}
+			\med{E} &= \paren{\frac{1}{\sqrt{5}}\bra{1} + \frac{2}{\sqrt{5}}\bra{2}}\hat{H}\paren{\frac{1}{\sqrt{5}}\ket{1} + \frac{2}{\sqrt{5}}\ket{2}}\nonumber\\
+			&= \frac{1}{\sqrt{5}}\frac{1}{\sqrt{5}}\bra{1}\hat{H}\ket{1} +
+			\frac{1}{\sqrt{5}}\frac{2}{\sqrt{5}}\bra{1}\hat{H}\ket{2} +
+			\frac{2}{\sqrt{5}}\frac{1}{\sqrt{5}}\bra{2}\hat{H}\ket{1} +
+			\frac{2}{\sqrt{5}}\frac{2}{\sqrt{5}}\bra{2}\hat{H}\ket{2}\nonumber\\
+			&= \frac{1}{5}\bra{1}\hat{H}\ket{1} +
+			\frac{2}{5}\bra{1}\hat{H}\ket{2} +
+			\frac{2}{5}\bra{2}\hat{H}\ket{1} +
+			\frac{4}{5}\bra{2}\hat{H}\ket{2}\label{eq:med_1}
+		\end{align}
+
+		Ahora bien, tambien necesitaremos que:
+		\begin{equation}
+			\hat{H}\ket{n} = E_n\ket{n}
+		\end{equation}
+
+		que al aplicarlo en \ref{eq:med_1}
+		\begin{align*}
+			\med{E} &=
+			\frac{1}{5}\bra{1}\hat{H}\ket{1} +
+			\frac{2}{5}\bra{1}\hat{H}\ket{2} +
+			\frac{2}{5}\bra{2}\hat{H}\ket{1} +
+			\frac{4}{5}\bra{2}\hat{H}\ket{2}\\
+			&=
+			\frac{1}{5}\bra{1}E_1\ket{1} +
+			\frac{2}{5}\bra{1}E_2\ket{2} +
+			\frac{2}{5}\bra{2}E_1\ket{1} +
+			\frac{4}{5}\bra{2}E_2\ket{2}\\
+			&=
+			\frac{1}{5}E_1\braket{1}{1} +
+			\frac{2}{5}E_2\braket{1}{2} +
+			\frac{2}{5}E_1\braket{2}{1} +
+			\frac{4}{5}E_2\braket{2}{2}\\
+			&=
+			\frac{1}{5}E_1 +
+			\frac{2}{5}E_2 \cdot 0 +
+			\frac{2}{5}E_1 \cdot 0 +
+			\frac{4}{5}E_2\\
+			&=
+			\frac{1}{5}E_1 +
+			\frac{4}{5}E_2\\
+		\end{align*}
+
+		Ahora recordando lo encontrado en \ref{eq:e1} y \ref{eq:e2} nos queda:
+		\begin{align*}
+			\med{E}&=
+			\frac{1}{5}E_1 +
+			\frac{4}{5}E_2\\
+			&=
+			\frac{1}{5}\frac{3}{2}\hbar\omega +
+			\frac{4}{5}\frac{5}{2}\hbar\omega\\
+			&=
+			\frac{3}{10}\hbar\omega +
+			\frac{20}{10}\hbar\omega\\
+			&=
+			\frac{23}{10}\hbar\omega\\
+		\end{align*}
+	\item
+		Dada la descripción que tenemos en \ref{eq:2_3} consideremos que
+		\begin{equation}
+			\hat{x} = \sqrt{\frac{\hbar}{2m\omega}}\paren{a + a^{\dagger}}\label{eq:hatx}
+		\end{equation}
+
+		Con esto entonces podemos reemplazar:
+		\begin{align}
+			\med{\hat{x}}(t) &= \left<\psi(t)\right|\hat{x}\left|\psi(t)\right>\nonumber\\
+			&= \paren{\frac{1}{\sqrt{5}}e^{i\frac{3}{2}\omega t}\bra{1} + \frac{2}{\sqrt{5}}e^{i\frac{5}{2}\omega t}\bra{2}}\hat{x}\paren{\frac{1}{\sqrt{5}}e^{-i\frac{3}{2}\omega t}\ket{1} + \frac{2}{\sqrt{5}}e^{-i\frac{5}{2}\omega t}\ket{2}}\nonumber\\
+			&=
+			\frac{1}{\sqrt{5}}\frac{1}{\sqrt{5}}e^{i\frac{3}{2}\omega t - i \frac{3}{2}\omega t}\bra{1}\hat{x}\ket{1} +
+			\frac{1}{\sqrt{5}}\frac{2}{\sqrt{5}}e^{i\frac{3}{2}\omega t - i \frac{5}{2}\omega t}\bra{1}\hat{x}\ket{2}\nonumber\\
+			&+ \frac{2}{\sqrt{5}}\frac{1}{\sqrt{5}}e^{i\frac{5}{2}\omega t - i \frac{3}{2}\omega t}\bra{2}\hat{x}\ket{1} +
+			\frac{2}{\sqrt{5}}\frac{2}{\sqrt{5}}e^{i\frac{5}{2}\omega t - i \frac{5}{2}\omega t}\bra{2}\hat{x}\ket{2}\nonumber\\
+			&=
+			\frac{1}{5}\bra{1}\hat{x}\ket{1} +
+			\frac{2}{5}e^{-i\omega t}\bra{1}\hat{x}\ket{2} +
+			\frac{2}{5}e^{i\omega t}\bra{2}\hat{x}\ket{1} +
+			\frac{4}{5}\bra{2}\hat{x}\ket{2}\label{eq:med_2}
+		\end{align}
+
+		Podemos saber dada la definición \ref{eq:hatx} con los operadores de creación y aniquilación que para quelos estados no se aniquilen mutuamente deben estar separados por unicamente un paso. Es decir, para nuestro caso concreto con \ref{eq:med_2} tenemos que se aniquilan los puntos con $\bra{n}\hat{x}\ket{n}$. Esto nos deja con:
+		\begin{align}
+			\med{\hat{x}}(t)
+			&=
+			\frac{1}{5}\bra{1}\hat{x}\ket{1} +
+			\frac{2}{5}e^{-i\omega t}\bra{1}\hat{x}\ket{2} +
+			\frac{2}{5}e^{i\omega t}\bra{2}\hat{x}\ket{1} +
+			\frac{4}{5}\bra{2}\hat{x}\ket{2}\nonumber\\
+			&=
+			\frac{2}{5}e^{-i\omega t}\bra{1}\hat{x}\ket{2} +
+			\frac{2}{5}e^{i\omega t}\bra{2}\hat{x}\ket{1}\label{eq:med_3}
+		\end{align}
+
+		Para cada uno de estos casos veamoslo por aparte:
+		\begin{itemize}
+			\item $\bra{1}\hat{x}\ket{2}$:
+				\begin{align}
+					\bra{1}\hat{x}\ket{2} &= \sqrt{\frac{\hbar}{2m\omega}}\bra{1}\paren{a + a^{\dagger}}\ket{2}\nonumber\\
+					&= \sqrt{\frac{\hbar}{2m\omega}}\bra{1}\paren{a\ket{2} + a^{\dagger}\ket{2}}\nonumber
+				\end{align}
+
+				Considerando que
+
+				\begin{align}
+					a\ket{2} &= \sqrt{2}\ket{1}\nonumber\\
+					a^{\dagger}\ket{2} &= \sqrt{3}\ket{3}\nonumber
+				\end{align}
+
+				Podemos reemplazar directamente y obtener:
+
+				\begin{align}
+					\bra{1}\hat{x}\ket{2} &= \sqrt{\frac{\hbar}{2m\omega}}\bra{1}\paren{a\ket{2} + a^{\dagger}\ket{2}}\nonumber\\
+					&= \sqrt{\frac{\hbar}{2m\omega}}\bra{1}\paren{\sqrt{2}\ket{1} + \sqrt{3}\ket{3}}\nonumber\\
+					&= \sqrt{\frac{\hbar}{2m\omega}}\paren{\bra{1}\sqrt{2}\ket{1} + \bra{1}\sqrt{3}\ket{3}}\nonumber\\
+					&= \sqrt{\frac{\hbar}{2m\omega}}\paren{\sqrt{2}\braket{1}{1} + \sqrt{3}\braket{1}{3}}\nonumber\\
+					&= \sqrt{\frac{\hbar}{2m\omega}}\sqrt{2}\nonumber\\
+					&= \sqrt{\frac{2\hbar}{2m\omega}}\nonumber\\
+					&= \sqrt{\frac{\hbar}{m\omega}}\label{eq:1_3_1_2}
+				\end{align}
+			\item $\bra{2}\hat{x}\ket{1}$:
+				\begin{align}
+					\bra{2}\hat{x}\ket{1} &= \sqrt{\frac{\hbar}{2m\omega}}\bra{2}\paren{a + a^{\dagger}}\ket{1}\nonumber\\
+					&= \sqrt{\frac{\hbar}{2m\omega}}\bra{2}\paren{a\ket{1} + a^{\dagger}\ket{1}}\nonumber
+				\end{align}
+
+				Considerando que
+
+				\begin{align}
+					a\ket{1} &= \sqrt{1}\ket{0}\nonumber\\
+					a^{\dagger}\ket{1} &= \sqrt{2}\ket{2}\nonumber
+				\end{align}
+
+				Podemos reemplazar directamente y obtener
+
+				\begin{align}
+					\bra{1}\hat{x}\ket{2} &= \sqrt{\frac{\hbar}{2m\omega}}\bra{2}\paren{a\ket{1} + a^{\dagger}\ket{1}}\nonumber\\
+					&= \sqrt{\frac{\hbar}{2m\omega}}\bra{2}\paren{\sqrt{1}\ket{0} + \sqrt{2}\ket{2}}\nonumber\\
+					&= \sqrt{\frac{\hbar}{2m\omega}}\paren{\bra{2}\sqrt{1}\ket{0} + \bra{2}\sqrt{2}\ket{2}}\nonumber\\
+					&= \sqrt{\frac{\hbar}{2m\omega}}\paren{\sqrt{1}\braket{1}{0} + \sqrt{2}\braket{2}{2}}\nonumber\\
+					&= \sqrt{\frac{\hbar}{2m\omega}}\sqrt{2}\nonumber\\
+					&= \sqrt{\frac{2\hbar}{2m\omega}}\nonumber\\
+					&= \sqrt{\frac{\hbar}{m\omega}}\label{eq:1_3_2_1}
+				\end{align}
+			\item \textbf{Nota:}
+				Decidi escribir explicitamente que los resultados eran los mismos para \ref{eq:1_3_2_1} y para \ref{eq:1_3_1_2}. Sin embargo, se podia llegar al mismo resultado notando que
+				\[\bra{2}\hat{x}\ket{1} = \paren{\bra{1}\hat{x}\ket{2}}^{*} = \paren{\sqrt{\frac{\hbar}{m\omega}}}^* = \sqrt{\frac{\hbar}{m\omega}}.\]
+
+				Esto es valioso tomarlo en cuenta particularemente si uno se encuentra de afan en un parcial
+		\end{itemize}
+
+		Ahora bien, ingresando los resultado \ref{eq:1_3_1_2} y \ref{eq:1_3_2_1} en \ref{eq:med_3} nos quedaria:
+		\begin{align*}
+			\med{\hat{x}}(t)&=
+			\frac{2}{5}e^{-i\omega t}\bra{1}\hat{x}\ket{2} +
+			\frac{2}{5}e^{i\omega t}\bra{2}\hat{x}\ket{1}\\
+			&=
+			\frac{2}{5}e^{-i\omega t}\sqrt{\frac{\hbar}{m\omega}} +
+			\frac{2}{5}e^{i\omega t}\sqrt{\frac{\hbar}{m\omega}}\\
+			&=
+			\frac{2}{5}\sqrt{\frac{\hbar}{m\omega}} \paren{e^{i\omega t} + e^{-i\omega t}}\\
+			e^{i\theta} + e^{-i\theta} &= \cos(\theta) + i\sin(\theta) + \cos(\theta) - i\sin(\theta)\\
+			&= 2\cos(\theta)\\
+			&\implies e^{i\omega t} + e^{-i\omega t} = 2\cos(\omega t)\\
+			\med{\hat{x}}(t)
+			&=
+			\frac{4}{5}\sqrt{\frac{\hbar}{m\omega}} \cos(\omega t)\\
+		\end{align*}
+\end{enumerate}
+\break
+
+\section{Pregunta 2}
+
+\subsection{Enunciado}
+La función de onda, en $t = 0$, para un atomo de hidrogeno, esta dada por:
+\begin{equation}
+	\psi(r, \theta, \phi) = 2\psi_{100} + \psi_{210}
+\end{equation}
+\begin{enumerate}
+	\item Normalice esta función
+	\item ¿Cuales son los posibles resultados si se mide individualmente la energia, el momento angular, y la componente $z$ del momento angular?
+	\item Calcule la probabilidad de obtener los valores de energia hallados en el punto (b)
+	\item Calcule el valor esperado para la energia, el momento angular y la componente $z$ del momento angular.
+\end{enumerate}
+
+\subsection{Solución}
+\begin{enumerate}
+	\item Para normalizar nos interesa que sobre todo el espacio se cumpla que la suma de las probabilidades sea $1$. Esto es equivalente a mostrar
+		\begin{equation}
+			\int \left|\psi(r,\theta,\phi)\right|^2 dV = 1
+		\end{equation}
+
+		Ahora con esto entonces tenemos:
+		\begin{align*}
+			\int \left|\psi(r,\theta,\phi)\right|^2 dV &= 1\\
+			\int \left|N\paren{2\psi_{100} + \psi_{210}}\right|^2 dV &= 1
+		\end{align*}
+		
+		Por ortogonalidad en $\psi_{nlm}$ se cancela cualquier combinación que no sea del mismo estado lo que nos deja con:
+		\begin{align*}
+			\left|N\right|^2\int 4\left|\psi_{100}\right|^2 + \left|\psi_{210}\right|^2 dV &= 1\\
+			\left|N\right|^2\paren{\int 4\left|\psi_{100}\right|^2 dV + \int \left|\psi_{210}\right|^2 dV} &= 1\\
+			\left|N\right|^2\paren{4 + 1} &= 1\\
+			\left|N\right|^2\paren{5} &= 1\\
+			\left|N\right|^2 &= \frac1{5}\\
+			\left|N\right| &= \frac1{\sqrt{5}}\\
+			N &= \frac1{\sqrt{5}}\\
+		\end{align*}
+	\item 
+\end{enumerate}
+\break
+
+\section{Pregunta 3}
+
+\subsection{Enunciado}
+Considere un electrón que es preparado en el estado $\ket{\uparrow}$ y que es inyectado en un campo magnético uniforme en la dirección $y$ con magnitud $B_y$, durante un tiempo $t$.
+\begin{enumerate}
+	\item Escriba el operador de evolución temporal $\hat{U}(t)$ que describe la evolución temporal del estado del electrón como una expansión en la base de autoestados de $\hat{S}^2$ y $\hat{S}_y$.
+	\item Escriba al estado del electrón después de un tiempo $t$ como una superposición de los estados en la base $\ket{\uparrow}$ y $\ket{\downarrow}$.
+	\item ¿Cual es la probabilidad de que el electrón sea detectado en los estados $\ket{\uparrow_x}$ y $\ket{\downarrow_x}$ después de un tiempo $t$?
+	\item ¿Cual es la probabilidad de que el electrón sea detectado en los estados $\ket{\uparrow_y}$ y $\ket{\downarrow_y}$ después de un tiempo $t$?
+\end{enumerate}
+
+\subsection{Solución}
+
+\begin{enumerate}
+  \item 
+    En este caso, el Hamiltoniano de interacción entre el campo magnético y el spin del electrón conmutan con el operador de momento angular $\hat{S}^2$ y $\hat{S}_y$
+\end{enumerate}
+
+\end{document}

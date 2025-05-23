@@ -1,0 +1,122 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta, shapes.geometric}
+
+\renewcommand{\qed}{\hfill\square}
+
+\title{\Huge{Electromagnetismo 1}\\Tarea 5}
+\author{\huge{Sergio Montoya Ramírez}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{Punto 7.10}
+
+Para comenzar debemos tomar en consideración que la $FEM$ seria: \[
+  \mathcal{E}\left( t \right) = - \frac{d\Phi}{dt}
+.\] 
+
+Por lo tanto, debemos iniciar por encontrar el flujo magnético atreves de la $FEM$. Para esto entonces usemos \[
+\Phi = BS\cos\theta
+.\] Tenemos cuanto es el área (que corresponde con $a^2$ dado que es una espira cuadrada). Ademas, dado que esta rotando entonces $\theta$ varia con el tiempo respecto a  $\omega t$ Ademas de tener un campo  $B$ lo que seria entonces.
+ \begin{align*}
+   \Phi &= B\cdot S\\
+	&= B a^2 \cos\left( \omega t \right)\\
+   \mathcal{E}\left( t \right) &= - \frac{d\Phi}{dt}\\
+			       &= - \frac{d\left( B a^2 \cos\left( \omega t \right)  \right) }{dt}\\
+			       &= - B a^2 \left( - \sin\left( \omega t \right)  \right) \omega\\
+			       &= B \omega a^2 \sin\left( \omega t \right) \qed
+.\end{align*}
+
+\chapter{Punto 7.12}
+
+Para este caso, volvemos a iniciar por calcular el flujo magnético. Para esto necesitamos saber cuanto es el área que dado que es una espira circular seria $\pi r^2 = \pi \left( \frac{a}{2} \right)^2 = \frac{\pi a^2}{4}$. Ademas de que ya tenemos el campo magnético entonces esto seria \[
+  \Phi = B(t)\cdot A = \frac{\pi a^2}{4}B_0 \cos\left( \omega t \right) 
+.\]
+
+Ahora con esto podemos de nuevo encontrar la $FEM$ que seria
+ \begin{align*}
+   \mathcal{E} &= - \frac{d\Phi}{dt}\\
+	       &= - \frac{\pi a^2}{4}B_0 \frac{d}{dt}\left[ \cos\left( \omega t \right)  \right] \\
+	       &= - \frac{\pi a^2}{4}B_0 \left[ -\sin\left( \omega t \right)  \right]\omega \\
+	       &= \frac{\pi a^2}{4}\omega B_0 \sin\left( \omega t \right)
+.\end{align*}
+
+Con todo esto entonces podemos terminar calculando la corriente inducida lo que quedaría como
+\begin{align*}
+  I\left( t \right) &= \frac{\mathcal{E}}{R}\\
+  &= \frac{\frac{\pi a^2 \omega B_0}{4}\sin\left( \omega t \right) }{R} \\
+  &= \frac{\pi a^2 \omega B_0}{4R}\sin\left( \omega t \right)\qed
+.\end{align*}
+
+\chapter{Punto 7.16}
+
+\section{Parte B}
+
+Para esto vamos a usar un loop amperiano. 
+
+\begin{tikzpicture}[
+    cyl/.style={
+        cylinder, 
+        shape aspect=4, 
+        %rotate=90,  % Orientación horizontal
+        minimum height=4cm, 
+        minimum width=1.2cm, 
+        cylinder body fill=blue!10, 
+        cylinder end fill=blue!5,
+        draw=black!80
+    },
+    loop/.style={
+        thick, 
+        red, 
+        -{Stealth[scale=1.2]},
+        fill opacity=0
+    },
+    wire/.style={thick, black!60},
+    axis/.style={dashed, black!50},
+    campo/.style={blue, -{Stealth}}
+]
+
+% Cilindro coaxial (horizontal, eje z)
+\node[cyl] (tubo) at (0,0) {};
+
+% Cable central (horizontal)
+\draw[wire] (-3,0) -- (3,0) node[midway, above=2mm] {$I(t)$};
+
+% Eje z (horizontal)
+\draw[axis, -{Stealth}] (-4,0) -- (4,0) node[right] {$z$};
+
+% Loop amperiano (rectángulo alrededor del cilindro)
+\draw[loop] (-1.5,0.5) rectangle (1.5,-0.5)
+    node[midway, right=5mm, black] {Loop amperiano};
+    
+% Longitud del loop (l)
+\draw[loop, {Stealth}-{Stealth}] (1.5,0.5) -- (1.5,-0.5)
+    node[midway, right] {$l$};
+
+% Flechas de campo magnético (circunferencial)
+\foreach \x in {-1,0,1} {
+    \draw[campo] (\x, 0.7) arc (90:270:0.3 and 0.7);
+    \draw[campo] (\x, -0.7) arc (270:450:0.3 and 0.7);
+}
+
+% Etiquetas
+\node[blue] at (0,1.3) {$\mathbf{B}_\phi(s,t)$};
+\node[red] at (2.5,0) {$\mathbf{E}_z(s,t)$};
+\node[black!60] at (-3.5,0) {Cable central};
+
+\end{tikzpicture}
+
+
+\end{document}
