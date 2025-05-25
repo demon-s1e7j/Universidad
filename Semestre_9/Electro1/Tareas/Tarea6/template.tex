@@ -62,61 +62,183 @@ Con todo esto entonces podemos terminar calculando la corriente inducida lo que 
 
 \chapter{Punto 7.16}
 
+\section{Parte A}
+
+Note que para el campo magnetico que genera el cilindro se cumple que por simetria se cancela de manera interna. Por lo tanto, solo queda el campo inducido por el cable que va saliendo de la pagina y por lo tanto induce una corriente de manera longitudinal.
+
 \section{Parte B}
 
-Para esto vamos a usar un loop amperiano. 
+Para esto vamos a usar un loop amperiano. que sea un rectangulo que salga del cilindro y tomando en cuenta que este se cancela por fuera entonces esto daria $B=0$ afuera. Con esto entonces
+\begin{align*}
+	\oint E \cdot dl &= - \frac{d\Phi}{dt}\\
+	\oint E \cdot dl &= El\\
+	- \frac{d\Phi}{dt} &= -\frac{d}{dt} \int B \cdot da\\
+	&= - \frac{d}{dt}\int_s^a \frac{\mu_0 I}{2\pi s'}l ds'\\
+	El &= - \frac{dI}{dt} \frac{\mu_0}{2\pi}\ln\left(\frac{a}{s}\right)l\\
+	E &= - \frac{dI}{dt} \frac{\mu_0}{2\pi}\ln\left(\frac{a}{s}\right)\\
+	\frac{dI}{dt} &= - I_0 \omega \sin \omega t\\
+	E &= - \frac{dI}{dt} \frac{\mu_0I_0 \omega}{2\pi}\sin(\omega t)\ln\left(\frac{a}{s}\right)\\
+\end{align*}
 
-\begin{tikzpicture}[
-    cyl/.style={
-        cylinder, 
-        shape aspect=4, 
-        %rotate=90,  % Orientación horizontal
-        minimum height=4cm, 
-        minimum width=1.2cm, 
-        cylinder body fill=blue!10, 
-        cylinder end fill=blue!5,
-        draw=black!80
-    },
-    loop/.style={
-        thick, 
-        red, 
-        -{Stealth[scale=1.2]},
-        fill opacity=0
-    },
-    wire/.style={thick, black!60},
-    axis/.style={dashed, black!50},
-    campo/.style={blue, -{Stealth}}
-]
+\chapter{Punto 7.20}
 
-% Cilindro coaxial (horizontal, eje z)
-\node[cyl] (tubo) at (0,0) {};
+\section{}
+El campo en el eje es \[B = \frac{\mu_0 I}{2}\frac{b^2}{(b^2 + z^2)^{\frac{3}{2}}}\hat{z}\]
 
-% Cable central (horizontal)
-\draw[wire] (-3,0) -- (3,0) node[midway, above=2mm] {$I(t)$};
+por lo tanto el flujo por el area es:
+\begin{align*}
+	\Phi &= \int B \cdot da\\
+	&= B \pi a^2\\
+	&= \frac{\mu_0 \pi I a^2 b^2}{2(b^2 + z^2)}^{\frac{3}{2}}
+\end{align*}
 
-% Eje z (horizontal)
-\draw[axis, -{Stealth}] (-4,0) -- (4,0) node[right] {$z$};
+\section{}
 
-% Loop amperiano (rectángulo alrededor del cilindro)
-\draw[loop] (-1.5,0.5) rectangle (1.5,-0.5)
-    node[midway, right=5mm, black] {Loop amperiano};
-    
-% Longitud del loop (l)
-\draw[loop, {Stealth}-{Stealth}] (1.5,0.5) -- (1.5,-0.5)
-    node[midway, right] {$l$};
+El campo es \[B = \frac{\mu_0}{4\pi}\frac{m}{r^3}(2\cos\theta \hat{r} + \sin\theta\hat{\theta})\], donde $m = I\pi a^2$ Ahora si integramos
+\begin{align*}
+	\Phi &= \int B \cdot da\\
+	&= \frac{\mu_0}{4\pi}\frac{I\pi a^2}{r^3} \int (2\cos\theta)(r^2\sin\theta d\theta d\phi)\\
+	&= \frac{\mu_0 I a^2}{2r} 2\pi \int_0^\theta \cos\theta\sin\theta d\theta\\
+	&= \frac{\mu_0 I \pi a^2}{r}\left.\frac{\sin^2\theta}{2}\right|_0^\theta\\
+	&= \frac{\mu_0 \pi I a^2 b^2}{2(b^2 + z^2)^{\frac{3}{2}}}
+\end{align*}
 
-% Flechas de campo magnético (circunferencial)
-\foreach \x in {-1,0,1} {
-    \draw[campo] (\x, 0.7) arc (90:270:0.3 and 0.7);
-    \draw[campo] (\x, -0.7) arc (270:450:0.3 and 0.7);
-}
+\section{}
 
-% Etiquetas
-\node[blue] at (0,1.3) {$\mathbf{B}_\phi(s,t)$};
-\node[red] at (2.5,0) {$\mathbf{E}_z(s,t)$};
-\node[black!60] at (-3.5,0) {Cable central};
+Partimos desde
+\begin{align*}
+	\phi_1 &= M_{12} I_2\\
+	\phi_2 &= M_{21} I_1\\
+	M_{12}&= \frac{\frac{\mu_0 \pi I_1 a^2 b^2}{2(b^2 + z^2)}^{\frac{3}{2}}}{I_1}\\
+	M_{21}&= \frac{\frac{\mu_0 \pi I_2 a^2 b^2}{2(b^2 + z^2)}^{\frac{3}{2}}}{I_2}\\
+	M_{12} &= M_{21} = \frac{\mu_0 \pi a^2 b^2}{2(b^2 + z^2)^{\frac{3}{2}}}
+\end{align*}
 
-\end{tikzpicture}
+\chapter{Punto 7.45}
 
+Para este caso tenemos
+\begin{align*}
+	f &= v \times B\\
+	v &= \omega a\sin\theta\hat{\phi}\\
+	f &= \omega a B_0 \sin\theta (\hat{\phi}\times \hat{z})\\
+	\mathcal{E} &= \int f \cdot dl\\
+	dl &= a d\theta \hat{\theta}\\
+	\mathcal{E} &= \omega a^2 B_0 \int_0^{\frac{\pi}{2}} \sin\theta (\hat{\phi} \times \hat{z})\cdot \hat{\theta}d\theta\\
+	\hat{\theta}\cdot(\hat{\phi}\times \hat{z} &= \hat{z}\cdot(\hat{\theta}\times \hat{\phi})\\
+	&= \hat{z} \cdot \hat{r}\\
+	&= \cos \theta\\
+	\mathcal{E} &= \omega a^2 B_0 \int_{0}^{\frac{\pi}{2}}\sin\theta \cos\theta d\theta\\
+	&= \omega a^2 B_0 \frac{\sin^2\theta}{2}|_0^{\frac{\pi}{2}}\\
+	&= \frac{1}{2}\omega a^2 B_0
+\end{align*}
+
+\chapter{Punto 7.54}
+
+\section{}
+
+Suponga una corriente $I_1$ y $I_2$ entonces (Si $\Phi$ es el flujo atravez de un turno):
+\begin{align*}
+	\Phi_1 &= I_1L_1 + MI_2 = N_1 \Phi\\
+	\Phi_2 &= I_2L_2 + MI_1 = N_2 \Phi\\
+	\Phi &= I_1 \frac{L_1}{N_1} + I_2\frac{M}{N_1} = I_2\frac{L_2}{N_2} + I_1 \frac{M}{N_2}\\
+\end{align*}
+
+En el caso de $I_1 = 0$ tenemos $\frac{M}{N_1} = \frac{L_2}{N_2}$. Por el otro lado, en el caso de $I_2 = 0$ tendremos $\frac{L_1}{N_1} = \frac{M}{N_2}$. Ahora tenemos:
+
+\begin{align*}
+	\frac{\frac{M}{N_1}}{\frac{L_1}{N_1}} &= \frac{\frac{L_2}{N_2}}{\frac{M}{N_2}}\\
+	\frac{M}{L_1} &= \frac{L_2}{M}\\
+	L_1L_2 &= M^2
+\end{align*}
+
+\section{}
+
+\begin{align*}
+	-\mathcal{E}_1 &= \frac{d\Phi_1}{dt}\\
+	&= L_1 \frac{dI_1}{dt} + M\frac{dI_2}{dt}\\
+	&= V_1\cos(\omega t)\\
+	-\mathcal{E}_2 &= \frac{d\Phi_2}{dt}\\
+	&= L_2 \frac{dI_2}{dt} + M\frac{dI_1}{dt}\\
+	&= -I_2R
+\end{align*}
+
+\section{}
+
+\begin{align*}
+	L_1 \frac{dI_1}{dt} + M \frac{dI_2}{dt} &= V_1 \cos(\omega t)\\
+	L_2 \frac{dI_2}{dt} + M \frac{dI_1}{dt} &= -I_2 R\\
+	L_1 L_2 \frac{dI_1}{dt} + M L_2 \frac{dI_2}{dt} &= L_2 V_1 \cos(\omega t)\\
+	L_1 L_2 \frac{dI_1}{dt} + M(-I_2 R - M \frac{dI_1}{dt}) &= L_2 V_1 \cos(\omega t)
+\end{align*}
+
+Usando \(L_1 L_2 = M^2\), los términos con \(\frac{dI_1}{dt}\) se cancelan:  
+
+\begin{equation*}
+-M R I_2 = L_2 V_1 \cos(\omega t) \implies I_2(t) = -\frac{L_2 V_1}{M R} \cos(\omega t)
+\end{equation*}
+
+\begin{align*}
+	\frac{dI_2}{dt} &= \frac{L_2 V_1 \omega}{M R} \sin(\omega t)\\
+	L_1 \frac{dI_1}{dt} + M \left(\frac{L_2 V_1 \omega}{M R} \sin(\omega t)\right) &= V_1 \cos(\omega t)\\
+	\frac{dI_1}{dt} &= \frac{V_1}{L_1} \cos(\omega t) - \frac{L_2 \omega V_1}{L_1 R} \sin(\omega t)\\
+	I_1(t) &= \frac{V_1}{L_1} \left(\frac{1}{\omega} \sin(\omega t) + \frac{L_2}{R} \cos(\omega t)\right)\\
+	I_2(t) &= -\frac{L_2 V_1}{M R} \cos(\omega t)
+\end{align*}
+
+\section{}
+
+\begin{align*}
+	\frac{V_{out}}{V_{in}} &= \frac{I^2 R}{V_1\cos\omega t}\\
+	&= \frac{-\frac{L_2V_1}{MR}\cos\omega t R}{V_1\cos\omega t}\\
+	&= - \frac{L_2}{M}\\
+	&= - \frac{N_2}{N_1}
+\end{align*}
+
+\section{}
+
+Para $P_in$
+
+\begin{align*}
+	P_{in} &= V_{in}I_1\\
+	&= (V_1 \cos\omega t)\left(\frac{V_1}{L_1}\right)\left(\frac{1}{\omega}\sin\omega t + \frac{L_2}{R}\cos\omega t\right)\\
+	&= \frac{V_1^2}{L_1} \left(\frac{1}{\omega}\sin\omega t\cos\omega t + \frac{L_2}{R}\cos^2\omega t\right)
+\end{align*}
+
+Para $P_{out}$
+
+\begin{align*}
+	P_{out} &= V_{out} I_2\\
+	&= I_2^2 R\\
+	&= \frac{(L_2 V_1)^2}{M^2 R}\cos^2\omega t
+\end{align*}
+
+Para los valores promedio se tiene
+
+\begin{align*}
+	\cos^2(\omega t) &= \frac{1 + \cos(2\omega t)}{2}\\
+	\langle \cos^2(\omega t) \rangle &= \frac{1}{T} \int_0^T \frac{1 + \cos(2\omega t)}{2} \, dt = \frac{1}{2}.
+\end{align*}
+
+   \begin{align*}
+	   \sin(\omega t)\cos(\omega t) &= \frac{\sin(2\omega t)}{2}\\
+	   \langle \sin(\omega t)\cos(\omega t) \rangle &= 0.
+   \end{align*}
+
+Con lo cual podemos reemplazar en las ecuaciones encontrada anteriormente para que nos de:
+\begin{align*}
+	\langle P_{in}\rangle &= \frac{V_1^2}{L_1} \left(\frac{1}{\omega}\sin\omega t\cos\omega t + \frac{L_2}{R}\cos^2\omega t\right)\\
+	\langle P_{in}\rangle &= \frac{V_1^2}{L_1} \left(\frac{L_2}{2R}\right)\\
+	\langle P_{in}\rangle &= \frac{V_1^2L_2}{2RL_1}
+\end{align*}
+
+Y por otro lado
+\begin{align*}
+	\langle P_{out}\rangle &= \frac{(L_2 V_1)^2}{M^2 R}\cos^2\omega t\\
+	\langle P_{out}\rangle &= \frac{(L_2 V_1)^2}{2M^2 R}\\
+	\langle P_{out}\rangle &= \frac{(L_2^2 V_1)^2}{2L_1L_2 R}\\
+	\langle P_{out}\rangle &= \frac{V_1^2L_2}{2RL_1}
+\end{align*}
+
+Lo que muestra lo que queriamos $\langle P_{in} \rangle = \langle P_{out} \rangle$
 
 \end{document}
