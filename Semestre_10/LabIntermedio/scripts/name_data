@@ -3,6 +3,7 @@
 import argparse
 from datetime import datetime
 import shutil
+from typing import Tuple
 
 parse = argparse.ArgumentParser(
     prog="DataName",
@@ -18,9 +19,10 @@ parse.add_argument(
 )
 
 parse.add_argument(
-    'experiment_name',
+    '--experiment_name', '-e',
     type=str,
-    help='name of the experiment',
+    dest='experiment_name',
+    help='name of the experiment if not given we will use the metadata inside the file. In case non is given it will be called DEFAULT_EXPERIMENT',
     #required=True
 )
 
@@ -34,9 +36,26 @@ parse.add_argument(
 
 args = parse.parse_args()
 now = datetime.now().strftime("%Y%m%d")
+metadata = {}
+
+def parse_metadata(line: str) -> Tuple[str, str]:
+    if ":" not in line:
+        raise Exception(f"Metadata invalido en la linea: {line}")
+    values = line.split(":")
+    return values[0].strip(), values[1].strip()
 
 with open(args.file_name, "r") as file:
+    line = file.readline()
+    if line.strip() == '---':
+        line = file.readline()
+        while line.strip() != '---':
+            metadata_key, metadata_value = parse_metadata(line)
+            metadata[metadata_key] = metadata_value
+            line = file.readline()
     params = [param.strip() for param in file.readline().split(args.delimiter)]
+print(params)
 
-name= f"{args.experiment_name}_{now}_{'_'.join(params)}.dat"
+experiment_name = args.experiment_name if args.experiment_name is not None else metadata.get("experiment_name", "DEFAULT_EXPERIMENT")
+
+name= f"{experiment_name}_{now}_{'_'.join(params)}.dat"
 shutil.move(args.file_name, name)
