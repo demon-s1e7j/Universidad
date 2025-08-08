@@ -1,1 +1,42 @@
-/home/s1e7j/.local/bin/name_data
+#!/bin/env python
+
+import argparse
+from datetime import datetime
+import shutil
+
+parse = argparse.ArgumentParser(
+    prog="DataName",
+    description="Change name of a csv file and change it's name to the format described in the class 'Laboratorio Intermedio' in uniandes",
+    epilog="The format is: <experiment>_<%Y%m%d>_<*params>.dat\n (params will be get from the first line in the file)"
+)
+
+parse.add_argument(
+    'file_name',
+    type=str,
+    help='File for whom we will change the name',
+    #required=True
+)
+
+parse.add_argument(
+    'experiment_name',
+    type=str,
+    help='name of the experiment',
+    #required=True
+)
+
+parse.add_argument(
+    '--delimiter', '-d',
+    dest='delimiter',
+    type=str,
+    help='delimiter that defines how is separed the data',
+    default=','
+)
+
+args = parse.parse_args()
+now = datetime.now().strftime("%Y%m%d")
+
+with open(args.file_name, "r") as file:
+    params = [param.strip() for param in file.readline().split(args.delimiter)]
+
+name= f"{args.experiment_name}_{now}_{'_'.join(params)}.dat"
+shutil.move(args.file_name, name)
