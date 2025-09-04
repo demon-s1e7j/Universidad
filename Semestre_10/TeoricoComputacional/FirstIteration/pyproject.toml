@@ -1,0 +1,14 @@
+[project]
+name = "firstiteration"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "customtkinter>=5.2.2",
+    "ipyaladin>=0.6.0",
+    "matplotlib>=3.10.5",
+    "mocpy>=0.18.0",
+    "pyvo>=1.7",
+    "tabulate>=0.9.0",
+]
