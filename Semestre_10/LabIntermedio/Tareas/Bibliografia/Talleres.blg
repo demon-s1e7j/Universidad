@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2025/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Talleres.aux
+The style file: apalike.bst
+Database file #1: artículo_bibtex.bib
+Database file #2: newton_bibtex.bib
+Database file #3: video_bibtex.bib
+Warning--empty year in newton_principios_nodate
+Warning--empty journal in newton_principios_nodate
+You've used 3 entries,
+            1935 wiz_defined-function locations,
+            486 strings with 4060 characters,
+and the built_in function-call counts, 760 in all, are:
+= -- 74
+> -- 21
+< -- 3
++ -- 6
+- -- 6
+* -- 46
+:= -- 152
+add.period$ -- 7
+call.type$ -- 3
+change.case$ -- 18
+chr.to.int$ -- 3
+cite$ -- 5
+duplicate$ -- 33
+empty$ -- 51
+format.name$ -- 9
+if$ -- 138
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 1
+newline$ -- 16
+num.names$ -- 9
+pop$ -- 16
+preamble$ -- 1
+purify$ -- 18
+quote$ -- 0
+skip$ -- 28
+stack$ -- 0
+substring$ -- 36
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 18
+warning$ -- 2
+while$ -- 6
+width$ -- 0
+write$ -- 33
+(There were 2 warnings)

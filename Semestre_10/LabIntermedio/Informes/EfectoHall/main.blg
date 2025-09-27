@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2025/dev/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: apalike.bst
+Database file #1: mainNotes.bib
+Database file #2: Referencias.bib
+Warning--to sort, need author or key in Ejemplo
+Warning--empty author in Ejemplo
+Warning--empty year in Ejemplo
+Warning--empty journal in Ejemplo
+You've used 5 entries,
+            1935 wiz_defined-function locations,
+            504 strings with 4775 characters,
+and the built_in function-call counts, 1836 in all, are:
+= -- 176
+> -- 66
+< -- 2
++ -- 22
+- -- 22
+* -- 156
+:= -- 319
+add.period$ -- 13
+call.type$ -- 5
+change.case$ -- 35
+chr.to.int$ -- 5
+cite$ -- 10
+duplicate$ -- 69
+empty$ -- 137
+format.name$ -- 28
+if$ -- 353
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 6
+newline$ -- 26
+num.names$ -- 12
+pop$ -- 36
+preamble$ -- 1
+purify$ -- 36
+quote$ -- 0
+skip$ -- 50
+stack$ -- 0
+substring$ -- 141
+swap$ -- 4
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 28
+warning$ -- 4
+while$ -- 13
+width$ -- 0
+write$ -- 60
+(There were 4 warnings)

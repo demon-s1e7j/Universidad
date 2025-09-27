@@ -11,6 +11,8 @@
 \usepackage{graphicx}
 \usepackage{pgfplots}
 \usepackage{listings}
+\usepackage{blindtext}
+\usepackage{hyperref}
 \usepackage{xcolor}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -66,6 +68,10 @@
 \end{tabular*}\\
 \rule[2ex]{\textwidth}{2pt}
 % ---
+
+\section*{Nota}
+
+Durante el transcurso de este trabajo se hara uso de varios scripts en python (Particularmente para usar sympy que opinamos que es una de las maravillas del mundo moderno). Se pondra aqui el codigo utilizado sin embargo recomendamos fervientemente que lo mire en el repo de github: \url{https://github.com/demon-s1e7j/Universidad/tree/main/Semestre_10/LabIntermedio/Tareas/Tarea2/code}. Este ya esta comodamente organizado para tener un proyecto de uv con el que manejar los requerimientos. Eh de confesar que no estan pensados para que alguien mas los ejecute y entienda lo que retorna pero creo que sigue siendo mucho mejor que simplemente quedarse con la implementacion mostrada en este documento.
 
 \section{Punto 2.1}
 
@@ -284,5 +290,23 @@ al ejecutar este script nos devuelve:
 \end{equation*}
 
 \section{Punto 6.1}
+
+Para esto de nuevo usamos simplemente un script de python utilizando las ecuaciones 5.1 a 5.6 del libro. Las puede encontrar en el script como:
+
+\lstinputlisting[language=Python]{./code/punto_6_1.py}
+
+Y esto nos da como respuesta
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.95\textwidth]{./code/punto_6_1_a.png}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.95\textwidth]{./code/punto_6_1_b.png}
+  \end{center}
+\end{figure}
+
 
 \end{document}

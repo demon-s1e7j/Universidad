@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2025.8.13)  3 SEP 2025 23:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2025.8.13)  17 SEP 2025 23:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -410,6 +410,18 @@ Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 \backup@length=\skip86
 \ar@cellbox=\box111
 ))
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+LaTeX Font Info:    Trying to load font information for T1+LinuxLibertineT-TLF 
+on input line 116.
+
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/T1LinuxLibertineT-TLF.fd
+File: T1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/Li
+nuxLibertineT-TLF.
+)
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 116.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/cancel/cancel.sty
 Package: cancel 2013/04/12 v2.2 Cancel math terms
 )
@@ -862,197 +874,116 @@ File: listings.cfg 2024/09/23 1.10c listings configuration
 ))
 Package: listings 2024/09/23 1.10c (Carsten Heinz)
 
-(/usr/share/texlive/texmf-dist/tex/latex/blindtext/blindtext.sty
-Package: blindtext 2012/01/06 V2.0 blindtext-Package
-
-(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
-Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count391
+\float@exts=\toks61
+\float@box=\box126
+\@float@everytoks=\toks62
+\@floatcapt=\box127
 )
-\c@blindtext=\count391
-\c@Blindtext=\count392
-\c@blind@countparstart=\count393
-\blind@countxx=\count394
-\blindtext@numBlindtext=\count395
-\blind@countyy=\count396
-\c@blindlist=\count397
-\c@blindlistlevel=\count398
-\c@blindlist@level=\count399
-\blind@listitem=\count400
-\c@blind@listcount=\count401
-\c@blind@levelcount=\count402
-\blind@mathformula=\count403
-\blind@Mathformula=\count404
-\c@blind@randomcount=\count405
-\c@blind@randommax=\count406
-\c@blind@pangramcount=\count407
-\c@blind@pangrammax=\count408
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
-
-(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
-Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
-Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
-Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
-
-(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
-Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
-Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
-
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-))
-\c@section@level=\count409
-)
-(/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
-)
-)
-\@linkdim=\dimen305
-\Hy@linkcounter=\count410
-\Hy@pagecounter=\count411
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
-Now handling font encoding PD1 ...
-... no UTF-8 mapping file for font encoding PD1
-)
-(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
-Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-)
-\Hy@SavedSpaceFactor=\count412
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
-Now handling font encoding PU ...
-... no UTF-8 mapping file for font encoding PU
-)
-Package hyperref Info: Hyper figures OFF on input line 4157.
-Package hyperref Info: Link nesting OFF on input line 4162.
-Package hyperref Info: Hyper index ON on input line 4165.
-Package hyperref Info: Plain pages OFF on input line 4172.
-Package hyperref Info: Backreferencing OFF on input line 4177.
-Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count413
-
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen306
-
-(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
-Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
-)
-))
-\Fld@menulength=\count414
-\Field@Width=\dimen307
-\Fld@charsize=\dimen308
-Package hyperref Info: Hyper figures OFF on input line 6042.
-Package hyperref Info: Link nesting OFF on input line 6047.
-Package hyperref Info: Hyper index ON on input line 6050.
-Package hyperref Info: backreferencing OFF on input line 6057.
-Package hyperref Info: Link coloring OFF on input line 6062.
-Package hyperref Info: Link coloring with OCG OFF on input line 6067.
-Package hyperref Info: PDF/A mode OFF on input line 6072.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
-Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
-package with kernel methods
-)
-\Hy@abspage=\count415
-\c@Item=\count416
-\c@Hfootnote=\count417
-)
-Package hyperref Info: Driver (autodetected): hpdftex.
-
-(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
-kage
-with kernel methods
-)
-\Fld@listcount=\count418
-\c@bookmark@seq@number=\count419
-
-(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
-Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
-)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
-85.
-)
-\Hy@SectionHShift=\skip87
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.ex
 ternal.code.tex
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/libraries/tikzlibrar
 yexternal.code.tex
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zexternalshared.code.tex)))
 \openout3 = `Talleres.auxlock'.
 
 Package translations Info: No language package found. I am going to use `englis
-h' as default language. on input line 59.
-LaTeX Font Info:    Trying to load font information for OT1+LinuxLibertineT-TLF
- on input line 59.
-
-(/usr/share/texlive/texmf-dist/tex/latex/libertine/OT1LinuxLibertineT-TLF.fd
-File: OT1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for OT1/
-LinuxLibertineT-TLF.
-)
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 59.
+h' as default language. on input line 30.
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count420
-\l__pdf_internal_box=\box126
+\l__color_backend_stack_int=\count392
+\l__pdf_internal_box=\box128
 )
-(./Talleres.aux)
+(./Talleres.aux
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+
+LaTeX Warning: Label `' multiply defined.
+
+)
 \openout1 = `Talleres.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 59.
-LaTeX Font Info:    ... okay on input line 59.
-\c@mv@tabular=\count421
-\c@mv@boldtabular=\count422
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+\c@mv@tabular=\count393
+\c@mv@boldtabular=\count394
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1095,21 +1026,21 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 59.
+or `english'. on input line 30.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count423
-\scratchdimen=\dimen309
-\scratchbox=\box127
-\nofMPsegments=\count424
-\nofMParguments=\count425
-\everyMPshowfont=\toks61
-\MPscratchCnt=\count426
-\MPscratchDim=\dimen310
-\MPnumerator=\count427
-\makeMPintoPDFobject=\count428
-\everyMPtoPDFconversion=\toks62
+\scratchcounter=\count395
+\scratchdimen=\dimen305
+\scratchbox=\box129
+\nofMPsegments=\count396
+\nofMParguments=\count397
+\everyMPshowfont=\toks63
+\MPscratchCnt=\count398
+\MPscratchDim=\dimen306
+\MPnumerator=\count399
+\makeMPintoPDFobject=\count400
+\everyMPtoPDFconversion=\toks64
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1122,372 +1053,275 @@ e
 Package pgfplots notification 'compat/show suggested version=true': you might b
 enefit from \pgfplotsset{compat=1.18} (current compat level: 1.9).
 
-\c@lstlisting=\count429
-Package hyperref Info: Link coloring OFF on input line 59.
-(./Talleres.out) (./Talleres.out)
-\@outlinefile=\write4
-\openout4 = `Talleres.out'.
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 64.
-
+\c@lstlisting=\count401
+LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 64.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 65.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 65.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 72.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 17.28pt on input line 72.
-LaTeX Font Info:    Trying to load font information for OT1+LinuxLibertineMonoT
--TLF on input line 74.
-
-(/usr/share/texlive/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-TLF.f
-d
-File: OT1LinuxLibertineMonoT-TLF.fd 2019/05/20 (autoinst) Font definitions for 
-OT1/LinuxLibertineMonoT-TLF.
-)
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' in size <12> n
-ot available
-(Font)              Font shape `OT1/LinuxLibertineMonoT-TLF/regular/n' tried in
-stead on input line 74.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/regular/n' will be
-(Font)              scaled to size 12.0pt on input line 74.
-
-Missing character: There is no _ in font LinLibertineMT-tlf-ot1!
-
-Overfull \hbox (22.26451pt too wide) in paragraph at lines 74--75
-[]$\OT1/LinuxLibertineMonoT-TLF/regular/n/12 https : / / github . com / demon-[
-]s1e7j / Universidad / tree / main / Semestre  10 /
- []
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
-)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 80.
-
-(./code/punto_2_1.py
-LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF
- on input line 8.
-
-(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd
-File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/
-LinuxLibertineT-TLF.
-)
-LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 8.
-LaTeX Font Info:    Trying to load font information for OML+LinuxLibertineT-TLF
- on input line 8.
-LaTeX Font Info:    No file OMLLinuxLibertineT-TLF.fd. on input line 8.
-
-
-LaTeX Font Warning: Font shape `OML/LinuxLibertineT-TLF/m/n' undefined
-(Font)              using `OML/cmm/m/it' instead
-(Font)              for symbol `textgreater' on input line 8.
-
-LaTeX Font Info:    Trying to load font information for OMS+LinuxLibertineT-TLF
- on input line 17.
-LaTeX Font Info:    No file OMSLinuxLibertineT-TLF.fd. on input line 17.
-
-LaTeX Font Warning: Font shape `OMS/LinuxLibertineT-TLF/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbar' on input line 17.
-
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 12.0pt on input line 36.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 12.0pt on input line 36.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 17.28pt on input line 43.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 17.28pt on input line 43.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 14.4pt on input line 44.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 14.4pt on input line 44.
+<heidegger tecnica y ciencia.png, id=4, 499.8675pt x 100.87688pt>
+File: heidegger tecnica y ciencia.png Graphic file (type png)
+<use heidegger tecnica y ciencia.png>
+Package pdftex.def Info: heidegger tecnica y ciencia.png  used on input line 49
+.
+(pdftex.def)             Requested size: 375.80544pt x 75.84216pt.
+<biofisica .png, id=6, 666.23906pt x 98.61844pt>
+File: biofisica .png Graphic file (type png)
+<use biofisica .png>
+Package pdftex.def Info: biofisica .png  used on input line 55.
+(pdftex.def)             Requested size: 375.80544pt x 55.62921pt.
+<heidegger citas.png, id=7, 1002.74625pt x 473.51906pt>
+File: heidegger citas.png Graphic file (type png)
+<use heidegger citas.png>
+Package pdftex.def Info: heidegger citas.png  used on input line 65.
+(pdftex.def)             Requested size: 375.80544pt x 177.46805pt.
+<Heidegger citas 2.png, id=8, 1021.56656pt x 465.23813pt>
+File: Heidegger citas 2.png Graphic file (type png)
+<use Heidegger citas 2.png>
+Package pdftex.def Info: Heidegger citas 2.png  used on input line 70.
+(pdftex.def)             Requested size: 375.80544pt x 171.14156pt.
 
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-di
-st/fonts/enc/dvips/libertine/lbtn_lyu3x3.enc}{/usr/share/texlive/texmf-dist/fon
-ts/enc/dvips/libertine/lbtn_kijugd.enc}{/usr/share/texlive/texmf-dist/fonts/enc
-/dvips/libertine/lbtn_oexx6f.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips
-/libertine/lbtn_3dk467.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/liber
-tine/lbtn_naooyc.enc}]
-Overfull \hbox (41.45018pt too wide) in paragraph at lines 45--48
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
+st/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/share/texlive/texmf-dist/fon
+ts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/share/texlive/texmf-dist/fonts/enc
+/dvips/libertine/lbtn_76gpa5.enc} <./heidegger tecnica y ciencia.png> <./biofis
+ica .png> <./heidegger citas.png>]
+<biofisica citas.png, id=20, 1020.81375pt x 476.53032pt>
+File: biofisica citas.png Graphic file (type png)
+<use biofisica citas.png>
+Package pdftex.def Info: biofisica citas.png  used on input line 76.
+(pdftex.def)             Requested size: 375.80544pt x 175.43364pt.
+<heidegger versiones.png, id=21, 1021.56656pt x 465.23813pt>
+File: heidegger versiones.png Graphic file (type png)
+<use heidegger versiones.png>
+Package pdftex.def Info: heidegger versiones.png  used on input line 83.
+(pdftex.def)             Requested size: 375.80544pt x 171.14156pt.
+<heidegger versiones 2.png, id=22, 1012.5328pt x 462.22687pt>
+File: heidegger versiones 2.png Graphic file (type png)
+<use heidegger versiones 2.png>
+Package pdftex.def Info: heidegger versiones 2.png  used on input line 88.
+(pdftex.def)             Requested size: 375.80544pt x 171.55728pt.
 
 
-Overfull \hbox (5.44981pt too wide) in paragraph at lines 48--49
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
+[2 <./Heidegger citas 2.png> <./biofisica citas.png> <./heidegger versiones.png
+>]
+<biofisica versiones.png, id=29, 1019.30812pt x 473.51906pt>
+File: biofisica versiones.png Graphic file (type png)
+<use biofisica versiones.png>
+Package pdftex.def Info: biofisica versiones.png  used on input line 94.
+(pdftex.def)             Requested size: 375.80544pt x 174.57793pt.
+<biofisica versiones 2.png, id=30, 761.09344pt x 479.54156pt>
+File: biofisica versiones 2.png Graphic file (type png)
+<use biofisica versiones 2.png>
+Package pdftex.def Info: biofisica versiones 2.png  used on input line 99.
+(pdftex.def)             Requested size: 375.80544pt x 236.79208pt.
+<biofisica versiones 3.png, id=31, 742.27313pt x 213.04594pt>
+File: biofisica versiones 3.png Graphic file (type png)
+<use biofisica versiones 3.png>
+Package pdftex.def Info: biofisica versiones 3.png  used on input line 104.
+(pdftex.def)             Requested size: 375.80544pt x 107.86528pt.
 
-) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
+
+[3 <./heidegger versiones 2.png> <./biofisica versiones.png> <./biofisica versi
+ones 2.png>]
+<crear alerta.png, id=38, 817.55438pt x 265.74281pt>
+File: crear alerta.png Graphic file (type png)
+<use crear alerta.png>
+Package pdftex.def Info: crear alerta.png  used on input line 110.
+(pdftex.def)             Requested size: 375.80544pt x 122.15396pt.
+<scinapsis.png, id=39, 556.32843pt x 264.23718pt>
+File: scinapsis.png Graphic file (type png)
+<use scinapsis.png>
+Package pdftex.def Info: scinapsis.png  used on input line 119.
+(pdftex.def)             Requested size: 375.80544pt x 178.49754pt.
+<scinapse bio.png, id=40, 759.58781pt x 467.49657pt>
+File: scinapse bio.png Graphic file (type png)
+<use scinapse bio.png>
+Package pdftex.def Info: scinapse bio.png  used on input line 124.
+(pdftex.def)             Requested size: 375.80544pt x 231.29381pt.
+
+
+[4 <./biofisica versiones 3.png> <./crear alerta.png> <./scinapsis.png>]
+<scinapsis citas.png, id=47, 621.07031pt x 316.93407pt>
+File: scinapsis citas.png Graphic file (type png)
+<use scinapsis citas.png>
+Package pdftex.def Info: scinapsis citas.png  used on input line 131.
+(pdftex.def)             Requested size: 375.80544pt x 191.7723pt.
+<scinapsis citas 2.png, id=48, 1024.57782pt x 465.23813pt>
+File: scinapsis citas 2.png Graphic file (type png)
+<use scinapsis citas 2.png>
+Package pdftex.def Info: scinapsis citas 2.png  used on input line 136.
+(pdftex.def)             Requested size: 375.80544pt x 170.64462pt.
+
+
+[5 <./scinapse bio.png> <./scinapsis citas.png>]
+LaTeX Font Info:    Trying to load font information for T1+LinuxLibertineMonoT-
+TLF on input line 146.
+
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/T1LinuxLibertineMonoT-TLF.fd
+File: T1LinuxLibertineMonoT-TLF.fd 2019/05/20 (autoinst) Font definitions for T
+1/LinuxLibertineMonoT-TLF.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2024/09/23 1.10c listings language file
+LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/m/n' in size <12> no
+t available
+(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' tried ins
+tead on input line 146.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' will be
+(Font)              scaled to size 12.0pt on input line 146.
+
+Overfull \hbox (11.75696pt too wide) in paragraph at lines 148--149
+\T1/LinuxLibertineMonoT-TLF/regular/n/12 search ? vid = 57U _ UDLA : UDLA & lan
+g = es & mode = advanced$\T1/LinuxLibertineT-TLF/m/n/12 . Di-rigien-donos a est
+a pag-
+ []
+
+<Figures/section_2_a_p1.png, id=54, 1319.93124pt x 511.9125pt>
+File: Figures/section_2_a_p1.png Graphic file (type png)
+<use Figures/section_2_a_p1.png>
+Package pdftex.def Info: Figures/section_2_a_p1.png  used on input line 152.
+(pdftex.def)             Requested size: 375.80544pt x 145.74817pt.
+<Figures/section_2_a_p2.png, id=55, 269.005pt x 292.09125pt>
+File: Figures/section_2_a_p2.png Graphic file (type png)
+<use Figures/section_2_a_p2.png>
+Package pdftex.def Info: Figures/section_2_a_p2.png  used on input line 160.
+(pdftex.def)             Requested size: 375.80544pt x 408.06029pt.
+
+
+[6{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_dhi6qf.enc} <./
+scinapsis citas 2.png> <./Figures/section_2_a_p1.png>]
+Overfull \hbox (55.05438pt too wide) in paragraph at lines 172--173
+[]\T1/LinuxLibertineT-TLF/m/n/12 Para ini-ciar ten-emos muchisi-mas re-vis-tas 
+para ver-las puede ir a la pag-ina: $\T1/LinuxLibertineMonoT-TLF/regular/n/12 h
+ttps : / / uniandes-[]co .
+ []
+
+LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF
+ on input line 176.
+(/usr/share/texlive/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd
+File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/
+LinuxLibertineT-TLF.
 )
+LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 176.
 
-[2]
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 93.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 93.
- (./code/punto_3_2.py
 
-[3]
-Overfull \hbox (77.45055pt too wide) in paragraph at lines 24--25
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+[7 <./Figures/section_2_a_p2.png>]
+Overfull \hbox (43.95921pt too wide) in paragraph at lines 177--178
+[]$\T1/LinuxLibertineMonoT-TLF/regular/n/12 https : / / uniandes-[]co . libguid
+es . com / az . php ? q = proquest % 20Computer %
  []
 
-
-Overfull \hbox (19.84996pt too wide) in paragraph at lines 25--27
-[][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (70.25047pt too wide) in paragraph at lines 34--36
-[][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (41.45018pt too wide) in paragraph at lines 41--42
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (5.44981pt too wide) in paragraph at lines 42--45
-[][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-)
-
-[4]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 158.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 158.
-
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 161.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 161.
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 166.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 166.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\endgroup' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@over' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 174.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 182.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 182.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 182.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\endgroup' on input line 182.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@over' on input line 182.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 182.
-
-
-
-[5]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 190.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\arcsin' on input line 190.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 190.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\endgroup' on input line 190.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@over' on input line 190.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 190.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 198.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 198.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 198.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 206.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ln' on input line 206.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 206.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\endgroup' on input line 206.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@over' on input line 206.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 206.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 206.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 214.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\exp' on input line 214.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 214.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 214.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\begingroup' on input line 222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\endgroup' on input line 222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@@over' on input line 222.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 222.
-
-
-
-[6]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 230.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 230.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 230.
-
-(./code/punto_4_4.py
-
-[7]
-Overfull \hbox (99.05077pt too wide) in paragraph at lines 23--26
-[][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-
-Overfull \hbox (12.64989pt too wide) in paragraph at lines 44--46
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-)
-
-[8] (./code/punto_6_1.py
-Overfull \hbox (55.85033pt too wide) in paragraph at lines 34--36
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][] 
- []
-
-
-
-[9])
-<./code/punto_6_1_a.png, id=354, 462.528pt x 346.896pt>
-File: ./code/punto_6_1_a.png Graphic file (type png)
-<use ./code/punto_6_1_a.png>
-Package pdftex.def Info: ./code/punto_6_1_a.png  used on input line 301.
-(pdftex.def)             Requested size: 446.26582pt x 334.71548pt.
-<./code/punto_6_1_b.png, id=356, 722.7pt x 433.62pt>
-File: ./code/punto_6_1_b.png Graphic file (type png)
-<use ./code/punto_6_1_b.png>
-Package pdftex.def Info: ./code/punto_6_1_b.png  used on input line 307.
-(pdftex.def)             Requested size: 446.26582pt x 267.76312pt.
-
-
-[10]
-
-[11 <./code/punto_6_1_a.png> <./code/punto_6_1_b.png>]
+<Figures/section_2_b_p1.png, id=67, 1365.1pt x 530.98375pt>
+File: Figures/section_2_b_p1.png Graphic file (type png)
+<use Figures/section_2_b_p1.png>
+Package pdftex.def Info: Figures/section_2_b_p1.png  used on input line 185.
+(pdftex.def)             Requested size: 375.80544pt x 146.17087pt.
+<Figures/section_2_b_p2.png, id=68, 1027.84pt x 162.6075pt>
+File: Figures/section_2_b_p2.png Graphic file (type png)
+<use Figures/section_2_b_p2.png>
+Package pdftex.def Info: Figures/section_2_b_p2.png  used on input line 191.
+(pdftex.def)             Requested size: 375.80544pt x 59.45421pt.
+<Figures/section_2_b_p3.png, id=69, 1027.84pt x 70.2625pt>
+File: Figures/section_2_b_p3.png Graphic file (type png)
+<use Figures/section_2_b_p3.png>
+Package pdftex.def Info: Figures/section_2_b_p3.png  used on input line 197.
+(pdftex.def)             Requested size: 375.80544pt x 25.69008pt.
+LaTeX Info: Symbol \textasciiacute not provided by
+            font family LinuxLibertineT-TLF in TS1 encoding.
+            Default family used instead on input line 203.
+LaTeX Info: Symbol \textasciiacute not provided by
+            font family LinuxLibertineT-TLF in TS1 encoding.
+            Default family used instead on input line 203.
+LaTeX Info: Symbol \textasciiacute not provided by
+            font family LinuxLibertineT-TLF in TS1 encoding.
+            Default family used instead on input line 203.
+LaTeX Info: Symbol \textasciiacute not provided by
+            font family LinuxLibertineT-TLF in TS1 encoding.
+            Default family used instead on input line 203.
+LaTeX Info: Symbol \textasciiacute not provided by
+            font family LinuxLibertineT-TLF in TS1 encoding.
+            Default family used instead on input line 203.
+LaTeX Info: Symbol \textasciiacute not provided by
+            font family LinuxLibertineT-TLF in TS1 encoding.
+            Default family used instead on input line 203.
+<Zotero 1.png, id=70, 1026.08344pt x 544.28343pt>
+File: Zotero 1.png Graphic file (type png)
+<use Zotero 1.png>
+Package pdftex.def Info: Zotero 1.png  used on input line 209.
+(pdftex.def)             Requested size: 375.80544pt x 199.34697pt.
+<Zotero libro.png, id=71, 1004.25188pt x 539.01375pt>
+File: Zotero libro.png Graphic file (type png)
+<use Zotero libro.png>
+Package pdftex.def Info: Zotero libro.png  used on input line 214.
+(pdftex.def)             Requested size: 375.80544pt x 201.71019pt.
+
+
+[8{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/us
+r/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./Figures/section_2_b
+_p1.png> <./Figures/section_2_b_p2.png> <./Figures/section_2_b_p3.png>]
+<zotero articulo.png, id=80, 1002.74625pt x 537.50812pt>
+File: zotero articulo.png Graphic file (type png)
+<use zotero articulo.png>
+Package pdftex.def Info: zotero articulo.png  used on input line 219.
+(pdftex.def)             Requested size: 375.80544pt x 201.45023pt.
+
+
+[9 <./Zotero 1.png> <./Zotero libro.png> <./zotero articulo.png>]
+<word zotero.png, id=87, 1010.27437pt x 367.3725pt>
+File: word zotero.png Graphic file (type png)
+<use word zotero.png>
+Package pdftex.def Info: word zotero.png  used on input line 227.
+(pdftex.def)             Requested size: 375.80544pt x 136.65442pt.
+<Captura de pantalla 2025-09-17 205255.png, id=88, 197.23688pt x 67.0003pt>
+File: Captura de pantalla 2025-09-17 205255.png Graphic file (type png)
+<use Captura de pantalla 2025-09-17 205255.png>
+Package pdftex.def Info: Captura de pantalla 2025-09-17 205255.png  used on inp
+ut line 235.
+(pdftex.def)             Requested size: 375.80544pt x 127.6699pt.
+<Figures/section_4_a_p1.png, id=89, 997.7275pt x 601.24625pt>
+File: Figures/section_4_a_p1.png Graphic file (type png)
+<use Figures/section_4_a_p1.png>
+Package pdftex.def Info: Figures/section_4_a_p1.png  used on input line 256.
+(pdftex.def)             Requested size: 375.80544pt x 226.46678pt.
+
+
+[10 <./word zotero.png> <./Captura de pantalla 2025-09-17 205255.png>]
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 260.
+<Figures/section_4_a_p2.png, id=95, 997.7275pt x 601.24625pt>
+File: Figures/section_4_a_p2.png Graphic file (type png)
+<use Figures/section_4_a_p2.png>
+Package pdftex.def Info: Figures/section_4_a_p2.png  used on input line 268.
+(pdftex.def)             Requested size: 375.80544pt x 226.46678pt.
+
+
+[11 <./Figures/section_4_a_p1.png> <./Figures/section_4_a_p2.png>]
+(./Talleres.bbl
+
+[12])
+
+[13]
 This exam contains 0 questions with 0 parts, 0 subparts, and 0 subsubparts.
 (./Talleres.aux)
  ***********
@@ -1496,40 +1330,26 @@ L3 programming layer <2025-01-18>
  ***********
 
 
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `Talleres.out' has not changed.
-(rerunfilecheck)             Checksum: 59D2B7666026F5E214EA0B3C9449FCCB;1748.
  ) 
 Here is how much of TeX's memory you used:
- 40545 strings out of 473197
- 942575 string characters out of 5718605
- 1602243 words of memory out of 5000000
- 62915 multiletter control sequences out of 15000+600000
- 581062 words of font info for 82 fonts, out of 8000000 for 9000
+ 33220 strings out of 473197
+ 833833 string characters out of 5718605
+ 1287050 words of memory out of 5000000
+ 55961 multiletter control sequences out of 15000+600000
+ 607311 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,13n,105p,828b,2806s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,7n,105p,725b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on Talleres.pdf (11 pages, 473549 bytes).
+></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on Talleres.pdf (13 pages, 1307106 bytes).
 PDF statistics:
- 552 PDF objects out of 1000 (max. 8388607)
- 493 compressed objects within 5 object streams
- 282 named destinations out of 1000 (max. 500000)
- 175 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 139 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 148 words of extra memory for PDF output out of 10000 (max. 10000000)
 
