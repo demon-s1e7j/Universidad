@@ -1,0 +1,13 @@
+#!/bin/bash
+# Desconectar completamente de Wayland
+export WAYLAND_DISPLAY=""
+export XDG_SESSION_TYPE=x11
+export GDK_BACKEND=x11
+export QT_QPA_PLATFORM=xcb
+
+# Configuración específica para evitar el error de threads
+export PYTHON_XLIB_THREADS=0
+export LIBXCB_ALLOW_SLOPPY_LOCK=1
+
+# Ejecutar en un contexto limpio
+python main.py

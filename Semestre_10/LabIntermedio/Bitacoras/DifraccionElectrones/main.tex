@@ -1,0 +1,153 @@
+\documentclass[a4paper, amsfonts, amssymb, amsmath, reprint, showkeys, nofootinbib, twoside]{revtex4-1}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage[colorinlistoftodos, color=green!40, prependcaption]{todonotes}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[left=23mm,right=13mm,top=35mm,columnsep=15pt]{geometry} 
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{csquotes}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage[pdftex, pdftitle={Article}, pdfauthor={Author}]{hyperref} % For hyperlinks in the PDF
+%\setlength{\marginparwidth}{2.5cm}
+\bibliographystyle{apsrev4-1}
+
+\begin{document}
+
+%El título del experimento realizado es importante.
+\title{Bitacora: Difraccion de Electrones}
+
+
+\author{Angélica Lopez Duarte}
+\email[Correo institucional: ]{a.lopez8@uniandes.edu.co}
+
+\author{Sergio Montoya Ramirez}
+\email[Correo institucional: ]{s.montoyar2@uniandes.edu.co}
+%Si necesitan poner un segundo autor, deben eliminar los porcentajes (%) iniciales.
+
+%\author{Second Author}
+%\email{Second.Author@institution.edu}
+
+\affiliation{Universidad de los Andes, Bogotá, Colombia.}
+
+\date{\today} % Si lo dejan vacío no les saldrá fecha. La fecha que se muestra es del día en que se compila.
+
+% \begin{abstract}
+%
+% En este se describen brevemente los objetivos y los resultados del trabajo, por lo tanto se debe dar información completa pero corta del contenido del trabajo. Se debe indicar qué fue lo que se hizo, cómo se hizo y cuáles fueron los resultados obtenidos de forma EXPLÍCITA. Por ejemplo: se obtuvo un valor para la constante de Planck de $h=(5.9\pm 0.5)\times 10^{-34}\,\text{J s}$ \footnote{Utilizar esta forma para reportar los datos, note que las unidades están en un cuadro de texto. TODO debe llevar unidades e incertidumbre, siempre.}. A lo largo de todo el informe por favor utilizar el diccionario de overleaf. Tener ideas claras y concisas de lo que se hizo y de los resultados obtenidos. Que genere interés en leer el resto del artículo. El informe, que está en formato de artículo científico debe ser auto-contenido. Un lector que no haya ido al laboratorio, o que no sepa del experimento debe ser capaz de leerlo y entender todo lo que allí de plantea.
+%
+% \end{abstract}
+
+\maketitle
+
+
+\section{Marco Teorico}
+
+Dada la ya conocida dualidad onda particula, en donde se relaciona la energia (Una propiedad asociada a las particulas) y la frecuencia (asociada a una onda) el fisico Lois DeBroglie postula su ecuacion\cite{kittel}
+\begin{equation}
+	p = \frac{h}{\lambda}
+	\label{eq:de-broglie}
+\end{equation}
+
+que tambien se puede escribir como:
+\begin{equation}
+	\lambda = \frac{h}{\sqrt{2eVm}}
+	\label{eq:de-broglie2}
+\end{equation}
+
+En esta se relaciona la longitud de onda con el momento de esta particula. Esto fundamenta entonces una dualidad onda particula fuera de los fotones (es decir la luz). Sin embargo, ¿como se comprobabaria experimentalmente? Con este motivo se uso la interferometria de rayos X para detectar interferencia entre electrones. Lo que se hace en esencia es lanzar electrones contra estructuras cristalinas que al chocar se reflejan de manera especular y elastico. Ademas, dado que tenemos varias capas, un electron puede chocar en una capa inferior y por tanto recorrer una distancia mayor (correspondiente a $2d\sin\theta$). Ahora bien, si se cumple que los electrones son ondas deberia verse interferencia constructiva en caso de que la distancia sea equivalente a un multiplo entero de la longitud de onda.
+\begin{equation}
+	2d_i\sin\theta = n\lambda
+	\label{eq:bragg}
+\end{equation}
+
+esta se conoce como la ley de Bragg
+
+\section{Metodologia}
+
+\textbf{Nota:} Si bien se describira brevemente las conexiones a realizar las instrucciones concretas de como conectar cada configuracion se encuentran en la guia como graficas. Por lo tanto la explicacion aqui dada es limitada.
+
+Esta practica se puede dividir en dos partes concretas dadas las configuraciones posibles del material.
+
+\subsection{Muestra de Grafito Amplificado}
+
+Antes de conectar cualquier cable se debe insertar el tubo de difraccion de electrones en el soporte. Luego de esto se identifican las 6 ranuras identificadas por $C$, $X$ y $A$ que representan el catodo, electrodo de enfoque y anodo. Ademas estan las ranuras $F_1$ y $F_2$ en donde se colocara un voltaje de 6.3 V AC para desprender los electrones.
+
+Luego de esto, en la pantalla se detectaran los electrones desprendidos de modo que se pueda observar la estructura del material. Ademas, con un iman se pueden desviar los electrones a distintas regiones de la muestra. El objetivo de esta parte es comprobar la estructura del grafito y describirlo.
+
+\subsection{Difraccion de Electrones}
+
+Configurando de manera similar al punto anterior pero conectando la entrada de $X$ a $C$ en vez de a $A$ entramos en la segunda configuracion en donde se observara en la pantalla dos circulos concentricos (patron de interferencia) de un radio dependiente al voltaje suministrado. Este radio a de cumplir la ley de Bragg y aparecer de manera constructiva en distancias multiplos de la longitud. Por tanto, para esta practica se deben tomar los datos de voltaje, diametro de cada circulo. Ademas se medira el ancho para el patron de difraccion y el como cambia el patron al exponerlo al campo del iman incluido. 
+
+\section{Datos}
+
+Los datos se pueden encontrar en el repositorio publico:
+\url{https://github.com/S1e7J/Data-LabIntermedio/tree/main/DifraccionElectrones}. Puede encontrar tanto los datos tomados en ODS y su contraparte limpiada para el analisis.
+
+\section{Analisis Preliminar}
+
+Como se puede ver en el notebook presente en el mismo repo en donde estan los datos. Se pudo calcular el error en cada caso y nos da un error promedio de:
+
+\begin{enumerate}
+	\item \textbf{Diametro\_1:} 0.40750000000000003
+	\item \textbf{Diametro\_2:} 0.5208333333333334
+\end{enumerate}
+
+Esto nos da la tabla \ref{tab:tab-1}
+
+\begin{table*}[h]
+	\caption{Tabla completa con datos PreAnalisis}
+	\label{tab:tab-1}
+	\begin{tabular}{ccccccccc}
+		\hline
+		\hline
+		Voltaje & Interno1 & Externo1& D1 & Interno2 & Externo2 & D2 & error\_1 & error\_2 \\
+		\hline
+		1.9& 3.34& 3.81& 3.58& 6.19& 7.36& 6.51& 0.47& 1.17\\
+		2.2& 2.81& 3.48& 3.06& 5.33& 5.94& 5.66& 0.67& 0.61\\
+		2.6& 2.66& 3.18& 3.07& 4.81& 5.33& 5.15& 0.52& 0.52\\
+		3.0& 2.37& 2.85& 2.66& 4.58& 4.97& 4.86& 0.48& 0.39\\
+		3.5& 2.31& 2.62& 2.43& 4.15& 4.70& 4.48& 0.31& 0.55\\
+		3.7& 2.20& 2.61& 2.38& 4.08& 4.62& 4.33& 0.41& 0.54\\
+		4.0& 2.07& 2.44& 2.24& 3.82& 4.41& 4.11& 0.37& 0.59\\
+		4.3& 2.01& 2.37& 2.19& 3.72& 4.16& 3.87& 0.36& 0.44\\
+		4.5& 1.99& 2.30& 2.13& 3.69& 4.04& 3.81& 0.31& 0.35\\
+		4.7& 1.95& 2.27& 2.12& 3.65& 4.01& 3.86& 0.32& 0.36\\
+		4.7& 1.95& 2.27& 2.12& 3.65& 4.01& 3.81& 0.32& 0.36\\
+		4.9& 1.85& 2.20& 2.08& 3.57& 3.94& 3.61& 0.35& 0.37\\
+		\hline
+		\hline
+	\end{tabular}
+\end{table*}
+
+Y cuando graficamos esto (Con el inverso de la raiz del voltaje)
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.5]{./Previo.png}
+	\caption{Grafica preliminar con los diametros respecto al inverso de la raiz del voltaje}
+	\label{fig:my_label}
+\end{figure}
+
+
+
+% IMPORTANTE: Comentar o eliminar la siguiente linea cuando vayan a realizar el INFORME
+\bibliographystyle{apalike}
+
+
+\bibliography{Referencias}
+
+\section*{Apéndice de cálculo de errores}
+
+Se deben indicar explícitamente los pasos de análisis de error que se hicieron para llegar a al(los) resultado(s). Ejemplo: la propagación de error, incertidumbre en un ajuste de mínimos cuadrados, análisis estadístico, redondeo de cifras significativas, entre otros.
+
+Las fórmulas de cómo se obtuvieron cada uno de los valores reportados debe ser incluido como si el análisis estadístico se hiciera manualmente.
+\end{document}

@@ -1,0 +1,44 @@
+\begin{thebibliography}{}
+
+\bibitem[Eje, ]{Ejemplo}
+Se deben referenciar todos los artículos y textos utilizados. si se usó una
+  gráfica o una imagen que no ha sido realizada por ustedes debe ser citada.
+  la omisión de una apropiada referencia se considerará como una falta grave,
+  ya que técnicamente se considera plagio. las referencias deben incluir los
+  títulos de los artículos. mirar el archivo .bib para ver ejemplos de cómo
+  citar correctamente. no wikipedia. no hyperphisics. consultar artÍculos
+  cientÍficos recomendaciÓn: American journal of physics.
+
+\bibitem[Bahcall and Frautschi, 1964]{Articulo2}
+Bahcall, J.~N. and Frautschi, S.~C. (1964).
+\newblock Neutrino astronomy and intermediate bosons.
+\newblock {\em Phys. Rev.}, 135:B788--B791.
+
+\bibitem[Fletcher et~al., 1994]{Flectcher1994}
+Fletcher, R.~S., Gaisser, T.~K., Lipari, P., and Stanev, T. (1994).
+\newblock sibyll: An event generator for simulation of high energy cosmic ray
+  cascades.
+\newblock {\em Phys. Rev. D}, 50:5710--5731.
+
+\bibitem[Kittel and McEuen, 2018]{kittel}
+Kittel, C. and McEuen, P. (2018).
+\newblock {\em Introduction to solid state physics}.
+\newblock John Wiley \& Sons.
+
+\bibitem[Lipari, 2008]{Articulo1}
+Lipari, P. (2008).
+\newblock Proton and neutrino extragalactic astronomy.
+\newblock {\em Phys. Rev. D}, 78:083011.
+
+\bibitem[Pierson, 1993]{HandbookGraphite}
+Pierson, H.~O. (1993).
+\newblock 3 - graphite structure and properties.
+\newblock In Pierson, H.~O., editor, {\em Handbook of Carbon, Graphite,
+  Diamonds and Fullerenes}, pages 43--69. William Andrew Publishing, Oxford.
+
+\bibitem[Serway et~al., 2006]{serway2006fisica}
+Serway, R., Moses, C., Moyer, C., and Villag{\'o}mez, H. (2006).
+\newblock {\em F{\'\i}sica moderna}.
+\newblock International Thomson.
+
+\end{thebibliography}
