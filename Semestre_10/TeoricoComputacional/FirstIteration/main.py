@@ -1,6 +1,7 @@
 import customtkinter
-from catalog_screen import CatalogScreen
-from table_selector_viewer_screen import TableSelectorViewerScreen
+from screens.catalog_screen import CatalogScreen
+from screens.table_selector_viewer_screen import TableSelectorViewerScreen
+from screens.parameter_selector_screen import ParameterSelectorScreen
 
 class App(customtkinter.CTk):
     def __init__(self):
@@ -24,6 +25,11 @@ class App(customtkinter.CTk):
         """Muestra la pantalla del visualizador de posibilidades."""
         self.current_frame.pack_forget()
         self.current_frame = TableSelectorViewerScreen(self, catalog)
+        self.current_frame.pack(fill="both", expand=True)
+
+    def switch_to_parameter_screen(self, catalog, table):
+        self.current_frame.pack_forget()
+        self.current_frame = ParameterSelectorScreen(self, catalog, table)
         self.current_frame.pack(fill="both", expand=True)
 
 if __name__ == "__main__":
