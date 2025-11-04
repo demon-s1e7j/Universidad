@@ -65,6 +65,10 @@ class Point:
         if not isinstance(other, Point):
             raise TypeError(f"unsupported operand type(s) for +:'Point' and '{other.__class__.__name__}'")
         return ((other - self)**2)._sum().sqrt()
+    
+    @classmethod
+    def zero(cls):
+        return cls(Decimal(0), Decimal(0))
 
 a1 = Decimal(2 * 1e-8)
 a2 = Decimal(4 * 1e-8)

@@ -65,6 +65,10 @@ class Point:
             raise TypeError(f"unsupported operand type(s) for +:'Point' and '{other.__class__.__name__}'")
         return ((other - self)**2)._sum().sqrt()
 
+    @classmethod
+    def zero(cls):
+        return cls(Decimal(0), Decimal(0))
+
 a1 = Decimal(2 * 1e-8)
 a2 = Decimal(4 * 1e-8)
 b1 = Decimal(2 * np.pi) / a1
@@ -153,92 +157,93 @@ clean_intersecciones = [p for p in intersecciones if (p is not None) and Point(x
 x_interseccion = [float(point.x) for point in clean_intersecciones]
 y_interseccion = [float(point.y) for point in clean_intersecciones]
 
-plt.figure(figsize=(8, 6))
-plt.scatter(x, y, color='red', s=50, zorder=5)
+if __name__ == "__main__":
+    plt.figure(figsize=(8, 6))
+    plt.scatter(x, y, color='red', s=50, zorder=5)
 
 
-for m, b in rectas:
-    if m is None:
-        x_val = float(b)
-        y_vals = np.linspace(y_min - 1e8, y_max + 1e8, 100)
-        x_vals = np.full_like(y_vals, x_val)
-        plt.plot(x_vals, y_vals, 'b--', linewidth=0.8, alpha=0.7)
-    else:
-        x_vals = np.linspace(x_min - 1e8, x_max + 1e8, 100)
-        y_vals = float(m) * x_vals + float(b)
-        plt.plot(x_vals, y_vals, 'b--', linewidth=0.8, alpha=0.7)
+    for m, b in rectas:
+        if m is None:
+            x_val = float(b)
+            y_vals = np.linspace(y_min - 1e8, y_max + 1e8, 100)
+            x_vals = np.full_like(y_vals, x_val)
+            plt.plot(x_vals, y_vals, 'b--', linewidth=0.8, alpha=0.7)
+        else:
+            x_vals = np.linspace(x_min - 1e8, x_max + 1e8, 100)
+            y_vals = float(m) * x_vals + float(b)
+            plt.plot(x_vals, y_vals, 'b--', linewidth=0.8, alpha=0.7)
 
-distancias = [p.distance(objetivo) for p in puntos]
+    distancias = [p.distance(objetivo) for p in puntos]
 
-for i, (m, b) in enumerate(rectas_perpendiculares):
-    punto_medio_actual = puntos_medios[i]
-    pm_x = float(punto_medio_actual.x)
-    pm_y = float(punto_medio_actual.y)
+    for i, (m, b) in enumerate(rectas_perpendiculares):
+        punto_medio_actual = puntos_medios[i]
+        pm_x = float(punto_medio_actual.x)
+        pm_y = float(punto_medio_actual.y)
     
-    if m is None:
-        longitud_perp = float(min(distancias)) * 1.2
-        x_vals = [pm_x, pm_x]
-        y_vals = [pm_y - longitud_perp, pm_y + longitud_perp]
-        plt.plot(x_vals, y_vals, 'g-', linewidth=1.5, alpha=0.8, label='Rectas perpendiculares' if i == 0 else "")
-    elif m == 0:
-        longitud_perp = float(min(distancias)) * 1.2
-        x_vals = np.linspace(pm_x - longitud_perp, pm_x + longitud_perp, 10)
-        y_vals = float(m) * x_vals + float(b)
-        plt.plot(x_vals, y_vals, 'g-', linewidth=1.5, alpha=0.8, label='Rectas perpendiculares' if i == 0 else "")
-    elif abs(float(m)) < 1e10:
-        longitud_perp = float(min(distancias)) * 0.4
-        x_vals = np.linspace(pm_x - longitud_perp, pm_x + longitud_perp, 10)
-        y_vals = float(m) * x_vals + float(b)
-        plt.plot(x_vals, y_vals, 'g-', linewidth=1.5, alpha=0.8, label='Rectas perpendiculares' if i == 0 else "")
-    else:
-        longitud_perp = float(min(distancias)) * 1
-        x_vals = [pm_x, pm_x]
-        y_vals = [pm_y - longitud_perp, pm_y + longitud_perp]
-        plt.plot(x_vals, y_vals, 'g-', linewidth=1.5, alpha=0.8, label='Rectas perpendiculares' if i == 0 else "")
+        if m is None:
+            longitud_perp = float(min(distancias)) * 1.2
+            x_vals = [pm_x, pm_x]
+            y_vals = [pm_y - longitud_perp, pm_y + longitud_perp]
+            plt.plot(x_vals, y_vals, 'g-', linewidth=1.5, alpha=0.8, label='Rectas perpendiculares' if i == 0 else "")
+        elif m == 0:
+            longitud_perp = float(min(distancias)) * 1.2
+            x_vals = np.linspace(pm_x - longitud_perp, pm_x + longitud_perp, 10)
+            y_vals = float(m) * x_vals + float(b)
+            plt.plot(x_vals, y_vals, 'g-', linewidth=1.5, alpha=0.8, label='Rectas perpendiculares' if i == 0 else "")
+        elif abs(float(m)) < 1e10:
+            longitud_perp = float(min(distancias)) * 0.4
+            x_vals = np.linspace(pm_x - longitud_perp, pm_x + longitud_perp, 10)
+            y_vals = float(m) * x_vals + float(b)
+            plt.plot(x_vals, y_vals, 'g-', linewidth=1.5, alpha=0.8, label='Rectas perpendiculares' if i == 0 else "")
+        else:
+            longitud_perp = float(min(distancias)) * 1
+            x_vals = [pm_x, pm_x]
+            y_vals = [pm_y - longitud_perp, pm_y + longitud_perp]
+            plt.plot(x_vals, y_vals, 'g-', linewidth=1.5, alpha=0.8, label='Rectas perpendiculares' if i == 0 else "")
+        
+        plt.scatter(pm_x, pm_y, color='orange', s=30, zorder=6, marker='o')
     
-    plt.scatter(pm_x, pm_y, color='orange', s=30, zorder=6, marker='o')
-
-for i, (m, b) in enumerate(rectas_esquinas):
-    if m is None:
-        x_val = float(b)
-        y_vals = np.linspace(y_min, y_max, 100)
-        x_vals = np.full_like(y_vals, x_val)
-        plt.plot(x_vals, y_vals, 'm-', linewidth=2, alpha=0.8, label='Bordes del plano' if i == 0 else "")
-    else:
-        x_vals = np.linspace(x_min, x_max, 100)
-        y_vals = float(m) * x_vals + float(b)
-        plt.plot(x_vals, y_vals, 'm-', linewidth=2, alpha=0.8, label='Bordes del plano' if i == 0 else "")
-
-distancias_intersecciones = []
-for (i, j) in [(6, 17), (17, 23), (23, 15), (15,20), (20, 17), (6, 20), (23, 10), (10, 15), (20, 13), (15, 18), (13, 18)]:
-    p1 = clean_intersecciones[i]
-    p2 = clean_intersecciones[j]
-    dist = p1.distance(p2)
-    distancias_intersecciones.append((p1, p2, dist))
-
-# Dibujar las líneas de distancia
-for p1, p2, dist in distancias_intersecciones:
-    plt.plot([float(p1.x), float(p2.x)], 
-             [float(p1.y), float(p2.y)], 
-             'purple', linewidth=1.5, alpha=0.6)
-
-    # Añadir etiqueta con la distancia
-    medios = punto_medio(p1, p2)
-    plt.annotate(f'{float(dist):.2e}', 
-                 (float(medios.x), float(medios.y)),
-                 textcoords="offset points",
-                 xytext=(0,5),
-                 ha='center',
-                 fontsize=6,
-                 color='darkblue')
-
-plt.scatter(x_interseccion, y_interseccion, color='yellow', s=50, zorder=5)
-
-plt.axis("equal")
-plt.xlabel('', fontsize=12)
-plt.ylabel('', fontsize=12)
-plt.title('Red Reciproca y Primera y Segunda Celda de Brillouin', fontsize=14)
-plt.grid(True, linestyle='--', alpha=0.7)
-plt.margins(0.1)
-
-plt.savefig("punto_1_a.png")
+    for i, (m, b) in enumerate(rectas_esquinas):
+        if m is None:
+            x_val = float(b)
+            y_vals = np.linspace(y_min, y_max, 100)
+            x_vals = np.full_like(y_vals, x_val)
+            plt.plot(x_vals, y_vals, 'm-', linewidth=2, alpha=0.8, label='Bordes del plano' if i == 0 else "")
+        else:
+            x_vals = np.linspace(x_min, x_max, 100)
+            y_vals = float(m) * x_vals + float(b)
+            plt.plot(x_vals, y_vals, 'm-', linewidth=2, alpha=0.8, label='Bordes del plano' if i == 0 else "")
+    
+    distancias_intersecciones = []
+    for (i, j) in [(6, 17), (17, 23), (23, 15), (15,20), (20, 17), (6, 20), (23, 10), (10, 15), (20, 13), (15, 18), (13, 18)]:
+        p1 = clean_intersecciones[i]
+        p2 = clean_intersecciones[j]
+        dist = p1.distance(p2)
+        distancias_intersecciones.append((p1, p2, dist))
+    
+    # Dibujar las líneas de distancia
+    for p1, p2, dist in distancias_intersecciones:
+        plt.plot([float(p1.x), float(p2.x)], 
+                [float(p1.y), float(p2.y)], 
+                'purple', linewidth=1.5, alpha=0.6)
+    
+        # Añadir etiqueta con la distancia
+        medios = punto_medio(p1, p2)
+        plt.annotate(f'{float(dist):.2e}', 
+                    (float(medios.x), float(medios.y)),
+                    textcoords="offset points",
+                    xytext=(0,5),
+                    ha='center',
+                    fontsize=6,
+                    color='darkblue')
+    
+    plt.scatter(x_interseccion, y_interseccion, color='yellow', s=50, zorder=5)
+    
+    plt.axis("equal")
+    plt.xlabel('', fontsize=12)
+    plt.ylabel('', fontsize=12)
+    plt.title('Red Reciproca y Primera y Segunda Celda de Brillouin', fontsize=14)
+    plt.grid(True, linestyle='--', alpha=0.7)
+    plt.margins(0.1)
+    
+    plt.savefig("punto_1_a.png")
