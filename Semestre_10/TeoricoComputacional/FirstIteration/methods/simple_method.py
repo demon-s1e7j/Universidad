@@ -1,79 +1,12 @@
-import customtkinter
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from methods.base_method import BaseMethod
 
-class ExplicitLimits(customtkinter.CTkFrame):
+class ExplicitLimits(BaseMethod):
     def __init__(self, master, catalog, table):
-        super().__init__(master)
+        super().__init__(master, catalog, table)
 
-        self.catalog = catalog
-        self.table = table
-
-        self._setup_grid()
-        self._create_widgets()
-    
-    def _setup_grid(self):
-        self.grid_rowconfigure(0, weight=0)
-        self.grid_rowconfigure(1, weight=0)
-        self.grid_rowconfigure(2, weight=0)
-        self.grid_rowconfigure(3, weight=0)
-        self.grid_rowconfigure(4, weight=0)
-    
-    def _create_widgets(self):
-        self._create_variables_selector()
-        self._create_inputs()
-        self._create_generate_image()
-        self._create_calculate_button()
-
-    def _create_variables_selector(self):
-        variables = self.catalog.search(f'SELECT TOP 3 * FROM "{self.table}"').fieldnames
-        self.independent_variables_selector_label = customtkinter.CTkLabel(self, text="Variable Independiente: ")
-        self.independent_variables_selector = customtkinter.CTkOptionMenu(
-            self,
-            values=variables,
-        )
-        self.independent_variables_selector_label.grid(row=0, column=0, padx=5, pady=5)
-        self.independent_variables_selector.grid(row=0, column=1, padx=5, pady=5)
-
-        self.dependent_variables_selector_label = customtkinter.CTkLabel(self, text="Variable Dependiente: ")
-        self.dependent_variables_selector = customtkinter.CTkOptionMenu(
-            self,
-            values=variables,
-        )
-        self.dependent_variables_selector_label.grid(row=1, column=0, padx=5, pady=5)
-        self.dependent_variables_selector.grid(row=1, column=1, padx=5, pady=5)
-    
-    def _create_inputs(self):
-        self._create_begin_point()
-        self._create_end_point()
-
-    def _create_begin_point(self):
-        self.begin_label = customtkinter.CTkLabel(self, text="Punto Inicio: ")
-        self.begin_label.grid(row=2, column=0, padx=5, pady=5)
-        self.begin_entry = customtkinter.CTkEntry(self)
-        self.begin_entry.grid(row=2, column=1, padx=5, pady=5)
-
-    def _create_end_point(self):
-        self.end_label = customtkinter.CTkLabel(self, text="Punto Final: ")
-        self.end_label.grid(row=3, column=0, padx=5, pady=5)
-        self.end_entry = customtkinter.CTkEntry(self)
-        self.end_entry.grid(row=3, column=1, padx=5, pady=5)
-
-    def _create_generate_image(self):
-        self.generate_image = customtkinter.CTkCheckBox(
-            self,
-            text ="Generar Imagen"
-        )
-
-        self.generate_image.grid(row=4, column=0, padx=5, pady=5)
-
-    def _create_calculate_button(self):
-        self.calculate_buttons = customtkinter.CTkButton(
-            self,
-            text="Calcular",
-            command=self.calculate)
-        self.calculate_buttons.grid(row=4, column=1, padx=5, pady=5)
-    
     def calculate(self):
         variables = self.catalog.search(f'''
                                         SELECT
@@ -85,8 +18,8 @@ class ExplicitLimits(customtkinter.CTkFrame):
                                             AND {self.dependent_variables_selector.get()} IS NOT NULL
                                             AND {self.independent_variables_selector.get()} IS NOT NULL
                                         ''')
-        dependent = variables.getcolumn(self.dependent_variables_selector.get())
-        independent = variables.getcolumn(self.independent_variables_selector.get())
+        dependent = variables.getcolumn(self.dependent_variables_selector.get()) 
+        independent = (variables.getcolumn(self.independent_variables_selector.get()))**(-1 if self.take_inverse_independent.get() else 1)
 
         print(variables)
 
@@ -107,13 +40,16 @@ class ExplicitLimits(customtkinter.CTkFrame):
 
         if self.generate_image.get():
             self.generate_image_aux(independent, dependent, riemann_rectangles, riemann_sum)
+
+        self.write_to_file(riemann_rectangles)
         
     def generate_image_aux(self, independent, dependent, rectangles, sum):
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
         
         # Gráfico 1: Puntos originales
         ax1.scatter(independent, dependent, color='blue', label='Datos')
-        ax1.set_xlabel(self.independent_variables_selector.get())
+        ax1.plot(independent, np.repeat(float(self.threshold_entry.get()), independent.shape), color="red")
+        ax1.set_xlabel(("Inverse " if self.take_inverse_independent.get() else "") + self.independent_variables_selector.get())
         ax1.set_ylabel(self.dependent_variables_selector.get())
         ax1.set_title(f'{self.dependent_variables_selector.get()} vs {self.independent_variables_selector.get()}')
         ax1.legend()
@@ -137,9 +73,10 @@ class ExplicitLimits(customtkinter.CTkFrame):
             ))
         
         # Conectar puntos con líneas
-        ax2.plot(independent, dependent, 'b-', alpha=0.7, linewidth=1, label='Función', zorder=3)
+        ax2.plot(independent, dependent, 'b-', alpha=0.7, linewidth=1, label='Especter', zorder=3)
+        ax2.plot(independent, np.repeat(float(self.threshold_entry.get()), independent.shape), color="red")
         
-        ax2.set_xlabel(self.independent_variables_selector.get())
+        ax2.set_xlabel(("Inverse " if self.take_inverse_independent.get() else "") + self.independent_variables_selector.get())
         ax2.set_ylabel(self.dependent_variables_selector.get())
         ax2.set_title(f'Suma de Riemann: {sum:.4f}')
         ax2.legend()
@@ -151,5 +88,15 @@ class ExplicitLimits(customtkinter.CTkFrame):
         # Integrar el gráfico en la interfaz de CustomTkinter
         canvas = FigureCanvasTkAgg(fig, self)
         canvas_widget = canvas.get_tk_widget()
-        canvas_widget.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
+        canvas_widget.grid(row=6, column=0, columnspan=2, padx=5, pady=5)
         canvas.draw()
+    
+    def write_to_file(self, riemann_rectangles, file_name="results.csv"):
+        with open(file_name, "w") as file:
+            file.write(f"{self.independent_variables_selector.get()},Area\n")
+            for i, rect in enumerate(riemann_rectangles):
+                if rect["altura"] < float(self.threshold_entry.get()):
+                    continue
+                total_area = rect["area"] + (riemann_rectangles[(i -1)]["area"] if (i - 1) >= 0 else 0)
+                position = rect["x"]
+                file.write(f"{position}, {total_area}\n")
