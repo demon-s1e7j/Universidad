@@ -1,0 +1,204 @@
+\documentclass[a4paper, amsfonts, amssymb, amsmath, reprint, showkeys, nofootinbib, twoside]{revtex4-1}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage[colorinlistoftodos, color=green!40, prependcaption]{todonotes}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[left=23mm,right=13mm,top=35mm,columnsep=15pt]{geometry} 
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{csquotes}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage[pdftex, pdftitle={Article}, pdfauthor={Author}]{hyperref} % For hyperlinks in the PDF
+%\setlength{\marginparwidth}{2.5cm}
+\bibliographystyle{apsrev4-1}
+%\bibliographystyle{abbrv}
+
+\begin{document}
+
+%El título del experimento realizado es importante.
+\title{Magnetostricción}
+
+\author{Sergio Montoya}
+\email[Correo institucional: ]{ s.montoyar2@uniandes.edu.co}
+
+\author{Angélica López}
+\email[Correo institucional: ]{ a.lopez8@uniandes.edu.co}
+
+%Si necesitan poner un segundo autor, deben eliminar los porcentajes (%) iniciales.
+
+%\author{Second Author}
+%\email{Second.Author@institution.edu}
+
+\affiliation{Universidad de los Andes, Bogotá, Colombia.}
+
+\date{\today} % Si lo dejan vacío no les saldrá fecha. La fecha que se muestra es del día en que se compila.
+
+
+\begin{abstract}
+	Durante esta práctica de laboratorio se pretendió determinar el 
+\end{abstract}
+
+\maketitle
+
+\section{introducción}
+
+La magnetostricción consiste en la deformación de los materiales con propiedades magnéticas debido a la interacciónde estos con un campo externo\cite{Piercy_1997}. Cuando el material se contrae o se dilata en la misma dirección que el campo aplicado, este efecto se denómina efecto Joule; mientras que, cuando el material se expande o se contrae en todas sus dimensiones, se denómina efecto volumétrico. También puede presentarse una torsión del material, y en este caso se llama efecto Wiedemann\cite{Ekreem_2007}. Para cada caso anteriormente presentado, se tiene un efecto inverso, por ejemplo, el efecto Vilari consiste en deformar un material en una dimensión, lo cual afecta su permeabilidad magnética, y es el fenómeno opuesto al efecto Joule\cite{Lee_2002}.
+
+La causa de todos estos efectos es el comportamiento polar de las moléculas constituyentes de cada material. En las estructuras cristalinas, por ejemplo, los electrones en los átomos se ubican orbitales que tienen diferentes formas según el nivel de energía que ocupe el electrón, lo que genera una densidad de carga no uniforme en algunos casos\cite{callister_2000}. De este modo, al exponer al material a un campo magnético, las densidades de carga desiguales presentarán un efecto de polarización, alineandose en contra o a favor de la dirección del campo según el tipo de material. Cuando muchas moléculas se alinean en el mismo sentido, sus orbitales también lo hacen de modo que, hacia donde esten más alargados los orbitales se podrá observar un efecto de dilatación \cite{Ekreem_2007}. Por esta razón, la magnetostricción es más notoria en materiales cristalinos y ferromagnéticos; en materiales amorfos o con dominios magnéticos desordenados, la alineación de los orbitales puede no ser significativa.
+
+La magnetostricción tiene aplicaciones variadas en tecnología, como sonares, motores lineales y rotativos o equipos piezoeléctricos \cite{Ekreem_2007}. En muchos casos, los materiales usados son aquellos que presentan un efecto de magnetostricción notable ante campos magnéticos pequeñoñs\cite{Piercy_1997}. Para medir este efecto, se pueden usar medidas directas o indirectas, siendo las primeras las que usan dilatometría\cite{Ekreem_2007}, como es el caso de la interferometría óptica usada en este experimento. El segundo tipo de medida, por otra parte, utiliza los efectos inversos a los fenómenos de magnetostricción, como el efecto Vilari ya mencionado \cite{Ekreem_2007}. 
+
+
+\section{Montaje experimental}\label{sec:Montaje}
+
+Durante la práctica experimental se utilizó el montaje mostrado a continuación
+
+\begin{figure}
+	\centering
+	\includegraphics[width=8cm, height=6cm]{./img/montaje_magneto.jpg}
+	\caption{En esta figura se muestra el montaje para el experimento de magnetostricción. En la parte superior se ubica el láser desde el cual sale el haz de luz que es reflejado en un primer espejo M1. De esta forma, el haz llega a un segundo espejo M2, desde el cual es nuevamente reflejado hacia el divisor de haz D, y desde este, los dos haces resultantes se dirigen por separado, uno hacia el espejo de la derecha M4 y otro hacia el espejo de abajo M3. Ambos haces, tras ser reflejados de vuelta hacia el divisor de haz, vuelven a unirse en uno solo que es proyectado en una pantalla SC. Como se muestra en la figura, el espejo de la derecha se encuentra unido a una barra de material con propiedades magnéticas (en este caso hierro o níquel) rodeada por una bobina.}
+	\label{fig:enter-label}
+\end{figure}
+
+Como se aprecia en la figura, el espejo 4 se fijó a la muestra del material que se quería estudiar, de forma que el efecto de magnetostricción fuese perceptible gracias a los cambios en el camino óptico debidos al desplazamiento del espejo generados por la contracción o dilatación del material. Las muestras estudiadas eran cilindros del metal en cuestión (Ni o Fe), los cuales fueron ubicados en el centro de una bobina por la que pasaba corriente, generando de este modo un campo magnético. Antes de ubicar el material y tomar las medidas, y con el fin de caracterizar la bobina, se utilizó un teslámetro para medir el campo generado cerca de la bobina mientras se variaba la corriente que pasaba a través de ella. Después, tras haber esperado un momento, para que el campo remanente generado por la corriente que pasó por la bobina desapareciera, se ajusto el material de forma centrada dentro de la bobina.
+
+Para comenzar, se armó el montaje con todos los elementos necesarios tal como se muestra en la figura 1 utilizando una mesa óptica imantada que permite fijar cada elemento a la distancia deseada. Posteriormente, se procedió a alinear el láser dirigiendo el primer espejo M1 de forma directa hacia el láser de manera que el rayo se reflejara por el mismo camino por el que llegó al espejo. Luego, se giró el espejo M1 hacia el M2 de forma que el rayo fuese del láser a M1, luego de M1 a M2 y luego hiciera el camino de vuelta. Este proceso se repitió sucesivamente hasta tener todos los elementos de la figura 1 correctamente alineados. Por último, se ubicó una lente entre M1 y M2 y otra lente entre el divisor de haz y la pantalla (que en este caso fue la pared del laboratorio). Las lentes permitieron aumentar el tamaño del patrón reflejado en la pared de forma que los mínimos fueran distinguibles y fáciles de contar. 
+
+A continuación, se empezaron a tomar datos contando el número de mínimos que se veían pasar por un punto en partícular (señalando con los dedos el lugar) y registrando la corriente ajustada al pasar tal número de mínimos. Cuando estos se desplazaban hacia adentro, los registrabamos como positivos, mientras que cuendo se desplazaban hacia afuera los registramos como negativos. 
+
+
+\section{Resultados y análisis}
+
+Para empezar, tomemos en cuenta que el campo magnético de un solenoide con respecto a la corriente que lo atraviesa se describe con la fórmula $B = \mu NI$. Sin embargo, podemos realizar una regresión lineal para encontrar y extrapolar los valores del campo magnético en función de la corriente. Esto se muestra en la figura \ref{fig:campo}. Con estos resultados, pudimos medir la corriente y calcular el valor del campo magnético para nuestras mediciones.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{./img/Campo.png}
+	\caption{Gráfica del campo magnético en función de la corriente de un solenoide. Se puede observar el carácter lineal del campo magnético. Además, se realizó una regresión con una pendiente de $17.72 \pm 0.05 \frac{mT}{A}$ y un intercepto de $0.026 \pm 0.05 mT$.}
+	\label{fig:campo}
+\end{figure}
+
+Una vez que tuvimos estos datos y siguiendo la sección \ref{sec:Montaje}, acomodamos el hierro y tomamos las mediciones que se muestran en la tabla \ref{tab:corriente_minimos hierro}.
+
+\begin{table}[H]
+	\centering
+	\caption{Relación entre la corriente del solenoide, el campo magnético y el número de mínimos visibles para la barra de Hierro.}
+	\label{tab:corriente_minimos hierro}
+	\begin{tabular}{p{0.3\columnwidth}p{0.3\columnwidth}p{0.3\columnwidth}}
+		\hline
+		\textbf{Corriente (A)} & \textbf{Campo Magnético (mT)} & \textbf{Número de Mínimos} \\
+		\hline
+		\hline
+		0.15 & 2.72  & 0 \\
+		0.61 & 10.87 & 1 \\
+		0.92 & 16.36 & 1 \\
+		2.64 & 46.84 & -1 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+Ahora, con estos datos, podemos calcular la **diferencia en la longitud** que genera la magnetostricción utilizando la siguiente ecuación:
+
+\begin{equation}
+	\Delta l = \frac{N \lambda}{2} \label{eq:delta-l}
+\end{equation}
+
+Donde $N$ es el número de mínimos acumulados y $\lambda$ es la longitud de onda del láser. Al aplicar esto a los datos, se obtiene el resultado que se observa en la figura \ref{fig:hierro}. En esta figura se puede evidenciar, además, cómo el material alcanza un **punto máximo** de saturación y, posteriormente, se contrae con un **efecto de histéresis**. Esto coincide con lo registrado en la guía de laboratorio \cite{Guia}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\columnwidth]{./img/Hierro.png}
+	\caption{Gráfica de la diferencia de longitud en función del campo magnético. Se puede observar la saturación del material alrededor de los 16 mT y el efecto de histéresis, donde la dirección de deformación cambia al crecer el campo magnético.}
+	\label{fig:hierro}
+\end{figure}
+
+Después de cambiar la barra y reajustar el montaje, se tomaron los datos para el níquel, obteniendo los resultados que se muestran en la tabla \ref{tab:corriente_minimos_niquel}.
+
+\begin{table}[H]
+	\centering
+	\caption{Relación entre la corriente del solenoide, el campo magnético y el número de mínimos visibles para la barra de Níquel.}
+	\label{tab:corriente_minimos_niquel}
+	\begin{tabular}{p{0.3\columnwidth}p{0.3\columnwidth}p{0.3\columnwidth}}
+		\hline
+		\textbf{Corriente (A)} & \textbf{Campo Magnético} & \textbf{Número de Mínimos} \\
+		\hline
+		\hline
+		0.17 & 3.07 & 0 \\
+		0.25 & 4.49 & 2 \\
+		0.27 & 4.84 & 1 \\
+		0.32 & 5.73 & 1 \\
+		0.36 & 6.44 & 1 \\
+		0.45 & 8.03 & 1 \\
+		0.54 & 9.63 & 1 \\
+		0.81 & 14.41 & 1 \\
+		1.02 & 18.13 & 1 \\
+		1.56 & 27.70 & 1 \\
+		2.06 & 36.56 & 1 \\
+		3.35 & 59.43 & 1 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+Con estos datos, volvemos a calcular la diferencia de longitud con la fórmula \ref{eq:delta-l}, obteniendo los resultados de la figura \ref{fig:niquel}. En esta gráfica podemos ver que el níquel cambia su tamaño, aumentando cada vez menos, ya que el material se va saturando. Estas observaciones corresponden con la literatura \cite{Guia}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm, height=6cm]{./img/Niquel.png}
+	\caption{Gráfica de la diferencia de longitud en función del campo magnético. Se puede observar cómo el níquel aumenta su tamaño, pero disminuyendo la tasa a la que lo hace.}
+	\label{fig:niquel}
+\end{figure}
+
+
+
+
+\section{Conclusiones}
+
+El objetivo de este informe es presentar los resultados de una práctica de laboratorio para investigar los efectos de la magnetostricción en el hierro y el níquel. Para ello, se utilizó un interferómetro de Michelson que permitió detectar cambios en la longitud de los materiales por medio de la interferencia de la luz, cuantificando los mínimos de interferencia.
+
+Los resultados obtenidos para el hierro mostraron un comportamiento esperado, tal como se describe en la literatura científica. El material exhibió histéresis, lo que significa que el cambio en la longitud vario en su direccion a medida que se aumentaba el campo magnetico.
+
+Por su parte, el níquel también presentó un comportamiento similar. Su longitud aumentó a medida que el campo magnético se incrementó. Sin embargo, este cambio ocurrió a una tasa decreciente, lo cual se explica por la saturación magnética del material.
+
+En conclusión, los objetivos de la práctica se cumplieron satisfactoriamente. Se confirmó que la magnetostricción es un fenómeno presente tanto en el hierro como en el níquel. Además, se pudo evidenciar el efecto de la histéresis específicamente en el hierro.
+
+%El objetivo de esta practica de laboratorio era investigar los efectos de la magnetostriccion en el hierro y el niquel. Para hacer esto se realizo un interferometro de michelsen el cual nos permitia detectar las diferencias en la longitud por interferencia de la luz contando minimos y el como cambian. Con esto en mente se montaron los dos materiales y se obtuvo. Primero, el hierro se comporto como se esperaba por la literatura teniendo histeresis y por tanto cambiando de dirección a medida que el campo magnetico aumentaba. Segundo, el niquel a su vez, se comporto de una manera similar aumentando su tamaño a medida que el campo magnetico crecia pero disminuyendo la tasa a la que lo hacia siendo explicado por la saturacion del material. Con esto, podemos concluir que los objetivos de la practica fueron obtenidos y que la magnetostriccion tiene efecto en el hierro y el niquel presentando histeresis en el primero.
+
+
+
+\bibliography{Referencias}
+%\nocite{callister_2000}
+%\nocite{Ekreem_2007}
+%\nocite{Lee_2002}
+%\nocite{Piercy_1997}
+
+\section*{Apéndice de cálculo de errores}
+
+
+
+Para realizar la regresión lineal se utilizaron las siguientes fórmulas
+
+\begin{equation}
+	m = \frac{n\sum x_{i}y_{i} - \sum x_{i}y_{i}}{n\sum x_{i}^{2} - (\sum_{i}^{n} x_{i})^{2}}
+\end{equation}
+
+\begin{equation}
+	b = \frac{\sum y_{i} \sum x_{i}^{2} - \sum x_{i}\sum x_{i}y_{i}}{n \sum x_{i}^{2} - (\sum x_{i})^{2}}
+\end{equation}
+
+\begin{equation}
+	\sigma _{m} = \sqrt{\frac{n \sum (y_{i} - mx_{i} - b)^{2}}{(n-2)(n\sum x_{i} - (\sum  x_{i})^{2})}}
+\end{equation}
+
+\begin{equation}
+	\sigma_{b} = \sqrt{\frac{1+(\sum x_{i})^{2}}{n \sum x_{i}^{2}-(\sum x_{i})^{2}}\frac{\sum (y_{i}-mx_{i}-b)^{2}}{n(n-2)}}
+\end{equation}
+
+\end{document}
