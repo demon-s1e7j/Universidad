@@ -1,6 +1,8 @@
 import customtkinter
+import matplotlib.pyplot as plt
 from methods.simple_method import ExplicitLimits
 from methods.symmetry_method import SymmetryMethod
+
 
 class ParameterSelectorScreen(customtkinter.CTkFrame):
     def __init__(self, master, catalog, table):
@@ -14,7 +16,7 @@ class ParameterSelectorScreen(customtkinter.CTkFrame):
         self._setup_grid()
         self._create_widgets()
         print(f"Entraste a Parameter Screen con: {self.table}")
-    
+
     def _setup_grid(self):
         self.grid_rowconfigure(0, weight=0)  # Title
         self.grid_rowconfigure(1, weight=0)  # Method Selector
@@ -45,21 +47,33 @@ class ParameterSelectorScreen(customtkinter.CTkFrame):
     def _create_dynamic_widget_area(self):
         # Frame contenedor para widgets dinámicos
         self.dynamic_frame = customtkinter.CTkScrollableFrame(self)
-        self.dynamic_frame.grid(row=2, column=0, padx=20, pady=20, sticky="nsew")
+        self.dynamic_frame.grid(
+            row=2,
+            column=0,
+            padx=20,
+            pady=20,
+            sticky="nsew")
         self.dynamic_frame.grid_columnconfigure(0, weight=1)
-    
+
+    def close_figures(self):
+        plt.close("all")
+
     def method_selected(self, method):
         print(f"Método seleccionado: {method}")
-        
+
         # Limpiar widget anterior
         if self.current_method_widget:
             self.current_method_widget.destroy()
-        
+
         # Crear nuevo widget según el método
         if method == "Simple Selector":
-            self.current_method_widget = ExplicitLimits(self.dynamic_frame, self.catalog, self.table)
-            self.current_method_widget.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+            self.current_method_widget = ExplicitLimits(
+                self.dynamic_frame, self.catalog, self.table)
+            self.current_method_widget.grid(
+                row=0, column=0, sticky="nsew", padx=10, pady=10)
 
         if method == "Symmetry Selector":
-            self.current_method_widget = SymmetryMethod(self.dynamic_frame, self.catalog, self.table)
-            self.current_method_widget.grid(row=0, column=0, sticky="nsew", padx=10, pady=10)
+            self.current_method_widget = SymmetryMethod(
+                self.dynamic_frame, self.catalog, self.table)
+            self.current_method_widget.grid(
+                row=0, column=0, sticky="nsew", padx=10, pady=10)

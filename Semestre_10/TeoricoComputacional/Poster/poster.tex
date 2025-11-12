@@ -1,0 +1,166 @@
+% Unofficial University of Cambridge Poster Template
+% https://github.com/andiac/gemini-cam
+% a fork of https://github.com/anishathalye/gemini
+% also refer to https://github.com/k4rtik/uchicago-poster
+
+\documentclass[final]{beamer}
+
+% ====================
+% Packages
+% ====================
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[orientation=portrait,size=custom,width=100,height=120,scale=1.0]{beamerposter}
+\usetheme{gemini}
+\usecolortheme{nott}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\usepackage{anyfontsize}
+\renewcommand{\normalsize}{\fontsize{36}{40}\selectfont} % Aumenta de ~24pt a ~28pt
+
+% ====================
+% Lengths
+% ====================
+
+% If you have N columns, choose \sepwidth and \colwidth such that
+% (N+1)*\sepwidth + N*\colwidth = \paperwidth
+\newlength{\sepwidth}
+\newlength{\colwidth}
+\setlength{\sepwidth}{0.025\paperwidth}
+\setlength{\colwidth}{0.45\paperwidth}
+
+\newcommand{\separatorcolumn}{\begin{column}{\sepwidth}\end{column}}
+
+% ====================
+% Title
+% ====================
+
+\title{Calculadora Agnóstica de Anchores Equivalentes}
+
+\author{Sergio Montoya Ramírez \inst{1} \and Benjamin Oostra Vannoppen \inst{1}}
+
+\institute[shortinst]{\inst{1} Universidad de los Andes}
+
+% ====================
+% Footer (optional)
+% ====================
+
+% \footercontent{
+%   \href{https://utfpr.edu.br/ct/ppgca}{utfpr.edu.br/ct/ppgca} \hfill
+%   Mostra de Trabalhos do PPGCA --- TechTalks 2024 \hfill
+%   \href{mailto:ppgca-ct@utfpr.edu.br}{ppgca-ct@utfpr.edu.br}}
+% (can be left out to remove footer)
+
+% ====================
+% Logo (optional)
+% ====================
+
+% use this to include logos on the left and/or right side of the header:
+\logoright{\includegraphics[height=5cm]{./logos/logo-uniandes.png}}
+%\logoleft{\hspace{20ex}\includegraphics[height=3.5cm]{logos/ppgca-logo.png}}
+
+% ====================
+% Body
+% ====================
+
+\begin{document}
+
+\begin{frame}[t]
+\begin{columns}[t]
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{Introducción}
+    Una de las mejores formas de determinar los materiales que componen un cuerpo celeste es mediante la espectrografía. En este campo, una de las magnitudes más relevantes es el ancho equivalente, una medida que cuantifica la intensidad total de una línea de absorción o emisión. A diferencia de una simple medición de profundidad, el ancho equivalente encapsula la energía total faltante o sobrante en la línea, representándola como el ancho de un rectángulo de área equivalente. En este proyecto se desarrolla una calculadora versátil para calcular anchos equivalentes, tanto en espectros de Vizier como a través de una interfaz de línea de comandos (CLI) para espectros locales.
+  \end{block}
+
+  \begin{block}{Objetivos}
+    \begin{itemize}
+      \item Estudiar el cálculo de areas equivalentes para espectrografí
+      \item Desarrollar una calculadora agnóstica para anchos equivalentes
+      \item Calcular los anchos equivalentes para un espectro solar (ID: J/A+A/587/A65)
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Ancho Equivalente}
+    En la luz que generan (o que choca con) cualquier elemento se encuentra una gran cantidad de información. En los espectros se puede obtener información diversa, desde composición química hasta velocidad. Sin embargo, no siempre los espectros funcionan de la misma manera; en casos donde la luz es muy poca o la resolución del espectroscopio no es suficiente, podría complicarse la comparación de espectros. Por lo tanto, se hace uso de anchos equivalentes. Estos constituyen, esencialmente, una manera de convertir espectros —que tienen formas particulares y puntos dependientes de la muestra— en anchos de rectángulos equivalentes en área (y que, por tanto, representan la misma absorción de radiación). Para esto, el cálculo se realiza de la siguiente manera:
+    
+    \begin{equation}
+      EW = \int \frac{(F_c - F_\lambda)}{F_c} d\lambda
+      \label{eq:ew_eq1}
+    \end{equation}
+
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.8\colwidth]{./imgs/ew_img1.png}
+      \caption{Gráfica explicativa para el área equivalente}
+      \label{fig:ew_fg1}
+    \end{figure}
+  \end{block}
+
+  \begin{block}{Sumatoria de Riemann}
+    Dada una curva, se pueden sumar fácilmente los rectángulos que forman sus aristas de modo que se obtenga un resultado aproximado de la integral.
+
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.8\colwidth]{./imgs/rm_img1.png}
+      \caption{Gráfica demostrativa de sumas de Riemann}
+      \label{fig:ew_fg1}
+    \end{figure}
+  \end{block}
+
+\end{column}
+
+\separatorcolumn
+
+\begin{column}{\colwidth}
+
+  \begin{block}{Método de los Trapecios}
+    En un espíritu similar al de las sumatorias de Riemann, el método de los trapecios es una mejora que, en lugar de utilizar rectángulos, emplea trapecios que por su forma se ajustan mejor a la curva en cuestión.
+
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.8\colwidth]{./imgs/tp_img1.png}
+      \caption{Gráfica demostrativa del método de trapecios}
+      \label{fig:ew_fg1}
+    \end{figure}
+  \end{block}
+
+  \begin{block}{Caso de Uso: Espectros Solares en Visible e Infrarrojo Cercano}
+    Habiendo explicado los términos generales de la aplicación, lo mejor es mostrar su funcionamiento. Para un caso de uso con un espectro de luz visible y cercano al infrarrojo, se quisieron obtener las áreas equivalentes. Toda la información (y los datos) puede consultarse en \textit{https://cdsarc.u-strasbg.fr/viz-bin/qcat?J/A+A/587/A65}. Con esto, se solicitó calcular el área equivalente para picos que superaran un umbral (en este caso, con una absorción mayor a 0.8), obteniéndose:
+
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.8\colwidth]{./imgs/ex_img1.png}
+      \caption{Gráfica de ejemplo de área equivalente}
+      \label{fig:ew_fg1}
+    \end{figure}
+  \end{block}
+
+  \begin{block}{Conclusiones}
+    \begin{itemize}
+      \item Se logró desarrollar una calculadora agnóstica para el cálculo de anchos equivalentes que funciona tanto con espectros locales como remotos desde Vizier.
+      \item El método de integración numérica implementado permite calcular con precisión las áreas equivalentes incluso en espectros con ruido o resolución limitada.
+      \item La aplicación al espectro solar demostró la utilidad de la herramienta para identificar y cuantificar líneas de absorción relevantes.
+      \item Esta herramienta facilita el análisis espectrográfico para investigadores y estudiantes, automatizando un proceso que tradicionalmente requiere cálculos manuales.
+      \item El código abierto de la calculadora permite su mejora continua y adaptación a diferentes necesidades en el campo de la astronomía.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Referencias}
+    \nocite{*}
+    \footnotesize{\bibliographystyle{plain}\bibliography{poster}}
+  \end{block}
+
+\end{column}
+\separatorcolumn
+
+\end{columns}
+\end{frame}
+
+\end{document}

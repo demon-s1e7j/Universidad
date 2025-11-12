@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2026/dev/Arch Linux)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: poster.aux
+The style file: plain.bst
+Database file #1: poster.bib
+Warning--entry type for "vizier:J/A+A/587/A65" isn't style-file defined
+--line 20 of file poster.bib
+Too many commas in name 1 of "Reiners A., Mrotzek N., Lemke U., Hinrichs J., Reinsch K." for entry vizier:J/A+A/587/A65
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Reiners A., Mrotzek N., Lemke U., Hinrichs J., Reinsch K." for entry vizier:J/A+A/587/A65
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Reiners A., Mrotzek N., Lemke U., Hinrichs J., Reinsch K." for entry vizier:J/A+A/587/A65
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Reiners A., Mrotzek N., Lemke U., Hinrichs J., Reinsch K." for entry vizier:J/A+A/587/A65
+while executing---line 1090 of file plain.bst
+You've used 3 entries,
+            2118 wiz_defined-function locations,
+            515 strings with 4397 characters,
+and the built_in function-call counts, 728 in all, are:
+= -- 62
+> -- 32
+< -- 0
++ -- 14
+- -- 10
+* -- 39
+:= -- 130
+add.period$ -- 8
+call.type$ -- 3
+change.case$ -- 13
+chr.to.int$ -- 0
+cite$ -- 3
+duplicate$ -- 31
+empty$ -- 67
+format.name$ -- 10
+if$ -- 150
+int.to.chr$ -- 0
+int.to.str$ -- 3
+missing$ -- 4
+newline$ -- 17
+num.names$ -- 6
+pop$ -- 24
+preamble$ -- 1
+purify$ -- 11
+quote$ -- 0
+skip$ -- 22
+stack$ -- 0
+substring$ -- 16
+swap$ -- 3
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 8
+warning$ -- 0
+while$ -- 6
+width$ -- 4
+write$ -- 31
+(There were 4 error messages)

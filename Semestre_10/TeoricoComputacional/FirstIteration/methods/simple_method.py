@@ -14,7 +14,7 @@ class ExplicitLimits(BaseMethod):
                                         FROM
                                             "{self.table}"
                                         WHERE
-                                            "{self.independent_variables_selector.get()}" BETWEEN {self.begin_entry.get()} AND {self.end_entry.get()}
+                                            "{self.independent_variables_selector.get()}" BETWEEN {float(self.begin_entry.get())**(-1 if self.take_inverse_independent.get() else 1)} AND {float(self.end_entry.get())**(-1 if self.take_inverse_independent.get() else 1)}
                                             AND {self.dependent_variables_selector.get()} IS NOT NULL
                                             AND {self.independent_variables_selector.get()} IS NOT NULL
                                         ''')

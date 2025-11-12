@@ -2,6 +2,7 @@ import io
 import customtkinter
 from tabulate import tabulate
 
+
 class TableSelectorViewerScreen(customtkinter.CTkFrame):
     def __init__(self, master, catalog):
         super().__init__(master)
@@ -21,9 +22,10 @@ class TableSelectorViewerScreen(customtkinter.CTkFrame):
         self.grid_rowconfigure(0, weight=0)  # Título - peso 0
         self.grid_rowconfigure(1, weight=1)  # Frame de descripción - peso 1
         self.grid_rowconfigure(2, weight=0)  # Menú de opciones - peso 0
-        self.grid_rowconfigure(3, weight=1)  # Frame de visualización de tablas - peso 1
-        self.grid_rowconfigure(4, weight=0) 
-        self.grid_rowconfigure(5, weight=0) 
+        # Frame de visualización de tablas - peso 1
+        self.grid_rowconfigure(3, weight=1)
+        self.grid_rowconfigure(4, weight=0)
+        self.grid_rowconfigure(5, weight=0)
 
     def _create_widgets(self):
         """Crea y configura los widgets de la pantalla."""
@@ -37,8 +39,8 @@ class TableSelectorViewerScreen(customtkinter.CTkFrame):
     def _create_title(self):
         """Crea el título de la pantalla."""
         self.title_label = customtkinter.CTkLabel(
-            self, 
-            text=f"Visualizador de {self.catalog.res_title}", 
+            self,
+            text=f"Visualizador de {self.catalog.res_title}",
             font=("Arial", 20, "bold")
         )
         self.title_label.grid(row=0, column=0, padx=20, pady=(20, 10))
@@ -46,15 +48,16 @@ class TableSelectorViewerScreen(customtkinter.CTkFrame):
     def _create_description_frame(self):
         """Crea el frame con la descripción del catálogo."""
         self.scrollable_frame = customtkinter.CTkScrollableFrame(self)
-        self.scrollable_frame.grid(row=1, column=0, sticky="nsew", padx=10, pady=10)
+        self.scrollable_frame.grid(
+            row=1, column=0, sticky="nsew", padx=10, pady=10)
         self.scrollable_frame.grid_columnconfigure(0, weight=1)
-        
+
         description = io.StringIO()
         self.catalog.describe(verbose=True, file=description)
         text_to_display = description.getvalue()
-        
+
         self.text_label = customtkinter.CTkLabel(
-            self.scrollable_frame, 
+            self.scrollable_frame,
             text=text_to_display,
             justify="left",
             wraplength=550
@@ -65,55 +68,62 @@ class TableSelectorViewerScreen(customtkinter.CTkFrame):
         """Crea el selector de tablas."""
         self.option_menu = customtkinter.CTkOptionMenu(
             master=self,
-            values=[f"{table_name}: {table.description}" for table_name, table in self.tables.items()],
-            command=self.select_table
-        )
+            values=[
+                f"{table_name}: {
+                    table.description}" for table_name,
+                table in self.tables.items()],
+            command=self.select_table)
         self.option_menu.grid(row=2, column=0, padx=10, pady=10)
 
     def _create_table_display(self):
         """Crea el área de visualización de tablas."""
-        self.table_display_frame = customtkinter.CTkScrollableFrame(self, orientation="horizontal")
-        self.table_display_frame.grid(row=3, column=0, sticky="nsew", padx=10, pady=10)
+        self.table_display_frame = customtkinter.CTkScrollableFrame(
+            self, orientation="horizontal")
+        self.table_display_frame.grid(
+            row=3, column=0, sticky="nsew", padx=10, pady=10)
         self.table_display_frame.grid_columnconfigure(0, weight=1)
         self.table_display_frame.grid_rowconfigure(0, weight=1)
 
         self.table_info_label = customtkinter.CTkLabel(
-            self.table_display_frame, 
-            text="Selecciona una tabla para ver los detalles.", 
+            self.table_display_frame,
+            text="Selecciona una tabla para ver los detalles.",
             justify="left",
             wraplength=800
         )
-        self.table_info_label.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
+        self.table_info_label.grid(
+            row=0, column=0, padx=10, pady=10, sticky="nsew")
 
     def _create_back_button(self):
         """Crea el botón para volver a la pantalla anterior."""
         self.back_button = customtkinter.CTkButton(
-            self, 
-            text="← Volver a Catálogos", 
+            self,
+            text="← Volver a Catálogos",
             command=self.master.switch_to_catalog_screen
         )
         self.back_button.grid(row=5, column=0, padx=20, pady=(10, 20))
-    
+
     def _create_select_button(self):
         self.select_button = customtkinter.CTkButton(
-            self,
-            text="Escoger Tabla →",
-            command=(lambda :
-                     self.master.switch_to_parameter_screen(self.tap_service, self.table_name)),
-            state="disabled"
-        )
+            self, text="Escoger Tabla →", command=(
+                lambda: self.master.switch_to_parameter_screen(
+                    self.tap_service, self.table_name)), state="disabled")
         self.select_button.grid(row=4, column=0, padx=20, pady=(10, 20))
 
     def select_table(self, choice):
         """Maneja la selección de una tabla y muestra sus datos."""
         self.table_name = choice.split(":")[0]
         try:
-            values = self.tap_service.search(f'select TOP 3 * from "{self.table_name}"')
+            values = self.tap_service.search(
+                f'select TOP 3 * from "{self.table_name}"')
             print(values)
-            table_display = tabulate(values.to_table(), headers="keys", tablefmt="pretty")
+            table_display = tabulate(
+                values.to_table(),
+                headers="keys",
+                tablefmt="pretty")
             self.table_info_label.configure(text=table_display)
             self.select_button.configure(state="normal")
         except Exception as e:
-            self.table_info_label.configure(text=f"Error al cargar la tabla: {str(e)}")
-        
+            self.table_info_label.configure(
+                text=f"Error al cargar la tabla: {str(e)}")
+
         print(f"Tabla seleccionada: {self.table_name}")
