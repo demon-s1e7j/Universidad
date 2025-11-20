@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{epstopdf}
+%\usepackage[spanish]{babel}
+\usepackage[english]{babel}
+\usepackage[latin5]{inputenc}
+\usepackage{hyperref}
+\usepackage[left=3cm,top=3cm,right=3cm,nohead,nofoot]{geometry}
+\usepackage{braket}
+\usepackage{datenumber}
+\usepackage{amsmath}
+%\newdate{date}{10}{05}{2013}
+%\date{\displaydate{date}}
+
+% Personalizaciones para que se parezca más a tu ejemplo
+
+\begin{document}
+
+\begin{center}
+  \Huge
+  Quantum Error-Correction Codes: How to deal with uncertainty when reliability is crucial.
+
+  \vspace{3mm}
+  \Large Sergio Montoya Ramirez
+
+  \large
+  202112171
+
+
+  \vspace{2mm}
+  \Large
+  Director: Julian Rincon
+
+  \normalsize
+  \vspace{2mm}
+
+  \today
+\end{center}
+
+
+\normalsize
+\section{Introduction}
+
+%Introducción a la propuesta de Monograf�a. Debe incluir un breve resumen del estado del arte del problema a tratar. Tambi�n deben aparecer citadas todas las referencias de la bibliograf�a (a menos de que se citen m�s adelante, en los objetivos o metodolog�a, por ejemplo)
+
+\section{General Objective}
+
+%Objetivo general del trabajo. Empieza con un verbo en infinitivo.
+
+To develop a guide for Error Correcting Codes in quantum computing, accompanying it with computational and theoretical error analysis for determining its improvements based on the noise and parameters. There will be minimal use of physical quantum computers given the necessity of encodings for augmenting the amount of qubits, resulting prohibitive for frequent use.
+
+\section{Specific Objectives}
+
+%Objetivos espec�ficos del trabajo. Empiezan con un verbo en infinitivo.
+
+\begin{enumerate}
+  \item To establish the theoretical foundations of Quantum Error Correction and Quantum Error Correcting Codes.
+  \item To design, implement, and analyze classical simulations of representative QECCs using quantum computing frameworks.
+  \item To perform a comparative error analysis of the implemented QECCs quantifying their quality.
+  \item To synthesize the theoretical and computacional results into a comprehensive guide.
+\end{enumerate}
+
+\section{Metodology}
+
+%Exponer DETALLADAMENTE la metodolog�a que se usar� en la Monograf�a. 
+
+%Monograf�a te�rica o computacional: �C�mo se har�n los c�lculos te�ricos? �C�mo se har�n las simulaciones? �Qu� requerimientos computacionales se necesitan? �Qu� espacios f�sicos o virtuales se van a utilizar?
+
+%Monograf�a experimental: Recordar que para ser aprobada, los aparatos e insumos experimentales que se usar�n en la Monograf�a deben estar previamente disponibles en la Universidad, o garantizar su disponibilidad para el tiempo en el que se realizar� la misma. �Qu� montajes experimentales se van a usar y que material se requiere? �En qu� espacio f�sico se llevar�n a cabo los experimentos? Si se usan aparatos externos, �qu� permisos se necesitan? Si hay que realizar pagos a terceros, �c�mo se financiar� esto?
+This project will be divided into three different departments corresponding to the first three specific objectives. The last objective runs throughout the project, combining and compiling the knowledge obtained from every other one.
+
+\subsection{Theoretical Foundations}
+
+This section will rely on bibliographic study and reproduction of proofs, meaning that it would result in a document explaining and proving keystone theorems in the QEC field and theoretical explanations of representative codes.
+
+\textbf{Topics Included:}
+
+\begin{itemize}
+\item Hamming Bound.
+\item Quantum Linear Error Accumulation.
+\item Discretization of the errors.
+\item Independent Error Models.
+\item Shor Code.
+\item Calderbank-Shor-Steane Codes.
+\item Stabilizer Codes.
+\end{itemize}
+
+\subsection{Computational Simulations}
+
+Following the recommendations made in (McGeoch, 2012), the simulation environment will be designed to separate parameters either in the QECC itself---for example, the number of qubits in the encoding---and the specific noise---for example, the probability of noise taking effect. This will improve correspondence and interpretability between parameters and results. It will also be foundational to compare and contrast computational simulations with theoretical error analysis.
+
+The test suite itself will be created with Qiskit, which is a framework for quantum computing. As stated previously, it will be used---as long as it's possible---the simulation feature for reducing costs and accelerating development. However, after the testing phase, the results will benefit from checking with real hardware for accuracy in results. This last check with real hardware will depend on the availability of computers and the cost of accessing them.
+
+\subsection{Error Analysis}
+
+Quality in QECCs is measured by the number of errors correctable in the presence of arbitrary interactions (Knill, 2000). In this section, the quality of each code will be quantified by analyzing its structure and theoretically obtaining a relationship between its parameters and how many errors can be corrected.
+
+\section{Ethical Considerations}
+%A partir del periodo 2017-20 debe incluirse en el formato de propuesta de monografía una sección titulada Consideraciones éticas. Esta sección debe incluir los detalles relacionados con aspectos éticos involucrados en el proyecto. Por ejemplo, se puede describir el protocolo establecido para el manejo de datos de manera que se asegure que no habrá manipulación de la información, ni habrá plagio de los mismos. También se puede tener en cuenta si hay algún conflicto de intereses involucrado en el desarrollo del proyecto o se puede detallar si el trabajo está relacionado con las actividades y poblaciones humanas mencionadas en el siguiente link https://ciencias.uniandes.edu.co/investigacion/comite-de-etica. Es importante tener en cuenta que esta sección debe incluir una frase explícita sobre si el proyecto debe pasar o no a estudio del comité de ética de la Facultad de Ciencias.
+
+This project will not employ any methodology involving vulnerable populations or living subjects. Furthermore, it will not utilize any form of confidential or sensitive data for its processing or results. Any information or data external to the authors will be properly cited and accredited in accordance with the specifications provided by the university. Consequently, no phase of this study requires explicit approval from an ethics committee, and thus, submission to such a committee is deemed unnecessary.
+
+
+\section{Schedule}
+
+\begin{table}[htb]
+  \begin{tabular}{|c|cccccccccccccccc| }
+    \hline
+    Tasks $\backslash$ Weeks & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16  \\
+    \hline
+    1 & X & X & X & X &   &   &   &   &   & X & X & X & X &   &   &   \\
+    2 & X & X & X &   &   & X & X &   & X & X &   &   &   &   &   &   \\
+    3 &   &   & X &   &   & X &   &   & X &   & X &   &   &   &   &   \\
+    4 &   &   &   & X & X &   & X & X &   &   &   & X & X &   &   &   \\
+    5 &   &   &   &   & X & X &   & X & X &   &   &   & X & X &   &   \\
+    6 & X & X & X & X & X &   & X & X &   & X & X &   &   &   &   &   \\
+    7 &   &   &   &   &   &   &   &   &   & X & X & X & X & X & X & X \\
+    \hline
+  \end{tabular}
+\end{table}
+\vspace{1mm}
+\begin{itemize}
+\item Task 1: Literature Review, retrieving information crucial to the field.
+\item Task 2: Test suite design and recalibration.
+\item Task 3: Code Description, explaining how a code works.
+\item Task 4: Code Simulation, testing the code to check its quality and performance.
+\item Task 5: Error Analysis, for quality measurement.
+\item Task 6: Present advances in simulations, theoretical definitions, and analysis (30\%).
+\item Task 7: Synthesis of knowledge acquired, writing of the final document, and preparation for the final defense.
+\end{itemize}
+
+
+\section{Subject Matter Expert}
+
+%Nombres de por lo menos 3 profesores que conozcan del tema. Uno de ellos debe ser profesor de planta de la Universidad de los Andes.
+
+\begin{itemize}
+  \item Cesar Neyit Galindo Martinez (Universidad de los Andes)
+  \item Alonso Botero Mejia (Universidad de los Andes)
+  \item Nombre de profesor 3 (Instituto o Universidad de afiliaci\'on 3)
+\end{itemize}
+
+\begin{thebibliography}{10}
+
+  \bibitem{CompExperimental} McGeoch, Catherine C. A Guide to Experimental Algorithmics. Cambridge University Press, 2012.
+
+  \bibitem{Quality} Knill, Emanuel, Raymond Laflamme, and Lorenza Viola. Theory of Quantum Error Correction for General Noise. Physical Review Letters 84, no. 11 (2000): 2525-28. https://doi.org/10.1103/PhysRevLett.84.2525.
+
+\end{thebibliography}
+
+\section*{Firma del Director}
+\vspace{1.5cm}
+
+\section*{Firma del Codirector	}
+
+
+
+\end{document} 
