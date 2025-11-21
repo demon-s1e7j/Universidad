@@ -9,6 +9,7 @@
 \usepackage[left=3cm,top=3cm,right=3cm,nohead,nofoot]{geometry}
 \usepackage{braket}
 \usepackage{datenumber}
+\usepackage{float}
 \usepackage{amsmath}
 %\newdate{date}{10}{05}{2013}
 %\date{\displaydate{date}}
@@ -19,7 +20,7 @@
 
 \begin{center}
   \Huge
-  Quantum Error-Correction Codes: How to deal with uncertainty when reliability is crucial.
+  A Quantum Error-Correction Code Guide.
 
   \vspace{3mm}
   \Large Sergio Montoya Ramirez
@@ -40,9 +41,30 @@
 
 
 \normalsize
-\section{Introduction}
 
+\section{Introduction}
 %Introducción a la propuesta de Monograf�a. Debe incluir un breve resumen del estado del arte del problema a tratar. Tambi�n deben aparecer citadas todas las referencias de la bibliograf�a (a menos de que se citen m�s adelante, en los objetivos o metodolog�a, por ejemplo)
+
+Quantum computing (QC) is a promising paradigm that offers potentially exponential advantages over classical computing for specific problems, such as factorization, quantum simulation, and optimization. A key property enabling these benefits is the linearity of quantum mechanics, which, in principle, prevents errors from accumulating between gates (Kitaev, 2002). However, the inherent quantum nature and extreme sensitivity of these systems to errors, which can be introduced by gates or external conditions (e.g., environmental fluctuations, electromagnetic interference), mean that linearity alone is insufficient to ensure reliable results, particularly for large-scale operations like factorization (Shor, 1995). Furthermore, the no-cloning theorem prohibits the measurement or copying of qubits, rendering traditional error-correction methods, such as redundancy, inapplicable.
+
+Quantum Error Correction (QEC) is a field developed to address this challenge. It was demonstrated that quantum information could be encoded non-locally by distributing it across multiple qubits (Shor, 1995). Codes that employ this strategy are known as Quantum Error Correction Codes (QECCs). The efficacy of this method has been supported by experimental improvements in physical quantum computers (AbuGhanem, 2025). Nevertheless, quantum error correction remains an open area of research, and advancements in QEC are critical for the continued development of QC (AbuGhanem, 2025).
+
+Significant theoretical advances have established the foundations of QEC, which will continue to guide future development in the field. These foundational elements include:
+\begin{itemize}
+  \item \textbf{General Theory for Quantum Error Correction:} This framework provides a mathematical formalization of key concepts, including noisy quantum channels, error models, and the operational principles for correcting errors.
+  
+  \item \textbf{Hamming Bound:} This bound determines the minimum size of a code required to correct a specific type of noise. For a non-degenerate code encoding \(k\) logical qubits into \(n\) physical qubits to correct up to \(t\) errors, the following inequality must be satisfied:
+  \[
+  \sum_{j=0}^{t} \binom{n}{j} 3^j 2^k \le 2^n
+  \]
+  (Nielsen \& Chuang, 2010).
+  
+  \item \textbf{Stabilizer Formalism:} This formalism uses group theory to describe quantum states in terms of the operators that stabilize them. For instance, a state \(\ket{\psi}\) is stabilized by \(X_1X_2\) if and only if \(X_1X_2\ket{\psi} = \ket{\psi}\) (Nielsen \& Chuang, 2010).
+  
+  \item \textbf{Stabilizer Codes:} An important class of QECCs is built upon the stabilizer formalism. Many prominent codes, such as Shor codes and Calderbank-Shor-Steane (CSS) codes, are stabilizer codes (Nielsen \& Chuang, 2010).
+\end{itemize}
+
+This project will explore the landscape of QECCs. The research will investigate how quantum codes can be theoretically implemented and simulated, analyzing their performance under various noise models and operational constraints. Through both theoretical analysis and computational simulation, we aim to provide a comprehensive guide of QEC and how impactfull it is for QC.
 
 \section{General Objective}
 
@@ -88,9 +110,9 @@ This section will rely on bibliographic study and reproduction of proofs, meanin
 
 \subsection{Computational Simulations}
 
-Following the recommendations made in (McGeoch, 2012), the simulation environment will be designed to separate parameters either in the QECC itself---for example, the number of qubits in the encoding---and the specific noise---for example, the probability of noise taking effect. This will improve correspondence and interpretability between parameters and results. It will also be foundational to compare and contrast computational simulations with theoretical error analysis.
+Following the recommendations made in (McGeoch, 2012), the simulation environment will be designed to separate parameters either in the QECC itself (for example, the number of qubits in the encoding) and the specific noise, for example, the probability of noise taking effect. This will improve correspondence and interpretability between parameters and results. It will also be foundational to compare and contrast computational simulations with theoretical error analysis.
 
-The test suite itself will be created with Qiskit, which is a framework for quantum computing. As stated previously, it will be used---as long as it's possible---the simulation feature for reducing costs and accelerating development. However, after the testing phase, the results will benefit from checking with real hardware for accuracy in results. This last check with real hardware will depend on the availability of computers and the cost of accessing them.
+The test suite itself will be created with Qiskit, which is a framework for quantum computing. As stated previously, it will be used, as long as it's possible, the simulation feature for reducing costs and accelerating development. However, after the testing phase, the results will benefit from checking with real hardware for accuracy in results. This last check with real hardware will depend on the availability of computers and the cost of accessing them.
 
 \subsection{Error Analysis}
 
@@ -104,7 +126,7 @@ This project will not employ any methodology involving vulnerable populations or
 
 \section{Schedule}
 
-\begin{table}[htb]
+\begin{table}[H]
   \begin{tabular}{|c|cccccccccccccccc| }
     \hline
     Tasks $\backslash$ Weeks & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16  \\
@@ -114,8 +136,9 @@ This project will not employ any methodology involving vulnerable populations or
     3 &   &   & X &   &   & X &   &   & X &   & X &   &   &   &   &   \\
     4 &   &   &   & X & X &   & X & X &   &   &   & X & X &   &   &   \\
     5 &   &   &   &   & X & X &   & X & X &   &   &   & X & X &   &   \\
-    6 & X & X & X & X & X &   & X & X &   & X & X &   &   &   &   &   \\
-    7 &   &   &   &   &   &   &   &   &   & X & X & X & X & X & X & X \\
+    6 & X & X & X & X & X &   & X & X &   & X & X &   & X & X &   & X  \\
+    7 &   &   &   &   &   &   &   & X &   &   &   &   &   &   &   &   \\
+    8 &   &   &   &   &   &   &   &   &   & X & X & X & X & X & X & X \\
     \hline
   \end{tabular}
 \end{table}
@@ -126,8 +149,9 @@ This project will not employ any methodology involving vulnerable populations or
 \item Task 3: Code Description, explaining how a code works.
 \item Task 4: Code Simulation, testing the code to check its quality and performance.
 \item Task 5: Error Analysis, for quality measurement.
-\item Task 6: Present advances in simulations, theoretical definitions, and analysis (30\%).
-\item Task 7: Synthesis of knowledge acquired, writing of the final document, and preparation for the final defense.
+\item Task 6: Present advances in simulations, theoretical definitions, and analysis
+\item Task 7: 30 \% presentation.
+\item Task 8: Synthesis of knowledge acquired, writing of the final document, and preparation for the final defense.
 \end{itemize}
 
 
@@ -138,10 +162,18 @@ This project will not employ any methodology involving vulnerable populations or
 \begin{itemize}
   \item Cesar Neyit Galindo Martinez (Universidad de los Andes)
   \item Alonso Botero Mejia (Universidad de los Andes)
-  \item Nombre de profesor 3 (Instituto o Universidad de afiliaci\'on 3)
+  \item Dario Egloff (Universidad de los Andes)
 \end{itemize}
 
 \begin{thebibliography}{10}
+
+  \bibitem{Kitaev} Kitaev, Aleksej Ju, et al. Classical and Quantum Computation. Translated by Lester J. Senechal, American Mathematical Society, 2002. Graduate Studies in Mathematics, volume 47. K10plus ISBN.
+
+  \bibitem{Shor} Calderbank, A. R., and Peter W. Shor. Good Quantum Error-Correcting Codes Exist. Physical Review A, vol. 54, no. 2, Aug. 1996, pp. 1098-105. DOI.org (Crossref), https://doi.org/10.1103/PhysRevA.54.1098.
+
+  \bibitem{Nielsen} Nielsen, Michael A., and Isaac L. Chuang. Quantum Computation and Quantum Information. 10th anniversary edition, Cambridge university press, 2010. BnF ISBN.
+
+  \bibitem{IBM} AbuGhanem, M. IBM quantum computers: evolution, performance, and future directions. J Supercomput 81, 687 (2025). https://doi.org/10.1007/s11227-025-07047-7
 
   \bibitem{CompExperimental} McGeoch, Catherine C. A Guide to Experimental Algorithmics. Cambridge University Press, 2012.
 
