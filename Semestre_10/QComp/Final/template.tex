@@ -1,0 +1,205 @@
+\documentclass{report}
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\usepackage{braket}
+\usepackage{quantikz}
+\newcommand{\qubitset}[1]{\mathcal{#1}}
+
+\title{\Huge{Introducción a la Computación Cuantica}\\Corrección de errores cuanticos}
+\author{\huge{Sergio Montoya Ramirez} \\ \huge{Kenneth Alejandro Rodriguez Peña}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+\tableofcontents
+\pagebreak
+
+\chapter{}
+
+\section{Introducción}
+
+Uno de los puntos más difíciles para convertir la computación cuántica en una realidad es la gran sensibilidad de los qubits físicos. Dada la naturaleza cuántica de estos, mantener un estado y actuar sobre él sin que colapse o sea alterado por variables externas (como la temperatura o los cambios electromagnéticos) hace que la necesidad de manejar errores en la computación cuántica sea de primera categoría. Al mismo tiempo, el teorema de no clonación impide aplicar estrategias clásicas de corrección de errores, como la redundancia de información. Sin embargo, en 1995 (y posteriormente en 1996), Shor y Calderbank encontraron una forma de abordar este problema: distribuir la información en varios qubits y crear un código que permitiera interpretarlos correctamente para recuperar la información original.
+
+Este proyecto tiene como objetivo resumir brevemente algunos de los puntos más importantes del campo \textit{quantum error correction} (QEC). Para lograrlo, se abordarán tres aspectos fundamentales. En primer lugar, se presentará un ejemplo de código de corrección que permitirá entender los patrones generales del campo. A continuación, se examinará una teoría general de errores que proporciona los fundamentos matemáticos necesarios para comprender varios aspectos cruciales de QEC. Por último, se analizarán ejemplos de códigos importantes pertenecientes a la familia de códigos estabilizadores, como el código de Shor y la familia de códigos CSS. No obstante, dada la considerable diferencia entre la notación de estabilizadores y las notaciones aprendidas en el curso, se utilizarán principalmente nociones alternativas a la estabilización para explicarlos.
+
+Esta ruta, aunque limitada por el espacio y tiempo disponibles, permitirá obtener una visión estructurada de las bases de este campo.
+
+\section{Ejemplo: Phase Flip}
+Imagine que tiene un canal con un ruido que, con probabilidad $p$, produce un \textit{phase flip} en su qubit. Esto significa que, con probabilidad $p$, transforma $\ket{\psi}$ en $X\ket{\psi}$. Para este caso, podemos crear nuestro primer código cambiando a una base conocida, con elementos 
+\[
+\ket{0_L} = \ket{000}; \quad \ket{1_L} = \ket{111}.
+\]
+Es decir, el estado $\ket{\psi} = a \ket{0} + b \ket{1}$ se convierte en $a \ket{0_L} + b \ket{1_L}$.
+
+Ahora bien, también debemos contar con un procedimiento que nos permita determinar en cuál de los qubits ocurrió el cambio. Para ello, vamos a medir sin hacer distinciones entre estados, de modo que no se destruya el qubit, utilizando los siguientes operadores:
+\begin{align*}
+  P_0 &\equiv \ket{000}\bra{000} + \ket{111}\bra{111},\\
+  P_1 &\equiv \ket{100}\bra{100} + \ket{011}\bra{011},\\
+  P_2 &\equiv \ket{010}\bra{010} + \ket{101}\bra{101},\\
+  P_3 &\equiv \ket{001}\bra{001} + \ket{110}\bra{110}.
+\end{align*}
+
+De esta manera, podemos identificar en qué qubit ocurrió el error y, por lo tanto, aplicar nuevamente $X$ para regresar al estado original.
+
+Ahora bien, ¿cómo sabemos que este procedimiento funciona mejor que el caso original? Para ello, definamos la fidelidad, de modo que podamos analizar el peor caso en este canal.
+
+\dfn{Fidelidad}{
+  Sea $\rho$ la acción de un canal; entonces, la fidelidad se define como
+  \begin{equation}
+    F = \sqrt{\bra{\psi} \rho \ket{\psi}},
+    \label{eq:fidelidad}
+  \end{equation}
+  donde $\ket{\psi}$ es el estado de interés (normalmente, el estado inicial).
+}
+
+Note que este canal se comporta como
+\[
+\rho = (1 - p)\ket{\psi}\bra{\psi} + p X\ket{\psi}\bra{\psi}X.
+\]
+Por lo tanto, tiene una fidelidad de:
+\[
+F = \sqrt{(1 - p) + p \bra{\psi}X\ket{\psi}\bra{\psi}X\ket{\psi}}.
+\]
+
+Observe que $\bra{\psi}X\ket{\psi} \geq 0$, por lo que, en general para este canal, la fidelidad mínima estará definida por la amplitud de probabilidad del estado de interés. En nuestro caso original, $F = \sqrt{1 - p}$. Por otro lado, para el caso de nuestro código, nos interesan únicamente los procesos en los que haya ocurrido un error o menos, ya que nuestro código solo corrige en ese caso. La probabilidad de que esto ocurra es la probabilidad de que no ocurra ningún error, es decir, $(1 - p)^3$, más tres veces la probabilidad de que ocurra un solo error, es decir, $3p(1 - p)^2$. Así, la probabilidad total es
+\[
+(1 - p)^3 + 3p(1 - p)^2 = 1 - 3p^2 + 2p^3,
+\]
+y, en consecuencia, la fidelidad mínima sería $F = \sqrt{1 - 3p^2 + 2p^3}$, que es mayor que la original siempre y cuando $p < \frac{1}{2}$.
+
+Este ejemplo nos proporciona algunas de las bases necesarias para comprender el tema de la corrección cuántica de errores. En particular, muestra el funcionamiento general de estos mecanismos, que consiste en codificar la información, distribuirla en más qubits de los estrictamente necesarios y desarrollar un procedimiento que revierta los efectos de los errores. Sin embargo, aún necesitamos mayor formalidad en lo que estamos tratando.
+
+\section{Formalismos}
+
+En el caso anterior vimos un ejemplo muy concreto de un codigo que mejoraba la fiabilidad en un canal con un ruido concreto. Sin embargo, este ejemplo particular se aprovechaba de las caracteristicas del ruido para representar la corrección del error y el aumento en la fiabilidad. Ahora nos interesa construir una teoria mas general de los errores.
+
+Para comenzar es importante definir lo que es un codigo
+
+\dfn{Codigo}{
+  Sea $\mathcal{L}$ un espacio de tamaño fijo, decimos que $\mathcal{M}$ un subespacio de algun espacio $\qubitset{B}^n$ es un codigo que codifica $\mathcal{L}$ si existe una operación $\mathcal{V}: \mathcal{L} \to \mathcal{M}$ que se le conoce como codificador.
+}
+
+Esto es similar a lo que vimos arriba, es un subespcio de $n$ qubits que pueden codificar la información de algun conjunto. Ahora bien, esto es una definición general, estos mismos codigos podrian tomarse simplemente como maneras de dar significado a un subespacio.
+
+\dfn{Codigo que Corrige errores}{
+Sea $C$ un codigo y $\mathcal{E}$ un procedimiento que define un error. Decimos que $C$ corrige $\mathcal{E}$ si existe un procedimiento $\mathcal{R}$ tal que
+
+\begin{equation}
+  \forall p \in C : (\mathcal{R} \circ \mathcal{E}) (p) \propto p
+  \label{eq:corrects}
+\end{equation}
+}
+
+Una nota importante que ver es que el $\propto$ nos representa que realmente la operación de recuperación no nos devuelve exactamente al qubit original. Sin embargo, si nos debe devolver a un qubit que codifique la misma información que el anterior.
+
+\thm{Condiciones para que un Codigo Corriga un error}{
+  Sea $C$ un codigo y $P$ el proyector a $C$. Suponga que $\mathcal{E}$ es una operación cuantica con elementos $\left\{E_i \right\}$. Una condición necesaria y suficiente para que exista una operación $\mathcal{R}$ que corrija $\mathcal{E}$ en $C$ es
+  \begin{equation}
+    PE_i^{\dagger} E_jP = \alpha_{ij}P
+    \label{eq:conditions}
+  \end{equation}
+
+  para alguna matriz hermitica $\alpha$ de numeros complejos.
+
+  \textbf{Nota:} La demostración de este teorema lo puede encontrar en \ref{an:dem_cor}.
+}
+
+Sin embargo, esta es solo una manera de saber que un codigo corrige un error. Algo importante es poder encontrar el mejor codigo para cierto error. Para esto podemos usar la cota de Hamming que nos dice el limite teorico de eficiencia de un codigo que corrija un error.
+
+\thm{Cota de Hamming}{
+  Sea $C$ un codigo que codifica $k$ qubits en $n$ qubits y que puede corregir cualquier subconjunto de $t$ errores. Particularmente, asuma sin perdida de generalidad que corrige $j \le t$ errores. Entonces se cumple la cota
+  \begin{equation}
+    \sum_{j = 0}^{t} \binom{n}{j} 3^j 2^k \le 2^n
+    \label{eq:hamming_bound}
+  \end{equation}
+
+  \textbf{Nota:} La deducción de este cota la puede encontrar en \ref{an:dem_cor}.
+}
+
+Como ultima nota importante antes de pasar a los codigos que vamos a explicar es el formalismo de estabilizadores. Este es importante pues muchos de los codigos mas importantes en QEC son basados en este mismo formalismo.
+
+Las bases del formalismo de estabilizadores consiste en mirar un estado no desde sus caracteristicas si no desde los operadores que lo estabilizan. Un operador se dice que estabiliza a un estado si el estado es un eigenvector con eigenvalue $+1$. Es decir, $S$ estabiliza $\ket{\psi}$ si $s\ket{\psi} = \ket{\psi}$.
+
+\ex{Ejemplo de Estabilizador}{
+  En nuestro primer ejemplo para el qubit
+    \[\ket{\psi} = a \ket{000} + b \ket{111}\]
+  Los operadores definidos $P_i$ eran estabilizadores de este. Puesto que al aplicarlo nos devolvian el mismo qubit sin cambios.
+}
+
+Una de las caracteristicas mas importantes es que al definir de esta manera un estado estamos construyendo grupos y por tanto podemos usar teoria de grupos para realizar las interpretaciones de los diversos codigos. Esto es parte de lo que hace tan increiblemente fuerte el formalismo de estabilizadores y lo que nos va a permitir hablar de los siguientes codigos que usan este formalismo.
+
+\section{Códigos Importantes}
+
+A continuación, veremos ejemplos de códigos de corrección de errores importantes en el campo. Todos estos códigos son estabilizadores. Mencionaremos las operaciones que estabilizan estos códigos para ejemplificar su funcionamiento. Sin embargo, debido a la extensión de los temas y a lo novedoso de la notación de estabilizadores, utilizaremos principalmente explicaciones que no dependan de ellos.
+
+\subsection{Código de Shor}
+
+Este fue uno de los primeros códigos de corrección de errores, diseñado por Shor en 1995 en el artículo \textit{Scheme for reducing decoherence in quantum computer memory}. Este código permite corregir errores arbitrarios en un solo qubit.
+
+El código se define mediante el circuito que puede verse en el anexo \ref{an:cod_shor}, transformando $\ket{0} \to \ket{+++}$ y $\ket{1} \to \ket{---}$. La operación de recuperación se divide en dos partes:
+
+\begin{enumerate}
+  \item Determinar el qubit afectado. Aquí resulta crucial que este código sea estabilizador, ya que utilizamos sus operadores para identificar el qubit donde ocurrió el error.
+  \item Una vez identificado el qubit erróneo, se procede a corregirlo. La corrección es un término genérico, ya que este código corrige errores arbitrarios. Puede consultarse el anexo \ref{an:shor_arb} para más detalles.
+\end{enumerate}
+
+\section{Códigos CSS}
+
+Los códigos CSS (Calderbank-Shor-Steane) son un subconjunto de los códigos estabilizadores. Informalmente, permiten construir códigos que corrigen los mismos errores a partir de dos códigos existentes, utilizando menos qubits para la codificación.
+
+\dfn{Códigos CSS}{
+  Sean $C_1$ y $C_2$ códigos lineales $[n, k_1]$ y $[n, k_2]$ (cerrados bajo suma módulo 2) tales que:
+\begin{itemize}
+  \item $C_2 \subset C_1$,
+  \item $C_1$ y $C_2^\perp$ corrigen $t$ errores.
+\end{itemize}
+Definimos el código CSS de $C_1$ sobre $C_2$ como el código $[n, k_1 - k_2]$ denotado por $CSS(C_1, C_2)$ mediante el siguiente procedimiento. Sea $x \in C_1$, entonces definimos el estado:
+\[\ket{x + C_2} = \frac{1}{\sqrt{\left|C_2\right|}} \sum_{y \in C_2} \ket{x + y} \]
+donde $+$ denota suma módulo 2. Nótese que si $x' \in C_1$ y $x - x' \in C_2$, entonces $\ket{x + C_2} = \ket{x' + C_2}$. El código $CSS(C_1, C_2)$ corresponde al espacio generado por los estados $\ket{x + C_2}$, los cuales forman un conjunto ortonormal.
+
+\textbf{Nota:} Para más detalles sobre la igualdad $\ket{x + C_2} = \ket{x' + C_2}$, consúltese el anexo \ref{an:css_cod}.
+}
+
+La ventaja de esta construcción es evidente: si encontramos un subcódigo que corrija los mismos $t$ errores, podemos reducir considerablemente el tamaño del código original. Un ejemplo notable de código CSS es el código de Shor.
+
+\section{Conclusiones}
+
+En este trabajo se estudiaron y explicaron los conceptos básicos de la corrección de errores cuánticos. Con ello, se comprendió que un código cuántico permite distribuir la información en múltiples qubits, lo cual ofrece ventajas significativas para manejar los errores característicos de la computación cuántica. Además, se presentaron las bases teóricas de la corrección de errores y se enunciaron algunos de sus teoremas más importantes, que permiten determinar si un código corrige un error determinado. Finalmente, se analizaron de manera general dos casos relevantes: el código de Shor y la familia de códigos CSS. Si bien esta es una introducción incompleta al tema, resulta suficiente para obtener una visión general de los patrones que sigue.
+
+\chapter{Bibliografia}
+
+\chapter{Annexos}
+
+\section{Temas faltantes}
+
+\section{Demostración de las condiciones de Corrección} \label{an:dem_cor}
+
+\section{Demostración de las condiciones de Corrección} \label{an:dem_ham}
+
+\section{Circuito de Shor} \label{an:cod_shor}
+\begin{center}
+\begin{quantikz}
+  \lstick{$\ket{\psi}$} & \ctrl{3} & \ctrl{6} & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw \\
+  &&&& \lstick{$\ket{0}$} & \targ{} & \qw & \qw \\
+  &&&& \lstick{$\ket{0}$} & \qw & \targ{} & \qw \\
+  \lstick{$\ket{0}$} & \targ{} & \qw & \gate{H}& \qw & \ctrl{1} & \ctrl{2} & \qw\\
+  &&&& \lstick{$\ket{0}$} & \targ{} & \qw & \qw \\
+  &&&& \lstick{$\ket{0}$} & \qw & \targ{} & \qw \\
+  \lstick{$\ket{0}$} & \qw & \targ{} & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw\\
+  &&&& \lstick{$\ket{0}$} & \targ{} & \qw & \qw \\
+  &&&& \lstick{$\ket{0}$} & \qw & \targ{} & \qw
+\end{quantikz}
+\end{center}
+
+\section{Shor Corrige errores arbitrarios} \label{an:shor_arb}
+
+\section{Shor Corrige errores arbitrarios} \label{an:css_cod}
+
+\end{document}

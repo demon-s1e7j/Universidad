@@ -1,0 +1,103 @@
+\documentclass[a4paper, amsfonts, amssymb, amsmath, reprint, showkeys, nofootinbib, twoside]{revtex4-1}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage[colorinlistoftodos, color=green!40, prependcaption]{todonotes}
+\usepackage{amsthm}
+\usepackage{braket}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[left=23mm,right=13mm,top=35mm,columnsep=15pt]{geometry} 
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{csquotes}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage[pdftex, pdftitle={Article}, pdfauthor={Author}]{hyperref} % For hyperlinks in the PDF
+%\setlength{\marginparwidth}{2.5cm}
+\bibliographystyle{apsrev4-1}
+
+\newcommand{\qubitset}[1]{\mathsf{#1}}
+
+\begin{document}
+
+%El título del experimento realizado es importante.
+\title{Relación carga masa del electrón}
+
+
+\author{Sergio Montoya Ramirez}
+\email[Correo institucional: ]{s.montoyar2@uniandes.edu.co}
+
+\author{Luisa Lopez}
+\email[Correo institucional: ]{usuario@uniandes.edu.co}
+%Si necesitan poner un segundo autor, deben eliminar los porcentajes (%) iniciales.
+  
+%\author{Second Author}
+%\email{Second.Author@institution.edu}
+
+\affiliation{Universidad de los Andes, Bogotá, Colombia.}
+
+\date{\today} % Si lo dejan vacío no les saldrá fecha. La fecha que se muestra es del día en que se compila.
+
+\begin{abstract}
+
+  TODO
+
+\end{abstract}
+
+\maketitle
+
+\section{Introducción}
+
+Uno de los puntos mas dificiles para convertir la computación cuantica en una realidad es lo sensibles que son los qubits fisicos. Dada la naturaleza cuantica de estos tener un estado y actuar sobre el sin que colapse a una medición o sea alterado por variables externas (por ejemplo, temperatura, cambios electromagenticos, etc) hace que la necesedad de manejar errores en computación cuantica sea de primera categoria. Al mismo tiempo, el teorema de no clonación causa que estrategias clasicas de corrección de errores, como la redundancia en la información sean imposibles. Sin embargo, en 1995 (y posteriormente 1996) Shor y Calderbank encontraron una manera de lidiar con esto. Lo que podian hacer era distribuir la información en varios qubits y crear un codigo que interpretara de manera correcta estos qubits para recuperar la información original. Este proyecto tiene como objetivo resumir muy brevemente algunos de los puntos mas importantes del campo \textit{"quantum error correction"} (QEC). Para cumplir este objetivo se haran 3 paradas importantes. Iniciaremos con un ejemplo de codigo de corrección que nos permita darnos una idea de los patrones que se seguiran en todo el campo. Luego, miraremos a una teoria general de errores que nos dara la fundamentación matematica necesaria para entender el teorema de la distancia de hamming (que nos permite determinar si un codigo puede corregir o no un ruido) y el formalismo de establizadores. Por ultimo, veremos ejemplos de codigos muy importantes pertenecientes a la familia de codigos estabilizadores como lo son el codigo de Shor y la familia de codigos CSS. Esta ruta, si bien se encuentra limitada por el espacio y tiempo con el que cuenta permitira darse una idea estructurada de las bases de este campo.
+
+\section{Ejemplo: Phase Flip}
+
+Imagien usted que tiene un canal con un ruido que con probabilidad $p$ hace un \textit{phase flip} en su qubit. Esto quiere decir que con probabilidad $p$ convierte a $\ket{\psi}$ en $X\ket{\psi}$. Para esta caso entonces podemos crear nuestro primer codigo, basicamente cambiando a una base conocida con elementos \[\ket{0_L} = \ket{000};\ \ket{1_L} = \ket{111}.\]
+Es decir, el elemento $\ket{\psi} = a \ket{0} + b \ket{1}$ se convierte en $a \ket{0_L} + b \ket{1_L}$.
+
+Ahora bien, tambien tenemos que acompañar esto con un procedimiento que nos permita determinar cual de todos los qubits fue en el que ocurrio el cambio. Para esto entonces vamos a medir sin hacer distinciones entre estados (de modo que no destruya nuestro qubit) con:
+\begin{align*}
+  P_0 \equiv \ket{000}\bra{000} + \ket{111}\bra{111}\\
+  P_1 \equiv \ket{100}\bra{100} + \ket{011}\bra{011}\\
+  P_2 \equiv \ket{010}\bra{010} + \ket{101}\bra{101}\\
+  P_3 \equiv \ket{001}\bra{001} + \ket{110}\bra{110}
+\end{align*}
+
+De esta manera podemos saber en cual de los qubits ocurrio y por tanto podemos aplicar de nuevo $X$ para regresar al estado original.
+
+Ahora bien, como sabemos que este procedimiento funciona mejor que el caso original. Para esto definamos entonces lo que es fidelidad de modo que podamos ver cual es el peor caso en este canal. Para un canal con acción $\rho$ la fidelidad es
+
+\begin{equation}
+  F = \sqrt{\bra{\psi} \rho \ket{\psi}}
+  \label{eq:fidelidad}
+\end{equation}
+
+donde $\ket{\psi}$ es el estado que nos interesa (normalmente es el mismo estado inicial). Entonces, note que este canal se comporta como \[\rho = (1 - p)\ket{\psi}\bra{\psi} + (p)X\ket{\psi}\bra{\psi}X.\] Por lo tanto tiene una fidelidad de:
+
+\begin{align*}
+  F = \sqrt{(1 - p) +  p \bra{\psi}X\ket{\psi}\bra{\psi}X\ket{\psi}}
+\end{align*}
+
+Note que $\bra{\psi}X\ket{\psi} \ge 0$ por lo tanto, en general, la fidelidad minima sera definida por la amplitud de probabilidad en el estado que nos interesa. En nuestro caso original $F = \sqrt{1 - p}$. Por otro lado, miremos que para el caso de nuestro codigo nos interesa unicamente aquellos procesos donde hayan ocurrido 1 error o menos (puesto que nuestro codigo solo cuenta para ese caso). La probabilidad de que esto ocurra asi es la probabilidad de que no ocurra ninguna ves (Es decir $(1 - p)^3$) y 3 veces la probabilidad de que ocurra una sola vez (es decir $3p(1-p)^2$) por lo cual la probabilidad total es $(1 - p)^3 + 3p(1 - p)^2 = 1 - 3p^2 + 2p^3$ y en consecuencia esto seria una fidelidad minima de $F = \sqrt{1 - 3p^2 + 2p^3}$ que es menor que la original siempre y cuando $p < \frac{1}{2}$.
+
+Ahora bien, este ejemplo nos da algunas de las bases necesarias para comprender el tema de QEC. Para empezar es importante que nos da una idea, no formal, de lo que es un codigo. En este caso podemos ver como un subconjunto de $\qubitset{B}^{n}$ que representa la información codificada. En el caso particular de los codigos de corrección de errores viene ademas con un procedimiento que corrige el error especifico que se presenta en el canal. Con estas ideas, vamos a definir un poco mas formalmente con lo que estamos trabajando.
+
+\section{Formalismos}
+
+En el caso anterior vimos un ejemplo muy concreto de un codigo que mejoraba la fiabilidad en un canal con un ruido concreto. Sin embargo, este ejemplo particular se aprovechaba de las caracteristicas del ruido para representar la corrección del error y el aumento en la fiabilidad. Ahora nos interesa construir una teoria mas general de los errores. Sea $p$ un estado codificado en $C \subseteq \qubitset{B}^n$. Ademas, sea $\mathcal{E}$ un procedimiento que define el error. Decimos que $C$ corrige $\mathcal{E}$ si existe un procedimiento $\mathcal{R}$ tal que
+
+\begin{equation}
+  (\mathcal{R} \circ \mathcal{E}) (p) \propto p
+  \label{eq:corrects}
+\end{equation}
+
+Una nota importante que ver es que el $\propto$ nos representa que realmente la operación de recuperación no nos devuelve exactamente al qubit original. Sin embargo, si nos debe devolver a un qubit que codifique la misma información que el anterior.
+
+Ahora bien, como podemos saber si un codigo corrige un error.
+
+\end{document}

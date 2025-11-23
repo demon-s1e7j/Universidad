@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.11.17)  20 NOV 2025 12:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.11.19)  21 NOV 2025 13:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -438,16 +438,16 @@ st/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2] [3] [4] [5]
 (./Plantilla_PropuestaMonografia_Ceticas.aux)
 Package rerunfilecheck Info: File `Plantilla_PropuestaMonografia_Ceticas.out' h
 as not changed.
-(rerunfilecheck)             Checksum: 64C38ACD1DAEC39214C3B0CCCB5C74DC;1352.
+(rerunfilecheck)             Checksum: 5CD9AEF1C2486F0305E3756DF39148DA;861.
  ) 
 Here is how much of TeX's memory you used:
- 10630 strings out of 476041
- 170585 string characters out of 5793173
+ 10629 strings out of 476041
+ 170536 string characters out of 5793173
  1869388 words of memory out of 6000000
- 30915 multiletter control sequences out of 15000+600000
- 517851 words of font info for 51 fonts, out of 8000000 for 9000
+ 30916 multiletter control sequences out of 15000+600000
+ 517544 words of font info for 50 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 63i,9n,67p,949b,523s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 63i,9n,67p,949b,566s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -457,11 +457,11 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist
 type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/c
 m-super/sfrm1200.pfb>
-Output written on Plantilla_PropuestaMonografia_Ceticas.pdf (5 pages, 116028 by
+Output written on Plantilla_PropuestaMonografia_Ceticas.pdf (5 pages, 115584 by
 tes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 108 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 123 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
+ 27 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
