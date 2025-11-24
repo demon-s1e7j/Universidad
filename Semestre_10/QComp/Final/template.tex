@@ -25,18 +25,18 @@
 
 \section{Introducción}
 
-Uno de los puntos más difíciles para convertir la computación cuántica en una realidad es la gran sensibilidad de los qubits físicos. Dada la naturaleza cuántica de estos, mantener un estado y actuar sobre él sin que colapse o sea alterado por variables externas (como la temperatura o los cambios electromagnéticos) hace que la necesidad de manejar errores en la computación cuántica sea de primera categoría. Al mismo tiempo, el teorema de no clonación impide aplicar estrategias clásicas de corrección de errores, como la redundancia de información. Sin embargo, en 1995 (y posteriormente en 1996), Shor y Calderbank encontraron una forma de abordar este problema: distribuir la información en varios qubits y crear un código que permitiera interpretarlos correctamente para recuperar la información original.
+Uno de los puntos más difíciles para convertir la computación cuántica en una realidad es la gran sensibilidad de los qubits físicos. Dada la naturaleza cuántica de estos, mantener un estado y actuar sobre él sin que colapse o sea alterado por variables externas (como la temperatura o los cambios electromagnéticos) hace que la necesidad de manejar errores en la computación cuántica sea de primera categoría. Al mismo tiempo, el teorema de no clonación impide aplicar estrategias clásicas de corrección de errores, como la redundancia de información. Sin embargo, en 1995 (y posteriormente en 1996), Shor y Calderbank encontraron una forma de abordar este problema: distribuir la información en varios qubits y crear un código que permitiera interpretarlos correctamente para recuperar la información original[3].
 
 Este proyecto tiene como objetivo resumir brevemente algunos de los puntos más importantes del campo \textit{quantum error correction} (QEC). Para lograrlo, se abordarán tres aspectos fundamentales. En primer lugar, se presentará un ejemplo de código de corrección que permitirá entender los patrones generales del campo. A continuación, se examinará una teoría general de errores que proporciona los fundamentos matemáticos necesarios para comprender varios aspectos cruciales de QEC. Por último, se analizarán ejemplos de códigos importantes pertenecientes a la familia de códigos estabilizadores, como el código de Shor y la familia de códigos CSS. No obstante, dada la considerable diferencia entre la notación de estabilizadores y las notaciones aprendidas en el curso, se utilizarán principalmente nociones alternativas a la estabilización para explicarlos.
 
 Esta ruta, aunque limitada por el espacio y tiempo disponibles, permitirá obtener una visión estructurada de las bases de este campo.
 
 \section{Ejemplo: Phase Flip}
-Imagine que tiene un canal con un ruido que, con probabilidad $p$, produce un \textit{phase flip} en su qubit. Esto significa que, con probabilidad $p$, transforma $\ket{\psi}$ en $X\ket{\psi}$. Para este caso, podemos crear nuestro primer código cambiando a una base conocida, con elementos 
+Este ejemplo sigue de cerca la presentación del código de bit de repetición para phase flips, como se describe en el Capítulo 10 de Nielsen y Chuang [1]. Imagine que tiene un canal con un ruido que, con probabilidad $p$, produce un \textit{phase flip} en su qubit. Esto significa que, con probabilidad $p$, transforma $\ket{\psi}$ en $X\ket{\psi}$. Para este caso, podemos crear nuestro primer código cambiando a una base conocida, con elementos 
 \[
 \ket{0_L} = \ket{000}; \quad \ket{1_L} = \ket{111}.
 \]
-Es decir, el estado $\ket{\psi} = a \ket{0} + b \ket{1}$ se convierte en $a \ket{0_L} + b \ket{1_L}$.
+Es decir, el estado $\ket{\psi} = a \ket{0} + b \ket{1}$ se convierte en $a \ket{0_L} + b \ket{1_L}$. Puede ver un circuito que implementa esta conversión en \ref{an:ex_circ}
 
 Ahora bien, también debemos contar con un procedimiento que nos permita determinar en cuál de los qubits ocurrió el cambio. Para ello, vamos a medir sin hacer distinciones entre estados, de modo que no se destruya el qubit, utilizando los siguientes operadores:
 \begin{align*}
@@ -83,13 +83,13 @@ En el caso anterior vimos un ejemplo muy concreto de un codigo que mejoraba la f
 Para comenzar es importante definir lo que es un codigo
 
 \dfn{Codigo}{
-  Sea $\mathcal{L}$ un espacio de tamaño fijo, decimos que $\mathcal{M}$ un subespacio de algun espacio $\qubitset{B}^n$ es un codigo que codifica $\mathcal{L}$ si existe una operación $\mathcal{V}: \mathcal{L} \to \mathcal{M}$ que se le conoce como codificador.
+  Sea $\mathcal{L}$ un espacio de tamaño fijo, decimos que $\mathcal{M}$ un subespacio de algun espacio $\qubitset{B}^n$ es un codigo que codifica $\mathcal{L}$ si existe una operación $\mathcal{V}: \mathcal{L} \to \mathcal{M}$ que se le conoce como codificador[2].
 }
 
 Esto es similar a lo que vimos arriba, es un subespcio de $n$ qubits que pueden codificar la información de algun conjunto. Ahora bien, esto es una definición general, estos mismos codigos podrian tomarse simplemente como maneras de dar significado a un subespacio.
 
 \dfn{Codigo que Corrige errores}{
-Sea $C$ un codigo y $\mathcal{E}$ un procedimiento que define un error. Decimos que $C$ corrige $\mathcal{E}$ si existe un procedimiento $\mathcal{R}$ tal que
+  Sea $C$ un codigo y $\mathcal{E}$ un procedimiento que define un error. Decimos que $C$ corrige $\mathcal{E}$ si existe un procedimiento $\mathcal{R}$ tal que[1]
 
 \begin{equation}
   \forall p \in C : (\mathcal{R} \circ \mathcal{E}) (p) \propto p
@@ -100,21 +100,23 @@ Sea $C$ un codigo y $\mathcal{E}$ un procedimiento que define un error. Decimos 
 Una nota importante que ver es que el $\propto$ nos representa que realmente la operación de recuperación no nos devuelve exactamente al qubit original. Sin embargo, si nos debe devolver a un qubit que codifique la misma información que el anterior.
 
 \thm{Condiciones para que un Codigo Corriga un error}{
+  \label{thm:dem_cor}
   Sea $C$ un codigo y $P$ el proyector a $C$. Suponga que $\mathcal{E}$ es una operación cuantica con elementos $\left\{E_i \right\}$. Una condición necesaria y suficiente para que exista una operación $\mathcal{R}$ que corrija $\mathcal{E}$ en $C$ es
   \begin{equation}
     PE_i^{\dagger} E_jP = \alpha_{ij}P
     \label{eq:conditions}
   \end{equation}
 
-  para alguna matriz hermitica $\alpha$ de numeros complejos.
+  para alguna matriz hermitica $\alpha$ de numeros complejos[1].
 
-  \textbf{Nota:} La demostración de este teorema lo puede encontrar en \ref{an:dem_cor}.
+  \textbf{Nota:} Este teorema lo puede encontrar como el teorema 10.1 en el libro de Nielsen y Chuang acompañado de su respectiva demostración. La demostración no se tendra aqui pues requiere el uso de muchos otros teoremas que salen del alcance de este texto.
 }
 
 Sin embargo, esta es solo una manera de saber que un codigo corrige un error. Algo importante es poder encontrar el mejor codigo para cierto error. Para esto podemos usar la cota de Hamming que nos dice el limite teorico de eficiencia de un codigo que corrija un error.
 
 \thm{Cota de Hamming}{
-  Sea $C$ un codigo que codifica $k$ qubits en $n$ qubits y que puede corregir cualquier subconjunto de $t$ errores. Particularmente, asuma sin perdida de generalidad que corrige $j \le t$ errores. Entonces se cumple la cota
+  \label{thm:dem_cor}
+  Sea $C$ un codigo que codifica $k$ qubits en $n$ qubits y que puede corregir cualquier subconjunto de $t$ errores. Particularmente, asuma sin perdida de generalidad que corrige $j \le t$ errores. Entonces se cumple la cota [1]
   \begin{equation}
     \sum_{j = 0}^{t} \binom{n}{j} 3^j 2^k \le 2^n
     \label{eq:hamming_bound}
@@ -125,7 +127,7 @@ Sin embargo, esta es solo una manera de saber que un codigo corrige un error. Al
 
 Como ultima nota importante antes de pasar a los codigos que vamos a explicar es el formalismo de estabilizadores. Este es importante pues muchos de los codigos mas importantes en QEC son basados en este mismo formalismo.
 
-Las bases del formalismo de estabilizadores consiste en mirar un estado no desde sus caracteristicas si no desde los operadores que lo estabilizan. Un operador se dice que estabiliza a un estado si el estado es un eigenvector con eigenvalue $+1$. Es decir, $S$ estabiliza $\ket{\psi}$ si $s\ket{\psi} = \ket{\psi}$.
+Las bases del formalismo de estabilizadores consiste en mirar un estado no desde sus caracteristicas si no desde los operadores que lo estabilizan. Un operador se dice que estabiliza a un estado si el estado es un eigenvector con eigenvalue $+1$. Es decir, $S$ estabiliza $\ket{\psi}$ si $s\ket{\psi} = \ket{\psi}$[1].
 
 \ex{Ejemplo de Estabilizador}{
   En nuestro primer ejemplo para el qubit
@@ -162,7 +164,7 @@ Los códigos CSS (Calderbank-Shor-Steane) son un subconjunto de los códigos est
 \end{itemize}
 Definimos el código CSS de $C_1$ sobre $C_2$ como el código $[n, k_1 - k_2]$ denotado por $CSS(C_1, C_2)$ mediante el siguiente procedimiento. Sea $x \in C_1$, entonces definimos el estado:
 \[\ket{x + C_2} = \frac{1}{\sqrt{\left|C_2\right|}} \sum_{y \in C_2} \ket{x + y} \]
-donde $+$ denota suma módulo 2. Nótese que si $x' \in C_1$ y $x - x' \in C_2$, entonces $\ket{x + C_2} = \ket{x' + C_2}$. El código $CSS(C_1, C_2)$ corresponde al espacio generado por los estados $\ket{x + C_2}$, los cuales forman un conjunto ortonormal.
+donde $+$ denota suma módulo 2. Nótese que si $x' \in C_1$ y $x - x' \in C_2$, entonces $\ket{x + C_2} = \ket{x' + C_2}$. El código $CSS(C_1, C_2)$ corresponde al espacio generado por los estados $\ket{x + C_2}$, los cuales forman un conjunto ortonormal[1].
 
 \textbf{Nota:} Para más detalles sobre la igualdad $\ket{x + C_2} = \ket{x' + C_2}$, consúltese el anexo \ref{an:css_cod}.
 }
@@ -173,15 +175,63 @@ La ventaja de esta construcción es evidente: si encontramos un subcódigo que c
 
 En este trabajo se estudiaron y explicaron los conceptos básicos de la corrección de errores cuánticos. Con ello, se comprendió que un código cuántico permite distribuir la información en múltiples qubits, lo cual ofrece ventajas significativas para manejar los errores característicos de la computación cuántica. Además, se presentaron las bases teóricas de la corrección de errores y se enunciaron algunos de sus teoremas más importantes, que permiten determinar si un código corrige un error determinado. Finalmente, se analizaron de manera general dos casos relevantes: el código de Shor y la familia de códigos CSS. Si bien esta es una introducción incompleta al tema, resulta suficiente para obtener una visión general de los patrones que sigue.
 
-\chapter{Bibliografia}
+\chapter{Bibliografía}
+
+Este texto está basado principalmente en el libro \textit{Quantum Computation and Quantum Information} de Michael A. Nielsen e Isaac L. Chuang. La mayor parte de la información aquí presentada proviene de ejemplos y desarrollos incluidos en esa obra. No obstante, también se consultaron otras referencias, que se listan a continuación, junto con una breve explicación sobre su uso.
+
+\begin{enumerate}
+  \item Nielsen, Michael A. e Isaac L. Chuang. \textit{Quantum Computation and Quantum Information}. 10.ª ed. Cambridge University Press, 2010.
+
+  Esta obra constituye la bibliografía principal. Todos los temas tratados en el presente texto son abordados con mayor detalle en el capítulo 10 de dicho libro.
+
+  \item Kitaev, Aleksei Yu., Alexander Shen y Mihail N. Vyalyi. \textit{Classical and Quantum Computation}. Graduate Studies in Mathematics 47. American Mathematical Society, 2002.
+
+    Este libro permitió profundizar en algunos detalles matemáticos, en particular para la definición de códigos. La definición utilizada aquí es una versión simplificada, ya que no era posible incluir el nivel de detalle que ofrece esta referencia.
+
+  \item Calderbank, A. R. y Peter W. Shor. “Good Quantum Error-Correcting Codes Exist”. \textit{Physical Review A} 54, n.° 2 (1996): 1098-1105. https://doi.org/10.1103/PhysRevA.54.1098.
+
+    Este fue uno de los primeros artículos sobre códigos cuánticos de corrección de errores. Se utilizó especialmente para la introducción y algunas definiciones, dado que, al ser un trabajo fundacional, presenta una sección introductoria y de definiciones particularmente útil.
+
+  \item Shor, Peter W. “Scheme for Reducing Decoherence in Quantum Computer Memory.” Physical Review A 52, no. 4 (1995): R2493–96. https://doi.org/10.1103/PhysRevA.52.R2493.
+
+    Este es uno de los primeros artículos en computación cuantica y la presentación del codigo de 9 qubits de Shor. Se utilizo para la definición de este codigo en el texto.
+\end{enumerate}
 
 \chapter{Annexos}
 
 \section{Temas faltantes}
 
-\section{Demostración de las condiciones de Corrección} \label{an:dem_cor}
+El QEC (Quantum Error Correction) es un campo inmenso y muy activo en la investigación actual. Por lo tanto, en un texto de estas características resultaba imposible cubrirlo todo. Aun con esta limitación, que entendemos el lector comprende, existían aspectos importantes relacionados con el contenido de este texto que no se cubrieron por falta de espacio. Así, esta sección no pretende mencionar temas omitidos por el nivel de complejidad, sino detalles relevantes que no alcanzaron a ser tratados.
 
-\section{Demostración de las condiciones de Corrección} \label{an:dem_ham}
+\begin{enumerate}
+  \item \textbf{Códigos degenerados:} Este tema es crucial para el campo del QEC, pues representa una de las diferencias clave entre la corrección de errores clásica y la cuántica. No se cubrió porque, aunque era relevante para partes de este trabajo (como la cota de Hamming), resultaba particularmente extenso y sus implicaciones no eran imprescindibles (por ejemplo, no se conoce un código degenerado que esté por debajo de la cota de Hamming [1]).
+  
+  \item \textbf{Códigos lineales:} Durante la explicación de los códigos CSS se menciona que \(C_1\) y \(C_2\) son lineales, y se aclara qué significa ser lineal en el contexto de la demostración particular (se hará uso de esto en el anexo \ref{an:css_cod}). Sin embargo, no se define explícitamente en qué consisten. Esto se debe a que es un concepto heredado de la computación clásica y, aunque relevante para QEC, su definición y funcionamiento quedaban fuera del alcance de este texto.
+  
+  \item \textbf{Teoría de grupos para estabilizadores:} En el texto se mencionó que parte de la fortaleza del formalismo de estabilizadores proviene de su uso de la teoría de grupos. Sin embargo, no se explicó cómo los estabilizadores generan un grupo ni por qué esto tiene un efecto tan relevante. La razón para omitirlo fue el espacio y el alcance del texto, ya que habría requerido definir qué es un grupo, álgebras entre grupos, entre otros conceptos que no era posible incluir en estas circunstancias.
+\end{enumerate}
+
+\section{Circuito de phase flip} \label{an:ex_circ}
+
+\begin{center}
+\begin{quantikz}
+  \lstick{$\ket{\psi}$} & \qw & \qw & \ctrl{1} & \ctrl{2} & \qw \\
+  && \lstick{$\ket{0}$} & \targ{} & \qw & \qw \\
+  && \lstick{$\ket{0}$} & \qw & \targ{} & \qw \\
+\end{quantikz}
+\end{center}
+
+\section{Deducción de la cota de Hamming} \label{an:dem_ham}
+
+Esta deducción seguirá el enfoque de Nielsen y Chuang [1].
+
+Sea \( C \) un código que codifica \( k \) qubits en \( n \) qubits y es capaz de corregir cualquier subconjunto de hasta \( t \) errores. En particular, sin pérdida de generalidad, asumamos que corrige \( j \leq t \) errores. Existen \( \binom{n}{j} \) posiciones posibles para estos \( j \) errores. Nótese que, para \( j \leq t \), en el código final debemos considerar la suma de todos los valores posibles de \( j \).
+
+Además, dado que cualquier error puede representarse como una combinación de los operadores \( X \), \( Y \) y \( Z \), hay \( 3^j \) posibilidades de error. Por último, si se desea que el código sea no degenerado (algo no siempre necesario), se requeriría un espacio de dimensión \( 2^k \). Todos estos elementos deben cumplir que la dimensión total sea menor o igual al número de estados disponibles en el espacio de Hilbert de \( n \) qubits, lo que resulta en:
+
+\[
+\sum_{j=0}^{t} \binom{n}{j} 3^j 2^k \leq 2^n
+\]
 
 \section{Circuito de Shor} \label{an:cod_shor}
 \begin{center}
@@ -198,8 +248,27 @@ En este trabajo se estudiaron y explicaron los conceptos básicos de la correcci
 \end{quantikz}
 \end{center}
 
-\section{Shor Corrige errores arbitrarios} \label{an:shor_arb}
+\section{Demostración de que el código de Shor corrige errores arbitrarios} \label{an:shor_arb}
 
-\section{Shor Corrige errores arbitrarios} \label{an:css_cod}
+Supongamos que tenemos un error $\mathcal{E}$ con elementos $\left\{E_i\right\}$, de modo que para el estado $\ket{\psi} = a \ket{0_L} + b \ket{1_L}$ se cumple:  
+\[\mathcal{E}(\ket{\psi}\bra{\psi}) = \sum_{i} E_i\ket{\psi}\bra{\psi}E_i^\dagger.\]  
+Ahora bien, sabemos que cualquier $E_i$ puede escribirse como una combinación lineal de la forma:  
+\[E_i = e_{i0} I + e_{i1} X_j + e_{i2} Z_j + e_{i3} X_j Z_j,\]  
+donde $j$ es el número del qubit en el que ocurre el error. Esto nos proporciona el elemento invertible necesario para corregir un error arbitrario. Cabe aclarar que este resultado supone que los errores actúan de manera independiente entre qubits, lo cual es una aproximación razonable, aunque existen condiciones en las que esta suposición no se cumple. En tales casos, es preferible utilizar un código que corrija errores en más de un qubit, como, por ejemplo, algunos códigos de la familia CSS.
+
+\section{Demostración de equivalencia para códigos CSS} \label{an:css_cod}
+
+Debemos demostrar que si $x - x' \in C_2$, entonces $\ket{x + C_2} = \ket{x' + C_2}$. Para ello, sea $z = x - x'$. Así,  
+\begin{align*}
+  \ket{x' + C_2} &= \frac{1}{\sqrt{\left|C_2\right|}} \sum_{y \in C_2} \ket{x' + y} \\
+  &= \frac{1}{\sqrt{\left|C_2\right|}} \sum_{y \in C_2} \ket{x + z + y} \\
+  &= \frac{1}{\sqrt{\left|C_2\right|}} \sum_{y \in C_2} \ket{x + (z + y)}.
+\end{align*}  
+Nótese que, como $+$ denota la suma módulo 2 y estamos trabajando con códigos lineales (que son cerrados bajo esta operación), si $z \in C_2$, entonces $z + y$ recorre todo $C_2$ cuando $y$ lo hace. Por lo tanto, podemos redefinir $y' = z + y$ y obtener:  
+\begin{align*}
+  \ket{x' + C_2} &= \frac{1}{\sqrt{\left|C_2\right|}} \sum_{y' \in C_2} \ket{x + y'} \\
+  &= \ket{x + C_2},
+\end{align*}  
+lo cual completa la demostración. $\square$
 
 \end{document}
