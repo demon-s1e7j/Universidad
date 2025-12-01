@@ -16,7 +16,7 @@ E = 1.602176634e-19
 
 n_i_squared = density(0.25 * m_e, 0.4 * m_e, E)
 n_i = np.sqrt(n_i_squared)
-print("Densidad intrínseca n_i =", n_i, "m^-3")
+print("Densidad intrinseca n_i =", n_i, "m^-3")
 
 n = 1e18  # m^-3
 p = n_i_squared / n
