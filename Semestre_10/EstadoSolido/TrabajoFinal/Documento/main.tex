@@ -1,0 +1,90 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\title{ Trabajo Final: Critique Divergent Nematic Susceptibility in an Iron Arsenide Superconductor}
+\author{ Sergio Montoya Ramirez }
+\date{\today}
+
+\begin{document}
+\maketitle	
+
+% Optional TOC
+% \tableofcontents
+% \pagebreak
+
+%--Paper--
+
+En este trabajo realizaremos un \textit{critique} del artículo \textit{"Divergent Nematic Susceptibility in an Iron Arsenide Superconductor"} de Chu et al. (2012), cuyo objetivo principal es distinguir el origen de la ruptura de simetría en el compuesto superconductor de pnicturos de hierro $Ba(Fe_{1 - x}Co_{x})_2As_2$. El estudio busca determinar si la transición estructural observada es impulsada por una inestabilidad electrónica intrínseca (nematicidad electrónica) o si se trata simplemente de una distorsión ferroelástica de la red cristalina. A través de un enfoque experimental basado en la medición de la susceptibilidad nemática bajo deformación controlada, los autores argumentan a favor de una transición de fase nemática electrónica, con implicaciones para la superconductividad en este sistema.
+
+\section{Resumen}
+El artículo inicia contextualizando el concepto de transición nemática electrónica, definida como una transición que rompe la simetría rotacional discreta, pero conserva la simetría traslacional de la red. Posteriormente, los autores mencionan dos ejemplos de manera lacónica para mostrar la relevancia de estos fenómenos en otros sistemas electrónicos. A continuación, plantean la pregunta central del estudio: determinar si la inestabilidad electrónica intrínseca o una distorsión ferroelástica es la componente impulsora de la transición estructural del superconductor de pnicturo de hierro ($Ba(Fe_{1 - x}Co_{x})_2As_2$). Luego, mencionan brevemente la estrategia experimental que seguirán y el modelo bajo el cual analizarán los datos.
+
+La siguiente sección, que carece de marcador explícito, describe la metodología específica utilizada para medir la respuesta nemática del material. La configuración experimental consiste en aplicar una deformación mediante un material piezoeléctrico, el cual se deforma al aplicarle un voltaje. Esta deformación se mide con extensómetros tanto en el piezoeléctrico como en la muestra, definiéndose como $\varepsilon_p$ y $\varepsilon_s = \frac{\Delta L}{L}$, respectivamente. Además, se mide el cambio fraccional de la resistencia como $\eta = \frac{\Delta \rho}{\rho_0}$ (donde $\rho_0$ es la resistividad del material sin deformar). Todas las mediciones se realizaron a temperatura constante. A continuación, el artículo pasa directamente a un preprocesamiento de los datos, sin realizar ninguna transición discursiva adicional. En particular, se menciona el comportamiento de histéresis observado en los datos, el cual se justifica por la naturaleza ferroeléctrica del material piezoeléctrico. No obstante, también se explica que los datos presentan una relación lineal, coherente con resultados previos. Posteriormente, se detalla cuantitativamente cómo el piezoeléctrico deforma la muestra en función de la temperatura y el voltaje aplicado.
+
+Tras describir la metodología, el artículo transiciona al análisis de datos con un párrafo que establece el vínculo entre la magnitud medida $\eta$ y el parámetro de orden nemático electrónico. Para ello, se define $\Psi = (\rho_b - \rho_a)/(\rho_b + \rho_a)$, donde $\rho_b$ y $\rho_a$ corresponden a las resistividades en las direcciones paralela y perpendicular al esfuerzo uniaxial aplicado, respectivamente. Los autores argumentan que, bajo condiciones controladas donde $\rho_b$ y $\rho_a$ varían de manera proporcional, se cumple que $\eta = \Psi$. Además, aseguran que esta relación se extiende a las derivadas: $\frac{d\eta}{d\varepsilon} \propto \frac{d\Psi}{d\varepsilon}$.
+
+El análisis se apoya luego en la presentación y explicación de figuras clave (por ejemplo, la dependencia lineal entre $\eta$ y $\varepsilon$, y la divergencia de $d\eta/d\varepsilon$ al aproximarse a $T_s$). Se discuten consideraciones importantes, como la distinción entre mediciones realizadas bajo deformación constante versus esfuerzo constante, y el papel del acoplamiento elástico en la renormalización de la temperatura crítica.
+
+A continuación, el artículo introduce una explicación termodinámica que define esfuerzo y deformación como variables conjugadas: el esfuerzo como la fuerza externa controlable y la deformación como la respuesta mecánica del sistema. Estas variables se relacionan mediante el modelo de energía libre de \textit{Ginzburg-Landau}:
+\[
+F = \frac{a}{2} \Psi^2 + \frac{b}{4} \Psi^4 + \frac{c}{2}\varepsilon^2 - \lambda \Psi \varepsilon - h \varepsilon,
+\]
+donde $\Psi$ es el parámetro de orden nemático electrónico (medido por $\eta$), $\varepsilon$ es la deformación elástica, $h$ el esfuerzo (variable conjugada), $\lambda$ la constante de acoplamiento, y las demás letras son parámetros de segundo orden en la expansión en series de potencias. Se señala que, si la transición de fase depende del grado de libertad electrónico, el parámetro $a$ se anulará para cierta temperatura $T^*$; mientras que si depende de una inestabilidad estructural, será el parámetro $c$ el que se anule, manteniéndose las demás variables independientes de la temperatura. Es decir, $a=a_0(T - T^*)$ si la componente impulsora es una inestabilidad nemática intrínseca, y $c= c_0 (T - T^*)$ si es elástica. Este método resulta central para las conclusiones, ya que permite distinguir la componente impulsora mediante la discriminación entre $a$ y $c$.
+
+Posteriormente, el artículo explica la diferencia entre medir la respuesta nemática a deformación constante y a esfuerzo constante. Para ello, presenta las relaciones:
+\begin{align*}
+  \frac{d\Psi}{dh} &= \frac{\lambda}{ac - \lambda^2},\\
+  \frac{d\Psi}{d\varepsilon} &= \frac{\lambda}{a},
+\end{align*}
+mostrando que la respuesta a esfuerzo constante diverge independientemente de si $a$ o $c$ tienden a cero con la temperatura. En cambio, la respuesta a deformación constante (susceptibilidad nemática) sólo diverge cuando $a$ tiende a cero, lo que constituye evidencia directa de una inestabilidad nemática electrónica intrínseca. Como aclaración, los autores señalan que esta divergencia ya fue observada experimentalmente y remiten a la segunda figura del trabajo.
+
+A continuación, se describe el ajuste realizado. Partiendo de la expresión para $\frac{d\Psi}{d\varepsilon}$, se anuncia un ajuste con dependencia tipo Curie-Weiss en la temperatura. Además, se introduce un término adicional que no aparece explícitamente en la ecuación anterior, debido a contribuciones de orden superior originadas por la contracción térmica entre la muestra y el piezoeléctrico. Así, se plantea la relación:
+\[
+\frac{d\eta}{d\varepsilon} = \frac{\lambda}{a_0 (T - T^*) + 3b\eta_0^2} + \chi_0,
+\]
+donde los efectos de orden superior se incluyen en el término $3b\eta_0^2$, siendo $\eta_0$ la resistividad anisotrópica inducida por la deformación, obtenida comparando la resistividad antes y después de configurar el experimento. El parámetro $\chi_0$ se introduce para modelar la piezorresistividad del material no relacionada con la transición nemática.
+
+Luego, el documento presenta los resultados obtenidos, mostrando que el ajuste anterior se aplicó a los datos con alta precisión y exactitud. La temperatura crítica media obtenida fue $T^* = 116$ K, inferior a la temperatura de transición estructural, diferencia que se explica por el acoplamiento bilineal entre el sistema electrónico inestable y la red cristalina. Además, se realizaron mediciones en cristales con distintos niveles de dopaje y se aplicaron ajustes análogos. Se encontró que $T^*$ sigue a $T_s$ en el régimen de bajo dopaje, pero decrece al aumentar el dopaje, lo que sugiere la existencia de un punto crítico nemático electrónico cuántico cerca del dopaje óptimo.
+
+Finalmente, se señala que se requiere más investigación para determinar si estas fluctuaciones juegan un papel en la mejora de $T_c$ en la fase superconductora. Como conclusión, se plantea que la existencia de fluctuaciones nemáticas en un rango tan amplio de temperatura y dopaje indica que son un componente fundamental para describir el estado del sistema.
+
+\section{Opinión}
+
+El artículo aquí expuesto es sólido; se ha citado 506 veces en el momento de la escritura, y estas citas son frecuentes y están bien distribuidas desde su publicación. Esto, si bien no es sinónimo de la calidad del texto, sí expresa la importancia de este artículo para la comunidad científica y, en particular, para el estudio de las fluctuaciones nemáticas. Entrando en detalle, el texto es claro y explícito respecto a sus desarrollos, y su modelo experimental está bien fundamentado. Por lo tanto, provee una respuesta clara a la pregunta que se planteaba y propone posibles mejoras en el conocimiento. Considero que este es un buen artículo, sólido en su metodología y conclusivo.
+
+Sin embargo, existen, a mi juicio, una serie de puntos que, si bien no son determinantes, podrían ser mejorados en el artículo. Estos aspectos se pueden dividir en dos grupos.
+
+\subsection{Debilidades metodológicas o explicativas}
+
+Si bien la metodología es clara y sólida para determinar la dependencia buscada, el proceso de explicación me parece insuficiente. En particular, la transferencia de deformación es dependiente de la geometría y, aunque se menciona en el artículo, no se abordan posibles errores sistemáticos que afecten la incertidumbre. En general, el trabajo no explica con suficiente detalle la incertidumbre de sus resultados y, por tanto, no se puede determinar fácilmente cuán confiables son, más allá de una inspección de las gráficas, en donde tampoco se reporta la incertidumbre.
+
+\subsection{Debilidades de estilo}
+
+El artículo, si bien cumple los objetivos que se plantea, lo hace de manera apresurada y ligeramente desordenada. La falta de marcadores para separar secciones, si bien es una decisión comprensible, hace que diversos puntos queden agrupados en secciones que no son las esperadas. Por ejemplo, una de las conclusiones más importantes, que es la respuesta a la hipótesis central del texto, se encuentra oculta justo después de la explicación del ajuste realizado y se menciona poco o nada en las conclusiones del artículo. Además, el orden de algunos párrafos no es claro y las transiciones no permiten diferenciar rápidamente lo que se está leyendo. Esto, si bien no es un inconveniente cuando se lee de manera rigurosa (si se pone el suficiente esfuerzo para seguir el hilo conductor), sí que resulta complejo y confuso para aquellos lectores que realizan una primera lectura rápida.
+
+\section{Recomendaciones}
+
+\begin{itemize}
+  \item Realizar un reporte de incertidumbre más riguroso, que permita determinar rápidamente la confiabilidad de los resultados.
+  \item Organizar las ideas de manera más estructurada y menos lineal, de modo que las conclusiones mencionen los resultados obtenidos, la metodología esté clara y diferenciada del análisis, entre otros aspectos.
+  \item Complementar el desarrollo explicando de manera explícita resultados clave. Por ejemplo, la equivalencia entre $\eta$ y $\Psi$, que si bien se menciona, carece de un desarrollo matemático sólido que convenza a un lector para el cual no sea un resultado conocido.
+  \item Incluir una sección de conclusiones más explícita que permita visualizar los resultados y comprender su impacto.
+  \item Presentar los resultados de manera separada de los desarrollos metodológicos.
+\end{itemize}
+
+\section{Conclusiones}
+
+El artículo \textit{"Divergent Nematic Susceptibility in an Iron Arsenide Superconductor"} de Chu et al. (2012) se propone identificar los componentes impulsores de la transición nemática en el compuesto superconductor de pnicturos de hierro $Ba(Fe_{1 - x}Co_{x})_2As_2$. Logra este objetivo ajustando la derivada de la resistividad respecto a la deformación del material, realizando pruebas en diferentes configuraciones de temperatura y dopaje, y proponiendo que estas son características esenciales del material. Se trata de un artículo sólido que cumple con los objetivos planteados. Sin embargo, no presenta la incertidumbre de sus resultados ni la discute de manera significativa en el texto. Además, el orden y la estructura empleados dificultan distinguir las partes más relevantes, especialmente en una primera lectura.
+
+\end{document}
