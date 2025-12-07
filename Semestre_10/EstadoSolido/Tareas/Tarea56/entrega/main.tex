@@ -1,0 +1,84 @@
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{float}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+
+
+\title{ Puntos Tarea 5 6 EsSo }
+\author{ Sergio Montoya Ramirez }
+\date{\today}
+
+\begin{document}
+\pagebreak
+
+% Optional TOC
+% \tableofcontents
+% \pagebreak
+
+%--Paper--
+
+\section{Punto 2 B}
+\lstinputlisting[language=Python]{../punto_2_b.py}
+
+
+\section{Punto 2 C}
+\lstinputlisting[language=Python]{../punto_2_c.py}
+
+
+\section{Punto 3 B}
+\lstinputlisting[language=Python]{../punto_3_b.py}
+
+\begin{figure}[H]
+  \includegraphics[width=0.8\textwidth]{../punto3b.png}
+\end{figure}
+
+\section{Punto 3 C}
+\lstinputlisting[language=Python]{../punto_3_c.py}
+\section{Punto 5 C}
+\lstinputlisting[language=Python]{../punto_5_c.py}
+\begin{figure}[H]
+  \includegraphics[width=0.8\textwidth]{../punto_5c.png}
+\end{figure}
+
+%--/Paper--
+
+\end{document}

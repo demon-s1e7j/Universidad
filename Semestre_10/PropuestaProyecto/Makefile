@@ -1,0 +1,2 @@
+default:
+	pdflatex Plantilla_PropuestaMonografia_Ceticas.tex

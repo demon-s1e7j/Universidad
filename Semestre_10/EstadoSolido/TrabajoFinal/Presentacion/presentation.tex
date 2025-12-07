@@ -1,0 +1,95 @@
+% Latex template: mahmoud.s.fahmy@students.kasralainy.edu.eg
+% For more details: https://www.sharelatex.com/learn/Beamer
+
+\documentclass{beamer}					% Document class
+
+\usepackage[english]{babel}				% Set language
+\usepackage[utf8x]{inputenc}			% Set encoding
+
+\mode<presentation>						% Set options
+{
+  \usetheme{default}					% Set theme
+  \usecolortheme{default} 				% Set colors
+  \usefonttheme{default}  				% Set font theme
+  \setbeamertemplate{caption}[numbered]	% Set caption to be numbered
+}
+
+% Uncomment this to have the outline at the beginning of each section highlighted.
+%\AtBeginSection[]
+%{
+%  \begin{frame}{Outline}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+
+\usepackage{graphicx}					% For including figures
+\usepackage{booktabs}					% For table rules
+\usepackage{hyperref}					% For cross-referencing
+
+\title{Critique: Divergent Nematic Susceptibility in an Iron Arsenide Superconductor}	% Presentation title
+\author{Sergio Montoya Ramírez}								% Presentation author
+\institute{Universidad de los Andes}					% Author affiliation
+\date{\today}									% Today's date	
+
+\begin{document}
+
+% Title page
+% This page includes the informations defined earlier including title, author/s, affiliation/s and the date
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% Outline
+% This page includes the outline (Table of content) of the presentation. All sections and subsections will appear in the outline by default.
+
+% The following is the most frequently used slide types in beamer
+% The slide structure is as follows:
+%
+%\begin{frame}{<slide-title>}
+%	<content>
+%\end{frame}
+
+\section{Definiciones y Lemmas}
+
+\begin{frame}{Definiciones Basicas: Transición de Fase y sus posibles Causas}
+  \begin{itemize}
+    \item \textbf{Transición de Fase: }En el paradigma de Landau una transición continua de fase implica una ruptura en la simetria. Si bien esta ruptura suele ser evidente determinar cual es el componente que la dirige no suele ser trivial.
+    \item \textbf{Nematicidad Electronica: }Es un ordenamiento que rompe la simetria rotacional del cristal pero conserva la simetria traslacional. Se puede ver en multiples compuestos, particularmente en el que nos interesara $Ba(Fe_{1 - x}Co_{x})_2As_2$
+    \item \textbf{Distorsión Ferroelastica: } Es un cambio en la estructura de la red que puede romper simetrias (en este caso, tambien puede romper simetrias de rotación) pero lo hace por deformaciones mecanicas.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Definiciones Basicas: }
+\end{frame}
+
+\section{Resumen del Articulo}
+
+\begin{frame}{Slide with table}
+  Hola
+\end{frame}
+
+\begin{frame}{Slide with figure}
+	% \begin{figure}[H]
+	% 	\centering
+	%        \includegraphics[width=.5\textwidth]{figures/figure1.png}
+	%        \caption{Caption for figure one.}
+	%        \label{fig:figure1}
+	% \end{figure}
+\end{frame}
+
+\begin{frame}{Slide with references}
+	This is to reference a figure (Figure \ref{fig:figure1})\\
+    This it to reference a table (Table \ref{tab:table1})\\
+    This is to cite an article \cite{Ahmed2018a}\\
+    This is to add an article to the references without mentioning in the text \nocite{Ahmed2018a}\\
+\end{frame}
+
+\section{Critique}
+
+% Adding the option 'allowframebreaks' allows the contents of the slide to be expanded in more than one slide.
+\begin{frame}[allowframebreaks]{References}
+	\tiny\bibliography{references}
+	\bibliographystyle{apalike}
+\end{frame}
+
+\end{document}
