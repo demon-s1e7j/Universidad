@@ -1,17 +1,24 @@
 import io
 import customtkinter
 from tabulate import tabulate
+from .type_process import TypeProcess
 
 
 class TableSelectorViewerScreen(customtkinter.CTkFrame):
-    def __init__(self, master, catalog):
+    def __init__(self, master, catalog, type: TypeProcess):
         super().__init__(master)
-
-        self.tap_service = catalog.get_service("tap")
         self.master = master
-        self.catalog = catalog
-        self.tables = catalog.get_tables()
-        self.table_name = ""
+        self.type = type
+        
+        if type == TypeProcess.VIZIER:
+            self.tap_service = catalog.get_service("tap")
+            self.catalog = catalog
+            self.tables = catalog.get_tables()
+            self.table_name = ""
+        
+        if type == TypeProcess.EXCEL:
+            self.catalog = catalog
+            self.tables = {x : "Local Table" for x in catalog.keys()}
 
         self._setup_grid()
         self._create_widgets()
@@ -38,9 +45,10 @@ class TableSelectorViewerScreen(customtkinter.CTkFrame):
 
     def _create_title(self):
         """Crea el título de la pantalla."""
+        title = f"Visualizador de {self.catalog.res_title if self.type == TypeProcess.VIZIER else "Tablas"}"
         self.title_label = customtkinter.CTkLabel(
             self,
-            text=f"Visualizador de {self.catalog.res_title}",
+            text=title,
             font=("Arial", 20, "bold")
         )
         self.title_label.grid(row=0, column=0, padx=20, pady=(20, 10))
@@ -54,7 +62,7 @@ class TableSelectorViewerScreen(customtkinter.CTkFrame):
 
         description = io.StringIO()
         self.catalog.describe(verbose=True, file=description)
-        text_to_display = description.getvalue()
+        text_to_display = description.getvalue() if self.type == TypeProcess.VIZIER else "Tabla Local"
 
         self.text_label = customtkinter.CTkLabel(
             self.scrollable_frame,
@@ -106,12 +114,10 @@ class TableSelectorViewerScreen(customtkinter.CTkFrame):
         self.select_button = customtkinter.CTkButton(
             self, text="Escoger Tabla →", command=(
                 lambda: self.master.switch_to_parameter_screen(
-                    self.tap_service, self.table_name)), state="disabled")
+                    self.tap_service, self.table_name, self.type)), state="disabled")
         self.select_button.grid(row=4, column=0, padx=20, pady=(10, 20))
 
-    def select_table(self, choice):
-        """Maneja la selección de una tabla y muestra sus datos."""
-        self.table_name = choice.split(":")[0]
+    def select_vizier(self):
         try:
             values = self.tap_service.search(
                 f'select TOP 3 * from "{self.table_name}"')
@@ -125,5 +131,31 @@ class TableSelectorViewerScreen(customtkinter.CTkFrame):
         except Exception as e:
             self.table_info_label.configure(
                 text=f"Error al cargar la tabla: {str(e)}")
+    
+    def select_excel(self):
+        try:
+            if self.table_name in self.catalog:
+                self.tap_service = self.catalog[self.table_name]
+                table_display = tabulate(self.tap_service.head(3), headers='keys', tablefmt='grid')
+                self.table_info_label.configure(text=table_display)
+            else:
+                self.table_info_label.configure(text=f"Hoja '{self.table_name}' no encontrada")
+    
+            self.select_button.configure(state="normal")
+
+        except Exception as e:
+            self.table_info_label.configure(
+                text=f"Error al cargar la tabla: {str(e)}")
+
+    def select_table(self, choice):
+        """Maneja la selección de una tabla y muestra sus datos."""
+
+        self.table_name = choice.split(":")[0]
+
+        if type == TypeProcess.VIZIER:
+            self.select_vizier()
+
+        if type == TypeProcess.EXCEL:
+            self.select_excel()
 
         print(f"Tabla seleccionada: {self.table_name}")

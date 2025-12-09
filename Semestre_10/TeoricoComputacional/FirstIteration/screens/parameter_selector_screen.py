@@ -2,14 +2,16 @@ import customtkinter
 import matplotlib.pyplot as plt
 from methods.simple_method import ExplicitLimits
 from methods.symmetry_method import SymmetryMethod
+from screens.type_process import TypeProcess
 
 
 class ParameterSelectorScreen(customtkinter.CTkFrame):
-    def __init__(self, master, catalog, table):
+    def __init__(self, master, catalog, table, type):
         super().__init__(master)
         self.catalog = catalog
         self.table = table
         self.master = master
+        self.type = type
         self.options = ["Simple Selector", "Symmetry Selector"]
         self.current_method_widget = None  # Referencia al widget actual
 
@@ -29,9 +31,10 @@ class ParameterSelectorScreen(customtkinter.CTkFrame):
         self._create_dynamic_widget_area()
 
     def _create_title(self):
+        title = f"Selector de Parametros para {self.table if self.type == TypeProcess.VIZIER else "Datos Locales"}"
         self.title_label = customtkinter.CTkLabel(
             self,
-            text=f"Selector de Parametros para {self.table}",
+            text=title,
             font=("Arial", 20, "bold")
         )
         self.title_label.grid(row=0, column=0, padx=20, pady=(20, 10))
@@ -68,12 +71,12 @@ class ParameterSelectorScreen(customtkinter.CTkFrame):
         # Crear nuevo widget según el método
         if method == "Simple Selector":
             self.current_method_widget = ExplicitLimits(
-                self.dynamic_frame, self.catalog, self.table)
+                self.dynamic_frame, self.catalog, self.table, self.type)
             self.current_method_widget.grid(
                 row=0, column=0, sticky="nsew", padx=10, pady=10)
 
         if method == "Symmetry Selector":
             self.current_method_widget = SymmetryMethod(
-                self.dynamic_frame, self.catalog, self.table)
+                self.dynamic_frame, self.catalog, self.table, self.type)
             self.current_method_widget.grid(
                 row=0, column=0, sticky="nsew", padx=10, pady=10)

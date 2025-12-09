@@ -179,8 +179,8 @@ def create_peaks(iter: Iterable[int]) -> List[Peak]:
 
 
 class SymmetryMethod(BaseMethod):
-    def __init__(self, master, catalog, table):
-        super().__init__(master, catalog, table)
+    def __init__(self, master, catalog, table, type):
+        super().__init__(master, catalog, table, type)
 
     def generate_image_aux(self, independent, dependent, peaks):
         fig, ax = plt.subplots(figsize=(10, 6))
@@ -235,21 +235,7 @@ class SymmetryMethod(BaseMethod):
                 file.write(f"{position},{peak.total_area}\n")
 
     def calculate(self):
-        variables = self.catalog.search(f'''
-                                        SELECT
-                                            {self.independent_variables_selector.get()}, {self.dependent_variables_selector.get()}
-                                        FROM
-                                            "{self.table}"
-                                        WHERE
-                                            "{self.independent_variables_selector.get()}" BETWEEN {self.begin_entry.get()} AND {self.end_entry.get()}
-                                            AND {self.dependent_variables_selector.get()} IS NOT NULL
-                                            AND {self.independent_variables_selector.get()} IS NOT NULL
-                                        ''')
-
-        dependent = variables.getcolumn(
-            self.dependent_variables_selector.get())
-        independent = (variables.getcolumn(self.independent_variables_selector.get(
-        )))**(-1 if self.take_inverse_independent.get() else 1)
+        dependent, independent = self.get_variables()
 
         peaks = create_peaks(
             filter(
