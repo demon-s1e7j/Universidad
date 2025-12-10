@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.12.6)  9 DEC 2025 12:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.12.6)  9 DEC 2025 23:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1085,133 +1085,125 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<./Fig/ew_img1.png, id=111, 867.24pt x 578.16pt>
+<./Fig/ew_img1.png, id=116, 867.24pt x 578.16pt>
 File: ./Fig/ew_img1.png Graphic file (type png)
 <use ./Fig/ew_img1.png>
 Package pdftex.def Info: ./Fig/ew_img1.png  used on input line 66.
 (pdftex.def)             Requested size: 222.78357pt x 148.51836pt.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf
 -dist/fonts/enc/dvips/cm-super/cm-super-t1.enc} <./Fig/ew_img1.png>]
-<./Fig/user_diagram.png, id=139, 720.6925pt x 666.49pt>
+<./Fig/user_diagram.png, id=144, 1361.085pt x 713.66624pt>
 File: ./Fig/user_diagram.png Graphic file (type png)
 <use ./Fig/user_diagram.png>
 Package pdftex.def Info: ./Fig/user_diagram.png  used on input line 87.
-(pdftex.def)             Requested size: 222.78357pt x 206.01991pt.
- [2]
-<./Fig/uml_class.png, id=152, 973.6375pt x 673.51625pt>
+(pdftex.def)             Requested size: 222.78357pt x 116.81332pt.
+ [2 <./Fig/user_diagram.png>]
+<./Fig/uml_class.png, id=157, 973.6375pt x 673.51625pt>
 File: ./Fig/uml_class.png Graphic file (type png)
 <use ./Fig/uml_class.png>
 Package pdftex.def Info: ./Fig/uml_class.png  used on input line 98.
 (pdftex.def)             Requested size: 222.78357pt x 154.10387pt.
-<./Fig/diagrama_calculate.png, id=154, 1004.75375pt x 1184.425pt>
+<./Fig/diagrama_calculate.png, id=159, 1004.75375pt x 1184.425pt>
 File: ./Fig/diagrama_calculate.png Graphic file (type png)
 <use ./Fig/diagrama_calculate.png>
 Package pdftex.def Info: ./Fig/diagrama_calculate.png  used on input line 113.
 (pdftex.def)             Requested size: 222.78357pt x 262.61653pt.
- [3 <./Fig/user_diagram.png> <./Fig/uml_class.png>]
-<./Fig/results.png, id=167, 722.7pt x 433.62pt>
+
+[3 <./Fig/uml_class.png> <./Fig/diagrama_calculate.png>]
+<./Fig/results.png, id=173, 722.7pt x 433.62pt>
 File: ./Fig/results.png Graphic file (type png)
 <use ./Fig/results.png>
-Package pdftex.def Info: ./Fig/results.png  used on input line 128.
+Package pdftex.def Info: ./Fig/results.png  used on input line 132.
 (pdftex.def)             Requested size: 222.78357pt x 133.66652pt.
-<./Fig/Area.png, id=168, 722.7pt x 433.62pt>
+<./Fig/Area.png, id=174, 722.7pt x 433.62pt>
 File: ./Fig/Area.png Graphic file (type png)
 <use ./Fig/Area.png>
-Package pdftex.def Info: ./Fig/Area.png  used on input line 135.
+Package pdftex.def Info: ./Fig/Area.png  used on input line 139.
 (pdftex.def)             Requested size: 222.78357pt x 133.66652pt.
- [4 <./Fig/diagrama_calculate.png> <./Fig/results.png>]
-(./main.bbl
-Underfull \hbox (badness 1490) in paragraph at lines 56--61
- []\T1/cmr/m/n/9 F. Le-Blanc, \T1/cmr/m/it/9 An in-tro-duc-tion to ste-llar as-
-trophy-sics
- []
-
-)
-<./Fig/rm_img1.png, id=183, 867.24pt x 578.16pt>
-File: ./Fig/rm_img1.png Graphic file (type png)
-<use ./Fig/rm_img1.png>
-Package pdftex.def Info: ./Fig/rm_img1.png  used on input line 162.
-(pdftex.def)             Requested size: 222.78357pt x 148.51836pt.
-<./Fig/rm_img2.png, id=184, 867.24pt x 578.16pt>
-File: ./Fig/rm_img2.png Graphic file (type png)
-<use ./Fig/rm_img2.png>
-Package pdftex.def Info: ./Fig/rm_img2.png  used on input line 169.
-(pdftex.def)             Requested size: 222.78357pt x 148.51836pt.
- [5{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <.
-/Fig/Area.png> <./Fig/rm_img1.png>]
-<./Fig/tp_img1.png, id=197, 867.24pt x 578.16pt>
-File: ./Fig/tp_img1.png Graphic file (type png)
-<use ./Fig/tp_img1.png>
-Package pdftex.def Info: ./Fig/tp_img1.png  used on input line 176.
-(pdftex.def)             Requested size: 222.78357pt x 148.51836pt.
-<./Fig/tp_img2.png, id=202, 867.24pt x 578.16pt>
-File: ./Fig/tp_img2.png Graphic file (type png)
-<use ./Fig/tp_img2.png>
-Package pdftex.def Info: ./Fig/tp_img2.png  used on input line 183.
-(pdftex.def)             Requested size: 222.78357pt x 148.51836pt.
+ [4 <./Fig/results.png> <./Fig/Area.png>] (./main.bbl
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
-92.
+6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2022/07/10 v2.5l Standard LaTeX font definitions
-)
+))
+<./Fig/rm_img1.png, id=190, 867.24pt x 578.16pt>
+File: ./Fig/rm_img1.png Graphic file (type png)
+<use ./Fig/rm_img1.png>
+Package pdftex.def Info: ./Fig/rm_img1.png  used on input line 166.
+(pdftex.def)             Requested size: 222.78357pt x 148.51836pt.
+<./Fig/rm_img2.png, id=191, 867.24pt x 578.16pt>
+File: ./Fig/rm_img2.png Graphic file (type png)
+<use ./Fig/rm_img2.png>
+Package pdftex.def Info: ./Fig/rm_img2.png  used on input line 173.
+(pdftex.def)             Requested size: 222.78357pt x 148.51836pt.
+<./Fig/tp_img1.png, id=194, 867.24pt x 578.16pt>
+File: ./Fig/tp_img1.png Graphic file (type png)
+<use ./Fig/tp_img1.png>
+Package pdftex.def Info: ./Fig/tp_img1.png  used on input line 180.
+(pdftex.def)             Requested size: 222.78357pt x 148.51836pt.
+ [5{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <.
+/Fig/rm_img1.png> <./Fig/rm_img2.png>]
+<./Fig/tp_img2.png, id=208, 867.24pt x 578.16pt>
+File: ./Fig/tp_img2.png Graphic file (type png)
+<use ./Fig/tp_img2.png>
+Package pdftex.def Info: ./Fig/tp_img2.png  used on input line 187.
+(pdftex.def)             Requested size: 222.78357pt x 148.51836pt.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 192.
- [6 <./Fig/rm_img2.png> <./Fig/tp_img1.png> <./Fig/tp_img2.png>]
-<./Fig/diagrama_principal.png, id=212, 438.63875pt x 1733.47626pt>
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 196.
+<./Fig/diagrama_principal.png, id=209, 438.63875pt x 1733.47626pt>
 File: ./Fig/diagrama_principal.png Graphic file (type png)
 <use ./Fig/diagrama_principal.png>
-Package pdftex.def Info: ./Fig/diagrama_principal.png  used on input line 259.
+Package pdftex.def Info: ./Fig/diagrama_principal.png  used on input line 263.
 (pdftex.def)             Requested size: 148.5249pt x 586.96713pt.
 
-Underfull \hbox (badness 3780) in paragraph at lines 260--260
+Underfull \hbox (badness 3780) in paragraph at lines 264--264
 []\T1/cmr/m/n/9 Figura 11. []Diagrama de flu-jo prin-ci-pal del mé-to-do
  []
 
-[7 <./Fig/diagrama_principal.png>]
-<./Fig/diagrama_expand.png, id=222, 992.70876pt x 1552.80125pt>
+[6 <./Fig/tp_img1.png> <./Fig/tp_img2.png>]
+<./Fig/diagrama_expand.png, id=219, 992.70876pt x 1552.80125pt>
 File: ./Fig/diagrama_expand.png Graphic file (type png)
 <use ./Fig/diagrama_expand.png>
-Package pdftex.def Info: ./Fig/diagrama_expand.png  used on input line 278.
+Package pdftex.def Info: ./Fig/diagrama_expand.png  used on input line 282.
 (pdftex.def)             Requested size: 222.78357pt x 348.46484pt.
-<./Fig/diagrama_calculate_area.png, id=224, 626.34pt x 811.03pt>
+ [7 <./Fig/diagrama_principal.png> <./Fig/diagrama_expand.png>]
+<./Fig/diagrama_calculate_area.png, id=230, 626.34pt x 811.03pt>
 File: ./Fig/diagrama_calculate_area.png Graphic file (type png)
 <use ./Fig/diagrama_calculate_area.png>
 Package pdftex.def Info: ./Fig/diagrama_calculate_area.png  used on input line 
-297.
+301.
 (pdftex.def)             Requested size: 222.78357pt x 288.48074pt.
-<./Fig/diagrama_segment_area.png, id=226, 526.96875pt x 593.21625pt>
+<./Fig/diagrama_segment_area.png, id=232, 526.96875pt x 593.21625pt>
 File: ./Fig/diagrama_segment_area.png Graphic file (type png)
 <use ./Fig/diagrama_segment_area.png>
 Package pdftex.def Info: ./Fig/diagrama_segment_area.png  used on input line 31
-4.
+8.
 (pdftex.def)             Requested size: 222.78357pt x 250.79654pt.
 
-Underfull \hbox (badness 2478) in paragraph at lines 315--315
+Underfull \hbox (badness 2478) in paragraph at lines 319--319
 []\T1/cmr/m/n/9 Figura 14. []Diagrama de flu-jo de la fun-ción in-ter-na
  []
 
-[8 <./Fig/diagrama_expand.png> <./Fig/diagrama_calculate_area.png>]
-<./Fig/diagrama_deteccion_picos.png, id=236, 1384.17125pt x 94.3525pt>
+<./Fig/diagrama_deteccion_picos.png, id=234, 1384.17125pt x 94.3525pt>
 File: ./Fig/diagrama_deteccion_picos.png Graphic file (type png)
 <use ./Fig/diagrama_deteccion_picos.png>
 Package pdftex.def Info: ./Fig/diagrama_deteccion_picos.png  used on input line
- 331.
+ 335.
 (pdftex.def)             Requested size: 222.78357pt x 15.18596pt.
- [9 <./Fig/diagrama_segment_area.png> <./Fig/diagrama_deteccion_picos.png>] [10
-]
-(./main.aux)
+[8 <./Fig/diagrama_calculate_area.png> <./Fig/diagrama_segment_area.png> <./Fig
+/diagrama_deteccion_picos.png>] [9] [10] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C3C0DFBA07AC04E2EB25F3B0CC506A35;4694.
+(rerunfilecheck)             Checksum: D1229992FA0E0F047A4C1D20504D3849;4852.
  ) 
 Here is how much of TeX's memory you used:
- 32386 strings out of 476041
- 629383 string characters out of 5793174
- 1910388 words of memory out of 6000000
- 52247 multiletter control sequences out of 15000+600000
+ 32382 strings out of 476041
+ 629308 string characters out of 5793174
+ 1919388 words of memory out of 6000000
+ 52242 multiletter control sequences out of 15000+600000
  527988 words of font info for 73 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 117i,6n,118p,1440b,1186s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,6n,118p,1642b,1089s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
@@ -1230,10 +1222,10 @@ dist/fonts/type1/public/cm-super/sfti0900.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/cm-super/sfti1000.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/cm-super/sftt0900.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/cm-super/sftt1000.pfb>
-Output written on main.pdf (10 pages, 1277452 bytes).
+Output written on main.pdf (10 pages, 1302376 bytes).
 PDF statistics:
- 348 PDF objects out of 1000 (max. 8388607)
- 262 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
- 288 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 353 PDF objects out of 1000 (max. 8388607)
+ 268 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 296 words of extra memory for PDF output out of 10000 (max. 10000000)
 

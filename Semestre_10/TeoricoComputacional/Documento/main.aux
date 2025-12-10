@@ -29,67 +29,69 @@
 \newlabel{fig:ew_graph}{{1}{1}{Representación de un ancho equivalente. Se observa un espectro idealizado con una única línea atómica, de modo que su ancho equivalente corresponde a un rectángulo que ocupa la misma área (aunque su anchura sea menor que la de la línea procesada, ya que su altura es 1)}{figure.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Metodología}{2}{section*.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Flujo del Usuario}{2}{section*.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Representación del flujo que seguirá un usuario en nuestra aplicación. Los pasos son: selección de datos (con ID de VizieR), selección de la tabla necesaria, selección del método a usar, completado de los inputs necesarios, verificación de satisfacción con los resultados y, finalmente, aprobación y continuación con la interpretación. El flujo es esencialmente lineal, excepto en el paso de comprobación, donde, en caso de fallar, se vuelve a escoger un método y se prueba de nuevo.}}{3}{figure.2}\protected@file@percent }
-\newlabel{fig:flujo_usuario}{{2}{3}{Representación del flujo que seguirá un usuario en nuestra aplicación. Los pasos son: selección de datos (con ID de VizieR), selección de la tabla necesaria, selección del método a usar, completado de los inputs necesarios, verificación de satisfacción con los resultados y, finalmente, aprobación y continuación con la interpretación. El flujo es esencialmente lineal, excepto en el paso de comprobación, donde, en caso de fallar, se vuelve a escoger un método y se prueba de nuevo}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Representación del flujo que seguirá un usuario en nuestra aplicación. Los pasos son: selección de datos (bien sea con ID de VizieR o con el nombre del archivo que los contenga como argumento), selección de la tabla necesaria, selección del método a usar, completado de los inputs necesarios, verificación de satisfacción con los resultados y, finalmente, aprobación y continuación con la interpretación. El flujo es esencialmente lineal, excepto en el paso de comprobación, donde, en caso de fallar, se vuelve a escoger un método y se prueba de nuevo.}}{2}{figure.2}\protected@file@percent }
+\newlabel{fig:flujo_usuario}{{2}{2}{Representación del flujo que seguirá un usuario en nuestra aplicación. Los pasos son: selección de datos (bien sea con ID de VizieR o con el nombre del archivo que los contenga como argumento), selección de la tabla necesaria, selección del método a usar, completado de los inputs necesarios, verificación de satisfacción con los resultados y, finalmente, aprobación y continuación con la interpretación. El flujo es esencialmente lineal, excepto en el paso de comprobación, donde, en caso de fallar, se vuelve a escoger un método y se prueba de nuevo}{figure.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B}Modelo de Clases}{3}{section*.7}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Diagrama que representa el sistema de clases de los métodos de cálculo de áreas equivalentes. Muestra cómo, heredando desde BaseMethod, se puede crear cualquier protocolo para calcular áreas equivalentes, resultando en un sistema modular y extensible.}}{3}{figure.3}\protected@file@percent }
 \newlabel{fig:classes}{{3}{3}{Diagrama que representa el sistema de clases de los métodos de cálculo de áreas equivalentes. Muestra cómo, heredando desde BaseMethod, se puede crear cualquier protocolo para calcular áreas equivalentes, resultando en un sistema modular y extensible}{figure.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {C}Algoritmos}{3}{section*.8}\protected@file@percent }
 \newlabel{subsec:algorithms}{{III\,C}{3}{}{section*.8}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1}Límites Explícitos}{3}{section*.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Diagrama de flujo de la función calculate() que implementa el cálculo numérico de integrales mediante sumas de Riemann. El proceso inicia con una consulta SQL parametrizada para extraer datos de una base de datos astronómica, aplicando transformaciones matemáticas condicionales según la configuración del usuario. El núcleo del algoritmo itera sobre los pares de datos independiente-dependiente para calcular rectángulos de aproximación usando el método del punto izquierdo, acumulando progresivamente la suma total. Finalmente, dependiendo de las opciones de configuración, genera visualizaciones gráficas y archivos de resultados.}}{3}{figure.4}\protected@file@percent }
+\newlabel{fig:explicit_limits}{{4}{3}{Diagrama de flujo de la función calculate() que implementa el cálculo numérico de integrales mediante sumas de Riemann. El proceso inicia con una consulta SQL parametrizada para extraer datos de una base de datos astronómica, aplicando transformaciones matemáticas condicionales según la configuración del usuario. El núcleo del algoritmo itera sobre los pares de datos independiente-dependiente para calcular rectángulos de aproximación usando el método del punto izquierdo, acumulando progresivamente la suma total. Finalmente, dependiendo de las opciones de configuración, genera visualizaciones gráficas y archivos de resultados}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2}Método de Simetría}{3}{section*.10}\protected@file@percent }
+\newlabel{sec:met_sim}{{III\,C\,2}{3}{}{section*.10}{}}
 \citation{vizier:J/A+A/587/A65}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Diagrama de flujo de la función *calculate()* que implementa el cálculo numérico de integrales mediante sumas de Riemann. El proceso inicia con una consulta SQL parametrizada para extraer datos de una base de datos astronómica, aplicando transformaciones matemáticas condicionales según la configuración del usuario. El núcleo del algoritmo itera sobre los pares de datos independiente-dependiente para calcular rectángulos de aproximación usando el método del punto izquierdo, acumulando progresivamente la suma total. Finalmente, dependiendo de las opciones de configuración, genera visualizaciones gráficas y archivos de resultados.}}{4}{figure.4}\protected@file@percent }
-\newlabel{fig:explicit_limits}{{4}{4}{Diagrama de flujo de la función *calculate()* que implementa el cálculo numérico de integrales mediante sumas de Riemann. El proceso inicia con una consulta SQL parametrizada para extraer datos de una base de datos astronómica, aplicando transformaciones matemáticas condicionales según la configuración del usuario. El núcleo del algoritmo itera sobre los pares de datos independiente-dependiente para calcular rectángulos de aproximación usando el método del punto izquierdo, acumulando progresivamente la suma total. Finalmente, dependiendo de las opciones de configuración, genera visualizaciones gráficas y archivos de resultados}{figure.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2}Método de Simetría}{4}{section*.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Análisis de Datos y Resultados}{4}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3}Método de Simetría}{4}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Análisis de Datos y Resultados}{4}{section*.12}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Resultados del cálculo de ancho equivalente para el espectro mostrado en la gráfica. Se muestran todos los picos que serán reportados en el archivo de resultados.}}{4}{figure.5}\protected@file@percent }
 \newlabel{fig:results_1}{{5}{4}{Resultados del cálculo de ancho equivalente para el espectro mostrado en la gráfica. Se muestran todos los picos que serán reportados en el archivo de resultados}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Gráfica de anchos equivalentes para diferentes longitudes de onda. Se representan los anchos equivalentes en picómetros respecto a la longitud de onda en nanómetros, siempre que superen una absorción del 80\%.}}{4}{figure.6}\protected@file@percent }
+\newlabel{fig:area}{{6}{4}{Gráfica de anchos equivalentes para diferentes longitudes de onda. Se representan los anchos equivalentes en picómetros respecto a la longitud de onda en nanómetros, siempre que superen una absorción del 80\%}{figure.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusiones}{4}{section*.13}\protected@file@percent }
 \bibdata{mainNotes,referencias}
-\bibcite{StellarPhysics}{{1}{2011}{{LeBlanc}}{{}}}
-\bibcite{vizier:J/A+A/587/A65}{{2}{}{{A.\ \emph  {et~al.}}}{{A., N., U., J.,\ and\ K.}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Gráfica de anchos equivalentes para diferentes longitudes de onda. Se representan los anchos equivalentes en picómetros respecto a la longitud de onda en nanómetros, siempre que superen una absorción del 80\%.}}{5}{figure.6}\protected@file@percent }
-\newlabel{fig:area}{{6}{5}{Gráfica de anchos equivalentes para diferentes longitudes de onda. Se representan los anchos equivalentes en picómetros respecto a la longitud de onda en nanómetros, siempre que superen una absorción del 80\%}{figure.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusiones}{5}{section*.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {}Referencias}{5}{section*.13}\protected@file@percent }
-\newlabel{LastBibItem}{{2}{5}{}{section*.13}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Apéndice: Imágenes Auxiliares}{5}{section*.14}\protected@file@percent }
+\bibcite{StellarPhysics}{{1}{2010}{{LeBlanc}}{{}}}
+\bibcite{vizier:J/A+A/587/A65}{{2}{2016}{{Reiners {et~al.}}}{{Reiners, Mrotzek, Lemke, Hinrichs, \& Reinsch}}}
+\@writefile{toc}{\contentsline {section}{\numberline {}Referencias}{5}{section*.14}\protected@file@percent }
+\newlabel{LastBibItem}{{2}{5}{}{section*.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Apéndice: Imágenes Auxiliares}{5}{section*.15}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Representación de sumas de Riemann en el cálculo de integrales. Se observa un espectro idealizado equivalente al visto anteriormente y 6 rectángulos que aproximan el área bajo la curva. Sin embargo, la correlación no es perfecta.}}{5}{figure.7}\protected@file@percent }
 \newlabel{fig:rm_graph1}{{7}{5}{Representación de sumas de Riemann en el cálculo de integrales. Se observa un espectro idealizado equivalente al visto anteriormente y 6 rectángulos que aproximan el área bajo la curva. Sin embargo, la correlación no es perfecta}{figure.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Representación de sumas de Riemann en el cálculo de integrales. Se observa un espectro idealizado equivalente al visto anteriormente y 20 rectángulos que aproximan el área bajo la curva. La correlación mejora respecto a la figura~\ref {fig:rm_graph1}, pero aún no es perfecta.}}{6}{figure.8}\protected@file@percent }
-\newlabel{fig:rm_graph2}{{8}{6}{Representación de sumas de Riemann en el cálculo de integrales. Se observa un espectro idealizado equivalente al visto anteriormente y 20 rectángulos que aproximan el área bajo la curva. La correlación mejora respecto a la figura~\ref {fig:rm_graph1}, pero aún no es perfecta}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Representación de sumas de Riemann en el cálculo de integrales. Se observa un espectro idealizado equivalente al visto anteriormente y 20 rectángulos que aproximan el área bajo la curva. La correlación mejora respecto a la figura~\ref {fig:rm_graph1}, pero aún no es perfecta.}}{5}{figure.8}\protected@file@percent }
+\newlabel{fig:rm_graph2}{{8}{5}{Representación de sumas de Riemann en el cálculo de integrales. Se observa un espectro idealizado equivalente al visto anteriormente y 20 rectángulos que aproximan el área bajo la curva. La correlación mejora respecto a la figura~\ref {fig:rm_graph1}, pero aún no es perfecta}{figure.8}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Representación del método de los trapecios en el cálculo de integrales. Se observa un espectro idealizado equivalente al visto anteriormente y 6 trapecios que aproximan el área bajo la curva. Comparando con las figuras~\ref {fig:rm_graph1} y~\ref {fig:rm_graph2}, se aprecia una mejora considerable.}}{6}{figure.9}\protected@file@percent }
 \newlabel{fig:tp_graph1}{{9}{6}{Representación del método de los trapecios en el cálculo de integrales. Se observa un espectro idealizado equivalente al visto anteriormente y 6 trapecios que aproximan el área bajo la curva. Comparando con las figuras~\ref {fig:rm_graph1} y~\ref {fig:rm_graph2}, se aprecia una mejora considerable}{figure.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Representación del método de los trapecios en el cálculo de integrales. Se observa un espectro idealizado equivalente al visto anteriormente y 20 trapecios que aproximan el área bajo la curva. La aproximación mejora notablemente respecto a las sumas de Riemann.}}{6}{figure.10}\protected@file@percent }
 \newlabel{fig:tp_graph2}{{10}{6}{Representación del método de los trapecios en el cálculo de integrales. Se observa un espectro idealizado equivalente al visto anteriormente y 20 trapecios que aproximan el área bajo la curva. La aproximación mejora notablemente respecto a las sumas de Riemann}{figure.10}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Apéndice: Inputs Necesarios de Parte del Usuario}{6}{section*.15}\protected@file@percent }
-\newlabel{an:inputs_necesarios}{{VII}{6}{}{section*.15}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {}Parámetros de Instanciación}{6}{section*.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {}Widgets de Entrada de Usuario}{6}{section*.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {}Botón de Acción}{7}{section*.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VIII}Apéndice: Diagramas del Método de Simetría}{7}{section*.19}\protected@file@percent }
-\newlabel{an:diagramas_symmetry}{{VIII}{7}{}{section*.19}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Diagrama Principal del Método calculate()}{7}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Apéndice: Inputs Necesarios de Parte del Usuario}{6}{section*.16}\protected@file@percent }
+\newlabel{an:inputs_necesarios}{{VII}{6}{}{section*.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {}Parámetros de Instanciación}{6}{section*.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {}Widgets de Entrada de Usuario}{6}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {}Botón de Acción}{6}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Apéndice: Diagramas del Método de Simetría}{7}{section*.20}\protected@file@percent }
+\newlabel{an:diagramas_symmetry}{{VIII}{7}{}{section*.20}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A}Diagrama Principal del Método calculate()}{7}{section*.21}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Diagrama de flujo principal del método \texttt  {calculate()} de la clase \texttt  {SymmetryMethod}. Muestra el flujo completo desde la consulta de datos hasta la generación de resultados.}}{7}{figure.11}\protected@file@percent }
 \newlabel{fig:diagrama_principal}{{11}{7}{Diagrama de flujo principal del método \texttt {calculate()} de la clase \texttt {SymmetryMethod}. Muestra el flujo completo desde la consulta de datos hasta la generación de resultados}{figure.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Método expand() de la Clase Peak}{8}{section*.21}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Diagrama de flujo del método \texttt  {expand()} de la clase \texttt  {Peak}. Muestra la lógica de expansión de picos basada en pendientes y simetría.}}{8}{figure.12}\protected@file@percent }
-\newlabel{fig:diagrama_expand}{{12}{8}{Diagrama de flujo del método \texttt {expand()} de la clase \texttt {Peak}. Muestra la lógica de expansión de picos basada en pendientes y simetría}{figure.12}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C}Método calculate\_area() de la Clase Peak}{8}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {B}Método expand() de la Clase Peak}{7}{section*.22}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Diagrama de flujo del método \texttt  {expand()} de la clase \texttt  {Peak}. Muestra la lógica de expansión de picos basada en pendientes y simetría.}}{7}{figure.12}\protected@file@percent }
+\newlabel{fig:diagrama_expand}{{12}{7}{Diagrama de flujo del método \texttt {expand()} de la clase \texttt {Peak}. Muestra la lógica de expansión de picos basada en pendientes y simetría}{figure.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C}Método calculate\_area() de la Clase Peak}{8}{section*.23}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Diagrama de flujo del método \texttt  {calculate\_area()} de la clase \texttt  {Peak}. Muestra cómo se calcula el área bajo la curva para picos simétricos y asimétricos.}}{8}{figure.13}\protected@file@percent }
 \newlabel{fig:diagrama_calculate_area}{{13}{8}{Diagrama de flujo del método \texttt {calculate\_area()} de la clase \texttt {Peak}. Muestra cómo se calcula el área bajo la curva para picos simétricos y asimétricos}{figure.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {D}Función calculate\_segment\_area()}{8}{section*.24}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Diagrama de flujo de la función interna \texttt  {calculate\_segment\_area()}. Muestra el cálculo trapezoidal del área entre puntos consecutivos.}}{8}{figure.14}\protected@file@percent }
+\newlabel{fig:diagrama_segment_area}{{14}{8}{Diagrama de flujo de la función interna \texttt {calculate\_segment\_area()}. Muestra el cálculo trapezoidal del área entre puntos consecutivos}{figure.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {E}Flujo General de Detección de Picos}{8}{section*.25}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Flujo general de detección de picos. Resume el proceso completo desde datos originales hasta la generación de resultados.}}{8}{figure.15}\protected@file@percent }
+\newlabel{fig:diagrama_deteccion_picos}{{15}{8}{Flujo general de detección de picos. Resume el proceso completo desde datos originales hasta la generación de resultados}{figure.15}{}}
 \gdef \LT@i {\LT@entry 
-    {5}{39.73592pt}\LT@entry 
+    {1}{59.01028pt}\LT@entry 
     {5}{25.46431pt}\LT@entry 
-    {1}{71.45163pt}\LT@entry 
+    {1}{75.41919pt}\LT@entry 
     {1}{79.52881pt}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {D}Función calculate\_segment\_area()}{9}{section*.23}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Diagrama de flujo de la función interna \texttt  {calculate\_segment\_area()}. Muestra el cálculo trapezoidal del área entre puntos consecutivos.}}{9}{figure.14}\protected@file@percent }
-\newlabel{fig:diagrama_segment_area}{{14}{9}{Diagrama de flujo de la función interna \texttt {calculate\_segment\_area()}. Muestra el cálculo trapezoidal del área entre puntos consecutivos}{figure.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {E}Flujo General de Detección de Picos}{9}{section*.24}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Flujo general de detección de picos. Resume el proceso completo desde datos originales hasta la generación de resultados.}}{9}{figure.15}\protected@file@percent }
-\newlabel{fig:diagrama_deteccion_picos}{{15}{9}{Flujo general de detección de picos. Resume el proceso completo desde datos originales hasta la generación de resultados}{figure.15}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IX}Apéndice: Resultados}{9}{section*.25}\protected@file@percent }
-\newlabel{an:results}{{IX}{9}{}{section*.25}{}}
-\bibstyle{apsrev4-1}
+\@writefile{toc}{\contentsline {section}{\numberline {IX}Apéndice: Resultados}{9}{section*.26}\protected@file@percent }
+\newlabel{an:results}{{IX}{9}{}{section*.26}{}}
+\bibstyle{aasjournal}
 \newlabel{LastPage}{{}{10}{}{}{}}
 \gdef \@abspage@last{10}

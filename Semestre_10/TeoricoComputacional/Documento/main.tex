@@ -25,7 +25,7 @@
 \usepackage{array}
 \usepackage{siunitx}
 %\setlength{\marginparwidth}{2.5cm}
-\bibliographystyle{apsrev4-1}
+\bibliographystyle{aasjournal}
 
 \begin{document}
 
@@ -55,7 +55,7 @@
 \maketitle
 
 \section{Introducción}
-Una de las mejores formas de conocer un cuerpo celeste es mediante la espectroscopía. Con este método se puede conocer multitud de variables esenciales para la caracterización del cuerpo, como su composición o su rotación. Sin embargo, los espectros crudos resultan particularmente difíciles de procesar, pues dependen, entre otros factores, de la resolución, la tasa de medida o la intensidad de la luz recibida. Uno de los métodos utilizados en la comunidad astronómica es el cálculo de áreas equivalentes para la caracterización de espectros. El área equivalente de un espectro es, esencialmente, la cantidad de energía absorbida (o emitida, dependiendo del tipo de espectroscopía) que una cierta longitud de onda experimenta. Se le denomina *ancho equivalente* porque, al calcularse en un espectro normalizado, corresponde con el ancho de un rectángulo de altura uno que ocupa la misma área en el espectro. De este modo, podemos pasar de representar espectros como una línea continua con picos a representarlos como una serie de números mucho más fáciles de comparar entre sí. Este proyecto tiene como objetivo desarrollar una calculadora versátil para calcular anchos equivalentes en múltiples espectros. Para ello, se creó un programa gráfico con un sistema de clases y herencia, así como un par de métodos que permiten determinar anchos equivalentes para espectros en VizieR.
+Una de las mejores formas de conocer un cuerpo celeste es mediante la espectroscopía. Con este método se puede conocer multitud de variables esenciales para la caracterización del cuerpo, como su composición o su rotación. Sin embargo, los espectros crudos resultan particularmente difíciles de procesar, pues dependen, entre otros factores, de la resolución, la tasa de medida o la intensidad de la luz recibida. Uno de los métodos utilizados en la comunidad astronómica es el cálculo de áreas equivalentes para la caracterización de espectros. El área equivalente de un espectro es, esencialmente, la cantidad de energía absorbida (o emitida, dependiendo del tipo de espectroscopía) que una cierta longitud de onda experimenta. Se le denomina ancho equivalente porque, al calcularse en un espectro normalizado, corresponde con el ancho de un rectángulo de altura uno que ocupa la misma área en el espectro. De este modo, podemos pasar de representar espectros como una línea continua con picos a representarlos como una serie de números mucho más fáciles de comparar entre sí. Este proyecto tiene como objetivo desarrollar una calculadora versátil para calcular anchos equivalentes en múltiples espectros. Para ello, se creó un programa gráfico con un sistema de clases y herencia, así como un par de métodos que permiten determinar anchos equivalentes para espectros en VizieR o en archivos locales en formato XLSX o CSV. Puede acceder a la calculadora en el \href{https://github.com/demon-s1e7j/Universidad/tree/main/Semestre\_10/TeoricoComputacional/FirstIteration}{repositorio}
 
 \section{Marco Teórico}
 
@@ -80,18 +80,18 @@ El objetivo de este trabajo era desarrollar una calculadora capaz de calcular á
 
 \subsection{Flujo del Usuario}
 
-Para un usuario de nuestra aplicación, lo primero que deberá hacer es determinar el catálogo con el que trabajará. Inicialmente tendrá que definir el ID de VizieR para buscarlo en la plataforma. Nosotros le presentaremos las opciones posibles, de modo que pueda escoger el artículo que le interesa en una tabla. Luego de esto, deberá determinar cuál de todas las tablas es en la que le interesa trabajar, pudiendo escoger entre las distintas tablas del catálogo aquella que contenga la información relevante. Posteriormente, escogerá el modelo con el que va a trabajar y tendrá que completar la información necesaria para todos los modelos (que siempre coincide en ser la misma). Puede ver una lista de los inputs necesarios en el Apéndice \ref{an:inputs_necesarios}. Con esto, aplica el método con la calculadora y verifica los resultados. Si está satisfecho, terminará y continuará con las áreas equivalentes para realizar su trabajo. En caso contrario, puede iterar volviendo a escoger el método y cambiando las variables seleccionadas. Podemos ver la representación de este flujo en la figura \ref{fig:flujo_usuario}.
+Para un usuario de nuestra aplicación, lo primero que deberá hacer es determinar el catálogo con el que trabajará. Inicialmente tendrá que definir el ID de VizieR para buscarlo en la plataforma. Nosotros le presentaremos las opciones posibles, de modo que pueda escoger el artículo que le interesa en una tabla. Otra manera es iniciando el programa con un solo argumento que sea el nombre del archivo en el que estan los datos (que puede ser formato excel o formato csv). Luego de esto, deberá determinar cuál de todas las tablas es en la que le interesa trabajar, pudiendo escoger entre las distintas tablas del catálogo aquella que contenga la información relevante. Posteriormente, escogerá el modelo con el que va a trabajar y tendrá que completar la información necesaria para todos los modelos (que siempre coincide en ser la misma). Puede ver una lista de los inputs necesarios en el Apéndice \ref{an:inputs_necesarios}. Con esto, aplica el método con la calculadora y verifica los resultados. Si está satisfecho, terminará y continuará con las áreas equivalentes para realizar su trabajo. En caso contrario, puede iterar volviendo a escoger el método y cambiando las variables seleccionadas. Podemos ver la representación de este flujo en la figura \ref{fig:flujo_usuario}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{./Fig/user_diagram.png}
-  \caption{Representación del flujo que seguirá un usuario en nuestra aplicación. Los pasos son: selección de datos (con ID de VizieR), selección de la tabla necesaria, selección del método a usar, completado de los inputs necesarios, verificación de satisfacción con los resultados y, finalmente, aprobación y continuación con la interpretación. El flujo es esencialmente lineal, excepto en el paso de comprobación, donde, en caso de fallar, se vuelve a escoger un método y se prueba de nuevo.}
+  \caption{Representación del flujo que seguirá un usuario en nuestra aplicación. Los pasos son: selección de datos (bien sea con ID de VizieR o con el nombre del archivo que los contenga como argumento), selección de la tabla necesaria, selección del método a usar, completado de los inputs necesarios, verificación de satisfacción con los resultados y, finalmente, aprobación y continuación con la interpretación. El flujo es esencialmente lineal, excepto en el paso de comprobación, donde, en caso de fallar, se vuelve a escoger un método y se prueba de nuevo.}
 \label{fig:flujo_usuario}
 \end{figure}
 
 \subsection{Modelo de Clases}
 
-A diferencia de la subsección anterior, aquí no nos interesa explicar todos los pasos ni todo el sistema de clases, sino solo los métodos y su interacción. En particular, nos interesa mostrar que todos los métodos heredan de una clase base (llamada BaseMethod). Esta es la clase que define el comportamiento básico. Pueden observarse los elementos básicos con los que cuenta en el Apéndice \ref{an:inputs_necesarios}. De esta clase heredan todas las demás. Una característica principal de esta clase es un método abstracto llamado *calculate*, que será sobrescrito por todas sus subclases para cambiar el comportamiento. La explicación detallada de los algoritmos utilizados para cada método se dará en la subsección \ref{subsec:algorithms}. Puede verse un diagrama simplificado en la figura \ref{fig:classes}.
+A diferencia de la subsección anterior, aquí no nos interesa explicar todos los pasos ni todo el sistema de clases, sino solo los métodos y su interacción. En particular, nos interesa mostrar que todos los métodos heredan de una clase base (llamada BaseMethod). Esta es la clase que define el comportamiento básico. Pueden observarse los elementos básicos con los que cuenta en el Apéndice \ref{an:inputs_necesarios}. De esta clase heredan todas las demás. Una característica principal de esta clase es un método abstracto llamado calculate, que será sobrescrito por todas sus subclases para cambiar el comportamiento. La explicación detallada de los algoritmos utilizados para cada método se dará en la subsección \ref{subsec:algorithms}. Puede verse un diagrama simplificado en la figura \ref{fig:classes}.
 
 \begin{figure}[H]
 \centering
@@ -111,13 +111,17 @@ Como explicamos previamente, este algoritmo es relativamente sencillo y directo.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.45\textwidth]{./Fig/diagrama_calculate.png}
-  \caption{Diagrama de flujo de la función *calculate()* que implementa el cálculo numérico de integrales mediante sumas de Riemann. El proceso inicia con una consulta SQL parametrizada para extraer datos de una base de datos astronómica, aplicando transformaciones matemáticas condicionales según la configuración del usuario. El núcleo del algoritmo itera sobre los pares de datos independiente-dependiente para calcular rectángulos de aproximación usando el método del punto izquierdo, acumulando progresivamente la suma total. Finalmente, dependiendo de las opciones de configuración, genera visualizaciones gráficas y archivos de resultados.}
+  \caption{Diagrama de flujo de la función calculate() que implementa el cálculo numérico de integrales mediante sumas de Riemann. El proceso inicia con una consulta SQL parametrizada para extraer datos de una base de datos astronómica, aplicando transformaciones matemáticas condicionales según la configuración del usuario. El núcleo del algoritmo itera sobre los pares de datos independiente-dependiente para calcular rectángulos de aproximación usando el método del punto izquierdo, acumulando progresivamente la suma total. Finalmente, dependiendo de las opciones de configuración, genera visualizaciones gráficas y archivos de resultados.}
 \label{fig:explicit_limits}
 \end{figure}
 
-\subsubsection{Método de Simetría}
+\subsubsection{Método de Simetría}\label{sec:met_sim}
 
 A diferencia del caso anterior, este es un método mucho más complejo, con al menos dos fases. La primera fase consiste en descubrir aquellos picos en el rango indicado que cumplen con las condiciones. Para ello, recorre inicialmente el espectro identificando picos más altos que el umbral definido. Luego, expande los picos tomando uno a uno los puntos. Es simétrico porque se encarga de revisar que, si uno de los lados no es aproximadamente simétrico al otro, se queda con el más alto. Esto lo hace para evitar casos como líneas atómicas que se entrecruzan o ruido. Una vez verificados los picos, calcula el área bajo estos mediante el método de los trapecios. Dada la complejidad de este algoritmo, su diagrama de flujo se dividió en múltiples imágenes, que pueden verse en la sección \ref{an:diagramas_symmetry}.
+
+\subsubsection{Método de Simetría}
+
+Aprovechando que ya tenemos el metodo de simetria creamos una opción adicional, en donde se puede calcular areas equivalentes para picos ya conocidos. Para esto se da una lista de los picos necesarios para revisar (separados por cambios de linea) y la calculadora adquiere la información necesaria para encontrar los datos de los picos por el mismo metodo que \ref{sec:met_sim}
 
 \section{Análisis de Datos y Resultados}
 
@@ -347,12 +351,12 @@ La Figura \ref{fig:diagrama_deteccion_picos} resume el proceso completo:
 
 \begin{longtable}{|c|c|c|c|}
 \toprule
-{Wave} & {Area} & {Wavelength\_nm} & {Area\_transformed} \\
+  {Wave ($cm^{-1}$)} & {Area} & {Wavelength ($nm$)} & {Area\_transformed} \\
 \midrule
 \endfirsthead
 
 \toprule
-{Wave} & {Area} & {Wavelength\_nm} & {Area\_transformed} \\
+  {Wave ($cm^{-1}$)} & {Area} & {Wavelength $nm$} & {Area\_transformed} \\
 \midrule
 \endhead
 
