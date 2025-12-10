@@ -2,6 +2,7 @@ import customtkinter
 import matplotlib.pyplot as plt
 from methods.simple_method import ExplicitLimits
 from methods.symmetry_method import SymmetryMethod
+from methods.particula_peaks_method import ExplicitPeaksMethod
 from screens.type_process import TypeProcess
 
 
@@ -12,7 +13,7 @@ class ParameterSelectorScreen(customtkinter.CTkFrame):
         self.table = table
         self.master = master
         self.type = type
-        self.options = ["Simple Selector", "Symmetry Selector"]
+        self.options = ["Simple Selector", "Symmetry Selector", "Explicit Peaks"]
         self.current_method_widget = None  # Referencia al widget actual
 
         self._setup_grid()
@@ -77,6 +78,12 @@ class ParameterSelectorScreen(customtkinter.CTkFrame):
 
         if method == "Symmetry Selector":
             self.current_method_widget = SymmetryMethod(
+                self.dynamic_frame, self.catalog, self.table, self.type)
+            self.current_method_widget.grid(
+                row=0, column=0, sticky="nsew", padx=10, pady=10)
+        
+        if method == "Explicit Peaks":
+            self.current_method_widget = ExplicitPeaksMethod(
                 self.dynamic_frame, self.catalog, self.table, self.type)
             self.current_method_widget.grid(
                 row=0, column=0, sticky="nsew", padx=10, pady=10)
