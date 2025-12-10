@@ -1,0 +1,17 @@
+// Flujo de Usuario
+digraph {
+	A [label=Inicio]
+	B [label="Selección de datos, con ID de Vizier"]
+	C [label="Selección de la tabla necesaria"]
+	D [label="Selección del metodo a usar"]
+	E [label="Completado de los inputs necesarios"]
+	F [label="¿Se esta satisfecho con los resultados?"]
+	G [label="Aprobado, continuar con la interpretación"]
+	A -> B
+	B -> C
+	C -> D
+	D -> E
+	E -> F
+	F -> G [label="Sí"]
+	F -> D [label=No]
+}
