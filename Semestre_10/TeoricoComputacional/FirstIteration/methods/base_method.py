@@ -1,14 +1,16 @@
 import customtkinter
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from screens.type_process import TypeProcess
 
 
 class BaseMethod(customtkinter.CTkFrame):
-    def __init__(self, master, catalog, table):
+    def __init__(self, master, catalog, table, type):
         super().__init__(master)
 
         self.catalog = catalog
         self.table = table
+        self.type = type
 
         self._setup_grid()
         self._create_widgets()
@@ -28,8 +30,7 @@ class BaseMethod(customtkinter.CTkFrame):
         self._create_calculate_button()
 
     def _create_variables_selector(self):
-        variables = self.catalog.search(
-            f'SELECT TOP 3 * FROM "{self.table}"').fieldnames
+        variables = self.catalog.search(f'SELECT TOP 3 * FROM "{self.table}"').fieldnames if self.type == TypeProcess.VIZIER else self.catalog.columns
         self.independent_variables_selector_label = customtkinter.CTkLabel(
             self, text="Variable Independiente: ")
         self.independent_variables_selector = customtkinter.CTkOptionMenu(
@@ -93,6 +94,66 @@ class BaseMethod(customtkinter.CTkFrame):
             text="Calcular",
             command=self.calculate)
         self.calculate_buttons.grid(row=5, column=1, padx=5, pady=5)
+
+    def get_vizier(self):
+        variables = self.catalog.search(f'''
+                                        SELECT
+                                            {self.independent_variables_selector.get()}, {self.dependent_variables_selector.get()}
+                                        FROM
+                                            "{self.table}"
+                                        WHERE
+                                            "{self.independent_variables_selector.get()}" BETWEEN {float(self.begin_entry.get())**(-1 if self.take_inverse_independent.get() else 1)} AND {float(self.end_entry.get())**(-1 if self.take_inverse_independent.get() else 1)}
+                                            AND {self.dependent_variables_selector.get()} IS NOT NULL
+                                            AND {self.independent_variables_selector.get()} IS NOT NULL
+                                        ''')
+        dependent = variables.getcolumn(self.dependent_variables_selector.get()) 
+        independent = (variables.getcolumn(self.independent_variables_selector.get()))**(-1 if self.take_inverse_independent.get() else 1)
+        return dependent, independent
+    
+    def get_pandas(self):
+        # Obtener nombres de columnas
+        independent_col = self.independent_variables_selector.get()
+        dependent_col = self.dependent_variables_selector.get()
+    
+        # Obtener límites
+        begin_val = float(self.begin_entry.get())
+        end_val = float(self.end_entry.get())
+    
+        # Aplicar transformación inversa a los límites si es necesario
+        if self.take_inverse_independent.get():
+            begin_limit = begin_val ** (-1)
+            end_limit = end_val ** (-1)
+        else:
+            begin_limit = begin_val
+            end_limit = end_val
+    
+        # Filtrar el DataFrame
+        filtered_df = self.catalog[
+            (self.catalog[independent_col] >= begin_limit) &
+            (self.catalog[independent_col] <= end_limit) &
+            (self.catalog[dependent_col].notna()) &
+            (self.catalog[independent_col].notna())
+        ].copy()
+    
+        # Aplicar transformación a la variable independiente si es necesario
+        if self.take_inverse_independent.get():
+            filtered_df.loc[:, 'independent_transformed'] = filtered_df[independent_col] ** (-1)
+            independent = filtered_df['independent_transformed']
+        else:
+            independent = filtered_df[independent_col]
+    
+        dependent = filtered_df[dependent_col]
+    
+        return dependent, independent
+
+    def get_variables(self):
+        match self.type:
+            case TypeProcess.VIZIER:
+                return self.get_vizier()
+            case TypeProcess.CSV:
+                return self.get_pandas()
+            case TypeProcess.EXCEL:
+                return self.get_pandas()
 
     def calculate(self):
         print(f"""

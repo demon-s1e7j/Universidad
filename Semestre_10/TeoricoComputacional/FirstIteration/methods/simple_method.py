@@ -4,24 +4,11 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from methods.base_method import BaseMethod
 
 class ExplicitLimits(BaseMethod):
-    def __init__(self, master, catalog, table):
-        super().__init__(master, catalog, table)
+    def __init__(self, master, catalog, table, type):
+        super().__init__(master, catalog, table, type)
 
     def calculate(self):
-        variables = self.catalog.search(f'''
-                                        SELECT
-                                            {self.independent_variables_selector.get()}, {self.dependent_variables_selector.get()}
-                                        FROM
-                                            "{self.table}"
-                                        WHERE
-                                            "{self.independent_variables_selector.get()}" BETWEEN {float(self.begin_entry.get())**(-1 if self.take_inverse_independent.get() else 1)} AND {float(self.end_entry.get())**(-1 if self.take_inverse_independent.get() else 1)}
-                                            AND {self.dependent_variables_selector.get()} IS NOT NULL
-                                            AND {self.independent_variables_selector.get()} IS NOT NULL
-                                        ''')
-        dependent = variables.getcolumn(self.dependent_variables_selector.get()) 
-        independent = (variables.getcolumn(self.independent_variables_selector.get()))**(-1 if self.take_inverse_independent.get() else 1)
-
-        print(variables)
+        dependent, independent = self.get_variables()
 
         riemann_rectangles = []
         riemann_sum = 0

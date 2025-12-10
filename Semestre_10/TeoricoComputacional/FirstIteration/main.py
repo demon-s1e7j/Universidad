@@ -1,11 +1,13 @@
 import customtkinter
 import os
+import pandas as pd
 import matplotlib.pyplot as plt
 import atexit
 from screens.catalog_screen import CatalogScreen
 from screens.table_selector_viewer_screen import TableSelectorViewerScreen
 from screens.parameter_selector_screen import ParameterSelectorScreen
-
+from screens.type_process import TypeProcess
+import sys
 
 class App(customtkinter.CTk):
     def __init__(self):
@@ -16,8 +18,20 @@ class App(customtkinter.CTk):
         self.grid_rowconfigure(0, weight=1)
 
         self.current_frame = None
-        self.switch_to_catalog_screen()
+        self.change_to_first_screen()
         self.protocol("WM_DELETE_WINDOW", self.force_quit)
+
+    def change_to_first_screen(self):
+        if len(sys.argv) <= 1:
+            self.switch_to_catalog_screen()
+            return
+        if ".csv" in sys.argv[1]:
+            self.switch_to_parameter_screen(pd.read_csv(sys.argv[1]), "TABLA CSV", type=TypeProcess.CSV)
+            return
+        if ".xlsx" in sys.argv[1]:
+            self.switch_to_viewer_screen(pd.read_excel(sys.argv[1], sheet_name=None), type=TypeProcess.EXCEL)
+            return
+        self.switch_to_catalog_screen()
 
     def force_quit(self):
         """Cierre forzoso de la aplicación"""
@@ -52,17 +66,17 @@ class App(customtkinter.CTk):
         self.current_frame = CatalogScreen(self)
         self.current_frame.pack(fill="both", expand=True)
 
-    def switch_to_viewer_screen(self, catalog):
+    def switch_to_viewer_screen(self, catalog, type=TypeProcess.VIZIER):
         """Muestra la pantalla del visualizador de posibilidades."""
         if self.current_frame:
             self.current_frame.pack_forget()
-        self.current_frame = TableSelectorViewerScreen(self, catalog)
+        self.current_frame = TableSelectorViewerScreen(self, catalog, type)
         self.current_frame.pack(fill="both", expand=True)
 
-    def switch_to_parameter_screen(self, catalog, table):
+    def switch_to_parameter_screen(self, catalog, table, type):
         if self.current_frame:
             self.current_frame.pack_forget()
-        self.current_frame = ParameterSelectorScreen(self, catalog, table)
+        self.current_frame = ParameterSelectorScreen(self, catalog, table, type)
         self.current_frame.pack(fill="both", expand=True)
 
     def _cleanup_current_frame(self):

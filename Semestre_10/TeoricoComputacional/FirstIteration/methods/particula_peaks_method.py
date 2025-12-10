@@ -1,8 +1,10 @@
 from typing import Callable, Iterable, List, Tuple
+import customtkinter as ctk
 from functools import reduce
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from methods.base_method import BaseMethod
+from screens.type_process import TypeProcess
 
 
 def test_maker(heights: list, threshold: float | int) -> Callable:
@@ -174,11 +176,11 @@ class Peak():
                 self.complete = True
 
 
-def create_peaks(iter: Iterable[int]) -> List[Peak]:
+def create_peaks(iter: Iterable[int | float]) -> List[Peak]:
     return list(map(lambda x: Peak(x), iter))
 
 
-class SymmetryMethod(BaseMethod):
+class ExplicitPeaksMethod(BaseMethod):
     def __init__(self, master, catalog, table, type):
         super().__init__(master, catalog, table, type)
 
@@ -234,15 +236,107 @@ class SymmetryMethod(BaseMethod):
                 position = independent[peak.center]
                 file.write(f"{position},{peak.total_area}\n")
 
+    
+    def _create_inputs(self):
+        # Colocar frame en grid
+        self.peaks = ctk.CTkTextbox(
+            self,
+            height=300,
+            border_width=2,
+            border_color="#3498db",
+            corner_radius=8,
+            fg_color="#2c3e50",
+            text_color="#ecf0f1",
+            font=("Consolas", 12)
+        )
+
+        self.peaks.grid(row=2, column=0, padx=10, pady=10, sticky="nsew", rowspan=3, columnspan=3)
+
+    def begin_end_entry(self):
+        # Convertir cada línea en float, ignorando líneas vacías
+        numeros = [float(linea.strip()) for linea in self.peaks.get().split('\n') if linea.strip()]
+    
+        # Encontrar máximo y mínimo
+        maximo = max(numeros)
+        minimo = min(numeros)
+    
+        # Aplicar operaciones
+        nuevo_maximo = maximo + 1
+        nuevo_minimo = minimo - 1
+    
+        # Devolver tupla con los nuevos valores
+        return (nuevo_minimo, nuevo_maximo)
+
+    
+    def get_vizier(self):
+        begin_entry, end_entry = self.begin_end_entry()
+        variables = self.catalog.search(f'''
+                                        SELECT
+                                            {self.independent_variables_selector.get()}, {self.dependent_variables_selector.get()}
+                                        FROM
+                                            "{self.table}"
+                                        WHERE
+                                            "{self.independent_variables_selector.get()}" BETWEEN {float(begin_entry)**(-1 if self.take_inverse_independent.get() else 1)} AND {float(end_entry)**(-1 if self.take_inverse_independent.get() else 1)}
+                                            AND {self.dependent_variables_selector.get()} IS NOT NULL
+                                            AND {self.independent_variables_selector.get()} IS NOT NULL
+                                        ''')
+        dependent = variables.getcolumn(self.dependent_variables_selector.get()) 
+        independent = (variables.getcolumn(self.independent_variables_selector.get()))**(-1 if self.take_inverse_independent.get() else 1)
+        return dependent, independent
+    
+    def get_pandas(self):
+        begin_entry, end_entry = self.begin_end_entry()
+        # Obtener nombres de columnas
+        independent_col = self.independent_variables_selector.get()
+        dependent_col = self.dependent_variables_selector.get()
+    
+        # Obtener límites
+        begin_val = float(begin_entry)
+        end_val = float(end_entry)
+    
+        # Aplicar transformación inversa a los límites si es necesario
+        if self.take_inverse_independent.get():
+            begin_limit = begin_val ** (-1)
+            end_limit = end_val ** (-1)
+        else:
+            begin_limit = begin_val
+            end_limit = end_val
+    
+        # Filtrar el DataFrame
+        filtered_df = self.catalog[
+            (self.catalog[independent_col] >= begin_limit) &
+            (self.catalog[independent_col] <= end_limit) &
+            (self.catalog[dependent_col].notna()) &
+            (self.catalog[independent_col].notna())
+        ].copy()
+    
+        # Aplicar transformación a la variable independiente si es necesario
+        if self.take_inverse_independent.get():
+            filtered_df.loc[:, 'independent_transformed'] = filtered_df[independent_col] ** (-1)
+            independent = filtered_df['independent_transformed']
+        else:
+            independent = filtered_df[independent_col]
+    
+        dependent = filtered_df[dependent_col]
+    
+        return dependent, independent
+
+    def get_variables(self):
+        match self.type:
+            case TypeProcess.VIZIER:
+                return self.get_vizier()
+            case TypeProcess.CSV:
+                return self.get_pandas()
+            case TypeProcess.EXCEL:
+                return self.get_pandas()
+
+    def get_variables(self):
+        return super().get_variables()
+
     def calculate(self):
         dependent, independent = self.get_variables()
 
-        peaks = create_peaks(
-            filter(
-                test_maker(
-                    dependent, float(
-                        self.threshold_entry.get())), range(
-                    len(independent))))
+        peaks = create_peaks([float(linea.strip()) for linea in self.peaks.get().split('\n') if linea.strip()])
 
         max_expands = 1000 * len(peaks)
 
