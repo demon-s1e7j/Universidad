@@ -35,7 +35,7 @@ class Peak():
         self.adyacents_left = [] if adyacents_left is None else adyacents_left
         self.adyacents_right = [] if adyacents_right is None else adyacents_right
         self.total_area = total_area
-
+    
     def __str__(self) -> str:
         return f"Peak(Center: {
             self.center}, Complete: {
@@ -53,6 +53,29 @@ class Peak():
                 self.adyacents_left}, Adyacents Right: {
                     self.adyacents_right}, total_area: {
                         self.total_area}"
+    
+    def checkpeak(self, dependent, independent):
+        center_idx = self.center
+    
+        if center_idx <= 0 or center_idx >= len(dependent) - 1:
+            print(f"Error: Centro en posición {center_idx} no tiene vecinos adyacentes")
+            return
+    
+        prev_idx = center_idx - 1
+        next_idx = center_idx + 1
+    
+        prev_value = dependent[prev_idx]
+        center_value = dependent[center_idx]
+        next_value = dependent[next_idx]
+    
+        is_peak = (center_value > prev_value) and (center_value > next_value)
+    
+        prev_pos = independent[prev_idx]
+        center_pos = independent[center_idx]
+        next_pos = independent[next_idx]
+    
+        print(f"{prev_pos} {center_pos} {next_pos}, {is_peak}")
+
 
     def is_complete(self) -> bool:
         return self.complete
@@ -243,18 +266,14 @@ class ExplicitPeaksMethod(BaseMethod):
             self,
             height=300,
             border_width=2,
-            border_color="#3498db",
             corner_radius=8,
-            fg_color="#2c3e50",
-            text_color="#ecf0f1",
-            font=("Consolas", 12)
         )
 
         self.peaks.grid(row=2, column=0, padx=10, pady=10, sticky="nsew", rowspan=3, columnspan=3)
 
     def begin_end_entry(self):
         # Convertir cada línea en float, ignorando líneas vacías
-        numeros = [float(linea.strip()) for linea in self.peaks.get().split('\n') if linea.strip()]
+        numeros = self.get_numbers()
     
         # Encontrar máximo y mínimo
         maximo = max(numeros)
@@ -320,23 +339,53 @@ class ExplicitPeaksMethod(BaseMethod):
         dependent = filtered_df[dependent_col]
     
         return dependent, independent
-
-    def get_variables(self):
-        match self.type:
-            case TypeProcess.VIZIER:
-                return self.get_vizier()
-            case TypeProcess.CSV:
-                return self.get_pandas()
-            case TypeProcess.EXCEL:
-                return self.get_pandas()
-
-    def get_variables(self):
-        return super().get_variables()
+    
+    def get_numbers(self):
+        contenido = self.peaks.get("1.0", "end")
+    
+        if contenido.endswith('\n'):
+            contenido = contenido[:-1]
+    
+        if not contenido.strip():
+            return []
+    
+        numeros = []
+        lineas = contenido.split('\n')
+    
+        for i, linea in enumerate(lineas, 1):
+            linea = linea.strip()
+            if not linea:
+                continue
+            
+            try:
+                num = float(linea)
+                numeros.append(num)
+            except ValueError:
+                error_msg = f"Error en línea {i}: '{linea}' no es un número válido"
+                print(error_msg)
+        return numeros
+    
+    def inside(self, x, dependent):
+        min_diff = float('inf')
+        min_idx = 0
+    
+        for i, val in enumerate(dependent):
+            diff = abs(val - x)
+            if diff < min_diff:
+                min_diff = diff
+                min_idx = i
+    
+        return min_idx
 
     def calculate(self):
         dependent, independent = self.get_variables()
 
-        peaks = create_peaks([float(linea.strip()) for linea in self.peaks.get().split('\n') if linea.strip()])
+        print(self.get_numbers())
+
+        peaks = create_peaks([self.inside(x, dependent) for x in self.get_numbers()])
+
+        for peak in peaks:
+            peak.checkpeak(dependent, independent)
 
         max_expands = 1000 * len(peaks)
 

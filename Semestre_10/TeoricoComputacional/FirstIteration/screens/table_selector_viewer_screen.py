@@ -5,7 +5,7 @@ from .type_process import TypeProcess
 
 
 class TableSelectorViewerScreen(customtkinter.CTkFrame):
-    def __init__(self, master, catalog, type: TypeProcess):
+    def __init__(self, master, catalog, type: TypeProcess = TypeProcess.VIZIER):
         super().__init__(master)
         self.master = master
         self.type = type
@@ -154,8 +154,11 @@ class TableSelectorViewerScreen(customtkinter.CTkFrame):
 
         if type == TypeProcess.VIZIER:
             self.select_vizier()
+            return
 
         if type == TypeProcess.EXCEL:
             self.select_excel()
+            return
 
+        self.select_vizier()
         print(f"Tabla seleccionada: {self.table_name}")
