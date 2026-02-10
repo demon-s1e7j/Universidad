@@ -1,0 +1,98 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage[spanish]{babel}
+\usepackage{tikz}
+
+
+\newcommand{\class}{Teoria de Grupos para Mecanica Cuantica} % This is the name of the course 
+\newcommand{\examnum}{Ejercicio Clase 2} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+\DeclareMathOperator{\im}{im}  % En el preámbulo
+\DeclareMathOperator{\Hom}{Hom}  % En el preámbulo
+\DeclareMathOperator{\id}{id}  % En el preámbulo
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{Enunciado}
+Sean $\rho_1 : G \to G_\ell (V_1)$, $\rho_2 : G \to G_\ell (V_2)$ dos representaciones irreducibles y $T \in \Hom_G (V_1, V_2)$.
+
+Entonces:
+\begin{itemize}
+  \item $T \neq 0 \implies \rho_1 \sim \rho_2$
+  \item $\rho_1 = \rho_2 \implies T = \lambda \id_v (\lambda \in \mathbb{C})$
+\end{itemize}
+
+\section{Demostración}
+\subsection{$T \neq 0 \implies \rho_1 \sim \rho_2$}
+
+Para mostrar que $T\circ \rho_1 = \rho_1 \circ T$ es suficiente mostrar que $T$ es un isomorfismo.
+
+\subsubsection{Inyectiva}
+Dado que $\ker T$ contiene como minimo $0$ y ademas en caso de que se haga una combinación lineal de vectores dentro del kernel el resultado seguiria estando dentro del kernel entonces es un subespacio vectorial. Ademas, dado que debe contener al 0 y sabemos que $\forall v \in \ker T \implies T v = 0$ por tanto es invariante respecto a $T$.
+
+Dado que $\rho_1$ es irreducible y $\ker T$ es invariante entonces solo hay dos opciones
+\begin{itemize}
+  \item $\ker T = \left\{0\right\}$ que implica que $T$ es inyectivo
+  \item $\ker T = V_1$ que implica que $T = 0$ pero asumimos lo contrario.
+\end{itemize}
+
+Por lo tanto $T$ es inyectivo
+
+\subsubsection{Sobreyectiva}
+
+Dado que $T$ es lineal (y por argumentos iguales a la primera parte del paso anterior) sabemos que $\im T$ es un subespacio de $V_2$. Esto implica que $$\forall w \in \im T \implies \exists v \in V_1\ :  T(v) = w$$
+
+pero ademas si tomamos un $A \in G$ se debe cumplir (dado que $T$ es un homeomorfismo)
+$$A \cdot w = A \cdot T(v) = T (A \cdot v)$$
+
+Por lo tanto $\im T$ es invariante.
+
+Dado que $\rho_2$ es irreducible y $\im T$ es invariante entonces solo hay dos opciones
+\begin{itemize}
+  \item $\im T = \left\{0\right\}$ que implica $T = 0$ pero asumimos lo contrario.
+  \item $\im T = V_2$ que implica que $T$ es sobreyectivo
+\end{itemize}
+
+Por lo tanto $T$ es sobreyectivo
+
+\subsubsection{}
+
+Con esto es suficiente para mostrar que si $T \neq 0$ entonces es biyectivo y por tanto $\rho_1 \sim \rho_2$
+
+\subsection{$\rho_1 = \rho_2 \implies T = \lambda \id_v (\lambda \in \mathbb{C})$}
+
+Sea $\rho_1 = \rho_2 = \rho$ esto tambien implica que estamos trabajando en un solo espacio $V$. Por otro lado, dado que estamos trabajando en el campo complejo entonces tenemos al menos un eigenvalue $\lambda \in \mathbb{C}$ que debe tener al menos un eigenvector distinto a $\vec{0}$. Tomemos entonces $\ker (T - \lambda I)$ que ademas es un espacio invariante pues $$\forall v \in \ker (T - \lambda I)\implies T(\rho(g) v) = \rho(g) T(v) = \rho(g) (\lambda v) = \lambda \rho(g) v$$
+
+Dado que $\rho$ es irreducible y $ker (T - \lambda I)$ (ademas que sabemos que $ker (T - \lambda I) \neq \left\{0\right\}$) entonces se debe cumplir que $$ker (T - \lambda I) = V$$ por lo tanto todos los vectores de $V$ son eigenvectors de $T$ con eigenvalue $\lambda$ por tanto $$ T = \lambda id$$
+
+\textbf{QED}
+
+\end{document}

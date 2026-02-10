@@ -1,0 +1,7 @@
+# Watch document doc and build every change
+watch doc="Talleres.tex":
+  echo {{doc}} | entr pdflatex {{doc}}
+
+# Open Evince with doc
+show doc="Talleres.pdf":
+  evince {{doc}}

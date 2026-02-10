@@ -1,0 +1,746 @@
+\documentclass[5pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Linear Algebra} % This is the name of the course 
+\newcommand{\examnum}{Lista 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+  \textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+  \textbf{\examnum} &&\\
+  \textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{P.1}
+\subsection{e}
+\begin{align*}
+  S = \begin{cases}
+    ix + z = 2i\\
+    2x - iz = 4\\
+    -ix + z = -i
+  \end{cases} &\implies \begin{pmatrix}
+    i & 1 & \vline & 2i\\
+    2 & -i & \vline & 4\\
+    -i & 1 & \vline & -i
+  \end{pmatrix}\\
+  -i(I) &\implies 
+  \begin{pmatrix}
+    1 & -i & \vline & 2\\
+    2 & -i & \vline & 4\\
+    -i & 1 & \vline & -i
+  \end{pmatrix}\\
+  (-2)(I) + (II) \to (II) &\implies 
+  \begin{pmatrix}
+    1 & -i & \vline & 2\\
+    0 & i & \vline & 0\\
+    -i & 1 & \vline & -i
+  \end{pmatrix}\\
+  (i)(I) + (III) \to (III) &\implies 
+  \begin{pmatrix}
+    1 & -i & \vline & 2\\
+    0 & i & \vline & 0\\
+    0 & 2 & \vline & i
+  \end{pmatrix}\\
+  (-i)(II) &\implies 
+  \begin{pmatrix}
+    1 & -i & \vline & 2\\
+    0 & 1 & \vline & 0\\
+    0 & 2 & \vline & i
+  \end{pmatrix}\\
+  (i)(II) + (I) \to (I) &\implies 
+  \begin{pmatrix}
+    1 & 0 & \vline & 2\\
+    0 & 1 & \vline & 0\\
+    0 & 2 & \vline & i
+  \end{pmatrix}\\
+  (-2)(II) + (III) \to (III) &\implies 
+  \begin{pmatrix}
+    1 & 0 & \vline & 2\\
+    0 & 1 & \vline & 0\\
+    0 & 0 & \vline & i
+  \end{pmatrix}
+\end{align*}
+
+It can't exists a solution!
+
+\subsection{g}
+\begin{align*}
+  S = \begin{cases}
+    x - 2y + 3z = 0\\
+    2x - y + 2z = 0\\
+    3x + y + 2z = 0
+  \end{cases} &\implies \begin{pmatrix}
+    1 & -2 & 3 & \vline & 0\\
+    2 & -1 & 2 & \vline & 0\\
+    3 &  1 & 2 & \vline & 0
+  \end{pmatrix}\\
+  (-2)(I) + (II) \to (II)
+  &\implies \begin{pmatrix}
+    1 & -2 & 3 & \vline & 0\\
+    0 & 3 & -4 & \vline & 0\\
+    3 &  1 & 2 & \vline & 0
+  \end{pmatrix}\\
+  (-3)(I) + (II) \to (II)
+  &\implies \begin{pmatrix}
+    1 & -2 & 3 & \vline & 0\\
+    0 & 3 & -4 & \vline & 0\\
+    0 &  7 & -7 & \vline & 0
+  \end{pmatrix}\\
+  \left(\frac{1}{3}\right)(II)
+  &\implies \begin{pmatrix}
+    1 & -2 & 3 & \vline & 0\\
+    0 & 1 & -\frac{4}{3} & \vline & 0\\
+    0 &  7 & -7 & \vline & 0
+  \end{pmatrix}\\
+  \left(2\right)(II) + (I) \to (I)
+  &\implies \begin{pmatrix}
+    1 & 0 & \frac{1}{3} & \vline & 0\\
+    0 & 1 & -\frac{4}{3} & \vline & 0\\
+    0 &  7 & -7 & \vline & 0
+  \end{pmatrix}\\
+  \left(-7\right)(II) + (III) \to (III)
+  &\implies \begin{pmatrix}
+    1 & 0 &  \frac{1}{3} & \vline & 0\\
+    0 & 1 & -\frac{4}{3} & \vline & 0\\
+    0 & 0 & -\frac{7}{8} & \vline & 0
+  \end{pmatrix}\\
+  \left(-\frac{8}{7}\right)(III)
+  &\implies \begin{pmatrix}
+    1 & 0 &  \frac{1}{3} & \vline & 0\\
+    0 & 1 & -\frac{4}{3} & \vline & 0\\
+    0 & 0 & 1 & \vline & 0
+  \end{pmatrix}\\
+  \left(\frac{3}{4}\right)(III) + (II) \to (II)
+  &\implies \begin{pmatrix}
+    1 & 0 &  \frac{1}{3} & \vline & 0\\
+    0 & 1 & 1 & \vline & 0\\
+    0 & 0 & 1 & \vline & 0
+  \end{pmatrix}\\
+  \left(\frac{3}{1}\right)(III) + (II) \to (II)
+  &\implies \begin{pmatrix}
+    1 & 0 & 0 & \vline & 0\\
+    0 & 1 & 0 & \vline & 0\\
+    0 & 0 & 1 & \vline & 0
+  \end{pmatrix}\\
+\end{align*}
+
+Trivial solution!
+
+\subsection{i}
+
+\begin{align*}
+  S = \begin{cases}
+    x_1 + 3x_2 + 2x_3 + 3x_4 - 7x_5 = 14\\
+    2x_1 + 6x_2 + x_3 - 2x_4 + 5x_5 = -2\\
+    x_1 + 3x_2 - x_3 + 2x_5 = -1
+  \end{cases} &\implies \begin{pmatrix}
+    1 & 3 &  2 &  3 & -7 &\vline& 14\\
+    2 & 6 &  1 & -2 &  5 &\vline& -2\\
+    1 & 3 & -1 &  0 &  2 &\vline& -1
+  \end{pmatrix}\\
+  (-2)(I) + (II) \to (II)
+  &\implies \begin{pmatrix}
+    1 & 3 &  2 &  3 & -7 &\vline& 14\\
+    0 & 0 & -3 & -8 & 19 &\vline& -30\\
+    1 & 3 & -1 &  0 &  2 &\vline& -1
+  \end{pmatrix}\\
+  (-1)(I) + (III) \to (III)
+  &\implies \begin{pmatrix}
+    1 & 3 &  2 &  3 & -7 &\vline& 14\\
+    0 & 0 & -3 & -8 & 19 &\vline& -30\\
+    0 & 0 & -3 & -3 &  9 &\vline& -15
+  \end{pmatrix}\\
+  \left(-\frac{1}{3}\right)(II)
+  &\implies \begin{pmatrix}
+    1 & 3 &  2 &  3 & -7 &\vline& 14\\
+    0 & 0 & 1 & \frac{8}{3} & -\frac{19}{3} &\vline& 10\\
+    0 & 0 & -3 & -3 &  9 &\vline& -15
+  \end{pmatrix}\\
+  \left(3\right)(II) + (III) \to (III)
+  &\implies \begin{pmatrix}
+    1 & 3 &  2 &  3 & -7 &\vline& 14\\
+    0 & 0 & 1 & \frac{8}{3} & -\frac{19}{3} &\vline& 10\\
+    0 & 0 & 0 & 5 & -10 &\vline& 15
+  \end{pmatrix}\\
+  \left(\frac{1}{5}\right)(III)
+  &\implies \begin{pmatrix}
+    1 & 3 &  2 &  3 & -7 &\vline& 14\\
+    0 & 0 & 1 & \frac{8}{3} & -\frac{19}{3} &\vline& 10\\
+    0 & 0 & 0 & 1 & -2 &\vline& 3
+  \end{pmatrix}\\
+  \left(-\frac{8}{3}\right)(III) + (II) \to (II)
+  &\implies \begin{pmatrix}
+    1 & 3 &  2 &  3 & -7 &\vline& 14\\
+    0 & 0 & 1 & 0 & -1 &\vline& 2\\
+    0 & 0 & 0 & 1 & -2 &\vline& 3
+  \end{pmatrix}\\
+  \left(-3\right)(III) + (I) \to (I)
+  &\implies \begin{pmatrix}
+    1 & 3 &  2 &  0 & -1 &\vline& 5\\
+    0 & 0 & 1 & 0 & -1 &\vline& 2\\
+    0 & 0 & 0 & 1 & -2 &\vline& 3
+  \end{pmatrix}\\
+  \left(-2\right)(II) + (I) \to (I)
+  &\implies \begin{pmatrix}
+    1 & 3 & 0 & 0 &  1 &\vline& 1\\
+    0 & 0 & 1 & 0 & -1 &\vline& 2\\
+    0 & 0 & 0 & 1 & -2 &\vline& 3
+  \end{pmatrix}
+\end{align*}
+
+This left us with the sistem:
+\begin{align*}
+  x_1 + 3x_2 + x_5 = 1\\
+  x_3 -  x_5 = 2\\
+  x_4 - 2x_5 = 2
+\end{align*}
+
+Wich implies
+\begin{align*}
+  x_1 &= 1 - 3x_2 - x_5\\
+  x_2 &= x_2\\
+  x_3 &= 2 + x_5\\
+  x_4 &= 2 + 2x_5\\
+  x_5 &= x_5
+\end{align*}
+
+\subsection{n}
+
+\begin{align*}
+  S = \begin{cases}
+    x + y + z = 4\\
+    2x + 5y - 2z = 3\\
+    x + 7y - 7z = 5
+  \end{cases} &\implies \begin{pmatrix}
+    1 & 1 &  1 &\vline & 4\\
+    2 & 5 & -2 &\vline & 3\\
+    1 & 7 & -7 &\vline & 5
+  \end{pmatrix}\\
+  \left(-2\right)(I) + (II) \to (II)
+  &\implies \begin{pmatrix}
+    1 & 1 &  1 &\vline & 4\\
+    0 & 3 & -4 &\vline & -5\\
+    1 & 7 & -7 &\vline & 5
+  \end{pmatrix}\\
+  \left(-1\right)(I) + (III) \to (III)
+  &\implies \begin{pmatrix}
+    1 & 1 &  1 &\vline & 4\\
+    0 & 3 & -4 &\vline & -5\\
+    0 & 6 & -8 &\vline & 1
+  \end{pmatrix}\\
+  \left(\frac{1}{3}\right)(II)
+  &\implies \begin{pmatrix}
+    1 & 1 &  1 &\vline & 4\\
+    0 & 1 & -\frac{4}{3} &\vline & -\frac{5}{3}\\
+    0 & 6 & -8 &\vline & 1
+  \end{pmatrix}\\
+  \left(-1\right)(II) + (I) \to (I)
+  &\implies \begin{pmatrix}
+    1 & 0 &  \frac{7}{3} &\vline & \frac{17}{3}\\
+    0 & 1 & -\frac{4}{3} &\vline & -\frac{5}{3}\\
+    0 & 6 & -8 &\vline & 1
+  \end{pmatrix}\\
+  \left(-6\right)(II) + (I) \to (I)
+  &\implies \begin{pmatrix}
+    1 & 0 &  \frac{7}{3} &\vline & \frac{17}{3}\\
+    0 & 1 & -\frac{4}{3} &\vline & -\frac{5}{3}\\
+    0 & 0 & 0 &\vline & 11
+  \end{pmatrix}\\
+\end{align*}
+
+Doesn't exists a solution!
+
+\section{P.6}
+
+Before any subsection lets get the reduce row echelon form.
+
+\begin{align*}
+  S = \begin{cases}
+    x + y + kz = 2\\
+    3x + 4y + 2z = k\\
+    2x + 3y - z = 1
+  \end{cases} &\implies \begin{pmatrix}
+    1 & 1 &  k &\vline & 2\\
+    3 & 4 &  2 &\vline & k\\
+    2 & 3 & -1 &\vline & 1\\
+  \end{pmatrix}\\
+  \left(-3\right)(I) + (II) \to (II)
+  &\implies \begin{pmatrix}
+    1 & 1 &  k &\vline & 2\\
+    0 & 1 &  2 - 3k &\vline & k - 6\\
+    2 & 3 & -1 &\vline & 1\\
+  \end{pmatrix}\\
+  \left(-2\right)(I) + (III) \to (III)
+  &\implies \begin{pmatrix}
+    1 & 1 &  k &\vline & 2\\
+    0 & 1 &  2 - 3k &\vline & k - 6\\
+    0 & 2 & -1 - 2k &\vline & -3\\
+  \end{pmatrix}\\
+  \left(-1\right)(II) + (I) \to (I)
+  &\implies \begin{pmatrix}
+    1 & 0 &  - 2 + 4k &\vline & 8 - k\\
+    0 & 1 &    2 - 3k &\vline & k - 6\\
+    0 & 2 & -1 - 2k &\vline & -3\\
+  \end{pmatrix}\\
+  \left(-2\right)(II) + (III) \to (III)
+  &\implies \begin{pmatrix}
+    1 & 0 &  - 2 + 4k &\vline & 8 - k\\
+    0 & 1 &    2 - 3k &\vline & k - 6\\
+    0 & 0 &  - 3 + 4k &\vline & 9 - 2k\\
+  \end{pmatrix}\\
+\end{align*}
+
+\begin{align*}
+  S = \begin{cases}
+    x + y + kz = 2\\
+    3x + 4y + 2z = k\\
+    2x + 3y - z = 1
+  \end{cases} &\implies \begin{pmatrix}
+    1 & 1 &  k &\vline & 2\\
+    3 & 4 &  2 &\vline & k\\
+    2 & 3 & -1 &\vline & 1\\
+  \end{pmatrix}\\
+  (-3)(I) + (II) \to (II) &\implies
+  \begin{pmatrix}
+    1 & 1 &        k &\vline & 2\\
+    0 & 1 &  2 - 3k &\vline & k - 6\\
+    2 & 3 &      -1 &\vline & 1
+  \end{pmatrix} \\
+  (-2)(I) + (II) \to (III) &\implies
+  \begin{pmatrix}
+    1 & 1 &        k &\vline & 2\\
+    0 & 1 &  2 - 3k &\vline & k - 6\\
+    0 & 1 & -1 - 2k &\vline & -3
+  \end{pmatrix} \\
+  (-1)(II) + (I) \to (I) &\implies
+  \begin{pmatrix}
+    1 & 0 &  4k - 2 &\vline & 8 - k\\
+    0 & 1 &  2 - 3k &\vline & k - 6\\
+    0 & 1 & -1 - 2k &\vline & -3
+  \end{pmatrix} \\
+  (-1)(II) + (III) \to (III) &\implies
+  \begin{pmatrix}
+    1 & 0 &  4k - 2 &\vline & 8 - k\\
+    0 & 1 &  2 - 3k &\vline & k - 6\\
+    0 & 0 &   k - 3 &\vline & 3 - k
+  \end{pmatrix}
+\end{align*}
+
+\subsection{a}
+For an only solution we can try $k = 4$ as it get us in:
+\begin{align*}
+  \begin{pmatrix}
+    1 & 0 &  16 - 2 &\vline & 8 - 4\\
+    0 & 1 &  2 - 12 &\vline & 4 - 6\\
+    0 & 0 &   4 - 3 &\vline & 3 - 4
+  \end{pmatrix}\\
+  \begin{pmatrix}
+    1 & 0 &   14 &\vline & 4\\
+    0 & 1 &  -10 &\vline & -2\\
+    0 & 0 &   1 &\vline & -1
+  \end{pmatrix}\\
+  (10)(III) + (II) \to (II) &\implies
+  \begin{pmatrix}
+    1 & 0 &   14 &\vline & 4\\
+    0 & 1 &  0 &\vline & -12\\
+    0 & 0 &   1 &\vline & -1
+  \end{pmatrix}\\
+  (-14)(III) + (I) \to (I) &\implies
+  \begin{pmatrix}
+    1 & 0 &   0 &\vline & 18\\
+    0 & 1 &  0 &\vline & -12\\
+    0 & 0 &   1 &\vline & -1
+  \end{pmatrix}
+\end{align*}
+
+And the solution is trivial (from there)
+
+\subsection{b}
+
+For infinite solutions take $k = 3$
+\begin{align*}
+  \begin{pmatrix}
+    1 & 0 &  12 - 2 &\vline & 8 - 3\\
+    0 & 1 &  2 - 9 &\vline & 3 - 6\\
+    0 & 0 &   3 - 3 &\vline & 3 - 3
+  \end{pmatrix}\\
+  \begin{pmatrix}
+    1 & 0 &   10 &\vline & 5\\
+    0 & 1 &  -7 &\vline & -3\\
+    0 & 0 &   0 &\vline & 0
+  \end{pmatrix}\\
+\end{align*}
+
+Therefore,
+\begin{align*}
+  x + 10 y &= 5\\
+  y - 7  z &= -3\\
+  \implies x &= 5 - 10 y\\
+  \implies y &= y\\
+  \implies z &= \frac{3 + y}{7}\\
+\end{align*}
+
+\subsection{c}
+
+There is no possible k values such that this sistem does not have any solution. Particularly because the last row is consistent (meaning that there is no way to make the row of variables 0 and the result different to 0)
+\begin{align*}
+  \begin{pmatrix}
+    1 & 0 &  4k - 2 &\vline & 8 - k\\
+    0 & 1 &  2 - 3k &\vline & k - 6\\
+    0 & 0 &   k - 3 &\vline & 3 - k
+  \end{pmatrix}
+\end{align*}
+
+\section{P.11}
+\subsection{a}
+
+\begin{align*}
+  A &= \begin{pmatrix}
+    -2 & -1 &  1\\
+    5 &  3 & -1\\
+    3 &  1 & -3
+  \end{pmatrix} \\
+  (A|I) &\implies 
+  \begin{pmatrix}
+    -2 & -1 &  1 &\vline & 1 & 0 & 0\\
+    5 &  3 & -1 &\vline & 0 & 1 & 0\\
+    3 &  1 & -3 &\vline & 0 & 0 & 1
+  \end{pmatrix} \\
+  (I) \rightarrow -\frac{1}{2}(I) &\implies 
+  \begin{pmatrix}
+    1 & \frac{1}{2} & -\frac{1}{2} &\vline & -\frac{1}{2} & 0 & 0\\
+    5 &  3 & -1 &\vline & 0 & 1 & 0\\
+    3 &  1 & -3 &\vline & 0 & 0 & 1
+  \end{pmatrix} \\
+  (II) \rightarrow (II) - 5(I) &\implies 
+  \begin{pmatrix}
+    1 & \frac{1}{2} & -\frac{1}{2} &\vline & -\frac{1}{2} & 0 & 0\\
+    0 & \frac{1}{2} & \frac{3}{2} &\vline & \frac{5}{2} & 1 & 0\\
+    3 &  1 & -3 &\vline & 0 & 0 & 1
+  \end{pmatrix} \\
+  (III) \rightarrow (III) - 3(I) &\implies 
+  \begin{pmatrix}
+    1 & \frac{1}{2} & -\frac{1}{2} &\vline & -\frac{1}{2} & 0 & 0\\
+    0 & \frac{1}{2} & \frac{3}{2} &\vline & \frac{5}{2} & 1 & 0\\
+    0 & -\frac{1}{2} & -\frac{3}{2} &\vline & \frac{3}{2} & 0 & 1
+  \end{pmatrix} \\
+  (I) \rightarrow (I) - (II) &\implies 
+  \begin{pmatrix}
+    1 & 0 & -2 &\vline & -3 & -1 & 0\\
+    0 & \frac{1}{2} & \frac{3}{2} &\vline & \frac{5}{2} & 1 & 0\\
+    0 & -\frac{1}{2} & -\frac{3}{2} &\vline & \frac{3}{2} & 0 & 1
+  \end{pmatrix} \\
+  (III) \rightarrow (III) + (II) &\implies 
+  \begin{pmatrix}
+    1 & 0 & -2 &\vline & -3 & -1 & 0\\
+    0 & \frac{1}{2} & \frac{3}{2} &\vline & \frac{5}{2} & 1 & 0\\
+    0 & 0 & 0 &\vline & 4 & 1 & 1
+  \end{pmatrix} \\
+  (II) \rightarrow 2(II) &\implies 
+  \begin{pmatrix}
+    1 & 0 & -2 &\vline & -3 & -1 & 0\\
+    0 & 1 & 3 &\vline & 5 & 2 & 0\\
+    0 & 0 & 0 &\vline & 4 & 1 & 1
+  \end{pmatrix}
+\end{align*}
+
+\subsection{b}
+
+\begin{align*}
+  B &= \begin{pmatrix}
+    i & -1\\
+    1 + 2i & -3
+  \end{pmatrix} \\
+  (B|I) &= 
+  \begin{pmatrix}
+    i & -1 &\vline & 1 & 0\\
+    1 + 2i & -3 &\vline & 0 & 1
+  \end{pmatrix} \\
+  (I) \rightarrow (-i)(I) &\implies
+  \begin{pmatrix}
+    1 & i &\vline & -i & 0\\
+    1 + 2i & -3 &\vline & 0 & 1
+  \end{pmatrix} \\
+  (i) \rightarrow (-i)(i) &\implies
+  \begin{pmatrix}
+    1 & i &\vline & -i & 0\\
+    1 + 2i & -3 &\vline & 0 & 1
+  \end{pmatrix} \\
+  (II) \rightarrow (-1 - 2i)(I) + (II) &\implies
+  \begin{pmatrix}
+    1 & i &\vline & -i & 0\\
+    0 & (-i - 1) &\vline & (i - 2) & 1
+  \end{pmatrix} \\
+  (II) \rightarrow \left(\frac{-1 + i}{2}\right)(II) &\implies
+  \begin{pmatrix}
+    1 & i &\vline & -i & 0\\
+    0 & 1 &\vline & (\frac{1}{2} - \frac{3}{2}i) & \frac{-1 + i}{2}
+  \end{pmatrix} \\
+  (I) \rightarrow \left(-i\right)(II) + (I) &\implies
+  \begin{pmatrix}
+    1 & 0 &\vline & (-\frac{3}{2} - \frac{3i}{2}) & \frac{i + 1}{2}\\
+    0 & 1 &\vline & (\frac{1}{2} - \frac{3}{2}i) & \frac{-1 + i}{2}
+  \end{pmatrix} \\
+\end{align*}
+
+Check:
+\begin{align*}
+  \begin{pmatrix}
+    i & -1\\
+    1 + 2i & -3
+  \end{pmatrix}
+  \begin{pmatrix}
+    (-\frac{3}{2} - \frac{3i}{2}) & \frac{i + 1}{2}\\
+    (\frac{1}{2} - \frac{3}{2}i) & \frac{-1 + i}{2}
+  \end{pmatrix} =
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix} 
+\end{align*}
+
+\subsection{c}
+
+\begin{align*}
+  B &= \begin{pmatrix}
+     1 & 0 & 1\\
+    -1 & 3 & 1\\
+     0 & 1 & 1
+  \end{pmatrix} \\
+  (B|I) &\implies
+  \begin{pmatrix}
+    1 & 0 & 1 & \vline & 1 & 0 & 0\\
+   -1 & 3 & 1 & \vline & 0 & 1 & 0\\
+    0 & 1 & 1 & \vline & 0 & 0 & 1
+  \end{pmatrix} \\
+  (I) + (II) &\implies
+  \begin{pmatrix}
+    1 & 0 & 1 & \vline & 1 & 0 & 0\\
+    0 & 3 & 2 & \vline & 1 & 1 & 0\\
+    0 & 1 & 1 & \vline & 0 & 0 & 1
+  \end{pmatrix} \\
+  (II) \leftrightarrow (III) &\implies
+  \begin{pmatrix}
+    1 & 0 & 1 & \vline & 1 & 0 & 0\\
+    0 & 1 & 1 & \vline & 0 & 0 & 1\\
+    0 & 3 & 2 & \vline & 1 & 1 & 0
+  \end{pmatrix} \\
+  (-3)(II) + (III) &\implies
+  \begin{pmatrix}
+    1 & 0 & 1 & \vline & 1 & 0 & 0\\
+    0 & 1 & 1 & \vline & 0 & 0 & 1\\
+    0 & 0 & -1 & \vline & 1 & 1 & -3
+  \end{pmatrix} \\
+  (-1)(III) &\implies
+  \begin{pmatrix}
+    1 & 0 & 1 & \vline & 1 & 0 & 0\\
+    0 & 1 & 1 & \vline & 0 & 0 & 1\\
+    0 & 0 & 1 & \vline & -1 & -1 & 3
+  \end{pmatrix} \\
+  (-1)(III) + (II) &\implies
+  \begin{pmatrix}
+    1 & 0 & 1 & \vline & 1 & 0 & 0\\
+    0 & 1 & 0 & \vline & 1 & 1 & -2\\
+    0 & 0 & 1 & \vline & -1 & -1 & 3
+  \end{pmatrix} \\
+  (-1)(III) + (I) &\implies
+  \begin{pmatrix}
+    1 & 0 & 0 & \vline & 2 & 1 & -3\\
+    0 & 1 & 0 & \vline & 1 & 1 & -2\\
+    0 & 0 & 1 & \vline & -1 & -1 & 3
+  \end{pmatrix} \\
+\end{align*}
+
+Check:
+\begin{align*}
+  \begin{pmatrix}
+     1 & 0 & 1\\
+    -1 & 3 & 1\\
+     0 & 1 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    2 & 1 & -3\\
+    1 & 1 & -2\\
+    -1 & -1 & 3
+  \end{pmatrix} &= \begin{pmatrix}
+    2 - 1 & 1 - 1 & -3 + 3\\
+    -2 + 3 - 1 & -1 + 3 - 1 & 3 -6 + 3\\
+    1 - 1 & 1 - 1 & -2 + 3
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & 1
+  \end{pmatrix}
+\end{align*}
+
+\section{P.12}
+
+\begin{align*}
+  \begin{pmatrix}
+    2 & 3\\
+    3 & 4
+  \end{pmatrix} & \implies
+  \begin{pmatrix}
+    2 & 3 &\vline & 1 & 0\\
+    3 & 4 &\vline & 0 & 1
+  \end{pmatrix}\\
+  \frac{1}{2}(I) &\implies
+  \begin{pmatrix}
+    1 & \frac{3}{2} &\vline & \frac{1}{2} & 0\\
+    3 & 4 &\vline & 0 & 1
+  \end{pmatrix}\\
+  (-3)(I) + (II) &\implies
+  \begin{pmatrix}
+    1 & \frac{3}{2} &\vline & \frac{1}{2} & 0\\
+    0 & -\frac{1}{2} &\vline & -\frac{3}{2} & 1
+  \end{pmatrix}\\
+  (-2)(II) &\implies
+  \begin{pmatrix}
+    1 & \frac{3}{2} &\vline & \frac{1}{2} & 0\\
+    0 & 1 &\vline & 3 & -2
+  \end{pmatrix}\\
+  (-\frac{3}{2})(II) + (I) &\implies
+  \begin{pmatrix}
+    1 & 0 &\vline & -4 & 3\\
+    0 & 1 &\vline & 3 & -2
+  \end{pmatrix}\\
+\end{align*}
+
+Check:
+\begin{align*}
+  \begin{pmatrix}
+    -4 & 3\\
+    3 & -2
+  \end{pmatrix}
+  \begin{pmatrix}
+    2 & 3\\
+    3 & 4
+  \end{pmatrix}
+  &= \begin{pmatrix}
+    -8 + 9 & -12 + 12\\
+    6 - 6 & 9 - 8
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+\end{align*}
+
+\section{P.17}
+
+\begin{align*}
+  A = \begin{pmatrix}
+    -5 & 3 & 1 \\
+    0 & -1 & 2 \\
+    4 & -1 & -3 \end{pmatrix} &\implies \begin{pmatrix} -5 & 3 & 1 & \vline & 4 & 11\\
+    0 & -1 & 2 & \vline & 4 & -2\\
+    4 & -1 & -3 & \vline & -7 & -6
+  \end{pmatrix}\\
+  (-\frac{1}{5})(I) &\implies
+  \begin{pmatrix}
+    1 & -\frac{3}{5} & -\frac{1}{5} & \vline & -\frac{4}{5} & -\frac{11}{5}\\
+    0 & -1 & 2 & \vline & 4 & -2\\
+    4 & -1 & -3 & \vline & -7 & -6
+  \end{pmatrix}\\
+  (-4)(I) + (III) &\implies
+  \begin{pmatrix}
+    1 & -\frac{3}{5} & -\frac{1}{5} & \vline & -\frac{4}{5} & -\frac{11}{5}\\
+    0 & -1 & 2 & \vline & 4 & -2\\
+    0 & \frac{7}{5} & -\frac{11}{5} & \vline & -\frac{19}{5} & \frac{14}{5}
+  \end{pmatrix}\\
+  (-1)(II) &\implies
+  \begin{pmatrix}
+    1 & -\frac{3}{5} & -\frac{1}{5} & \vline & -\frac{4}{5} & -\frac{11}{5}\\
+    0 & 1 & -2 & \vline & -4 & 2\\
+    0 & \frac{7}{5} & -\frac{11}{5} & \vline & -\frac{19}{5} & \frac{14}{5}
+  \end{pmatrix}\\
+  (\frac{3}{5})(II) + (I) &\implies
+  \begin{pmatrix}
+    1 & 0 & -\frac{7}{5} & \vline & -\frac{16}{5} & -1\\
+    0 & 1 & -2 & \vline & -4 & 2\\
+    0 & \frac{7}{5} & -\frac{11}{5} & \vline & -\frac{19}{5} & \frac{14}{5}
+    (- \frac{7}{5})(II) + (III) &\implies
+  \end{pmatrix}\\
+  \begin{pmatrix}
+    1 & 0 & -\frac{7}{5} & \vline & -\frac{16}{5} & -1\\
+    0 & 1 & -2 & \vline & -4 & 2\\
+    0 & 0 & \frac{3}{5} & \vline & \frac{9}{5} & 0
+  \end{pmatrix}\\
+  (\frac{5}{3})(III) &\implies
+  \begin{pmatrix}
+    1 & 0 & -\frac{7}{5} & \vline & -\frac{16}{5} & -1\\
+    0 & 1 & -2 & \vline & -4 & 2\\
+    0 & 0 & 1 & \vline & 3 & 0
+  \end{pmatrix}\\
+  (2)(III) + (II) &\implies
+  \begin{pmatrix}
+    1 & 0 & -\frac{7}{5} & \vline & -\frac{16}{5} & -1\\
+    0 & 1 & 0 & \vline & 2 & 2\\
+    0 & 0 & 1 & \vline & 3 & 0
+  \end{pmatrix}\\
+  (\frac{7}{5})(III) + (I) &\implies
+  \begin{pmatrix}
+    1 & 0 & 0 & \vline & 1 & -1\\
+    0 & 1 & 0 & \vline & 2 & 2\\
+    0 & 0 & 1 & \vline & 3 & 0
+  \end{pmatrix}\\
+\end{align*}
+
+Verification:
+
+\begin{align*}
+  A \cdot B &= \begin{pmatrix}
+    -5 & 3 & 1 \\
+    0 & -1 & 2 \\
+    4 & -1 & -3
+  \end{pmatrix} \begin{pmatrix}
+    1 & -1\\
+    2 & 2\\
+    3 & 0
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    -5 + 6 + 3 & 5 + 6\\
+    -2 + 6 & -2\\
+    4 + -2 -9 & -4 -2\\
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    4 & 11\\
+    4 & -2\\
+    -7 & -6\\
+  \end{pmatrix}
+  \square
+\end{align*}
+
+
+
+\end{document}
