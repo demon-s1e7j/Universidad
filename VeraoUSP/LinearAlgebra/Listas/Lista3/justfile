@@ -2,6 +2,9 @@
 watch doc="Talleres.tex":
   echo {{doc}} | entr pdflatex {{doc}}
 
+build doc="Talleres.tex":
+  pdflatex {{doc}}
+
 # Open Evince with doc
 show doc="Talleres.pdf":
   evince {{doc}}
