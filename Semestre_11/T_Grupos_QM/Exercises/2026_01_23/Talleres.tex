@@ -1,0 +1,331 @@
+  \documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage[spanish]{babel}
+\usepackage{tikz}
+
+
+\newcommand{\class}{Teoria de Grupos para Mecanica Cuantica} % This is the name of the course 
+\newcommand{\examnum}{Ejercicio Clase 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+	\textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+	\textbf{\examnum} &&\\
+	\textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{Exercise 1.7}
+\subsection{symmetries}
+
+\subsubsection{$E$}
+
+\begin{tikzpicture}
+
+
+% Primer cuadrado (izquierda)
+\draw[line width=1pt] (0,0) rectangle (2,2);
+\draw (0,0) node[left] {A};
+\draw (0,2) node[left] {B};
+\draw (2,2) node[right] {C};
+\draw (2,0) node[right] {D};
+
+%\draw[line width = 1pt] (0, 0) -- (2, 2);
+
+% Segundo cuadrado (derecha)
+\draw[line width=1pt] (5,0) rectangle (7,2);
+\draw (5,0) node[left] {A};
+\draw (5,2) node[left] {B};
+\draw (7,2) node[right] {C};
+\draw (7,0) node[right] {D};
+
+% Flecha sin estilo -> (dibujamos la punta manualmente)
+\draw[line width=1pt] (3,1) -- (4.5,1);
+% Añadimos punta de flecha manualmente
+\fill (4.6,1) -- (4.3,0.9) -- (4.3,1.1) -- cycle;
+
+\end{tikzpicture}
+
+\subsubsection{$T_1$}
+\begin{tikzpicture}
+% Primer cuadrado (izquierda)
+\draw[line width=1pt] (0,0) rectangle (2,2);
+\draw (0,0) node[left] {A};
+\draw (0,2) node[left] {B};
+\draw (2,2) node[right] {C};
+\draw (2,0) node[right] {D};
+
+\draw[line width = 1pt] (-0.5, 1) -- (2.5, 1);
+
+% Segundo cuadrado (derecha)
+\draw[line width=1pt] (5,0) rectangle (7,2);
+\draw (5,0) node[left] {B};
+\draw (5,2) node[left] {A};
+\draw (7,2) node[right] {D};
+\draw (7,0) node[right] {C};
+
+% Flecha sin estilo -> (dibujamos la punta manualmente)
+\draw[line width=1pt] (3,1) -- (4.5,1);
+% Añadimos punta de flecha manualmente
+\fill (4.6,1) -- (4.3,0.9) -- (4.3,1.1) -- cycle;
+
+\end{tikzpicture}
+\subsubsection{$T_2$}
+
+\begin{tikzpicture}
+
+% Primer cuadrado (izquierda)
+\draw[line width=1pt] (0,0) rectangle (2,2);
+\draw (0,0) node[left] {A};
+\draw (0,2) node[left] {B};
+\draw (2,2) node[right] {C};
+\draw (2,0) node[right] {D};
+
+\draw[line width = 1pt] (1, 2.5) -- (1, -0.5);
+
+% Segundo cuadrado (derecha)
+\draw[line width=1pt] (5,0) rectangle (7,2);
+\draw (5,0) node[left] {D};
+\draw (5,2) node[left] {C};
+\draw (7,2) node[right] {B};
+\draw (7,0) node[right] {A};
+
+% Flecha sin estilo -> (dibujamos la punta manualmente)
+\draw[line width=1pt] (3,1) -- (4.5,1);
+% Añadimos punta de flecha manualmente
+\fill (4.6,1) -- (4.3,0.9) -- (4.3,1.1) -- cycle;
+
+\end{tikzpicture}
+
+\subsubsection{$D_1$}
+
+\begin{tikzpicture}
+
+% Primer cuadrado (izquierda)
+\draw[line width=1pt] (0,0) rectangle (2,2);
+\draw (0,0) node[left] {A};
+\draw (0,2) node[left] {B};
+\draw (2,2) node[right] {C};
+\draw (2,0) node[right] {D};
+
+\draw[line width = 1pt] (0, 0) -- (2, 2);
+
+% Segundo cuadrado (derecha)
+\draw[line width=1pt] (5,0) rectangle (7,2);
+\draw (5,0) node[left] {A};
+\draw (5,2) node[left] {D};
+\draw (7,2) node[right] {C};
+\draw (7,0) node[right] {B};
+
+% Flecha sin estilo -> (dibujamos la punta manualmente)
+\draw[line width=1pt] (3,1) -- (4.5,1);
+% Añadimos punta de flecha manualmente
+\fill (4.6,1) -- (4.3,0.9) -- (4.3,1.1) -- cycle;
+
+\end{tikzpicture}
+
+\subsubsection{$D_2$}
+
+\begin{tikzpicture}
+
+% Primer cuadrado (izquierda)
+\draw[line width=1pt] (0,0) rectangle (2,2);
+\draw (0,0) node[left] {A};
+\draw (0,2) node[left] {B};
+\draw (2,2) node[right] {C};
+\draw (2,0) node[right] {D};
+
+\draw[line width = 1pt] (0, 2) -- (2, 0);
+
+% Segundo cuadrado (derecha)
+\draw[line width=1pt] (5,0) rectangle (7,2);
+\draw (5,0) node[left] {C};
+\draw (5,2) node[left] {B};
+\draw (7,2) node[right] {A};
+\draw (7,0) node[right] {D};
+
+% Flecha sin estilo -> (dibujamos la punta manualmente)
+\draw[line width=1pt] (3,1) -- (4.5,1);
+% Añadimos punta de flecha manualmente
+\fill (4.6,1) -- (4.3,0.9) -- (4.3,1.1) -- cycle;
+
+\end{tikzpicture}
+
+\subsubsection{$R_1$}
+
+\begin{tikzpicture}
+
+% Primer cuadrado (izquierda)
+\draw[line width=1pt] (0,0) rectangle (2,2);
+\draw (0,0) node[left] {A};
+\draw (0,2) node[left] {B};
+\draw (2,2) node[right] {C};
+\draw (2,0) node[right] {D};
+
+% Flecha curva para rotación
+\draw[thick] (1.5,1) arc (0:280:0.5);
+% Cabeza de flecha
+\fill (1.1, 0.4) -- (1.2, 0.6 ) -- (1, 0.6) -- cycle;
+\draw (1.5, 1) node[left] {$90^{\circ}$};
+
+% Segundo cuadrado (derecha)
+\draw[line width=1pt] (5,0) rectangle (7,2);
+\draw (5,0) node[left] {B};
+\draw (5,2) node[left] {C};
+\draw (7,2) node[right] {D};
+\draw (7,0) node[right] {A};
+
+% Flecha sin estilo -> (dibujamos la punta manualmente)
+\draw[line width=1pt] (3,1) -- (4.5,1);
+% Añadimos punta de flecha manualmente
+\fill (4.6,1) -- (4.3,0.9) -- (4.3,1.1) -- cycle;
+
+\end{tikzpicture}
+
+\subsubsection{$R_2$}
+
+\begin{tikzpicture}
+
+% Primer cuadrado (izquierda)
+\draw[line width=1pt] (0,0) rectangle (2,2);
+\draw (0,0) node[left] {A};
+\draw (0,2) node[left] {B};
+\draw (2,2) node[right] {C};
+\draw (2,0) node[right] {D};
+
+% Flecha curva para rotación
+\draw[thick] (1.5,1) arc (0:280:0.5);
+% Cabeza de flecha
+\fill (1.1, 0.4) -- (1.2, 0.6 ) -- (1, 0.6) -- cycle;
+\draw (1.5, 1) node[left] {$180^{\circ}$};
+
+% Segundo cuadrado (derecha)
+\draw[line width=1pt] (5,0) rectangle (7,2);
+\draw (5,0) node[left] {C};
+\draw (5,2) node[left] {D};
+\draw (7,2) node[right] {A};
+\draw (7,0) node[right] {B};
+
+% Flecha sin estilo -> (dibujamos la punta manualmente)
+\draw[line width=1pt] (3,1) -- (4.5,1);
+% Añadimos punta de flecha manualmente
+\fill (4.6,1) -- (4.3,0.9) -- (4.3,1.1) -- cycle;
+
+\end{tikzpicture}
+
+\subsubsection{$R_3$}
+
+\begin{tikzpicture}
+
+% Primer cuadrado (izquierda)
+\draw[line width=1pt] (0,0) rectangle (2,2);
+\draw (0,0) node[left] {A};
+\draw (0,2) node[left] {B};
+\draw (2,2) node[right] {C};
+\draw (2,0) node[right] {D};
+
+% Flecha curva para rotación
+\draw[thick] (1.5,1) arc (0:280:0.5);
+% Cabeza de flecha
+\fill (1.1, 0.4) -- (1.2, 0.6 ) -- (1, 0.6) -- cycle;
+\draw (1.5, 1) node[left] {$270^{\circ}$};
+
+% Segundo cuadrado (derecha)
+\draw[line width=1pt] (5,0) rectangle (7,2);
+\draw (5,0) node[left] {D};
+\draw (5,2) node[left] {A};
+\draw (7,2) node[right] {B};
+\draw (7,0) node[right] {C};
+
+% Flecha sin estilo -> (dibujamos la punta manualmente)
+\draw[line width=1pt] (3,1) -- (4.5,1);
+% Añadimos punta de flecha manualmente
+\fill (4.6,1) -- (4.3,0.9) -- (4.3,1.1) -- cycle;
+
+\end{tikzpicture}
+
+\subsection{Order}
+
+The order (as you can count) is 8
+
+\subsection{Multiplication Table}
+
+\begin{tabular}{c|cccccccc}  % 9 columnas centradas
+   & $E$ & $T_1$ & $T_2$ & $D_1$ & $D_2$ & $R_1$ & $R_2$ & $R_3$\\
+   \hline
+ $E$ & $E$ & $T_1$ & $T_2$ & $D_1$ & $D_2$ & $R_1$ & $R_2$ & $R_3$\\
+ $T_1$ & $T_1$ & $E$ & $R_2$ & $R_3$ & $R_1$ & $D_2$ & $T_2$ & $D_1$\\
+ $T_2$ & $T_2$ & $R_2$ & $E$ & $R_1$ & $R_3$ & $D_1$ & $T_1$ & $D_2$\\
+ $D_1$ & $D_1$ & $R_1$ & $R_3$ & $E$ & $R_2$ & $T_1$ & $D_2$ & $T_2$\\
+ $D_2$ & $D_2$ & $R_3$ & $R_1$ & $R_2$ & $E$ & $T_2$ & $D_1$ & $T_1$\\
+ $R_1$ & $R_1$ & $D_1$ & $D_2$ & $T_2$ & $T_1$ & $R_2$ & $R_3$ & $E$\\
+ $R_2$ & $R_2$ & $T_2$ & $T_1$ & $D_2$ & $D_1$ & $R_3$ & $E$ & $R_1$\\
+ $R_3$ & $R_3$ & $D_2$ & $D_1$ & $T_1$ & $T_2$ & $E$ & $R_1$ & $R_2$
+\end{tabular}
+
+\subsection{Subgroups}
+
+\begin{tikzpicture}
+
+% Primer cuadrado (izquierda)
+\draw (1.5,0) node[left] {$\{E, T_1, T_2, D_1, D_2, R_1, R_2, R_3\}$};
+
+\draw (-5,-3) node[left] {$\{E, D_1, D_2, R_2\}$};
+\draw (0,-3) node[left] {$\{E, R_1, R_2, R_3\}$};
+\draw (5,-3) node[left] {$\{E, T_1, T_2, R_2\}$};
+
+\draw (-1.5, -0.5) -- (-6, -2.5) ;
+\draw (-1.5, -0.5) -- (-1.5, -2.5) ;
+\draw (-1.5, -0.5) -- (3.5, -2.5) ;
+
+\draw (-5.5,-6) node[left] {$\{E, D_1\}$};
+\draw (-3,-6) node[left] {$\{E, D_2\}$};
+\draw (-0.5,-6) node[left] {$\{E, R_2\}$};
+\draw (2,-6) node[left] {$\{E, T_1\}$};
+\draw (5,-6) node[left] {$\{E, T_2\}$};
+
+\draw (-1.5, -5.5) -- (-1.5, -3.5) ;
+\draw (-1.5, -5.5) -- (-7, -3.5) ;
+\draw (-4, -5.5) -- (-7, -3.5);
+\draw (-6.5, -5.5) -- (-7, -3.5);
+\draw (-1.5, -5.5) -- (4.5, -3.5) ;
+\draw (1, -5.5) -- (4.5, -3.5);
+\draw (4, -5.5) -- (4.5, -3.5);
+
+\draw (-0.85,-8) node[left] {$\{E\}$};
+
+\draw (-1.5, -6.5) -- (-1.45, -7.5) ;
+\draw (-1.5, -6.5) -- (-1.45, -7.5) ;
+\draw (-4, -6.5) -- (-1.45, -7.5);
+\draw (-6.5, -6.5) -- (-1.45, -7.5);
+\draw (-1.5, -6.5) -- (-1.45, -7.5) ;
+\draw (1, -6.5) -- (-1.45, -7.5);
+\draw (4, -6.5) -- (-1.45, -7.5);
+
+\end{tikzpicture}
+
+
+
+\end{document}

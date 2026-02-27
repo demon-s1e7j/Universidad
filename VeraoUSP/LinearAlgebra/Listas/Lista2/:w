@@ -1,0 +1,79 @@
+\documentclass[5pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Linear Algebra} % This is the name of the course 
+\newcommand{\examnum}{Lista 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+  \textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+  \textbf{\examnum} &&\\
+  \textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{P.4}
+\subsection{b}
+Let W be a subset of $\mathbb{F}^3$, with $\mathbb{F}$ being $\mathbb{R}$ or $\mathbb{C}$, caracterized by
+\begin{equation}
+  W = \{(x, y, z) \in \mathbb{F}^3 | x \in \mathbb{Z}\}
+\end{equation}
+
+then $W$ is not a sub-space of $\mathbb{F}^3$ because there exists a vector $v = (1, 0, 0)$ and a number (i.e. $\pi$) such that $v \in W$ but $\pi v = (\pi, 0, 0) \notin W$
+
+\subsection{c}
+
+considering that the polinom 0 has $grau(0) < 2$ then the subset
+\begin{equation}
+  W = \{p(t) \in P_n(\mathbb{F}) | grau(p) \ge 2\}
+\end{equation}
+
+\section{P.5}
+\subsection{a}
+\subsection{b}
+
+\section{P.9}
+
+\section{P.12}
+
+\section{P.14}
+
+\section{P.21}
+
+\section{P.23}
+\subsection{c}
+\subsection{d}
+
+\section{P.27}
+
+\section{P.34}
+
+\end{document}

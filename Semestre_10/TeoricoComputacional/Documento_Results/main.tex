@@ -1,0 +1,98 @@
+\documentclass[a4paper, amsfonts, amssymb, amsmath, reprint, showkeys, nofootinbib, twoside]{revtex4-1}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage[colorinlistoftodos, color=green!40, prependcaption]{todonotes}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[left=23mm,right=13mm,top=35mm,columnsep=15pt]{geometry} 
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{csquotes}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage[pdftex, pdftitle={Article}, pdfauthor={Author}]{hyperref} % For hyperlinks in the PDF
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{siunitx}
+%\setlength{\marginparwidth}{2.5cm}
+\bibliographystyle{aasjournal}
+
+\begin{document}
+
+%El título del experimento realizado es importante.
+\title{Anchos Equivalentes para el Hierro: Una lección de humildad y una muestra de trabajo necesario}
+
+
+\author{Sergio Montoya Ramirez}
+\email[Correo institucional: ]{s.montoyar2@uniandes.edu.co}
+
+%Si necesitan poner un segundo autor, deben eliminar los porcentajes (%) iniciales.
+  
+%\author{Second Author}
+%\email{Second.Author@institution.edu}
+
+\affiliation{Universidad de los Andes, Bogotá, Colombia.}
+
+\date{\today} % Si lo dejan vacío no les saldrá fecha. La fecha que se muestra es del día en que se compila.
+
+\begin{abstract}
+
+Este trabajo constituye un ejercicio de honestidad intelectual en el que se identifican y analizan críticamente las deficiencias de una calculadora de anchos equivalentes desarrollada previamente, aplicándola al caso específico de las líneas de hierro en el espectro solar. Se detalla la metodología empleada, que incluyó la conversión de longitudes de onda de aire a vacío y la implementación de dos métodos de cálculo (rango fijo y detección automática de límites). El artículo enumera y discute errores fundamentales en el diseño inicial, como la omisión de la consideración del medio óptico, la falta de gestión de errores en la detección y la delegación no trivial de la identificación de mínimos al usuario. Como solución, se propone rediseñar la herramienta con un módulo de preprocesado más robusto y flexible. Los resultados reportan los anchos equivalentes para 621 líneas, con un valor promedio de 0.083 nm, y revelan una correlación moderada (0.61) entre ambos métodos de medición, lo que evidencia diferencias sistemáticas y resalta el impacto de la metodología elegida en los resultados finales.
+  %En este se describen brevemente los objetivos y los resultados del trabajo, por lo tanto se debe dar información completa pero corta del contenido del trabajo. Se debe indicar qué fue lo que se hizo, cómo se hizo y cuáles fueron los resultados obtenidos de forma EXPLÍCITA. Por ejemplo: se obtuvo un valor para la constante de Planck de $h=(5.9\pm 0.5)\times 10^{-34}\,\text{J s}$ \footnote{Utilizar esta forma para reportar los datos, note que las unidades están en un cuadro de texto. TODO debe llevar unidades e incertidumbre, siempre.}. A lo largo de todo el informe por favor utilizar el diccionario de overleaf. Tener ideas claras y concisas de lo que se hizo y de los resultados obtenidos. Que genere interés en leer el resto del artículo. El informe, que está en formato de artículo científico debe ser auto-contenido. Un lector que no haya ido al laboratorio, o que no sepa del experimento debe ser capaz de leerlo y entender todo lo que allí de plantea.
+
+\end{abstract}
+
+\maketitle
+
+\section{Introducción}
+
+Durante los cálculos de anchos equivalentes de las líneas de hierro, siguiendo los lineamientos dados por el profesor Benjamin, encontré múltiples deficiencias en la lógica respecto a la calculadora general implementada durante este semestre. Este trabajo es un ejercicio de honestidad intelectual en el que reconozco los errores cometidos durante el desarrollo, explico la manera en que se podrían solucionar y reporto los resultados de los anchos equivalentes del hierro en el Sol.
+
+\section{Metodología} \label{sec:metod}
+
+Para calcular los anchos equivalentes solicitados, el primer paso consistía en identificar las líneas de interés. En este caso, dicho paso se simplificó porque el profesor me proporcionó una lista de líneas de hierro. Normalmente, este proceso se realiza revisando la literatura. En nuestro caso, trabajábamos con líneas en el vacío, lo que supuso el primer reto: los datos reportados en \cite{vizier:J/A+A/587/A65} estaban en aire. Por lo tanto, el primer paso fue convertir de un medio a otro y luego localizar los picos más cercanos. Para ello, se utilizó la fórmula de Donald Morton, que puede consultarse en \cite{vald_air_to_vacuum_conversion}. Posteriormente, al comparar con los espectros, se observó que los puntos no coincidían exactamente con mínimos, por lo que se implementó una búsqueda para encontrar el mínimo más cercano. Una vez establecido este procedimiento, se calcularon los anchos equivalentes de dos maneras: primero, con un rango fijo de 2 nanómetros; además, se desarrolló un método de detección que busca los límites a izquierda y derecha de cada línea hasta determinar los anchos equivalentes. Finalmente, se almacenaron ambos resultados.
+
+\section{Errores}
+
+Como una de las secciones clave que debe cubrir este documento es el compendio de errores y mejoras en la lógica base de la implementación, este apartado no es una mera recapitulación de bugs, sino una mirada crítica a las suposiciones básicas —o la falta de ellas— en el desarrollo de la calculadora, que impidieron su uso en este caso concreto. Esto surge al analizar el desarrollo descrito en la sección de metodología (\ref{sec:metod}).
+
+\subsection{No se consideraron los medios}
+
+Una consideración relevante al trabajar con espectros es el medio en el que se obtienen. Durante el desarrollo de la aplicación, asumí que lo más práctico era dejar la conversión entre medios al usuario final. Esta decisión se tomó bajo el supuesto de que sería más fácil que el usuario comprendiera el contexto y pudiera ajustarlo. Sin embargo, la corrección terminó requiriendo el uso explícito del espectro, lo que implica que el usuario debía acceder directamente a los datos y, por tanto, la herramienta simplificaba muy poco el proceso. Aunque es posible automatizar esta conversión (como ya se hizo para el hierro), esto añadiría pasos adicionales al usuario y reduciría el control que actualmente tiene mediante el código explícito.
+
+\subsection{No se consideraron los errores de detección}
+
+Existen múltiples factores que hacen que la detección no sea perfecta. Sería conveniente aplicar varias técnicas en una sola ejecución, de modo que la información se calcule más rápidamente y se disponga de diferentes fuentes para contrastar resultados.
+
+\subsection{La detección de mínimos no es trivial}
+
+Detectar picos no es un problema trivial, y esta tarea se delegó al usuario final. En consecuencia, el usuario debe realizar numerosas pruebas para identificar mínimos locales, lo que hace que este enfoque no sea eficiente.
+
+\section{Posibles Soluciones}
+
+Una aplicación mas completa deberia trabajar con permitirle bastante mas flexibilidad al usuario a la hora de cargar la información. Es posible que exista una ventaja considerable a la hora de crear un modulo de preprocesado que permita encontrar los minimos, visualizar ejemplos, encontrar los puntos que mas se separan de la recta propuesta. Esto requeriria un cambio en la infrastructura de la aplicación, ocasionando que probablemente tkinter no sea la opción correcta para solucionar estos problemas (particularmente por si dificultad para graficar tablas).
+
+\section{Resultados}
+
+El análisis espectral ha identificado un total de 621 líneas de absorción o emisión. Los primeros datos muestran que los anchos equivalentes (EW) medidos con el método de ancho fijo para las primeras 10 líneas oscilan entre aproximadamente 0.12 y 0.28 nanómetros (nm), indicando una moderada profundidad o intensidad en estas características espectrales específicas. Estadísticamente, para todas las líneas, el EW promedio es de 0.083 nm, con un rango que va desde líneas muy débiles (0.00125 nm) hasta las más prominentes (0.44 nm). La desviación estándar de 0.075 nm refleja una variabilidad significativa en la intensidad de las líneas a lo largo del espectro. Al comparar los dos métodos de medición (ancho fijo y automático), se observa una correlación moderada (0.61), lo que sugiere que, aunque siguen tendencias similares, existen diferencias sistemáticas o de sensibilidad entre ellos, confirmadas por una diferencia media de 0.062 nm en las mediciones. Esto implica que la elección del método puede influir en los valores absolutos obtenidos, especialmente para líneas débiles. Puede observar una comparación entre ambos metodos en la grafica \ref{fig:comparacion} Los resultados concretos los puede encontrar en un documento adjunto a este.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.45\textwidth]{./resultados.png}
+  \caption{Comparación entre los dos metodos, con esto se puede ver como el calculo con detección automatica suele tender a ser mas bajo que el calculo con ancho fijo (pues a de considerar menos puntos al detectar que la curva termina ahi).}
+\label{fig:comparacion}
+\end{figure}
+
+\bibliography{referencias}
+
+\end{document}

@@ -1,0 +1,775 @@
+\documentclass[5pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\newcommand{\class}{Linear Algebra} % This is the name of the course 
+\newcommand{\examnum}{Lista 1} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+  \textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+  \textbf{\examnum} &&\\
+  \textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{P.4}
+\subsection{b}
+Let $W$ be a subset of $\mathbb{F}^3$, with $\mathbb{F}$ being $\mathbb{R}$ or $\mathbb{C}$, caracterized by
+\begin{equation}
+  W = \{(x, y, z) \in \mathbb{F}^3 | x \in \mathbb{Z}\}
+\end{equation}
+
+then $W$ is not a sub-space of $\mathbb{F}^3$ because there exists a vector $v = (1, 0, 0)$ and a number (i.e. $\pi$) such that $v \in W$ but $\pi v = (\pi, 0, 0) \notin W$
+
+\subsection{c}
+
+considering that the polinom 0 has $grau(0) < 2$ then the subset
+\begin{equation}
+  W = \{p(t) \in P_n(\mathbb{F}) | grau(p) \ge 2\}
+\end{equation}
+
+cannot be a subspace of $P(\mathbb{F})$
+
+\section{P.5}
+\subsection{a}
+
+Let $W$ be a subset of $M(n, \mathbb{F})$, with $\mathbb{F}$ being $\mathbb{R}$ or $\mathbb{C}$, caracterized by
+\begin{equation}
+  W = \left\{A \in M(n, \mathbb{F})| tr(A) = \sum_{i = 1}^n a_{ii} = 0\right\}
+\end{equation}.
+
+Then we can assert
+\begin{equation}
+  \forall A_1, A_2 \in W, \forall \alpha \in \mathbb{F} : tr(\alpha A_1) = 0 \land tr(A_1 + A_2) = 0
+\end{equation}.
+
+Let $A_1, A_2 \in W$ and $\alpha \in \mathbb{F}$. Then
+\begin{align*}
+  tr(\alpha A_1) = \sum_{i = 1}^n \alpha a_{ii} = \alpha \sum_{i = 1}^n a_{ii} = \alpha tr(A) = \alpha 0 = 0
+\end{align*}
+
+And
+\begin{align*}
+  tr(A_1 + A_2) = \sum_{i = 1}^n a^1_{ii} + a^2_{ii} = \left(\sum_{i = 1}^n a^1_{ii}\right) +  \left(\sum_{i = 1} a^2_{ii}\right) = tr(A_1) + tr(A_2) = 0 + 0 = 0
+\end{align*}
+
+therefore, $W$ is a subspace of $M(n, \mathbb{F})$
+
+\subsection{b}
+
+Let $W$ be a subset of $M(n, \mathbb{F})$, with $\mathbb{F}$ being $\mathbb{R}$ or $\mathbb{C}$, caracterized by
+\begin{equation}
+  W = \left\{A \in M(n, \mathbb{F})| \det(A) = 0\right\}
+\end{equation}.
+
+We can proof that $W$ is not a subspace of $M(n, \mathbb{F})$ by providing two matrixes $M_1, M_2$ that have $\det(M_i) = 0$ but $M_1 + M_2 \neq 0$. Let's take an $n > 1$ (because $n \le 1$ would have this subspace just because the only posible matrix with $\det(M) = 0$ is $(0)$) and take the matrix with only ones in the diagonal except for $a_{nn}$ and the matrix with all $0$ except in the element $a_nn$. You can see that
+\begin{align*}
+  \begin{pmatrix}
+    1 & \ldots & 0\\
+    \vdots & \ddots & \vdots\\
+    0 & \ldots & 0
+  \end{pmatrix} +
+  \begin{pmatrix}
+    0 & \ldots & 0\\
+    \vdots & \ddots & \vdots\\
+    0 & \ldots & 1
+  \end{pmatrix} = 
+  \begin{pmatrix}
+    1 & \ldots & 0\\
+    \vdots & \ddots & \vdots\\
+    0 & \ldots & 1
+  \end{pmatrix}
+\end{align*}
+
+Now you get the identity matrix, and therefore $\det(I) \neq 0$ so it can not be a subspace.
+
+\section{P.9}
+
+\subsection{a}
+
+\begin{align*}
+  &\implies \begin{pmatrix}
+  1 & 1 & 1 & 1 & -1 & \vline & 0\\
+  1 & -1 & -1 & 2 & -1 & \vline & 0
+  \end{pmatrix}\\
+  (-1)(I) + (II) &\implies \begin{pmatrix}
+  1 & 1 & 1 & 1 & -1 & \vline & 0\\
+  0 & -2 & -2 & 1 & 0 & \vline & 0
+  \end{pmatrix}\\
+  (-\frac{1}{2})(II) &\implies \begin{pmatrix}
+  1 & 1 & 1 & 1 & -1 & \vline & 0\\
+  0 & 1 & 1 & -\frac{1}{2} & 0 & \vline & 0
+  \end{pmatrix}\\
+  (-1)(II) + (I) &\implies \begin{pmatrix}
+  1 & 0 & 0 & \frac{3}{2} & -1 & \vline & 0\\
+  0 & 1 & 1 & -\frac{1}{2} & 0 & \vline & 0
+  \end{pmatrix}\\
+  &\begin{cases}
+    x + \frac{3}{2}w - z = 0\\
+    y + z - \frac{w}{2} = 0
+  \end{cases}\\
+  &\begin{cases}
+    x = - \frac{3}{2}w + z\\
+    y = - z + \frac{w}{2}
+  \end{cases}\\
+  &\left\{\left(- \frac{3}{2}w + z, -z + \frac{w}{2}, z, w, 0\right)\vline w, z \in \mathbb{F}\right\}\\
+  &\left[\left(-\frac{3}{2}, \frac{1}{2}, 0, 1, 0\right), \left(1, -1, 1, 0, 0\right)\right]\\
+  &\dim\left(\left[\left(-\frac{3}{2}, \frac{1}{2}, 0, 1, 0\right), \left(1, -1, 1, 0, 0\right)\right]\right) = 2
+\end{align*}
+
+\subsection{b}
+
+\begin{align*}
+  &\implies \begin{pmatrix}
+    4 & 3 & - 1 & 1 & \vline & 0\\
+    1 & -1 & 2 & -1 & \vline & 0
+  \end{pmatrix}\\
+  &\implies \begin{pmatrix}
+    1 & -1 & 2 & -1 & \vline & 0\\
+    4 & 3 & - 1 & 1 & \vline & 0
+  \end{pmatrix}\\
+  &\implies \begin{pmatrix}
+    1 & -1 & 2 & -1 & \vline & 0\\
+    0 & 7 & -9 & 5 & \vline & 0
+  \end{pmatrix}\\
+  &\implies \begin{pmatrix}
+    1 & -1 & 2 & -1 & \vline & 0\\
+    0 & 1 & -\frac{9}{7} & \frac{5}{7} & \vline & 0
+  \end{pmatrix}\\
+  & \implies
+  \begin{cases}
+    x - y + 2 z - t = 0\\
+    y - \frac{9}{7}z + \frac{5}{7} t = 0
+  \end{cases}\\
+  & \implies
+  \begin{cases}
+    x - y + 2 z - t = 0\\
+    y = \frac{9}{7}z - \frac{5}{7} t
+  \end{cases}\\
+  & \implies
+  \begin{cases}
+    x - \frac{9}{7} z + \frac{5}{7} t + 2 z - t = 0\\
+    y = \frac{9}{7}z - \frac{5}{7} t
+  \end{cases}\\
+  & \implies
+  \begin{cases}
+    x = - \frac{5}{7} z + \frac{2}{7} t\\
+    y = \frac{9}{7}z - \frac{5}{7} t
+  \end{cases}\\
+  & \implies
+  \left\{(-\frac{5}{7} z + \frac{2}{7} t, \frac{9}{7} z - \frac{5}{7} t, z, t) \vline z, t \in \mathbb{R}\right\}\\
+  & \implies
+  \left[\left(-\frac{5}{7}, \frac{9}{7}, 1, 0\right),  \left(\frac{2}{7}, -\frac{5}{7}, 0, 1\right)\right]\\
+  & \implies
+  \dim\left(\left[\left(-\frac{5}{7}, \frac{9}{7}, 1, 0\right),  \left(\frac{2}{7}, -\frac{5}{7}, 0, 1\right)\right]\right) = 2
+\end{align*}
+
+\section{P.12}
+
+\begin{align*}
+  S &\implies \begin{pmatrix}
+    3 & 0 & 2 & 0 & \vline & 0\\
+    -6 & 3 & -1 & -1 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    9 & -3 & 3 & 1 & \vline & 0\\
+    -9 & 5 & -1 & 1 & \vline & 0
+  \end{pmatrix}\\
+  (\frac{1}{3})(I) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    -6 & 3 & -1 & -1 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    9 & -3 & 3 & 1 & \vline & 0\\
+    -9 & 5 & -1 & 1 & \vline & 0
+  \end{pmatrix}\\
+  ((6)(I) + (II)) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    0 & 3 & 3 & -1 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    9 & -3 & 3 & 1 & \vline & 0\\
+    -9 & 5 & -1 & 1 & \vline & 0
+  \end{pmatrix}\\
+\end{align*}
+\begin{align*}
+  ((-9)(I) + (IV)) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    0 & 3 & 3 & -1 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    0 & -3 & -3 & 1 & \vline & 0\\
+    -9 & 5 & -1 & 1 & \vline & 0
+  \end{pmatrix}\\
+  ((9)(I) + (V)) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    0 & 3 & 3 & -1 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    0 & -3 & -3 & 1 & \vline & 0\\
+    0 & 5 & 5 & 1 & \vline & 0
+  \end{pmatrix}\\
+  ((III) \leftrightarrow (II)) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    0 & 3 & 3 & -1 & \vline & 0\\
+    0 & -3 & -3 & 1 & \vline & 0\\
+    0 & 5 & 5 & 1 & \vline & 0
+  \end{pmatrix}\\
+  ((III) + (IV)) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    0 & 3 & 3 & -1 & \vline & 0\\
+    0 & 0 & 0 & 0 & \vline & 0\\
+    0 & 5 & 5 & 1 & \vline & 0
+  \end{pmatrix}\\
+  ((-3)(II) + (III)) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    0 & 0 & 0 & -4 & \vline & 0\\
+    0 & 0 & 0 & 0 & \vline & 0\\
+    0 & 5 & 5 & 1 & \vline & 0
+  \end{pmatrix}\\
+  ((-5)(II) + (V)) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    0 & 0 & 0 & -4 & \vline & 0\\
+    0 & 0 & 0 & 0 & \vline & 0\\
+    0 & 0 & 0 & -4 & \vline & 0
+  \end{pmatrix}\\
+  ((-1)(III) + (V)) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    0 & 0 & 0 & -4 & \vline & 0\\
+    0 & 0 & 0 & 0 & \vline & 0\\
+    0 & 0 & 0 & 0 & \vline & 0
+  \end{pmatrix}\\
+  ((-\frac{1}{4})(III) + (V)) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    0 & 1 & 1 & 1 & \vline & 0\\
+    0 & 0 & 0 & -4 & \vline & 0\\
+    0 & 0 & 0 & 0 & \vline & 0\\
+    0 & 0 & 0 & 0 & \vline & 0
+  \end{pmatrix}\\
+  ((-1)(III) + (II)) &\implies \begin{pmatrix}
+    1 & 0 & \frac{2}{3} & 0 & \vline & 0\\
+    0 & 1 & 1 & 0 & \vline & 0\\
+    0 & 0 & 0 & 1 & \vline & 0\\
+    0 & 0 & 0 & 0 & \vline & 0\\
+    0 & 0 & 0 & 0 & \vline & 0
+  \end{pmatrix}\\
+\end{align*}
+
+With this we demonstrate that this subspace has dimention 3.
+
+\begin{align*}
+  \begin{cases}
+    x = 12
+    y = 7
+    \frac{2}{3} x + y = 15
+    z = 7
+  \end{cases}
+\end{align*}
+
+As you can see this equations area already solved and it actually works!
+
+\section{P.14}
+
+\subsection{a}
+
+\begin{align*}
+  W_1 \cap W_2 &= \left\{(x, y, z, t) \in \mathbb{R}^4 \vline x + y = 0; z - t = 0; x - y -z + t = 0\right\}\\
+  W_1 \cap W_2 &\implies \begin{pmatrix}
+    1 & 1 & 0 & 0 & \vline & 0\\
+    0 & 0 & 1 & -1 & \vline & 0\\
+    1 & -1 & -1 & 1 & \vline & 0
+  \end{pmatrix}\\
+  (-1)(I) + (III) &\implies \begin{pmatrix}
+    1 & 1 & 0 & 0 & \vline & 0\\
+    0 & 0 & 1 & -1 & \vline & 0\\
+    0 & -2 & -1 & 1 & \vline & 0
+  \end{pmatrix}\\
+  (II) \leftrightarrow (III) &\implies \begin{pmatrix}
+    1 & 1 & 0 & 0 & \vline & 0\\
+    0 & -2 & -1 & 1 & \vline & 0\\
+    0 & 0 & 1 & -1 & \vline & 0
+  \end{pmatrix}\\
+  (-\frac{1}{2})(II) &\implies \begin{pmatrix}
+    1 & 1 & 0 & 0 & \vline & 0\\
+    0 & 1 & \frac{1}{2} & -\frac{1}{2} & \vline & 0\\
+    0 & 0 & 1 & -1 & \vline & 0
+  \end{pmatrix}\\
+  (-1)(II) + (I) &\implies \begin{pmatrix}
+    1 & 0 & -\frac{1}{2} & \frac{1}{2} & \vline & 0\\
+    0 & 1 & \frac{1}{2} & -\frac{1}{2} & \vline & 0\\
+    0 & 0 & 1 & -1 & \vline & 0
+  \end{pmatrix}\\
+  (-\frac{1}{2})(III) + (II) &\implies \begin{pmatrix}
+    1 & 0 & -\frac{1}{2} & \frac{1}{2} & \vline & 0\\
+    0 & 1 & 0 & 0 & \vline & 0\\
+    0 & 0 & 1 & -1 & \vline & 0
+  \end{pmatrix}\\
+  (\frac{1}{2})(III) + (I) &\implies \begin{pmatrix}
+    1 & 0 & 0 & 0 & \vline & 0\\
+    0 & 1 & 0 & 0 & \vline & 0\\
+    0 & 0 & 1 & -1 & \vline & 0
+  \end{pmatrix}\\
+  &\implies \begin{cases}
+    x = 0\\
+    y = 0\\
+    z = t
+  \end{cases}\\
+  &\implies \left[(0, 0, 1, 1)\right]
+\end{align*}
+
+Meaning that the dimention is $1$.
+
+\subsection{b}
+
+Let's start by getting $W_1$ and $W_2$
+\begin{align*}
+  W_1 &\implies \begin{cases}
+    x = -y\\
+    z = t
+  \end{cases}\\
+  W_1 &= \left[(1, -1, 0 ,0), (0, 0, 1, 1)\right]\\
+  W_2 &\implies x = y + z - t\\
+  W_2 &= \left[(1, 1, 0, 0), (1, 0, 1, 0), (-1, 0, 0, 1)\right]
+\end{align*}
+
+We can develop all the steps necessary whoever we can take a simpler approach knowing that we have the dimention of $W_1 \cap W_2$ and that is:
+
+\begin{align*}
+  \dim(W_1 + W_2) &= \dim(W_1) + \dim(W_2) - \dim(W_1 \cap W_2)\\
+  &= 2 + 3 - 1\\
+  &= 4
+\end{align*}
+
+and knwoing that both subspaces are in $\mathbb{R}^4$ we know that $W_1 + W_2 = \mathbb{R}^4$
+
+\subsection{c}
+
+It is not a direct sum, we know that by getting the dimention of $W_1 \cap W_2$. Given that $\dim(W_1 \cap W_2) \neq 0$ we know that it is not a direct sum.
+
+\subsection{d}
+
+As we discuss above it is, and that helps a lot by removing the need for calculating $W_1 + W_2$ as we know it have dimention $4$ and that made it mandatory to be $\mathbb{R}^4$ express in, probably, a different basis.
+
+\section{P.21}
+
+\subsection{a}
+
+\begin{align*}
+  (x + 1)^2 &= x^2 + x + 1\\
+  &= 1 \cdot x^2 + 1 \cdot x + 1 \cdot 1
+\end{align*}
+
+this already shows the coordinates in $\mathscr{B}$ (Long live the canon basis!)
+
+\subsection{b}
+
+\subsubsection{$P_{\mathscr{C} \to \mathscr{B}}$}
+\begin{align*}
+  (x + 1)^2 = x^2 + x + 1 &\implies (1, 1, 1)\\
+  x + 4 &\implies (4, 1, 0)\\
+  3x &\implies (0, 3, 0)\\
+  P_{\mathscr{C} \to \mathscr{B}} &= \begin{pmatrix}
+    1 & 1 & 1\\
+    4 & 1 & 0\\
+    0 & 3 & 0
+  \end{pmatrix}
+\end{align*}
+
+Check:
+\begin{align*}
+  a (x + 1)^2 + b (x + 4) + c (3x) &= a x^2 + a x + a + b x + 4b + 3cx\\
+  &= a x^2 + (a + b + 3 c) x + (a + 4b)\\
+  P_{\mathscr{C} \to \mathscr{B}} v &=
+  \begin{pmatrix}
+    1 & 1 & 1\\
+    4 & 1 & 0\\
+    0 & 3 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    a \\
+    b \\
+    c
+  \end{pmatrix}_\mathscr{C}\\
+  &= \begin{pmatrix}
+    a + 4b\\
+    a + b + 3c\\
+    a
+  \end{pmatrix}_\mathscr{B}\\
+  &= a x^2 + (a + b + 3c) x + (a + 4b)\square
+\end{align*}
+
+\subsubsection{$P_{\mathscr{B} \to \mathscr{C}}$}
+\begin{align*}
+  P_{\mathscr{B} \to \mathscr{C}} &= P^{-1}_{\mathscr{C} \to \mathscr{B}}\\
+  P_{\mathscr{C} \to \mathscr{B}} &\implies \begin{pmatrix}
+    1 & 1 & 1 & \vline & 1 & 0 & 0\\
+    4 & 1 & 0 & \vline & 0 & 1 & 0\\
+    0 & 3 & 0 & \vline & 0 & 0 & 1
+  \end{pmatrix}\\
+  (-4)(I) + (II) &\implies \begin{pmatrix}
+    1 & 1 & 1 & \vline & 1 & 0 & 0\\
+    0 & -3 & -4 & \vline & -4 & 1 & 0\\
+    0 & 3 & 0 & \vline & 0 & 0 & 1
+  \end{pmatrix}\\
+  (II) \leftrightarrow (III) &\implies \begin{pmatrix}
+    1 & 1 & 1 & \vline & 1 & 0 & 0\\
+    0 & 3 & 0 & \vline & 0 & 0 & 1\\
+    0 & -3 & -4 & \vline & -4 & 1 & 0
+  \end{pmatrix}\\
+  (\frac{1}{3})(II) &\implies \begin{pmatrix}
+    1 & 1 & 1 & \vline & 1 & 0 & 0\\
+    0 & 1 & 0 & \vline & 0 & 0 & \frac{1}{3}\\
+    0 & -3 & -4 & \vline & -4 & 1 & 0
+  \end{pmatrix}\\
+  (-1)(II) + (I) &\implies \begin{pmatrix}
+    1 & 0 & 1 & \vline & 1 & 0 & -\frac{1}{3}\\
+    0 & 1 & 0 & \vline & 0 & 0 & \frac{1}{3}\\
+    0 & -3 & -4 & \vline & -4 & 1 & 0
+  \end{pmatrix}\\
+  (3)(II) + (III) &\implies \begin{pmatrix}
+    1 & 0 & 1 & \vline & 1 & 0 & -\frac{1}{3}\\
+    0 & 1 & 0 & \vline & 0 & 0 & \frac{1}{3}\\
+    0 & 0 & -4 & \vline & -4 & 1 & 1
+  \end{pmatrix}\\
+  (-\frac{1}{4})(III) &\implies \begin{pmatrix}
+    1 & 0 & 1 & \vline & 1 & 0 & -\frac{1}{3}\\
+    0 & 1 & 0 & \vline & 0 & 0 & \frac{1}{3}\\
+    0 & 0 & 1 & \vline & 1 & -\frac{1}{4} & -\frac{1}{4}
+  \end{pmatrix}\\
+  (-1)(III) + (I) &\implies \begin{pmatrix}
+    1 & 0 & 0 & \vline & 0 & \frac{1}{4} & -\frac{1}{12}\\
+    0 & 1 & 0 & \vline & 0 & 0 & \frac{1}{3}\\
+    0 & 0 & 1 & \vline & 1 & -\frac{1}{4} & -\frac{1}{4}
+  \end{pmatrix}\\
+  P_{\mathscr{B} \to \mathscr{C}} &=
+  \begin{pmatrix}
+  0 & \frac{1}{4} & -\frac{1}{12}\\
+  0 & 0 & \frac{1}{3}\\
+  1 & -\frac{1}{4} & -\frac{1}{4}
+  \end{pmatrix}\\
+\end{align*}
+
+Check:
+\begin{align*}
+  a (x + 1)^2 + b (x + 4) + c (3x) &= a x^2 + a x + a + b x + 4b + 3cx\\
+  &= a x^2 + (a + b + 3 c) x + (a + 4b)\\
+  P_{\mathscr{B} \to \mathscr{C}} v &=
+  \begin{pmatrix}
+  0 & \frac{1}{4} & -\frac{1}{12}\\
+  0 & 0 & \frac{1}{3}\\
+  1 & -\frac{1}{4} & -\frac{1}{4}
+  \end{pmatrix}
+  \begin{pmatrix}
+    a + 4b\\
+    a + b + 3c\\
+    a
+  \end{pmatrix}_\mathscr{B}\\
+  &= \begin{pmatrix}
+    a\\
+    \frac{a}{4} + b - \frac{a}{4}\\
+    -\frac{a}{12} - \frac{b}{3} + \frac{a}{3} + \frac{b}{3} + c - \frac{a}{4}
+  \end{pmatrix}_\mathscr{C}\\
+  &= \begin{pmatrix}
+    a\\
+    b\\
+    c
+  \end{pmatrix}_\mathscr{C}\\
+  &= a (x + 1)^2 + b (x + 4) + c (3x)
+\end{align*}
+
+\subsubsection{$P_{\mathscr{D} \to \mathscr{B}}$}
+\begin{align*}
+  1 - x^2 &\implies (1, 0, -1)\\
+  x(x + 1) = x^2 + x &\implies (0, 1, 1)\\
+  x^2 + 1 &\implies (1, 0, 1)\\
+  P_{\mathscr{D} \to \mathscr{B}} &= \begin{pmatrix}
+    1 & 0 & -1\\
+    0 & 1 & 1\\
+    1 & 0 & 1
+  \end{pmatrix}
+\end{align*}
+
+Check:
+\begin{align*}
+  a (1 - x^2) + b (x(x + 1)) + c (x^2 + 1) &= a - ax^2 + bx^2 + bx + cx^2 + c\\
+  &= - ax^2 + bx^2 + cx^2 + bx + c + a\\
+  &= (-a + b + c)x^2 + b x + (c + a)\\
+  P_{\mathscr{C} \to \mathscr{B}} v &=
+  \begin{pmatrix}
+    1 & 0 & -1\\
+    0 & 1 & 1\\
+    1 & 0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    a \\
+    b \\
+    c
+  \end{pmatrix}_\mathscr{D}\\
+  &= \begin{pmatrix}
+    a + c\\
+    b\\
+    -a + b + c
+  \end{pmatrix}_\mathscr{B}\\
+  &= (-a + b + c)x^2 + b x + (a + c)\square
+\end{align*}
+
+\subsubsection{$P_{\mathscr{B} \to \mathscr{D}}$}
+\begin{align*}
+  P_{\mathscr{B} \to \mathscr{D}} &= P^{-1}_{\mathscr{D} \to \mathscr{B}}\\
+  P_{\mathscr{D} \to \mathscr{B}} &\implies \begin{pmatrix}
+    1 & 0 & -1 & \vline & 1 & 0 & 0\\
+    0 & 1 & 1 & \vline & 0 & 1 & 0\\
+    1 & 0 & 1 & \vline & 0 & 0 & 1
+  \end{pmatrix}\\
+  (-1)(I) + (III) &\implies \begin{pmatrix}
+    1 & 0 & -1 & \vline & 1 & 0 & 0\\
+    0 & 1 & 1 & \vline & 0 & 1 & 0\\
+    0 & 0 & 2 & \vline & -1 & 0 & 1
+  \end{pmatrix}\\
+  (\frac{1}{2})(III) &\implies \begin{pmatrix}
+    1 & 0 & -1 & \vline & 1 & 0 & 0\\
+    0 & 1 & 1 & \vline & 0 & 1 & 0\\
+    0 & 0 & 1 & \vline & -\frac{1}{2} & 0 & \frac{1}{2}
+  \end{pmatrix}\\
+  (1)(III) + (I) &\implies \begin{pmatrix}
+    1 & 0 & 0 & \vline & \frac{1}{2} & 0 & \frac{1}{2}\\
+    0 & 1 & 1 & \vline & 0 & 1 & 0\\
+    0 & 0 & 1 & \vline & -\frac{1}{2} & 0 & \frac{1}{2}
+  \end{pmatrix}\\
+  (-1)(III) + (II) &\implies \begin{pmatrix}
+    1 & 0 & 0 & \vline & \frac{1}{2} & 0 & \frac{1}{2}\\
+    0 & 1 & 0 & \vline & \frac{1}{2} & 1 & -\frac{1}{2}\\
+    0 & 0 & 1 & \vline & -\frac{1}{2} & 0 & \frac{1}{2}
+  \end{pmatrix}\\
+  P_{\mathscr{B} \to \mathscr{D}} &=
+  \begin{pmatrix}
+  \frac{1}{2} & 0 & \frac{1}{2}\\
+  \frac{1}{2} & 1 & -\frac{1}{2}\\
+  -\frac{1}{2} & 0 & \frac{1}{2}
+  \end{pmatrix}
+\end{align*}
+
+Check:
+\begin{align*}
+  a (1 - x^2) + b (x(x + 1)) + c (x^2 + 1) &= a - ax^2 + bx^2 + bx + cx^2 + c\\
+  &= - ax^2 + bx^2 + cx^2 + bx + c + a\\
+  &= (-a + b + c)x^2 + b x + (c + a)\\
+  P_{\mathscr{B} \to \mathscr{D}} v &=
+  \begin{pmatrix}
+  \frac{1}{2} & 0 & \frac{1}{2}\\
+  \frac{1}{2} & 1 & -\frac{1}{2}\\
+  -\frac{1}{2} & 0 & \frac{1}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    a + c\\
+    b\\
+    -a + b + c
+  \end{pmatrix}_\mathscr{B}\\
+  &= \begin{pmatrix}
+    \frac{a}{2} + \frac{c}{2} + \frac{b}{2} + \frac{a}{2} - \frac{b}{2} - \frac{c}{2}\\
+    b\\
+    \frac{a}{2} + \frac{c}{2} - \frac{b}{2} - \frac{a}{2} + \frac{b}{2} + \frac{c}{2}
+  \end{pmatrix}_\mathscr{C}\\
+  &= \begin{pmatrix}
+    a\\
+    b\\
+    c
+  \end{pmatrix}_\mathscr{C}\\
+  &= a (1 - x^2) + b (x(x + 1)) + c (x^2 + 1)
+\end{align*}
+
+\section{c}
+
+The coordinate for $a(x)$ is trivial for $\mathscr{C}$ because it's an element of the basis so it is only $(1, 0, 0)$. Now for the next part we have
+\begin{align*}
+  P_{\mathscr{B} \to \mathscr{D}} v &=
+  \begin{pmatrix}
+  \frac{1}{2} & 0 & \frac{1}{2}\\
+  \frac{1}{2} & 1 & -\frac{1}{2}\\
+  -\frac{1}{2} & 0 & \frac{1}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    1\\
+    1\\
+    1
+  \end{pmatrix}_\mathscr{B}\\
+  &= 
+  \begin{pmatrix}
+    \frac{1}{2} + \frac{1}{2} - \frac{1}{2}\\
+    1\\
+    \frac{1}{2} - \frac{1}{2} + \frac{1}{2}
+  \end{pmatrix}_\mathscr{D}\\
+  &= 
+  \begin{pmatrix}
+    \frac{1}{2}\\
+    1\\
+    \frac{1}{2}
+  \end{pmatrix}_\mathscr{D}\\
+\end{align*}
+
+Check:
+\begin{align*}
+  \frac{1}{2}(1 - x^2) + 1 (x(x + 1)) + \frac{1}{2}(x^2 + 1) &= - \frac{x^2}{2} + \frac{1}{2} + x^2 + x + \frac{x^2}{2} + \frac{1}{2}\\
+   &= x^2 + x + 1\square
+\end{align*}
+
+\section{P.23}
+
+\subsection{c}
+It is (just beacause it is described as a linear combination of coordinates in $\mathbb{R}^2$). However, let's check it.
+\begin{align*}
+  T ((x_1, y_1) + \alpha (x_2, y_2)) &= T (x_1 + \alpha x_2, y1 + \alpha y_2)\\
+  &= (x_1 + \alpha x_2 + y_1 + \alpha y_2, x_1 + \alpha x_2 - y_1 - \alpha y_2, y_1 + \alpha y_2)\\
+  T(x_1, y_1) + \alpha T(x_2, y_2) &= (x_1 + y_1, x_1 - y_1, y_1) + (\alpha x_2 + \alpha y_2, \alpha x_2 - \alpha y_2, \alpha y_2)\\
+  &= (x_1 + \alpha x_2 + y_1 + \alpha y_2, x_1 + \alpha x_2 - y_1 - \alpha y_2, y_1 + \alpha y_2)\\
+  T ((x_1, y_1) + \alpha (x_2, y_2)) &= T(x_1, y_1) + \alpha T(x_2, y_2)
+\end{align*}
+Meaning that it is a linear transformation.
+
+
+\subsection{d}
+
+Let's first check how it looks for a polinomial
+\begin{align*}
+  T(a t^2 + b t + c) &= t^2(a t^2 + b t + c)''\\
+  &= t^2(2a t + b)'\\
+  &= 2a t^2
+\end{align*}
+
+Now let's check if this is linear (it is beacuse it is basically applying a linear transformation two times, but lets check it).
+
+\begin{align*}
+  T((a t^2 + b t + c) + \alpha (d t^2 + e t + f)) &= T((a + \alpha d) t^2 + (b + \alpha e) t + (c + \alpha f))\\
+  &= 2(a + \alpha d)t^2\\
+  T(a t^2 + b t + c) + \alpha T(d t^2 + e t + f) &= 2at^2 + 2 \alpha d t^2\\
+  &= 2(a + \alpha d)t^2\\
+  T((a t^2 + b t + c) + \alpha (d t^2 + e t + f)) &= T(a t^2 + b t + c) + \alpha T(d t^2 + e t + f)\\
+\end{align*}
+
+It is a Linear transformation
+
+\section{P.27}
+
+It is actually quite simple to make this problem, what we need is a linear combination of $x$, $y$ and $z$ that equals to $0$ when the coordinates solve this equations:
+\begin{align*}
+  \begin{cases}
+    x + y + z = 0\\
+    x - 2y - 3z = 0
+  \end{cases}
+\end{align*}
+
+But that equations already solve to 0 (and are 2). So we can take the transformation as
+
+\begin{align*}
+  T(x, y, z) &= (x + y + z, x - 2y - 3z)
+\end{align*}
+
+This already gave us the transformation, now let's check what is the image by first representhing this as the sum of vectors.
+\begin{align*}
+  T(x, y, z) &= x(1, 1) + y(1, -2) + z(1, -3)
+\end{align*}
+
+And now we should check what is the space that this generates
+
+\begin{align*}
+  T(x, y, z) &\implies \begin{pmatrix}
+    1 & 1 & \vline & 0\\
+    1 & - 2 & \vline & 0\\
+    1 & - 3 & \vline & 0
+  \end{pmatrix}\\
+  (-1)(I) + (II) &\implies \begin{pmatrix}
+    1 & 1 & \vline & 0\\
+    0 & - 3 & \vline & 0\\
+    1 & - 3 & \vline & 0
+  \end{pmatrix}\\
+  (-1)(I) + (III) &\implies \begin{pmatrix}
+    1 & 1 & \vline & 0\\
+    0 & - 3 & \vline & 0\\
+    0 & - 4 & \vline & 0
+  \end{pmatrix}\\
+  (-\frac{1}{3})(II) &\implies \begin{pmatrix}
+    1 & 1 & \vline & 0\\
+    0 & 1 & \vline & 0\\
+    0 & - 4 & \vline & 0
+  \end{pmatrix}\\
+  (-1)(II) + (I) &\implies \begin{pmatrix}
+    1 & 0 & \vline & 0\\
+    0 & 1 & \vline & 0\\
+    0 & - 4 & \vline & 0
+  \end{pmatrix}\\
+  (4)(II) + (III) &\implies \begin{pmatrix}
+    1 & 0 & \vline & 0\\
+    0 & 1 & \vline & 0\\
+    0 & 0 & \vline & 0
+  \end{pmatrix}\\
+\end{align*}
+
+This actually mean that it generates $\mathbb{R}^2$
+
+\section{P.34}
+
+\begin{align*}
+  F(1, 2, 1) &= (1 + 1, 2 - 2) = (2, 0)\\
+  F(0, 1, 1) &= (0 + 1, 1 - 2) = (1, -1)\\
+  F(0, 3, -1) &= (0 - 1, 3 + 2) = (-1, 5)
+\end{align*}
+
+Now we need to represent that in the base $\mathscr{C}$
+
+\begin{align*}
+  (2,  0) &= \alpha_1 (1, 5) + \beta_1 (2, -1)\\
+  (1, -1) &= \alpha_2 (1, 5) + \beta_2 (2, -1)\\
+  (-1, 5) &= \alpha_3 (1, 5) + \beta_3 (2, -1)\\
+  &\implies \begin{pmatrix}
+    1 & 2 & \vline & 2 & 1 & -1\\
+    5 & -1 & \vline & 0 & -1 & 5
+  \end{pmatrix}\\
+  (-5)(I) + (II) &\implies \begin{pmatrix}
+    1 & 2 & \vline & 2 & 1 & -1\\
+    0 & -11 & \vline & -10 & -6 & 10
+  \end{pmatrix}\\
+  (-\frac{1}{11})(II) &\implies \begin{pmatrix}
+    1 & 2 & \vline & 2 & 1 & -1\\
+    0 & 1 & \vline & \frac{10}{11} & \frac{6}{11} & -\frac{10}{11}
+  \end{pmatrix}\\
+  (-2)(II) + (I) &\implies \begin{pmatrix}
+    1 & 0 & \vline & \frac{2}{11} & -\frac{1}{11} & \frac{9}{11}\\
+    0 & 1 & \vline & \frac{10}{11} & \frac{6}{11} & -\frac{10}{11}
+  \end{pmatrix}\\
+  \left[F\right]_\mathscr{B}^\mathscr{C} &= \frac{1}{11} \begin{pmatrix}
+   2 & -1 & 9\\
+   10& 6 & -10
+  \end{pmatrix}
+\end{align*}
+
+
+\end{document}

@@ -1,0 +1,1870 @@
+\documentclass[8pt]{extarticle}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{mathtools}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usepackage{polynom}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\DeclareMathOperator{\Tr}{Tr}
+
+
+
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\polyset{style=C, div=:, vars=x}
+
+\newcommand{\class}{Linear Algebra} % This is the name of the course 
+\newcommand{\examnum}{Lista 3} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\dis}[1]{\left|\left|#1\right|\right|^2}
+\newcommand{\dist}[1]{\left|\left|#1\right|\right|}
+\newcommand{\mult}[2]{\left<#1, #2\right>}
+\newcommand{\gram}[2]{\frac{\left<#1, #2\right>}{\dis{#2}}}
+
+
+
+
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+  \textbf{\class} & \textbf{Name:} & \textit{Sergio Montoya}\\ %Your name here instead, obviously 
+  \textbf{\examnum} &&\\
+  \textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{P.2}
+\subsection{a}
+\begin{align*}
+  T_1 &: (x, y, z) \to (x + z, 2 y + 3 z, -x - 4z)\\
+  T_1 &\equiv \begin{pmatrix}
+    1  & 0 &  1\\
+    0  & 2 &  3\\
+    -1 & 0 & -4
+  \end{pmatrix}\\
+  P_{T_1} &= \det(T_1 - \lambda I)\\
+  &= \det \begin{pmatrix}
+    1 - \lambda  & 0 &  1\\
+    0  & 2 - \lambda &  3\\
+    -1 & 0 & -4 - \lambda
+  \end{pmatrix}\\
+  &= (2 - \lambda)\left[ (1 - \lambda)(-4 - \lambda) + 1 \right]\\
+  &= (2 - \lambda)\left[ -4 - \lambda + 4\lambda + \lambda^2 + 1 \right]\\
+  &= (2 - \lambda)\left[ \lambda^2 + 3\lambda - 3 \right]\\
+  &= \frac{-3 \pm \sqrt{3^2 - 4(1)(-3)}}{2(1)}\\
+  &= \frac{-3 \pm \sqrt{9 + 12}}{2}\\
+  &= \frac{-3 \pm \sqrt{21}}{2}\\
+  &= \frac{-3 \pm \sqrt{21}}{2}\\
+  &= (2 - \lambda) \left(\lambda + \frac{3 + \sqrt{21}}{2}\right) \left(\lambda + \frac{3 - \sqrt{21}}{2}\right)\\
+\end{align*}
+\subsection{b}
+
+We can take whatever base we want because it's polinomial is independent.
+
+\begin{align*}
+  T_2 &\equiv \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    3 & 2 & 1 & 1\\
+    0 & 0 & 0 & -1\\
+    0 & 1 & -4 & 3
+  \end{pmatrix}\\
+  P_{T_2} &= \det\left(T_2 - \lambda I\right)\\
+  P_{T_2} &= \det\begin{pmatrix}
+    1 - \lambda & 0 & 0 & 0\\
+    3 & 2  - \lambda & 1 & 1\\
+    0 & 0 & - \lambda & -1\\
+    0 & 1 & -4 & 3 - \lambda
+  \end{pmatrix}\\
+  P_{T_2} &= (1 - \lambda)\det\begin{pmatrix}
+    2  - \lambda & 1 & 1\\
+    0 & - \lambda & -1\\
+    1 & -4 & 3 - \lambda
+  \end{pmatrix}\\
+  P_{T_2} &= (\lambda - 1)\left(-(-\lambda)\det\begin{pmatrix}
+    2  - \lambda & 1\\
+    1 & 3 - \lambda
+  \end{pmatrix} - \det\begin{pmatrix}
+    2  - \lambda & 1\\
+    1 & -4
+  \end{pmatrix}\right)\\
+  \det\begin{pmatrix}
+    2  - \lambda & 1\\
+    1 & 3 - \lambda
+  \end{pmatrix} &= (2 - \lambda)(3 - \lambda) - 1\\
+  &= 6 - 2\lambda - 3 \lambda + \lambda^2 - 1\\
+  &= \lambda^2 - 5\lambda + 5\\
+  \det\begin{pmatrix}
+    2  - \lambda & 1\\
+    1 & -4
+  \end{pmatrix} &= (2 - \lambda)(-4) - 1\\
+  &= -8 + 4\lambda - 1\\
+  &= -9 + 4\lambda
+\end{align*}
+\begin{align*}
+  P_{T_2} &= (\lambda - 1)\left(-(-\lambda)(\lambda^2 - 5\lambda + 5) + 9 - 4\lambda\right)\\
+  P_{T_2} &= (\lambda - 1)\left(\lambda^3 - 5\lambda^2 + 5\lambda + 9 - 4\lambda\right)\\
+  P_{T_2} &= (\lambda - 1)\left(\lambda^3 - 5\lambda^2 + \lambda + 9 \right)
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{P.4}
+\subsection{a}
+\begin{align*}
+  T_1 &= \begin{pmatrix}
+    -9 & 4 & 4\\
+    -8 & 3 & 4\\
+    -16 & 8 & 7
+  \end{pmatrix}\\
+  P_{T_1} &= \det \begin{pmatrix}
+    -9 - \lambda & 4 & 4\\
+    -8 & 3 - \lambda & 4\\
+    -16 & 8 & 7 - \lambda
+  \end{pmatrix}\\
+  &= (-9 -\lambda) \det \begin{pmatrix}
+    3 - \lambda & 4\\
+    8 & 7 - \lambda
+  \end{pmatrix}
+  - 4 \det \begin{pmatrix}
+    -8 & 4\\
+    -16 & 7 - \lambda
+  \end{pmatrix}
+  + 4 \det \begin{pmatrix}
+    -8 & 3 - \lambda\\
+    -16 & 8
+  \end{pmatrix}\\
+  \det \begin{pmatrix}
+    3 - \lambda & 4\\
+    8 & 7 - \lambda
+  \end{pmatrix} &= (3 - \lambda) (7 - \lambda) - 32\\
+  &= 21 - 3 \lambda - 7 \lambda + \lambda^2 - 32\\
+  &= \lambda^2 - 10 \lambda - 11\\
+  \det \begin{pmatrix}
+    -8 & 4\\
+    -16 & 7 - \lambda
+  \end{pmatrix} &= (-8)(7 - \lambda) + 64\\
+  &= 8\lambda + 8\\
+  \det \begin{pmatrix}
+    -8 & 3 - \lambda\\
+    -16 & 8
+  \end{pmatrix} &= (-8)(8) + 16(3 - \lambda)\\
+  &= -64 + 48 - 16\lambda\\
+  &= -16\lambda - 16\\
+  P_{T_1} &= (- 9 - \lambda)(\lambda^2 - 10 \lambda - 11) - 4 (8\lambda + 8) - 4 (16\lambda + 16)\\
+  P_{T_1} &= (- 9 - \lambda)(\lambda^2 - 10 \lambda - 11) - 4 (24\lambda + 24)\\
+  P_{T_1} &= - 9(\lambda^2 - 10 \lambda - 11) - \lambda(\lambda^2 - 10 \lambda - 11) - 96\lambda - 96\\
+  P_{T_1} &= - 9\lambda^2 + 90 \lambda + 99 - \lambda^3 + 10 \lambda^2 + 11\lambda - 96\lambda - 96\\
+  P_{T_1} &= (-1)\lambda^3 + (-9 + 10)\lambda^2 + (90 + 11 - 96)\lambda + (99 - 96)\\
+  P_{T_1} &= -\lambda^3 + \lambda^2 + 5\lambda + 3
+\end{align*}
+
+For this polinomial we know that $-1$ is solution by simply substitution:
+\[+1 + 1 - 5 + 3 = 0\]
+
+Therefore we can find it's eigenvalues by dividing by $(\lambda + 1)$
+
+$$\polylongdiv{-x^3 + x^2 + 5x + 3}{x + 1}$$
+
+This implies that \[P_{T_1} = (\lambda + 1)(-\lambda^2 + 2\lambda + 3)\] by substitution we can see that \[\lambda = - 1\implies -1 - 2 + 3 = 0\] therefore we can continue simplifiying
+$$\polylongdiv{-x^2 + 2x + 3}{x + 1}$$
+
+And tehrefore we have
+\[P_{T_1} = (3 - \lambda)(\lambda + 1)^2\]
+with eigenvalues $\left\{3, -1\right\}$ with multiplicity 1 and 2 respectively. We know that the subspace of $3$ have at least dimention 1 and therefore we are only interested in the subspace of $-1$
+
+\begin{align*}
+  \begin{pmatrix}
+    -9  + 1 & 4 & 4\\
+    -8 & 3  + 1 & 4\\
+    -16 & 8 & 7  + 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3 
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{pmatrix}
+    -8 & 4 & 4\\
+    -8 & 4 & 4\\
+    -16 & 8 & 8
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    -8 x_1 + 4 x_2 + 4 x_3 = 0\\
+    -8 x_1 + 4 x_2 + 4 x_3 = 0\\
+    -16 x_1 + 8 x_2 + 8 x_3 =0
+  \end{cases}\\
+  \begin{cases}
+    x_1 = \frac{1}{2} x_2 + \frac{1}{2} x_3
+  \end{cases}\\
+\end{align*}
+
+As you can see it depends on two variables therefore it have a dimention of 2 and the hole space can have a basis consisting of eigenvectors of this linear transformation. For completness and because it was asked I'll continue this exercise. Nonetheless we could stop here because it's already know that we can
+
+\begin{align*}
+  \begin{pmatrix}
+    -9  - 3 & 4 & 4\\
+    -8 & 3  - 3 & 4\\
+    -16 & 8 & 7  - 3
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3 
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{pmatrix}
+    -12 & 4 & 4\\
+    -8 & 0 & 4\\
+    -16 & 8 & 4
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3 
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    -12 x_1 + 4 x_2 + 4 x_3 = 0\\
+    -8 x_1 + 0 x_2 + 4 x_3 = 0\\
+    -16 x_1 + 8 x_2 + 4 x_3 =0
+  \end{cases}\\
+  \begin{cases}
+    -12 x_1 + 4 x_2 + 4 x_3 = 0\\
+    2 x_1 = x_3\\
+    -16 x_1 + 8 x_2 + 4 x_3 =0
+  \end{cases}\\
+  \begin{cases}
+    -12 x_1 + 4 x_2 + 8 x_1 = 0\\
+    2 x_1 = x_3\\
+    -16 x_1 + 8 x_2 + 8 x_1 =0
+  \end{cases}\\
+  \begin{cases}
+    -4 x_1 + 4 x_2 = 0\\
+    2 x_1 = x_3\\
+    -8 x_1 + 8 x_2 =0
+  \end{cases}\\
+  \begin{cases}
+    x_2 = x_1\\
+    2 x_1 = x_3\\
+    x_2 = x_1
+  \end{cases}\\
+\end{align*}
+
+And therefore the basis is \[\left\{ \left(\frac{1}{2}, 1, 0\right), \left(\frac{1}{2}, 0, 1\right), \left(1, 1, 2\right)\right\}\]
+
+\subsection{c}
+
+\begin{align*}
+  P_{T_1} &= \det (T_1 - \lambda I)\\
+  &= \det \begin{pmatrix}
+    2 - \lambda & 2 & 0\\
+    2 & - 1 - \lambda & 0\\
+    0 & 0 & 2 - \lambda
+  \end{pmatrix}\\
+  &= (2 - \lambda )\det \begin{pmatrix}
+    2 - \lambda & 2\\
+    2 & -1 - \lambda \\
+  \end{pmatrix}\\
+  &= (2 - \lambda)((2 - \lambda)(-1 - \lambda) - 4)\\
+  &= (2 - \lambda)(-2 + \lambda -2 \lambda + \lambda^2 - 4)\\
+  &= (2 - \lambda)(\lambda^2 - \lambda - 6)\\
+  &= (2 - \lambda)(\lambda + 2)(\lambda - 3)\\
+  &= (2 - \lambda)(\lambda + 2)(\lambda - 3)\\
+  &= (2 - \lambda)(\lambda + 2)(\lambda - 3)\\
+\end{align*}
+
+Therefore, it have eigenvalues in $\left\{2, -2, 3\right\}$ with multiplicity $1$ in everyone and that implies that this matrix can be diagonalizable. I'll complete this exercise even thou it's unnecessary.
+
+For $2$
+
+\begin{align*}
+  \begin{pmatrix}
+    2 - 2 & 2 & 0\\
+    2 & - 1 - 2 & 0\\
+    0 & 0 & 2 - 2
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3 
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{pmatrix}
+    0 & 2 & 0\\
+    2 & - 3 & 0\\
+    0 & 0 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3 
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    x_2 = 0\\
+    x_1 = 0\\
+    x_3 = x_3
+  \end{cases}\\
+\end{align*}
+
+For $-2$
+
+\begin{align*}
+  \begin{pmatrix}
+    2 + 2 & 2 & 0\\
+    2 & - 1 + 2 & 0\\
+    0 & 0 & 2 + 2
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3 
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{pmatrix}
+    4 & 2 & 0\\
+    2 & 1 & 0\\
+    0 & 0 & 4
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3 
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    4 x_1 + 2 x_2 = 0\\
+    2 x_1 + x_2 = 0\\
+    4 x_3 = 0\\
+  \end{cases}\\
+  \begin{cases}
+    -2 x_1 = x_2\\
+    -2 x_1 = x_2\\
+    x_3 = 0\\
+  \end{cases}\\
+\end{align*}
+
+For $3$
+
+\begin{align*}
+  \begin{pmatrix}
+    2 - 3 & 2 & 0\\
+    2 & - 1 - 3 & 0\\
+    0 & 0 & 2 - 3
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3 
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{pmatrix}
+    -1 & 2 & 0\\
+    2 & -4 & 0\\
+    0 & 0 & -1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3 
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    -x_1 + 2 x_2 = 0\\
+    2 x_1 - 4 x_2 = 0\\
+    -x_3 = 0
+  \end{cases}\\
+  \begin{cases}
+    x_1 = 2x_2\\
+    x_1 = 2x_2\\
+    x_3 = 0
+  \end{cases}\\
+\end{align*}
+
+And therefore the bases is: \[\left\{ \left(0, 0, 1\right), \left(1, -2, 0\right), \left(2, 1, 0\right) \right\}\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{P.5}
+\subsection{a}
+
+As we have seen before this linear transformation is equivalent to:
+\begin{align*}
+  T_1 &= \begin{pmatrix}
+    0 & 1 & 0 & 0\\
+    0 & 0 & 2 & 0\\
+    0 & 0 & 0 & 3\\
+    0 & 0 & 0 & 0
+  \end{pmatrix}
+\end{align*}
+
+And therefore
+
+\begin{align*}
+  P_{T_1} &= \det (T_1 - \lambda I)\\
+  P_{T_1} &= \det \begin{pmatrix}
+    -\lambda & 1 & 0 & 0\\
+    0 & -\lambda & 2 & 0\\
+    0 & 0 & -\lambda & 3\\
+    0 & 0 & 0 & -\lambda
+  \end{pmatrix}\\
+  P_{T_1} &= -\lambda
+  \det \begin{pmatrix}
+    -\lambda & 2 & 0\\
+    0 & -\lambda & 3\\
+    0 & 0 & -\lambda
+  \end{pmatrix}\\
+  P_{T_1} &= \lambda^2
+  \det \begin{pmatrix}
+    -\lambda & 3\\
+    0 & -\lambda
+  \end{pmatrix}\\
+  P_{T_1} &= \lambda^4
+\end{align*}
+
+This means that the only eigenvalue is $0$ with multiplicity $4$ and however
+
+\begin{align*}
+  \begin{pmatrix}
+    0 & 1 & 0 & 0\\
+    0 & 0 & 2 & 0\\
+    0 & 0 & 0 & 3\\
+    0 & 0 & 0 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3 \\ x_4
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    x_2 = 0\\
+    2 x_3 = 0\\
+    3 x_4 = 0\\
+    x_5 = x_5
+  \end{cases}\\
+\end{align*}
+
+So we have only an eigenspace with dimention $1$ therefore it's impossible.
+
+\subsection{b}
+
+\begin{align*}
+  P_{T_2} &= \det(T_2 - \lambda I)\\
+  &= \det \begin{pmatrix}
+    1 - \lambda & 1 & 0\\
+    0 & 1 - \lambda & 0\\
+    0 & 0 & 2 - \lambda
+  \end{pmatrix}\\
+  &= (1 - \lambda)^2 (2 - \lambda)
+\end{align*}
+
+\begin{align*}
+  \begin{pmatrix}
+    1 - 1 & 1 & 0\\
+    0 & 1 - 1 & 0\\
+    0 & 0 & 2 - 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{pmatrix}
+    0 & 1 & 0\\
+    0 & 0 & 0\\
+    0 & 0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    x_2 = 0\\
+    x_3 = 0\\
+    x_1 = x_1
+  \end{cases}\\
+\end{align*}
+
+Again, we arrive into an eigenspace that doesn't correspond to the multiplicity of it's eigenvalue. Therefore is imposible.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{P.7}
+
+\subsection{a}
+
+Showing that $\mathcal{B}$ is a base of both spaces it's reduce to simply show that it's linearly independent (Because we know the dimentions of both spaces is 3, Showing that this set generate all of both spaces it's trivial so I won't do it). Therefore
+
+\begin{align*}
+  \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1 \\
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    x_1 = 0\\
+    x_2 = 0\\
+    x_3 = 0
+  \end{cases}
+\end{align*}
+is sufficient to show that $\mathcal{B}$ it's a basis of both spaces
+
+\subsection{b}
+Given that it's essentially the same thing (because their none imaginary numbers in any of those things impliying that multiplication it's equivalent in both transformations) I'll do only one pass trhought the transformation for every vector for not repeating problems.
+\begin{align*}
+  T_i (1, 0, 0) &= (3, 0, 0)\\
+  T_i (0, 1, 0) &= (0, 2, 1)\\
+  T_i (0, 0, 1) &= (0, -5, -2)
+  T_i \equiv \begin{pmatrix}
+    3 & 0 & 0\\
+    0 & 2 & -5\\
+    0 & 1 & -2
+  \end{pmatrix}
+\end{align*}
+
+\subsection{c}
+Now we need to get every eigenvalue for the reals in witch we get
+\begin{align*}
+  P_{T_1} &= \det \begin{pmatrix}
+    3 - \lambda & 0 & 0\\
+    0 & 2 - \lambda & -5\\
+    0 & 1 & -2 - \lambda
+  \end{pmatrix}\\
+  &= (3 - \lambda)((2 - \lambda)(-2 - \lambda) + 5)\\
+  &= (3 - \lambda)(\lambda^2 + 1)\\
+\end{align*}
+The second polinomial doesn't have solutions in the Real field therefore with only one eigenvalue with multiplicity $1$ there is no way this transformation is linearly independent
+\subsection{d}
+
+Continuing the development where we left it (because it's the same thing with whatever matrix we have)
+\begin{align*}
+  \lambda &= \pm i \implies \lambda^2 + 1 = 0
+  P_{T_2} &= (3 - \lambda)(\lambda - i)(\lambda + i)
+\end{align*}
+
+therefore we have three eigenvalues every single one with multiplicity $1$. Consequently it is diagonalizable.
+
+Because I need to show the diagonal Matrix
+
+For $3$
+
+\begin{align*}
+  \begin{pmatrix}
+    3 - 3& 0 & 0\\
+    0 & 2 - 3& -5\\
+    0 & 1 & -2 - 3
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{pmatrix}
+    0 & 0 & 0\\
+    0 & -1 & -5\\
+    0 & 1 & -5
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    x_1 = x_1\\
+    -x_2 - 5x_3 = 0\\
+    x_2 - 5x_3 = 0
+  \end{cases}\\
+  \begin{cases}
+    x_1 = x_1\\
+    -x_2 - 5x_3 = 0\\
+    x_2 = 5x_3
+  \end{cases}\\
+  \begin{cases}
+    x_1 = x_1\\
+    x_3 = 0\\
+    x_2 = 0
+  \end{cases}\\
+\end{align*}
+
+For $i$
+
+\begin{align*}
+  \begin{pmatrix}
+    3 - i& 0 & 0\\
+    0 & 2 - i& -5\\
+    0 & 1 & -2 - i
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    (3 - i)x_1 = 0\\
+    (2 - i)x_2 - 5 x_3 = 0\\
+    x_2 - (2 + i) x_3 = 0\\
+  \end{cases}\\
+  \begin{cases}
+    x_1 = 0\\
+    (2 - i)x_2 - 5 x_3\\
+    x_2 = (2 + i) x_3
+  \end{cases}\\
+\end{align*}
+\begin{align*}
+  \begin{cases}
+    x_1 = 0\\
+    (2 - i)(2 + i)x_3 - 5 x_3\\
+    x_2 = (2 + i) x_3
+  \end{cases}\\
+  \begin{cases}
+    x_1 = 0\\
+    5x_3 - 5 x_3 = 0\\
+    x_2 = (2 + i) x_3
+  \end{cases}\\
+  \begin{cases}
+    x_1 = 0\\
+    x_3 =  x_3\\
+    x_2 = (2 + i) x_3
+  \end{cases}\\
+\end{align*}
+
+For $-i$
+
+
+\begin{align*}
+  \begin{pmatrix}
+    3 + i& 0 & 0\\
+    0 & 2 + i& -5\\
+    0 & 1 & -2 + i
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    (3 - i)x_1 = 0\\
+    (2 + i)x_2 - 5 x_3 = 0\\
+    x_2 - (2 - i) x_3 = 0\\
+  \end{cases}\\
+  \begin{cases}
+    (3 - i)x_1 = 0\\
+    (2 + i)x_2 - 5 x_3 = 0\\
+    x_2 = (2 - i) x_3\\
+  \end{cases}\\
+  \begin{cases}
+    (3 - i)x_1 = 0\\
+    (2 + i)(2 - i) x_3 - 5 x_3 = 0\\
+    x_2 = (2 - i) x_3\\
+  \end{cases}\\
+  \begin{cases}
+    x_1 = 0\\
+    x_3 = x_3\\
+    x_2 = (2 - i) x_3\\
+  \end{cases}\\
+\end{align*}
+
+And therefore the basis is $\left\{\left(1, 0, 0\right), \left(0, 2 + i, 1\right), \left(0, 2 - i, 1\right)\right\}$ with matrix
+\begin{align*}
+  \begin{pmatrix}
+    3 & 0 &  0\\
+    0 & i &  0\\
+    0 & 0 & -i
+  \end{pmatrix}
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{P.13}
+
+Let's call the vectors in the base $v_i$ with the i corresponding to the order in the List.
+Begining with the vector $v_1$ we will use it as a base for the others (You can check the operations at the end of this section, that way I can keep everything clean)
+
+\begin{align*}
+  v_2' &= v_2 - \gram{v_2}{v_1}v_1\\
+  &=
+  \begin{pmatrix}
+    1 & 1\\
+    0 & 0
+  \end{pmatrix}
+  - \frac{1}{2} \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}\\
+  &=
+  \begin{pmatrix}
+    \frac{1}{2} & 1\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}
+\end{align*}
+
+Now for $v_3$ we do basically the same
+\begin{align*}
+  v_3' &= v_3 - \gram{v_3}{v_2'}v_2' - \gram{v_3}{v_1} v_1\\
+  &= v_3 - \frac{0}{\frac{3}{2}}v_2' - \frac{2}{2} v_1\\
+  &= 
+  \begin{pmatrix}
+    1 & 0\\
+    1 & 1
+  \end{pmatrix}
+  - \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}\\
+  &= 
+  \begin{pmatrix}
+    1 & 0\\
+    1 & 1
+  \end{pmatrix}
+  - \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}\\
+  &= 
+  \begin{pmatrix}
+    1 - 1 & 0 - 0\\
+    1 - 0 & 1 - 1
+  \end{pmatrix}\\
+  &= 
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+\end{align*}
+
+Now for $v_4'$
+\begin{align*}
+  v_4' &= v_4 - \gram{v_4}{v_3'} v_3' - \gram{v_4}{v_2'} v_2' - \gram{v_4}{v_1} v_1\\
+  &= v_4 - \frac{1}{1} v_3' - \frac{1}{\frac{3}{2}} v_2' - \frac{2}{2} v_1\\
+  &= v_4 - v_3' - \frac{2}{3} v_2' - v_1\\
+  &=
+  \begin{pmatrix}
+    1 & 1\\
+    1 & 1
+  \end{pmatrix}
+  - \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+  - \frac{2}{3} \begin{pmatrix}
+    \frac{1}{2} & 1\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}
+  - \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}\\
+  &=
+  \begin{pmatrix}
+    1 & 1\\
+    1 & 1
+  \end{pmatrix}
+  - \begin{pmatrix}
+    1 & 0\\
+    1 & 1
+  \end{pmatrix}
+  - \begin{pmatrix}
+    \frac{1}{3} & \frac{2}{3}\\
+    0 & -\frac{1}{3}
+  \end{pmatrix}\\
+  &=
+  \begin{pmatrix}
+    0 & 1\\
+    0 & 0
+  \end{pmatrix}
+  - \begin{pmatrix}
+    \frac{1}{3} & \frac{2}{3}\\
+    0 & -\frac{1}{3}
+  \end{pmatrix}\\
+  &=
+  \begin{pmatrix}
+    -\frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}
+\end{align*}
+
+Now for the normalize the base we simply need to multiply and therefore we get
+
+\begin{align*}
+  \mathcal{O} &= \left\{
+    \frac{1}{\sqrt{2}}\begin{pmatrix}
+      1 & 0\\
+      0 & 1
+    \end{pmatrix},
+    \sqrt{\frac{2}{3}}\begin{pmatrix}
+      \frac{1}{2} & 1\\
+      0 & - \frac{1}{2}
+    \end{pmatrix},
+    \begin{pmatrix}
+      0 & 0\\
+      1 & 0
+    \end{pmatrix},
+    \sqrt{3}\begin{pmatrix}
+    -\frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+    \end{pmatrix}
+    \right\}
+\end{align*}
+
+\subsection{Calculus}
+
+\begin{align*}
+  \mult{v_1}{v_2} &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    1 & 1\\
+    0 & 0
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 1\\
+    0 & 0
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    0 & 0
+  \end{pmatrix}
+    \right)\\
+  &= 1
+\end{align*}
+
+\begin{align*}
+  \mult{v_3}{v_1} &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    1 & 1
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    0 & 1
+  \end{pmatrix}
+    \right)\\
+    &= 2
+\end{align*}
+
+\begin{align*}
+  \mult{v_3}{v_2'} &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    1 & 1
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    \frac{1}{2} & 1\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    \frac{1}{2} & 1\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & \frac{1}{2}\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}
+    \right)\\
+    &= 0
+\end{align*}
+
+\begin{align*}
+  \mult{v_4}{v_1} &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    1 & 1
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    1 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    1 & 1
+  \end{pmatrix}
+  \right)\\
+  &= 2
+\end{align*}
+
+\begin{align*}
+  \mult{v_4}{v_2'} &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    1 & 1
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    \frac{1}{2} & 1\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    1 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    \frac{1}{2} & 1\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & \frac{1}{2}\\
+    \frac{1}{2} & \frac{1}{2}
+  \end{pmatrix}
+  \right)\\
+  &= 1
+\end{align*}
+
+\begin{align*}
+  \mult{v_4}{v_3'} &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    1 & 1
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 1\\
+    1 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    1 & 0
+  \end{pmatrix}
+  \right)\\
+  &= 1
+\end{align*}
+
+\begin{align*}
+  \dis{v_1} &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+    \right)\\
+  &= 2
+\end{align*}
+
+\begin{align*}
+  \dis{v_2'} &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & 0\\
+    1 & -\frac{1}{2}
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    \frac{1}{2} & 0\\
+    1 & -\frac{1}{2}
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & 1\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    \frac{1}{2} & 0\\
+    1 & -\frac{1}{2}
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    \frac{5}{4} & -\frac{1}{2}\\
+    -\frac{1}{2} & \frac{1}{4}
+  \end{pmatrix}
+    \right)\\
+  &= \frac{6}{4} = \frac{3}{2}
+\end{align*}
+
+
+\begin{align*}
+  \dis{v_3'} &= \Tr \left(
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    0 & 1\\
+    0 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 0
+  \end{pmatrix}
+    \right)\\
+    &= 1
+\end{align*}
+
+
+\begin{align*}
+  \dis{v_4'} &= \Tr \left(
+  \begin{pmatrix}
+    - \frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    - \frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    - \frac{1}{3} & 0\\
+    \frac{1}{3} & \frac{1}{3}
+  \end{pmatrix}
+  \begin{pmatrix}
+    - \frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{9} & -\frac{1}{9}\\
+    -\frac{1}{9} & \frac{2}{9}
+  \end{pmatrix}
+    \right)\\
+    &= \frac{3}{9} = \frac{1}{3}
+\end{align*}
+
+\begin{align*}
+  \dist{v_1} &= \sqrt{\dis{v_1}}\\
+  &= \sqrt{2}\\
+  \dist{v_2'} &= \sqrt{\dis{v_2'}}\\
+  &= \sqrt{\frac{3}{2}}\\
+  \dist{v_3'} &= \sqrt{\dis{v_3'}}\\
+  &= 1\\
+  \dist{v_4'} &= \sqrt{\dis{v_4'}}\\
+  &= \frac{1}{\sqrt{3}}
+\end{align*}
+
+\subsection{Checks}
+
+\begin{align*}
+  \mult{v_2'}{v_1} &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & 1\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & 0\\
+    1 & -\frac{1}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & 0\\
+    1 & -\frac{1}{2}
+  \end{pmatrix}
+  \right)\\
+  &= 0
+\end{align*}
+
+\begin{align*}
+  \mult{v_1}{v_3} &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+    \right)\\
+  &= 0
+\end{align*}
+
+\begin{align*}
+  \mult{v_2'}{v_3'} &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & 1\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & 0\\
+    1 & -\frac{1}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}
+    \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    0 & 0\\
+    -\frac{1}{2} & 0
+  \end{pmatrix}
+    \right)\\
+    &= 0
+\end{align*}
+
+
+\begin{align*}
+  \mult{v_1}{v_4'} &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    -\frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    -\frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    -\frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}
+  \right)\\
+  &= 0
+\end{align*}
+
+\begin{align*}
+  \mult{v_2'}{v_4'} &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & 1\\
+    0 & -\frac{1}{2}
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    -\frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    \frac{1}{2} & 0\\
+    1 & -\frac{1}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    -\frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    -\frac{1}{6} & \frac{1}{6}\\
+    -\frac{1}{3} & \frac{1}{6}
+  \end{pmatrix}
+  \right)\\
+  &= 0
+\end{align*}
+
+\begin{align*}
+  \mult{v_3'}{v_4'} &= \Tr \left(
+  \begin{pmatrix}
+    0 & 0\\
+    1 & 0
+  \end{pmatrix}^T
+  \begin{pmatrix}
+    -\frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    0 & 1\\
+    0 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    -\frac{1}{3} & \frac{1}{3}\\
+    0 & \frac{1}{3}
+  \end{pmatrix}
+  \right)\\
+  &= \Tr \left(
+  \begin{pmatrix}
+    0 & \frac{1}{3}\\
+    0 & 0\\
+  \end{pmatrix}
+  \right)\\
+  &= 0
+\end{align*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{P.21}
+
+\subsection{a}
+\begin{align*}
+  T(1, 0, 0) &= (-2, 0, -1)\\
+  T(0, 1, 0) &= (0, 5, 0)\\
+  T(0, 1, 0) &= (-1, 0, -2)\\
+  \left(T\right)_{\mathcal{B}} &= \begin{pmatrix}
+    -2 & 0 & -1\\
+    0 & 5 & 0\\
+    -1 & 0 & -2
+  \end{pmatrix}
+\end{align*}
+
+
+\subsection{b}
+
+For showing that it's symmetric is sufficient
+\begin{align*}
+  \left(T\right)_{\mathcal{B}}^T &= \begin{pmatrix}
+    -2 & 0 & -1\\
+    0 & 5 & 0\\
+    -1 & 0 & -2
+  \end{pmatrix} = \left(T\right)_{\mathcal{B}}
+\end{align*}
+
+Now for the base we could simply diagonalize
+\begin{align*}
+  P_{\left(T\right)_{\mathcal{B}}^T} &= \det \begin{pmatrix}
+    -2 - \lambda & 0 & -1\\
+    0 & 5 - \lambda & 0\\
+    -1 & 0 & -2 - \lambda
+  \end{pmatrix}\\
+  &= (5 - \lambda) \det \begin{pmatrix}
+    -2 - \lambda & -1\\
+    -1 & -2 - \lambda
+  \end{pmatrix}\\
+  &= (5 - \lambda)((-2 - \lambda)^2 - 1)\\
+  &= (5 - \lambda)(3 + 4\lambda + \lambda^2)\\
+  &= (5 - \lambda)(3 + 4\lambda + \lambda^2)\\
+  \lambda &= \frac{-4 \pm \sqrt{16 - 12}}{2}\\
+  &= \frac{-4 \pm 2}{2}\\
+  &= (5 - \lambda)(\lambda + 3)(\lambda + 1)
+\end{align*}
+
+We know by now that it's diagonalizable however we need the base to fullfill the requierements
+
+For $5$
+\begin{align*}
+  \begin{pmatrix}
+    -2 - 5 & 0 & -1\\
+    0 & 5 - 5 & 0\\
+    -1 & 0 & -2 - 5
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{pmatrix}
+    -7 & 0 & -1\\
+    0 & 0 & 0\\
+    -1 & 0 & -7
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    -7 x_1 - x_3 = 0\\
+    x_2 = x_2\\
+    - x_1 - 7 x_3 = 0\\
+  \end{cases}\\
+  \begin{cases}
+    -7 x_1 - x_3 = 0\\
+    x_2 = x_2\\
+    - 7 x_3 = x_1\\
+  \end{cases}\\
+  \begin{cases}
+    14 x_3 - x_3 = 0\\
+    x_2 = x_2\\
+    - 7 x_3 = x_1\\
+  \end{cases}\\
+  \begin{cases}
+    x_3 = 0\\
+    x_2 = x_2\\
+   x_1 = 0\\
+  \end{cases}
+\end{align*}
+
+
+For $-3$
+\begin{align*}
+  \begin{pmatrix}
+    -2 + 3 & 0 & -1\\
+    0 & 5 + 3 & 0\\
+    -1 & 0 & -2 + 3
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{pmatrix}
+    1 & 0 & -1\\
+    0 & 8 & 0\\
+    -1 & 0 & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    x_1 - x_3 = 0\\
+    8 x_2 = 0\\
+    -x_1 + x_3 = 0
+  \end{cases}\\
+  \begin{cases}
+    x_1 = x_1\\
+    x_2 = 0\\
+    x_1 = x_3
+  \end{cases}\\
+\end{align*}
+
+For $-1$
+\begin{align*}
+  \begin{pmatrix}
+    -2 + 1 & 0 & -1\\
+    0 & 5 + 1 & 0\\
+    -1 & 0 & -2 + 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{pmatrix}
+    -1 & 0 & -1\\
+    0 & 6 & 0\\
+    -1 & 0 & -1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\ x_2 \\ x_3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    0 \\ 0 \\ 0
+  \end{pmatrix}\\ 
+  \begin{cases}
+    -x_1 - x_3 = 0\\
+    6 x_2 = 0\\
+    -x_1 - x_3
+  \end{cases}\\
+  \begin{cases}
+    -x_1 = x_3\\
+    x_2 = 0\\
+    x_1 = - x_3
+  \end{cases}\\
+\end{align*}
+
+Therefore the basis is
+\[\mathcal{B} = \left\{(0, 1, 0), (1, 0, 1), (1, 0, -1)\right\}\]
+
+
+And we know that the corresponding matrixes are  change of basis from the canonic to this one (in both sides)
+
+Therefore
+\begin{align*}
+  P &= \begin{pmatrix}
+    0 & 1 & 1\\
+    1 & 0 & 0\\
+    0 & 1 & -1
+  \end{pmatrix}\\
+  P_1^-1 &= \begin{pmatrix}
+  0 & 1 & 1 & \vline & 1 & 0 & 0\\
+    1 & 0 & 0 & \vline & 0 & 1 & 0\\
+    0 & 1 & -1 & \vline & 0 & 0 & 1
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    1 & 0 & 0 & \vline & 0 & 1 & 0\\
+    0 & 1 & 1 & \vline & 1 & 0 & 0\\
+    0 & 1 & -1 & \vline & 0 & 0 & 1
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    1 & 0 & 0 & \vline & 0 & 1 & 0\\
+    0 & 1 & 1 & \vline & 1 & 0 & 0\\
+    0 & 0 & -2 & \vline & -1 & 0 & 1
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    1 & 0 & 0 & \vline & 0 & 1 & 0\\
+    0 & 1 & 1 & \vline & 1 & 0 & 0\\
+    0 & 0 & 1 & \vline & \frac{1}{2} & 0 & -\frac{1}{2}
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    1 & 0 & 0 & \vline & 0 & 1 & 0\\
+    0 & 1 & 0 & \vline & \frac{1}{2} & 0 & \frac{1}{2}\\
+    0 & 0 & 1 & \vline & \frac{1}{2} & 0 & -\frac{1}{2}
+  \end{pmatrix}
+\end{align*}
+
+We shouldn't need to check but for the sake of the correctness
+\begin{align*}
+  P^{-1}\left(T\right)_{\mathcal{B}}P &=
+  \begin{pmatrix}
+    0 & 1 & 0\\
+    \frac{1}{2} & 0 & \frac{1}{2}\\
+    \frac{1}{2} & 0 & -\frac{1}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    -2 & 0 & -1\\
+    0 & 5 & 0\\
+    -1 & 0 & -2
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & 1 & 1\\
+    1 & 0 & 0\\
+    0 & 1 & -1
+  \end{pmatrix}\\
+  &=
+  \begin{pmatrix}
+    0 & 1 & 0\\
+    \frac{1}{2} & 0 & \frac{1}{2}\\
+    \frac{1}{2} & 0 & -\frac{1}{2}
+  \end{pmatrix}
+  \begin{pmatrix}
+    0 & -3 & -1\\
+    5 & 0 & 0\\
+    0 & -3 & 1
+  \end{pmatrix}\\
+  &=
+  \begin{pmatrix}
+    5 & 0 & 0\\
+    0 & -3 & 0\\
+    0 & 0 & -1
+  \end{pmatrix}\\
+\end{align*}
+
+exactlly what we expected
+
+\subsection{c}
+
+The simpliest route to do that is probably by passing first the inside vector into the base $\mathcal{C}$ and then applying $T$ (in that base implies that we are dealing with the diagonalized matrix)
+
+\begin{align*}
+  P
+  \begin{pmatrix}
+    2 \\ 1 \\ 1 
+  \end{pmatrix} &= 
+  \begin{pmatrix}
+    0 & 1 & 1\\
+    1 & 0 & 0\\
+    0 & 1 & -1
+  \end{pmatrix}
+  \begin{pmatrix}
+    2 \\ 1 \\ 1 
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    2 \\ 2 \\ 0
+  \end{pmatrix}\\
+  P
+  \begin{pmatrix}
+    1 \\ 0 \\ 2
+  \end{pmatrix} &= 
+  \begin{pmatrix}
+    0 & 1 & 1\\
+    1 & 0 & 0\\
+    0 & 1 & -1
+  \end{pmatrix}
+  \begin{pmatrix}
+    1 \\ 0 \\ 2
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    2 \\ 1 \\ -2
+  \end{pmatrix}\\
+  P
+  \begin{pmatrix}
+    5 \\ -1 \\ -4
+  \end{pmatrix} &= 
+  \begin{pmatrix}
+    0 & 1 & 1\\
+    1 & 0 & 0\\
+    0 & 1 & -1
+  \end{pmatrix}
+  \begin{pmatrix}
+    5 \\ -1 \\ -4
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    -5 \\ 5 \\ 3
+  \end{pmatrix}
+\end{align*}
+
+Ahora con cada uno de estos podemos entonces calcular con la matriz diagonal
+\begin{align*}
+  \begin{pmatrix}
+    5 & 0 & 0\\
+    0 & -3 & 0\\
+    0 & 0 & -1
+  \end{pmatrix}
+  \begin{pmatrix}
+    2 \\ 2 \\ 0
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    10 \\ -6 \\ 0
+  \end{pmatrix}\\
+  \begin{pmatrix}
+    5 & 0 & 0\\
+    0 & -3 & 0\\
+    0 & 0 & -1
+  \end{pmatrix}
+  \begin{pmatrix}
+    2 \\ 1 \\ -2
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    10 \\ -3 \\ 2
+  \end{pmatrix}\\
+  \begin{pmatrix}
+    5 & 0 & 0\\
+    0 & -3 & 0\\
+    0 & 0 & -1
+  \end{pmatrix}
+  \begin{pmatrix}
+    -5 \\ 5 \\ 3
+  \end{pmatrix} &=
+  \begin{pmatrix}
+    -25 \\ -15 \\ -3
+  \end{pmatrix}
+\end{align*}
+
+\section{Octave for fun}
+
+Just for fun I did many of this points in octave so I'll append the scripts I used. As you can see in the development of this document I also did everything by hand but having confirmation by a program it's always nice
+
+\subsection{P.2}
+\subsubsection{a}
+\lstinputlisting[language=Octave]{./codes/punto_2_a.m}
+
+\textbf{Output}
+Characteristic polynomial:
+$$- \left(\lambda - 2\right) \left(\lambda^{2} + 3 \lambda - 3\right)$$
+
+\subsubsection{b}
+\lstinputlisting[language=Octave]{./codes/punto_2_b.m}
+
+\textbf{Output}
+Characteristic polynomial:
+$$\left(\lambda - 1\right) \left(\lambda^{3} - 5 \lambda^{2} + \lambda + 9\right)$$
+
+\subsection{P.4}
+\subsubsection{a}
+\lstinputlisting[language=Octave]{./codes/punto_4_a.m}
+
+\textbf{Output}
+\begin{lstlisting}
+Original Matrix
+   -9    4    4
+   -8    3    4
+  -16    8    7
+Matrix P (Eigenvectors):
+   0.4082   0.5049  -0.3338
+   0.4082   0.1619  -0.9107
+   0.8165   0.8479   0.2432
+Matrix D (Diagonal Eigenvalues):
+Diagonal Matrix
+
+   3   0   0
+   0  -1   0
+   0   0  -1
+Reconstructed A (P * D * inv(P)):
+   -9    4    4
+   -8    3    4
+  -16    8    7
+Verification successful: A is diagonalizable.
+\end{lstlisting}
+
+\subsubsection{c}
+\lstinputlisting[language=Octave]{./codes/punto_4_c.m}
+
+\textbf{Output}
+\begin{lstlisting}
+Original Matrix
+   2   2   0
+   2  -1   0
+   0   0   2
+Matrix P (Eigenvectors):
+   0.4472        0  -0.8944
+  -0.8944        0  -0.4472
+        0   1.0000        0
+Matrix D (Diagonal Eigenvalues):
+Diagonal Matrix
+
+  -2   0   0
+   0   2   0
+   0   0   3
+Reconstructed A (P * D * inv(P)):
+   2   2   0
+   2  -1   0
+   0   0   2
+Verification successful: A is diagonalizable.
+\end{lstlisting}
+
+\subsection{P.5}
+\subsubsection{a}
+\lstinputlisting[language=Octave]{./codes/punto_5_a.m}
+
+\textbf{Output}
+\begin{lstlisting}
+Eigenvector matrix V:
+   1  -1   1  -1
+   0  4e-292  -4e-292  4e-292
+   0   0   0   0
+   0   0   0   0
+Rank of V:
+1
+Matrix is not diagonalizable.
+\end{lstlisting}
+
+\subsubsection{b}
+\lstinputlisting[language=Octave]{./codes/punto_5_b.m}
+
+\textbf{Output}
+\begin{lstlisting}
+Eigenvector matrix V:
+   1.0000  -1.0000        0
+        0   0.0000        0
+        0        0   1.0000
+Rank of V:
+2
+Matrix is not diagonalizable.
+\end{lstlisting}
+
+\subsection{P.7}
+\lstinputlisting[language=Octave]{./codes/punto_7.m}
+
+\textbf{Output}
+\begin{lstlisting}
+Eigenvector matrix V:
+        0 +      0i        0 -      0i   1.0000 +      0i
+  -0.9129 +      0i  -0.9129 -      0i        0 +      0i
+  -0.3651 + 0.1826i  -0.3651 - 0.1826i        0 +      0i
+Eigenvalues matrix V:
+Diagonal Matrix
+
+  -0.0000 + 1.0000i                  0                  0
+                  0  -0.0000 - 1.0000i                  0
+                  0                  0   3.0000 +      0i
+Rank of V:
+3
+It have complex Eigenvalues, Therefore it cannot be diagonalizable in R
+To check that it is diagonalizable see that
+Reconstructed A (P * D * inv(P)):
+   3.0000 +      0i        0 +      0i        0 +      0i
+        0 +      0i   2.0000 + 0.0000i  -5.0000 - 0.0000i
+        0 +      0i   1.0000 + 0.0000i  -2.0000 - 0.0000i
+Verification successful: A is diagonalizable.
+\end{lstlisting}
+
+
+\subsection{P.13}
+It was not as easy because it was non canonical dot product and therefore I didn't succed in such short time frame to generate the neccessary codes
+
+\subsection{P.21}
+\lstinputlisting[language=Octave]{./codes/punto_21.m}
+
+\textbf{Output}
+\begin{lstlisting}
+Eigenvector matrix V:
+   0.7071  -0.7071        0
+        0        0   1.0000
+   0.7071   0.7071        0
+Eigenvalues matrix V:
+Diagonal Matrix
+
+  -3   0   0
+   0  -1   0
+   0   0   5
+Rank of V:
+3
+To check that it is diagonalizable see that
+Reconstructed A (P * D * inv(P)):
+  -2   0  -1
+   0   5   0
+  -1   0  -2
+Verification successful: A is diagonalizable.
+\end{lstlisting}
+
+\subsection{code}
+
+If you want to check it out all the code (including this \LaTeX{}) it's here \url{https://github.com/demon-s1e7j/Universidad/tree/main/VeraoUSP/LinearAlgebra/Listas/Lista3}
+
+
+
+\end{document}
