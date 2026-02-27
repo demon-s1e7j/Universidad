@@ -49,47 +49,105 @@
 %	<content>
 %\end{frame}
 
-\section{Definiciones y Lemmas}
+\section{Definiciones y Lemas}
 
-\begin{frame}{Definiciones Basicas: Transición de Fase y sus posibles Causas}
+\begin{frame}{Definiciones Básicas: Transición de Fase y sus posibles Causas}
   \begin{itemize}
-    \item \textbf{Transición de Fase: }En el paradigma de Landau una transición continua de fase implica una ruptura en la simetria. Si bien esta ruptura suele ser evidente determinar cual es el componente que la dirige no suele ser trivial.
-    \item \textbf{Nematicidad Electronica: }Es un ordenamiento que rompe la simetria rotacional del cristal pero conserva la simetria traslacional. Se puede ver en multiples compuestos, particularmente en el que nos interesara $Ba(Fe_{1 - x}Co_{x})_2As_2$
-    \item \textbf{Distorsión Ferroelastica: } Es un cambio en la estructura de la red que puede romper simetrias (en este caso, tambien puede romper simetrias de rotación) pero lo hace por deformaciones mecanicas.
+    \item \textbf{Transición de Fase:} En el paradigma de Landau, una transición continua de fase implica una ruptura de simetría. Si bien esta ruptura suele ser evidente, determinar el componente que la dirige no suele ser trivial.
+    \item \textbf{Nematicidad Electrónica:} Es un ordenamiento que rompe la simetría rotacional del cristal pero conserva la simetría traslacional. Se observa en múltiples compuestos, particularmente en el que nos interesa: $Ba(Fe_{1 - x}Co_{x})_2As_2$.
+    \item \textbf{Distorsión Ferroelástica:} Es un cambio en la estructura de la red que puede romper simetrías (en este caso, también de rotación) mediante deformaciones mecánicas.
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Definiciones Basicas: }
+\begin{frame}{Definiciones Básicas: Materiales}
+  \begin{itemize}
+    \item \textbf{Compuesto superconductor de pnicturos de hierro:} Es el material en el que se realizarán las mediciones para determinar el origen de su transición de fase. Los pnicturos son compuestos de elementos del grupo 15 de la tabla periódica; en particular, este tiene la composición $Ba(Fe_{1 - x}Co_{x})_2As_2$.
+    \item \textbf{Piezoeléctrico:} Son materiales que generan electricidad ante cambios mecánicos. En este caso son ideales, ya que, al deformarlos, permiten medir la conducción del material bajo estrés y deformación.
+  \end{itemize}
 \end{frame}
 
-\section{Resumen del Articulo}
-
-\begin{frame}{Slide with table}
-  Hola
+\begin{frame}{Definiciones Básicas: Fundamentos Teóricos}
+\begin{itemize}
+  \item \textbf{Modelo de Ginzburg-Landau:} Este es el modelo básico del que se derivan las demás ecuaciones. En particular, se usará:
+    \begin{align*}
+      F = \frac{a}{2} \Psi^2 + \frac{b}{4} \Psi^4 + \frac{c}{2}\varepsilon^2 - \lambda \Psi \varepsilon - h \varepsilon,
+    \end{align*}
+  \item \textbf{Parámetro de orden nemático ($\Psi$):} Es una cantidad que cuantifica el grado de ruptura de la simetría rotacional en el sistema electrónico. En el contexto del artículo, no es directamente observable, pero es equivalente a la anisotropía de resistividad, que sí se puede medir.
+  \item \textbf{Susceptibilidad Nemática ($\frac{d\Psi}{d\varepsilon}$):} Describe cómo cambia el orden nemático ante un campo externo (en nuestro caso, una deformación). Este será el parámetro que demostrará que la transición de fase en nuestro material es una transición nemática electrónica.
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Slide with figure}
-	% \begin{figure}[H]
-	% 	\centering
-	%        \includegraphics[width=.5\textwidth]{figures/figure1.png}
-	%        \caption{Caption for figure one.}
-	%        \label{fig:figure1}
-	% \end{figure}
+\section{Resumen del Artículo}
+
+\begin{frame}{Se midieron $\varepsilon$ y $\eta$, lo que permite encontrar todas las variables necesarias para determinar el origen de la transición}
+  \begin{columns}
+		\column{.5\textwidth}
+      \textbf{Deformación $\varepsilon$:} Permite medir el cambio que sufrió el material. En particular, se midieron la deformación de la muestra y la del piezoeléctrico, de modo que se pudo representar la relación entre ambas.
+       \begin{figure}[H]
+		\centering
+        \includegraphics[width=.6\textwidth]{./imgs/img_1.png}
+         \caption{Relación entre la deformación en el piezoeléctrico y en la muestra.}
+        \label{fig:figure1}
+	\end{figure}
+    \column{.5\textwidth}
+    \textbf{Cambio de resistividad ($\eta$):} También conocida como anisotropía de resistividad. Representa el cambio de resistividad en el material a medida que varía el voltaje.
+       \begin{figure}[H]
+		\centering
+        \includegraphics[width=.55\textwidth]{./imgs/img_2.png}
+        \label{fig:figure2}
+	\end{figure}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Slide with references}
-	This is to reference a figure (Figure \ref{fig:figure1})\\
-    This it to reference a table (Table \ref{tab:table1})\\
-    This is to cite an article \cite{Ahmed2018a}\\
-    This is to add an article to the references without mentioning in the text \nocite{Ahmed2018a}\\
+\begin{frame}{El modelo de Ginzburg-Landau permite diferenciar el origen de la transición de fase}
+  Partiendo del modelo de Ginzburg-Landau:
+  \[
+    F = \frac{a}{2} \Psi^2 + \frac{b}{4} \Psi^4 + \frac{c}{2}\varepsilon^2 - \lambda \Psi \varepsilon - h \varepsilon,
+\]
+donde $\Psi$ es el parámetro de orden nemático electrónico (medido por $\eta$), $\varepsilon$ es la deformación elástica, $h$ el esfuerzo (variable conjugada), y las demás letras son parámetros de segundo orden en la expansión en series de potencias.
+  \begin{itemize}
+    \item Si la transición de fase depende del grado de libertad electrónico, el parámetro $a$ se anulará para cierta temperatura $T^*$;
+    \item Si depende de una inestabilidad estructural, será el parámetro $c$ el que se anule.
+  \end{itemize}
+  En ambos casos, las demás variables se mantienen independientes de la temperatura.
 \end{frame}
 
-\section{Critique}
+\begin{frame}{Podemos determinar qué componente se anula haciendo un ajuste de susceptibilidad nemática}
+  Partiendo de la ecuación anterior se puede determinar que:
+  \[\frac{d\Psi}{d\varepsilon} = \frac{\lambda}{a}\]
+  Esto implica que la susceptibilidad nemática únicamente diverge si la componente $a$ lo hace, lo que solo es posible en el caso de una transición nemática. Sin embargo, esto funciona para casos ideales; el ajuste real debe hacerse con:
+\[
+\frac{d\eta}{d\varepsilon} = \frac{\lambda}{a_0 (T - T^*) + 3b\eta_0^2} + \chi_0,
+\]
+\end{frame}
 
-% Adding the option 'allowframebreaks' allows the contents of the slide to be expanded in more than one slide.
-\begin{frame}[allowframebreaks]{References}
-	\tiny\bibliography{references}
-	\bibliographystyle{apalike}
+\begin{frame}{El ajuste coincide con los datos, lo que implica que esta transición es de origen nemático}
+       \begin{figure}[H]
+		\centering
+        \includegraphics[width=.65\textwidth]{./imgs/img_3.png}
+         \caption{Ajuste propuesto sobre los datos obtenidos. Este ajuste solo puede funcionar si la transición de fase se debe a una estructura nemática interna.}
+        \label{fig:figure3}
+	\end{figure}
+  \begin{itemize}
+    \item Se demostró que la transición de fase depende principalmente de una transición nemática.
+    \item Además, se realizó este mismo desarrollo para múltiples valores de temperatura y dopaje, lo que permitió proponer esta transición como característica intrínseca del material.
+  \end{itemize}
+\end{frame}
+
+\section{Crítica}
+
+\begin{frame}{Si bien tiene una estructura clara y metodología sólida, presenta ligeras fallas metodológicas}
+Si bien la metodología es clara y sólida para determinar la dependencia buscada, el proceso de explicación me parece insuficiente. En particular, la transferencia de deformación depende de la geometría y, aunque se menciona en el artículo, no se abordan posibles errores sistemáticos que afecten la incertidumbre. En general, el trabajo no explica con suficiente detalle la incertidumbre de sus resultados y, por tanto, no se puede determinar fácilmente cuán confiables son, más allá de una inspección de las gráficas, en donde tampoco se reporta la incertidumbre.
+\end{frame}
+
+\begin{frame}{Existen mejoras considerables en el estilo del texto, por ejemplo, separar los temas de manera más estructurada}
+  La falta de marcadores para separar secciones, si bien es una decisión comprensible, hace que diversos puntos queden agrupados en secciones inesperadas. Por ejemplo, una de las conclusiones más importantes (la respuesta a la hipótesis central del texto) se encuentra justo después de la explicación del ajuste y se menciona poco o nada en las conclusiones del artículo. Además, el orden de algunos párrafos no es claro y las transiciones no permiten diferenciar rápidamente lo que se está leyendo. Esto, si bien no es un inconveniente para una lectura rigurosa, resulta complejo y confuso para una primera lectura rápida.
+\end{frame}
+
+\begin{frame}{Si bien es un artículo con una metodología sólida y clara, existen pequeñas mejoras.}
+
+El artículo \textit{"Divergent Nematic Susceptibility in an Iron Arsenide Superconductor"} de Chu et al. (2012) se propone identificar los componentes impulsores de la transición nemática en el compuesto superconductor de pnicturos de hierro $Ba(Fe_{1 - x}Co_{x})_2As_2$. Logra este objetivo ajustando la derivada de la resistividad respecto a la deformación del material, realizando pruebas en diferentes configuraciones de temperatura y dopaje, y proponiendo que estas son características esenciales del material. Se trata de un artículo sólido que cumple con los objetivos planteados. Sin embargo, no presenta la incertidumbre de sus resultados ni la discute de manera significativa en el texto. Además, el orden y la estructura empleados dificultan distinguir las partes más relevantes, especialmente en una primera lectura.
+
 \end{frame}
 
 \end{document}

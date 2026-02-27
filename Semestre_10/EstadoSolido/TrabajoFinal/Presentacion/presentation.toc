@@ -1,4 +1,4 @@
 \babel@toc {english}{}\relax 
-\beamer@sectionintoc {1}{Definiciones y Lemmas}{2}{0}{1}
-\beamer@sectionintoc {2}{Resumen del Articulo}{4}{0}{2}
-\beamer@sectionintoc {3}{Critique}{7}{0}{3}
+\beamer@sectionintoc {1}{Definiciones y Lemas}{2}{0}{1}
+\beamer@sectionintoc {2}{Resumen del Artículo}{5}{0}{2}
+\beamer@sectionintoc {3}{Crítica}{9}{0}{3}

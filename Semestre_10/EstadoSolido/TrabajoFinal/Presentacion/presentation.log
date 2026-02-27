@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.11.19)  4 DEC 2025 10:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.11.19)  4 DEC 2025 12:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1393,26 +1393,41 @@ thkerncmss.
 
 ] [4
 
-] [5
+]
+<./imgs/img_1.png, id=140, 278.03876pt x 210.7875pt>
+File: ./imgs/img_1.png Graphic file (type png)
+<use ./imgs/img_1.png>
+Package pdftex.def Info: ./imgs/img_1.png  used on input line 100.
+(pdftex.def)             Requested size: 92.18788pt x 69.89137pt.
+<./imgs/img_2.png, id=142, 286.06876pt x 378.41376pt>
+File: ./imgs/img_2.png Graphic file (type png)
+<use ./imgs/img_2.png>
+Package pdftex.def Info: ./imgs/img_2.png  used on input line 100.
+(pdftex.def)             Requested size: 84.50517pt x 111.7812pt.
+
+Overfull \vbox (9.82245pt too high) detected at line 100
+ []
+
+[5
+
+ <./imgs/img_1.png> <./imgs/img_2.png>] [6
+
+] [7
 
 ]
+<./imgs/img_3.png, id=225, 712.6625pt x 269.005pt>
+File: ./imgs/img_3.png Graphic file (type png)
+<use ./imgs/img_3.png>
+Package pdftex.def Info: ./imgs/img_3.png  used on input line 135.
+(pdftex.def)             Requested size: 199.73653pt x 75.39066pt.
+ [8
 
-LaTeX Warning: Reference `fig:figure1' on page 6 undefined on input line 85.
+ <./imgs/img_3.png>]
+[9
 
+] [10
 
-LaTeX Warning: Reference `tab:table1' on page 6 undefined on input line 85.
-
-
-LaTeX Warning: Citation `Ahmed2018a' on page 6 undefined on input line 85.
-
-
-LaTeX Warning: Citation `Ahmed2018a' undefined on input line 85.
-
-[6
-
-]
-No file presentation.bbl.
-[7
+] [11
 
 ]
 \tf@nav=\write6
@@ -1425,40 +1440,33 @@ No file presentation.bbl.
 \openout8 = `presentation.snm'.
 
  (./presentation.aux)
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 5F5CD92D6DA982E26788540D7A1A7BC3;386.
+(rerunfilecheck)             Checksum: 955005AD450EFFFEB9A783DA4D06CD61;382.
  ) 
 Here is how much of TeX's memory you used:
- 22669 strings out of 476041
- 439764 string characters out of 5793173
- 1858388 words of memory out of 6000000
- 42624 multiletter control sequences out of 15000+600000
- 519331 words of font info for 57 fonts, out of 8000000 for 9000
+ 22746 strings out of 476041
+ 440848 string characters out of 5793173
+ 1861388 words of memory out of 6000000
+ 42685 multiletter control sequences out of 15000+600000
+ 523791 words of font info for 73 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 128i,14n,122p,387b,557s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{tab:table1} has been referenced but does not exist,
- replaced by a fixed one
-
-
-pdfTeX warning (dest): name{fig:figure1} has been referenced but does not exist
-, replaced by a fixed one
-
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/symbols/msam10.pfb>
-Output written on presentation.pdf (7 pages, 92034 bytes).
+ 128i,14n,122p,856b,638s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbo
+ls/msam10.pfb>
+Output written on presentation.pdf (11 pages, 232032 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
- 224 compressed objects within 3 object streams
- 20 named destinations out of 1000 (max. 500000)
- 67 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 389 PDF objects out of 1000 (max. 8388607)
+ 335 compressed objects within 4 object streams
+ 29 named destinations out of 1000 (max. 500000)
+ 82 words of extra memory for PDF output out of 10000 (max. 10000000)
 
