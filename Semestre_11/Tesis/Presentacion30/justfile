@@ -1,0 +1,8 @@
+build doc="PresentationTemplate.tex":
+  pdflatex {{doc}}
+
+show doc="PresentationTemplate.pdf":
+  evince {{doc}}
+
+watch doc="PresentationTemplate.tex":
+  ls | entr just build {{doc}}
