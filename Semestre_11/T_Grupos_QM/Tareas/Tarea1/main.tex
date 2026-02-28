@@ -1,0 +1,84 @@
+\documentclass[12pt]{amsart}
+
+%%%%%%%%%This project was adapted from Adam Graham-Squire at High Point University.
+
+\addtolength{\hoffset}{-2.25cm}
+\addtolength{\textwidth}{4.5cm}
+\addtolength{\voffset}{-2.5cm}
+\addtolength{\textheight}{5cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0in}
+
+\usepackage{amsthm, amsmath, amssymb, mathtools}
+\usepackage[colorlinks = true, linkcolor = black, citecolor = black, final]{hyperref}
+\usepackage{graphicx, multicol}
+\usepackage{marvosym, wasysym}
+
+\newcommand{\ds}{\displaystyle}
+\DeclareMathOperator{\sech}{sech}
+
+
+
+\pagestyle{empty}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+{\scshape FISI-4005} \hfill {\scshape \large Sergio Montoya} \hfill {Tarea \#1\scshape }
+ 
+\smallskip
+
+\hrule
+
+\section{}
+
+Partimos desde la definición
+$$P_{ij}^{(\alpha)} \coloneq \frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{ij}^{(\alpha)}(g^{-1})r(g)$$
+
+Y por tanto
+
+\begin{align*}
+  P_{ij}^{(\alpha)} P_{kl}^{(\beta)} &= \left(\frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{ij}^{(\alpha)}(g^{-1})r(g)\right)\left(\frac{n_\beta}{\left|G\right|} \sum_{h \in G} D_{kl}^{(\beta)}(h^{-1})r(h)\right)\\
+  &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, h \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}(h^{-1})r(g)r(h)\\
+  &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, h \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}(h^{-1})r(gh)\\
+\end{align*}
+
+Ahora podemos tomar una nueva variable $x = gh \implies h = g^{-1} x$ y por tanto
+
+\begin{align*}
+  P_{ij}^{(\alpha)} P_{kl}^{(\beta)} &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, x \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}((g^{-1} x)^{-1})r(x)\\
+  &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, x \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}(x^{-1}g)r(x)\\
+  D_{kl}^{(\beta)} (x^{-1}g) &= \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1})D_{ml}^{(\beta)}(g)\\
+  P_{ij}^{(\alpha)} P_{kl}^{(\beta)} &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, x \in G} D_{ij}^{(\alpha)}(g^{-1}) \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1})D_{ml}^{(\beta)}(g) r(x)\\
+  &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{x \in G} r(x) \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1}) \left(\sum_{g \in G} D_{ml}^{(\beta)}(g) D_{ij}^{(\alpha)}(g^{-1}) \right)\\
+  \sum_{g \in G} D_{ml}^{(\beta)}(g) D_{ij}^{(\alpha)}(g^{-1})  &= \frac{\left|G\right|}{n_\alpha} \delta_{\alpha\beta} \delta_{il}\delta_{mj}\\
+  P_{ij}^{(\alpha)} P_{kl}^{(\beta)}&= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{x \in G} r(x) \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1}) \left(\frac{\left|G\right|}{n_\alpha} \delta_{\alpha\beta} \delta_{il}\delta_{mj}\right)\\
+\end{align*}
+
+Dado que tenemos $\delta_{mj}$ entonces esa sumatoria se reduce a simplemente el caso $m = j$
+
+\begin{align*}
+  P_{ij}^{(\alpha)} P_{kl}^{(\beta)}&= \delta_{\alpha\beta} \delta_{il}\frac{n_\beta}{\left|G\right|} \sum_{x \in G} D_{kj}^{(\beta)}(x^{-1}) r(x) \\
+  &= \delta_{\alpha\beta} \delta_{il}P_{kj}^{(\beta)}
+\end{align*}
+
+Esto ya es el resultado pues sabemos que en caso de que $\alpha \neq \beta$ entonces todo se va a $0$. Por lo tanto
+$$P_{ij}^{(\alpha)} P_{kl}^{(\beta)} = \delta_{\alpha\beta} \delta_{il} P_{kj}^{(\alpha)}$$
+\newpage
+
+\section{}
+
+\subsection{$P^2 = P$}
+
+\begin{align*}
+  \left(P^{(\alpha)}\right)^2 &= \sum_{k, j = 1}^{n_{\alpha}} P_{kk}^\alpha P_{jj}^{\alpha}\\
+  P_{kk}^{(\alpha)} P_{jj}^{(\alpha)} &= \delta_{\alpha\alpha} \delta_{kj} P_{kj}^{(\alpha)}\\
+  \left(P^{(\alpha)}\right)^2 &= \sum_{k, j = 1}^{n_{\alpha}} \delta_{kj} P_{kj}^{(\alpha)}\\
+  \left(P^{(\alpha)}\right)^2 &= \sum_{k = 1}^{n_{\alpha}} P_{kk}^{(\alpha)}\\
+  \left(P^{(\alpha)}\right)^2 &= P^\alpha
+\end{align*}
+
+\subsection{$P^* = P$}
+
+\end{document}
