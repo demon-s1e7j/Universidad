@@ -81,4 +81,82 @@ $$P_{ij}^{(\alpha)} P_{kl}^{(\beta)} = \delta_{\alpha\beta} \delta_{il} P_{kj}^{
 
 \subsection{$P^* = P$}
 
+\begin{align*}
+  \left(P^{(\alpha)}\right)^* &= \left(\frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})r(g)\right)^*\\
+  &= \frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g)r(g^{-1})\\
+\end{align*}
+
+Pero esto es equivalente pues si tomamos $g^{-1} = h$ podemos cambiar de variable y recorrer el mismo espacio. Es decir
+\begin{align*}
+  \left(P^{(\alpha)}\right)^* &= \frac{n_\alpha}{\left| G \right|} \sum_{h \in G} \chi^{(\alpha)}(h^{-1})r(h)\\
+  \left(P^{(\alpha)}\right)^* &= P^{(\alpha)}
+\end{align*}
+
+\subsection{Multiplicidad $m_\alpha$}
+
+\begin{align*}
+  tr(P^{(\alpha)})  &= tr\left(\frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})r(g)\right)\\
+  &= \frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})tr\left(r(g)\right)
+\end{align*}
+
+Sabemos que la traza de $r$ sera el caracter completo que a su vez sabemos corresponde a la suma de los caracteres irrep con sus multiplicidades. Por lo tanto,
+$$tr(r(g)) = \sum_{\beta \in G} m_\beta \chi^{(\beta)}(g)$$
+
+Por lo tanto
+\begin{align*}
+  tr(P^{\alpha}) &= \frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})\sum_{\beta \in G} m_\beta \chi^{(\beta)}(g)\\
+  tr(P^{\alpha}) &= \frac{n_\alpha}{\left| G \right|} \sum_{\beta \in G} m_\beta \sum_{g \in G} \chi^{(\alpha)}(g^{-1})\chi^{(\beta)}(g)
+\end{align*}
+
+Dado que los caracteres son ortogonales entre si esta suma solamente tiene sentido cuando $\alpha = \beta$
+
+\begin{align*}
+  tr(P^{\alpha}) &= \frac{n_\alpha}{\left| G \right|} m_\alpha \sum_{g \in G} \chi^{(\alpha)}(g^{-1})\chi^{(\alpha)}(g)\\
+  &= \frac{n_\alpha}{\left| G \right|} m_\alpha \left|G\right|\\
+  &= n_\alpha m_\alpha\\
+  m_\alpha &= \frac{1}{n\alpha} tr(P^{(\alpha)})
+\end{align*}
+
+\subsection{caracteristicas $P_kk^{(\alpha)}$}
+
+Las primeras caracteristicas ya las mostramos en las correspondientes demostraciones (es decir, utilizamos ambas cosas en los puntos de arriba). Sin embargo falta mostrar que $tr(P_{kk}^{(\alpha)}) = m_\alpha$.
+
+\begin{align*}
+  tr(P_{kk}^{(\alpha)}) &= tr\left(\frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{kk}^{(\alpha)}(g^{-1}) r(g)\right)\\
+  tr(r(g)) &= \sum_{\beta \in G} m_\beta \chi^{(\beta)}(g) = \sum_{\beta \in G} m_\beta \sum_{l = 1}^{n_\alpha} D_{ll}^{(\beta)}(g)\\
+  tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{kk}^{(\alpha)}(g^{-1}) \sum_{\beta \in G} m_\beta \sum_{l = 1}^{n_\alpha} D_{ll}^{(\beta)}(g)\\
+  tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} \sum_{\beta \in G} m_\beta \sum_{g \in G}  \sum_{l = 1}^{n_\alpha} D_{kk}^{(\alpha)}(g^{-1}) D_{ll}^{(\beta)}(g)\\
+  tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} m_\alpha \sum_{g \in G} D_{kk}^{(\alpha)}(g^{-1}) D_{kk}^{(\alpha)}(g)\\
+  tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} m_\alpha \frac{\left|G\right|}{n_\alpha}\\
+  tr(P_{kk}^{(\alpha)}) &= m_\alpha\\
+\end{align*}
+
+\section{}
+
+Para demostrar que $v_{kj}^{(\alpha)}$ son linealmente independientes basta con mostrar que
+
+\begin{align*}
+  \sum_{j = 1}^{n_\alpha} c_jv_{kj}^{(\alpha)} = 0 \implies \forall j;\ c_j = 0
+\end{align*}
+
+Desarrollando esto
+\begin{align*}
+  \sum_{j = 1}^{n_\alpha} c_jv_{kj}^{(\alpha)} = 0\\
+  \sum_{j = 1}^{n_\alpha} c_jP_{1j}^{\alpha}\omega_k = 0\\
+\end{align*}
+
+Ahora, sin perdida de generalidad tomemos para un $m \in \left\{1, \ldots, n_\alpha \right\}$ un $P_{m1}^{(\alpha)}$ para aplicarlo lo que nos daria.
+\begin{align*}
+  \sum_{j = 1}^{n_\alpha} c_jP_{m1}^{(\alpha)}P_{1j}^{\alpha}\omega_k = P_{m1}0\\
+  \sum_{j = 1}^{n_\alpha} c_j\left(\delta_{\alpha\alpha}\delta{mj}P_{11}\right)\omega_k = 0\\
+  c_m P_{11}\omega_k = 0\\
+  P_{11}\omega_k \neq 0 \implies c_m = 0\\
+\end{align*}
+
+Por lo tanto $$\forall m;\ c_m = 0$$
+
+\section{}
+
+Para este caso, nos piden la evolución de un vector $v_{kn}^{(\alpha)}$ (con $n \in \left\{1, \ldots, n_\alpha\right\}$ y $k, \alpha$ fijos) respecto a un operador del grupo $g$ dada la irrep $r$. Es decir, nos estan preguntando $$r(g)v_{kn}^{(\alpha)} = r(g) P_{1n}^{(\alpha)} \omega_k = ?$$
+
 \end{document}
