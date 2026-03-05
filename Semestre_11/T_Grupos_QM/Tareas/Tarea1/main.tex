@@ -13,150 +13,639 @@
 \usepackage[colorlinks = true, linkcolor = black, citecolor = black, final]{hyperref}
 \usepackage{graphicx, multicol}
 \usepackage{marvosym, wasysym}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing, shapes.geometric}
 
-\newcommand{\ds}{\displaystyle}
-\DeclareMathOperator{\sech}{sech}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},   
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+  }
+
+  \lstset{style=mystyle}
+
+  \newcommand{\ds}{\displaystyle}
+  \DeclareMathOperator{\sech}{sech}
 
 
 
-\pagestyle{empty}
+  \pagestyle{empty}
 
-\begin{document}
+  \begin{document}
 
-\thispagestyle{empty}
+  \thispagestyle{empty}
 
-{\scshape FISI-4005} \hfill {\scshape \large Sergio Montoya} \hfill {Tarea \#1\scshape }
- 
-\smallskip
+  {\scshape FISI-4005} \hfill {\scshape \large Sergio Montoya Ramirez} \hfill {Tarea \#1\scshape }
 
-\hrule
+  \smallskip
+
+  \hrule
+
+  \section{}
+
+  Partimos desde la definición
+  $$P_{ij}^{(\alpha)} \coloneq \frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{ij}^{(\alpha)}(g^{-1})r(g)$$
+
+  Y por tanto
+
+  \begin{align*}
+    P_{ij}^{(\alpha)} P_{kl}^{(\beta)} &= \left(\frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{ij}^{(\alpha)}(g^{-1})r(g)\right)\left(\frac{n_\beta}{\left|G\right|} \sum_{h \in G} D_{kl}^{(\beta)}(h^{-1})r(h)\right)\\
+    &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, h \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}(h^{-1})r(g)r(h)\\
+    &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, h \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}(h^{-1})r(gh)\\
+  \end{align*}
+
+  Ahora podemos tomar una nueva variable $x = gh \implies h = g^{-1} x$ y por tanto
+
+  \begin{align*}
+    P_{ij}^{(\alpha)} P_{kl}^{(\beta)} &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, x \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}((g^{-1} x)^{-1})r(x)\\
+    &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, x \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}(x^{-1}g)r(x)\\
+    D_{kl}^{(\beta)} (x^{-1}g) &= \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1})D_{ml}^{(\beta)}(g)\\
+    P_{ij}^{(\alpha)} P_{kl}^{(\beta)} &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, x \in G} D_{ij}^{(\alpha)}(g^{-1}) \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1})D_{ml}^{(\beta)}(g) r(x)\\
+    &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{x \in G} r(x) \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1}) \left(\sum_{g \in G} D_{ml}^{(\beta)}(g) D_{ij}^{(\alpha)}(g^{-1}) \right)\\
+    \sum_{g \in G} D_{ml}^{(\beta)}(g) D_{ij}^{(\alpha)}(g^{-1})  &= \frac{\left|G\right|}{n_\alpha} \delta_{\alpha\beta} \delta_{il}\delta_{mj}\\
+    P_{ij}^{(\alpha)} P_{kl}^{(\beta)}&= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{x \in G} r(x) \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1}) \left(\frac{\left|G\right|}{n_\alpha} \delta_{\alpha\beta} \delta_{il}\delta_{mj}\right)\\
+  \end{align*}
+
+  Dado que tenemos $\delta_{mj}$ entonces esa sumatoria se reduce a simplemente el caso $m = j$
+
+  \begin{align*}
+    P_{ij}^{(\alpha)} P_{kl}^{(\beta)}&= \delta_{\alpha\beta} \delta_{il}\frac{n_\beta}{\left|G\right|} \sum_{x \in G} D_{kj}^{(\beta)}(x^{-1}) r(x) \\
+    &= \delta_{\alpha\beta} \delta_{il}P_{kj}^{(\beta)}
+  \end{align*}
+
+  Esto ya es el resultado pues sabemos que en caso de que $\alpha \neq \beta$ entonces todo se va a $0$. Por lo tanto
+  $$P_{ij}^{(\alpha)} P_{kl}^{(\beta)} = \delta_{\alpha\beta} \delta_{il} P_{kj}^{(\alpha)}$$
+  \newpage
+
+  \section{}
+
+  \subsection{$P^2 = P$}
+
+  \begin{align*}
+    \left(P^{(\alpha)}\right)^2 &= \sum_{k, j = 1}^{n_{(\alpha)}} P_{kk}^\alpha P_{jj}^{(\alpha)}\\
+    P_{kk}^{(\alpha)} P_{jj}^{(\alpha)} &= \delta_{\alpha\alpha} \delta_{kj} P_{kj}^{(\alpha)}\\
+    \left(P^{(\alpha)}\right)^2 &= \sum_{k, j = 1}^{n_{(\alpha)}} \delta_{kj} P_{kj}^{(\alpha)}\\
+    \left(P^{(\alpha)}\right)^2 &= \sum_{k = 1}^{n_{(\alpha)}} P_{kk}^{(\alpha)}\\
+    \left(P^{(\alpha)}\right)^2 &= P^\alpha
+  \end{align*}
+
+  \subsection{$P^* = P$}
+
+  \begin{align*}
+    \left(P^{(\alpha)}\right)^* &= \left(\frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})r(g)\right)^*\\
+    &= \frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g)r(g^{-1})\\
+  \end{align*}
+
+  Pero esto es equivalente pues si tomamos $g^{-1} = h$ podemos cambiar de variable y recorrer el mismo espacio. Es decir
+  \begin{align*}
+    \left(P^{(\alpha)}\right)^* &= \frac{n_\alpha}{\left| G \right|} \sum_{h \in G} \chi^{(\alpha)}(h^{-1})r(h)\\
+    \left(P^{(\alpha)}\right)^* &= P^{(\alpha)}
+  \end{align*}
+
+  \subsection{Multiplicidad $m_\alpha$}
+
+  \begin{align*}
+    tr(P^{(\alpha)})  &= tr\left(\frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})r(g)\right)\\
+    &= \frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})tr\left(r(g)\right)
+  \end{align*}
+
+  Sabemos que la traza de $r$ sera el caracter completo que a su vez sabemos corresponde a la suma de los caracteres irrep con sus multiplicidades. Por lo tanto,
+  $$tr(r(g)) = \sum_{\beta \in G} m_\beta \chi^{(\beta)}(g)$$
+
+  Por lo tanto
+  \begin{align*}
+    tr(P^{(\alpha)}) &= \frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})\sum_{\beta \in G} m_\beta \chi^{(\beta)}(g)\\
+    tr(P^{(\alpha)}) &= \frac{n_\alpha}{\left| G \right|} \sum_{\beta \in G} m_\beta \sum_{g \in G} \chi^{(\alpha)}(g^{-1})\chi^{(\beta)}(g)
+  \end{align*}
+
+  Dado que los caracteres son ortogonales entre si esta suma solamente tiene sentido cuando $\alpha = \beta$
+
+  \begin{align*}
+    tr(P^{(\alpha)}) &= \frac{n_\alpha}{\left| G \right|} m_\alpha \sum_{g \in G} \chi^{(\alpha)}(g^{-1})\chi^{(\alpha)}(g)\\
+    &= \frac{n_\alpha}{\left| G \right|} m_\alpha \left|G\right|\\
+    &= n_\alpha m_\alpha\\
+    m_\alpha &= \frac{1}{n\alpha} tr(P^{(\alpha)})
+  \end{align*}
+
+  \subsection{caracteristicas $P_kk^{(\alpha)}$}
+
+  Las primeras caracteristicas ya las mostramos en las correspondientes demostraciones (es decir, utilizamos ambas cosas en los puntos de arriba). Sin embargo falta mostrar que $tr(P_{kk}^{(\alpha)}) = m_\alpha$.
+
+  \begin{align*}
+    tr(P_{kk}^{(\alpha)}) &= tr\left(\frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{kk}^{(\alpha)}(g^{-1}) r(g)\right)\\
+    tr(r(g)) &= \sum_{\beta \in G} m_\beta \chi^{(\beta)}(g) = \sum_{\beta \in G} m_\beta \sum_{l = 1}^{n_\alpha} D_{ll}^{(\beta)}(g)\\
+    tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{kk}^{(\alpha)}(g^{-1}) \sum_{\beta \in G} m_\beta \sum_{l = 1}^{n_\alpha} D_{ll}^{(\beta)}(g)\\
+    tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} \sum_{\beta \in G} m_\beta \sum_{g \in G}  \sum_{l = 1}^{n_\alpha} D_{kk}^{(\alpha)}(g^{-1}) D_{ll}^{(\beta)}(g)\\
+    tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} m_\alpha \sum_{g \in G} D_{kk}^{(\alpha)}(g^{-1}) D_{kk}^{(\alpha)}(g)\\
+    tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} m_\alpha \frac{\left|G\right|}{n_\alpha}\\
+    tr(P_{kk}^{(\alpha)}) &= m_\alpha\\
+  \end{align*}
+
+  \section{}
+
+  Para demostrar que $v_{kj}^{(\alpha)}$ son linealmente independientes basta con mostrar que
+
+  \begin{align*}
+    \sum_{j = 1}^{n_\alpha} c_jv_{kj}^{(\alpha)} = 0 \implies \forall j;\ c_j = 0
+  \end{align*}
+
+  Desarrollando esto
+  \begin{align*}
+    \sum_{j = 1}^{n_\alpha} c_jv_{kj}^{(\alpha)} = 0\\
+    \sum_{j = 1}^{n_\alpha} c_jP_{1j}^{(\alpha)}\omega_k = 0\\
+  \end{align*}
+
+  Ahora, sin perdida de generalidad tomemos para un $m \in \left\{1, \ldots, n_\alpha \right\}$ un $P_{m1}^{(\alpha)}$ para aplicarlo lo que nos daria.
+  \begin{align*}
+    \sum_{j = 1}^{n_\alpha} c_jP_{m1}^{(\alpha)}P_{1j}^{(\alpha)}\omega_k = P_{m1}0\\
+    \sum_{j = 1}^{n_\alpha} c_j\left(\delta_{\alpha\alpha}\delta{mj}P_{11}\right)\omega_k = 0\\
+    c_m P_{11}\omega_k = 0\\
+    P_{11}\omega_k \neq 0 \implies c_m = 0\\
+  \end{align*}
+
+  Por lo tanto $$\forall m;\ c_m = 0$$
+
+  \section{}
+
+  Para este caso, nos piden la evolución de un vector $v_{kn}^{(\alpha)}$ (con $n \in \left\{1, \ldots, n_\alpha\right\}$ y $k, \alpha$ fijos) respecto a un operador del grupo $g$ dada la irrep $r$. Es decir, nos estan preguntando 
+  $$r(g)v_{kn}^{(\alpha)} = r(g) P_{1n}^{(\alpha)} \omega_k = ?$$
+
+  Por lo tanto podemos desarrollar
+  \begin{align*}
+    r(g)v_{kn}^{(\alpha)} &= r(g) P_{1n}^{(\alpha)} \omega_k\\
+    &= r(g) \left(\frac{n_\alpha}{\left|G\right|} \sum_{h \in G} D_{1j}^{(\alpha)} (h^{-1}) r(h)\right)\omega_k\\
+    &= \frac{n_\alpha}{\left|G\right|} \sum_{h \in G} D_{1j}^{(\alpha)} (h^{-1}) r(gh)\omega_k\\
+    &= \frac{n_\alpha}{\left|G\right|} \sum_{x \in G} D_{1j}^{(\alpha)} (x^{-1}g) r(x)\omega_k\\
+    D_{1j}^{(\alpha)}(x^{-1} g) &= \sum_{m = 1}^{n_\alpha} D_{1m}^{(\alpha)}(x^{-1}) D_{mj}^{(\alpha)} (g)\omega_k\\
+    r(g)v_{kn}^{(\alpha)} &= \frac{n_\alpha}{\left|G\right|} \sum_{x \in G} \left(\sum_{m = 1}^{n_\alpha} D_{1m}^{(\alpha)}(x^{-1}) D_{mj}^{(\alpha)} (g) \right) r(x)\omega_k\\
+    &= \sum_{m = 1}^{n_\alpha} D_{mj}^{(\alpha)} (g) \frac{n_\alpha}{\left|G\right|} \sum_{x \in G}  D_{1m}^{(\alpha)}(x^{-1})  r(x)\omega_k\\
+    &= \sum_{m = 1}^{n_\alpha} D_{mj}^{(\alpha)} (g) P_{1m}^{(\alpha)}\omega_k\\
+    &= \sum_{m = 1}^{n_\alpha} D_{mj}^{(\alpha)} (g) v_{kn}^{(\alpha)}
+  \end{align*}
+
+  Dado que ya mostramos que $v_{kn}^{(\alpha)}$ es una base esto demuestra que para la acción de un grupo este evoluciona respecto a aplicar la matriz $D^{(\alpha)}(g)$
+
+  \section{}
+
+  Iniciemos visualizando este punto:
+
+
+  \begin{center}
+    \begin{tikzpicture}[scale=4]
+      % Definición de constantes para las coordenadas
+      % r1 = (-sqrt(3)/2, -1/2)
+      % r2 = (sqrt(3)/2, -1/2)
+      % r3 = (0, 1)
+      \pgfmathsetmacro{\sqrtthree}{sqrt(3)}
+
+      % Dibujar ejes coordenados
+      %\draw[->, gray!50] (-1.5,0) -- (1.5,0) node[right] {$x$};
+      %\draw[->, gray!50] (0,-1) -- (0,1.5) node[above] {$y$};
+      \draw[gray!30, thin, step=0.5] (-1.2,-0.8) grid (1.2,1.2);
+
+      % Definir las posiciones de equilibrio de los átomos
+      \coordinate (r1) at ({- \sqrtthree / 2}, -0.5);
+      \coordinate (r2) at ({\sqrtthree / 2}, -0.5);
+      \coordinate (r3) at (0, 1);
+
+      % Dibujar los resortes (conexiones) con efecto zigzag
+      \draw[decoration={zigzag, amplitude=1.5pt, segment length=5pt}, decorate, thick, blue!70!black] 
+      (r1) -- (r2) node[midway, below=3pt] {$k$};
+      \draw[decoration={zigzag, amplitude=1.5pt, segment length=5pt}, decorate, thick, blue!70!black] 
+      (r2) -- (r3) node[midway, right=3pt] {$k$};
+      \draw[decoration={zigzag, amplitude=1.5pt, segment length=5pt}, decorate, thick, blue!70!black] 
+      (r3) -- (r1) node[midway, left=3pt] {$k$};
+
+      % Dibujar los átomos (masas m)
+      \filldraw[red!70!black] (r1) circle (0.08) node[black] {$r_1$};
+      \filldraw[red!70!black] (r2) circle (0.08) node[black] {$r_2$};
+      \filldraw[red!70!black] (r3) circle (0.08) node[black] {$r_3$};
+
+      % Etiquetas de las posiciones de equilibrio (opcional)
+      \node[scale=0.8, anchor=north east] at (r1) {$(-\frac{\sqrt{3}}{2}, -\frac{1}{2})$};
+      \node[scale=0.8, anchor=north west] at (r2) {$(\frac{\sqrt{3}}{2}, -\frac{1}{2})$};
+      \node[scale=0.8, anchor=south west] at (r3) {$(0, 1)$};
+    \end{tikzpicture}
+  \end{center}
+
+  Ahora bien, si tomamos el desplazamiento como nos pide el texto (aka $q_i(t) = (x_i, y_i)$ entonces para un tiempo $t$ podemos saber que la posición es simplemente
+  $$r_i + q_i = (x_{r_i} + x_i, y_{r_i} + y_i)$$
+
+  Ahora bien, dado que estamos asumiendo que la interacción se da por medio de un resorte debemos recordar la energia potencial de un resorte que es
+  \begin{equation}
+    U_{resorte} = \frac{1}{2}k\Delta L^2 \label{eq:u-resorte}
+  \end{equation}
+
+  con $\Delta L$ la elongación respecto al equilibrio. Es decir $\Delta L = L_{ij} - L_e$. Entonces necesitaremos calcular tanto las combinaciones de $L_{ij}$ como $L_e$. Iniciemos por este ultimo, asumiendo, como se nos plantea, que con $r_i$ esta en equilibrio entonces
+  $$L_e = \sqrt{(x_{r_i} - x_{r_j})^2 + (y_{r_i} - y_{r_j})^2}$$
+  Esto deberia dar igual para cualquier combinación de $i$ y $j$. Hagamos con $i = 1$ y $j = 3$ y despues comprobemos con un script.
+
+  \begin{align*}
+    L_e &= \sqrt{(x_{r_1} - x_{r_3})^2 + (y_{r_1} - y_{r_3})^2}\\
+    L_e &= \sqrt{\left(-\frac{\sqrt{3}}{2} - 0\right)^2 + (-\frac{1}{2} - 1)^2}\\
+    &= \sqrt{\frac{3}{4} + \frac{9}{4}}\\
+    &= \sqrt{\frac{12}{4}}\\
+    &= \sqrt{3}\\
+  \end{align*}
+
+  Ahora para confirmar rapidamente tenemos el codigo podemos escribir el siguiente codigo en python
+
+  \lstinputlisting[language=Python]{./codes/punto_5/exer_1.py}
+
+  Que nos da como resultado
+  \begin{lstlisting}
+  Longitud Equilibrio R_1 - R_1: 0
+  Longitud Equilibrio R_1 - R_2: sqrt(3)
+  Longitud Equilibrio R_1 - R_3: sqrt(3)
+  Longitud Equilibrio R_2 - R_1: sqrt(3)
+  Longitud Equilibrio R_2 - R_2: 0
+  Longitud Equilibrio R_2 - R_3: sqrt(3)
+  Longitud Equilibrio R_3 - R_1: sqrt(3)
+  Longitud Equilibrio R_3 - R_2: sqrt(3)
+  Longitud Equilibrio R_3 - R_3: 0
+  \end{lstlisting}
+
+  Que nos confirma ser igual para todos los casos (que ya habiamos dicho que era lo que esperabamos). Por lo tanto $L_e = \sqrt{3}$.
+
+  Ahora para calcular $\Delta L$ tambien necesitamos $L_{ij}$. Para este caso podemos hacerlo de manera equivalente (con la nueva posición que definimos). A forma de ejemplo realicemos esto para $i = 1$ y $j = 3$
+
+  \begin{align*}
+    L_{13} &= \sqrt{\left(\left(-\frac{\sqrt{3}}{2} + x_1\right) - x_3\right)^2 + \left(\left(-\frac{1}{2} + y_1\right) - (1 + y_3)\right)^2}\\
+    &= \sqrt{\left(-\frac{\sqrt{3}}{2} + x_1 - x_3\right)^2 + (-1)^2\left(\frac{3}{2} - y_1 + y_3\right)^2}\\
+    &= \sqrt{\frac{\left(-\sqrt{3} + 2x_1 - 2x_3\right)^2 + \left(3 + 2y_3 - 2y_1\right)^2}{4}}\\
+    &= \frac{\sqrt{\left(-\sqrt{3} + 2x_1 - 2x_3\right)^2 + \left(3 + 2y_3 - 2y_1\right)^2}}{2}
+  \end{align*}
+
+  Podriamos hacer esto para cada combinación. Sin embargo, considero que lo mas facil es simplemente hacer un codigo que haga todas las combinaciones.
+
+  \lstinputlisting[language=Python]{./codes/punto_5/exer_2.py}
+
+  que da como resultado
+
+  \begin{itemize}
+    \item $L_{12}:\ \sqrt{\left(y_{1} - y_{2}\right)^{2} + \left(- x_{1} + x_{2} + \sqrt{3}\right)^{2}}$
+    \item $L_{13}:\ \frac{\sqrt{\left(- 2 x_{1} + 2 x_{3} + \sqrt{3}\right)^{2} + \left(- 2 y_{1} + 2 y_{3} + 3\right)^{2}}}{2}$
+    \item $L_{23}:\ \frac{\sqrt{\left(2 x_{2} - 2 x_{3} + \sqrt{3}\right)^{2} + \left(- 2 y_{2} + 2 y_{3} + 3\right)^{2}}}{2}$
+  \end{itemize}
+
+  Ahora bien, dado que necesitamos $U$ lo unico que requerimos es sumar lo que aporta cada uno de estos componentes. Para esto lo que podemos hacer es extender el script anterior para obtener U considerando la ecuación \ref{eq:u-resorte}.
+
+  \lstinputlisting[language=Python]{./codes/punto_5/exer_3.py}
+
+  Y este script tiene como resultado
+
+  \begin{equation}
+    \begin{aligned}
+      U = \frac{k}{8} \Biggl[ & 4 \left( \sqrt{(y_{1} - y_{2})^{2} + (- x_{1} + x_{2} + \sqrt{3})^{2}} - \sqrt{3} \right)^{2} \\
+      & + \left( \sqrt{(- 2 x_{1} + 2 x_{3} + \sqrt{3})^{2} + (- 2 y_{1} + 2 y_{3} + 3)^{2}} - 2 \sqrt{3} \right)^{2} \\
+      & + \left( \sqrt{(2 x_{2} - 2 x_{3} + \sqrt{3})^{2} + (- 2 y_{2} + 2 y_{3} + 3)^{2}} - 2 \sqrt{3} \right)^{2} \Biggr]
+    \end{aligned}
+  \end{equation}
+
+  \textbf{Nota:} Durante el transcurso de este trabajo si construyo sobre las bases de un codigo anterior prefiero desarrollarlo todo como archivos independientes. Esto es para que el lector pueda entender cada codigo sin necesidad de revisar otros listings. En caso de que prefiera una versión mas optimizada donde las cosas se definen una unica vez estare atento a los comentarios para mejorarlo.
+
+  \section{}
+
+  Aprovechando el codigo que usamos para la sección anterior podemos extenderlo para obtener el resultado. Basicamente lo unico que necesitamos es encontrar la matriz que sigue la aproximación que nos recomienda el enunciado y multiplicarla por el inverso de la matriz de masa que es simplemente $M = m\mathbb{I}$. Esto entonces se ve de la siguiente manera en codigo
+
+  \lstinputlisting[language=Python]{./codes/punto_6/exer_1.py}
+
+  que da como resultado:
+
+  Matriz Lambda:
+  \begin{equation}
+    \left[\begin{matrix}\frac{5 k}{4 m} & \frac{\sqrt{3} k}{4 m} & - \frac{k}{m} & 0 & - \frac{k}{4 m} & - \frac{\sqrt{3} k}{4 m}\\\frac{\sqrt{3} k}{4 m} & \frac{3 k}{4 m} & 0 & 0 & - \frac{\sqrt{3} k}{4 m} & - \frac{3 k}{4 m}\\- \frac{k}{m} & 0 & \frac{5 k}{4 m} & - \frac{\sqrt{3} k}{4 m} & - \frac{k}{4 m} & \frac{\sqrt{3} k}{4 m}\\0 & 0 & - \frac{\sqrt{3} k}{4 m} & \frac{3 k}{4 m} & \frac{\sqrt{3} k}{4 m} & - \frac{3 k}{4 m}\\- \frac{k}{4 m} & - \frac{\sqrt{3} k}{4 m} & - \frac{k}{4 m} & \frac{\sqrt{3} k}{4 m} & \frac{k}{2 m} & 0\\- \frac{\sqrt{3} k}{4 m} & - \frac{3 k}{4 m} & \frac{\sqrt{3} k}{4 m} & - \frac{3 k}{4 m} & 0 & \frac{3 k}{2 m}\end{matrix}\right]
+  \end{equation}
+
+  \textbf{Nota:} Dado que el problema que tiene mantener cada archivo por separado es que es dificil encontrar los cambios relevantes decidi marcar lo que agregue al script con comentarios (que me parecen evidentes). Quedo muy pendiente de si se considera mejor la otra opción. Tambien pense en la posibilidad de adjuntarlo como se haria en un jupyter notebook (es decir, por celdas) pero considere que, al menos por ahora, lo mejor era este metodo.
+
+  \section{}
+
+  Dado que vamos a trabajar con matrices $6\times 6$ pero en bloques de $2 \times 2$ creo que es valioso expresar que lo que haremos es, en esencia tomar
+
+  \begin{equation*}
+    \begin{pmatrix}
+      x_1\\ y_1\\ x_2\\ y_2\\ x_3\\ y_3
+    \end{pmatrix} \to
+    \begin{pmatrix}
+      q_1\\ q_2\\ q_3
+    \end{pmatrix}
+  \end{equation*}
+
+  Como estamos realizando esta división en atomos podemos entonces factorizar cada matriz como un producto tensorial entre el espacio de permutaciones entre los atomos y una transformación geometrica de los vectores locales. Es decir que podemos expresar la matriz como
+
+  $$r(g) = P\otimes D^{(2)}(g)$$
+
+  Donde $P$ es la permutación de sitios y $D^{(2)}(g)$ es la representación vectorial definida en el enunciado.
+
+  Ahora bien, lo que esto significa es que podemos encontrar como varian en el espacio las simetrias los atomos entre si (es decir, como cambian de posicion los atomos) y multiplicarlo tensorialmente por el cambio que sentiria cada atomo por aparte.
+
+  Ahora bien, esto aun requiere que entendamos lo que hace cada una de las operaciones:
+  \begin{table}[h]
+    \begin{center}
+      \begin{tabular}{ r | l | c }
+        \hline
+        Nombre & Descripción & Permutaciones\\
+        \hline
+        $e$ & Identidad, no cambia nada & $(q_1, q_2, q_3) \to (q_1, q_2, q_3)$\\
+        $\rho$ & Rotación por $120^{\circ}$ & $(q_1, q_2, q_3) \to (q_2, q_3, q_1)$\\
+        $\tau$ & Rotación por $240^{\circ}$ & $(q_1, q_2, q_3) \to (q_3, q_1, q_2)$\\
+        $\sigma_1$ & Reflexión respecto a $r_1$ & $(q_1, q_2, q_3) \to (q_1, q_3, q_2)$\\
+        $\sigma_2$ & Reflexión respecto a $r_2$ & $(q_1, q_2, q_3) \to (q_3, q_2, q_1)$\\
+        $\sigma_3$ & Reflexión respecto a $r_3$ & $(q_1, q_2, q_3) \to (q_2, q_1, q_3)$\\
+      \end{tabular}
+      \caption{Tabla de las operaciones junto con las permutaciones que hacen, en esta tabla no consideramos el efecto dentro del propio atomo pues estamos trabajando desde la abstracción de tomar $q_i$ completo}
+      \label{tab:fruta}
+    \end{center}
+  \end{table}
+
+  Ahora ya con esto, podemos desarrollar cada una de las matrices
+  \begin{align*}
+    r(e) &=
+    \begin{pmatrix}
+      1 & 0 & 0\\
+      0 & 1 & 0\\
+      0 & 0 & 1
+    \end{pmatrix} \otimes D^{(2)}(e)\\
+    r(\rho) &=
+    \begin{pmatrix}
+      0 & 0 & 1\\
+      1 & 0 & 0\\
+      0 & 1 & 0
+    \end{pmatrix} \otimes D^{(2)}(\rho)\\
+    r(\tau) &=
+    \begin{pmatrix}
+      0 & 1 & 0\\
+      0 & 0 & 1\\
+      1 & 0 & 0
+    \end{pmatrix} \otimes D^{(2)}(\tau)\\
+    r(\sigma_1) &=
+    \begin{pmatrix}
+      1 & 0 & 0\\
+      0 & 0 & 1\\
+      0 & 1 & 0
+    \end{pmatrix} \otimes D^{(2)}(\sigma_1)\\
+    r(\sigma_2) &=
+    \begin{pmatrix}
+      0 & 0 & 1\\
+      0 & 1 & 0\\
+      1 & 0 & 0
+    \end{pmatrix} \otimes D^{(2)}(\sigma_2)\\
+    r(\sigma_3) &=
+    \begin{pmatrix}
+      0 & 1 & 0\\
+      1 & 0 & 0\\
+      0 & 0 & 1
+    \end{pmatrix} \otimes D^{(2)}(\sigma_3)\\
+  \end{align*}
+
+  \section{}
+
+Aprovechando la estructura de producto tensorial $r(g) = P(g) \otimes D^{(2)}(g)$ del punto anterior, podemos calcular el carácter de la representación total como el producto de los caracteres de la representación de permutación y la representación vectorial:
+
+$$\chi^r(g) = \chi_{perm}(g) \cdot \chi_{vec}(g)$$
+
+Podemos dividir por clases de conjugación basandonos en la geometria del triangulo con el que estamos trabajando (y con pistas de la tabla anterior). Sin analizamos en estas clases tenemos:
+
+\begin{itemize}
+  \item \textbf{Identidad ($e$):} Los 3 átomos quedan fijos ($\chi_{perm}=3$) y la traza del desplazamiento local es 2. Total: $\chi^r(e) = 3 \times 2 = 6$.
+  \item \textbf{Rotaciones ($\rho, \tau$):} Ningún átomo queda fijo ($\chi_{perm}=0$). Por tanto, $\chi^r(rot) = 0 \times (-1) = 0$.
+  \item \textbf{Reflexiones ($\sigma_i$):} Solo el átomo sobre el eje queda fijo ($\chi_{perm}=1$). La traza de una reflexión local en 2D es 0. Total: $\chi^r(refl) = 1 \times 0 = 0$.
+\end{itemize}
+
+Obtenemos así el vector de caracteres $\chi^r = (6, 0, 0)$. Para encontrar la descomposición en irreps $V^r = \bigoplus m_\alpha V^{(\alpha)}$, aplicamos la fórmula de reducción $m_\alpha = \frac{1}{|G|} \sum \chi^{(\alpha)}(g)^* \chi^r(g)$:
+\begin{align*}
+m_1 &= \frac{1}{6} [ 1(6)(1) + 2(0)(1) + 3(0)(1) ] = 1 \\
+m_2 &= \frac{1}{6} [ 1(6)(2) + 2(0)(-1) + 3(0)(0) ] = 2 \\
+m_3 &= \frac{1}{6} [ 1(6)(1) + 2(0)(1) + 3(0)(-1) ] = 1
+\end{align*}
+Por lo tanto, la descomposición es: $V^r = V^{(1)} \oplus 2V^{(2)} \oplus V^{(3)}$.
+
+\textbf{Nota:} Puede ver en los anexos los calculos del caracter para la representación vectorial de cada caso. No quise ponerlos aqui por que no me resultaba facil de acomodarlo sin hacerlo mas confuso.
+
+\section{} \label{lab:sec-9}
+
+Para esto recordemos que
+\begin{equation}
+  P^{(\alpha)} = \frac{n_\alpha}{\left|G\right|} \sum_{g \in G} \chi^{(\alpha)}(g)^*r(g)
+\end{equation}
+
+por lo tanto
+\begin{align*}
+  P^{1} &= \frac{n_\alpha}{\left|G\right|} \sum_{g \in G} \chi^{1}(g)^*r(g)\\
+  P^{1} &= \frac{1}{6} \sum_{g \in G} r(g)\\
+\end{align*}
+
+Es decir, vamos a sumar cada matriz y luego dividirla entre 6. Podemos hacerlo a mano sin embargo considero bastante mas prudente hacerlo con codigo. Para esto entonces queda
+
+\lstinputlisting[language=Python]{./codes/punto_9/exer_1.py}
+
+que da como resultado
+
+Proyector $P^{(1)}$ (Exacto):
+$$\left[\begin{matrix}\frac{1}{4} & \frac{\sqrt{3}}{12} & - \frac{1}{4} & \frac{\sqrt{3}}{12} & 0 & - \frac{\sqrt{3}}{6}\\\frac{\sqrt{3}}{12} & \frac{1}{12} & - \frac{\sqrt{3}}{12} & \frac{1}{12} & 0 & - \frac{1}{6}\\- \frac{1}{4} & - \frac{\sqrt{3}}{12} & \frac{1}{4} & - \frac{\sqrt{3}}{12} & 0 & \frac{\sqrt{3}}{6}\\\frac{\sqrt{3}}{12} & \frac{1}{12} & - \frac{\sqrt{3}}{12} & \frac{1}{12} & 0 & - \frac{1}{6}\\0 & 0 & 0 & 0 & 0 & 0\\- \frac{\sqrt{3}}{6} & - \frac{1}{6} & \frac{\sqrt{3}}{6} & - \frac{1}{6} & 0 & \frac{1}{3}\end{matrix}\right]$$
+
+Traza de $P^1: 1$
+
+Ahora bien, dado que ya sabemos que la dimensión es 1 entonces cualquier vector columna de la matriz genera el espacio. Esto lo podemos entonces tomar como
+
+$$P^{1} \cdot \begin{pmatrix}0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1\end{pmatrix}$$
+
+Y ahora desarrollar para obtener el eigenvalue. Esto tambien lo haremos con un codigo en donde queda.
+
+\lstinputlisting[language=Python]{./codes/punto_9/exer_2.py}
+
+Vector Propio:
+$$v_1 = \left[\begin{matrix}- \frac{\sqrt{3}}{6}\\- \frac{1}{6}\\\frac{\sqrt{3}}{6}\\- \frac{1}{6}\\0\\\frac{1}{3}\end{matrix}\right]$$
+Aplicando Lambda al Vector Propio:
+$$\Lambda v_1 = \left[\begin{matrix}- \frac{\sqrt{3} k}{2 m}\\- \frac{k}{2 m}\\\frac{\sqrt{3} k}{2 m}\\- \frac{k}{2 m}\\0\\\frac{k}{m}\end{matrix}\right]$$
+
+lambda obtenido: $\frac{3 k}{m}$
+
+Es vector propio real: True
+
+Esto implica que la frecuencia de vibración es:
+$$\omega_1 = \sqrt{\frac{3 k}{m}}$$
+
 
 \section{}
 
-Partimos desde la definición
-$$P_{ij}^{(\alpha)} \coloneq \frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{ij}^{(\alpha)}(g^{-1})r(g)$$
+Para iniciar, el vector de traslación mas rigido posible significa que toda la molecula se mueve de manera conjunta (es decir $x_i = a$ y $y_i = b$ para todo $i$). Por lo tanto este seria un vector
+$$
+q = \begin{pmatrix} a \\ b\\ a\\ b\\ a\\ b\end{pmatrix}
+$$
 
-Y por tanto
+  Que se puede ver inmediatamente que corresponde con un vector generado por
+$$T_x = \begin{pmatrix} 1 \\ 0\\ 1\\ 0\\ 1\\ 0\end{pmatrix};\ T_y = \begin{pmatrix} 0 \\ 1\\ 0\\ 1\\ 0\\ 1\end{pmatrix}$$
 
-\begin{align*}
-  P_{ij}^{(\alpha)} P_{kl}^{(\beta)} &= \left(\frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{ij}^{(\alpha)}(g^{-1})r(g)\right)\left(\frac{n_\beta}{\left|G\right|} \sum_{h \in G} D_{kl}^{(\beta)}(h^{-1})r(h)\right)\\
-  &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, h \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}(h^{-1})r(g)r(h)\\
-  &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, h \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}(h^{-1})r(gh)\\
-\end{align*}
+Ahora bien, ninguno de estos dos esta normalizado (aunque si son ortogonales entre si) por tanto lo primero seria normalizar lo que queda
 
-Ahora podemos tomar una nueva variable $x = gh \implies h = g^{-1} x$ y por tanto
+$$u_x = \frac{1}{\sqrt{3}}\begin{pmatrix} 1 \\ 0\\ 1\\ 0\\ 1\\ 0\end{pmatrix};\ u_y = \frac{1}{\sqrt{3}}\begin{pmatrix} 0 \\ 1\\ 0\\ 1\\ 0\\ 1\end{pmatrix}$$
 
-\begin{align*}
-  P_{ij}^{(\alpha)} P_{kl}^{(\beta)} &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, x \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}((g^{-1} x)^{-1})r(x)\\
-  &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, x \in G} D_{ij}^{(\alpha)}(g^{-1}) D_{kl}^{(\beta)}(x^{-1}g)r(x)\\
-  D_{kl}^{(\beta)} (x^{-1}g) &= \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1})D_{ml}^{(\beta)}(g)\\
-  P_{ij}^{(\alpha)} P_{kl}^{(\beta)} &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{g, x \in G} D_{ij}^{(\alpha)}(g^{-1}) \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1})D_{ml}^{(\beta)}(g) r(x)\\
-  &= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{x \in G} r(x) \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1}) \left(\sum_{g \in G} D_{ml}^{(\beta)}(g) D_{ij}^{(\alpha)}(g^{-1}) \right)\\
-  \sum_{g \in G} D_{ml}^{(\beta)}(g) D_{ij}^{(\alpha)}(g^{-1})  &= \frac{\left|G\right|}{n_\alpha} \delta_{\alpha\beta} \delta_{il}\delta_{mj}\\
-  P_{ij}^{(\alpha)} P_{kl}^{(\beta)}&= \frac{n_\alpha n_\beta}{\left|G\right|^2} \sum_{x \in G} r(x) \sum_{m = 1}^{n_\beta} D_{km}^{(\beta)}(x^{-1}) \left(\frac{\left|G\right|}{n_\alpha} \delta_{\alpha\beta} \delta_{il}\delta_{mj}\right)\\
-\end{align*}
+Ademas, el operador $E_{trasl}$ corresponde con
+$$E_{trasl} = u_xu_x^T + u_yu_y^T$$
 
-Dado que tenemos $\delta_{mj}$ entonces esa sumatoria se reduce a simplemente el caso $m = j$
+El resto de la comprobación la podemos hacer con codigo de la siguiente manera
 
-\begin{align*}
-  P_{ij}^{(\alpha)} P_{kl}^{(\beta)}&= \delta_{\alpha\beta} \delta_{il}\frac{n_\beta}{\left|G\right|} \sum_{x \in G} D_{kj}^{(\beta)}(x^{-1}) r(x) \\
-  &= \delta_{\alpha\beta} \delta_{il}P_{kj}^{(\beta)}
-\end{align*}
+\lstinputlisting[language=Python]{./codes/punto_10/exer_1.py}
 
-Esto ya es el resultado pues sabemos que en caso de que $\alpha \neq \beta$ entonces todo se va a $0$. Por lo tanto
-$$P_{ij}^{(\alpha)} P_{kl}^{(\beta)} = \delta_{\alpha\beta} \delta_{il} P_{kj}^{(\alpha)}$$
-\newpage
+Matriz $E_{trasl}$:
+$$\left[\begin{matrix}\frac{1}{3} & 0 & \frac{1}{3} & 0 & \frac{1}{3} & 0\\0 & \frac{1}{3} & 0 & \frac{1}{3} & 0 & \frac{1}{3}\\\frac{1}{3} & 0 & \frac{1}{3} & 0 & \frac{1}{3} & 0\\0 & \frac{1}{3} & 0 & \frac{1}{3} & 0 & \frac{1}{3}\\\frac{1}{3} & 0 & \frac{1}{3} & 0 & \frac{1}{3} & 0\\0 & \frac{1}{3} & 0 & \frac{1}{3} & 0 & \frac{1}{3}\end{matrix}\right]$$
+
+Traza de $E_{trasl}$: $2$
+
+$\Lambda * E_{trasl}$ es cero: True
 
 \section{}
 
-\subsection{$P^2 = P$}
-
+Siguiendo un procedimiento similar al punto \ref{lab:sec-9} tenemos
 \begin{align*}
-  \left(P^{(\alpha)}\right)^2 &= \sum_{k, j = 1}^{n_{\alpha}} P_{kk}^\alpha P_{jj}^{\alpha}\\
-  P_{kk}^{(\alpha)} P_{jj}^{(\alpha)} &= \delta_{\alpha\alpha} \delta_{kj} P_{kj}^{(\alpha)}\\
-  \left(P^{(\alpha)}\right)^2 &= \sum_{k, j = 1}^{n_{\alpha}} \delta_{kj} P_{kj}^{(\alpha)}\\
-  \left(P^{(\alpha)}\right)^2 &= \sum_{k = 1}^{n_{\alpha}} P_{kk}^{(\alpha)}\\
-  \left(P^{(\alpha)}\right)^2 &= P^\alpha
+  P^{(\alpha)} &= \frac{n_\alpha}{\left|G\right|} \sum_{g \in G} \chi^{(\alpha)}(g)^*r(g)\\
+  &= \frac{2}{6} \sum_{g \in G} \chi^{2}(g)^*r(g)
 \end{align*}
 
-\subsection{$P^* = P$}
+Podemos entonces calcular esto por medio de un codigo. Sin embargo, antes de hacerlo y para no repetirnos es impotante mencionar que haremos uso de las traslaciones con el proyector que ya calculamos para quitarlo de $P^2$ de modo que
+$$P_{vib} = P^2 - E_{tral}$$
 
-\begin{align*}
-  \left(P^{(\alpha)}\right)^* &= \left(\frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})r(g)\right)^*\\
-  &= \frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g)r(g^{-1})\\
-\end{align*}
+esto puesto que realmente no hay ningun cambio importante al trasladar la particula en el espacio. Luego de eso continuaremos de manera parecida a lo hecho en el punto \ref{lab:sec-9}.
 
-Pero esto es equivalente pues si tomamos $g^{-1} = h$ podemos cambiar de variable y recorrer el mismo espacio. Es decir
-\begin{align*}
-  \left(P^{(\alpha)}\right)^* &= \frac{n_\alpha}{\left| G \right|} \sum_{h \in G} \chi^{(\alpha)}(h^{-1})r(h)\\
-  \left(P^{(\alpha)}\right)^* &= P^{(\alpha)}
-\end{align*}
+\lstinputlisting[language=Python]{./codes/punto_11/exer_1.py}
 
-\subsection{Multiplicidad $m_\alpha$}
+Con resultado
 
-\begin{align*}
-  tr(P^{(\alpha)})  &= tr\left(\frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})r(g)\right)\\
-  &= \frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})tr\left(r(g)\right)
-\end{align*}
+$P^2$ completo:
+ $$\left[\begin{matrix}\frac{2}{3} & 0 & \frac{1}{6} & - \frac{\sqrt{3}}{6} & \frac{1}{6} & \frac{\sqrt{3}}{6}\\0 & \frac{2}{3} & \frac{\sqrt{3}}{6} & \frac{1}{6} & - \frac{\sqrt{3}}{6} & \frac{1}{6}\\\frac{1}{6} & \frac{\sqrt{3}}{6} & \frac{2}{3} & 0 & \frac{1}{6} & - \frac{\sqrt{3}}{6}\\- \frac{\sqrt{3}}{6} & \frac{1}{6} & 0 & \frac{2}{3} & \frac{\sqrt{3}}{6} & \frac{1}{6}\\\frac{1}{6} & - \frac{\sqrt{3}}{6} & \frac{1}{6} & \frac{\sqrt{3}}{6} & \frac{2}{3} & 0\\\frac{\sqrt{3}}{6} & \frac{1}{6} & - \frac{\sqrt{3}}{6} & \frac{1}{6} & 0 & \frac{2}{3}\end{matrix}\right]$$
+$P_{vib}$: $$\left[\begin{matrix}\frac{1}{3} & 0 & - \frac{1}{6} & - \frac{\sqrt{3}}{6} & - \frac{1}{6} & \frac{\sqrt{3}}{6}\\0 & \frac{1}{3} & \frac{\sqrt{3}}{6} & - \frac{1}{6} & - \frac{\sqrt{3}}{6} & - \frac{1}{6}\\- \frac{1}{6} & \frac{\sqrt{3}}{6} & \frac{1}{3} & 0 & - \frac{1}{6} & - \frac{\sqrt{3}}{6}\\- \frac{\sqrt{3}}{6} & - \frac{1}{6} & 0 & \frac{1}{3} & \frac{\sqrt{3}}{6} & - \frac{1}{6}\\- \frac{1}{6} & - \frac{\sqrt{3}}{6} & - \frac{1}{6} & \frac{\sqrt{3}}{6} & \frac{1}{3} & 0\\\frac{\sqrt{3}}{6} & - \frac{1}{6} & - \frac{\sqrt{3}}{6} & - \frac{1}{6} & 0 & \frac{1}{3}\end{matrix}\right]$$
+Traza de $P_{vib}$: $2$
 
-Sabemos que la traza de $r$ sera el caracter completo que a su vez sabemos corresponde a la suma de los caracteres irrep con sus multiplicidades. Por lo tanto,
-$$tr(r(g)) = \sum_{\beta \in G} m_\beta \chi^{(\beta)}(g)$$
+Valor propio para modo E: $\frac{3 k}{2 m}$
 
-Por lo tanto
-\begin{align*}
-  tr(P^{\alpha}) &= \frac{n_\alpha}{\left| G \right|} \sum_{g \in G} \chi^{(\alpha)}(g^{-1})\sum_{\beta \in G} m_\beta \chi^{(\beta)}(g)\\
-  tr(P^{\alpha}) &= \frac{n_\alpha}{\left| G \right|} \sum_{\beta \in G} m_\beta \sum_{g \in G} \chi^{(\alpha)}(g^{-1})\chi^{(\beta)}(g)
-\end{align*}
-
-Dado que los caracteres son ortogonales entre si esta suma solamente tiene sentido cuando $\alpha = \beta$
-
-\begin{align*}
-  tr(P^{\alpha}) &= \frac{n_\alpha}{\left| G \right|} m_\alpha \sum_{g \in G} \chi^{(\alpha)}(g^{-1})\chi^{(\alpha)}(g)\\
-  &= \frac{n_\alpha}{\left| G \right|} m_\alpha \left|G\right|\\
-  &= n_\alpha m_\alpha\\
-  m_\alpha &= \frac{1}{n\alpha} tr(P^{(\alpha)})
-\end{align*}
-
-\subsection{caracteristicas $P_kk^{(\alpha)}$}
-
-Las primeras caracteristicas ya las mostramos en las correspondientes demostraciones (es decir, utilizamos ambas cosas en los puntos de arriba). Sin embargo falta mostrar que $tr(P_{kk}^{(\alpha)}) = m_\alpha$.
-
-\begin{align*}
-  tr(P_{kk}^{(\alpha)}) &= tr\left(\frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{kk}^{(\alpha)}(g^{-1}) r(g)\right)\\
-  tr(r(g)) &= \sum_{\beta \in G} m_\beta \chi^{(\beta)}(g) = \sum_{\beta \in G} m_\beta \sum_{l = 1}^{n_\alpha} D_{ll}^{(\beta)}(g)\\
-  tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} \sum_{g \in G} D_{kk}^{(\alpha)}(g^{-1}) \sum_{\beta \in G} m_\beta \sum_{l = 1}^{n_\alpha} D_{ll}^{(\beta)}(g)\\
-  tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} \sum_{\beta \in G} m_\beta \sum_{g \in G}  \sum_{l = 1}^{n_\alpha} D_{kk}^{(\alpha)}(g^{-1}) D_{ll}^{(\beta)}(g)\\
-  tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} m_\alpha \sum_{g \in G} D_{kk}^{(\alpha)}(g^{-1}) D_{kk}^{(\alpha)}(g)\\
-  tr(P_{kk}^{(\alpha)}) &= \frac{n_\alpha}{\left|G\right|} m_\alpha \frac{\left|G\right|}{n_\alpha}\\
-  tr(P_{kk}^{(\alpha)}) &= m_\alpha\\
-\end{align*}
+Esto implica que tiene una frecuencia $$\sqrt{\frac{3 k}{2 m}}$$
 
 \section{}
 
-Para demostrar que $v_{kj}^{(\alpha)}$ son linealmente independientes basta con mostrar que
+\subsection{$EP = PE = E$}
 
+\subsubsection{$PE = E$}
+
+Sabemos que
+
+$$\forall v \in \mathcal{H} \implies Ev \in \Im(E) \subset \Im(P)$$
+
+Ahora bien, las proyecciónes se comportan como la identidad en los elementos que estan dentro de su imagen (pues en caso contrario podrian cambiar al aplicarse dos veces). Por lo tanto $PEv = IEv = Ev$
+
+\subsubsection{$EP = E$}
+
+Para este caso podemos simplemente darnos cuenta que:
 \begin{align*}
-  \sum_{j = 1}^{n_\alpha} c_jv_{kj}^{(\alpha)} = 0 \implies \forall j;\ c_j = 0
+  EP = E\\
+  \implies \left(EP\right)^* = E^*\\
+  \implies P^*E^* = E^*\\
 \end{align*}
 
-Desarrollando esto
+y dado que esta es una proyección esto implica
+
+$$\implies PE = E$$
+
+Ya demostramos anteriormente esto.
+
+\subsection{$(P - E)$ es una proyección}
+
+\subsubsection{$(P - E)^* = (P - E)$}
+
+En este caso simplemente se puede aprovechar las caracteristicas de $(^*)$ y que $P$ y $E$ son proyecciónes (es decir $P^* = P \land E^* = E$)
+
 \begin{align*}
-  \sum_{j = 1}^{n_\alpha} c_jv_{kj}^{(\alpha)} = 0\\
-  \sum_{j = 1}^{n_\alpha} c_jP_{1j}^{\alpha}\omega_k = 0\\
+  (P - E)^* &= P^* - E^*\\
+  (P - E)^* &= P - E\\
 \end{align*}
 
-Ahora, sin perdida de generalidad tomemos para un $m \in \left\{1, \ldots, n_\alpha \right\}$ un $P_{m1}^{(\alpha)}$ para aplicarlo lo que nos daria.
+\subsubsection{$(P - E)^2 = (P - E)$}
+
+De modo similar podemos desarrollar
 \begin{align*}
-  \sum_{j = 1}^{n_\alpha} c_jP_{m1}^{(\alpha)}P_{1j}^{\alpha}\omega_k = P_{m1}0\\
-  \sum_{j = 1}^{n_\alpha} c_j\left(\delta_{\alpha\alpha}\delta{mj}P_{11}\right)\omega_k = 0\\
-  c_m P_{11}\omega_k = 0\\
-  P_{11}\omega_k \neq 0 \implies c_m = 0\\
+  (P - E)^2 &= (P - E)(P - E)\\
+  &= P^2 - PE - EP + E^2\\
+  P^2 &= P\\
+  PE &= E\\
+  EP &= E\\
+  E^2 &= E\\
+  &= P - E - E + E\\
+  &= P - E
 \end{align*}
 
-Por lo tanto $$\forall m;\ c_m = 0$$
 
-\section{}
+%%%%%%% ANEXOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Anexos}
+\subsection{Caracteres representación vectorial}
+\begin{itemize}
+  \item Identidad:
+    \begin{align*}
+      tr(D^{(2)}(e)) &=
+      tr\begin{pmatrix}
+        1 & 0\\
+        0 & 1
+      \end{pmatrix}\\
+      &= 2
+    \end{align*}
+  \item Rotación:
+    \begin{align*}
+      tr(D^{(2)}(\tau)) &=
+      tr\frac{1}{2}\begin{pmatrix}
+        -1 & -\sqrt{3}\\
+        \sqrt{3} & -1
+      \end{pmatrix}\\
+      &= -1\\
+      tr(D^{(2)}(\rho)) &=
+      tr\frac{1}{2}\begin{pmatrix}
+        -1 & \sqrt{3}\\
+        -\sqrt{3} & -1
+      \end{pmatrix}\\
+      &= -1
+    \end{align*}
 
-Para este caso, nos piden la evolución de un vector $v_{kn}^{(\alpha)}$ (con $n \in \left\{1, \ldots, n_\alpha\right\}$ y $k, \alpha$ fijos) respecto a un operador del grupo $g$ dada la irrep $r$. Es decir, nos estan preguntando $$r(g)v_{kn}^{(\alpha)} = r(g) P_{1n}^{(\alpha)} \omega_k = ?$$
+  \item Reflexión:
+    \begin{align*}
+      tr(D^{(2)}(\sigma_1)) &=
+      tr\frac{1}{2}\begin{pmatrix}
+        1 & \sqrt{3}\\
+        \sqrt{3} & -1
+      \end{pmatrix}\\
+      &= 0\\
+      tr(D^{(2)}(\rho)) &=
+      tr\frac{1}{2}\begin{pmatrix}
+        1 & -\sqrt{3}\\
+        -\sqrt{3} & -1
+      \end{pmatrix}\\
+      &= 0\\
+      tr(D^{(2)}(\rho)) &=
+      tr\frac{1}{2}\begin{pmatrix}
+        -1 & 0\\
+        0 & 1
+      \end{pmatrix}\\
+      &= 0
+    \end{align*}
+\end{itemize}
 
 \end{document}
