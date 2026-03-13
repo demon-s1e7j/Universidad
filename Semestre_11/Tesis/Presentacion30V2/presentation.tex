@@ -9,6 +9,10 @@
 \usepackage{amsfonts} % Para \mathbb
 \usepackage{quantikz}
 
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
 
 \usetikzlibrary{shapes.symbols}
 \usetikzlibrary{calc,arrows.meta}
@@ -73,7 +77,7 @@
 
 
   \begin{frame}[allowframebreaks]
-    \frametitle{En un computador solo tenemos bits (o qbits). Todo lo demás son códigos}
+    \frametitle{En un computador solo tenemos bits (o qubits). Todo lo demás son códigos}
 
     \begin{columns}[c] % La opción [c] centra el contenido verticalmente. Puedes usar [t] para alinearlo arriba.
 
@@ -196,7 +200,7 @@
 
         % --- COLUMNA DERECHA: TEXTO EXPLICATIVO ---
         \begin{column}{0.5\textwidth}
-          Un código cuántico es un subespacio con las mismas características que antes. Sin embargo, para tener mejor control sobre él (y porque lo vamos a usar así al corregir errores) tiene que cumplir las características de:
+          Un código cuántico es un subespacio con las mismas características que antes. Sin embargo, para tener mejor control sobre él (y porque lo vamos a usar así al corregir errores), tiene que cumplir las características de:
           \begin{enumerate}
             \item Ser ortogonales.
             \item Ser distinguibles.
@@ -207,7 +211,7 @@
     \end{frame}
 
     \begin{frame}[allowframebreaks]
-      \frametitle{Un error es, esencialmente, una operación que no controlan}
+      \frametitle{Un error es, esencialmente, una operación que no se controla}
       Un error es:
       \begin{align}
         \begin{split}
@@ -223,7 +227,7 @@
           &\frac{1}{2} \left(I\ket{\psi}\left(\beta_1 \ket{E_1} + \beta_3 \ket{E_3}\right)\right.
           + Z\ket{\psi}\left(\beta_1 \ket{E_1} - \beta_3 \ket{E_3}\right)\\
           & + X\ket{\psi}\left(\beta_2 \ket{E_2} + \beta_4 \ket{E_4}\right)
-          \left. + ZX\ket{\psi}\left(\beta_2 \ket{E_2} - \beta_3 \ket{E_4}\right)\right)\\
+          \left. + ZX\ket{\psi}\left(\beta_2 \ket{E_2} - \beta_3 \ket{E_4}\right)\right)
         \end{split}
       \end{align}
     \end{frame}
@@ -255,7 +259,7 @@
         \forall \rho \in C \implies (\mathcal{R} \circ \mathcal{E}) \rho \propto \rho
       \end{align}
 
-      Note que existen errores que no preservan la traza y, por tanto, al corregirlos no se obtiene el mismo estado, sino uno proporcional a este.
+      Nótese que existen errores que no preservan la traza y, por lo tanto, al corregirlos no se obtiene el mismo estado, sino uno proporcional a este.
     \end{frame}
 
     \begin{frame}[allowframebreaks]
@@ -269,7 +273,7 @@
     \end{frame}
 
     \begin{frame}[allowframebreaks]
-      \frametitle{Repetition Code: Se puede proyectar un solo qubit fisico en un qubit logico repetido}
+      \frametitle{Código de repetición: Se puede proyectar un solo qubit físico en un qubit lógico repetido}
       \centering
       \resizebox{0.8\linewidth}{!}{%
         \begin{quantikz}
@@ -282,7 +286,7 @@
     \end{frame}
 
     \begin{frame}[allowframebreaks]
-      \frametitle{Repetition Code: Los errores a los que corrige el repetition code son bitflips en un solo qubit}
+      \frametitle{Código de repetición: Los errores que corrige son \textit{bit-flips} en un solo qubit}
 
       \begin{columns}
         \begin{column}{0.4\textwidth}
@@ -295,13 +299,13 @@
         \end{column}
 
         \begin{column}{0.6\textwidth}
-          Este conjunto de operadores representa el canal de ruido donde, como máximo, ocurre un error de bit-flip.
+          Este conjunto de operadores representa el canal de ruido donde, como máximo, ocurre un error de \textit{bit-flip}.
         \end{column}
       \end{columns}
     \end{frame}
 
     \begin{frame}[allowframebreaks]
-      \frametitle{El codigo de repeticion corrige estos errores pues}
+      \frametitle{El código de repetición corrige estos errores, pues:}
       \begin{itemize}
         \item $i = j$
           \begin{align*}
@@ -312,7 +316,7 @@
 
         \item $i \neq j$
 
-          Al aplicar el error al proyecto dan siempre estados ortogonales y por tanto el resultado es 0.
+          Al aplicar el error al proyector, se obtienen siempre estados ortogonales y, por lo tanto, el resultado es 0.
 
       \end{itemize}
     \end{frame}
@@ -333,7 +337,7 @@
       \begin{itemize}
         \item Kitaev, A. Yu., Shen, A., y Vyalyj, M. N. (2002). \textit{Classical and Quantum Computation}. Graduate Studies in Mathematics (Vol. 47). American Mathematical Society.
 
-        \item Nielsen, M. A., y Chuang, I. L. (2010). \textit{Quantum Computation and Quantum Information} (10th Anniversary Edition). Cambridge University Press. (BnF ISBN)
+        \item Nielsen, M. A., y Chuang, I. L. (2010). \textit{Quantum Computation and Quantum Information} (10th Anniversary Edition). Cambridge University Press.
 
         \item Kaye, P., Laflamme, R., y Mosca, M. (2007). \textit{An Introduction to Quantum Computing}. Oxford University Press.
         \item Gottesman, D. (1997). \textit{Stabilizer Codes and Quantum Error Correction} (Tesis doctoral). California Institute of Technology. \texttt{doi:10.48550/arXiv.quant-ph/9705052}
@@ -341,7 +345,16 @@
     \end{frame}
 
     \begin{frame}
-      \frametitle{Verificación de errores como suma de otros Pauli}
+      \frametitle{Aún queda mucho por aprender; esto fue solo el inicio}
+      \begin{itemize}
+        \item \textbf{Códigos lineales:} Aunque este es un concepto clásico, es vital para el campo, pues es la base e inspiración para el formalismo de estabilizadores.
+        \item \textbf{Formalismo de estabilizadores:} Si bien la anterior es la base teórica, trabajar con ello no es trivial. Por lo tanto, uno de los más grandes aportes es el formalismo de estabilizadores para la corrección de errores.
+        \item \textbf{Códigos CSS:} Una familia de códigos que permite reducir la cantidad de qubits necesarios para corregir la misma cantidad de errores, inspirada en los códigos de corrección clásicos.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      \frametitle{Verificación de errores como suma de otros operadores de Pauli}
       \begin{align*}
         &\frac{1}{2} \left(\left(\alpha_0 \ket{0} + \alpha_1 \ket{1}\right)\left(\beta_1 \ket{E_1} + \beta_3 \ket{E_3}\right)\right.\\
         & + \left(\alpha_0 \ket{0} - \alpha_1 \ket{1}\right)\left(\beta_1 \ket{E_1} - \beta_3 \ket{E_3}\right)\\
@@ -352,6 +365,79 @@
         & + X\ket{\psi}\left(\beta_2 \ket{E_2} + \beta_4 \ket{E_4}\right)\\
         &\left. + ZX\ket{\psi}\left(\beta_2 \ket{E_2} - \beta_3 \ket{E_4}\right)\right)
       \end{align*}
+    \end{frame}
+
+\begin{frame}
+      \frametitle{La mejora del código de repetición no es infinita; depende de la probabilidad del error}
+
+      \begin{columns}[c]
+        
+        % --- COLUMNA IZQUIERDA: GRÁFICO ---
+        \begin{column}{0.55\textwidth}
+          \centering
+          \resizebox{\linewidth}{!}{%
+          \begin{tikzpicture}[
+              declare function={
+                f(\x) = \x;
+                g(\x) = 3*\x^2 - 2*\x^3;
+              }
+              ]
+              \begin{axis}[
+                  width=8cm,  % Reducido para ajustarse a la columna
+                  height=7cm, % Reducido para ajustarse a la columna
+                  xlabel = {Probabilidad de error físico $(p)$},
+                  ylabel = {Probabilidad de falla lógica},
+                  xlabel style={font=\small\sffamily},
+                  ylabel style={font=\small\sffamily},
+                  axis lines = left,
+                  xmin=0, xmax=1,
+                  ymin=0, ymax=1,
+                  xtick={0,0.2,0.4,0.5,0.6,0.8,1}, % Añadido 0.5 (punto de cruce)
+                  ytick={0,0.2,0.4,0.6,0.8,1},
+                  tick label style={font=\small\sffamily},
+                  grid=major,
+                  grid style={dotted, gray!30},
+                  legend pos=north west,
+                  legend style={
+                    cells={anchor=west},
+                    font=\footnotesize\sffamily,
+                    fill=white,
+                    fill opacity=0.8,
+                    draw opacity=1,
+                    text opacity=1
+                  },
+                  samples=100, % Optimizado para compilar más rápido sin perder calidad
+                  domain=0:1,
+                  smooth,
+                  title={\small\sffamily\bfseries Desempeño del Código (3 qubits)},
+                  title style={yshift=5pt},
+                  axis background/.style={fill=gray!2}
+                  ]
+
+                  % Sombra entre las curvas (asegúrate de tener \usepgfplotslibrary{fillbetween} en el preámbulo)
+                  \addplot[name path=f, dashed, blue!70, thick, forget plot] {f(x)};
+                  \addplot[name path=g, solid, red!70, very thick, forget plot] {g(x)};
+                  \addplot[gray!15, forget plot] fill between[of=f and g];
+
+                  % Líneas principales
+                  \addplot[dashed, blue!70, thick] {f(x)};
+                  \addplot[solid, red!70, very thick] {g(x)};
+
+                  \legend{Sin código (1 qubit), Con código (3 qubits)}
+              \end{axis}
+          \end{tikzpicture}%
+          }
+        \end{column}
+
+        % --- COLUMNA DERECHA: TEXTO DESCRIPTIVO ---
+        \begin{column}{0.45\textwidth}
+          \begin{itemize}
+            \item \textbf{Si $p < 0.5$:} El código funciona. Aumenta la fidelidad.
+            \item \textbf{Punto crítico ($p = 0.5$):} Igual fallo.
+            \item \textbf{Si $p > 0.5$:} El ruido es tan alto que es más probable que fallen 2 de los 3 qubits.
+          \end{itemize}
+        \end{column}
+      \end{columns}
     \end{frame}
     % If you want to put references uncomment the lines below and the 
     %\begin{frame}[t,allowframebreaks]
