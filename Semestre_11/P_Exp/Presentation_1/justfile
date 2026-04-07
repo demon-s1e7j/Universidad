@@ -1,0 +1,13 @@
+build doc="presentation":
+  pdflatex {{doc}}.tex
+  bibtex {{doc}}
+  pdflatex {{doc}}.tex
+
+show doc="presentation.pdf":
+  evince {{doc}}
+
+watch doc="presentation":
+  ls | entr just build {{doc}}
+
+clean doc="presentation":
+  ls {{doc}}.* | grep -v "{{doc}}.tex" | xargs rm

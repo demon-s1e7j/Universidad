@@ -1,0 +1,237 @@
+% general commands
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+
+\renewcommand*\thelstnumber{\arabic{lstnumber}.}
+\lstdefinestyle{base}{
+  moredelim=[is][\color{red}]{/}{/},
+captionpos=b,language=C++,basicstyle=\ttfamily,
+  numbers=left,numberstyle=\scriptsize\bfseries,xleftmargin=.038\textwidth
+}
+\lstdefinestyle{base2}{
+captionpos=b,language=C++,basicstyle=\ttfamily\scriptsize,
+  numbers=left,numberstyle=\scriptsize\bfseries,xleftmargin=.038\textwidth
+}
+
+
+\newcommand{\naive}{na\"{\i}ve }
+
+% SETTINGS FOR EPIGRAPH (THE VIP QUOTATIONS)
+\setlength\epigraphwidth{0.9\linewidth}
+\setlength{\epigraphrule}{0mm} % REMOVE BAR SEPARATING EPIGRAPH FROM SOURCE
+\renewcommand{\textflush}{flushepinormal} % JUSTIFY EPIGRAPH TEXT
+\renewcommand{\epigraphflush}{flushright} % CENTRALIZE
+\renewcommand{\sourceflush}{flushright} % CENTRALIZE
+
+% FOR PRETTIER CANCEL
+\usetikzlibrary{calc}
+\tikzstyle{nosep}=[inner sep=0pt, outer sep=0pt]
+\newcommand{\hcancel}[1]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[nosep] (tocancel) {$#1$};
+        \node[nosep, yshift=.5ex]  (from) at (tocancel.south west) {};
+        \node[nosep, yshift=-.5ex] (to)   at (tocancel.north east) {};
+        \draw[black] (from) -- (to);
+    }%
+}%
+
+%\newcommand{\bibsetup}{\thispagestyle{plain}\pagestyle{fancy}}
+
+% UNIVERSAL PLOT SIZE
+\newcommand{\plotsize}{0.47\textwidth}
+
+% TABLE OF CONTENTS WITH EMPTY PAGE STYLE
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{plain}}}
+
+% keeps the distance between paragraphs constant
+\setlength{\parskip}{1ex plus 0.0ex minus 0.0ex}
+
+\renewcommand{\floatpagefraction}{0.9}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.9}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\textfloatsep}{5mm}
+\renewcommand{\baselinestretch}{1.15}
+
+\newcommand*\Hide{%
+\titleformat{\chapter}[display]
+  {}{}{0pt}{\huge}
+\titleformat{\thispagestyle{empty}\part}
+  {}{}{0pt}{}
+}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+   \renewcommand\thefootnote{}\footnote{#1}%
+   \addtocounter{footnote}{-1}%
+   \endgroup
+}
+
+
+\newcommand{\one}{\ding{172}}
+\newcommand{\two}{\ding{173}} \newcommand{\three}{\ding{174}}
+\newcommand{\four}{\ding{175}} \newcommand{\five}{\ding{176}}
+\newcommand{\six}{\ding{177}} \newcommand{\seven}{\ding{178}}
+\newcommand{\eight}{\ding{179}} \newcommand{\nine}{\ding{180}}
+\newcommand{\ten}{\ding{181}}
+
+%\makeindex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% define \timestamp
+\newcount\minute \newcount\hour \newcount\hourMins
+\def\now{\minute=\time \hour=\time \divide \hour by 60 \hourMins=\hour \multiply\hourMins by 60
+  \advance\minute by -\hourMins \zeroPadTwo{\the\hour}:\zeroPadTwo{\the\minute}}
+\def\timestamp{\today\ \now}
+\def\today{\the\year-\zeroPadTwo{\the\month}-\zeroPadTwo{\the\day}}
+\def\zeroPadTwo#1{\ifnum #1<10 0\fi #1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\DeclareUnicodeCharacter{00A0}{ }
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+\newcommand{\titlepagefont}{\sffamily} % FONT USED IN THE TITLE PAGE -- change to \rmfamily FOR serif
+
+
+\renewcommand*{\=}{{\kern0.1em=\kern0.1em}}
+\renewcommand*{\-}{{\kern0.1em-\kern0.1em}}
+\newcommand*{\+}{{\kern0.1em+\kern0.1em}}
+
+\newenvironment{Tabular}[2][1]
+  {\def\arraystretch{#1}\tabular{#2}}
+  {\endtabular}
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%  CODE LISTINGS %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lstdefinestyle{python}{
+  backgroundcolor=\color{black!3},
+  belowcaptionskip=0\baselineskip,
+  belowskip=0pt,
+  breaklines=true,
+  xleftmargin=0pt,
+  language=Python,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+    numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{Blue},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it is 1, each line
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!20!black},
+  identifierstyle=\color{blue!60!black},
+  stringstyle=\color{orange!60!black},
+  columns=flexible,
+  rulecolor=\color{black},
+  keepspaces=true
+}
+\lstset{columns=flexible}
+\lstset{keepspaces=true}
+
+\lstdefinestyle{R}{ 
+  language=R,                     % the language of the code
+  basicstyle=\footnotesize\ttfamily, 	  % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{Blue},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it is 1, each line
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{black!3},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  keywordstyle=\color{RoyalBlue},      % keyword style
+  commentstyle=\color{YellowGreen},   % comment style
+  stringstyle=\color{ForestGreen}      % string literal style
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  TIKZ
+\usetikzlibrary{calc,3d}
+\usetikzlibrary{decorations.pathreplacing}
+
+
+\tikzset{
+    position/.style args={#1:#2 from #3}{
+        at=(#3.#1), anchor=#1+180, shift=(#1:#2)
+    },
+    minimum size=10pt,
+    every loop/.style={min distance=20mm,in=45,out=-45,looseness=10}
+}
+
+%%   COLORS AND STYLES
+\definecolor{Gray}{rgb}{0.9,0.9,0.9} % THIS IS USED FOR TABLE ROWS
+\definecolor{DarkGray}{rgb}{0.5,0.5,0.5} % THIS IS USED FOR PSEUDOCODE COMMENTS
+\definecolor{redDark}{HTML}{9A110A}
+\definecolor{redMid}{HTML}{D8140A}
+\definecolor{redLight}{HTML}{FF4137}
+
+\definecolor{blueDark}{HTML}{0B4262}
+\definecolor{blueMid}{HTML}{0E5C8A}
+\definecolor{blueLight}{HTML}{389CD7}
+
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+
+\tikzstyle{article}=[draw,circle,redDark, fill=redLight, inner sep=0pt, minimum width=2mm]
+\tikzstyle{author}=[draw,circle,blueDark, fill=blueLight, inner sep=0pt, minimum width=2mm]
+\tikzstyle{cit}=[-latex,redMid,bend right]
+\tikzstyle{collab}=[draw,blueMid]
+\tikzstyle{bipart}=[draw,blueMid]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  DATE FORMATTER        %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ymd}[3]{\leavevmode\hbox{#1\,/\,#2\,/\,#3}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  FROM SPECIAL_COMMANDS %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{itquote}
+  {\begin{quote}\itshape}
+  {\end{quote}\ignorespacesafterend}
+
+
+% TABLE FORMATING
+\newcommand{\titlehline}{\hline\hline}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  HYPOTHESIS %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{hypothesis}{5pt}{5pt}{\itshape}{1cm}{\bfseries}{}{.5em}{}
+\theoremstyle{hypothesis}
+\newtheorem{hypo}{Hypothesis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  MISC TYPESETTING      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\refleft}{\emph{(left)}\@\xspace}
+\newcommand*{\refright}{\emph{(right)}\@\xspace}
+
+
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{siunitx} % Provides the S column type
+
+\sisetup{
+  round-mode = places, % Rounds numbers
+  round-precision = 3, % to 3 places
+  detect-all, % For aligning numbers by decimal point within table
+}

@@ -1,0 +1,50 @@
+\chapter{Quantum Repetition Code}
+
+Given that we have already seen the classical repetition code in Section~\ref{sec:classical_repetition_code}, we can now take the first leap into a quantum code. This code relies on essentially the same theoretical principle. However, the decoding process must be interpreted through a different lens because we cannot duplicate the exact same information across every qubit. Rather, the information is distributed among all three qubits.
+
+The first defining characteristic of this code is its encoding process. In a classical code, a bit can simply be duplicated, which is impossible in quantum computing due to the no-cloning theorem. Nonetheless, we can construct a unitary operator that encodes a single logical qubit into three physical qubits. This is illustrated by the circuit in Figure~\ref{quantum_repetition_code_encode_circuit}.
+
+\begin{figure}[!htbp]
+\centering
+%\includegraphics[width=0.7\linewidth]{files/01_encode_circuit-a0472f1fc4caf10c59179d11509677b4.png}
+\begin{quantikz}
+\lstick{$\ket{\psi}$} & \ctrl{1} & \ctrl{2} & \qw \\
+\lstick{$\ket{0}$}    & \targ{}  & \qw      & \qw \\
+\lstick{$\ket{0}$}    & \qw      & \targ{}  & \qw
+\end{quantikz}
+\caption[]{Circuit that encodes a single qubit in a manner equivalent to the classical repetition code. This demonstrates that encoding is possible due to the existence of a linear, Hermitian process.}
+\label{quantum_repetition_code_encode_circuit}
+\end{figure}
+
+Once encoded, the logical codespace is defined by the following projector:
+
+\[
+P = \ket{000}\bra{000} + \ket{111}\bra{111}
+\]
+
+The decoding process, as demonstrated previously, is divided into two stages. First, we obtain the error syndrome, which is achieved by applying the following projectors:
+
+\begin{itemize}
+\item $P_0 = \ket{000}\bra{000} + \ket{111}\bra{111}$ (No error occurred)
+\item $P_1 = \ket{100}\bra{100} + \ket{011}\bra{011}$ (Error in the first qubit)
+\item $P_2 = \ket{010}\bra{010} + \ket{101}\bra{101}$ (Error in the second qubit)
+\item $P_3 = \ket{001}\bra{001} + \ket{110}\bra{110}$ (Error in the third qubit)
+\end{itemize}
+
+Second, we correct the error by applying the appropriate inverse operation based on the syndrome obtained in the previous step. This approach is analogous to the classical problem; therefore, the analysis of fidelity is identical and yields equivalent results.
+
+However, because this is a quantum code, we can explicitly demonstrate its ability to correct bit-flip errors using the Knill-Laflamme conditions. Given our previously defined projector and the set of single-qubit bit-flip error operators:
+
+\[
+\{E_i\} = \left\{I \otimes I \otimes I, X \otimes I \otimes I, I \otimes X \otimes I, I \otimes I \otimes X \right\}
+\]
+
+We can now show that the Knill-Laflamme conditions hold for this code. First, considering the cases where $i = j$ (since $E_i^\dagger E_i = I$ for Pauli matrices), the condition reduces to:
+
+\begin{align*}
+  P E_i^\dagger E_i P &= P I P\\
+  &= P^2\\
+  &= P
+\end{align*}
+
+Therefore, $\alpha_{ii} = 1$. Conversely, for $i \neq j$, applying the error operators to the projector $P$ yields $P_{ij}$, which is the original operator modified by the application of $E_i$ and $E_j^\dagger$. This resulting operator is orthogonal to the original projector, meaning $\alpha_{ij} = 0$. In summary, the matrix $\alpha$ is the identity matrix, which is Hermitian, as required.

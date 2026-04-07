@@ -1,0 +1,16 @@
+\begin{thebibliography}{}
+
+\bibitem[{EMPossible}, 2020]{empossible_rcwa}
+{EMPossible} (2020).
+\newblock Formulation of rigorous coupled-wave analysis ({RCWA}).
+\newblock Presentación de diapositivas.
+\newblock Recuperado de
+  \url{https://empossible.net/wp-content/uploads/2019/08/Lecture-7a-RCWA-Formulation.pdf}.
+
+\bibitem[Lou and Fan, 2025]{lou_fan_2025}
+Lou, B. and Fan, S. (2025).
+\newblock {RCWA4D}: Electromagnetic solver for layered structures with
+  incommensurate periodicities.
+\newblock {\em Computer Physics Communications}, 306:109356.
+
+\end{thebibliography}

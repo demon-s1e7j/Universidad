@@ -1,0 +1,15 @@
+\babel@toc {british}{}\relax 
+\thispagestyle {plain}
+\contentsline {chapter}{Abstract}{v}{section*.5}%
+\contentsline {chapter}{\numberline {1}Error Model}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Classical and Quantum Coding Theory}{7}{chapter.2}%
+\contentsline {section}{Classical Codes}{7}{chapter.2}%
+\contentsline {section}{Quantum Codes}{7}{chapter.2}%
+\contentsline {section}{Recovery Conditions}{8}{chapter.2}%
+\contentsline {section}{Knill-Laflamme Conditions}{9}{equation.2.2}%
+\contentsline {section}{Characteristics Imposed on a Code by the Knill-Laflamme Conditions}{12}{equation.2.4}%
+\contentsline {chapter}{\numberline {3}Repetition Code}{13}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Quantum Repetition Code}{17}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Linear Codes}{19}{chapter.5}%
+\contentsline {chapter}{Bibliography}{22}{section*.9}%
+\contentsfinish 

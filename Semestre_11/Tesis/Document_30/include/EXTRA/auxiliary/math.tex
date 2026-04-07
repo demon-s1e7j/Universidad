@@ -1,0 +1,62 @@
+\newcommand{\avg}[1]{\left< #1 \right>} % for average
+\let\underdot=\d % rename builtin command \d{} to \underdot{}
+\renewcommand{\d}[2]{\frac{d #1}{d #2}} % for derivatives
+\newcommand\given[1][]{\:#1\vert\:}
+\newcommand{\expected}[1]{\left\langle #1 \right\rangle}
+\newcommand{\kseq}{\bm{k}}
+\newcommand{\dir}[1]{#1^{\scriptscriptstyle\updownarrow}}
+\newcommand{\untri}[1]{\tilde{#1}} % the independent "half" of the symmetric matrices of undir case
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\ull}[1]{\underline{#1}}
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\eps}{\varepsilon}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% ESTILOS DE TEOREMAS Y ENTORNOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter] % Crea el contador 'theorem'
+\newtheorem{lemma}[theorem]{Lemma}     % CORREGIDO: usa 'theorem' en lugar de 'thm'
+\newtheorem{cor}[theorem]{Corollary}   % CORREGIDO: comparte contador con theorem
+\crefname{cor}{Corollary}{Corollaries}
+\newtheorem{conj}[theorem]{Conjecture} % CORREGIDO: usa 'theorem' en lugar de 'thm'
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition} % Ahora comparte la misma secuencia numérica
+\newtheorem{example}[theorem]{Example}       % AÑADIDO: Esto salva el Capítulo 5
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% COLORES Y OTROS ESTILOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{realnet}{rgb}{0.9,0.9,0.85}
+\definecolor{unbiasnet}{HTML}{00BFC4}
+\definecolor{biasnet}{HTML}{F8766D}
+
+\newtheoremstyle{question}{6pt}{6pt}{\bfseries}{}{\bfseries}{:}{ }{}
+\theoremstyle{question}
+\newtheorem{qq}{\sc RQ}[]
+\crefname{qq}{Research question}{research questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% COMANDOS MATEMÁTICOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\review}[1]{{\color{blue} #1}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\floor}[1]{\left \lfloor{#1}\right \rfloor }
+\DeclareRobustCommand{\mean}[1]{\left\langle #1 \right\rangle}
+\newcommand{\RA}{\Rightarrow}
+%\renewcommand{\G}{\mathcal{G}}
+
+\newcommand{\AIC}{\text{AIC}}
+\newcommand{\BIC}{\text{BIC}}
+
+\newcommand{\MHD}{\text{MHD}}
+
+\newcommand{\model}[1]{#1}
+
+\newcommand{\vecb}[1]{\boldsymbol{#1}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\sign}{sign}

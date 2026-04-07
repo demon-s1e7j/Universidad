@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99e (TeX Live 2026/Arch Linux)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: thesis.aux
+A level-1 auxiliary file: include/EXTRA/title.aux
+A level-1 auxiliary file: include/EXTRA/toc.aux
+A level-1 auxiliary file: include/EXTRA/abstract.aux
+A level-1 auxiliary file: error-model-single-qubit_tex/error-model-single-qubit.aux
+A level-1 auxiliary file: code_tex/code.aux
+A level-1 auxiliary file: repetition-code_tex/repetition-code.aux
+A level-1 auxiliary file: quantum-repetition-code_tex/quantum-repetition-code.aux
+A level-1 auxiliary file: linear-codes_tex/linear-codes.aux
+A level-1 auxiliary file: include/EXTRA/refs.aux
+The style file: apsr.bst
+Database file #1: include/EXTRA/references.bib
+Warning--I didn't find a database entry for "https://doi.org/10.48550/arxiv.quant-ph/9705052"
+You've used 5 entries,
+            2874 wiz_defined-function locations,
+            690 strings with 5830 characters,
+and the built_in function-call counts, 22464 in all, are:
+= -- 3674
+> -- 296
+< -- 1
++ -- 1752
+- -- 103
+* -- 1916
+:= -- 4521
+add.period$ -- 21
+call.type$ -- 5
+change.case$ -- 66
+chr.to.int$ -- 5
+cite$ -- 5
+duplicate$ -- 79
+empty$ -- 162
+format.name$ -- 105
+if$ -- 4033
+int.to.chr$ -- 5
+int.to.str$ -- 0
+missing$ -- 8
+newline$ -- 27
+num.names$ -- 62
+pop$ -- 27
+preamble$ -- 1
+purify$ -- 75
+quote$ -- 0
+skip$ -- 56
+stack$ -- 0
+substring$ -- 5168
+swap$ -- 9
+text.length$ -- 71
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 14
+warning$ -- 0
+while$ -- 118
+width$ -- 0
+write$ -- 79
+(There was 1 warning)

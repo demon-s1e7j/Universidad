@@ -1,0 +1,312 @@
+% **********************************************
+% *                                            *
+% *         Substyle for UZH IPZ MA thesis     *
+% *                                            *
+% **********************************************
+% * Compiled by Dr. Sophia Schlosser, University of Zurich
+% * based on previous efforts from the Chair of Systems Design, ETH
+
+\typeout{Document substyle for UZH IPZ MA thesis. Released March 2025}
+\def\es{} % eat space for nice formatting
+
+\let\l@English\l@english
+\g@addto@macro{\table}{\small}
+
+\newif\ifenglish \englishtrue
+
+
+%
+% MAKETITLE FOR UZH IPZ MA THESIS
+%
+\def\maketitle{
+  \ifenglish
+  \begin{titlepage}
+    \thispagestyle{empty}
+    {
+      \setlength{\baselineskip}{8mm}
+      \titlepagefont
+      \begin{center}
+        \vfill
+        {\huge\bfseries{\titlestring}}
+        \vfill
+        {\large
+          A thesis submitted to attain the degree of\linebreak
+          \textbf{\degreestring}
+          \vfill
+          Submitted by\linebreak
+          \expandafter{\authorstring}
+          \vfill
+          \acatitlestring
+          \vfill
+          Supervisors \linebreak
+          \examinerstring\linebreak
+          \coexaminerstring\linebreak
+          \coexaminertwostring
+          \ifdefequal{\draftdatestring}{\emptystring}{\vfill\number\year}{\vfill\draftdatestring}
+          \ifdefequal{\doinumberstring}{\emptystring}{}{\vfill\doinumberstring}
+        }
+      \end{center}
+      \uzhlogoplace
+      \hypersetup{
+        pdfauthor={\authorstring},
+        pdftitle={\titlestring},
+        pdfsubject={Master Thesis}
+      }
+      \cleardoublepage
+    }
+  \end{titlepage}
+  \fi
+}
+
+%%%%%%%%  ADDING FUNCTIONALITY TO SET Z-LEVEL
+\pgfkeys{
+  /tikz/on layer/.code={
+    \pgfonlayer{#1}\begingroup
+    \aftergroup\endpgfonlayer
+    \aftergroup\endgroup
+  },
+  /tikz/node on layer/.code={
+    \gdef\node@@on@layer{%
+      \setbox\tikz@tempbox=\hbox\bgroup\pgfonlayer{#1}\unhbox\tikz@tempbox\endpgfonlayer\egroup}
+    \aftergroup\node@on@layer
+  },
+  /tikz/end node on layer/.code={
+    \endpgfonlayer\endgroup\endgroup
+  }
+}
+
+\def\node@on@layer{\aftergroup\node@@on@layer}
+\def\doinumberstring{}
+
+% Listings
+\def\lst@outputspace{{\ifx\lst@bkgcolor\empty\color{white}\else\lst@bkgcolor\fi\lst@visiblespace}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  MISC TYPESETTING      %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\etal}{\@ifnextchar.{et~al}{et~al.\@\xspace}}
+\newcommand*{\ie}{\@ifnextchar.{i.e}{i.e.\@\xspace}}
+\newcommand*{\eg}{\@ifnextchar.{e.g}{e.g.\@\xspace}}
+\newcommand*{\etc}{\@ifnextchar.{etc}{etc.\@\xspace}}
+
+%
+% REDEFINE TITLES TO SF
+%
+\@ifclasswith{book}{sfelements}{
+  \pagestyle{fancy}
+  \fancyhf{}
+  \fancyfoot[C]{\sffamily\thepage}
+
+  \fancyhead[L]{}
+  \fancyhead[C]{}
+  \fancyhead[R]{}
+
+  \fancyfoot[L]{}
+  \fancyfoot[C]{\sffamily\thepage}
+  \fancyfoot[R]{}
+
+  \fancyhead[OL]{\sffamily\nouppercase{\rightmark}}
+  \fancyhead[RE]{\sffamily\nouppercase{\leftmark}}
+
+  \fancyhead[OL]{\normalfont\nouppercase{\rightmark}}
+  \fancyhead[RE]{\normalfont\nouppercase{\leftmark}}
+
+  % patch epigraph footer
+  \xpatchcmd{\epigraphhead}
+    {\def\@oddfoot{\reset@font\hfil\thepage\hfil}}
+    {\def\@oddfoot{\reset@font\hfil\sffamily\thepage\hfil}}{}
+
+
+\renewcommand{\@endpart}{\thispagestyle{plain}\@epipart}
+
+  %% redefine titles 
+  % -------------------------------------------------------------
+  %  chapters title-only, no 'Chapter', no number
+  % -------------------------------------------------------------
+  \usepackage{titlesec}
+  \titleformat{\chapter}[display]
+    {\normalfont\sffamily\huge\bfseries}
+    {}         % no Chapter label
+    {0pt}
+    {\Huge}    % title formatting
+  % -------------------------------------------------------------
+
+  \renewcommand{\captionlabelfont}{\small\bfseries\sffamily}
+  \renewcommand{\captionfont}{\small}
+
+  \contentsmargin[1cm]{0cm}
+
+  \titlecontents{part}[0em]{\vskip8pt\bfseries\sffamily\large}
+    {\contentslabel{1em}\enspace}{}
+    {\hspace*{\fill}\contentspage\hspace*{.8mm}}[\vskip 0pt]
+
+  \titlecontents{chapter}[1em]{\vskip8pt\bfseries\sffamily}
+    {\contentslabel{1em}\enspace}{}
+    {\hfill\contentspage}[\vskip 0pt]
+
+  \titlecontents{section}[3em]{\sffamily}
+    {\contentslabel{1.5em}\enspace}{}
+    {\hspace{2mm}\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
+
+  \titlecontents{subsection}[5em]{\filleft\sffamily}
+    {\contentslabel{2.2em}\enspace}{}
+    {\hspace{2mm}\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
+
+  \titlecontents{subsubsection}[7em]{\sffamily}
+    {\contentslabel{2.5em}\enspace}{}
+    {\hspace{2mm}\titlerule*[1pc]{.}\quad\contentspage}[\vskip 0pt]
+
+  \setlist[itemize]{label=\scriptsize\faPlay,labelsep=4mm}
+  \setlist[enumerate,1]{label=\sffamily\bfseries\arabic*,labelsep=4mm}
+  \setlist[enumerate,2]{label=\sffamily\bfseries\alph*,labelsep=4mm}
+  \setlist[enumerate,3]{label=\sffamily\bfseries\roman*,labelsep=4mm}
+  \setlist[enumerate,4]{label=\sffamily\bfseries\Alph*,labelsep=4mm}
+  \setlist[description]{font=\sffamily}
+
+  \renewcommand{\@pnumwidth}{1.55em}
+
+  \dottedcontents{section}[3.8em]{\normalfont\sffamily\normalsize}{2.3em}{1pc}
+  \dottedcontents{subsection}[6.1em]{\normalfont\sffamily\normalsize}{3.2em}{1pc}
+
+  \dottedcontents{figure}[3.2em+.5em]{\normalfont\sffamily\normalsize}{3.2em}{1pc}
+  \dottedcontents{table}[3.2em+.5em]{\normalfont\sffamily\normalsize}{3.2em}{1pc}
+
+  \tikzset{every picture/.style={/utils/exec={\sffamily}}}
+
+  \def\th@plain{
+    \thm@notefont{\normalfont}
+    \thm@headfont{\sf\bfseries}
+    \itshape
+  }
+  \def\th@definition{
+    \thm@notefont{\normalfont}
+    \thm@headfont{\sf\bfseries}
+    \normalfont
+  }
+
+}{
+
+  \fancyhf{}
+  \fancyhead[OL]{\rightmark}
+  \fancyhead[OR]{\thepage}
+  \fancyhead[LE]{\thepage}
+  \fancyhead[RE]{\leftmark}
+
+  \renewcommand\sfdefault{cmbr}
+
+  \long\def\@makecaption#1#2{
+    \vskip 10pt
+    \setbox\@tempboxa\hbox{{\bf #1: } #2}
+    \ifdim \wd\@tempboxa >\hsize \unhbox\@tempboxa\par
+    \else \hbox to\hsize{\hfil\box\@tempboxa\hfil}
+    \fi}
+
+  \let\@epipart\@endpart
+  \renewcommand{\@endpart}{\thispagestyle{epigraph}\@epipart}
+}
+
+
+%%%%%%%%
+%
+% TRANSLATE REPORT STRINGS
+%
+% REMOVE @MKBOTH FROM THE CHAPTER*
+%
+\def\tableofcontents{\chapter*{\contentsname}\thispagestyle{plain}\@starttoc{toc}}
+\def\listoffigures{\chapter*{\listfigurename}\@starttoc{lof}}
+\def\listoftables{\chapter*{\listtablename}\@starttoc{lot}}
+% \def\thebibliography#1{\chapter*{\bibname}\thispagestyle{plain}\list
+%   {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+%     \advance\leftmargin\labelsep\usecounter{enumi}}}
+
+%
+% THE GENERIC THESIS COMMANDS
+%
+\def\titlestring{}
+\def\degreestring{}
+\def\authorstring{}
+\def\acatitlestring{}
+\def\examinerstring{}
+\def\coexaminerstring{}
+\def\coexaminertwostring{}
+\def\draftdatestring{}
+\def\emptystring{}
+
+\def\title#1{\def\titlestring{#1}}
+\def\degr#1{\def\degreestring{#1}}
+\def\author#1{\def\authorstring{#1}}
+\def\acatitle#1{\def\acatitlestring{#1}}
+\def\examiner#1{\def\examinerstring{#1}}
+\def\coexaminer#1{\def\coexaminerstring{#1}}
+\def\coexaminertwo#1{\def\coexaminertwostring{#1}}
+\def\draftdate#1{\def\draftdatestring{#1}}
+
+\def\uzhlogo{
+\def\uzhlogoplace{
+  \centering
+  Department of physics\\
+  \vspace{0.2cm}
+  \begin{figure}[h]
+    \centering\includegraphics[width=0.3\textwidth]{include/EXTRA/stylefiles/uzh-logo.png}
+  \end{figure}
+}}
+\def\uzhlogoplace{}
+
+\let\thetitle\@title
+\let\theauthor\@author
+
+\hypersetup{
+  colorlinks=true,
+  pdfborder={0 0 0},
+  citecolor=black,
+  linkcolor=black,
+  urlcolor=black
+}
+
+% -------------------------------------------------------------
+% \chapter to be title-only and in TOC
+% -------------------------------------------------------------
+
+% remove "Chapter" and the chapter number
+\renewcommand{\chaptername}{}      % removes the word "Chapter"
+%\renewcommand{\thechapter}{}       % removes chapter numbering
+\setcounter{secnumdepth}{0}        % disables numbering
+
+
+\makeatletter
+\renewcommand{\partmark}[1]{\markboth{#1}{#1}}
+\renewcommand\@spart[1]{%
+  \thispagestyle{plain}%
+  \null\vfil
+  {\centering\Huge\bfseries #1\par}%
+  \vfil\null
+  \@afterheading
+  \partmark{#1}% ensure running header changes
+}
+\makeatother
+
+
+% -------------------------------------------------------------
+% Unnumbered chapter macro for UZH template
+% -------------------------------------------------------------
+\newcommand{\unnumberedchapter}[1]{%
+  \chapter*{#1}
+  \thispagestyle{plain}
+  \markboth{#1}{#1}
+  \addcontentsline{toc}{chapter}{#1}
+  \pagestyle{fancy}
+}
+
+% -------------------------------------------------------------
+% Unnumbered pseudo-chapter for lists (LOT/LOF)
+% -------------------------------------------------------------
+\newcommand{\unnumberedlistchapter}[2]{%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{#1}%
+  \markboth{#1}{#1}%
+  #2%
+  \thispagestyle{plain}%
+  \cleardoublepage
+  \pagestyle{fancy}
+}
+

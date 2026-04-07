@@ -1,0 +1,128 @@
+\chapter{Error Model}
+
+\label{Single_Qubit}
+
+Creating a general mathematical model for error correction means that we should make as few assumptions as necessary for the error (or noise) model that we will work with. That way, if we define a method for handling these general errors, it can be specialized to any other possible error. However, for simplicity, we will still make some assumptions. For instance, we will work in a two‑dimensional Hilbert space for every qubit (this is not required, but it simplifies the examples and conclusions; when necessary, explanations for generalizations will be provided). We also make the broad assumption that the error is defined by an operation on the tensor product space of the qubit space and an environment space. To this end, suppose we have a qubit in the state $\ket{\psi} = \alpha_0 \ket{0} + \alpha_1 \ket{1}$ and an environment in the state $\ket{E}$. We define the error as the operation
+
+\begin{align*}
+\ket{\psi}\ket{E} \;\to\; \alpha_0\beta_1 \ket{0}\ket{E_1} + \alpha_0\beta_2 \ket{1}\ket{E_2} + \alpha_1\beta_3 \ket{0}\ket{E_3} + \alpha_1\beta_4 \ket{1}\ket{E_4}.
+\end{align*}
+
+Thus, for a general qubit, an error is an interaction that, with certain amplitudes, produces a new environment state (which could be different for each possible environment basis state) and also changes the state of the qubit with some probability. At first glance, this seems unreasonable because we would be dealing with an uncountably infinite number of possible errors. However, by the theorem [](pauli is a base) we know that the set of operations $\mathcal{B} = \{I, Z, X, XZ\}$ forms a basis on a two‑dimensional Hilbert space. This implies that every possible error can be rewritten as a linear combination of that set. Furthermore, we can simplify our previous expression to reflect this fact (\cite{Mosca2007}).
+
+\begin{align*}
+\alpha_0\beta_1 \ket{0}\ket{E_1} +
+\alpha_0\beta_2 \ket{1}\ket{E_2}\\
++ \alpha_1\beta_3 \ket{0}\ket{E_3} +
+\alpha_1\beta_4 \ket{1}\ket{E_4}&\\
+=&\frac{1}{2} \left(\left(\alpha_0 \ket{0} + \alpha_1 \ket{1}\right)\left(\beta_1 \ket{E_1} + \beta_3 \ket{E_3}\right)\right.\\
+& + \left(\alpha_0 \ket{0} - \alpha_1 \ket{1}\right)\left(\beta_1 \ket{E_1} - \beta_3 \ket{E_3}\right)\\
+& + \left(\alpha_0 \ket{1} + \alpha_1 \ket{0}\right)\left(\beta_2 \ket{E_2} + \beta_4 \ket{E_4}\right)\\
+&\left. + \left(\alpha_0 \ket{1} - \alpha_1 \ket{0}\right)\left(\beta_2 \ket{E_2} - \beta_3 \ket{E_4}\right)\right)\\
+=&\frac{1}{2} \left(I\ket{\psi}\left(\beta_1 \ket{E_1} + \beta_3 \ket{E_3}\right)\right.\\
+& + Z\ket{\psi}\left(\beta_1 \ket{E_1} - \beta_3 \ket{E_3}\right)\\
+& + X\ket{\psi}\left(\beta_2 \ket{E_2} + \beta_4 \ket{E_4}\right)\\
+&\left. + ZX\ket{\psi}\left(\beta_2 \ket{E_2} - \beta_3 \ket{E_4}\right)\right)\\
+\end{align*}
+
+One important detail is that we have not expressed the new environment states in terms of anything else because we do not know the structure nor the specifications of the environment space. Moreover, this result is only valid for a 2 dimentional Hilbert space as explained before. However, the underlaying result, of being able to divide every continuos error into a basis of errors, would hold for any dimention.
+
+Generalizing this model for an state that live into a more than one qubit is done by generalizing the error into an unitary operation $U_{err}$ that affects the joint space. This means that:
+
+\begin{enumerate}
+\item You can describe it as a linear combination of operations that affect the state of the qubit and the state of the environment.
+\item You can represent the matrix of the hole operation with the matrix given by
+\end{enumerate}
+
+\begin{equation}
+\rho = U_{err}\ket{\psi}\ket{E}\bra{E}\bra{\psi}U_{err}^\dagger
+\end{equation}
+
+\begin{enumerate}[resume]
+\item You can specialize the previous result to get the particular state by calculating it's trace.
+\end{enumerate}
+
+\begin{equation}
+Tr(\rho) = Tr(U_{err}\ket{\psi}\ket{E}\bra{E}\bra{\psi}U_{err}^\dagger) = \sum_i \varepsilon_i^Q \ket{\psi} \bra{\psi} \varepsilon_i^{Q\dagger}
+\end{equation}
+
+\begin{enumerate}[resume]
+\item The error can be express as the applyance of the new operators $\varepsilon_i^Q$ witch encodes all the information necessary including the environment.(\cite{Mosca2007})
+\end{enumerate}
+
+\begin{theorem}\label{pauli_is_a_base}The set of Pauli operations $\mathcal{B} = \{I, Z, X, XZ\}$ forms a basis for the operators on a two‑dimensional Hilbert space.
+
+\textit{Proof.}\newline
+Because the cardinality of $\mathcal{B}$ equals the dimension of the space of operators on the Hilbert space, it is sufficient to show that the set is linearly independent. We use the trace inner product (see Definition [](Trace Class Norm)), which defines an inner product on $2\times 2$ matrices.
+
+\begin{align*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\left<I, X\right> &= Tr\left( \begin{pmatrix}1 & 0 \\0 & 1\end{pmatrix}^* \begin{pmatrix}0 & 1 \\1 & 0\end{pmatrix} \right) = Tr\left(\begin{pmatrix}0 & 1 \\1 & 0\end{pmatrix}\right)\\
+            &= 0\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\left<I, Z\right> &= Tr\left( \begin{pmatrix}1 & 0 \\0 & 1\end{pmatrix}^* \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix} \right) = Tr\left(\begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}\right)\\
+            &= 0\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\left<I, XZ\right> &= Tr\left( \begin{pmatrix}1 & 0 \\0 & 1\end{pmatrix}^* \begin{pmatrix}0 & -1 \\1 & 0\end{pmatrix} \right) = Tr\left(\begin{pmatrix}0 & -1 \\1 & 0\end{pmatrix}\right)\\
+            &= 0\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\left<X, Z\right> &= Tr\left( \begin{pmatrix}0 & 1 \\1 & 0\end{pmatrix}^* \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix} \right) = Tr\left(\begin{pmatrix}0 & -1 \\1 & 0\end{pmatrix}\right)\\
+            &= 0\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\left<X, XZ\right> &= Tr\left( \begin{pmatrix}0 & 1 \\1 & 0\end{pmatrix}^* \begin{pmatrix}0 & -1 \\1 & 0\end{pmatrix} \right) = Tr\left(\begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}\right)\\
+            &= 0\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\left<Z, XZ\right> &= Tr\left( \begin{pmatrix}1 & 0 \\0 & -1\end{pmatrix}^* \begin{pmatrix}0 & -1 \\1 & 0\end{pmatrix} \right) = Tr\left(\begin{pmatrix}0 & -1 \\-1 & 0\end{pmatrix}\right)\\
+            &= 0\\
+\end{align*}
+
+All pairwise inner products are zero, so the set is orthogonal and therefore linearly independent. By Theorem [](Theorem of Orthogonality to Lineality), every unitary operator on a Hilbert space can be represented as a linear combination of the elements of $\mathcal{B}$. ∎
+
+\end{theorem}\begin{definition}\label{trace_class_norm}For $n\times n$ matrices, we define the \textit{trace class norm} (inner product) as
+\begin{equation}
+\langle A, B \rangle = Tr(A^*B).
+\end{equation}
+
+\textit{Checks.}\newline
+We verify the inner‑product properties:
+
+\begin{enumerate}
+\item Conjugate symmetry:
+\begin{align*}
+   \overline{\langle B, A \rangle} &= \overline{Tr(B^*A)} = Tr((B^*A)^*) = Tr(A^*B) = \langle A, B \rangle.
+   \end{align*}
+
+
+\item Linearity in the second argument:
+\begin{align*}
+   \langle A, \alpha B + \beta C \rangle &= Tr\!\bigl(A^*(\alpha B + \beta C)\bigr) \\
+   &= Tr(\alpha A^*B + \beta A^*C) \\
+   &= \alpha Tr(A^*B) + \beta Tr(A^*C) \\
+   &= \alpha\langle A, B \rangle + \beta\langle A, C \rangle.
+   \end{align*}
+
+
+\item Positive definiteness:
+\begin{align*}
+   \langle A, A \rangle &= Tr(A^*A) = \sum_{i=1}^n (A^*A)_{ii} = \sum_{j=1}^n\sum_{i=1}^n \overline{a}_{ji}a_{ji}.
+   \end{align*}
+For every complex number $x$, $\overline{x}x \ge 0$, so $\langle A, A \rangle \ge 0$. Moreover, $\overline{x}x = 0$ iff $x = 0$; therefore $\langle A, A \rangle = 0$ implies $A = 0$.
+\end{enumerate}
+
+\end{definition}\begin{theorem}\label{theorem_of_orthogonality_to_lineality}Given a set $\mathcal{B}$ of non‑zero vectors in a vector space of dimension $n$ and an inner product $\langle\cdot,\cdot\rangle$,
+\begin{equation}
+\forall v_1,v_2\in\mathcal{B},\; v_1\neq v_2:\; \langle v_1,v_2\rangle = 0 \;\Longrightarrow\; \mathcal{B} \text{ is linearly independent}.
+\end{equation}
+
+\textit{Proof.}\newline
+Let $\sum_{i=1}^n a_i v_i = 0$. Take an arbitrary $v_k$ and the inner product of both sides with $v_k$:
+\begin{equation}
+\Bigl\langle v_k,\;\sum_{i=1}^n a_i v_i\Bigr\rangle = \langle v_k,0\rangle.
+\end{equation}
+Because $\mathcal{B}$ is orthogonal, $\langle v_k,v_i\rangle = 0$ for all $i\neq k$; hence every term except the $k$‑th vanishes:
+\begin{equation}
+a_k \langle v_k,v_k\rangle = 0.
+\end{equation}
+Since $v_k \neq 0$, we have $\langle v_k,v_k\rangle > 0$, thus $a_k = 0$. Repeating this for each $k$ shows that all coefficients are zero, so $\mathcal{B}$ is linearly independent. ∎
+
+\end{theorem}
