@@ -1,0 +1,162 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{braket}
+\usepackage[spanish]{babel}
+\usepackage{tikz}
+
+\newcommand{\class}{Teoría de Grupos para Mecánica Cuántica} % This is the name of the course 
+\newcommand{\examnum}{Ejercicio Clase} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+  \textbf{\class} & \textbf{Nombre:} & \textit{Sergio Montoya}\\ 
+  \textbf{\examnum} &&\\
+  \textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{Proposición 1}\label{sec:prop_1}
+
+\subsection{Proposición}
+
+En toda irrep $(\pi, V)$ de $S\ell(3, \mathbb{C})$, los operadores $\pi(H_1)$ y $\pi(H_2)$ pueden ser simultaneamente diagonalizado; Eso quiere decir, $V$ es la suma directa de sus \textit{weighted spaces}.
+
+\subsection{Demostración}
+
+Sea $W$ la suma de los \textit{weighted spaces} en $V$. Esto implica que, $W$ es el espacio de todos los vectores $w \in V$ tal que $w$ puede ser descrito como una suma directa de los vectores propios de $\pi(H_1)$ y $\pi(H_2)$. Por la proposición \ref{sec:prop_6_2} sabemos que $W \neq \left\{0\right\}$ pues deben existir vectores de peso para $\pi$. Por otro lado, dado que para cualquier vector raiz $Z_\alpha$ y vector de peso $v$ se cumple por \ref{sec:prop_6_5} que $\pi(Z_alpha)\vec{v}$ es tambien un vector de peso y por tanto para cualquier vector $w \in W$ aplicar un operador raiz $Z_\alpha$ da un vector que tambien pertenece a $W$. Es decir, $W$ es invariante ante cualquier operador raiz (es decir $X_i$ y $Y_i$). Ademas es invariante respecto a $H_1$ y $H_2$ por tanto es invariante ante todo operador en $S\ell(3, \mathbb{C})$. Esto implica que $W$ es submodulo de $V$ y dado que $V$ es irrep el unico submodulo posible es $V = W$. Ahora bien, dada la proposición \ref{sec:prop_a_17} V es la suma directa de sus \textit{weight spaces}.
+
+\section{Proposición 2}
+
+\subsection{Proposición}
+
+Toda irrep $(\pi, V)$ de $S\ell(3,\mathbb{C})$ tiene un peso maximal.
+
+\subsection{Demostración}
+
+Dado que por \ref{sec:prop_1} sabemos que $\pi$ es la suma de los espacios de peso. Ademas dado que sabemos que es de dimension finita implica tambien que los pesos son finitos y por tanto, debe existir un peso maximal $\mu$.
+
+\section{Proposición 3}
+
+\subsection{Proposición}
+
+Para dos irreps, Si los pesos maximales son iguales entonces las representaciones son isomorfas.
+
+\subsection{Demostración}
+
+Sean $(\pi_1, V)$ y $(\pi_2, W)$ irreps de $S\ell(3, \mathbb{C})$ con el mismo peso maximal $\mu$ y sea $V$ y $W$ los vectores maximales correspondientes. Considere la representación $V \oplus W$ y $U$ su espacio invariante minimo que contiene el vector $(v, w)$. Por lo tanto $U$ es una representación ciclica de peso maximal. Ademas dado que por definición (\ref{sec:compl_reducible}) $V \oplus W$ es completamente reducible entonces por \ref{sec:prop_compl_reducible} U tambien lo es. Esto implica que U es irreducible por \ref{sec:prop_6_14}.
+
+Ahora considere las dos "proyecciones" $P_V$ y $P_W$ que mapea $V \oplus W$ a $V$ y $W$ respectivamente; dadas por
+$$P_V (v, w) := v;\ P_W (v, w) := w$$
+
+Ahora bien, es claro que estos mapas concerban la estructura del grupo y por tanto son entrelazados. Sabemos tambien que $\left.P_V\right|_{U}$ y $\left.P_W\right|_{U}$ son no zero pues no lo son en $(v, w)$. Dado que $U$, $V$ y $W$ son irreducibles entonces por el lemma de Schur $\left.P_V\right|_{U}$ es un isomorfismo de $V$ a $U$ y $\left.P_W\right|_{U}$ un isomorfismo de $W$ a $U$ por tanto $V \cong U \cong W \implies V \cong W$
+
+
+\section{Proposición 4}
+
+\subsection{Proposición}
+
+Si $(\pi, V)$ es una irrep de $S\ell(3, \mathbb{C})$ con peso maximal $\mu = (m_1, m_2)$, entonces $m_1$ y $m_2$ son enteros no negativos.
+
+
+\subsection{Demostración}
+
+Sabemos previamente que $m_1, m_2 \in \mathbb{Z}$. Si $v$ es el vector de peso maximal entonces $\pi(X_i)v = 0$ (pues en caso contrario no seria peso maximal).
+Ahora bien, aplicando las restricciones $\left<H_1, X_1, Y_1\right>$ y $\left<H_2, X_2, Y_2\right>$ para que en cada uno $S\ell(3, \mathbb{C})$ sea una subalgebra isomorfa a $S\ell(2, \mathbb{C})$ entonces podemos usar el teorema \ref{sec:prop_4_34} y concluir que $m_1$ y $m_2$ son enteros no negativos.
+
+\section{Proposición 5}
+
+\subsection{Proposición}
+
+Si $m_1$ y $m_2$ son enteros no negativos, entonces existe una representación $(\pi, V)$ de $S\ell(3, \mathbb{C})$ con peso maximal $\mu = (m_1, m_2)$
+
+\subsection{Demostración}
+
+La representación trivial (es decir, que todo operador actue como $0$ en un espacio $\mathbb{C}$) tiene pesos maximos $(0, 0)$ por tanto solo nos interesa las representaciones con al menos 1 peso maximal mayor a $0$. Ahora vamos a construir dos representaciones fundamentales. Primero la representación estandar, es decir la representación que hace actuar $\pi_1(Z) = Z$. Esta representación tiene pesos $(1, 0), (-1, 1), (0, -1)$, es decir que tiene peso maximal $(1, 0)$. Por otro lado, el dual de esta representación (es decir $\pi_2(Z) = - Z^{tr}$. Al ser equivalente tiene los mismos vectores de peso pero con pesos $(-1, 0), (1, -1), (0, 1)$ es decir que tiene peso maximal $(0, 1)$.
+
+Esto nos servira como base para construir una representación con peso maximal $m_1$ y $m_2$ pues podemos construir $(pi_{m_1, m_2}$ que vive en:
+\[
+  V = (V_1\otimes V_1 \otimes \ldots \otimes V_1)_{m_1} \otimes (V_2 \otimes V_2 \otimes \ldots \otimes V_2)_{m_2}
+\]
+
+Y con la aplicación normal de los operadores para este caso (es decir, distribuir en los productos) podemos ver de manera facil que el vector 
+
+\[
+  v = (v_1\otimes v_1 \otimes \ldots \otimes v_1)_{m_1} \otimes (v_2 \otimes v_2 \otimes \ldots \otimes v_2)_{m_2}
+\]
+
+es un vector de peso con peso $(m_1, m_2)$ ademas, este mismo seria aniquilado por $\pi_{m_1, m_2}(X_j)$ pues sus componentes son aniquiladas previamente.
+
+
+
+\section{Lemmas, Definiciones e Interpretaciones}
+\subsection*{Nota:}
+
+Esta sección es para documentar los lemmas, teoremas e interpretaciones que necesite para los ejercicios arriba planteados de modo que pueda maximizar mi entendimiento.
+
+\subsection{La existencia de un peso es necesario}\label{sec:prop_6_2}
+
+Toda irrep $(\pi, V)$ de $S\ell(3, \mathbb{C})$ tiene al menos un peso. Esta demostración corresponde a la proposición $3.2$ del libro de Hall. Sin embargo, en terminos generales dado que $S\ell(3, \mathbb{C})$ es un espacio en los complejos (que es completo)  entonces deben existir al menos un valor propio con vector propio para cualquier operador (en particular $H_i$)
+
+\subsection{Si $v$ es un vector con peso $\mu$, entonces $\pi(Z_\alpha)v$ es un vector con peso $\mu + \alpha$}\label{sec:prop_6_5}
+
+Sean $\alpha = (a_1, a_2)$ una raíz y $Z_\alpha$ el vector raíz correspondiente, $Z_\alpha \in S\ell (3, \mathbb{C})$. Sea $\rho$ una representación de $S\ell (3, \mathbb{C})$ y sea $\mu = (m_1, m_2)$ un peso para $\rho$, con vector de peso $\ket{v}$. Es decir:
+
+\begin{equation}
+  \rho (H_i) \ket{v} = m_i \ket{v}
+  \label{eq:eq_peso}
+\end{equation}
+
+Entonces, o bien $\rho (Z_\alpha) \ket{v} = 0$, o $\rho (Z_\alpha) \ket{v}$ es un nuevo vector de peso, con peso $\mu + \alpha = (m_1 + a_1, m_2 + a_2)$.
+
+\subsection{Espacio Invariante}\label{sec:espacio_invariante}
+
+Un espacio $V$ es invariante bajo un operador $T$ si
+\begin{equation}
+  \forall v \in V; T(v) \in V
+  \label{eq:invariante}
+\end{equation}
+
+\subsection{Los vectores de peso son linealmente independientes} \label{sec:prop_a_17}
+
+Esta proposición la usan varias veces durante el capitulo (y se extiende hasta otros capitulos) en el libro esta expresado de otra manera pero el corolario principal de este mismo es que para dos vectores de peso $w_1$ y $w_2$ con pesos diferentes entonces $w_1$ y $w_2$ son linealmente independientes.
+
+\subsection{$\pi$ es irreducible si CPM y Completamente Reducible}\label{sec:prop_6_14}
+
+Sea $(\pi, V)$ una representación completamente reducible de $S\ell(3, \mathbb{C})$ ademas de ser ciclica de peso maximal. Entonces $\pi$ es irreducible.
+
+\subsection{Completamente Reducible}\label{sec:compl_reducible}
+
+Una representación de dimension finita de un grupo o algebra de Lie es completamente reducible si es isomorfa a una suma directa finita de irreps
+
+\subsection{Propiedades de representaciones completamente reducibles}\label{sec:prop_compl_reducible}
+
+Si $V$ es una representación completamente reducible entonces las siguientes propiedades se cumplen:
+
+\begin{enumerate}
+  \item Para un espacio invariante $U$ de $V$ existe otro espacio invariante $W$ tal que $V = U \oplus W$
+  \item Todo subespacion invariante de $V$ es a su vez completamente reducible
+\end{enumerate}
+
+\subsection{eigenvalues positivos}\label{sec:prop_4_34}
+
+Si $(\pi, V)$ es una representación finita dimensional de $S\ell(2, \mathbb{C})$ (no necesariamente irreducible) entonces todo eigenvalue de $\pi(H)$ es un entero. Ademas, si $v$ es un eigenvector y $\pi(X)v = 0$ entonces su eigenvalue correspondiente es un entero no negativo.
+
+\end{document}

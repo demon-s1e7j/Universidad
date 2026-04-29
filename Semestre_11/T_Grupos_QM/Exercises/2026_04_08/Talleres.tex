@@ -1,0 +1,102 @@
+\documentclass[12pt]{exam}
+\usepackage{amsthm}
+\usepackage{libertine}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage[shortlabels]{enumitem}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{listings}
+\usepackage{braket}
+\usepackage[spanish]{babel}
+\usepackage{tikz}
+
+\newcommand{\class}{Teoría de Grupos para Mecánica Cuántica} % This is the name of the course 
+\newcommand{\examnum}{Ejercicio Clase} % This is the name of the assignment
+\newcommand{\examdate}{\today} % This is the due date
+\newcommand{\timelimit}{}
+
+\begin{document}
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+  \textbf{\class} & \textbf{Nombre:} & \textit{Sergio Montoya}\\ 
+  \textbf{\examnum} &&\\
+  \textbf{\examdate} &&
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\section{Proposición}
+
+Sean $\alpha = (a_1, a_2)$ una raíz y $Z_\alpha$ el vector raíz correspondiente, $Z_\alpha \in S\ell (3, \mathbb{C})$. Sea $\rho$ una representación de $S\ell (3, \mathbb{C})$ y sea $\mu = (m_1, m_2)$ un peso para $\rho$, con vector de peso $\ket{v}$. Es decir:
+
+\begin{equation}
+  \rho (H_i) \ket{v} = m_i \ket{v}
+  \label{eq:eq_peso}
+\end{equation}
+
+Entonces, o bien $\rho (Z_\alpha) \ket{v} = 0$, o $\rho (Z_\alpha) \ket{v}$ es un nuevo vector de peso, con peso $\mu + \alpha = (m_1 + a_1, m_2 + a_2)$.
+
+\section{Demostración}
+
+Por la definición de raíz (y de vector raíz que le corresponde) sabemos que:
+
+\begin{equation}
+  \left[H_i, Z_\alpha\right] = a_i Z_\alpha;\ i \in \left\{1, 2\right\}
+  \label{eq:eq_raiz}
+\end{equation}
+
+Ahora tomando el caso de $\rho (Z_\alpha) \ket{v} \neq 0$ (que es el caso donde nos interesa demostrar). Entonces se debe cumplir, para $i \in \left\{1, 2\right\}$, que:
+\begin{align*}
+  \rho(H_i)\rho(Z_\alpha)\ket{v} &= \rho(H_i)\rho(Z_\alpha)\ket{v} - \rho(Z_\alpha)\rho(H_i)\ket{v} + \rho(Z_\alpha)\rho(H_i)\ket{v}\\
+  &= [\rho(H_i), \rho(Z_\alpha)]\ket{v} + \rho(Z_\alpha)\rho(H_i)\ket{v}\\
+  &= \rho\left([H_i, Z_\alpha]\right)\ket{v} + \rho(Z_\alpha)\rho(H_i)\ket{v}
+\end{align*}
+Ahora bien, por la ecuación \ref{eq:eq_raiz} sabemos que el primer término es equivalente a $\rho\left([H_i, Z_\alpha]\right)\ket{v} = a_i \rho(Z_\alpha) \ket{v}$. Por otro lado, para la segunda ecuación por \ref{eq:eq_peso} sabemos que el segundo término (en particular solamente aplicando $\rho(H_i)\ket{v}$) es equivalente a $\rho(Z_\alpha)m_i\ket{v} = m_i\rho(Z_\alpha)\ket{v}$. Ahora combinando todo:
+
+\begin{align*}
+  \rho(H_i)\rho(Z_\alpha)\ket{v} &= \rho\left([H_i, Z_\alpha]\right)\ket{v} + \rho(Z_\alpha)\rho(H_i)\ket{v}\\
+  &= a_i \rho(Z_\alpha)\ket{v} + m_i \rho(Z_\alpha)\ket{v}\\
+  &= (a_i + m_i) \rho(Z_\alpha) \ket{v}
+\end{align*}
+
+Que reajustando, nos permite mostrar que:
+\begin{equation}
+  \rho(H_i)\left(\rho(Z_\alpha)\ket{v}\right) = (a_i + m_i) \left(\rho(Z_\alpha) \ket{v}\right)
+  \label{eq:result}
+\end{equation}
+
+Que es la definición de un vector de peso con peso $(m_1 + a_1, m_2 + a_2)$ al aplicarse a ambos valores de $i$.
+
+\section{Lemas y Definiciones}
+\textbf{Nota:} Esta sección es puramente opcional para agregar las consideraciones que al estudiar esta demostración desde los apuntes me confundieron o se me olvidaron.
+
+\begin{enumerate}
+  \item \textbf{Peso:} Sea $\rho : S\ell (3, \mathbb{C}) \to g\ell(V)$ una representación de $S\ell(3, \mathbb{C})$. Un par ordenado $\mu = (m_1, m_2) \in \mathbb{C}^2$ se denomina peso para $\rho$ si existe $v \in V; v \neq 0$ tal que: 
+    \begin{enumerate}
+      \item $\rho (H_1)\ket{v} = m_1 \ket{v}$
+      \item $\rho (H_2)\ket{v} = m_2 \ket{v}$
+    \end{enumerate}
+  \item \textbf{Raíz:} Un par ordenado $\alpha = (a_1, a_2) \in \mathbb{C}^2$ se denomina raíz si:
+    \begin{enumerate}
+      \item $a_1 \neq 0$ y $a_2 \neq 0$.
+      \item $\exists Z \in S\ell (3, \mathbb{C});\ [H_1, Z] = a_1 Z \land [H_2, Z] = a_2 Z$. El vector $Z$ se conoce como vector raíz.
+    \end{enumerate}
+  \item \textbf{Representación Adjunta:} Dada un álgebra de Lie existe una representación llamada representación adjunta correspondiente a: 
+    \begin{equation}
+      ad_{x} (Z) := [x, Z]
+      \label{eq:rep_adjunta}
+    \end{equation}
+    La demostración de que esto es una representación está en el texto y no me aporta tanto aquí.
+  \item \textbf{¿De qué me sirve esto?}
+    La verdad es que en una primera leída no entendí bien para qué se hacía todo esto, pero ahora veo que la existencia de la representación adjunta es vital para la demostración anterior. Gracias a que es una representación que va del álgebra de Lie a sí misma podemos aplicarla dentro de una representación general $\rho$ manteniendo los resultados y por eso sus pesos concretos (es decir, las raíces) nos permitieron obtener los nuevos valores para los pesos de $\rho(Z_\alpha)\ket{v}$.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,14 @@
+build doc="thesis":
+  xelatex {{doc}}.tex
+  bibtex {{doc}}
+  xelatex {{doc}}.tex
+  xelatex {{doc}}.tex
+
+show doc="thesis":
+  evince {{doc}}.pdf
+
+watch doc="thesis":
+  just list | entr just build {{doc}}
+
+list:
+  find . -type f | sed 's|^\./||'

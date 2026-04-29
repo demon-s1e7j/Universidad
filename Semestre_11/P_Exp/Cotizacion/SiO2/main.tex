@@ -1,0 +1,195 @@
+\documentclass[a4paper]{article}
+%
+% YAIT: yet another invoice template
+% (modificado para corregir error "Dimension too large" con longtable)
+%
+
+\usepackage[top=1.5cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+
+\let\spacedFont\relax
+\let\displayFont\relax
+
+\ifluatex
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+
+  \setmainfont[
+        BoldFont=LinLibertineOZ,
+        BoldItalicFont=LinLibertineOZI,
+        SmallCapsFont=LinLibertineO,
+        SmallCapsFeatures={Letters=SmallCaps},
+  ]{LinuxLibertineO}
+
+  \newfontfamily\spacedFont[LetterSpace=2.0]{LinuxLibertineO}
+
+  \newfontfamily\displayFont[Extension=.otf,
+        BoldFont=LinLibertine_DR,%fake
+        ItalicFont=LinLibertine_DR,%fake
+        BoldItalicFont=LinLibertine_DR,%fake
+        ]{LinLibertine_DR}
+
+  \setsansfont[Extension=.otf, 
+        BoldFont=LinBiolinum_RB,
+        ItalicFont=LinBiolinum_RI,
+        BoldItalicFont=LinBiolinum_RB,% fake
+        SmallCapsFont=LinBiolinum_R,
+        SmallCapsFeatures={Letters=SmallCaps},
+        ]{LinBiolinum_R}
+
+  \setmonofont{Inconsolata}[
+      Extension      = .ttf,
+      UprightFont    = *-Regular,
+      BoldFont       = *-Bold,
+  ]
+\fi
+
+\ifxetex
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+  \usepackage{libertine}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%
+% content definition %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Cotización Cuarzo ($SiO_2$)}
+\date{\today}
+\xdef\invoicenum{001}
+\xdef\companyname{Comp.}
+\xdef\companyaddress{foo, bar street, XXXXX City}
+\xdef\companysiren{XXX XXXX XXXX}
+\xdef\companytel{XX\,XX\,XX\,XX\,XX}
+\xdef\companyemail{xxx@xxx.xxx}
+\xdef\bankiban{XXXX\,XXXX\,XXXX\,XXXX\,XXXX\,XXXX\,XXXX}
+\xdef\bankbic{XXX\,XXX\,XXX}
+\long\xdef\conditions{write the sell conditions here
+
+on several lines}
+
+\makeatletter
+\let\thetitle\@title
+\makeatother
+
+\usepackage[pdfencoding=auto,unicode, bookmarks=false, colorlinks=false, pdfborder={0 0 0},pdftitle={Invoice from XXX}, pdfauthor={XXX}, pdfsubject={Invoice}, pdfkeywords={Invoice, XXX}]{hyperref}
+\pagestyle{empty}
+\usepackage[table]{xcolor}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage[norule]{footmisc}
+
+%%%%%%%%%%%%%%%%%%%%%
+% color definitions %
+%%%%%%%%%%%%%%%%%%%%%
+
+\colorlet{headcolor}{gray!21}
+\colorlet{tablecolor1}{gray!4}
+\colorlet{tablecolor2}{gray!11}
+\colorlet{footnotegray}{gray!90}
+
+% the right shift of the right blocks
+\xdef\rightalignment{11cm}
+
+% footnote style
+\def\footnotestyle#1{%
+  {\textsf{\color{footnotegray}\fontsize{3mm}{0mm}\selectfont #1}}%
+}
+
+% change color of footnote marks
+\makeatletter
+\renewcommand\@makefntext[1]{%
+  \parindent 1em\noindent
+  \hb@xt@1.8em{%
+  \hss\@textsuperscript{\normalfont\color{footnotegray}\@thefnmark}}#1}
+\makeatother
+
+% Definición de tipos de columna para longtable
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\begin{document}
+
+\parbox[b][2cm][t]{\rightalignment}{{\color{gray!95}\displayFont\fontsize{1.5cm}{1.5cm}\selectfont %
+\vbox to 1cm{\vss %
+%
+\companyname{}%
+%
+}}
+\vskip 3mm%
+{\fontsize{0.44cm}{0.5cm}%
+\emph{thank you for your confidence!}%
+}
+}%
+%
+\parbox[b][2cm][t]{0.35\textwidth}{\ttfamily {%
+{\color{gray!95}\fontsize{1.5cm}{1.5cm}\selectfont %
+\vbox to 1cm{\vss \leavevmode \kern -1mm %
+%
+Invoice%
+%
+}}}}
+
+\kern -5mm
+
+\leavevmode\kern \rightalignment \parbox{0.35\textwidth}{\ttfamily N\textsuperscript{o} \invoicenum\\
+\today }
+
+\vskip 0.7cm
+
+\leavevmode\kern \rightalignment\kern -3mm \colorbox{gray!85}{
+  \kern 1mm\begin{minipage}[t]{0.5\textwidth}
+    \color{white}
+    \vskip 2mm
+    Company \textbf{Foo},\\
+    Temple Bar,\\
+    Dublin.\\
+    \vspace*{-3mm}%
+  \end{minipage}
+}
+
+\vskip 2.3cm
+
+\begin{center}
+{\ttfamily\LARGE \thetitle}
+
+\rule{2cm}{0.25pt}
+\end{center}
+
+\section{Laminillas 1}
+\begin{itemize}
+  \item Nombre: Laminillas de Cuarzo
+  \item URL: \url{https://imcolmedica.com.co/product/laminillas-de-cuarzo/}
+  \item Envio: Llega a Colombia, Es Colombiano de hecho
+  \item Precio: $63.986$
+\end{itemize}
+
+\section{Waffers - Amazon}
+\begin{itemize}
+  \item Nombre: Quartz Waffer
+  \item URL: \url{https://www.amazon.com/Alpha-Nanotech-Double-Side-Polished-Silica/dp/B09F6DZLT8/ref=sr_1_1?crid=3B670D1MDENYS&dib=eyJ2IjoiMSJ9.Kq1sRzZ5Pvig8K0ubSskJnw9zJtBvD0iBOGYuIhTZ_6B_VxZuA_7HkuVFglIbbEeAyXWNj7c02Vt6QGZfvy8cXRfwzKU-xSyb69AI7ngM1uUjIRvxrbVt9T33kG6zzwv1hLvBKSEefgnsVVFMatFKA.l1wGoaoqwaGjqZskcbig-CQ9PKD4kvgorb2A-Pv06OY&dib_tag=se&keywords=Quartz\%2BWafers&qid=1776785202&sprefix=quartz\%2Bwafers\%2Caps\%2C315&sr=8-1&th=1}
+  \item Envio: Llega a Colombia, como es amazon se maneja por ahi.
+  \item Precio: Hay dos (ambos en pesos): $207.205$ y $107.105$
+\end{itemize}
+
+\section{Rods - Amazon}
+\begin{itemize}
+  \item Nombre: High Temperature Resistance Clear Fused Silica Quartz Glass Rod, 6mm x 30mm, Crystal Glass Experimental Laboratory Instrument, 2 Pack 
+  \item \url{https://www.amazon.com/Temperature-Resistance-Experimental-Laboratory-Instrument/dp/B0G7JD7J2C/ref=sr_1_2?dib=eyJ2IjoiMSJ9.EYng_6vTWoMmErBWTChr2yDft9nv2GlZ12r8qKyrExWliUajQut8ZVWrtJjG-uKzCiU8u64ss54guQU5VZWbj84l-2G8HdIUqKN4YmcXrUEjA5z7LHXubTU9HwIHI-JTZ5up-5fwT9rKgBdedHWGcNr5hDR8KIeg3t6k086FYkN3WO0jpxJSr0JvLrKJz_Hpq4i2MKf8Lkgecx01NVwL54MLE4fvDiLqh8OrXtTO8Zk.tXy5-gGxjNub8cO_cliwwOyWIksMnx9Ns6o8mlZwK28&dib_tag=se&keywords=glass+rods+quartz&qid=1776785771&sr=8-2}
+  \item Envio: Llega a Colombia, como es amazon se maneja por ahi.
+  \item Precio: $32.152$
+\end{itemize}
+
+\section{Single Cristal Waffer - University Waffer}
+\begin{itemize}
+  \item Nombre: Single Crystal Quartz
+  \item \url{https://order.universitywafer.com/default.aspx?cat=Single\%20Crystal\%20Quartz&_gl=1*1tbfz4m*_gcl_aw*R0NMLjE3NzU0MzY3OTUuQ2owS0NRandrTWpPQmhDNUFSSXNBRElkYjNjTEp6TDRuTVU2WU1FNHhQOWxzdWkzbEUzcllHOW9XUVlRQXV6MzNWeTZnV2ZHUWo0NnFRZ2FBbzVTRUFMd193Y0I.*_gcl_au*NzczMjUyOTM3LjE3NzU0MzYwNjE.}
+  \item Envio: No lo se, pero podriamos enviar para conseguir una cotización con todos los materiales, (para aprovechar que en esta misma pagina hay varios lugares)
+  \item Precio: Los precios varian (y bastante) pero rondan los $100$ dolares. Miremos la URL mientras tanto
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,11 @@
+build doc="main.tex":
+  lualatex {{doc}}
+
+show doc="main.pdf":
+  evince {{doc}}
+
+watch doc="main.tex":
+  ls | entr just build {{doc}}
+
+clean doc="main.pdf":
+  rm -f *.aux *.log *.out *.toc *.lof *.lot *.bbl *.blg *.synctex.gz *.fdb_latexmk *.fls *.xdv *.run.xml *.bcf *.nav *.snm *.vrb *.idx *.ilg *.ind *.glg *.glo *.gls *.ist *.acn *.acr *.alg *.brf *.mw *.maf *.mtc* *.mlf* *.mlt* *.ptc* {{doc}}

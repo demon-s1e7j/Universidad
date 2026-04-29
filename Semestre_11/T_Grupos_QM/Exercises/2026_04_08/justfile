@@ -1,0 +1,11 @@
+build doc="Talleres":
+  xelatex {{doc}}.tex
+  # bibtex {{doc}}
+  xelatex {{doc}}.tex
+  xelatex {{doc}}.tex
+
+show doc="Talleres":
+  evince {{doc}}.pdf
+
+watch doc="Talleres":
+  ls | entr just build {{doc}}

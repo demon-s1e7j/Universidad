@@ -1,0 +1,184 @@
+\documentclass[a4paper]{article}
+%
+% YAIT: yet another invoice template
+% (modificado para corregir error "Dimension too large" con longtable)
+%
+
+\usepackage[top=1.5cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+
+\let\spacedFont\relax
+\let\displayFont\relax
+
+\ifluatex
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+
+  \setmainfont[
+        BoldFont=LinLibertineOZ,
+        BoldItalicFont=LinLibertineOZI,
+        SmallCapsFont=LinLibertineO,
+        SmallCapsFeatures={Letters=SmallCaps},
+  ]{LinuxLibertineO}
+
+  \newfontfamily\spacedFont[LetterSpace=2.0]{LinuxLibertineO}
+
+  \newfontfamily\displayFont[Extension=.otf,
+        BoldFont=LinLibertine_DR,%fake
+        ItalicFont=LinLibertine_DR,%fake
+        BoldItalicFont=LinLibertine_DR,%fake
+        ]{LinLibertine_DR}
+
+  \setsansfont[Extension=.otf, 
+        BoldFont=LinBiolinum_RB,
+        ItalicFont=LinBiolinum_RI,
+        BoldItalicFont=LinBiolinum_RB,% fake
+        SmallCapsFont=LinBiolinum_R,
+        SmallCapsFeatures={Letters=SmallCaps},
+        ]{LinBiolinum_R}
+
+  \setmonofont{Inconsolata}[
+      Extension      = .ttf,
+      UprightFont    = *-Regular,
+      BoldFont       = *-Bold,
+  ]
+\fi
+
+\ifxetex
+  \usepackage{fontspec}
+  \defaultfontfeatures{Ligatures=TeX}
+  \usepackage{libertine}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%
+% content definition %
+%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Cotización Silicio ($Si$)}
+\date{\today}
+\xdef\invoicenum{001}
+\xdef\companyname{Comp.}
+\xdef\companyaddress{foo, bar street, XXXXX City}
+\xdef\companysiren{XXX XXXX XXXX}
+\xdef\companytel{XX\,XX\,XX\,XX\,XX}
+\xdef\companyemail{xxx@xxx.xxx}
+\xdef\bankiban{XXXX\,XXXX\,XXXX\,XXXX\,XXXX\,XXXX\,XXXX}
+\xdef\bankbic{XXX\,XXX\,XXX}
+\long\xdef\conditions{write the sell conditions here
+
+on several lines}
+
+\makeatletter
+\let\thetitle\@title
+\makeatother
+
+\usepackage[pdfencoding=auto,unicode, bookmarks=false, colorlinks=false, pdfborder={0 0 0},pdftitle={Invoice from XXX}, pdfauthor={XXX}, pdfsubject={Invoice}, pdfkeywords={Invoice, XXX}]{hyperref}
+\pagestyle{empty}
+\usepackage[table]{xcolor}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage[norule]{footmisc}
+
+%%%%%%%%%%%%%%%%%%%%%
+% color definitions %
+%%%%%%%%%%%%%%%%%%%%%
+
+\colorlet{headcolor}{gray!21}
+\colorlet{tablecolor1}{gray!4}
+\colorlet{tablecolor2}{gray!11}
+\colorlet{footnotegray}{gray!90}
+
+% the right shift of the right blocks
+\xdef\rightalignment{11cm}
+
+% footnote style
+\def\footnotestyle#1{%
+  {\textsf{\color{footnotegray}\fontsize{3mm}{0mm}\selectfont #1}}%
+}
+
+% change color of footnote marks
+\makeatletter
+\renewcommand\@makefntext[1]{%
+  \parindent 1em\noindent
+  \hb@xt@1.8em{%
+  \hss\@textsuperscript{\normalfont\color{footnotegray}\@thefnmark}}#1}
+\makeatother
+
+% Definición de tipos de columna para longtable
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\begin{document}
+
+\parbox[b][2cm][t]{\rightalignment}{{\color{gray!95}\displayFont\fontsize{1.5cm}{1.5cm}\selectfont %
+\vbox to 1cm{\vss %
+%
+\companyname{}%
+%
+}}
+\vskip 3mm%
+{\fontsize{0.44cm}{0.5cm}%
+\emph{thank you for your confidence!}%
+}
+}%
+%
+\parbox[b][2cm][t]{0.35\textwidth}{\ttfamily {%
+{\color{gray!95}\fontsize{1.5cm}{1.5cm}\selectfont %
+\vbox to 1cm{\vss \leavevmode \kern -1mm %
+%
+Invoice%
+%
+}}}}
+
+\kern -5mm
+
+\leavevmode\kern \rightalignment \parbox{0.35\textwidth}{\ttfamily N\textsuperscript{o} \invoicenum\\
+\today }
+
+\vskip 0.7cm
+
+\leavevmode\kern \rightalignment\kern -3mm \colorbox{gray!85}{
+  \kern 1mm\begin{minipage}[t]{0.5\textwidth}
+    \color{white}
+    \vskip 2mm
+    Company \textbf{Foo},\\
+    Temple Bar,\\
+    Dublin.\\
+    \vspace*{-3mm}%
+  \end{minipage}
+}
+
+\vskip 2.3cm
+
+\begin{center}
+{\ttfamily\LARGE \thetitle}
+
+\rule{2cm}{0.25pt}
+\end{center}
+
+\section{Silicon Waffer - University Waffer}
+\begin{itemize}
+  \item Nombre: Silicon Wafer 
+  \item URL: \url{https://order.universitywafer.com/default.aspx?cat=Silicon}
+  \item Envio: Se repite lo anterior, deberiamos hacer cotización
+  \item Precio: Varia harto en precios. Pero esta alrededor de $30$ dolares, mirar la URL para mas detalle
+\end{itemize}
+
+\section{Silicon Wafer - Amazon}
+\begin{itemize}
+  \item Nombre:  Silicon Wafer (Prime Grade, Orientation <100>, 3’')  (Qty: 1) 
+  \item URL: \url{https://www.amazon.com/Silicon-Wafer-Prime-Grade-Orientation/dp/B07K42ZB9S/ref=sr_1_6?adgrpid=129237110287&dib=eyJ2IjoiMSJ9.DXr68D9m_a1_1TLAWuNT7mrzCDEcVKaFKTZJGwNvmJZ6RBPuDJfLrlEfG8y6LJ7expYGmY21FH9_7uwevCNIFA7Ulp-O55GxrU7oIieBhEXuLY76PDjqcJpK-0xiXBVJ2LyTdtBW8vD4CPokuu9gD99pG_LfTgGIvsErvkZN1oxGh0aGDXAyjRv_dLdYc_j9YuISAVTBFdO8ZMD34IdglGRrKoE33pjCmIqbiZfB1Uw.s0Q_nj07d0fcYs_ut37U3U3iT7LXTXoDGViB7-DFa68&dib_tag=se&hvadid=673156530162&hvdev=c&hvlocphy=9263219&hvnetw=g&hvqmt=e&hvrand=8871006526775520766&hvtargid=kwd-39786951&hydadcr=5706_13363865&keywords=silicon\%2Bwafer&mcid=1a58c66476b633569e1b931cc6d1f4a6&qid=1776789046&sr=8-6&th=1}
+  \item Envio: Si, es por amazon
+  \item Precio: Hay 3 opciónes respecto a la cantidad en pesos: 
+    \begin{enumerate}
+      \item[1] $59.303$
+      \item[10] $554.237$
+      \item[50] $902.270$
+    \end{enumerate}
+\end{itemize}
+
+
+\end{document}
