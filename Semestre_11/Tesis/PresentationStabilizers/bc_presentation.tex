@@ -1,0 +1,201 @@
+% Template mimicking the Linnaeus University powerpoint template
+% https://lnu.se/en/medarbetare/support-and-service/communications-and-marketing/Designmanual/templates/
+
+\documentclass[english,9pt]{Linnaeus}
+\usepackage{babel}
+\usepackage{braket}
+\usepackage{array,booktabs,times,mathptmx}
+\usepackage{tikz}
+\usepackage{amsfonts} % Para \mathbb
+\usepackage{quantikz}
+
+
+\usetikzlibrary{shapes.symbols}
+\usetikzlibrary{calc,arrows.meta}
+
+% Uncomment below for specific features
+
+% If you want to use bibtex uncomment the lines below
+%\usepackage{natbib}
+%    \bibpunct{(}{)}{;}{a}{}{,}
+%    \renewcommand{\bibfont}{\footnotesize}        
+%    \newcommand{\newblock}{.}
+
+% If you figures are in another folder
+%\graphicspath{{./Figures/}}
+
+% To reset the font in all tables
+%\let\oldtabular\tabular 
+%\renewcommand{\tabular}{\tiny\oldtabular} 
+
+\author[S1e7J]{\textbf{Sergio Montoya Ramírez}}
+\institute{s.montoyar2@uniandes.edu.co}
+\title{\LARGE \textbf{Codigos Estabilizadores o Simpleticos}}
+\date{}
+
+
+\begin{document}
+
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+\setbeamercolor{background canvas}{bg=white}
+
+\begin{frame}
+  \frametitle{Buscamos un codigo que pueda detectar errores rapidamente}
+
+  Lo que queremos es un codigo que cumpla
+
+  \begin{equation}
+    \mathcal{M} = \left\{ \ket{E} \in \mathcal{B}^{\otimes n} : \forall j, X_j \ket{E} = \ket{E}\right\}
+    \label{eq:stabilizers}
+  \end{equation}
+
+  Puesto que de ese modo podemos distuingir rapidamente entre estados con error, sin error y como solucionarlo. Por ejemplo, si yo parto de un estado $\ket{\psi}$ en el codigo pero al pasar por el canal recibo un estado que para $X_i$ cumple
+  \begin{equation}
+    X_i \ket{\psi} = - \ket{psi}
+    \label{eq:stabilizers2}
+  \end{equation}
+
+  Puedo de inmediato saber que fallo y (lo veremos mas adelante) como lo hizo.
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Las operaciones $X_j$ son simplecticas}
+
+  Las operaciones anteriores no son arbitrarias, son operaciones concretas llamadas simpleticas. Tienen la forma
+  \begin{equation}
+    X_j = (-1)^{\mu_j} \sigma(f_j)
+    \label{eq:simpletic}
+  \end{equation}
+
+  Donde
+  \begin{itemize}
+    \item $\mu_j \in \mathbb{Z}_2$ es una entrada de una función pensada para hacer que los operadores conmuten
+    \item $\sigma(f_j) : G^n \to \mathcal{L}(\mathcal{B}^{\otimes n})$ es una función que transforma vectores en el espacio $G^n$ a operaciones sobre n qubits
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{La operación $\sigma(\gamma)$ define un grupo}
+  Cualquier operador de pauli se puede representar como una tupla en $(\mathbb{Z}_2)^2$ y puede ser encontrada la operación que representa por medio de
+  \begin{equation}
+    \sigma(\alpha, \beta) = i^{\alpha\beta} \sigma_{\alpha 0}\sigma_{0 \beta} \approx i^{\alpha\beta} X^\alpha Z^\beta
+    \label{eq:sigma}
+  \end{equation}
+
+  Esto tiene las siguientes caracteristicas
+  \begin{itemize}
+    \item Conmuta: $\sigma(\gamma_1)\sigma(\gamma_2) = (-1)^{\omega(\gamma_1, \gamma_2)} \sigma(\gamma_2)\sigma(\gamma_1)$ con $\omega(\alpha_1, \beta_1, \ldots; \alpha_1', \beta_1', \ldots) = \sum_{j = 1}^n (\alpha_j \beta_j' - \alpha_j'\beta_j)$
+    \item Multiplica con: $\sigma(\gamma_1)\sigma(\gamma_2) = (-1)^{\tilde{\omega}(\gamma_1, \gamma_2)} \sigma(\gamma_1 + \gamma_2)$ con $\tilde{\omega}(\gamma, \gamma') = \tau(\gamma) + \tau(\gamma') + \tau(\gamma + \gamma') + \chi(\gamma, \gamma')$ (Estas funciones concretas no son tan importantes).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Con esta estructura podemos construir el grupo Simpletico extendido y por tanto mostrar que existen estas compuertas}
+
+  Tomando la estructura anterior para operadores de Pauli. Podemos construir transformaciones unitarias tal que
+  \begin{equation}
+    U \sigma(\gamma) U^\dagger = (-1)^{v(\gamma)}\sigma(u(\gamma))
+    \label{eq:ESp2}
+  \end{equation}
+  \begin{itemize}
+    \item $u : G^n \to G^n$*
+    \item $v : G^n \to \mathbb{Z}^2$
+  \end{itemize}
+
+  \tiny{* Nos interesa en particular un grupo de operaciones $u$ (conocido como grupo simpletico) donde $u$ es lineal sobre el cuerpo y preserva la operacion $\omega$ (Es decir, que si conmutaban antes seguiran conmutando despues de aplicado). Se puede demostrar que siempre que se tenga una operación por ese estilo, se puede construir un elemento en el grupo simpletico extendido. Esto implica ademas que existen circuitos que implementan cualquier elemento del grupo simpletico.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{En un conjunto de Estabilizadores cualquier par de operaciones conmutan entre si. Para el caso de la multiplicación existe $\mu$}
+
+  Que un grupo de estabilizadores conmuten no significa que mantengan la estructura al multiplicar. $\omega(f, g) = 0 \not\implies \tilde{\omega}(f, g)) = 0$. Para conservar esa estructura es la función $\mu$ que en particular debe cumplir
+  \begin{equation}
+    \mu(f + g) - \mu(f) - \mu(g) = \frac{\tilde{\omega}(f, g)}{2}
+    \label{eq:mu_correction}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Recapitulando, un espacio para aclarar la mente antes de proseguir}
+
+  Un codigo estabilizador es un subespacio
+
+  \begin{equation}
+    \mathcal{M} = \left\{ \ket{E} \in \mathcal{B}^{\otimes n} : \forall j, X_j \ket{E} = \ket{E}\right\}
+    \label{eq:stabilizers2}
+  \end{equation}
+
+  En donde
+  \begin{itemize}
+    \item $X_j = (-1)^{\mu_j} \sigma(f_j)$
+    \item $\sigma(\alpha, \beta) = i^{\alpha\beta} \sigma_{\alpha 0}\sigma_{0 \beta}$ (con sus respectivas operaciones)
+    \item $\mu(f + g) - \mu(f) - \mu(g) = \frac{\tilde{\omega}(f, g)}{2}$
+  \end{itemize}
+
+  Y sabemos que existe una representación de cualquier $X_j$ como circuito cuantico pues es Simpletico Extendido (En particular con $u$ la identidad y $v = \mu$).
+\end{frame}
+
+\begin{frame}
+  \frametitle{Los codigos tienen un punto Ciego. El Subespacio Isotropico}
+  Un codigo puede ser definido casi por completo por su función $\mu$ y un subespacio conocido como subespacio Isotropico
+  \begin{equation}
+    F \subseteq F_+ \subseteq G^n : \forall f, g \in G^n, \omega(f, g) = 0
+    \label{eq:isotropic}
+  \end{equation}
+
+  Con esto podemos entonces construir el codigo abstracto
+  \begin{equation}
+    \begin{split}
+    SympCode(F, \mu) := \left\{\ket{\psi} \in \mathcal{B}^{\otimes n} :\right.\\
+      \left.\forall f \in F, \sigma(f) \ket{\psi} = (-1)^{\mu(f)}\ket{\psi}\right\}
+    \end{split}
+    \label{eq:simp_abst}
+  \end{equation}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Los subespacios isotropicos Descomponen Ortogonalmente el Espacio}
+  Sea $F \subseteq G^n$ un subespacio isotropico. de dimension $s$. Se cumple entonces que:
+  \begin{itemize}
+    \item La dimension de cada codigo simpletico definido es
+      $$dim(SympCode(F, \mu)) = 2^{n - s}$$
+    \item El espaico total de $n$ qubits es un algebra graduada de la familia de codigos simpleticos
+      $$\mathcal{B}^{\otimes n} = \bigoplus_{\mu} SympCode(F, \mu)$$
+    \item El conjunto de $SympCode(F, \mu)$ es completamente ortogonal entre si
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Para que un error sea detectado debe estar fuera de $F_+$}
+
+  Los codigos estabilizadores unicamente corrigen errores que viven en $G^n$ pero como las matrices de Pauli son una base para el espacio de operadores estos pueden corregir cualquier error. En particular para un estado $\sigma(g) \ket{\psi}$ se puede dar que
+  \begin{itemize}
+    \item $g \not\in F_+$ En este caso el codigo detecta el error pues los operadores no conmutan y dado que los codigos son ortogonales entre si se puede retornar al estado correcto por medio de una proyección
+    \item $g \in F$ Esto hace que $\sigma(g)$ sea un estabilizador, Es indistinguible de haber aplicado la identidad
+    \item $g \in F_+ \backslash F$ El error es indetectable pues conmuta con todos los estabilizadores (incluso cuando este no hace parte de los estabilizadores).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{En conclusión}
+  Los codigos estabilizadores son codigos de corrección de error de la forma
+  \[
+    \mathcal{M} = \left\{ \ket{E} \in \mathcal{B}^{\otimes n} : \forall j, X_j \ket{E} = \ket{E}\right\}
+  \]
+
+  Con 
+  \begin{itemize}
+    \item $X_j = (-1)^{\mu_j} \sigma(f_j)$
+    \item $\sigma(\alpha, \beta) = i^{\alpha\beta} \sigma_{\alpha 0}\sigma_{0 \beta}$ (con sus respectivas operaciones)
+    \item $\mu(f + g) - \mu(f) - \mu(g) = \frac{\tilde{\omega}(f, g)}{2}$
+    \item Corrigen errores $g$ que no conmuten con al menos $1$ de los estabilizadores
+  \end{itemize}
+
+\end{frame}
+
+\end{document}

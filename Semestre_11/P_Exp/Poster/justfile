@@ -1,0 +1,11 @@
+build doc="poster":
+  lualatex {{doc}}.tex
+  bibtex {{doc}}
+  lualatex {{doc}}.tex
+  lualatex {{doc}}.tex
+
+show doc="poster.pdf":
+  evince {{doc}}
+
+watch doc="poster":
+  ls | entr just build {{doc}}

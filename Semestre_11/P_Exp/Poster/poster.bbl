@@ -1,0 +1,37 @@
+\begin{thebibliography}{1}
+
+\bibitem{dichtl2017dielectric}
+Claudius Dichtl, Pit Sippel, and Stephan Krohns.
+\newblock Dielectric properties of {3D} printed polylactic acid.
+\newblock {\em Advances in Materials Science and Engineering}, 2017:1--10,
+  2017.
+\newblock Article ID 6913835.
+
+\bibitem{empossible2020rcwa}
+{EMPossible}.
+\newblock Formulation of rigorous coupled-wave analysis ({RCWA}).
+\newblock Presentation, Advanced Computation: Computational Electromagnetics,
+  April 2020.
+\newblock PDF file name: presentation\_rcwa4d.pdf, accessed 2026-05-12.
+
+\bibitem{lou2025rcwa4d}
+Beicheng Lou and Shanhui Fan.
+\newblock {RCWA4D}: Electromagnetic solver for layered structures with
+  incommensurate periodicities.
+\newblock {\em Computer Physics Communications}, 306:109356, 2025.
+\newblock Article 109356.
+
+\bibitem{sannakki2013dielectric}
+Basavarajaa Sannakki and Anita.
+\newblock Dielectric properties of {PMMA} and its composites with
+  {ZrO\textsubscript{2}}.
+\newblock {\em Physics Procedia}, 49:15--26, 2013.
+\newblock Open access under CC BY-NC-ND license.
+
+\bibitem{Tanwar2006}
+Anju Tanwar, K.~K. Gupta, P.~J. Singh, and Y.~K. Vijay.
+\newblock Dielectric parameters and a.c. conductivity of pure and doped poly
+  (methyl methacrylate) films at microwave frequencies.
+\newblock {\em Bulletin of Materials Science}, 29(4):397--401, 2006.
+
+\end{thebibliography}

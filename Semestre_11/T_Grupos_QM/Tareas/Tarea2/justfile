@@ -1,0 +1,8 @@
+build doc="main.tex":
+  pdflatex {{doc}}
+
+show doc="main.pdf":
+  evince {{doc}}
+
+watch doc="main.tex":
+  ls | entr just build {{doc}}

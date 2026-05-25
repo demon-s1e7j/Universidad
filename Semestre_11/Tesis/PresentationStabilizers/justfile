@@ -1,0 +1,14 @@
+# Variable con el nombre base del documento (sin extensión)
+doc_name := "presentation"
+
+# Receta para compilar el .tex a .pdf
+build:
+    pdflatex "{{doc_name}}.tex"
+
+# Receta para mostrar el .pdf generado
+show:
+    evince "{{doc_name}}.pdf"
+
+# Receta para vigilar cambios y recompilar automáticamente
+watch:
+    ls "{{doc_name}}.tex" | entr just build

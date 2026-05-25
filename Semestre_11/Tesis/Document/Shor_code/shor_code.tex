@@ -1,0 +1,244 @@
+\chapter{Shor's Code}
+
+The Shor code was the first quantum error-correcting code, described by Peter Shor and A. R. Calderbank in 1996 in the paper \textit{Good Quantum Error-Correcting Codes Exist}. However, the original definition was later generalized into an $n^2$-qubit subspace that corrects general errors with a distance of $n$ \citep{Cesar2024}. The general idea behind such a code is to encode the information using a repetition code across two orthogonal bases. This way, any error applied to the code can be detected and corrected through projection. Furthermore, the Shor code is the first example of a symplectic code, offering all the associated advantages \citep{Kitaev2002}.
+
+\section{Code Components}
+
+\subsection{Standard Repetition}
+
+The first code that will be used is the standard repetition code, as seen in Chapter \ref{ch:quantum_repetition} \citep{Kitaev2002}. This code immediately protects against bit-flip errors. However, we have shown that the $3$-qubit repetition code is insufficient for the completely general case. Therefore, we generalize the repetition code to $n$ qubits using $V^z_n$:
+\begin{equation}
+  V_n^z : \ket{a} \to \ket{a} \otimes \ket{a} \otimes \dots \otimes \ket{a} = \ket{a}^{\otimes n}
+  \label{eq:repetition_n}
+.\end{equation}
+\citep{Cesar2024}
+However, the change in code size does not affect the insufficiency to correct phase-flip errors, as discussed in the section on errors for the repetition code.
+
+\subsection{The Dual Repetition Code}
+
+We know that phase errors and bit-flip errors are mutually conjugate \citep{Kitaev2002}. Therefore, we can expand the repetition code into a dual repetition code by encoding the new qubits into the conjugate basis using:
+\begin{equation}
+  \ket{\eta_b} = H \ket{b}
+  \label{eq:hadamard_encode}
+.\end{equation}
+
+Encoding a qubit into $n$ qubits with the operation $V_n^x$ yields:
+\begin{equation}
+  V_n^x : \ket{\eta_a} \to \ket{\eta_a} \otimes \ket{\eta_a} \otimes \dots \otimes \ket{\eta_a} = \ket{\eta_a}^{\otimes n}
+  \label{eq:hadamard_encode_n}
+.\end{equation}
+
+Borrowing the proof for the correction of bit-flip errors in the repetition code, we can apply the same logic here, considering that the errors are conjugate in the Hadamard basis.
+
+Finally, to see the complete encoding for this code, we can decompose it as:
+\begin{align*}
+  \ket{a} &= \frac{1}{\sqrt{2}}\sum_{b \in \left\{0, 1\right\}} (-1)^{ab}\ket{\eta_b}\\
+  V_n^x \ket{a} &= \frac{1}{\sqrt{2}} \sum_{b \in \left\{0, 1\right\}} (-1)^{ab} \ket{\eta_b}^{\otimes n}\\
+  V_n^x \ket{a} &= \frac{1}{\sqrt{2}}\sum_{b \in \left\{0, 1\right\}} (-1)^{ab} \left( \frac{1}{2^{n/2}} \sum_{y\in \mathcal{B}^n} (-1)^{b (\sum_{i = 1}^n y_i)} \ket{y_1, \dots, y_n}\right)\\
+  V_n^x \ket{a} &= \frac{1}{2^{(n + 1) / 2}}\sum_{y \in \mathcal{B}^n} \ket{y} \left(\sum_{b \in \left\{0, 1\right\}} (-1)^{b(a + \sum y_i)}\right)
+.\end{align*}
+
+Considering exclusively the term in parentheses:
+\begin{itemize}
+  \item If $a + \sum y_i$ is even, then $(-1)^0 + (-1)^0 = 2$.
+  \item If $a + \sum y_i$ is odd, then $(-1)^0 + (-1)^1 = 0$.
+\end{itemize}
+
+This factor of $2$ cancels part of the denominator:
+\begin{align*}
+  \frac{2}{2^{(n + 1)/2}} &= 2^{1 - (n + 1)/2} = 2^{-(n - 1)/2}
+.\end{align*}
+
+Thus, the complete equation becomes:
+\begin{equation}
+  \ket{a} \to 2^{-(n - 1)/2} \sum_{y_1 + y_2 + \dots + y_n \equiv a}\ket{y_1, \dots, y_n}
+  \label{eq:complete_hadamard}
+.\end{equation}
+\citep{Cesar2024}
+
+\section{The Complete Shor Code}
+
+By concatenating both codes, we obtain the complete Shor code \citep{Kitaev2002}:
+\begin{equation}
+  V = \left(V_r^z\right)^{\otimes r} \circ V_r^x : \mathcal{B} \to \mathcal{B}^{\otimes r^2}
+  \label{eq:complete_shor}
+.\end{equation}
+
+To visualize this concretely, it is helpful to expand the last expression into a matrix of $r^2$ qubits grouped by rows:
+\begin{equation}
+  \ket{a} \to 2^{-(r - 1)/2} \sum_{y_1 + y_2 + \dots + y_r \equiv a}
+  \stretchleftright{|}{\begin{matrix}
+    y_1 & y_1 & \ldots & y_1\\
+    y_2 & y_2 & \ldots & y_2\\
+    \vdots & \vdots & \ddots & \vdots\\
+    y_r & y_r & \ldots & y_r
+  \end{matrix}}{\rangle}
+  \label{eq:concrete_shor}
+.\end{equation}
+
+This can be represented by the following circuit in Figure \ref{shor_code_encode_circuit}, where a concrete example of the Shor code with $9$ qubits is portrayed.
+
+\begin{figure}[h!]
+\centering
+\begin{quantikz}
+  \lstick{$\ket{\psi}$}  & \ctrl{3} & \ctrl{6} & \qw  & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw\\
+  \lstick{$\ket{0}$}     & \qw      & \qw      & \qw  & \qw      & \qw & \targ{}  & \qw      & \qw\\
+  \lstick{$\ket{0}$}     & \qw      & \qw      & \qw  & \qw      & \qw & \qw      & \targ{}  & \qw\\
+  \lstick{$\ket{0}$}     & \targ{}  & \qw      & \qw  & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw\\
+  \lstick{$\ket{0}$}     & \qw      & \qw      & \qw  & \qw      & \qw & \targ{}  & \qw      & \qw\\
+  \lstick{$\ket{0}$}     & \qw      & \qw      & \qw  & \qw      & \qw & \qw      & \targ{}  & \qw\\
+  \lstick{$\ket{0}$}     & \qw      & \targ{}  & \qw  & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw\\
+  \lstick{$\ket{0}$}     & \qw      & \qw      & \qw  & \qw      & \qw & \targ{}  & \qw      & \qw\\
+  \lstick{$\ket{0}$}     & \qw      & \qw      & \qw  & \qw      & \qw & \qw      & \targ{}  & \qw
+\end{quantikz}
+\caption{
+  Encoding circuit for the Shor code with $n = 3$. 
+  This is a simple example demonstrating the different structural blocks 
+  explained previously \citep{Cesar2024}.
+}
+\label{shor_code_encode_circuit}
+\end{figure}
+
+
+\section{Error Detection and Code Distance}
+
+For a Shor code where $n = r$, any error $f$ with a weight $|f| < r$ can be detected. This can be shown using a slight simplification of the Knill-Laflamme conditions \citep{Kitaev2002}. For an error $f$, we evaluate:
+\begin{align*}
+  \bra{\varepsilon_1} f \ket{\varepsilon_0} &= 0\\
+  \bra{\varepsilon_1} f \ket{\varepsilon_1} &= \bra{\varepsilon_0} f \ket{\varepsilon_0}
+.\end{align*}
+instead of the full Hermitian matrix. Both formulations are equivalent.
+
+\subsection{$f^{(x)} \neq 0$}
+
+Given that $0 < |f^{(x)}| < r$, at least one component must differ when the error is applied. Because this weight is insufficient to flip an entire row, applying this operation always yields $0$:
+\begin{equation}
+  \forall a, b \in \{0, 1\}, \quad \bra{\varepsilon_a} f \ket{\varepsilon_b} = 0
+.\end{equation}
+which immediately satisfies both conditions.
+
+\subsection{$f^{(x)} = 0$ (Only phase errors)}
+
+In this case, only the phase changes. Due to phase kickback, the effect of the error $f$ on the code states can be simplified to:
+\begin{equation}
+  f \ket{\psi} = (-1)^{\sum_j \lambda_j y_j}\ket{\psi}
+.\end{equation}
+where the vector $\lambda$ represents the phase-flip operations for each column. For the general case:
+\begin{equation}
+  \bra{\varepsilon_a} f \ket{\varepsilon_a} = 2^{-(r - 1)} \sum_{y_1 + y_2 + \dots + y_r \equiv a} (-1)^{\sum_{j = 1}^r \lambda_j y_j}
+.\end{equation}
+
+There are three possible cases:
+\begin{enumerate}
+  \item $\lambda = \vec{0}$: The operation acts exactly as the identity over the code subspace.
+  \item $\lambda = \vec{1}$: This requires a phase flip in all $r$ columns, meaning the weight of the error would be $r$. This contradicts our initial assumption that $|f| < r$.
+  \item $\lambda$ is a non-trivial combination. By the orthogonality of characters, we have:
+    \begin{equation}
+      \sum_{y_1 + y_2 + \dots + y_r \equiv a} (-1)^{\lambda \cdot y} = 0
+    .\end{equation}
+\end{enumerate}
+
+Thus, any error affecting fewer than $r$ qubits can be detected by the Shor code \citep{Cesar2024}.
+
+\section{Concrete Example: The Original 9-Qubit Shor Code}
+
+As shown in Figure \ref{shor_code_encode_circuit}, the Shor code with $n = 3$ is the first code described to correct any error in a single qubit. In this case, the state $\ket{0}$ can be summed by the vectors with even parity $v \in \left\{(0, 0, 0), (1, 1, 0), (1, 0, 1), (0, 1, 1)\right\}$ \citep{Cesar2024}, making the encoded state:
+\begin{equation}
+  \ket{\varepsilon_0} = \frac{1}{2}\left(
+  \stretchleftright{|}{\begin{matrix}000\\000\\000\end{matrix}}{\rangle} + 
+  \stretchleftright{|}{\begin{matrix}111\\111\\000\end{matrix}}{\rangle} +
+  \stretchleftright{|}{\begin{matrix}111\\000\\111\end{matrix}}{\rangle} +
+  \stretchleftright{|}{\begin{matrix}000\\111\\111\end{matrix}}{\rangle}
+    \right)
+  \label{eq:encoded_shor_9_0}
+.\end{equation}
+
+Additionally, the state $\ket{1}$ is encoded by the vectors with odd parity, meaning $v \in \left\{(1, 0, 0), (0, 1, 0), (0, 0, 1), (1, 1, 1)\right\}$ \citep{Cesar2024}, making it:
+\begin{equation}
+  \ket{\varepsilon_1} = \frac{1}{2}\left(
+  \stretchleftright{|}{\begin{matrix}111\\000\\000\end{matrix}}{\rangle} + 
+  \stretchleftright{|}{\begin{matrix}000\\111\\000\end{matrix}}{\rangle} +
+  \stretchleftright{|}{\begin{matrix}000\\000\\111\end{matrix}}{\rangle} +
+  \stretchleftright{|}{\begin{matrix}111\\111\\111\end{matrix}}{\rangle}
+    \right)
+  \label{eq:encoded_shor_9_1}
+.\end{equation}
+
+The distance of this code is, as expected, $d = 3$, allowing it to correct errors in $1$ qubit. These errors can be divided into $X$ and $Z$ errors, or a combination of both, which will trigger these options \citep{Cesar2024}:
+\begin{itemize}
+  \item \textbf{Bit-flip error:} This would change a single qubit in a row, and by simple majority, as explained in the repetition code, it could be detected and corrected.
+  \item \textbf{Phase-flip error:} By phase kickback, the phase of the whole row would change the overall phase. This can be tested by checking the parity with the other blocks to detect the change in phase and correct it.
+\end{itemize}
+
+This code is not the smallest code that can correct a general error in a single qubit. As discussed before, the Hamming bound for such a condition is $5$ qubits. However, it is a very important and interesting code because it also fulfills the requirements for a stabilizer code, making it much more efficient than other competitors.
+
+\section{Shor Code as a Stabilizer Code}
+
+An important property of the Shor code is that it is a stabilizer code \citep{Kitaev2002}. For the general Shor code, we can explicitly construct the stabilizers \citep{Cesar2024}. Beginning with Equation \ref{eq:concrete_shor}, we can define two groups of stabilizers.
+
+\subsection{Internal Stabilizers}
+
+For every row $j$ and two consecutive qubits within that row, we define the operator:
+\begin{equation}
+  M_{jk}^{(z)} = \sigma_{jk}^{(z)} \sigma_{j(k + 1)}^{(z)}
+  \label{eq:internal_stabilizer}
+.\end{equation}
+\citep{Cesar2024}
+
+For every pair $j, k$, the equation $M_{jk}^{(z)} \ket{\varepsilon} = \ket{\varepsilon}$ holds because, as mentioned earlier, the rows consist of identical qubits; thus, the phase introduced by the $\sigma_z$ operations cancels out.
+
+\subsection{External Stabilizers}
+
+For every row $j$ and its adjacent row $j + 1$, where $j \in \left\{1, 2, \dots, r - 1\right\}$, we can define the operation:
+\begin{equation}
+  M_j^{(x)} = \prod_{k = 1}^{r}\sigma_{jk}^{x}\sigma_{(j + 1)k}^x
+  \label{eq:external_stabilizer}
+.\end{equation}
+\citep{Cesar2024}
+
+This operation is a stabilizer because applying it is equivalent to the mapping:
+\begin{align*}
+  \ket{y_k, \ldots, y_k} \to \ket{(y_k \oplus 1), \ldots, (y_k \oplus 1)}
+.\end{align*}
+
+Applying it to rows $j$ and $j + 1$, and recalling that every logical state is a superposition of all configurations $(y_1,\dots, y_r)$ with a global parity $\sum_i y_i \equiv a$, we get:
+\begin{align*}
+  (y_1 + y_2 + \dots + y_{j - 1}) + (y_j \oplus 1) + (y_{j + 1} \oplus 1) + (y_{j + 2} + \dots + y_r) &= \sum_i^r y_i + 2 \pmod{2}\\
+  &= \sum_i^r y_i = a
+.\end{align*}
+
+This demonstrates that the operation $M_j^{(x)}$ acts as a stabilizer for the Shor code encoding.
+
+\subsection{Dimension of the Code and Verification of the Symplectic Condition}
+
+The combination of these stabilizers generates the group that defines the Shor code. Its dimension is:
+\begin{equation}
+  \dim(SC) = 2^{r^2 - (r^2 - 1)} = 2
+  \label{eq:dim_shor_stabilizer}
+.\end{equation}
+This is consistent with encoding a single logical qubit, as previously explained.
+
+We can verify the commutation relations between the defined operators by analyzing the following cases:
+
+\begin{itemize}
+  \item \textbf{Two internal stabilizers $M_{j_1 k_1}^{(z)}$ and $M_{j_2 k_2}^{(z)}$:}
+    Since this type of operation uses exclusively $Z$ gates (represented by $(0, 1)$ in symplectic notation) and deviates from the identity operation only on specific qubits, it holds that $\alpha = 0$ for every operator in $M_{j k}$. Therefore:
+    \begin{equation}
+      \omega(M_{j_1 k_1}^{(z)}, M_{j_2 k_2}^{(z)}) = \sum_{i} (0 \cdot \beta_i' - 0 \cdot \beta_i) = 0
+      \label{eq:deviation_internal_conmutation}
+    .\end{equation}
+
+  \item \textbf{Two external stabilizers $M_{j_1}^{(x)}$ and $M_{j_2}^{(x)}$:}
+    These operations have the $X$ gate as their only non-identity component. In symplectic notation, $X = (1, 0)$, making $\beta = 0$ for every operation in the system, which results in:
+    \begin{equation}
+      \omega(M_{j_1}^{(x)}, M_{j_2}^{(x)}) = \sum_{i} (\alpha_i \cdot 0 - \alpha_i' \cdot 0) = 0
+      \label{eq:deviation_external_conmutation}
+    .\end{equation}
+
+  \item \textbf{One internal stabilizer $M_{j k}^{(z)}$ and one external stabilizer $M_{\ell}^{(x)}$:}
+    There are two possibilities. The first is $j \neq \ell \land j \neq (\ell + 1)$. In this case, the operations are disjoint, and therefore they commute trivially ($\omega = 0$).
+    
+    The second possibility is a collision in a single row: $j = \ell \lor j = (\ell + 1)$. In this case, $M_{j k}$ applies $Z$ to two qubits in a row where $M_\ell$ applies $X$. The overlap between the operations acts on exactly $2$ qubits, which evaluates to $0$ over the modulo-2 field.
+\end{itemize}
+
+It is important to note that the Shor code specifically has the trivial solution $\mu = 0$ for the sign operation. This is because the stabilizers operate on different columns or rows; therefore, when applied in conjunction, they yield independent results ($\tilde{\omega} = 0$), making it unnecessary to add a sign function \citep{Cesar2024}.

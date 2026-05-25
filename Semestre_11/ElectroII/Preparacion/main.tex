@@ -1,0 +1,151 @@
+\documentclass[12pt]{amsart}
+
+%%%%%%%%%This project was adapted from Adam Graham-Squire at High Point University.
+
+\addtolength{\hoffset}{-2.25cm}
+\addtolength{\textwidth}{4.5cm}
+\addtolength{\voffset}{-2.5cm}
+\addtolength{\textheight}{5cm}
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0in}
+
+\usepackage{amsthm, amsmath, amssymb, mathtools}
+\usepackage[colorlinks = true, linkcolor = black, citecolor = black, final]{hyperref}
+\usepackage{graphicx, multicol}
+\usepackage{marvosym, wasysym}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing, shapes.geometric}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+  backgroundcolor=\color{backcolour},   
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\ttfamily\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+  }
+
+  \lstset{style=mystyle}
+
+  \newcommand{\ds}{\displaystyle}
+  \DeclareMathOperator{\sech}{sech}
+
+
+
+  \pagestyle{empty}
+
+  \begin{document}
+
+  \thispagestyle{empty}
+
+  {\scshape FISI-4005} \hfill {\scshape \large Sergio Montoya Ramirez} \hfill {Tarea \#1\scshape }
+
+  \smallskip
+
+  \hrule
+  \section{Punto 1}
+
+  A diferencia de en electro estatica ahora el campo si tiene una divergencia y por tanto $$\nabla \times E = 0$$ ya no se sostiene. Por el contrario, $B$ sigue permaneciendo sin divergencia y por tanto existe un potencial del cual $B$ es su rotacional.
+
+    $$B = \nabla \times A$$
+
+  Ahora metiendo esto en la ley de Faraday:
+
+  \begin{align*}
+    \nabla \times E &= - \frac{\partial (\nabla \times A)}{\partial t}\\
+    \nabla \times E &= - \nabla \times \frac{\partial A}{\partial t}\\
+    \nabla \times \left(E + \frac{\partial A}{\partial t}\right) &= 0\\
+  \end{align*}
+
+  Por tener el rotacional igual a 0 entonces lo que va entre parentesis puede ser escrito como el gradiente de un potencial. Es decir:
+
+  $$E + \frac{\partial A}{\partial t} = - \nabla V \implies E = - \nabla V - \frac{\partial A}{\partial t}$$
+
+  Y con esto ya encontramos los dos potenciales con los que vamos a trabajar. 
+
+  (Dame una explicación de que es cada uno y que representan.)
+
+  \section{Punto 2}
+
+  Ahora, para el caso despejar el Gauge de Lorentz necesitamos primero desarrollar
+
+  \begin{align*}
+    \nabla \cdot E &= \frac{1}{\epsilon_0}\rho\\
+    \nabla \cdot \left(- \nabla V - \frac{\partial A}{\partial t}\right) &= \frac{1}{\epsilon_0}\rho\\
+    \nabla^2 V + \frac{\partial}{\partial t}(\nabla \cdot A) &= - \frac{1}{\epsilon_0}\rho\\
+  \end{align*}
+
+  Ademas
+  \begin{align*}
+    \nabla \times B &= \mu_0 J + \mu_0 \epsilon_0 \frac{\partial E}{\partial t}\\
+    \nabla \times (\nabla \times A) &= \mu_0 J + \mu_0 \epsilon_0 \frac{\partial (- \nabla V - \frac{\partial A}{\partial t})}{\partial t}\\
+    \nabla \times (\nabla \times A) &= \mu_0 J - \mu_0 \epsilon_0 \nabla \frac{\partial v}{\partial t} - \mu_0\epsilon_0 \frac{\partial^2 A}{\partial t^2}\\
+    \left(\nabla^2 A - \mu_0 \epsilon_0 \frac{\partial^2 A}{\partial t^2}\right) - \nabla\left(\nabla \cdot A + \mu_0 \epsilon_0 \frac{\partial V}{\partial t}\right) &= - \mu_0 J
+  \end{align*}
+
+  Ambas ecuaciones contienen la informaciónd e Maxwell.
+
+  Ahora bien, ninguna de estas es particularmente bella como ecuación (nota que estan muy entrelazadas) para ello existe los Gauge. Estas son transformaciones que se puedene hacer sobre los potenciales que traen ciertas ventajas. Por ejemplo el Gauge de Coulomb es 
+  $$\nabla \cdot A = 0$$
+
+que tiene como ventaja que el potencial escalar se hace muy facil de calcular pero el potencial vectorial puede hacerse muy dificil.
+
+Por otro lado el Gauge de Lorenz es otra seleccion con la forma
+
+  $$\nabla \cdot A = - \mu_0\epsilon_0 \frac{\partial V}{\partial t}$$
+
+  De este modo, se elimina el termino intermedio haciendo que las ecuaciones queden como:
+
+  \begin{align*}
+    \nabla^2 A - \mu_0 \epsilon_0 \frac{\partial^2 A}{\partial t^2} &= - \mu_0 J\\
+    \nabla^2 V - \mu_0\epsilon_0 \frac{\partial^2 V}{\partial t^2} &= - \frac{1}{\epsilon_0}\rho\\
+  \end{align*}
+
+  Ahora podemos definir un operador (el de D'Alembert) $$\square^2 = \nabla^2 - \mu_0\epsilon_0 \frac{\partial^2}{\partial t^2}$$ y ver que ambas ecuaciones se reducen a
+  \begin{align*}
+    \square^2 A &= - \mu_0 J\\
+    \square^2 V &= - \frac{1}{\epsilon_0}\rho\\
+  \end{align*}
+
+  \section{Miniexamen}
+
+  \subsection{Punto 1}
+  \begin{enumerate}
+    \item 
+      \begin{align*}
+        V(r, t) &= \frac{1}{4\pi\epsilon_0} \frac{q}{r(1 - \frac{\hat{r}v}{c})}\\
+        A(r, t) &= \frac{v}{c^2} V(r, t)
+      \end{align*}
+  \end{enumerate}
+
+  \section{Parcial III}
+
+  \begin{enumerate}
+    \item Treshold de una reacción
+    \item Paradoja de los gemelos
+    \item Que es un cuadrivector, como se come
+    \item Invarianza
+    \item Por que son equivalentes / Que son las transformadas de Lorenz
+    \item El vacio no es un sistema de referencia
+  \end{enumerate}
+
+
+\end{document}

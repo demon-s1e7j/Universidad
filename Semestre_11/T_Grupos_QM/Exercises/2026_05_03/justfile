@@ -1,0 +1,11 @@
+build doc="Talleres":
+  latexmk -pdf {{doc}}.tex
+
+show doc="Talleres":
+  evince {{doc}}.pdf
+
+watch doc="Talleres":
+  ls | entr just build {{doc}}
+
+clean doc="Talleres":
+  latexmk -C {{doc}}.tex

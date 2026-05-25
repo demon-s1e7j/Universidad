@@ -1,0 +1,13 @@
+doc_name := "slides"
+
+build:
+    latexmk -pdf "{{doc_name}}.tex"
+
+show:
+    evince "{{doc_name}}.pdf"
+
+watch:
+    ls "{{doc_name}}.tex" | entr just build
+
+clean:
+  latexmk -C "{{doc_name}}.tex"

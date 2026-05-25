@@ -1,0 +1,19 @@
+[0] Config.pm:328> INFO - This is Biber 2.21
+[0] Config.pm:331> INFO - Logfile is 'slides.blg'
+[43] biber:342> INFO - === Mon May 25, 2026, 10:25:58
+[53] Biber.pm:421> INFO - Reading 'slides.bcf'
+[100] Biber.pm:1002> INFO - Found 1 citekeys in bib section 0
+[114] Biber.pm:4487> INFO - Processing section 0
+[119] Biber.pm:4678> INFO - Looking for bibtex file 'references.bib' for section 0
+[120] bibtex.pm:1713> INFO - LaTeX decoding ...
+[121] bibtex.pm:1519> INFO - Found BibTeX data source 'references.bib'
+[142] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[142] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[142] Biber.pm:4307> INFO - Sorting list 'apa/apasortcite//global/global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[142] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[146] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[146] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[146] Biber.pm:4307> INFO - Sorting list 'apa/global//global/global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[146] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[147] bbl.pm:676> INFO - Writing 'slides.bbl' with encoding 'UTF-8'
+[148] bbl.pm:779> INFO - Output to slides.bbl

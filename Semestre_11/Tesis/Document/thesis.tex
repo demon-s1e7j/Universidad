@@ -2,8 +2,9 @@
 %%%%% Paper size %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[a4paper,12pt,twoside,sfelements]{book}
 \usepackage{geometry}
-\usepackage{float}
 \usepackage{quantikz}
+\usepackage{float}
+\usepackage{array}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% load auxiliary files and needed packages %%%%%%%%%%
@@ -13,10 +14,18 @@
 \input{include/EXTRA/auxiliary/tools.tex} 
 \input{include/EXTRA/auxiliary/math.tex} 
 
+\DeclareMathOperator{\Tr}{Tr}
+
+% --- SOLUCIÓN DE ESPACIADO Y ECUACIONES ---
+\allowdisplaybreaks % Permite romper align*, gather, etc., entre páginas.
+\raggedbottom       % Evita estirar los espacios verticales agresivamente.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Define UZH Font
 \usepackage{fontspec}
-\usepackage{braket}
+%\usepackage{braket}
+\usepackage{physics}
+\usepackage{scalerel}
 \setsansfont[
   Path = {include/EXTRA/stylefiles/UZH_Corporate_Schrift/SourceSansPro/},
   UprightFont = *-Regular,
@@ -58,11 +67,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Thesis Content
 % Omitir la extensión .tex en los \include es la mejor práctica
+\include{introduction/introduction}
 \include{error-model-single-qubit_tex/error-model-single-qubit}
 \include{code_tex/code}
-\include{repetition-code_tex/repetition-code}
-\include{quantum-repetition-code_tex/quantum-repetition-code}
 \include{linear-codes_tex/linear-codes}
+\include{simpletic_estabilizers_code/simpletic_estabilizers_code}
+\include{quantum-repetition-code_tex/quantum-repetition-code}
+\include{Shor_code/shor_code}
+\include{conclusions/conclusions}
 
 \include{include/EXTRA/refs}
 

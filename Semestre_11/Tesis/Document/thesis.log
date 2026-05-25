@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.4.8)  20 APR 2026 08:58
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026/Arch Linux) (preloaded format=xelatex 2026.4.21)  21 MAY 2026 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -50,14 +50,6 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layoutvoffset=\dimen156
 \Gm@dimlist=\toks18
 )
-(/usr/share/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count283
-\float@exts=\toks19
-\float@box=\box53
-\@float@everytoks=\toks20
-\@floatcapt=\box54
-)
 (/usr/share/texmf-dist/tex/latex/quantikz/quantikz.sty
 Package: quantikz 2023/05/24 typeset quantum circuit diagrams
 
@@ -65,12 +57,12 @@ Package: quantikz 2023/05/24 typeset quantum circuit diagrams
 (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks21
+\pgfutil@everybye=\toks19
 \pgfutil@tempdima=\dimen157
 \pgfutil@tempdimb=\dimen158
 )
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box55
+\pgfutil@abb=\box53
 )
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/pgf.revision.tex)
@@ -104,12 +96,12 @@ File: xetex.def 2025/11/01 v5.0p Graphics/color driver for xetex
 Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks22
-\pgfkeys@temptoks=\toks23
+\pgfkeys@pathtoks=\toks20
+\pgfkeys@temptoks=\toks21
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.te
 x
-\pgfkeys@tmptoks=\toks24
+\pgfkeys@tmptoks=\toks22
 ))
 \pgf@x=\dimen161
 \pgf@y=\dimen162
@@ -123,14 +115,14 @@ x
 \pgf@yd=\dimen170
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count284
-\c@pgf@countb=\count285
-\c@pgf@countc=\count286
-\c@pgf@countd=\count287
-\t@pgf@toka=\toks25
-\t@pgf@tokb=\toks26
-\t@pgf@tokc=\toks27
-\pgf@sys@id@count=\count288
+\c@pgf@counta=\count283
+\c@pgf@countb=\count284
+\c@pgf@countc=\count285
+\c@pgf@countd=\count286
+\t@pgf@toka=\toks23
+\t@pgf@tokb=\toks24
+\t@pgf@tokc=\toks25
+\pgf@sys@id@count=\count287
  (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
@@ -145,12 +137,12 @@ File: pgfsys-dvipdfmx.def 2025-08-29 v3.1.11a (3.1.11a)
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
 )
-\pgfsys@objnum=\count289
+\pgfsys@objnum=\count288
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfsyssoftpath@smallbuffer@items=\count290
-\pgfsyssoftpath@bigbuffer@items=\count291
+\pgfsyssoftpath@smallbuffer@items=\count289
+\pgfsyssoftpath@bigbuffer@items=\count290
 )
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
@@ -180,11 +172,11 @@ Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen171
-\pgfmath@count=\count292
-\pgfmath@box=\box56
-\pgfmath@toks=\toks28
-\pgfmath@stack@operand=\toks29
-\pgfmath@stack@operation=\toks30
+\pgfmath@count=\count291
+\pgfmath@box=\box54
+\pgfmath@toks=\toks26
+\pgfmath@stack@operand=\toks27
+\pgfmath@stack@operation=\toks28
 )
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
@@ -198,7 +190,7 @@ x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics
 .code.tex) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count293
+\c@pgfmathroundto@lastzeros=\count292
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
@@ -229,10 +221,10 @@ File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfpic=\box57
-\pgf@hbox=\box58
-\pgf@layerbox@main=\box59
-\pgf@picture@serial@count=\count294
+\pgfpic=\box55
+\pgf@hbox=\box56
+\pgf@layerbox@main=\box57
+\pgf@picture@serial@count=\count293
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
@@ -260,15 +252,15 @@ File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@max=\dimen195
-\pgf@sys@shading@range@num=\count295
-\pgf@shadingcount=\count296
+\pgf@sys@shading@range@num=\count294
+\pgf@shadingcount=\count295
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfexternal@startupbox=\box60
+\pgfexternal@startupbox=\box58
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
@@ -283,7 +275,7 @@ File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfnodeparttextbox=\box61
+\pgfnodeparttextbox=\box59
 )
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
@@ -305,8 +297,8 @@ Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
 Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
 \pgffor@iter=\dimen198
 \pgffor@skip=\dimen199
-\pgffor@stack=\toks31
-\pgffor@toks=\toks32
+\pgffor@stack=\toks29
+\pgffor@toks=\toks30
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
@@ -314,7 +306,7 @@ Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
 x
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@plot@mark@count=\count297
+\pgf@plot@mark@count=\count296
 \pgfplotmarksize=\dimen256
 )
 \tikz@lastx=\dimen257
@@ -325,21 +317,21 @@ File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \tikz@lastmovetoy=\dimen262
 \tikzleveldistance=\dimen263
 \tikzsiblingdistance=\dimen264
-\tikz@figbox=\box62
-\tikz@figbox@bg=\box63
-\tikz@tempbox=\box64
-\tikz@tempbox@bg=\box65
-\tikztreelevel=\count298
-\tikznumberofchildren=\count299
-\tikznumberofcurrentchild=\count300
-\tikz@fig@count=\count301
+\tikz@figbox=\box60
+\tikz@figbox@bg=\box61
+\tikz@tempbox=\box62
+\tikz@tempbox@bg=\box63
+\tikztreelevel=\count297
+\tikznumberofchildren=\count298
+\tikznumberofcurrentchild=\count299
+\tikz@fig@count=\count300
  (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfmatrixcurrentrow=\count302
-\pgfmatrixcurrentcolumn=\count303
-\pgf@matrix@numberofcolumns=\count304
+\pgfmatrixcurrentrow=\count301
+\pgfmatrixcurrentcolumn=\count302
+\pgf@matrix@numberofcolumns=\count303
 )
-\tikz@expandcount=\count305
+\tikz@expandcount=\count304
 
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 topaths.code.tex
@@ -354,24 +346,24 @@ Package: xkeyval 2025/11/04 v2.10 package option processing (HA)
 
 (/usr/share/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 (/usr/share/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks33
-\XKV@tempa@toks=\toks34
-\XKV@tempb@toks=\toks35
+\XKV@toks=\toks31
+\XKV@tempa@toks=\toks32
+\XKV@tempb@toks=\toks33
 )
-\XKV@depth=\count306
+\XKV@depth=\count305
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-\xargs@max=\count307
-\xargs@toksa=\toks36
-\xargs@toksb=\toks37
+\xargs@max=\count306
+\xargs@toksa=\toks34
+\xargs@toksb=\toks35
 )
 (/usr/share/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
 )
 (/usr/share/texmf-dist/tex/generic/xstring/xstring.sty
 (/usr/share/texmf-dist/tex/generic/xstring/xstring.tex
-\xs_counta=\count308
-\xs_countb=\count309
+\xs_counta=\count307
+\xs_countb=\count308
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 )
@@ -381,30 +373,30 @@ Package: expl3 2026-01-19 L3 programming layer (loader)
 
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2025-10-09 L3 backend support: XeTeX
-\g__graphics_track_int=\count310
-\g__pdfannot_backend_int=\count311
-\g__pdfannot_backend_link_int=\count312
+\g__graphics_track_int=\count309
+\g__pdfannot_backend_int=\count310
+\g__pdfannot_backend_link_int=\count311
 ))
 Package: xparse 2025-10-09 L3 Experimental document command parser
 )
 (/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count313
+\etb@tempcnta=\count312
 )
 (/usr/share/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2024/10/04 v1.31 mathematical typesetting tools
 
 (/usr/share/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
-\calc@Acount=\count314
-\calc@Bcount=\count315
+\calc@Acount=\count313
+\calc@Bcount=\count314
 \calc@Adimen=\dimen265
 \calc@Bdimen=\dimen266
 \calc@Askip=\skip51
 \calc@Bskip=\skip52
 LaTeX Info: Redefining \setlength on input line 86.
 LaTeX Info: Redefining \addtolength on input line 87.
-\calc@Ccount=\count316
+\calc@Ccount=\count315
 \calc@Cskip=\skip53
 )
 (/usr/share/texmf-dist/tex/latex/mathtools/mhsetup.sty
@@ -420,7 +412,7 @@ Package: amstext 2024/11/17 v2.01 AMS text
 
 (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks38
+\@emptytoks=\toks36
 \ex@=\dimen267
 ))
 (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
@@ -430,19 +422,19 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count317
+\inf@bad=\count316
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count318
-\leftroot@=\count319
+\uproot@=\count317
+\leftroot@=\count318
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count320
-\DOTSCASE@=\count321
+\classnum@=\count319
+\DOTSCASE@=\count320
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
-\Mathstrutbox@=\box66
-\strutbox@=\box67
+\Mathstrutbox@=\box64
+\strutbox@=\box65
 LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
@@ -450,35 +442,35 @@ LaTeX Info: Redefining \Bigg on input line 724.
 \big@size=\dimen269
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count322
+\macc@depth=\count321
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count323
+\c@MaxMatrixCols=\count322
 \dotsspace@=\muskip17
-\c@parentequation=\count324
-\dspbrk@lvl=\count325
-\tag@help=\toks39
-\row@=\count326
-\column@=\count327
-\maxfields@=\count328
-\andhelp@=\toks40
+\c@parentequation=\count323
+\dspbrk@lvl=\count324
+\tag@help=\toks37
+\row@=\count325
+\column@=\count326
+\maxfields@=\count327
+\andhelp@=\toks38
 \eqnshift@=\dimen270
 \alignsep@=\dimen271
 \tagshift@=\dimen272
 \tagwidth@=\dimen273
 \totwidth@=\dimen274
 \lineht@=\dimen275
-\@envbody=\toks41
+\@envbody=\toks39
 \multlinegap=\skip55
 \multlinetaggap=\skip56
-\mathdisplay@stack=\toks42
+\mathdisplay@stack=\toks40
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
 )
-\g_MT_multlinerow_int=\count329
+\g_MT_multlinerow_int=\count328
 \l_MT_multwidth_dim=\dimen276
 \origjot=\skip57
 \l_MT_shortvdotswithinadjustabove_dim=\dimen277
@@ -487,7 +479,7 @@ LaTeX Info: Redefining \] on input line 2951.
 \l_MT_below_intertext_sep=\dimen280
 \l_MT_above_shortintertext_sep=\dimen281
 \l_MT_below_shortintertext_sep=\dimen282
-\xmathstrut@box=\box68
+\xmathstrut@box=\box66
 \xmathstrut@dim=\dimen283
 )
 (/usr/share/texmf-dist/tex/latex/environ/environ.sty
@@ -522,11 +514,11 @@ decorations.code.tex
 \pgfdecoratedinputsegmentcompleteddistance=\dimen290
 \pgfdecoratedinputsegmentremainingdistance=\dimen291
 \pgf@decorate@distancetomove=\dimen292
-\pgf@decorate@repeatstate=\count330
+\pgf@decorate@repeatstate=\count329
 \pgfdecorationsegmentamplitude=\dimen293
 \pgfdecorationsegmentlength=\dimen294
 )
-\tikz@lib@dec@box=\box69
+\tikz@lib@dec@box=\box67
 )
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorati
 ons.pathreplacing.code.tex))
@@ -571,21 +563,39 @@ math.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 fpu.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex))
-\tikz@math@for@depth=\count331
+\tikz@math@for@depth=\count330
 \tikz@math@dimen=\dimen295
-\tikz@math@toks=\toks43
+\tikz@math@toks=\toks41
 )
-\pgf@layerbox@background=\box70
-\pgf@layerboxsaved@background=\box71
-\pgf@layerbox@quantback=\box72
-\pgf@layerboxsaved@quantback=\box73
-\c@dummy=\count332
+\pgf@layerbox@background=\box68
+\pgf@layerboxsaved@background=\box69
+\pgf@layerbox@quantback=\box70
+\pgf@layerboxsaved@quantback=\box71
+\c@dummy=\count331
 \myl=\skip58
 \myh=\skip59
 \myd=\skip60
-\c@aaa=\count333
-\c@wirenumberpermute=\count334
+\c@aaa=\count332
+\c@wirenumberpermute=\count333
 ))
+(/usr/share/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count334
+\float@exts=\toks42
+\float@box=\box72
+\@float@everytoks=\toks43
+\@floatcapt=\box73
+)
+(/usr/share/texmf-dist/tex/latex/tools/array.sty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen296
+\ar@mcellbox=\box74
+\extrarowheight=\dimen297
+\NC@list=\toks44
+\extratabsurround=\skip61
+\backup@length=\skip62
+\ar@cellbox=\box75
+)
 (./include/EXTRA/auxiliary/packages.tex
 (/usr/share/texmf-dist/tex/latex/epigraph/epigraph.sty
 Package: epigraph 2020/01/02 v1.5e typesetting epigraphs
@@ -593,10 +603,10 @@ Package: epigraph 2020/01/02 v1.5e typesetting epigraphs
 (/usr/share/texmf-dist/tex/latex/nextpage/nextpage.sty
 Package: nextpage 2009/09/03 v1.1a additional page commands
 )
-\beforeepigraphskip=\skip61
-\afterepigraphskip=\skip62
-\epigraphwidth=\skip63
-\epigraphrule=\skip64
+\beforeepigraphskip=\skip63
+\afterepigraphskip=\skip64
+\epigraphwidth=\skip65
+\epigraphrule=\skip66
 )
 (/usr/share/texmf-dist/tex/latex/xpatch/xpatch.sty
 Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
@@ -609,7 +619,7 @@ Package: csquotes 2024-04-04 v5.2o context-sensitive quotations (JAW)
 \csq@qlevel=\count338
 \csq@maxlvl=\count339
 \csq@tshold=\count340
-\csq@ltx@everypar=\toks44
+\csq@ltx@everypar=\toks45
 
 (/usr/share/texmf-dist/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2024-04-04 v5.2o csquotes generic definitions (JAW)
@@ -627,14 +637,14 @@ Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
 (/usr/share/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen296
-\captionmargin=\dimen297
-\caption@leftmargin=\dimen298
-\caption@rightmargin=\dimen299
-\caption@width=\dimen300
-\caption@indent=\dimen301
-\caption@parindent=\dimen302
-\caption@hangindent=\dimen303
+\caption@tempdima=\dimen298
+\captionmargin=\dimen299
+\caption@leftmargin=\dimen300
+\caption@rightmargin=\dimen301
+\caption@width=\dimen302
+\caption@indent=\dimen303
+\caption@parindent=\dimen304
+\caption@hangindent=\dimen305
 Package caption Info: Standard document class detected.
 )
 \c@caption@flags=\count341
@@ -653,11 +663,11 @@ Package caption Info: New subtype `subtable' on input line 238.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 (/usr/share/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen304
-\WF@size=\dimen305
+\wrapoverhang=\dimen306
+\WF@size=\dimen307
 \c@WF@wrappedlines=\count345
-\WF@box=\box74
-\WF@everypar=\toks45
+\WF@box=\box76
+\WF@everypar=\toks46
 Package: wrapfig 2003/01/31  v 3.6
 )
 (/usr/share/texmf-dist/tex/latex/hyphenat/hyphenat.sty
@@ -677,26 +687,26 @@ Package: soul 2023-06-14 v3.1 Permit use of UTF-8 characters in soul (HO)
 
 (/usr/share/texmf-dist/tex/generic/soul/soul-ori.sty
 Package: soul-ori 2023-06-14 v3.1 letterspacing/underlining (mf)
-\SOUL@word=\toks46
-\SOUL@lasttoken=\toks47
-\SOUL@syllable=\toks48
-\SOUL@cmds=\toks49
-\SOUL@buffer=\toks50
-\SOUL@token=\toks51
-\SOUL@syllgoal=\dimen306
-\SOUL@syllwidth=\dimen307
-\SOUL@charkern=\dimen308
-\SOUL@hyphkern=\dimen309
-\SOUL@dimen=\dimen310
-\SOUL@dimeni=\dimen311
+\SOUL@word=\toks47
+\SOUL@lasttoken=\toks48
+\SOUL@syllable=\toks49
+\SOUL@cmds=\toks50
+\SOUL@buffer=\toks51
+\SOUL@token=\toks52
+\SOUL@syllgoal=\dimen308
+\SOUL@syllwidth=\dimen309
+\SOUL@charkern=\dimen310
+\SOUL@hyphkern=\dimen311
+\SOUL@dimen=\dimen312
+\SOUL@dimeni=\dimen313
 \SOUL@minus=\count346
 \SOUL@comma=\count347
 \SOUL@apo=\count348
 \SOUL@grave=\count349
-\SOUL@spaceskip=\skip65
-\SOUL@ttwidth=\dimen312
-\SOUL@uldp=\dimen313
-\SOUL@ulht=\dimen314
+\SOUL@spaceskip=\skip67
+\SOUL@ttwidth=\dimen314
+\SOUL@uldp=\dimen315
+\SOUL@ulht=\dimen316
 )
 (/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
@@ -712,24 +722,13 @@ LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
 )
 (/usr/share/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
-\multirow@colwidth=\skip66
+\multirow@colwidth=\skip68
 \multirow@cntb=\count350
-\multirow@dima=\skip67
-\bigstrutjot=\dimen315
+\multirow@dima=\skip69
+\bigstrutjot=\dimen317
 )
 (/usr/share/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
-
-(/usr/share/texmf-dist/tex/latex/tools/array.sty
-Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
-\col@sep=\dimen316
-\ar@mcellbox=\box75
-\extrarowheight=\dimen317
-\NC@list=\toks52
-\extratabsurround=\skip68
-\backup@length=\skip69
-\ar@cellbox=\box76
-)
 \everycr=\toks53
 \minrowclearance=\skip70
 \rownum=\count351
@@ -1577,7 +1576,20 @@ Package siunitx Info: Option "detect-all" has been deprecated in this release.
 \c@theorem=\count502
 \c@qq=\count503
 )
-(/usr/share/texmf-dist/tex/latex/braket/braket.sty)
+(/usr/share/texmf-dist/tex/latex/physics/physics.sty
+Package: physics 
+)
+(/usr/share/texmf-dist/tex/latex/scalerel/scalerel.sty
+Package: scalerel 2016/12/29 v1.8 Routines for constrained scaling and stretchi
+ng of objects, relative to a reference object or in absolute terms
+\thesrwidth=\skip120
+\thesrheight=\skip121
+\srblobheight=\skip122
+\srblobdepth=\skip123
+\mnxsrwidth=\skip124
+\LMex=\skip125
+\LMpt=\skip126
+)
 
 Package fontspec Info: 
 (fontspec)             Font family 'SourceSansPro(0)' created for font
@@ -1630,33 +1642,35 @@ LaTeX Warning: Unused global option(s):
     [sfelements].
 
 (./thesis.aux (./include/EXTRA/title.aux) (./include/EXTRA/toc.aux)
-(./include/EXTRA/abstract.aux)
+(./include/EXTRA/abstract.aux) (./introduction/introduction.aux)
 (./error-model-single-qubit_tex/error-model-single-qubit.aux)
-(./code_tex/code.aux) (./repetition-code_tex/repetition-code.aux)
+(./code_tex/code.aux) (./linear-codes_tex/linear-codes.aux)
+(./simpletic_estabilizers_code/simpletic_estabilizers_code.aux)
 (./quantum-repetition-code_tex/quantum-repetition-code.aux)
-(./linear-codes_tex/linear-codes.aux) (./include/EXTRA/refs.aux))
+(./Shor_code/shor_code.aux) (./conclusions/conclusions.aux)
+(./include/EXTRA/refs.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1702,7 +1716,7 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 Package caption Info: rotating package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 34.
+Package hyperref Info: Link coloring ON on input line 43.
 \c@lstlisting=\count507
 
 Package fontspec Info: 
@@ -1711,58 +1725,70 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup12
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 34.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 34.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 34.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 34.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 34.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 34.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 34.
-LaTeX Font Info:    Redeclaring math accent \check on input line 34.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 34.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 34.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 34.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 34.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 34.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 43.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 43.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 43.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 43.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 43.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 43.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 43.
+LaTeX Font Info:    Redeclaring math accent \check on input line 43.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 43.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 43.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 43.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 43.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 43.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 34.
+(Font)              `operators' in the math version `normal' on input line 43.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 34.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 43.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 34.
+(Font)              `operators' in the math version `bold' on input line 43.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 34.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 43.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 34.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 34.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 34.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/cmss/m/n --> TU/SourceSansPro(0)/m/n on input line 
-34.
+43.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 34.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 43.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 34.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 34.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/SourceSansPro(0)/b/n on input line
- 34.
+ 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 34.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 43.
+
+
+Package siunitx Warning: Detected the "physics" package:
+(siunitx)                omitting definition of \qty.
+(siunitx)                
+(siunitx)                If you want to use \qty with the siunitx definition,
+(siunitx)                add 
+(siunitx)                
+(siunitx)                    \AtBeginDocument{\RenewCommandCopy\qty\SI}
+(siunitx)                
+(siunitx)                to your preamble.
+
 
 (/usr/share/texmf-dist/tex/latex/translations/translations-basic-dictionary-eng
 lish.trsl
@@ -1775,10 +1801,10 @@ File: translations-basic-dictionary-german.trsl (german translation file `trans
 lations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `german'. on input line 34.
+or `german'. on input line 43.
 Package translations Info: no dictionary file `translations-basic-dictionary-it
-alian.trsl' found. on input line 34.
-Package hyperref Info: Option `pageanchor' set `false' on input line 38.
+alian.trsl' found. on input line 43.
+Package hyperref Info: Option `pageanchor' set `false' on input line 47.
 \openout2 = `include/EXTRA/title.aux'.
 
  (./include/EXTRA/title.tex
@@ -1795,19 +1821,49 @@ File: include/EXTRA/stylefiles/uzh-logo.png Graphic file (type bmp)
 \openout2 = `include/EXTRA/toc.aux'.
 
  (./include/EXTRA/toc.tex
-(./thesis.toc)
+(./thesis.toc
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 17
+.
+ (/usr/share/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
+
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
+
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 17
+.
+
+(/usr/share/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <8> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 17.
+
+
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 17.
+
+[3
+
+
+
+
+
+])
 \tf@toc=\write5
 \openout5 = `thesis.toc'.
 
- [3
-
-
-
-
-
-] [4
-
-])
+ [4])
 \openout2 = `include/EXTRA/abstract.aux'.
 
  (./include/EXTRA/abstract.tex [5
@@ -1815,109 +1871,143 @@ File: include/EXTRA/stylefiles/uzh-logo.png Graphic file (type bmp)
 
 
 
+
 ] [6
 
 ])
+\openout2 = `introduction/introduction.aux'.
+
+
+(./introduction/introduction.tex
+Chapter 1.
+[1
+
+
+
+
+
+]) [2]
 \openout2 = `error-model-single-qubit_tex/error-model-single-qubit.aux'.
 
+ (./error-model-single-qubit_tex/error-model-single-qubit.tex
+Chapter 2.
 
-(./error-model-single-qubit_tex/error-model-single-qubit.tex
-Chapter 1.
-LaTeX Font Info:    Trying to load font information for U+wasy on input line 5.
+Overfull \hbox (2.3547pt too wide) detected at line 7
+[][][][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^K[] [] \OT1/cmr/m/n/12 + \OML/cmm/m
+/it/12 ^^K[] []\OT1/cmr/m/n/12 ) []  \OMS/cmsy/m/n/12 !  \OML/cmm/m/it/12 ^^K[]
+^^L[] [] [] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^K[]^^L[] [] [] \OT1/cmr/m/n/12
+ + \OML/cmm/m/it/12 ^^K[]^^L[] [] [] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 ^^K[]^^
+L[] [] [] ;
+ []
 
-(/usr/share/texmf-dist/tex/latex/wasysym/uwasy.fd
-File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
-)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
-
-(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
-
-(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 5.
-
-
-(/usr/share/texmf-dist/tex/latex/base/ulasy.fd
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)
-
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <8> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 5.
-
-
-LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
-(Font)              Font shape `U/wasy/m/n' tried instead on input line 5.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1
+[3
 
 
 
 
-
-]
-[2]
-Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 53.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
-Missing character: There is no ∎ (U+220E) in font [lmroman12-italic]:mapping=te
-x-text;!
+] [4]
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
-nput line 81.
-[4]
-Missing character: There is no ∎ (U+220E) in font [lmroman12-italic]:mapping=te
-x-text;!
-) [5]
+nput line 45.
+ [5]
+Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
+t line 77.
+ [6]) [7]
 \openout2 = `code_tex/code.aux'.
 
- (./code_tex/code.tex [6
+ (./code_tex/code.tex [8
 
 
 
 
 ]
-Chapter 2.
-[7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [9]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11]
-Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input 
-line 124.
-
-[12]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [13]
-Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
-t line 161.
-)
-[14]
-\openout2 = `repetition-code_tex/repetition-code.aux'.
-
- (./repetition-code_tex/repetition-code.tex
 Chapter 3.
-File: files/01_repetition_code-83776af5f392140f3fd27f74c40e0424.png Graphic fil
-e (type bmp)
-<files/01_repetition_code-83776af5f392140f3fd27f74c40e0424.png>
-[15
+[9] [10] [11] [12] [13]
+Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input 
+line 110.
+ [14]
+Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
+t line 140.
+ [15]) [16]
+\openout2 = `linear-codes_tex/linear-codes.aux'.
+
+ (./linear-codes_tex/linear-codes.tex
+Chapter 4.
+[17
+
+
+
+
+] [18]) [19]
+\openout2 = `simpletic_estabilizers_code/simpletic_estabilizers_code.aux'.
+
+ (./simpletic_estabilizers_code/simpletic_estabilizers_code.tex
+[20
+
+
+
+
+]
+Chapter 5.
+
+LaTeX Font Warning: Font shape `U/wasy/b/n' in size <7> not available
+(Font)              Font shape `U/wasy/m/n' tried instead on input line 7.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 7.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 7.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 7.
+
+[21] [22]
+Underfull \hbox (badness 1831) in paragraph at lines 74--75
+[]\TU/lmr/m/n/12 Remembering that $\OML/cmm/m/it/12 X$ \TU/lmr/m/n/12 and $\OML
+/cmm/m/it/12 Z$ \TU/lmr/m/n/12 are involutory operations, the result is
+ []
+
+[23] [24] [25] [26]
+Overfull \hbox (4.52592pt too wide) detected at line 211
+[]
+ []
+
+[27] [28] [29]
+Overfull \hbox (45.61856pt too wide) detected at line 285
+[]
+ []
+
+
+Overfull \hbox (61.59541pt too wide) detected at line 294
+[]
+ []
+
+
+Overfull \hbox (51.91951pt too wide) detected at line 300
+[][][][]\OT1/cmr/m/n/12 2\U/msb/m/n/12 {\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 f; g;
+ h\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 ^^\\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 f \
+OT1/cmr/m/n/12 + \OML/cmm/m/it/12 g\OT1/cmr/m/n/12 ) + \OML/cmm/m/it/12 ^^\\OT1
+/cmr/m/n/12 (\OML/cmm/m/it/12 h\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^@ \OML/cmm/
+m/it/12 ^^\\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 f \OT1/cmr/m/n/12 + \OML/cmm/m/it/
+12 g \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 h\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^@
+ [] \OML/cmm/m/it/12 :
+ []
+
+
+Overfull \hbox (47.74982pt too wide) detected at line 308
+[]
+ []
+
+[30] [31] [32] [33] [34] [35]) [36]
+\openout2 = `quantum-repetition-code_tex/quantum-repetition-code.aux'.
+
+
+(./quantum-repetition-code_tex/quantum-repetition-code.tex
+Chapter 6.
+[37
 
 
 
@@ -1926,74 +2016,100 @@ e (type bmp)
 File: files/02_comparison-2d9e0d455373d64bb1d46105fb84b631.png Graphic file (ty
 pe bmp)
 <files/02_comparison-2d9e0d455373d64bb1d46105fb84b631.png>
+ [38] [39] [40]) [41]
+\openout2 = `Shor_code/shor_code.aux'.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [16])
-[17]
-\openout2 = `quantum-repetition-code_tex/quantum-repetition-code.aux'.
-
- (./quantum-repetition-code_tex/quantum-repetition-code.tex [18
+ (./Shor_code/shor_code.tex [42
 
 
 
 
 ]
-Chapter 4.
+Chapter 7.
+[43] [44]
 
-Underfull \vbox (badness 6078) has occurred while \output is active []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
- [19])
-[20]
-\openout2 = `linear-codes_tex/linear-codes.aux'.
+[45]
 
- (./linear-codes_tex/linear-codes.tex
-Chapter 5.
-
-Package natbib Warning: Citation `https://doi.org/10.48550/arxiv.quant-ph/97050
-52' on page 21 undefined on input line 4.
-
-[21
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 112.
 
 
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 112.
 
 
-] [22]) [23]
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\not' on input line 112.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 112.
+
+[46]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 120.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 120.
+
+[47] [48]
+Overfull \hbox (25.3369pt too wide) detected at line 208
+[]
+ []
+
+[49]) [50] [51]
+\openout2 = `conclusions/conclusions.aux'.
+
+ (./conclusions/conclusions.tex [52
+
+
+
+
+]
+Chapter 8.
+[53]) [54]
 \openout2 = `include/EXTRA/refs.aux'.
 
- (./include/EXTRA/refs.tex (./thesis.bbl [24
+ (./include/EXTRA/refs.tex (./thesis.bbl) [55
 
 
 
 
-]) [25] [26
+] [56
 
 ])
 
 Package caption Warning: Unused \captionsetup[sub] on input line 230.
 See the caption package documentation for explanation.
 
-
-Package natbib Warning: There were undefined citations.
-
 (./thesis.aux (./include/EXTRA/title.aux) (./include/EXTRA/toc.aux)
-(./include/EXTRA/abstract.aux)
+(./include/EXTRA/abstract.aux) (./introduction/introduction.aux)
 (./error-model-single-qubit_tex/error-model-single-qubit.aux)
-(./code_tex/code.aux) (./repetition-code_tex/repetition-code.aux)
+(./code_tex/code.aux) (./linear-codes_tex/linear-codes.aux)
+(./simpletic_estabilizers_code/simpletic_estabilizers_code.aux)
 (./quantum-repetition-code_tex/quantum-repetition-code.aux)
-(./linear-codes_tex/linear-codes.aux) (./include/EXTRA/refs.aux))
+(./Shor_code/shor_code.aux) (./conclusions/conclusions.aux)
+(./include/EXTRA/refs.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 51001 strings out of 470082
- 1105209 string characters out of 5476000
- 1680370 words of memory out of 5000000
- 78644 multiletter control sequences out of 15000+600000
- 637219 words of font info for 103 fonts, out of 8000000 for 9000
+ 52922 strings out of 470082
+ 1143695 string characters out of 5475999
+ 1825289 words of memory out of 5000000
+ 80524 multiletter control sequences out of 15000+600000
+ 647057 words of font info for 149 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 116i,15n,121p,1932b,1432s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,18n,121p,1950b,1432s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on thesis.pdf (32 pages).
+Output written on thesis.pdf (62 pages).

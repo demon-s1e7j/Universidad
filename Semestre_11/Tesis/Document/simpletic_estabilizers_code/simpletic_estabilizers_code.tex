@@ -1,0 +1,469 @@
+\chapter{Symplectic (Stabilizer) Codes}
+
+\section{Pauli operations and symplectic transformations}
+
+In this section, we will develop the structure of a group in the Pauli operations by constructing a representation of it as a tuple and by constructing a multiplication operation between them that holds all the necessary properties of a group.
+
+\subsection{Algebraic structure for $G^n$ and its relation with general operations}
+
+Every Pauli operation can be indexed by a tuple living in $\left(\mathbb{Z}_2\right)^{2n}$ \citep{Kitaev2002}. Each item in the tuple represents the operation $X$ or $Z$, respectively, and it is applied in case the value is $1$ \citep{Kitaev2002}. However, it is necessary to add a factor of $i$ to get the canonical Pauli operations. Therefore, we can create a homomorphism $\sigma$ by
+
+\begin{equation}
+  \sigma(\alpha, \beta) = i^{\alpha \beta}\sigma_{\alpha 0}\sigma_{0 \beta}
+.\end{equation}
+
+with $\sigma_{10} = X$, $\sigma_{01} = Z$, and $\sigma_{00} = I$. Moreover, every combination of $n$ Pauli matrices can be represented by a vector
+\begin{equation}
+\gamma = \left(\alpha_1, \beta_1, \ldots, \alpha_n, \beta_n \right) \in G^n
+.\end{equation}
+in addition to a representation $\sigma : G^n \to \mathcal{L}(\mathcal{B}^{\otimes n})$ that connects the $G^n$ group to the operations over $n$ qubits by multiplying via tensor products the result of every pair $\sigma(\alpha_i, \beta_i)$ as defined previously \citep{Kitaev2002}. As discussed before, the operations over a 2-dimensional Hilbert space have a basis \label{tab:representations_of_pauli_operations}. Therefore, the space of operations $\mathcal{L}(\mathcal{B}^{\otimes n})$ is an algebra graded by $G^n$ \citep{Kitaev2002}; this implies that 
+
+\begin{equation}
+  \mathcal{L}(\mathcal{B}^{\otimes n}) = \bigoplus_{\gamma \in G^n} \mathbb{C}\sigma(\gamma)
+.\end{equation}
+
+The grading operation is preserved, $\sigma(\gamma)^{\dagger} = \pm \sigma(\gamma)$, and in particular, because we are in the Hermitian convention, it is proportional to itself. We have already defined the set corresponding to the group and its relation to the quantum gate operations. However, to correctly define a group, there is a need to implement an operation of multiplication $G^n \times G^n \to G^n$. Nonetheless, prior to the definition of this operation, it is crucial to define and work with a commutation operation that will be used in the multiplication operation.
+
+\subsection{Commutation}
+
+A crucial property of Pauli operations is that they only commute or anti-commute \citep{Kitaev2002}. Therefore, the commutation of two vectors $\gamma_1, \gamma_2 \in G^n$ corresponds to 
+\begin{equation}
+  \sigma(\gamma_1)\sigma(\gamma_2) = (-1)^{\omega(\gamma_1, \gamma_2)}\sigma(\gamma_2)\sigma(\gamma_1)
+.\end{equation}
+
+In this context, $\omega(\gamma_1, \gamma_2)$ is equivalent to checking for every single qubit (a.k.a. for every pair $(\alpha_i, \beta_i; \alpha_i', \beta_i')$) if they commute or anti-commute and then obtaining the parity of the summation of all operations \citep{Kitaev2002}. Moreover, every component of the summation would be equivalent to
+
+\begin{align*}
+  \sigma(\alpha, \beta) \sigma(\alpha', \beta') &= (X^\alpha Z^\beta)(X^{\alpha'} Z^{\beta'})\\
+  &= (-1)^{\beta\alpha'}(X^{\alpha + \alpha'} Z^{\beta + \beta'})\\
+  \sigma(\alpha', \beta') \sigma(\alpha, \beta) &= (X^{\alpha'} Z^{\beta'})(X^\alpha Z^\beta)\\
+  &= (-1)^{\alpha\beta'}(X^{\alpha + \alpha'} Z^{\beta + \beta'})\\
+  \sigma(\alpha, \beta) \sigma(\alpha', \beta') &= (-1)^{\beta\alpha'}((-1)^{-\alpha\beta'} \sigma(\alpha', \beta') \sigma(\alpha, \beta))\\
+  \sigma(\alpha, \beta) \sigma(\alpha', \beta') &= (-1)^{\alpha'\beta - \alpha\beta'} (\sigma(\alpha', \beta') \sigma(\alpha, \beta))
+.\end{align*}
+
+And adding over all qubits generalizes to
+
+\begin{equation}
+  \omega(\gamma_1, \gamma_2) = \sum_{j = 1}^{n} (\alpha_j\beta_j' - \alpha_j'\beta_j) \pmod 2
+.\end{equation}
+
+This $\omega$ function now represents the parity between two Pauli operations, being $0$ if they commute and $1$ if they anti-commute, as these are their only options \citep{Kitaev2002}.
+
+\subsection{Multiplication}
+
+Developing a general rule for multiplication is better done by beginning with the specific case of 1-qubit Pauli operations and generalizing from there\dots
+
+\begin{align*}
+  \sigma(\alpha, \beta)\sigma(\alpha', \beta') &= \left(i^{\alpha \beta}\sigma(\alpha, 0)\sigma(0, \beta)\right) \left(i^{\alpha' \beta'}\sigma(\alpha', 0)\sigma(0, \beta')\right)\\
+  &= i^{\alpha \beta + \alpha'\beta'}\sigma(\alpha, 0)\sigma(0, \beta)\sigma(\alpha', 0)\sigma(0, \beta')
+.\end{align*}
+
+With the commutation rule
+\begin{equation}
+  \sigma(\gamma_1)\sigma(\gamma_2) = (-1)^{\omega(\gamma_1, \gamma_2)}\sigma(\gamma_2)\sigma(\gamma_1)
+.\end{equation}
+
+it is possible to commute via $\sigma(0, \beta)\sigma(\alpha', 0) = (-1)^{\omega(0, \beta; \alpha', 0)}\sigma(\alpha', 0)\sigma(0, \beta)$ \citep{Cesar2024}.
+\begin{align*}
+  \sigma(\alpha, \beta)\sigma(\alpha', \beta') &= i^{\alpha \beta + \alpha'\beta'}\sigma(\alpha, 0)\left((-1)^{\omega(0, \beta; \alpha', 0)}\sigma(\alpha', 0)\sigma(0,\beta)\right)\sigma(0,\beta')\\
+  &= i^{\alpha \beta + \alpha'\beta'}(i^{2})^{\alpha'\beta}\sigma(\alpha,0)\sigma(\alpha',0)\sigma(0,\beta)\sigma(0,\beta')\\
+  &= i^{\alpha \beta + \alpha'\beta' + 2\alpha'\beta} \sigma(\alpha,0)\sigma(\alpha',0)\sigma(0,\beta)\sigma(0,\beta')
+.\end{align*}
+
+Remembering that $X$ and $Z$ are involutory operations, the result is $\sigma(\alpha,0)\sigma(\alpha',0) = \sigma((\alpha \oplus \alpha'),0)$ and that is equally valid for $\beta$ \citep{Cesar2024}.
+\begin{align*}
+  \sigma(\alpha, \beta)\sigma(\alpha', \beta') &= i^{\alpha \beta + \alpha'\beta' + 2\alpha'\beta}\sigma((\alpha \oplus \alpha'),0)\sigma(0,(\beta \oplus \beta'))\\
+  \sigma((\alpha \oplus \alpha'), (\beta \oplus \beta')) &= i^{(\alpha \oplus \alpha')(\beta \oplus \beta')}\sigma((\alpha \oplus \alpha'),0)\sigma(0,(\beta \oplus \beta'))\\
+  \sigma((\alpha \oplus \alpha'),0)\sigma(0,(\beta \oplus \beta')) &= i^{-(\alpha \oplus \alpha')(\beta \oplus \beta')}\sigma((\alpha \oplus \alpha'),(\beta \oplus \beta')) \\
+  \sigma(\alpha, \beta)\sigma(\alpha', \beta') &= i^{\alpha \beta + \alpha'\beta' + 2\alpha'\beta}i^{-(\alpha \oplus \alpha')(\beta \oplus \beta')}\sigma((\alpha \oplus \alpha'),(\beta \oplus \beta'))\\
+  \sigma(\alpha, \beta)\sigma(\alpha', \beta') &= i^{\alpha \beta + \alpha'\beta' + 2\alpha'\beta - (\alpha \oplus \alpha')(\beta \oplus \beta')} \sigma((\alpha \oplus \alpha'),(\beta \oplus \beta'))\\
+  \sigma(\alpha, \beta)\sigma(\alpha', \beta') &= i^{\tilde{\omega}(\alpha, \beta; \alpha', \beta')} \sigma((\alpha \oplus \alpha'),(\beta \oplus \beta'))\\
+  \sigma(\alpha, \beta)\sigma(\alpha', \beta') &= i^{\tilde{\omega}(\alpha, \beta; \alpha', \beta')} \sigma(\gamma + \gamma')\\
+  \tilde{\omega} (\alpha, \beta; \alpha', \beta') &= \alpha \beta + \alpha'\beta' + 2\alpha'\beta - (\alpha \oplus \alpha')(\beta \oplus \beta')
+.\end{align*}
+
+One last simplification for $\tilde{\omega}$ is performing all operations using only the fact that $(a + b)^2 \pmod 4 = (a \oplus b)$ and also by noting that $\forall n \in \{0, 1\}, n = n^2$ \citep{Cesar2024}.
+\begin{equation}
+  \tilde{\omega} (\alpha, \beta; \alpha', \beta') = \alpha^2 \beta^2 + \alpha'^2\beta'^2 + 2\alpha'\beta - (\alpha + \alpha')^2(\beta + \beta')^2
+.\end{equation}
+
+Now for $n$ qubits, every pair of operations would be processed individually and summed after the result. Splitting by operation, we can simplify to
+
+\begin{align*}
+  \sigma(\gamma_1)\sigma(\gamma_2) &= i^{\tilde{\omega}(\gamma_1; \gamma_2)} \sigma(\gamma_1 + \gamma_2)\\
+  \tilde{\omega} (\gamma_1; \gamma_2) &= \tau(\gamma_1) + \tau(\gamma_2) - \tau(\gamma_1 + \gamma_2) + 2\varkappa(\gamma_1, \gamma_2)
+.\end{align*}
+
+This distribution takes advantage of the previous step by noting that every operation in a single $\gamma$ (even when it is the addition of two different ones) can be separated from the only operation that involves both \citep{Cesar2024}.
+\begin{align*}
+  \tau(\alpha_1, \beta_1, \ldots, \alpha_n, \beta_n) &= \sum_{j = 1}^n \alpha_j^2 \beta_j^2,\\
+  \varkappa(\alpha_1, \beta_1, \ldots, \alpha_n, \beta_n; \alpha_1', \beta_1', \ldots, \alpha_n', \beta_n') &= \sum_{j = 1}^n \alpha_j' \beta_j
+.\end{align*}
+
+\section{Extending the structure}
+
+In the last section, we built the necessary structure for a group in the Pauli operations by using the underlying properties of both the operations themselves and the representation of them as a tuple in $(\mathbb{Z}_2)^{2n}$. In this section, we will expand on the symmetries.
+
+\subsection{Unitary transformations for the extended symplectic group}
+
+\begin{definition}
+  A unitary transformation is a superoperator of the form:
+  \begin{equation}
+    T(\rho) = U \rho U^\dagger
+  .\end{equation}
+
+  In particular, for this case, we are interested in a subgroup of the unitary operations $U$ that will preserve the graded structure of the Pauli basis. This means that we are interested in the unitary operations $U$ that map a Pauli basis to itself, except for a phase \citep{Kitaev2002}:
+  \begin{equation}
+    T (\sigma(\gamma)) = U \sigma(\gamma) U^\dagger = (-1)^{v(\gamma)}\sigma(u(\gamma))
+    \label{eq:symplectic}
+  .\end{equation}
+
+  Where
+  \begin{equation}
+    u : G^n \to G^n;\quad v : G^n \to \mathbb{Z}_2
+  .\end{equation}
+
+  This group is called the extended symplectic group (represented by the symbol $\text{ESp}_2(n)$) and it will become the basis for the stabilizers \citep{Kitaev2002}.
+\end{definition}
+
+\subsection{Adding the symplectic structure}
+
+As you can expect from the previous definition, you can have a subset of the operations that needs to satisfy more structure. In particular, an operation $u$ is called symplectic if the associated function $u : G^n \to G^n$ satisfies \citep{Kitaev2002}:
+
+\begin{itemize}
+  \item $u$ is linear over the field $\mathbb{F}_2$ ($u(c \cdot \gamma) = c \cdot u(\gamma) \land u(\gamma + \gamma') = u(\gamma) + u(\gamma')$)
+  \item $u$ preserves the $\omega$ form ($\omega(u(\gamma); u(\gamma')) = \omega(\gamma; \gamma'))$
+\end{itemize}
+
+The subset of symplectic transformations conforms a group called the symplectic group (represented by the symbol $\text{Sp}_2(n)$, as expected) \citep{Kitaev2002}. The existence of a homomorphism $\theta : T \to u$ is immediately evident \citep{Kitaev2002}.
+
+\begin{theorem}
+  The homomorphism $\theta$ has as its image the whole symplectic group ($\Im \theta = \text{Sp}_2(n)$) and its kernel is the Pauli operations \citep{Kitaev2002}. Therefore,
+  \begin{equation}
+    \text{ESp}_2 (n)/G^n \cong \text{Sp}_2(n)
+  .\end{equation}
+
+  \begin{proof}
+    
+    For the homomorphism $\theta$ to be surjective, it is sufficient to show that for any $u \in \text{Sp}_2(n)$ there exists at least one operation $v : G^n \to \mathbb{Z}_4$ such that it absorbs the phase of the operation $u$ in Equation~\ref{eq:symplectic} for it to preserve the multiplication rule \citep{Cesar2024}.
+  \begin{align*}
+    T(\sigma(x)) &= U \sigma(x) U^\dagger = (-1)^{v(x)} \sigma(u(x))\\
+    &= U (i^2)^{v(x)} \sigma(u(x)) = i^{2v(x)} \sigma(u(x))
+  .\end{align*}
+
+    Now multiplying and using the fact that $u$ is linear \citep{Cesar2024}:
+  \begin{align*}
+    T(\sigma(x))T(\sigma(y)) &= \left(i^{2v(x)} \sigma(u(x))\right)\left(i^{2v(y)} \sigma(u(y))\right)\\
+    &= i^{2v(x) + 2v(y)} \sigma(u(x))\sigma(u(y))\\
+    &= i^{2v(x) + 2v(y)} \left( i^{\tilde{\omega}(u(x); u(y))} \sigma(u(x) + u(y)) \right)\\
+    &= i^{2v(x) + 2v(y) + \tilde{\omega}(u(x); u(y))} \sigma(u(x) + u(y))
+  .\end{align*}
+
+    In the other direction \citep{Cesar2024}:
+  \begin{align*}
+    T(\sigma(x)\sigma(y)) &= T\left(i^{\tilde{\omega}(x; y)} \sigma(x + y)\right)\\
+     &= i^{\tilde{\omega}(x; y)} T\left(\sigma(x + y)\right)\\
+    &= i^{\tilde{\omega}(x; y)}i^{2 v(x + y)} \sigma(u(x + y))\\
+    &= i^{\tilde{\omega}(x; y) + 2 v(x + y)} \sigma(u(x + y))
+  .\end{align*}
+
+    It is clear that the only difference between these two equations is the phase. Consequently, we need to show the existence of a $v$ that holds \citep{Cesar2024}:
+  \begin{align*}
+    i^{2v(x) + 2v(y) + \tilde{\omega}(u(x); u(y))} &= i^{\tilde{\omega}(x; y) + 2 v(x + y)}\\
+    2v(x) + 2v(y) + \tilde{\omega}(u(x); u(y)) &= \tilde{\omega}(x; y) + 2 v(x + y) \pmod 4\\
+    2v(x) + 2v(y) - 2 v(x + y) &= \tilde{\omega}(x; y) - \tilde{\omega}(u(x); u(y)) \pmod 4\\
+    2v(x + y) - 2v(x) - 2v(y) &= \tilde{\omega}(u(x); u(y)) - \tilde{\omega}(x; y) \pmod 4
+  .\end{align*}
+
+    Note that because $u$ is symplectic, the commutation is preserved, and therefore the only difference is in the multiplication factor ($1$ or $-1$), which can only be even \citep{Cesar2024}.
+  \begin{equation}
+    v(x + y) - v(x) - v(y) = \frac{\tilde{\omega}(u(x); u(y)) - \tilde{\omega}(x; y)}{2} \pmod 2 = \omega(x, y)
+    \label{eq:symplectic2}
+  .\end{equation}
+
+    It is now possible to show that this equation will always have a solution because all these equations hold as shown next \citep{Cesar2024}:
+
+  \begin{align*}
+    \omega(y, z) - \omega(x + y, z) + \omega(x, y + z) - \omega(x, y) &= 0\\
+    \frac{\tilde{\omega}(u(y); u(z)) - \tilde{\omega}(y; z)}{2} -& \\
+    \frac{\tilde{\omega}(u(x + y); u(z)) - \tilde{\omega}(x + y; z)}{2} +& \\
+    \frac{\tilde{\omega}(u(x); u(y + z)) - \tilde{\omega}(x; y + z)}{2} -& \\
+    \frac{\tilde{\omega}(u(x); u(y)) - \tilde{\omega}(x; y)}{2} &= 0
+  .\end{align*}
+
+    Splitting for the symplectic operation \citep{Cesar2024}:
+  \begin{align*}
+    \frac{\tilde{\omega}(u(y); u(z)) - \tilde{\omega}(u(x + y); u(z)) + \tilde{\omega}(u(x); u(y + z)) - \tilde{\omega}(u(x); u(y))}{2} -& \\
+    \frac{\tilde{\omega}(y; z) - \tilde{\omega}(x + y; z) + \tilde{\omega}(x; y + z) - \tilde{\omega}(x; y)}{2} &= 0
+  .\end{align*}
+
+    Consider now general variables $X, Y, Z$ that represent the vector in $G^n$ or the vector after applying $u$ \citep{Cesar2024}.
+  \begin{align*}
+    (\sigma(X)\sigma(Y))\sigma(Z) &= \left(i^{\tilde{\omega}(X, Y)}\sigma(X + Y)\right)\sigma(Z)\\
+    &= i^{\tilde{\omega}(X, Y) + \tilde{\omega}(X + Y, Z)} \sigma(X + Y + Z)\\
+    \sigma(X)(\sigma(Y)\sigma(Z)) &= \sigma(X)\left(i^{\tilde{\omega}(Y, Z)}\sigma(Y + Z)\right)\\
+    &= i^{\tilde{\omega}(Y, Z) + \tilde{\omega}(X, Y + Z)}\sigma(X + Y + Z)\\
+    (\sigma(X)\sigma(Y))\sigma(Z) &= \sigma(X)(\sigma(Y)\sigma(Z))\\
+    i^{\tilde{\omega}(X, Y) + \tilde{\omega}(X + Y, Z)} \sigma(X + Y + Z) &= i^{\tilde{\omega}(Y, Z) + \tilde{\omega}(X, Y + Z)}\sigma(X + Y + Z)\\
+    \tilde{\omega}(X, Y) + \tilde{\omega}(X + Y, Z) &= \tilde{\omega}(Y, Z) + \tilde{\omega}(X, Y + Z)\\
+    \tilde{\omega}(X, Y) - \tilde{\omega}(Y, Z) + \tilde{\omega}(X + Y, Z) -  \tilde{\omega}(X, Y + Z) &=  0
+  .\end{align*}
+
+  Therefore every section is equal to $0$ \citep{Cesar2024}.
+  \begin{align*}
+    \omega(x, y) &= \omega(y, x)\\
+    \omega(x, x) &= 0
+  .\end{align*}
+
+  Both of these come from the symplectic origin of $u$ conserving the commutation operation and therefore fulfilling both needs \citep{Kitaev2002}. These equations are the necessary conditions for the equation to be cocyclic and therefore a solution exists for all $u$ \citep{Cesar2024}. This means that no matter what symplectic operation is chosen, there is a unitary operation in the extended symplectic group that implements it \citep{Kitaev2002}. This has as an immediate consequence that every symplectic operation can be constructed in a quantum circuit \citep{Kitaev2002}.
+  \end{proof}
+\end{theorem}
+
+\section{Stabilizer (Symplectic) Codes}
+
+Stabilizer codes (or symplectic codes) are the analogues of linear codes for quantum computing \citep{Kitaev2002}. In particular, they develop via the symplectic group (and its corresponding extended symplectic operation) similar properties to the classical parity-check matrix for linear codes \citep{Kitaev2002}.
+
+\begin{definition}[Stabilizer Code]
+  A symplectic quantum code is a subspace of the form \citep{Kitaev2002}:
+  \begin{equation}
+    \mathcal{M} = \left\{\ket{\epsilon} \in \mathcal{B}^{\otimes n} : \forall j,  X_j \ket{\epsilon} = \ket{\epsilon} \right\}
+    \label{eq:def_stabilizers}
+  ,\end{equation}
+  with $X_j = (-1)^{\mu_j} \sigma(f_j),\ f_j \in G^n,\ \mu_j \in \mathbb{Z}_2$ \citep{Kitaev2002}.
+\end{definition}
+
+Note that it is necessary that all the operations $X_j$ commute; if this weren't the case, a set of mutual eigenvectors could not exist \citep{Kitaev2002}. Nonetheless, not every symplectic operation that commutes with those defined by a code must be considered for the existence and characteristics of a stabilizer code. From there, the existence of an isotropic space must follow.
+
+\begin{definition}[Isotropic Space]
+  A subspace $F_+ \subseteq G^n$ is called Isotropic if \citep{Kitaev2002}:
+  \begin{equation}
+    \forall f, g \in F_+, \omega(f, g) = 0
+    \label{eq:isotropic}
+  .\end{equation}
+\end{definition}
+
+Therefore, every stabilizer code is defined by a subset $F \subseteq F_+$ of an isotropic space \citep{Kitaev2002}. Moreover, the code depends exclusively on the subspace $F \subseteq F_+$ spanned by the vectors $f_j$ and the function $\mu : F \to \mathbb{Z}_2$ such that the following equation holds \citep{Cesar2024}:
+
+\begin{align*}
+  \forall f, g \in F, X_\mu(f + g) &= X_\mu(f)X_\mu(g)\\
+  &= \left((-1)^{\mu(f)}\sigma(f)\right)\left((-1)^{\mu(g)}\sigma(g)\right)\\ 
+  &= (-1)^{\mu(f) + \mu(g)} i^{\tilde{\omega}(f, g)}\sigma(f + g)\\
+  X_\mu(f + g) &= (-1)^{\mu(f) + \mu(g)} (-1)^{\frac{\tilde{\omega}(f, g)}{2}}(-1)^{- \mu(f + g)} X_\mu(f + g)\\
+  X_\mu(f + g) &= (-1)^{\mu(f) + \mu(g) + \frac{\tilde{\omega}(f, g)}{2} - \mu(f + g)} X_\mu(f + g)
+.\end{align*}
+
+Because they need to commute, it must follow that \citep{Cesar2024}:
+
+\begin{align*}
+  \mu(f) + \mu(g) + \frac{\tilde{\omega}(f, g)}{2} - \mu(f + g) &= 0\\
+  \mu(f + g) - \mu(f) - \mu(g) &= \frac{\tilde{\omega}(f, g)}{2}
+.\end{align*}
+
+From these equations, we can deduce that $v(f, g) = \frac{\tilde{\omega}(f, g)}{2}$ also holds the conditions for cocyclic solutions, and therefore a solution to that function always exists \citep{Cesar2024}.
+
+\begin{itemize}
+  \item 
+    The function is simmetric
+    \begin{align*}
+      v(f, g) &= \mu(f + g) - \mu(f) - \mu(g)\\
+      v(f, g) &= \mu(g + f) - \mu(g) - \mu(f)\\
+      v(f, g) &= v(g, f)
+    .\end{align*}
+  \item 
+    Before we present the cocyclic expression as a lemma, we must prove that \citep{Cesar2024}:
+    \begin{equation}
+      \tilde{\omega}(f + g, h) = \tilde{\omega}(f, h) + \tilde{\omega}(g, h) + 2 \varkappa (f, g, h)
+      \label{eq:helper}
+    .\end{equation}
+
+    For this purpose we can develop as
+    \begin{align*}
+      \tilde{\omega}(f + g, h) &= \tau(f + g) + \tau(h) - \tau(f + g + h) + 2\varkappa(f + g, h)\\
+      \tilde{\omega}(f + g, h) &= \tau(f + g) + \tau(h) - \tau(f + g + h) + 2\varkappa(f, h) + 2\varkappa(g, h)\\
+      \tilde{\omega}(f, h) + \tilde{\omega}(g, h) &= \tau(f) + \tau(g) + 2\tau(h) - \tau(f + h) - \tau(g + h) + 2\varkappa(f, h) + 2\varkappa(g, h)
+    .\end{align*}
+
+    With that, we can now calculate the difference \citep{Cesar2024}:
+    \begin{align*}
+      \tilde{\omega}(f + g, h) - [\tilde{\omega}(f, h) + \tilde{\omega}(g, h)] &= \tau(f + g) + \tau(h) - \tau(f + g + h) + 2\varkappa(f, h) + 2\varkappa(g, h)\\
+      &\quad - \left[\tau(f) + \tau(g) + 2\tau(h) - \tau(f + h) - \tau(g + h)\right.\\
+      &\quad + \left. 2\varkappa(f, h) + 2\varkappa(g, h)\right]\\
+      \tilde{\omega}(f + g, h) - [\tilde{\omega}(f, h) + \tilde{\omega}(g, h)] &= \tau(f + g) + \tau(h) - \tau(f + g + h)\\
+      &\quad - \left[\tau(f) + \tau(g) + 2\tau(h) - \tau(f + h) - \tau(g + h) \right]
+    .\end{align*}
+
+    Because $\omega(f, g) = 0$ and $\tilde{\omega} \equiv \omega \pmod 2$, therefore $\tilde{\omega} \in \{0, 2\}$, and thus we can define the function \citep{Cesar2024}:
+    \begin{equation}
+      2\varkappa(f, g, h) = \tau(f + g) + \tau(h) - \tau(f + g + h) - \left[\tau(f) + \tau(g) + 2\tau(h) - \tau(f + h) - \tau(g + h) \right]
+      \label{eq:varkappa}
+    .\end{equation}
+
+    And with this, we prove the lemma needed \citep{Cesar2024} and can continue with the conditions:
+    \begin{align*}
+      v(f + g, h) - v(f, h) - v(g, h) &= \frac{1}{2}\left[\tilde{\omega}(f + g, h) - \tilde{\omega}(f, h) - \tilde{\omega}(g, h)\right]\\
+      \tilde{\omega}(f + g, h) &= \tilde{\omega}(f, h) + \tilde{\omega}(g, h) + 2 \varkappa (f, g, h)\\
+      v(f + g, h) - v(f, h) - v(g, h) &= \frac{1}{2}\left[\tilde{\omega}(f, h) + \tilde{\omega}(g, h) + 2 \varkappa (f, g, h) - \tilde{\omega}(f, h) - \tilde{\omega}(g, h)\right]\\
+      v(f + g, h) - v(f, h) - v(g, h) &= \varkappa (f, g, h)
+    .\end{align*}
+
+    And because every $f, g, h \in F$ commutes \citep{Kitaev2002}:
+    \begin{equation}
+      v(f + g, h) - v(f, h) - v(g, h) = 0
+      \label{eq:vfg}
+    .\end{equation}
+
+  \item finaly $v$ is $0$ when applied to the same operator becasue
+    \begin{align*}
+      \tilde{\omega}(f, f) &= \tau(f) + \tau(f) - \tau(f + f) + 2\varkappa(f, f)\\
+      &= 0
+    .\end{align*}
+
+    And therefore \citep{Cesar2024}:
+    \begin{equation}
+      v(f, f) = 0
+      \label{eq:v_f_f}
+    .\end{equation}
+\end{itemize}
+
+This way we demonstrate that there is always a solution for $v(f, g)$, but there are still two important conclusions:
+
+\begin{enumerate}
+  \item For two solutions $\mu_1$ and $\mu_2$, the function $\lambda(f) = \mu_1(f) - \mu_2(f)$ is linear \citep{Cesar2024}:
+    \begin{align*}
+      \lambda(f + g) &= \mu_1(f + g) - \mu_2(f + g)\\
+      \lambda(f + g) &= \left[\mu_1(f) + \mu_1(g)\right] - \left[\mu_2(f) + \mu_2(g) + v(f, g)\right]\\
+      \lambda(f + g) &= \left[\mu_1(f) - \mu_2(f)\right] + \left[\mu_1(g) - \mu_2(g)\right]\\
+      \lambda(f + g) &= \lambda(f) + \lambda(g)
+    .\end{align*}
+
+  \item We can define an affine space with the operation $\lambda$, and the dimension is the same as in the isotropic subspace $F$ \citep{Cesar2024}. Therefore, given that we are working with two possible values, the complete space has \citep{Kitaev2002}:
+    \begin{equation}
+      \left|F^*\right| = 2^{\dim F} = 2^s
+      \label{eq:sol_2_n}
+    .\end{equation}
+\end{enumerate}
+
+It is now possible to define an abstract stabilizer code for every isotropic subspace $F$ and function $\mu$ \citep{Kitaev2002}:
+\begin{equation}
+  \text{SympCode}(F, \mu) := \left\{\ket{\psi} \in \mathcal{B}^{\otimes n} : \forall f \in F, \sigma(f)\ket{\psi} = (-1)^{\mu(f)}\ket{\psi}\right\}
+  \label{eq:isotropic2}
+.\end{equation}
+
+\begin{theorem}[Orthogonal Decomposition]
+  Let $F \subseteq G^n$ be an isotropic subspace of dimension $s$ \citep{Kitaev2002}. Then it holds that:
+  \begin{enumerate}
+    \item Every code has a dimension of \citep{Kitaev2002}:
+      \begin{equation}
+        \dim(\text{SympCode}(F, \mu)) = 2^{n - s}
+        \label{eq:decomp_1}
+      .\end{equation}
+    \item The congruent codes of $F$ (meaning varying $\mu$ over every solution of the $2^s$) form an orthogonal decomposition of the total space of qubits \citep{Kitaev2002}:
+      \begin{equation}
+        \mathcal{B}^{\otimes n} = \bigoplus_{\mu} \text{SympCode}(F, \mu)
+        \label{eq:decomp_2}
+      .\end{equation}
+  \end{enumerate}
+
+  \begin{proof}
+  \begin{enumerate}
+    \item The exact dimension can be calculated using the trace of the projector onto the symplectic code \citep{Kitaev2002}. For a code $\text{SympCode}(F, \mu)$ with operators $\{M_1, M_2, \ldots, M_s\}$, we can construct the projector \citep{Kitaev2002}:
+      \begin{equation}
+        P_\mu = \prod_{i = 1}^s \frac{I + \mu_i M_i}{2}
+        \label{eq:proy_simpl}
+      .\end{equation}
+
+      To show that it is a projector \citep{Cesar2024}:
+      \begin{align*}
+        P^2_{i, \mu_i} &= \left(\frac{I + \mu_i M_i}{2}\right)\left(\frac{I + \mu_i M_i}{2}\right)\\
+        &= \frac{1}{4} \left(I^2 + 2\mu_i M_i + \mu_i^2 M_i^2\right)\\
+        &= \frac{1}{4} \left(I + 2\mu_i M_i + I\right)\\
+        &= \frac{1}{4} \left(2I + 2\mu_i M_i\right)\\
+        P^2_{i,\mu_i} &= \frac{I + \mu_i M_i}{2}\\
+        P^2_{i,\mu_i} &= P_{i,\mu_i}
+      .\end{align*}
+
+      Because the square of every term corresponds to itself, the square of the product is the product itself \citep{Cesar2024}. And to show that it projects to $\text{SympCode}(F, \mu)$, it is necessary to show that every vector projected by $P_\mu$ is in the code \citep{Cesar2024}. Without loss of generality, for a concrete stabilizer $M_k$ and the general projector, we get \citep{Cesar2024}:
+
+      \begin{equation}
+        M_k P_\mu \ket{\psi} = M_k \left(\prod_{i = 1}^s \frac{I + \mu_i M_i}{2}\right)\ket{\psi}
+      .\end{equation}
+
+      Because every stabilizer commutes with every other, the operator $M_k$ can be factored into the term $P_{k, \mu_k}$ \citep{Kitaev2002}.
+      \begin{align*}
+        M_k P_\mu \ket{\psi} &= \left(\prod_{i \neq k}^s \frac{I + \mu_i M_i}{2}\right) \left(M_k\left(\frac{I + \mu_k M_k}{2}\right)\right) \ket{\psi}\\
+        &= \left(\prod_{i \neq k}^s \frac{I + \mu_i M_i}{2}\right) \left(\frac{M_k + \mu_k M_k^2}{2}\right) \ket{\psi}\\
+        &= \left(\prod_{i \neq k}^s \frac{I + \mu_i M_i}{2}\right) \left(\frac{M_k + \mu_k I}{2}\right) \ket{\psi}\\
+        &= \left(\prod_{i \neq k}^s \frac{I + \mu_i M_i}{2}\right) \mu_k\left(\frac{\mu_k M_k + I}{2}\right) \ket{\psi}
+      .\end{align*}
+
+      Concluding therefore
+      
+      \begin{equation}
+        M_k P_\mu \ket{\psi} = \mu_k \left(\prod_{i = 1}^s \frac{I + \mu_i M_i}{2}\right)\ket{\psi}
+      .\end{equation}
+
+      Given that we have already shown that $P_\mu$ is a projector to $\text{SympCode}(F, \mu)$, it is therefore sufficient to get the trace as \citep{Cesar2024}:
+      \begin{equation}
+        P_\mu = \frac{1}{2^s} (I + \mu_1M_1)(I + \mu_2M_2)\dots(I + \mu_s M_s)
+      .\end{equation}
+
+      Because we are in a closed group, the multiplication of these $s$ elements is equal to \citep{Cesar2024}:
+      \begin{equation}
+        P_\mu = \frac{1}{2^s}\left(I + \sum_{g \in F \setminus \{I\}} c_g g\right)
+      .\end{equation}
+
+      And because for every non-identity Pauli operator $\text{Tr}(g) = 0$, the only important trace is $\text{Tr}(I) = 2^n$, and therefore \citep{Kitaev2002}:
+      \begin{equation}
+        \text{Tr}(P_\mu) = 2^{n - s}
+        \label{eq:size_stabilizers}
+      .\end{equation}
+    \item Let $\ket{\psi} \in \text{SympCode}(F, \mu)$ and $\ket{\phi} \in \text{SympCode}(F, \mu')$ with $\mu \neq \mu'$ \citep{Cesar2024}. Therefore, for at least one $k$, without loss of generality, $\mu_k = 1 \land \mu_k' = -1$, and therefore \citep{Cesar2024}:
+      \begin{align*}
+        \bra{\phi}M_k\ket{\psi} &= \bra{\phi}1\ket{\psi}\\
+        &= \braket{\phi | \psi}\\
+        \bra{\phi}M_k\ket{\psi} &= (\bra{\phi}M_k^\dagger)\ket{\psi}\\
+        &= (M_k\ket{\phi})^\dagger\ket{\psi}\\
+        &= (-1\ket{\phi})^\dagger\ket{\psi}\\
+        &= - \braket{\phi | \psi}
+      .\end{align*}
+
+      Equating both results \citep{Cesar2024}:
+
+      \begin{align*}
+        \braket{\phi | \psi} &= - \braket{\phi | \psi}\\
+        \braket{\phi | \psi} &= 0
+      .\end{align*}
+
+      And therefore, every code $\text{SympCode}(F, \mu)$ is orthogonal to every other code in the same isotropic subspace \citep{Cesar2024}. Given that we already know that it has a dimension of $2^{n-s}$ and that we have $2^s$ orthogonal solutions to $\mu$, then the direct sum of every symplectic code in $F$ would have dimension $2^n$ and correspond to the whole qubit space \citep{Kitaev2002}.
+  \end{enumerate}
+\end{proof}
+\end{theorem}
+
+This last theorem and the general definition of the abstract stabilizer code are the only things needed to show that it corrects some errors \citep{Kitaev2002}. Let $\ket{\psi} = \sigma(g) \ket{\varepsilon}$ be a state where an error $\sigma(g)$ is applied to the state $\ket{\varepsilon}$, which is an element of a code $\text{SympCode}(F, \mu)$ \citep{Kitaev2002}. It is true that this error must be a Pauli operation, but as said before, the space of operations over $n$ qubits is a graded algebra of the Pauli operations. Therefore, the result of this new state with an error when a stabilizer is applied would be \citep{Kitaev2002}:
+
+\begin{align*}
+  \sigma(f)\ket{\psi} &= \sigma(f)\sigma(g)\ket{\varepsilon}\\
+  &= (-1)^{\omega(f, g)} \sigma(g) \sigma(f)\ket{\varepsilon}\\
+  &= (-1)^{\omega(f, g) + \mu(f)} \sigma(g)\ket{\varepsilon}\\
+  &= (-1)^{\omega(f, g) + \mu(f)} \ket{\psi}\\
+  &= (-1)^{\mu'(f)} \ket{\psi}
+.\end{align*}
+
+There are 3 possibilities in this section:
+
+\begin{enumerate}
+  \item $\omega(f, g) \neq 0$: This implies that $f$ and $g$ do not commute, meaning $g$ is not in the centralizer of $F$, and therefore the error is detected by having an opposite phase \citep{Kitaev2002}. Because the space of $n$ qubits is orthogonally decomposed by the symplectic codes of $F$, it is possible to project this state (because we know the new $\mu'$ value now) to the code used and therefore correct the error \citep{Kitaev2002}.
+  \item $\omega(f, g) = 0 \land g \in F$: This is indistinguishable from applying an identity operation (varying perhaps by a phase that is expected from applying the operation but conserving the result as expected) \citep{Kitaev2002}. Therefore, it is considered that this state has not suffered an error \citep{Kitaev2002}.
+  \item $\omega(f, g) = 0 \land g \notin F$: This means that $f$ and $g$ commute, but the subspace that defines the code does not consider this particular error \citep{Kitaev2002}. The error maps the state to another congruent code to the original code \citep{Kitaev2002}.
+\end{enumerate}
+
+\begin{definition}[Distance in Symplectic Codes]
+  As stated before, the undetectable/uncorrectable errors in a symplectic code are well defined via the complement subspace of the isotropic subspace $F$ that defines the abstract code \citep{Kitaev2002}. In simpler terms:
+
+  For an isotropic space $F_+$ and $F \subseteq F_+$, a code $\mathcal{M} = \text{SympCode}(F, \mu)$ has a distance of \citep{Kitaev2002}:
+  \begin{equation}
+    d(\mathcal{M}) = \min\left\{|f| : f \in F_+ \setminus F \right\}
+    \label{eq:distance_symplectic}
+  .\end{equation}
+\end{definition}

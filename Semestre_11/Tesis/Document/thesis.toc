@@ -1,17 +1,43 @@
 \babel@toc {british}{}\relax 
 \thispagestyle {plain}
 \contentsline {chapter}{Abstract}{v}{section*.5}%
-\contentsline {chapter}{\numberline {1}Error Model}{1}{chapter.1}%
-\contentsline {chapter}{\numberline {2}Classical and Quantum Coding Theory}{7}{chapter.2}%
-\contentsline {section}{Classical Codes}{7}{chapter.2}%
-\contentsline {section}{Quantum Codes}{7}{chapter.2}%
-\contentsline {section}{Recovery Conditions}{8}{chapter.2}%
-\contentsline {section}{Knill-Laflamme Conditions}{9}{equation.2.2}%
-\contentsline {section}{Characteristics Imposed on a Code by the Knill-Laflamme Conditions}{12}{equation.2.4}%
-\contentsline {section}{Degenerate Codes}{12}{lemma.1}%
-\contentsline {section}{Quantum Hamming Bound}{13}{lemma.2}%
-\contentsline {chapter}{\numberline {3}Repetition Code}{15}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Quantum Repetition Code}{19}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Linear Codes}{21}{chapter.5}%
-\contentsline {chapter}{Bibliography}{24}{section*.9}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Error Model}{3}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Classical and Quantum Coding Theory}{9}{chapter.3}%
+\contentsline {section}{Classical Codes}{9}{chapter.3}%
+\contentsline {section}{Quantum Codes}{9}{chapter.3}%
+\contentsline {section}{Recovery Conditions}{10}{chapter.3}%
+\contentsline {section}{Knill-Laflamme Conditions}{11}{equation.3.2}%
+\contentsline {section}{Characteristics Imposed on a Code by the Knill-Laflamme Conditions}{13}{equation.3.4}%
+\contentsline {section}{Degenerate Codes}{14}{lemma.1}%
+\contentsline {section}{Quantum Hamming Bound}{14}{lemma.1}%
+\contentsline {chapter}{\numberline {4}Linear Codes}{17}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Symplectic (Stabilizer) Codes}{21}{chapter.5}%
+\contentsline {section}{Pauli operations and symplectic transformations}{21}{chapter.5}%
+\contentsline {subsection}{Algebraic structure for $G^n$ and its relation with general operations}{21}{chapter.5}%
+\contentsline {subsection}{Commutation}{22}{equation.5.3}%
+\contentsline {subsection}{Multiplication}{23}{equation.5.5}%
+\contentsline {section}{Extending the structure}{25}{equation.5.7}%
+\contentsline {subsection}{Unitary transformations for the extended symplectic group}{25}{equation.5.7}%
+\contentsline {subsection}{Adding the symplectic structure}{25}{equation.5.10}%
+\contentsline {section}{Stabilizer (Symplectic) Codes}{28}{equation.5.12}%
+\contentsline {chapter}{\numberline {6}Quantum Repetition Code}{37}{chapter.6}%
+\contentsline {section}{Classical Repetition Code}{37}{chapter.6}%
+\contentsline {section}{Quantum Repetition Code}{39}{figure.caption.6}%
+\contentsline {subsection}{Limitations with Arbitrary Errors}{41}{equation.6.4}%
+\contentsline {chapter}{\numberline {7}Shor's Code}{43}{chapter.7}%
+\contentsline {section}{Code Components}{43}{chapter.7}%
+\contentsline {subsection}{Standard Repetition}{43}{chapter.7}%
+\contentsline {subsection}{The Dual Repetition Code}{44}{equation.7.1}%
+\contentsline {section}{The Complete Shor Code}{45}{equation.7.4}%
+\contentsline {section}{Error Detection and Code Distance}{46}{figure.caption.8}%
+\contentsline {subsection}{$f^{(x)} \neq 0$}{46}{figure.caption.8}%
+\contentsline {subsection}{$f^{(x)} = 0$ (Only phase errors)}{47}{equation.7.7}%
+\contentsline {section}{Concrete Example: The Original 9-Qubit Shor Code}{47}{equation.7.10}%
+\contentsline {section}{Shor Code as a Stabilizer Code}{48}{equation.7.12}%
+\contentsline {subsection}{Internal Stabilizers}{49}{equation.7.12}%
+\contentsline {subsection}{External Stabilizers}{49}{equation.7.13}%
+\contentsline {subsection}{Dimension of the Code and Verification of the Symplectic Condition}{50}{equation.7.14}%
+\contentsline {chapter}{\numberline {8}Conclusions}{53}{chapter.8}%
+\contentsline {chapter}{Bibliography}{55}{section*.9}%
 \contentsfinish 

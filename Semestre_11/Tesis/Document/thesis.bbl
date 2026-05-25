@@ -1,32 +1,41 @@
-\begin{thebibliography}{xx}
+\begin{thebibliography}{}
 
-\harvarditem{AbuGhanem}{2025}{IBM2025}
-AbuGhanem, M. 2025.
-\newblock ``IBM quantum computers: evolution, performance, and future
-  directions.'' {\em The Journal of Supercomputing} 81(?):687.
+\bibitem[AbuGhanem, 2025]{IBM2025}
+AbuGhanem, M. (2025).
+\newblock {IBM} quantum computers: evolution, performance, and future
+  directions.
+\newblock {\em The Journal of Supercomputing}, 81:687.
 
-\harvarditem{Calderbank \harvardand\ Shor}{1996}{Shor1996}
-Calderbank, A.~R. \harvardand\ Peter~W. Shor. 1996.
-\newblock ``Good Quantum Error-Correcting Codes Exist.'' {\em Physical Review
-  A} 54(2):1098--1105.
+\bibitem[Calderbank and Shor, 1996]{Shor1996}
+Calderbank, A.~R. and Shor, P.~W. (1996).
+\newblock Good quantum error-correcting codes exist.
+\newblock {\em Physical Review A}, 54(2):1098--1105.
 
-\harvarditem[Kaye, Laflamme \harvardand\ Mosca]{Kaye, Laflamme \harvardand\
-  Mosca}{2006}{Mosca2007}
-Kaye, Phillip, Raymond Laflamme \harvardand\ Michele Mosca. 2006.
+\bibitem[Galindo, nd]{Cesar2024}
+Galindo, C. (n.d.).
+\newblock Códigos cuánticos.
+\newblock Lecture notes.
+\newblock Unpublished manuscript, obtained through private communication.
+
+\bibitem[Gottesman, 1998]{Gottesman1998}
+Gottesman, D. (1998).
+\newblock Theory of fault-tolerant quantum computation.
+\newblock {\em Physical Review A}, 57(1):127--137.
+
+\bibitem[Kaye et~al., 2006]{Mosca2007}
+Kaye, P., Laflamme, R., and Mosca, M. (2006).
 \newblock {\em An Introduction to Quantum Computing}.
-\newblock Oxford, UK:  Oxford University Press.
+\newblock Oxford University Press, Oxford, UK.
 
-\harvarditem[Kitaev, Shen \harvardand\ Vyalyj]{Kitaev, Shen \harvardand\
-  Vyalyj}{2002}{Kitaev2002}
-Kitaev, Aleksej~Yu, Alexander Shen \harvardand\ Mihail~N. Vyalyj. 2002.
-\newblock {\em Classical and Quantum Computation}.
-\newblock Vol.~47 of {\em Graduate Studies in Mathematics} American
-  Mathematical Society.
+\bibitem[Kitaev et~al., 2002]{Kitaev2002}
+Kitaev, A.~Y., Shen, A., and Vyalyj, M.~N. (2002).
+\newblock {\em Classical and Quantum Computation}, volume~47 of {\em Graduate
+  Studies in Mathematics}.
+\newblock American Mathematical Society.
 
-\harvarditem{Nielsen \harvardand\ Chuang}{2010}{Nielsen2010}
-Nielsen, Michael~A. \harvardand\ Isaac~L. Chuang. 2010.
+\bibitem[Nielsen and Chuang, 2010]{Nielsen2010}
+Nielsen, M.~A. and Chuang, I.~L. (2010).
 \newblock {\em Quantum Computation and Quantum Information}.
-\newblock 10th anniversary edition ed. Cambridge University Press.
-\newblock BnF ISBN.
+\newblock Cambridge University Press, 10th anniversary edition edition.
 
 \end{thebibliography}
