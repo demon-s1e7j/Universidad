@@ -1,0 +1,132 @@
+\documentclass[a4paper, amsfonts, amssymb, amsmath, reprint, showkeys, nofootinbib, twoside]{revtex4-1}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage[colorinlistoftodos, color=green!40, prependcaption]{todonotes}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage[left=23mm,right=13mm,top=35mm,columnsep=15pt]{geometry} 
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage[T1]{fontenc}
+\usepackage{lipsum}
+\usepackage{csquotes}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage[pdftex, pdftitle={Article}, pdfauthor={Author}]{hyperref} % For hyperlinks in the PDF
+\usepackage{enumitem}
+\usepackage{booktabs}
+%\usepackage{longtable}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{array}
+\usepackage{siunitx}
+\usepackage{subcaption} % Agregado para habilitar \subcaption
+%\setlength{\marginparwidth}{2.5cm}
+\bibliographystyle{apalike}
+
+\begin{document}
+
+%El título del experimento realizado es importante.
+\title{Transmisión de ondas electromagnéticas en estructuras de Moiré para dieléctricos.}
+
+\author{Sergio Montoya Ramirez}
+\email[Correo institucional: ]{s.montoyar2@uniandes.edu.co}
+
+%Si necesitan poner un segundo autor, deben eliminar los porcentajes (%) iniciales.
+  
+%\author{Second Author}
+%\email{Second.Author@institution.edu}
+
+\affiliation{Universidad de los Andes, Bogotá, Colombia.}
+
+\date{\today} % Si lo dejan vacío no les saldrá fecha. La fecha que se muestra es del día en que se compila.
+
+\begin{abstract}
+Los cristales fotónicos son estructuras con un índice de refracción periódico que dan lugar a complejas estructuras de bandas. Un caso de particular interés físico surge al rotar dos de estas capas entre sí. Esto genera patrones de Moiré que incrementan considerablemente el tamaño de la celda unitaria del cristal, alterando drásticamente sus propiedades y su estructura de bandas.
+
+Sin embargo, los métodos convencionales para simular estos sistemas se basan en discretizar el espacio y resolver cada capa de manera independiente mediante álgebra lineal. El aumento de tamaño y complejidad de las celdas unitarias representa un reto computacional prohibitivo. Este trabajo se centra en el estudio, simulación y comprobación experimental de cristales dieléctricos con patrones de Moiré utilizando el método \textit{RCWA-4D}.
+\end{abstract}
+
+\maketitle
+\section{Introducción}
+
+Un patrón de Moiré surge de la superposición y rotación relativa de dos redes periódicas. En el espacio recíproco, la rotación implica que los nuevos vectores de la red de Moiré ($\mathbf{G}_M$) se construyen a partir de la interferencia de los vectores de las capas individuales \cite{lou2025rcwa4d}:
+
+\begin{equation}
+\mathbf{G}_M = \mathbf{G}_1 - \mathbf{G}_2
+\end{equation}
+
+Como se ilustra a continuación, esta interferencia geométrica genera nuevas periodicidades a mayor escala, lo que modifica sustancialmente las características físicas del material.
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}[t]{0.48\linewidth}
+    \centering
+    \resizebox{\linewidth}{!}{%
+      \begin{tikzpicture}
+        \def\lado{15}
+        \def\espaciado{0.25} % Aumenté ligeramente el espaciado para que las líneas no se empasten al reducirse
+        \def\angulo{0}
+        \colorlet{redLayer}{red!60!black!50}
+        \colorlet{blueLayer}{cyan!70!black!60}
+        \begin{scope}[redLayer]
+          \foreach \i in {0,\espaciado,...,\lado} {
+            \draw[very thin] (\i,0) -- (\i,\lado);
+            \draw[very thin] (0,\i) -- (\lado,\i);
+          }
+        \end{scope}
+        \begin{scope}[blueLayer, rotate around={\angulo:(\lado/2, \lado/2)}]
+          \foreach \i in {0,\espaciado,...,\lado} {
+            \draw[very thin] (\i,0) -- (\i,\lado);
+            \draw[very thin] (0,\i) -- (\lado,\i);
+          }
+        \end{scope}
+        \node[anchor=north west, font=\sffamily\Huge] at (0,-0.5) {$\theta = \angulo^\circ$};
+      \end{tikzpicture}%
+    }
+    \subcaption{Rotación de $0^\circ$}\label{fig:moire0}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.48\linewidth}
+    \centering
+    \resizebox{\linewidth}{!}{%
+      \begin{tikzpicture}
+        \def\lado{15}
+        \def\espaciado{0.25} % Aumenté ligeramente el espaciado
+        \def\angulo{5}
+        \colorlet{redLayer}{red!60!black!50}
+        \colorlet{blueLayer}{cyan!70!black!60}
+        \begin{scope}[redLayer]
+          \foreach \i in {0,\espaciado,...,\lado} {
+            \draw[very thin] (\i,0) -- (\i,\lado);
+            \draw[very thin] (0,\i) -- (\lado,\i);
+          }
+        \end{scope}
+        \begin{scope}[blueLayer, rotate around={\angulo:(\lado/2, \lado/2)}]
+          \foreach \i in {0,\espaciado,...,\lado} {
+            \draw[very thin] (\i,0) -- (\i,\lado);
+            \draw[very thin] (0,\i) -- (\lado,\i);
+          }
+        \end{scope}
+        \node[anchor=north west, font=\sffamily\Huge] at (0,-0.5) {$\theta = \angulo^\circ$};
+      \end{tikzpicture}%
+    }
+    \subcaption{Rotación de $5^\circ$}\label{fig:moire5}
+  \end{minipage}
+  \caption{Patrones de Moiré generados al rotar una rejilla cuadrada sobre otra. Las imágenes ahora se mantienen circunscritas al ancho de la columna.}
+  \label{fig:moire}
+\end{figure}
+
+De este modo, los patrones de Moiré representan un nuevo grado de libertad en el diseño de cristales fotónicos y la sintonización de sus propiedades. Sin embargo, el algoritmo \textit{RCWA} (Análisis Riguroso de Ondas Acopladas), comúnmente utilizado para la simulación de estas estructuras, ve limitada su eficiencia computacional ante el drástico incremento del tamaño de la celda unitaria que conlleva la superposición de Moiré. Esto se debe a que una de las condiciones fundamentales de este algoritmo es utilizar la celda unitaria como dominio para calcular el comportamiento óptico global de la estructura periódica.
+
+Para superar esta limitación, la referencia \cite{lou2025rcwa4d} propuso el método \textit{RCWA-4D}, el cual extiende el formalismo tradicional a los patrones de Moiré ampliando la representación espacial a 4 dimensiones. Este enfoque permite contener la totalidad de la información geométrica de la capa rotada de forma compacta, resolviendo el problema de dispersión electromagnética de manera mucho más rápida y eficiente sin la necesidad de mallas computacionales prohibitivas.
+
+Por consiguiente, el presente trabajo tiene como objetivo estudiar y aplicar el método \textit{RCWA-4D} para la simulación rigurosa de cristales fotónicos, así como llevar a cabo su respectiva validación experimental utilizando estructuras de \textit{PMMA}.
+
+\section{RCWA: El modelo original}
+
+El modelo 
+\end{document}

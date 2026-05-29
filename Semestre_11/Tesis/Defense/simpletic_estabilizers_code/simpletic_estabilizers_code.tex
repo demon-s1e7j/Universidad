@@ -1,0 +1,134 @@
+\begin{frame}
+  \frametitle{Buscamos un código que pueda detectar errores rápidamente, de forma análoga a los códigos lineales}
+
+  Lo que queremos es un código que cumpla \citep{Kitaev2002}:
+\begin{equation}
+    \mathcal{M} = \left\{ \ket{E} \in \mathcal{B}^{\otimes n} : \forall j, X_j \ket{E} = \ket{E}\right\}
+    \label{eq:stabilizers}
+  \end{equation}
+
+  Esto es esencialmente igual a un código lineal clásico, pero en computación cuántica, pues si
+  \begin{equation}
+    X_j \ket{\psi} \neq \ket{\psi}
+    \label{eq:stabilizers_error}
+  \end{equation}
+  sabemos que el código falló y podemos corregirlo.
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Las operaciones $X_j$ son simplécticas}
+
+  Las operaciones anteriores no son arbitrarias; son operaciones concretas llamadas simplécticas. Tienen la forma \citep{Cesar2024}:
+  \begin{equation}
+    X_j = (-1)^{\mu_j} \sigma(f_j)
+    \label{eq:symplectic}
+  \end{equation}
+
+  Donde:
+  \begin{itemize}
+    \item $\mu_j \in \mathbb{Z}_2$ es la entrada de una función diseñada para hacer que los operadores conmuten.
+    \item $\sigma(f_j) : G^n \to \mathcal{L}(\mathcal{B}^{\otimes n})$ es una función que transforma vectores en el espacio $G^n$ a operaciones sobre $n$ qubits.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+  \frametitle{La operación $\sigma(\gamma)$ define un grupo}
+  Cualquier operador de Pauli se puede representar como una tupla en $(\mathbb{Z}_2)^2$, y la operación que representa puede hallarse mediante \citep{Cesar2024}:
+  \begin{equation}
+    \sigma(\alpha, \beta) = i^{\alpha\beta} \sigma_{\alpha 0}\sigma_{0 \beta} \approx i^{\alpha\beta} X^\alpha Z^\beta
+    \label{eq:sigma}
+  \end{equation}
+
+  Esto tiene las siguientes características:
+  \begin{itemize}
+    \item Conmutación: $\sigma(\gamma_1)\sigma(\gamma_2) = (-1)^{\omega(\gamma_1, \gamma_2)} \sigma(\gamma_2)\sigma(\gamma_1)$
+    \item Multiplicación: $\sigma(\gamma_1)\sigma(\gamma_2) = (-1)^{\tilde{\omega}(\gamma_1, \gamma_2)} \sigma(\gamma_1 + \gamma_2)$
+  \end{itemize}
+
+  Lo que hace que estas operaciones de Pauli formen un grupo.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Con esta estructura podemos construir el grupo simpléctico extendido y, por tanto, mostrar que existen estas compuertas}
+
+  Tomando la estructura anterior para operadores de Pauli, podemos construir transformaciones unitarias tales que \citep{Cesar2024}:
+  \begin{equation}
+    U \sigma(\gamma) U^\dagger = (-1)^{v(\gamma)}\sigma(u(\gamma))
+    \label{eq:ESp2}
+  \end{equation}
+  \begin{itemize}
+    \item $u : G^n \to G^n$
+    \item $v : G^n \to \mathbb{Z}_2$
+  \end{itemize}
+
+  En particular, nos interesa que:
+  \begin{itemize}
+    \item $u(\gamma_1 + \beta \gamma_2) = u(\gamma_1) + \beta u(\gamma_2)$
+    \item $\omega(u(\gamma_1), u(\gamma_2)) = \omega(\gamma_1, \gamma_2)$
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conmutatividad vs. Estructura: La función $\mu$}
+
+  Que los elementos de un grupo de estabilizadores conmuten no significa que mantengan la estructura al multiplicar: $\omega(f, g) = 0 \not\implies \tilde{\omega}(f, g) = 0$. Para conservar esa estructura se requiere la función $\mu$ \citep{Cesar2024}:
+  \begin{equation}
+    \mu(f + g) - \mu(f) - \mu(g) = \frac{\tilde{\omega}(f, g)}{2} \pmod 4
+    \label{eq:mu_correction}
+  \end{equation}
+
+  \begin{block}{Ejemplo concreto de corrección de fase:}
+    Sean $M_1 = X \otimes Z$ y $M_2 = Z \otimes X$. Ambos conmutan ($\omega=0$).
+    \begin{itemize}
+      \item \textbf{Producto algebraico:} $M_1 M_2 = (XZ) \otimes (ZX) = (-iY) \otimes (iY) = \mathbf{+Y \otimes Y}$.
+      \item \textbf{Suma vectorial ($f+g$):} El operador base asociado a la suma de sus vectores es $E(f+g) = (X_1 Z_1) \otimes (X_2 Z_2) = (-iY) \otimes (-iY) = \mathbf{-Y \otimes Y}$.
+    \end{itemize}
+    Para que el formalismo vectorial coincida con la física ($W = i^\mu E$):
+    \begin{itemize}
+      \item Necesitamos $i^{\mu(f+g)} = -1$, lo que implica $\mathbf{\mu(f+g) = 2}$.
+      \item Verificando eq. (\ref{eq:mu_correction}): $2 - 0 - 0 = 2$. La función $\mu$ repara el signo.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Los códigos tienen un punto ciego: el subespacio isotrópico}
+  Un código puede definirse casi por completo mediante su función $\mu$ y un subespacio conocido como subespacio isotrópico \citep{Kitaev2002}:
+  \begin{equation}
+    F \subseteq F_+ \subseteq G^n : \forall f, g \in F, \omega(f, g) = 0
+    \label{eq:isotropic}
+  \end{equation}
+
+  Con esto, podemos entonces construir el código abstracto:
+  \begin{equation}
+    SympCode(F, \mu) := \left\{\ket{\psi} \in \mathcal{B}^{\otimes n} : \forall f \in F, \sigma(f) \ket{\psi} = (-1)^{\mu(f)}\ket{\psi}\right\}
+    \label{eq:simp_abst}
+  \end{equation}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Los subespacios isotrópicos descomponen ortogonalmente el espacio}
+  Sea $F \subseteq G^n$ un subespacio isotrópico de dimensión $s$. Se cumple entonces que \citep{Kitaev2002}:
+  \begin{itemize}
+    \item La dimensión de cada código simpléctico definido es:
+      $$dim(SympCode(F, \mu)) = 2^{n - s}$$
+    \item El espacio total de $n$ qubits es la suma directa ortogonal de la familia de códigos simplécticos:
+      $$\mathcal{B}^{\otimes n} = \bigoplus_{\mu} SympCode(F, \mu)$$
+    \item Los diferentes $SympCode(F, \mu)$ son completamente ortogonales entre sí.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Para que un error sea detectado, debe estar fuera de $F_+$}
+
+  Para un estado con un error $\sigma(g)\ket{\psi}$, para el operador $g$ puede ocurrir que \citep{Kitaev2002}:
+  \begin{itemize}
+    \item $g \not\in F_+$: En este caso, el código detecta el error pues los operadores no conmutan. Dado que los códigos son ortogonales entre sí, se puede retornar al estado correcto por medio de una proyección.
+    \item $g \in F$: Esto hace que $\sigma(g)$ sea un estabilizador. Su efecto es indistinguible de haber aplicado la identidad.
+    \item $g \in F_+ \backslash F$: El error es indetectable, pues conmuta con todos los estabilizadores (incluso sin formar parte de ellos).
+  \end{itemize}
+\end{frame}

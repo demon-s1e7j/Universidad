@@ -1,0 +1,45 @@
+\begin{frame}
+  \frametitle{Los códigos lineales clásicos inspiran los estabilizadores}
+
+  Un código $\mathcal{C}$ de $k$ bits en un espacio de $n$ bits es llamado \textit{código lineal} si \citep{Kitaev2002}:
+  \begin{equation}
+    \exists G \in M(n \times k, \mathbb{F}_2), \forall v \in \mathbb{F}_2^k \implies G v \in C
+    \label{eq:linear_code}
+  \end{equation}
+  Donde:
+  \begin{itemize}
+    \item $v \in \mathbb{F}_2^k$ es una cadena de bits (\textit{bitstring}) de tamaño $k$ representada como un vector en un espacio de dimensión $k$ sobre $\mathbb{F}_2$.
+    \item $G$ es una matriz de $n \times k$, llamada matriz generadora, que codifica cualquier vector.
+  \end{itemize}
+
+  Ahora bien, para este caso sabemos también que existe la matriz \citep{Nielsen2010}:
+  \begin{equation}
+    \exists H \in M((n - k) \times n, \mathbb{F}_2), \forall v \in \mathbb{F}_2^n, v \in C \iff H v = 0
+    \label{eq:parity_matrix}
+  \end{equation}
+
+  Conocida como matriz de paridad, esta permite comprobar rápidamente si ha ocurrido un error y corregirlo.
+\end{frame}
+
+\begin{frame}
+  \frametitle{El código de repetición clásico es lineal}
+
+  Sea $C$ un código lineal $[3, 1]$ con matriz generadora:
+  \begin{equation}
+    G = \begin{bmatrix} 1 \\ 1 \\ 1 \end{bmatrix}.
+  \end{equation}
+
+  Además, para este caso, la matriz de paridad es:
+  \begin{equation}
+    H = \begin{bmatrix} 1 & 1 & 0 \\ 1 & 0 & 1 \end{bmatrix}.
+  \end{equation}
+
+  Con esto se puede verificar un vector recibido $r \in \mathbb{F}_2^3$ calculando su síndrome $s = H r$:
+
+  \begin{itemize}
+    \item Si $s = \begin{bmatrix} 0 \\ 0 \end{bmatrix}$, no ocurrió un error.
+    \item Si $s = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$, ocurrió un error en el primer bit.
+    \item Si $s = \begin{bmatrix} 1 \\ 0 \end{bmatrix}$, ocurrió un error en el segundo bit.
+    \item Si $s = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$, ocurrió un error en el tercer bit.
+  \end{itemize}
+\end{frame}

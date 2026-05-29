@@ -1,0 +1,74 @@
+\makepart{El Formalismo Autodual y el Hamiltoniano Cuadrático}
+
+\begin{frame}
+  \frametitle{El Hamiltoniano Cuadrático Fermiónico}
+  
+  Consideramos un Hamiltoniano con términos que mezclan operadores de creación y aniquilación:
+  \begin{equation}
+    H = \sum_{i,j=1}^{N} \left[ a_{i}^{\dagger} A_{ij} a_{j} + \frac{1}{2} (a_{i}^{\dagger} B_{ij} a_{j}^{\dagger} - a_{i} \overline{B}_{ij} a_{j}) \right]
+    \label{eq:III.1}
+  \end{equation}
+  donde $A$ es una matriz hermítica y $B$ es antisimétrica.
+  
+  \vspace{0.3cm}
+  Para diagonalizarlo (caso $B \neq 0$), agrupamos los operadores en forma matricial:
+  \begin{equation}
+    H = \frac{1}{2} (a^{\dagger}, a) \begin{pmatrix} A & B \\ -\overline{B} & -\overline{A} \end{pmatrix} \begin{pmatrix} a \\ a^{\dagger} \end{pmatrix}
+    \label{eq:III.2}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Operadores Base y el Espacio Vectorial}
+
+  Para $N < \infty$, tomamos $V = \mathbb{R}^{2N}$ con métrica euclidiana $g$ y base ortonormal $\{e_1, \dots, e_{2N}\}$. Convención de operadores:
+  \begin{equation}
+    a_k \equiv a_J(e_k), \quad a_k^{\dagger} \equiv a_J^{\dagger}(e_k), \quad k=1,\dots,N
+    \label{eq:III.3}
+  \end{equation}
+
+  Los vectores base se recuperan a partir del vacío $|0_J\rangle$:
+  \begin{equation}
+    e_k = a_k^{\dagger} |0_J\rangle
+    \label{eq:III.4}
+  \end{equation}
+
+  Como el estado base general difiere de $|0_J\rangle$, resulta conveniente tratar los estados de $\mathcal{H}$ y los "bras" en $\mathcal{H}^*$ (o $\overline{\mathcal{H}}$) de manera simétrica.
+\end{frame}
+
+\begin{frame}
+  \frametitle{El Álgebra CAR Autodual}
+
+  Se define el álgebra $\mathcal{A}_{CAR}^{sd}(\mathcal{K}, \Gamma)$ sobre un espacio de Hilbert complejo $\mathcal{K}$ con un operador anti-unitario (conjugación) $\Gamma$ tal que $\Gamma^2 = 1$. 
+  
+  Generada por operadores $B(u)$ y $B^{\dagger}(v)$ sujetos a:
+  \begin{align}
+    \{B(u), B^{\dagger}(v)\} &= \langle u, v \rangle_{\mathcal{K}} \label{eq:III.5} \\
+    B^{\dagger}(\lambda u + \mu v) &= \lambda B^{\dagger}(u) + \mu B^{\dagger}(v) \label{eq:III.6} \\
+    B^{\dagger}(u) &= B(\Gamma u) \label{eq:III.7}
+  \end{align}
+
+  De \eqref{eq:III.5} y \eqref{eq:III.7} se sigue directamente la relación de emparejamiento:
+  \begin{equation*}
+      \{B(u), B(v)\} = \langle u, \Gamma v \rangle_{\mathcal{K}}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Proyector Base e Isomorfismo}
+
+  Para conectar esta estructura con el álgebra CAR estándar, requerimos un proyector base $E$ que satisfaga:
+  \begin{equation}
+    \Gamma E \Gamma = 1 - E
+    \label{eq:III.8}
+  \end{equation}
+
+  Esto induce un isomorfismo $\psi: \mathcal{A}_{CAR}^{sd}(\mathcal{K}, \Gamma) \longrightarrow \mathcal{A}_{CAR}(E\mathcal{K})$ definido sobre los generadores como:
+  \begin{equation}
+    B(u) \mapsto a(Eu) + a^{\dagger}(\Gamma(1-E)u)
+    \label{eq:III.9}
+  \end{equation}
+
+  \vspace{0.2cm}
+  Este isomorfismo unifica operadores de creación y aniquilación bajo un solo tipo de operador $B$, trabajando sobre un subespacio $E\mathcal{K}$ equivalente algebraicamente.
+\end{frame}

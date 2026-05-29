@@ -1,0 +1,19 @@
+\begin{frame}
+  \frametitle{Los errores son operadores que ocurren de forma inesperada. Por lo tanto, son combinaciones lineales de operadores de Pauli}
+  Sea $\alpha_0 \ket{0} + \alpha_1 \ket{1}$ el estado de un qubit y $\ket{E}$ el entorno. Un error sería \citep{Mosca2007}:
+  \begin{equation}
+    \mathcal{E} : (\alpha_0\ket{0} + \alpha_1\ket{1})\ket{E} \;\to\; \alpha_0\beta_{00} \ket{0}\ket{E_1} + \alpha_0\beta_{01} \ket{1}\ket{E_2} + \alpha_1\beta_{10} \ket{0}\ket{E_3} + \alpha_1\beta_{11} \ket{1}\ket{E_4}
+  \end{equation}
+  Donde $\beta_{ij}$ es la amplitud de probabilidad de pasar del estado $i$ al $j$ en el qubit y cambiar el entorno a algún otro estado. En particular, esto es \citep{Mosca2007}:
+  \begin{equation}
+    \begin{aligned}
+    \mathcal{E} \ket{\psi}
+    &= \frac{1}{2} \left( I\ket{\psi}\left(\beta_1 \ket{E_1} + \beta_3 \ket{E_3}\right) \right. \\
+    &\quad + Z\ket{\psi}\left(\beta_1 \ket{E_1} - \beta_3 \ket{E_3}\right) \\
+    &\quad + X\ket{\psi}\left(\beta_2 \ket{E_2} + \beta_4 \ket{E_4}\right) \\
+    &\quad \left. + ZX\ket{\psi}\left(\beta_2 \ket{E_2} - \beta_4 \ket{E_4}\right) \right)
+    \end{aligned}
+  \end{equation}
+
+  Para corregir un error arbitrario, solo hace falta corregir las operaciones: $\{I, Z, X, XZ\}$
+\end{frame}

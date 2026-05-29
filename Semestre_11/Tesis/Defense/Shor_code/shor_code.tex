@@ -1,0 +1,82 @@
+\begin{frame}
+  \frametitle{La idea básica del código de Shor es unir dos códigos de repetición en bases conjugadas}
+  \begin{center}
+  \resizebox{\textwidth}{!}{%
+    $
+    \vcenter{\hbox{\begin{quantikz}
+    \lstick{$\ket{\psi}$} & \ctrl{1} & \ctrl{2} & \qw \\
+    \lstick{$\ket{0}$}    & \targ{}  & \qw      & \qw \\
+    \lstick{$\ket{0}$}    & \qw      & \targ{}  & \qw
+    \end{quantikz}}}
+    \;+\;
+    \vcenter{\hbox{\begin{quantikz}
+    \lstick{$\ket{\psi}$} & \gate{H} & \ctrl{1} & \ctrl{2} & \qw \\
+    \lstick{$\ket{0}$}    & \gate{H} & \targ{}  & \qw      & \qw \\
+    \lstick{$\ket{0}$}    & \gate{H} & \qw      & \targ{}  & \qw
+    \end{quantikz}}}
+    \;=\;
+    \vcenter{\hbox{\begin{quantikz}
+    \lstick{$\ket{\psi}$} & \ctrl{3} & \ctrl{6} & \qw  & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw \\
+    \lstick{$\ket{0}$}    & \qw      & \qw      & \qw  & \qw      & \qw & \targ{}  & \qw      & \qw \\
+    \lstick{$\ket{0}$}    & \qw      & \qw      & \qw  & \qw      & \qw & \qw      & \targ{}  & \qw \\
+    \lstick{$\ket{0}$}    & \targ{}  & \qw      & \qw  & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw \\
+    \lstick{$\ket{0}$}    & \qw      & \qw      & \qw  & \qw      & \qw & \targ{}  & \qw      & \qw \\
+    \lstick{$\ket{0}$}    & \qw      & \qw      & \qw  & \qw      & \qw & \qw      & \targ{}  & \qw \\
+    \lstick{$\ket{0}$}    & \qw      & \targ{}  & \qw  & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw \\
+    \lstick{$\ket{0}$}    & \qw      & \qw      & \qw  & \qw      & \qw & \targ{}  & \qw      & \qw \\
+    \lstick{$\ket{0}$}    & \qw      & \qw      & \qw  & \qw      & \qw & \qw      & \targ{}  & \qw
+    \end{quantikz}}}
+    $
+  }
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shor detecta un error arbitrario de peso menor a $r$}
+
+  Siguiendo la demostración de \cite{Cesar2024}
+
+  \vspace{0.3cm}
+  \textbf{1. Presencia de bit-flips ($f^{(x)} \neq 0$)}
+  \begin{itemize}
+    \item El peso del error es insuficiente para voltear toda una fila.
+    \item El error mapea los estados a subespacios ortogonales, resultando en $\bra{\varepsilon_a} f \ket{\varepsilon_b} = 0$.
+  \end{itemize}
+
+  \vspace{0.3cm}
+  \textbf{2. Solo errores de fase ($f^{(x)} = 0$)}
+  \begin{itemize}
+    \item Sea $\lambda$ el vector que representa los \textit{phase-flips} por columna.
+    \item Si $\lambda = \vec{0}$, el error actúa como la matriz identidad.
+    \item Si $\lambda = \vec{1}$, requiere peso $r$, lo cual contradice la premisa $|f| < r$.
+    \item Para combinaciones no triviales de $\lambda$, la suma se anula por ortogonalidad de caracteres:
+    \begin{equation*}
+      \sum_{y_1 + \dots + y_r \equiv a} (-1)^{\lambda \cdot y} = 0
+    \end{equation*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Estabilizadores del Código de Shor}
+
+  \begin{block}{Estabilizadores Internos ($Z$)}
+    Miden la paridad entre qubits consecutivos en una misma fila $j$:
+    \begin{equation*}
+      M_{jk}^{(z)} = \sigma_{jk}^{(z)} \sigma_{j(k + 1)}^{(z)}
+    \end{equation*}
+    Como las filas consisten en qubits idénticos, la fase de las operaciones $\sigma_z$ se cancela, garantizando que $M_{jk}^{(z)} \ket{\varepsilon} = \ket{\varepsilon}$ \citep{Cesar2024}.
+  \end{block}
+
+  \vspace{0.2cm}
+
+  \begin{block}{Estabilizadores Externos ($X$)}
+    Actúan sobre todos los qubits de dos filas adyacentes ($j$ y $j+1$):
+    \begin{equation*}
+      M_j^{(x)} = \prod_{k = 1}^{r}\sigma_{jk}^{(x)}\sigma_{(j + 1)k}^{(x)}
+    \end{equation*}
+    Aplican un \textit{bit-flip} simultáneo. Preservan el estado lógico porque cambian la paridad en $+2$, manteniendo invariante la paridad global del estado \citep{Cesar2024}:
+    \begin{equation*}
+      \sum_{i=1}^r y_i + 2 \equiv \sum_{i=1}^r y_i \pmod{2} = a
+    \end{equation*}
+  \end{block}
+\end{frame}

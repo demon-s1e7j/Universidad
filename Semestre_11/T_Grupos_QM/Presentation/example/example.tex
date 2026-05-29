@@ -1,0 +1,47 @@
+\makepart{Ejemplos de Aplicación: La Cadena de Kitaev}
+
+\begin{frame}
+  \frametitle{La Cadena de Kitaev: Hamiltoniano Fermiónico}
+
+  El modelo paradigmático para aplicar el formalismo de estructuras ortogonales es la cadena de Kitaev (superconductor topológico 1D de espín nulo). El Hamiltoniano estándar es:
+  \begin{equation}
+      H = \sum_{j=1}^{N-1} \left( -t a_j^{\dagger} a_{j+1} + \Delta a_j a_{j+1} + h.c. \right) - \mu \sum_{j=1}^N \left( a_j^{\dagger} a_j - \frac{1}{2} \right)
+  \end{equation}
+  donde $t$ es la amplitud de salto, $\Delta$ es el potencial de emparejamiento y $\mu$ es el potencial químico.
+
+  \vspace{0.3cm}
+  Este modelo encaja exactamente en la forma cuadrática genérica analizada previamente, permitiendo que sus estados base sean descritos íntegramente por su estructura $J$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Transición a la Base de Majorana y la Estructura $J$}
+
+  Transformamos los fermiones de Dirac a la base del espacio real de Majorana $V = \mathbb{R}^{2N}$:
+  \begin{equation}
+      c_{2j-1} = a_j + a_j^{\dagger}, \quad c_{2j} = \frac{a_j - a_j^{\dagger}}{i}
+  \end{equation}
+
+  El Hamiltoniano adopta la forma $H = \frac{i}{4} \sum A_{mn} c_m c_n$. La estructura ortogonal compleja $J$ que define el vacío depende de la fase física del sistema:
+
+  \begin{itemize}
+      \item \textbf{Fase Trivial ($t=\Delta=0, \mu < 0$):} $J_{triv}$ acopla Majoranas en el mismo sitio ($c_{2j-1}$ con $c_{2j}$).
+      \item \textbf{Fase Topológica ($\mu=0, t=\Delta > 0$):} $J_{top}$ acopla Majoranas de sitios adyacentes ($c_{2j}$ con $c_{2j+1}$), dejando los bordes $c_1$ y $c_{2N}$ desacoplados (modos cero de Majorana).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cálculo del Invariante Topológico $\mathbb{Z}_2$}
+
+  Para establecer la conexión con la topología sin duplicar el espacio, calculamos la transformación ortogonal $O \in O(2N)$ que mapea las estructuras complejas de ambas fases:
+  \begin{equation}
+      J_{top} = O J_{triv} O^T
+  \end{equation}
+
+  El invariante topológico $\nu \in \mathbb{Z}_2$ se extrae de las propiedades algebraicas de esta transformación, vinculadas a la paridad fermiónica en el álgebra de Clifford:
+  \begin{equation}
+      (-1)^\nu = \text{sgn}\left( \text{Pf}(J_{top} J_{triv}) \right) = \det(O)
+  \end{equation}
+
+  \vspace{0.2cm}
+  Con esto se demuestra que la transición, marcada por el cambio en el índice $\nu$, puede derivarse rigurosamente a partir de la estructura ortogonal compleja $J$, eliminando la necesidad analítica de la matriz BdG gigante.
+\end{frame}

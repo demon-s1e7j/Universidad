@@ -1,0 +1,119 @@
+\begin{frame}
+  \frametitle{Un código es un subespacio de qubits. Un código que corrige errores debe ser ortogonal y no ser deformado por el error}
+    \begin{columns}[c]
+      \begin{column}{0.5\textwidth}
+        \centering
+        % \resizebox ajusta el contenido al ancho de la línea actual (\linewidth)
+        \resizebox{\linewidth}{!}{%
+          \begin{tikzpicture}[>=Latex] % Better arrows for connection lines
+
+            % Style for inner axes and vectors
+            \tikzset{eje/.style={gray!70, thin, ->}}
+
+            % Define colors for clarity
+            \colorlet{contour}{black}
+            \colorlet{inner}{gray!70}
+            \colorlet{connection}{gray!50}
+
+            % Two large container circles
+            \node [draw, circle, minimum size=8.5cm, line width=0.8pt] (c1) at (0,0) {};
+            \node [draw, circle, minimum size=8.5cm, line width=0.8pt] (c2) at (10,0) {};
+
+            % Draw the central cube in the first circle
+            \begin{scope}[shift={(c1.center)}]
+              \coordinate (o_c) at (0,0);
+              \coordinate (x_c) at (1, 0.2);
+              \coordinate (y_c) at (-0.3, 1);
+              \coordinate (z_c) at (-0.8, -0.5);
+
+              % Outer contours with thicker lines
+              \coordinate (xy_c) at ($ (x_c) + (y_c) $);
+              \coordinate (xz_c) at ($ (x_c) + (z_c) $);
+              \coordinate (yz_c) at ($ (y_c) + (z_c) $);
+              \coordinate (xyz_c) at ($ (x_c) + (y_c) + (z_c) $);
+              \draw[line width=0.8pt, contour] (x_c) -- (xy_c) -- (y_c);
+              \draw[line width=0.8pt, contour] (y_c) -- (yz_c) -- (z_c);
+              \draw[line width=0.8pt, contour] (z_c) -- (xz_c) -- (x_c);
+              \draw[line width=0.8pt, contour] (xy_c) -- (xyz_c);
+              \draw[line width=0.8pt, contour] (yz_c) -- (xyz_c);
+              \draw[line width=0.8pt, contour] (xz_c) -- (xyz_c);
+
+              % Inner axes with arrows, drawn after contours to be visible
+              \draw[eje] (o_c) -- (x_c);
+              \draw[eje] (o_c) -- (y_c);
+              \draw[eje] (o_c) -- (z_c);
+            \end{scope}
+
+            % Draw parallelepipeds in the second circle
+            % % A1: left side, vertically oriented -> Now a uniform cube
+            \drawparal{7.5}{0.5}{(1,0.2)}{(-0.3,1)}{(-0.8,-0.5)}{$A_1$}{A1}
+
+            % A2: upper-center, tall -> Now a uniform cube
+            \drawparal{9.5}{2.5}{(1,0.2)}{(-0.3,1)}{(-0.8,-0.5)}{$A_2$}{A2}
+
+            % A3: center, wide and regular -> Now a uniform cube
+            \drawparal{10}{-0.5}{(1,0.2)}{(-0.3,1)}{(-0.8,-0.5)}{$A_3$}{A3}
+
+            % A4: upper-right, flat -> Now a uniform cube
+            \drawparal{12}{1.5}{(1,0.2)}{(-0.3,1)}{(-0.8,-0.5)}{$A_4$}{A4}
+
+            % A5: lower-right, flat -> Now a uniform cube
+            \drawparal{12}{-2}{(1,0.2)}{(-0.3,1)}{(-0.8,-0.5)}{$A_5$}{A5}
+
+            % A6: lower-left, wide -> Now a uniform cube
+            \drawparal{8}{-2.5}{(1,0.2)}{(-0.3,1)}{(-0.8,-0.5)}{$A_6$}{A6}
+            % Connection lines from circle 1 center to circle 2 parallelepipeds
+            \coordinate (orig) at (c1.center);
+
+            % Draw connection lines with light grey and small arrow tips
+            \draw [connection, thin, ->, shorten >=10pt, shorten <=10pt] (orig) -- (A1_orig);
+            \draw [connection, thin, ->, shorten >=10pt, shorten <=10pt] (orig) -- (A2_orig);
+            \draw [connection, thin, ->, shorten >=10pt, shorten <=10pt] (orig) -- (A3_orig);
+            \draw [connection, thin, ->, shorten >=10pt, shorten <=10pt] (orig) -- (A4_orig);
+            \draw [connection, thin, ->, shorten >=10pt, shorten <=10pt] (orig) -- (A5_orig);
+            \draw [connection, thin, ->, shorten >=10pt, shorten <=10pt] (orig) -- (A6_orig);
+
+          \end{tikzpicture}%
+          }
+        \end{column}
+
+        % --- COLUMNA DERECHA: TEXTO EXPLICATIVO ---
+        \begin{column}{0.5\textwidth}
+          Un código cuántico es un subespacio del espacio de $n$ qubits (representado como $\mathcal{B}^{\otimes n}$ en esta presentación). Sin embargo, un código que corrige errores debe también cumplir con \citep{Kitaev2002}:
+          \begin{enumerate}
+            \item Ser ortogonal.
+            \item Ser distinguible.
+            \item No estar deformado.
+          \end{enumerate}
+
+          Con esto, un código $C$ corrige un error $\mathcal{E}$ si existe una operación $\mathcal{R}$ tal que:
+
+          \begin{equation}
+            \forall \rho \in C \implies (\mathcal{R} \circ \mathcal{E}) \rho \propto \rho
+            \label{eq:error_correct}
+          \end{equation}
+
+        \end{column}
+      \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Las condiciones de Knill-Laflamme establecen que si un código ortogonal no se deforma con $\mathcal{E}$, entonces lo corrige.}
+
+  Para un código cuántico ortogonal $C$ definido por el proyector $P$, este puede corregir las operaciones de un canal de ruido $\mathcal{E}(\rho) = \sum E_i \rho E_i^\dagger$ si \citep{Nielsen2010}:
+
+    \begin{equation}
+      P E_i^\dagger E_j P = \alpha_{ij} P
+      \label{eq:knill-laflame}
+    \end{equation}
+
+  \vspace{0.5cm}
+  Donde:
+  \begin{itemize}
+    \item \textbf{$\left\{E_i\right\}$}: son los operadores de Kraus del error $\mathcal{E}$.
+    \item \textbf{$\alpha$}: es una matriz hermítica cuyas entradas $\alpha_{ij}$ \textbf{no dependen} del estado lógico codificado.
+  \end{itemize}
+
+  \textbf{Intuición:} Dado que $C$ es ortogonal, al no deformarse podemos seguir distinguiendo las palabras y corregir el error proyectando.
+
+\end{frame}

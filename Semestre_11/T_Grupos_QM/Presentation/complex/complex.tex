@@ -1,0 +1,85 @@
+\makepart{Estructuras Ortogonales Complejas y Álgebras Fermiónicas}
+
+\begin{frame}
+  \frametitle{Estructuras Ortogonales Complejas en el Espacio Real $V$}
+
+  Sea $V = \mathbb{R}^{2N}$ el espacio vectorial real de los fermiones de Majorana, dotado de una métrica euclidiana (producto escalar real) $g(\cdot, \cdot)$.
+
+  \vspace{0.3cm}
+  Definimos una \textbf{estructura ortogonal compleja} como un mapa lineal $J: V \to V$ que satisface las siguientes condiciones de compatibilidad algebraicas y geométricas:
+  
+  \begin{align}
+    J^2 &= -\mathbb{I} \label{eq:J_sq} \\
+    g(Ju, Jv) &= g(u, v) \quad \forall u, v \in V \label{eq:J_isometry}
+  \end{align}
+
+  \vspace{0.2cm}
+  La ecuación \eqref{eq:J_sq} implica que $J$ actúa algebraicamente como la unidad imaginaria $i$, mientras que \eqref{eq:J_isometry} garantiza que $J$ es una transformación ortogonal (isometría) en $V$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{La Complexificación $V_J$ sin Redundancia Dimensional}
+
+  En lugar de duplicar el espacio mediante el producto tensorial tradicional $V \otimes \mathbb{C}$, definimos el espacio vectorial complejo $V_J$ sobre el mismo conjunto $V$, redefiniendo la multiplicación por escalares complejos $(\alpha + i\beta) \in \mathbb{C}$:
+  
+  \begin{equation}
+    (\alpha + i \beta)v \equiv \alpha v + \beta J v, \quad \forall v \in V
+    \label{eq:complexification_J}
+  \end{equation}
+
+  Dotamos a $V_J$ de un producto interno complejo $\langle \cdot, \cdot \rangle_J$ acoplado a la métrica real $g$:
+  \begin{equation}
+    \langle u, v \rangle_J = g(u, v) + i g(Ju, v)
+    \label{eq:inner_product_J}
+  \end{equation}
+
+  \vspace{0.2cm}
+  \textbf{Consecuencia dimensional:}
+  \begin{equation*}
+    \dim_\mathbb{R}(V) = 2N \implies \dim_\mathbb{C}(V_J) = N
+  \end{equation*}
+  Se preservan exactamente los grados de libertad físicos originales.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Construcción de Operadores CAR vía Álgebra de Clifford}
+
+  Consideramos el álgebra de Clifford $\mathcal{A}(V, g)$ generada por los operadores reales de Majorana $\pi(v)$, los cuales cumplen:
+  \begin{equation}
+    \{\pi(u), \pi(v)\} = 2g(u, v)\mathbb{I}, \quad \forall u,v \in V
+    \label{eq:clifford_car}
+  \end{equation}
+
+  Utilizando la estructura $J$, construimos los operadores complejos de aniquilación y creación en el espacio de Fock $\mathcal{F}_J(V_J)$:
+  \begin{align}
+    a_J(v) &= \frac{1}{2}\left(\pi(v) + i\pi(Jv)\right) \label{eq:annihilation_J} \\
+    a_J^{\dagger}(v) &= \frac{1}{2}\left(\pi(v) - i\pi(Jv)\right) \label{eq:creation_J}
+  \end{align}
+
+  De \eqref{eq:clifford_car}, \eqref{eq:annihilation_J} y \eqref{eq:creation_J} se recupera de manera exacta la relación CAR:
+  \begin{equation}
+    \{a_J(u), a_J^{\dagger}(v)\} = \langle u, v \rangle_J \mathbb{I}
+  \end{equation}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Descomposición Espacial y Condición de Vacío}
+
+  Extendemos el mapa $\pi(v)$ de forma estrictamente $\mathbb{C}$-lineal al espacio complexificado algebraico $V^\mathbb{C} = V \otimes \mathbb{C}$, definiendo $\tilde{\pi}(u + iv') \equiv \pi(u) + i\pi(v')$. 
+
+  \vspace{0.2cm}
+  El espacio complejo $V^\mathbb{C}$ se descompone en la suma directa de los autoespacios de $J$ con autovalores $\pm i$:
+  \begin{equation}
+    V^\mathbb{C} = W_J \oplus W_J^\perp
+  \end{equation}
+  donde los subespacios se definen mediante los proyectores correspondientes:
+  \begin{equation}
+    W_J^\perp = \{v + iJv : v \in V\}
+  \end{equation}
+
+  \vspace{0.2cm}
+  La condición matemática rigurosa para el estado de vacío $|0_J\rangle$ asociado a la estructura $J$ queda determinada por:
+  \begin{equation}
+    \tilde{\pi}(u)|0_J\rangle = 0 \iff u \in W_J^\perp
+  \end{equation}
+\end{frame}

@@ -1,0 +1,80 @@
+\makepart{Levantamiento de la Redundancia y el Índice $\mathbb{Z}_2$}
+
+\begin{frame}
+  \frametitle{El Mapeo Inverso y la "Duplicación" Tradicional}
+  
+  Para entender la redundancia, primero vemos cómo se construye el espacio "duplicado" usual. Se define $\mathcal{K} := \mathcal{H} \oplus \mathcal{H}$ con un proyector $E(x,y) = (x,0)$. 
+  
+  Escogiendo una conjugación compleja $T$ en $\mathcal{H}$, definimos $\Gamma(u,v) := (Tv, Tu)$. Esto induce el isomorfismo inverso:
+  \begin{equation}
+      \phi: \mathcal{A}_{CAR}(\mathcal{H}) \longrightarrow \mathcal{A}_{CAR}^{sd}(\mathcal{H} \oplus \mathcal{H}, \Gamma)
+  \end{equation}
+  definido sobre los generadores como:
+  \begin{equation}
+      a(u) \mapsto B^{\dagger}((0, Tu)) \equiv B((u, 0))
+      \label{eq:III.11}
+  \end{equation}
+  
+  \vspace{0.2cm}
+  Este isomorfismo demuestra que el espacio $\mathcal{H} \oplus \mathcal{H}$ (usado en las matrices BdG) genera un álgebra observable $\mathcal{A}_{CAR}^{sd}$ que es completamente equivalente a la original $\mathcal{A}_{CAR}(\mathcal{H})$, confirmando que introducir la suma directa es un paso puramente matemático que infla los grados de libertad.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Construcción sin Redundancia: El Espacio Conjugado}
+
+  Para conectar el formalismo autodual con las estructuras ortogonales (y no duplicar), consideramos el espacio de Hilbert conjugado $\overline{\mathcal{H}}$. 
+  
+  Definimos el nuevo espacio $\mathcal{K} := \mathcal{H} \oplus \overline{\mathcal{H}}$, donde un elemento se escribe como $x = (x_1, x_2)$. La conjugación se define naturalmente como:
+  \begin{equation}
+      \Gamma(x) := (x_2, x_1)
+      \label{eq:III.12}
+  \end{equation}
+  
+  Consideramos el subespacio real invariante bajo esta conjugación:
+  \begin{equation}
+      Re_\Gamma \mathcal{K} := \{x \in \mathcal{K} : \Gamma(x) = x\}
+  \end{equation}
+  Todo elemento en este subespacio tiene la forma $x = (x_1, x_1)$, lo que implica que el producto interno se reduce a $\langle x, y \rangle_{\mathcal{K}} = 2 Re\langle x_1, y_1 \rangle$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Recuperación de los Generadores de Clifford y $J$}
+
+  Sobre el subespacio real $Re_\Gamma \mathcal{K}$, los generadores adquieren la forma:
+  \begin{equation*}
+      \pi_P(x) := a^{\dagger}(Px) + a(P\Gamma x)
+  \end{equation*}
+  los cuales coinciden exactamente con los generadores de Clifford definidos en el espacio de los Majoranas.
+
+  \vspace{0.3cm}
+  Si identificamos $V = Re_\Gamma \mathcal{K}$ y definimos la estructura compleja y la métrica euclidiana como:
+  \begin{equation*}
+      J = i(2P - 1), \quad g(u,v) = Re\langle u,v \rangle
+  \end{equation*}
+  obtenemos el isomorfismo fundamental entre el espacio complexificado y el espacio de Hilbert original:
+  \begin{equation*}
+      (V_J, \langle \cdot, \cdot \rangle_J) \cong (\mathcal{H}, \langle \cdot, \cdot \rangle)
+  \end{equation*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Equivalencia Final y Transformaciones de Bogoliubov}
+
+  Resumiendo la construcción, establecemos la cadena de equivalencias que demuestra la ausencia de redundancia:
+  \begin{equation}
+      \mathbb{C}l(V) \cong \mathcal{A}_{CAR}(\mathcal{H}) \cong \mathcal{A}_{CAR}^{sd}(\mathcal{H} \oplus \overline{\mathcal{H}}, \Gamma)
+      \label{eq:III.13}
+  \end{equation}
+
+  \vspace{0.2cm}
+  Para diagonalizar el Hamiltoniano, tomamos una transformación ortogonal $h \in O(V, g)$. La transformación de Bogoliubov correspondiente se escribe como:
+  \begin{equation}
+      c(v) = a(p_h) + a^{\dagger}(q_h v)
+      \label{eq:III.14}
+  \end{equation}
+  donde las partes lineal ($p_h$) y antilineal ($q_h$) están dadas puramente en términos de la estructura ortogonal compleja $J$:
+  \begin{align}
+      p_h &= \frac{1}{2}(h - JhJ) \label{eq:III.15} \\
+      q_h &= \frac{1}{2}(h + JhJ) \label{eq:III.16}
+  \end{align}
+\end{frame}
